@@ -43,7 +43,7 @@
 <meta property="og:site_name" content="qinrui&#39;s blog">
 <meta property="og:description" content="A: “为什么要导镜像，直接从网上下载不就行了？”B: “too young too naive，你以为哪里都能上网的，谁家的机房没事都可能上个youtube,google的” 一般的公司内网环境是无法访问Internet的，自然也无从下载基础 docker 基础镜像。但这个时候领导交给你的任务–比如用容器运行一个 Java 程序，你在本地程序都调试好了，也在docker container形式运">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-07T13:41:40.497Z">
+<meta property="og:updated_time" content="2019-04-07T13:49:51.075Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker image导出导入">
 <meta name="twitter:description" content="A: “为什么要导镜像，直接从网上下载不就行了？”B: “too young too naive，你以为哪里都能上网的，谁家的机房没事都可能上个youtube,google的” 一般的公司内网环境是无法访问Internet的，自然也无从下载基础 docker 基础镜像。但这个时候领导交给你的任务–比如用容器运行一个 Java 程序，你在本地程序都调试好了，也在docker container形式运">
@@ -132,11 +132,16 @@
             <div class="post-content">
             <p>A: “为什么要导镜像，直接从网上下载不就行了？”<br>B: “too young too naive，你以为哪里都能上网的，谁家的机房没事都可能上个youtube,google的”</p>
 <p>一般的公司内网环境是无法访问Internet的，自然也无从下载基础 docker 基础镜像。但这个时候领导交给你的任务–比如用容器运行一个 Java 程序，你在本地程序都调试好了，也在docker container形式运行良好，但是怎么搬到服务器上，这个时候最原始的U盘就大有用处了（虽然现在都是云盘，但是服务器所在网络就好比你小时候玩的小霸王学习机，只能自己和自己玩儿）。</p>
-<p>your PC –&gt; U Disk –&gt; Server</p>
-<h3 id="Steps"><a href="#Steps" class="headerlink" title="Steps:"></a>Steps:</h3><h5 id="1-导出镜像（在你自己的电脑上执行）"><a href="#1-导出镜像（在你自己的电脑上执行）" class="headerlink" title="1.导出镜像（在你自己的电脑上执行）"></a>1.导出镜像（在你自己的电脑上执行）</h5><p><code></code> docker save Image</p>
+<h2 id="your-PC-–-gt-U-Disk-–-gt-Server"><a href="#your-PC-–-gt-U-Disk-–-gt-Server" class="headerlink" title="your PC –&gt; U Disk –&gt; Server"></a>your PC –&gt; U Disk –&gt; Server</h2><h3 id="Steps"><a href="#Steps" class="headerlink" title="Steps:"></a>Steps:</h3><h5 id="1-导出镜像（在你自己的电脑上执行）"><a href="#1-导出镜像（在你自己的电脑上执行）" class="headerlink" title="1.导出镜像（在你自己的电脑上执行）"></a>1.导出镜像（在你自己的电脑上执行）</h5><p><code></code> docker save Image</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">➜  docker images  | grep python</span><br><span class="line">python          3-alpine            c02a3409ee5b        6 weeks ago         86.7MB</span><br><span class="line">➜  docker save c02a3409ee5b &gt; my_python.tar</span><br><span class="line">➜  ls -l</span><br><span class="line">-rw-r--r--    1 ruqin  staff  90526208  4  7 21:33 my_python.tar</span><br></pre></td></tr></table></figure>
 <h5 id="2-乾坤大挪移"><a href="#2-乾坤大挪移" class="headerlink" title="2.乾坤大挪移"></a>2.乾坤大挪移</h5><p>拷贝这个tar包到U 盘，然后插到（或者是挂载）Server上</p>
 <h5 id="3-导入镜像"><a href="#3-导入镜像" class="headerlink" title="3.导入镜像"></a>3.导入镜像</h5><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker load &lt; my_python.tar</span><br><span class="line">docker tag 9045 my_python:1.0   //通常还需要重新命名一下，以便可读</span><br></pre></td></tr></table></figure>
+<p>参考文献：</p>
+<ol>
+<li><a href="https://jingsam.github.io/2017/08/26/docker-save-and-docker-export.html" target="_blank" rel="noopener">https://jingsam.github.io/2017/08/26/docker-save-and-docker-export.html</a></li>
+<li><a href="https://www.jianshu.com/p/8408e06b7273" target="_blank" rel="noopener">https://www.jianshu.com/p/8408e06b7273</a></li>
+</ol>
+
             </div>
           
 
