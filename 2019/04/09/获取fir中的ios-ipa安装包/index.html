@@ -48,7 +48,7 @@
 <meta property="og:image" content="http://yoursite.com/images/fir_image_03.png">
 <meta property="og:image" content="http://yoursite.com/images/fir_image_04.png">
 <meta property="og:image" content="http://yoursite.com/images/fir_image_05.png">
-<meta property="og:updated_time" content="2019-04-09T14:12:49.138Z">
+<meta property="og:updated_time" content="2019-04-09T14:15:24.171Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="获取fir中的ios ipa安装包">
 <meta name="twitter:description" content="主要是正对iOS 移动端的打包，下载可能出现的需求。 通常流程： pipeline用fir cli命令，或者dev同学用fir cli直接将唱产出的xx.ipa软件包推送到fir仓库，Qa同学以及业务同事直接拿下面的二维码下载安装在手机上即可。   新需求： 安全团队的同事需要直接拿xx.ipa软件包做安全方面的扫描、测试工作，怎么办？  ～～～请看下面～～～ Steps1.用浏览器打开fir链接">
@@ -148,7 +148,29 @@
 <p>点击 “下载安装”<br><img src="/images/fir_image_03.png" alt="fir_image_03"></p>
 <h4 id="3-获取url"><a href="#3-获取url" class="headerlink" title="3.获取url"></a>3.获取url</h4><p><img src="/images/fir_image_04.png" alt="fir_image_04"></p>
 <h4 id="4-获取下载ipa文件的下载地址："><a href="#4-获取下载ipa文件的下载地址：" class="headerlink" title="4.获取下载ipa文件的下载地址："></a>4.获取下载ipa文件的下载地址：</h4><p><img src="/images/fir_image_05.png" alt="fir_image_05"></p>
-<p>header的key-value如下：<br> key | value<br> —-|  ——<br>|User-Agent |Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1|<br>|Upgrade-Insecure-Requests|1|</p>
+<p>header的key-value如下：</p>
+<table>
+<thead>
+<tr>
+<th>key</th>
+<th>value </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>User-Agent</td>
+<td>Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Upgrade-Insecure-Requests</td>
+<td>1</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <p>当然可以直接用下面的命令得到下载地址:<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">curl -s -X GET \</span><br><span class="line">  <span class="string">'https://apps-cn.xxx.com/fir-api-&lt;3中的url&gt;'</span> \</span><br><span class="line">  -H <span class="string">'Cache-Control: no-cache'</span> \</span><br><span class="line">  -H <span class="string">'Postman-Token: 12ee4b20-c8cc-4729-8342-4d2dd32df2d4'</span> \</span><br><span class="line">  -H <span class="string">'User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1'</span> \</span><br><span class="line">  -H <span class="string">'Upgrade-Insecure-Requests: 1'</span> | grep software-package -A 3 | awk -F <span class="string">"["</span> <span class="string">'&#123;print $3&#125;'</span> | awk -F <span class="string">"]"</span> <span class="string">'&#123;print $1&#125;'</span></span><br></pre></td></tr></table></figure></p>
 <h4 id="5-下载"><a href="#5-下载" class="headerlink" title="5.下载"></a>5.下载</h4><p>直接将第4步中的下载地址粘贴到浏览器中，或者用 <code>wget</code> 命令下载均可</p>
 
