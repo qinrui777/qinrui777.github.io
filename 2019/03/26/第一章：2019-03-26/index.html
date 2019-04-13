@@ -219,6 +219,33 @@
     
 
 
+
+
+    
+        <div id="gitment-container"></div>
+    
+
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css">
+    
+        <script type="text/javascript">
+            var gitment = new Gitment({
+                    id: window.location.pathname, 
+                    owner: '',
+                    repo: '',
+                    oauth: {
+                        client_id: 'd5bbe3dcd1e4b493ccda',
+                        client_secret: '47a17a14730ceb61df029600cc92f4932334034a',
+                    }});
+            gitment.render('gitment-container');
+        </script>
+    
+
+
     
 
 
