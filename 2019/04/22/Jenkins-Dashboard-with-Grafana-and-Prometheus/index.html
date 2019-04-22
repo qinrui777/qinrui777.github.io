@@ -12,12 +12,12 @@
 
 
 
-  <meta name="description" content="How to Create Custom iTerm2 Window">
+  <meta name="description" content="Jenkins Dashboard with Grafana and Prometheus ">
 
 
 
 
-  <meta name="keywords" content="iTerm,">
+  <meta name="keywords" content="jenkins,">
 
 
 
@@ -32,28 +32,24 @@
 
 
 
-<link rel="canonical" href="http://yoursite.com/2019/04/18/How-to-Create-Custom-iTerm2-Window/">
+<link rel="canonical" href="http://yoursite.com/2019/04/22/Jenkins-Dashboard-with-Grafana-and-Prometheus/">
 
 
-<meta name="description" content="1.Open iTerm preferences setting (打开偏好设置) 2.New add a profile (新加一个配置) 3.Setting windows name etc （定义名称，窗口高度，宽度等）  4.define hotkey (定义快捷键)  Finally 使用快捷键按 一次 出现窗口，再按一次 窗口消失。如果是多屏，可以在不同屏幕下调用出来，会话内容仍保持着">
-<meta name="keywords" content="iTerm">
+<meta name="description" content="1.Go to “manage Jenkins” then “manage plugins” and install “ Prometheus metrics plugin”This plugin will expose an endpoint (default /prometheus) with metrics where a Prometheus Server can scrape data.">
+<meta name="keywords" content="jenkins">
 <meta property="og:type" content="article">
-<meta property="og:title" content="How to Create Custom iTerm2 Window">
-<meta property="og:url" content="http://yoursite.com/2019/04/18/How-to-Create-Custom-iTerm2-Window/index.html">
+<meta property="og:title" content="Jenkins Dashboard with Grafana and Prometheus ">
+<meta property="og:url" content="http://yoursite.com/2019/04/22/Jenkins-Dashboard-with-Grafana-and-Prometheus/index.html">
 <meta property="og:site_name" content="No title">
-<meta property="og:description" content="1.Open iTerm preferences setting (打开偏好设置) 2.New add a profile (新加一个配置) 3.Setting windows name etc （定义名称，窗口高度，宽度等）  4.define hotkey (定义快捷键)  Finally 使用快捷键按 一次 出现窗口，再按一次 窗口消失。如果是多屏，可以在不同屏幕下调用出来，会话内容仍保持着">
+<meta property="og:description" content="1.Go to “manage Jenkins” then “manage plugins” and install “ Prometheus metrics plugin”This plugin will expose an endpoint (default /prometheus) with metrics where a Prometheus Server can scrape data.">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/images/iterm_image_01.png">
-<meta property="og:image" content="http://yoursite.com/images/iterm_image_02.png">
-<meta property="og:image" content="http://yoursite.com/images/iterm_image_03.png">
-<meta property="og:image" content="http://yoursite.com/images/iterm_image_04.png">
-<meta property="og:image" content="http://yoursite.com/images/iterm_image_05.png">
-<meta property="og:image" content="http://yoursite.com/images/iterm_image_06.png">
-<meta property="og:updated_time" content="2019-04-18T10:17:12.538Z">
+<meta property="og:image" content="http://yoursite.com/images/jenkins_dashboard_02">
+<meta property="og:image" content="http://yoursite.com/images/jenkins_dashboard_01">
+<meta property="og:updated_time" content="2019-04-22T08:46:22.857Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="How to Create Custom iTerm2 Window">
-<meta name="twitter:description" content="1.Open iTerm preferences setting (打开偏好设置) 2.New add a profile (新加一个配置) 3.Setting windows name etc （定义名称，窗口高度，宽度等）  4.define hotkey (定义快捷键)  Finally 使用快捷键按 一次 出现窗口，再按一次 窗口消失。如果是多屏，可以在不同屏幕下调用出来，会话内容仍保持着">
-<meta name="twitter:image" content="http://yoursite.com/images/iterm_image_01.png">
+<meta name="twitter:title" content="Jenkins Dashboard with Grafana and Prometheus ">
+<meta name="twitter:description" content="1.Go to “manage Jenkins” then “manage plugins” and install “ Prometheus metrics plugin”This plugin will expose an endpoint (default /prometheus) with metrics where a Prometheus Server can scrape data.">
+<meta name="twitter:image" content="http://yoursite.com/images/jenkins_dashboard_02">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1">
@@ -98,7 +94,7 @@
 
 
 
-    <title> How to Create Custom iTerm2 Window - No title </title>
+    <title> Jenkins Dashboard with Grafana and Prometheus  - No title </title>
   </head>
 
   <body>
@@ -153,12 +149,12 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          How to Create Custom iTerm2 Window
+          Jenkins Dashboard with Grafana and Prometheus 
         
       </h1>
 
       <time class="post-time">
-          Apr 18 2019
+          Apr 22 2019
       </time>
     </header>
 
@@ -166,13 +162,14 @@
 
     
             <div class="post-content">
-            <h4 id="1-Open-iTerm-preferences-setting-打开偏好设置"><a href="#1-Open-iTerm-preferences-setting-打开偏好设置" class="headerlink" title="1.Open iTerm preferences setting (打开偏好设置)"></a>1.Open iTerm preferences setting (打开偏好设置)</h4><p><img src="/images/iterm_image_01.png" alt="iterm_image_01"></p>
-<h4 id="2-New-add-a-profile-新加一个配置"><a href="#2-New-add-a-profile-新加一个配置" class="headerlink" title="2.New add a profile (新加一个配置)"></a>2.New add a profile (新加一个配置)</h4><p><img src="/images/iterm_image_02.png" alt="iterm_image_02"></p>
-<h4 id="3-Setting-windows-name-etc-（定义名称，窗口高度，宽度等）"><a href="#3-Setting-windows-name-etc-（定义名称，窗口高度，宽度等）" class="headerlink" title="3.Setting windows name etc （定义名称，窗口高度，宽度等）"></a>3.Setting windows name etc （定义名称，窗口高度，宽度等）</h4><p><img src="/images/iterm_image_03.png" alt="iterm_image_03"></p>
-<p><img src="/images/iterm_image_04.png" alt="iterm_image_04"></p>
-<h4 id="4-define-hotkey-定义快捷键"><a href="#4-define-hotkey-定义快捷键" class="headerlink" title="4.define hotkey (定义快捷键)"></a>4.define hotkey (定义快捷键)</h4><p><img src="/images/iterm_image_05.png" alt="iterm_image_05"></p>
-<p><img src="/images/iterm_image_06.png" alt="iterm_image_06"></p>
-<h4 id="Finally-使用快捷键"><a href="#Finally-使用快捷键" class="headerlink" title="Finally 使用快捷键"></a>Finally 使用快捷键</h4><p>按 <strong>一次</strong> 出现窗口，<strong>再按一次</strong> 窗口消失。如果是多屏，可以在不同屏幕下调用出来，会话内容仍保持着。</p>
+            <h3 id="1-Go-to-“manage-Jenkins”-then-“manage-plugins”-and-install-“-Prometheus-metrics-plugin”"><a href="#1-Go-to-“manage-Jenkins”-then-“manage-plugins”-and-install-“-Prometheus-metrics-plugin”" class="headerlink" title="1.Go to “manage Jenkins” then “manage plugins” and install “ Prometheus metrics plugin”"></a>1.Go to “manage Jenkins” then “manage plugins” and install “ Prometheus metrics plugin”</h3><p>This plugin will expose an endpoint (default /prometheus) with metrics where a Prometheus Server can scrape data.</p>
+<p><img src="/images/jenkins_dashboard_02" alt="jenkins_dashboard_02"></p>
+<h3 id="2-Configure-Prometheus-to-scrape-metrics-from-Jenkins"><a href="#2-Configure-Prometheus-to-scrape-metrics-from-Jenkins" class="headerlink" title="2.Configure Prometheus to scrape metrics from Jenkins"></a>2.Configure Prometheus to scrape metrics from Jenkins</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- job_name: ‘jenkins’</span><br><span class="line">  metrics_path: /prometheus</span><br><span class="line">  static_configs:</span><br><span class="line">    - targets: [‘Jenkins_Host:PORT’]</span><br></pre></td></tr></table></figure>
+<p>you can go to your prometheus ,find some metrics to dispaly.</p>
+<p><img src="/images/jenkins_dashboard_01" alt="jenkins_dashboard_01"></p>
+<h3 id="3-Create-a-grafana-Dashboard"><a href="#3-Create-a-grafana-Dashboard" class="headerlink" title="3.Create a  grafana Dashboard"></a>3.Create a  grafana Dashboard</h3><p>dashboard link : <a href="https://grafana.com/dashboards/9964" target="_blank" rel="noopener">https://grafana.com/dashboards/9964</a></p>
+<p>you can search in the grafana dashboard (<a href="https://grafana.com/dashboards" target="_blank" rel="noopener">https://grafana.com/dashboards</a>)</p>
+<h3 id="4-Customize-your-dashboard"><a href="#4-Customize-your-dashboard" class="headerlink" title="4.Customize your dashboard"></a>4.Customize your dashboard</h3><p>Refer to the first picture of the article.</p>
 
             </div>
           
@@ -182,7 +179,7 @@
 		
 		<div class="post-tags">
 		  
-			<a href="/tags/iTerm/">iTerm</a>
+			<a href="/tags/jenkins/">jenkins</a>
 		  
 		</div>
 		
@@ -191,15 +188,9 @@
         
   <nav class="post-nav">
     
-      <a class="prev" href="/2019/04/22/Jenkins-Dashboard-with-Grafana-and-Prometheus/">
-        <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">Jenkins Dashboard with Grafana and Prometheus </span>
-        <span class="prev-text nav-mobile">Prev</span>
-      </a>
     
-    
-      <a class="next" href="/2019/04/13/shell-color/">
-        <span class="next-text nav-default">shell color</span>
+      <a class="next" href="/2019/04/18/How-to-Create-Custom-iTerm2-Window/">
+        <span class="next-text nav-default">How to Create Custom iTerm2 Window</span>
         <span class="prev-text nav-mobile">Next</span>
         <i class="iconfont icon-right"></i>
       </a>
