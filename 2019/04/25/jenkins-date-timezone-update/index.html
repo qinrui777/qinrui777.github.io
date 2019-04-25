@@ -12,7 +12,7 @@
 
 
 
-  <meta name="description" content="Jenkins Dashboard with Grafana and Prometheus ">
+  <meta name="description" content="jenkins date timezone update">
 
 
 
@@ -32,26 +32,21 @@
 
 
 
-<link rel="canonical" href="http://yoursite.com/2019/04/22/Jenkins-Dashboard-with-Grafana-and-Prometheus/">
+<link rel="canonical" href="http://yoursite.com/2019/04/25/jenkins-date-timezone-update/">
 
 
-<meta name="description" content="1.Go to “manage Jenkins” then “manage plugins” and install “ Prometheus metrics plugin”This plugin will expose an endpoint (default /prometheus) with metrics where a Prometheus Server can scrape data.">
+<meta name="description" content="方法1打开 【系统管理】-&amp;gt;【脚本命令行】运行下面的命令 1System.setProperty(&apos;org.apache.commons.jelly.tags.fmt.timeZone&apos;, &apos;Asia/Shanghai&apos;) 方法2JAVA_ARGS=&quot;-Dorg.apache.commons.jelly.tags.fmt.timeZone=Asia/Shanghai -Dfile.encod">
 <meta name="keywords" content="jenkins">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Jenkins Dashboard with Grafana and Prometheus ">
-<meta property="og:url" content="http://yoursite.com/2019/04/22/Jenkins-Dashboard-with-Grafana-and-Prometheus/index.html">
+<meta property="og:title" content="jenkins date timezone update">
+<meta property="og:url" content="http://yoursite.com/2019/04/25/jenkins-date-timezone-update/index.html">
 <meta property="og:site_name" content="No title">
-<meta property="og:description" content="1.Go to “manage Jenkins” then “manage plugins” and install “ Prometheus metrics plugin”This plugin will expose an endpoint (default /prometheus) with metrics where a Prometheus Server can scrape data.">
+<meta property="og:description" content="方法1打开 【系统管理】-&amp;gt;【脚本命令行】运行下面的命令 1System.setProperty(&apos;org.apache.commons.jelly.tags.fmt.timeZone&apos;, &apos;Asia/Shanghai&apos;) 方法2JAVA_ARGS=&quot;-Dorg.apache.commons.jelly.tags.fmt.timeZone=Asia/Shanghai -Dfile.encod">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/images/jenkins_dashboard_02.png">
-<meta property="og:image" content="http://yoursite.com/images/jenkins_dashboard_01.png">
-<meta property="og:image" content="http://yoursite.com/images/jenkins_dashboard_03.png">
-<meta property="og:image" content="http://yoursite.com/images/jenkins_dashboard_04.png">
-<meta property="og:updated_time" content="2019-04-22T08:52:30.880Z">
+<meta property="og:updated_time" content="2019-04-25T06:50:55.639Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Jenkins Dashboard with Grafana and Prometheus ">
-<meta name="twitter:description" content="1.Go to “manage Jenkins” then “manage plugins” and install “ Prometheus metrics plugin”This plugin will expose an endpoint (default /prometheus) with metrics where a Prometheus Server can scrape data.">
-<meta name="twitter:image" content="http://yoursite.com/images/jenkins_dashboard_02.png">
+<meta name="twitter:title" content="jenkins date timezone update">
+<meta name="twitter:description" content="方法1打开 【系统管理】-&amp;gt;【脚本命令行】运行下面的命令 1System.setProperty(&apos;org.apache.commons.jelly.tags.fmt.timeZone&apos;, &apos;Asia/Shanghai&apos;) 方法2JAVA_ARGS=&quot;-Dorg.apache.commons.jelly.tags.fmt.timeZone=Asia/Shanghai -Dfile.encod">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1">
@@ -96,7 +91,7 @@
 
 
 
-    <title> Jenkins Dashboard with Grafana and Prometheus  - No title </title>
+    <title> jenkins date timezone update - No title </title>
   </head>
 
   <body>
@@ -151,12 +146,12 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          Jenkins Dashboard with Grafana and Prometheus 
+          jenkins date timezone update
         
       </h1>
 
       <time class="post-time">
-          Apr 22 2019
+          Apr 25 2019
       </time>
     </header>
 
@@ -164,15 +159,10 @@
 
     
             <div class="post-content">
-            <h3 id="1-Go-to-“manage-Jenkins”-then-“manage-plugins”-and-install-“-Prometheus-metrics-plugin”"><a href="#1-Go-to-“manage-Jenkins”-then-“manage-plugins”-and-install-“-Prometheus-metrics-plugin”" class="headerlink" title="1.Go to “manage Jenkins” then “manage plugins” and install “ Prometheus metrics plugin”"></a>1.Go to “manage Jenkins” then “manage plugins” and install “ Prometheus metrics plugin”</h3><p>This plugin will expose an endpoint (default /prometheus) with metrics where a Prometheus Server can scrape data.</p>
-<p><img src="/images/jenkins_dashboard_02.png" alt="jenkins_dashboard_02"></p>
-<h3 id="2-Configure-Prometheus-to-scrape-metrics-from-Jenkins"><a href="#2-Configure-Prometheus-to-scrape-metrics-from-Jenkins" class="headerlink" title="2.Configure Prometheus to scrape metrics from Jenkins"></a>2.Configure Prometheus to scrape metrics from Jenkins</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- job_name: ‘jenkins’</span><br><span class="line">  metrics_path: /prometheus</span><br><span class="line">  static_configs:</span><br><span class="line">    - targets: [‘Jenkins_Host:PORT’]</span><br></pre></td></tr></table></figure>
-<p>you can go to your prometheus ,find some metrics to dispaly.</p>
-<p><img src="/images/jenkins_dashboard_01.png" alt="jenkins_dashboard_01"></p>
-<h3 id="3-Create-a-grafana-Dashboard"><a href="#3-Create-a-grafana-Dashboard" class="headerlink" title="3.Create a  grafana Dashboard"></a>3.Create a  grafana Dashboard</h3><p>dashboard link : <a href="https://grafana.com/dashboards/9964" target="_blank" rel="noopener">https://grafana.com/dashboards/9964</a></p>
-<p>then go to the grafana website import json file :<br><img src="/images/jenkins_dashboard_03.png" alt="jenkins_dashboard_03"></p>
-<p>you can search in the grafana dashboard (<a href="https://grafana.com/dashboards" target="_blank" rel="noopener">https://grafana.com/dashboards</a>)</p>
-<h3 id="4-Customize-your-dashboard"><a href="#4-Customize-your-dashboard" class="headerlink" title="4.Customize your dashboard"></a>4.Customize your dashboard</h3><p>example:<br><img src="/images/jenkins_dashboard_04.png" alt="jenkins_dashboard_04"></p>
+            <h4 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h4><p>打开 【系统管理】-&gt;【脚本命令行】运行下面的命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.setProperty(<span class="string">'org.apache.commons.jelly.tags.fmt.timeZone'</span>, <span class="string">'Asia/Shanghai'</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h4><pre><code class="java">JAVA_ARGS=<span class="string">"-Dorg.apache.commons.jelly.tags.fmt.timeZone=Asia/Shanghai -Dfile.encoding=UTF-8 -Djava.awt.headless=true"</span>
+</code></pre>
 
             </div>
           
@@ -191,15 +181,9 @@
         
   <nav class="post-nav">
     
-      <a class="prev" href="/2019/04/25/jenkins-date-timezone-update/">
-        <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">jenkins date timezone update</span>
-        <span class="prev-text nav-mobile">Prev</span>
-      </a>
     
-    
-      <a class="next" href="/2019/04/18/How-to-Create-Custom-iTerm2-Window/">
-        <span class="next-text nav-default">How to Create Custom iTerm2 Window</span>
+      <a class="next" href="/2019/04/22/Jenkins-Dashboard-with-Grafana-and-Prometheus/">
+        <span class="next-text nav-default">Jenkins Dashboard with Grafana and Prometheus </span>
         <span class="prev-text nav-mobile">Next</span>
         <i class="iconfont icon-right"></i>
       </a>
