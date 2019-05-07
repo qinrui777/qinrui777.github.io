@@ -43,7 +43,7 @@
 <meta property="og:site_name" content="I know nothing except the fact of my ignorance.">
 <meta property="og:description" content="tr 是 translate(转换)的简写，可以对来自标准输入的内容进行字符 替换、删除、以及重复字符压缩。 tr [options] set1 set2来自sdtin的输入字符会按照位置从 set1 映射到 set2 (set1中的第一个字符映射到set2中的第一个字符，以此类推)，然后将输出写入stdout Example 1: 大写转换成小写12➜  qr_blog echo &quot;HELLO,">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-07T03:43:50.525Z">
+<meta property="og:updated_time" content="2019-05-07T03:47:17.921Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tr command">
 <meta name="twitter:description" content="tr 是 translate(转换)的简写，可以对来自标准输入的内容进行字符 替换、删除、以及重复字符压缩。 tr [options] set1 set2来自sdtin的输入字符会按照位置从 set1 映射到 set2 (set1中的第一个字符映射到set2中的第一个字符，以此类推)，然后将输出写入stdout Example 1: 大写转换成小写12➜  qr_blog echo &quot;HELLO,">
@@ -173,6 +173,14 @@
 </li>
 </ul>
 <h4 id="Example-3-删除字符"><a href="#Example-3-删除字符" class="headerlink" title="Example 3: 删除字符"></a>Example 3: 删除字符</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  qr_blog <span class="built_in">echo</span> <span class="string">"Hello,123 Mr,password is: 78787878"</span> | tr -d <span class="string">'0-9'</span></span><br><span class="line">Hello, Mr,password is:</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>删除空格</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  qr_blog <span class="built_in">echo</span> <span class="string">"GNU is   not UNIX. Is  right    ?"</span> | tr -s <span class="string">' '</span></span><br><span class="line">GNU is not UNIX. Is right ?</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除换行<br><code>cat multi_blanks.txt | tr -s &#39;\n&#39;</code></p>
+</li>
+</ul>
+
             </div>
           
 
