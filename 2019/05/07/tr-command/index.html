@@ -12,7 +12,7 @@
 
 
 
-  <meta name="description" content="bash : set command">
+  <meta name="description" content="tr command">
 
 
 
@@ -32,21 +32,21 @@
 
 
 
-<link rel="canonical" href="http://yoursite.com/2019/05/07/bash-set-command/">
+<link rel="canonical" href="http://yoursite.com/2019/05/07/tr-command/">
 
 
-<meta name="description" content="set 命令教程set 命令用来修改 Shell 环境的运行参数，也就是可以定制环境 介绍常用的参数 1. set -u执行脚本的时候，如果遇到不存在的变量，Bash 默认忽略它。 set -u = set -o nounset 2. set -x默认情况下，脚本执行后，屏幕只显示运行结果，没有其他内容。如果多个命令连续执行，它们的运行结果就会连续输出。有时会分不清，某一段内容是什么命令产生的。">
+<meta name="description" content="tr 是 translate(转换)的简写，可以对来自标准输入的内容进行字符 替换、删除、以及重复字符压缩。 tr [options] set1 set2来自sdtin的输入字符会按照位置从 set1 映射到 set2 (set1中的第一个字符映射到set2中的第一个字符，以此类推)，然后将输出写入stdout Example 1: 大写转换成小写12➜  qr_blog echo &quot;HELLO,">
 <meta name="keywords" content="Shell Command">
 <meta property="og:type" content="article">
-<meta property="og:title" content="bash : set command">
-<meta property="og:url" content="http://yoursite.com/2019/05/07/bash-set-command/index.html">
+<meta property="og:title" content="tr command">
+<meta property="og:url" content="http://yoursite.com/2019/05/07/tr-command/index.html">
 <meta property="og:site_name" content="I know nothing except the fact of my ignorance.">
-<meta property="og:description" content="set 命令教程set 命令用来修改 Shell 环境的运行参数，也就是可以定制环境 介绍常用的参数 1. set -u执行脚本的时候，如果遇到不存在的变量，Bash 默认忽略它。 set -u = set -o nounset 2. set -x默认情况下，脚本执行后，屏幕只显示运行结果，没有其他内容。如果多个命令连续执行，它们的运行结果就会连续输出。有时会分不清，某一段内容是什么命令产生的。">
+<meta property="og:description" content="tr 是 translate(转换)的简写，可以对来自标准输入的内容进行字符 替换、删除、以及重复字符压缩。 tr [options] set1 set2来自sdtin的输入字符会按照位置从 set1 映射到 set2 (set1中的第一个字符映射到set2中的第一个字符，以此类推)，然后将输出写入stdout Example 1: 大写转换成小写12➜  qr_blog echo &quot;HELLO,">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-07T03:23:02.470Z">
+<meta property="og:updated_time" content="2019-05-07T03:43:50.525Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="bash : set command">
-<meta name="twitter:description" content="set 命令教程set 命令用来修改 Shell 环境的运行参数，也就是可以定制环境 介绍常用的参数 1. set -u执行脚本的时候，如果遇到不存在的变量，Bash 默认忽略它。 set -u = set -o nounset 2. set -x默认情况下，脚本执行后，屏幕只显示运行结果，没有其他内容。如果多个命令连续执行，它们的运行结果就会连续输出。有时会分不清，某一段内容是什么命令产生的。">
+<meta name="twitter:title" content="tr command">
+<meta name="twitter:description" content="tr 是 translate(转换)的简写，可以对来自标准输入的内容进行字符 替换、删除、以及重复字符压缩。 tr [options] set1 set2来自sdtin的输入字符会按照位置从 set1 映射到 set2 (set1中的第一个字符映射到set2中的第一个字符，以此类推)，然后将输出写入stdout Example 1: 大写转换成小写12➜  qr_blog echo &quot;HELLO,">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1">
@@ -91,7 +91,7 @@
 
 
 
-    <title> bash : set command - I know nothing except the fact of my ignorance. </title>
+    <title> tr command - I know nothing except the fact of my ignorance. </title>
   </head>
 
   <body>
@@ -146,7 +146,7 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          bash : set command
+          tr command
         
       </h1>
 
@@ -159,23 +159,20 @@
 
     
             <div class="post-content">
-            <h2 id="set-命令教程"><a href="#set-命令教程" class="headerlink" title="set 命令教程"></a>set 命令教程</h2><p><strong>set</strong> 命令用来修改 Shell 环境的运行参数，也就是可以定制环境</p>
-<p>介绍常用的参数</p>
-<h4 id="1-set-u"><a href="#1-set-u" class="headerlink" title="1. set -u"></a>1. <code>set -u</code></h4><p>执行脚本的时候，如果遇到不存在的变量，Bash 默认忽略它。</p>
-<p><code>set -u</code> = <code>set -o nounset</code></p>
-<h4 id="2-set-x"><a href="#2-set-x" class="headerlink" title="2. set -x"></a>2. <code>set -x</code></h4><p>默认情况下，脚本执行后，屏幕只显示运行结果，没有其他内容。如果多个命令连续执行，它们的运行结果就会连续输出。有时会分不清，某一段内容是什么命令产生的。</p>
-<p><code>set -x</code> = <code>set -o xtrace</code></p>
-<h4 id="3-set-e"><a href="#3-set-e" class="headerlink" title="3. set -e"></a>3. <code>set -e</code></h4><p>使得脚本只要发生错误，就终止执行。<br><code>set -e</code> = <code>set -o errexit</code></p>
-<h4 id="4-set-o-pipefail"><a href="#4-set-o-pipefail" class="headerlink" title="4. set -o pipefail"></a>4. <code>set -o pipefail</code></h4><p>set -e有一个例外情况，就是不适用于管道命令。</p>
-<p>所谓管道命令，就是多个子命令通过管道运算符（|）组合成为一个大的命令。Bash 会把最后一个子命令的返回值，作为整个命令的返回值。也就是说，只要最后一个子命令不失败，管道命令总是会执行成功，因此它后面命令依然会执行，set -e就失效了。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env bash</span></span><br><span class="line"><span class="built_in">set</span> -eo pipefail</span><br><span class="line"></span><br><span class="line">foo | <span class="built_in">echo</span> a</span><br><span class="line"><span class="built_in">echo</span> bar</span><br></pre></td></tr></table></figure>
-<p><code>echo bar</code>没有执行 ,否则在不用  <code>pipefail</code> 的情况下，会继续执行  <code>echo bar</code></p>
-<p>Ref:</p>
+            <p><strong>tr</strong> 是 translate(转换)的简写，可以对来自标准输入的内容进行字符 替换、删除、以及重复字符压缩。</p>
+<p>tr [options] set1 set2<br>来自sdtin的输入字符会按照位置从 set1 映射到 set2 (set1中的第一个字符映射到set2中的第一个字符，以此类推)，然后将输出写入stdout</p>
+<h4 id="Example-1-大写转换成小写"><a href="#Example-1-大写转换成小写" class="headerlink" title="Example 1: 大写转换成小写"></a>Example 1: 大写转换成小写</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  qr_blog <span class="built_in">echo</span> <span class="string">"HELLO,TR MEANS TRANSLATE"</span>  | tr <span class="string">'A-Z'</span> <span class="string">'a-z'</span></span><br><span class="line">hello,tr means translate</span><br></pre></td></tr></table></figure>
+<h4 id="Example-2-简单加密"><a href="#Example-2-简单加密" class="headerlink" title="Example 2: 简单加密"></a>Example 2: 简单加密</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">➜  qr_blog <span class="built_in">echo</span> 12345 | tr <span class="string">'0-9'</span> <span class="string">'987654321'</span></span><br><span class="line">87654</span><br><span class="line">➜  qr_blog <span class="built_in">echo</span> 87654 | tr <span class="string">'987654320'</span> <span class="string">'0-9'</span></span><br><span class="line">12345</span><br></pre></td></tr></table></figure>
+<p>ROT13（回转13位）是一种简易的替换式密码算法。</p>
 <ul>
-<li><a href="https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html" target="_blank" rel="noopener">https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html</a></li>
-<li><a href="http://www.ruanyifeng.com/blog/2017/11/bash-set.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2017/11/bash-set.html</a></li>
+<li><p>加密</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  qr_blog <span class="built_in">echo</span> <span class="string">"tr came, tr saw, tr conquered."</span> | tr <span class="string">'a-zA-Z'</span> <span class="string">'n-za-mN-ZA-M'</span></span><br><span class="line">ge pnzr, ge fnj, ge pbadhrerq.</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>解密</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  qr_blog <span class="built_in">echo</span> <span class="string">"ge pnzr, ge fnj, ge pbadhrerq."</span> | tr <span class="string">'a-zA-Z'</span> <span class="string">'n-za-mN-ZA-M'</span></span><br><span class="line">tr came, tr saw, tr conquered.</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-
+<h4 id="Example-3-删除字符"><a href="#Example-3-删除字符" class="headerlink" title="Example 3: 删除字符"></a>Example 3: 删除字符</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  qr_blog <span class="built_in">echo</span> <span class="string">"Hello,123 Mr,password is: 78787878"</span> | tr -d <span class="string">'0-9'</span></span><br><span class="line">Hello, Mr,password is:</span><br></pre></td></tr></table></figure>
             </div>
           
 
@@ -193,15 +190,9 @@
         
   <nav class="post-nav">
     
-      <a class="prev" href="/2019/05/07/tr-command/">
-        <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">tr command</span>
-        <span class="prev-text nav-mobile">Prev</span>
-      </a>
     
-    
-      <a class="next" href="/2019/04/28/Crontab-on-Liunx-or-Jenkins/">
-        <span class="next-text nav-default">Crontab on Liunx or Jenkins</span>
+      <a class="next" href="/2019/05/07/bash-set-command/">
+        <span class="next-text nav-default">bash : set command</span>
         <span class="prev-text nav-mobile">Next</span>
         <i class="iconfont icon-right"></i>
       </a>
