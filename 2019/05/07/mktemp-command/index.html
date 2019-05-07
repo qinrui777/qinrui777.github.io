@@ -12,12 +12,12 @@
 
 
 
-  <meta name="description" content="Docker clean">
+  <meta name="description" content="mktemp command">
 
 
 
 
-  <meta name="keywords" content="Docker,">
+  <meta name="keywords" content="Shell Command,">
 
 
 
@@ -32,21 +32,21 @@
 
 
 
-<link rel="canonical" href="http://yoursite.com/2019/05/07/Docker-clean/">
+<link rel="canonical" href="http://yoursite.com/2019/05/07/mktemp-command/">
 
 
-<meta name="description" content="1.Cleanup exited processes:docker rm $(docker ps -q -f status=exited) 3.Cleanup dangling volumes:docker volume rm $(docker volume ls -qf dangling=true) 3.Cleanup dangling images:docker rmi $(docker im">
-<meta name="keywords" content="Docker">
+<meta name="description" content="最适合存储临时数据的位置是/tmp, mktemp 命令可以为临时文件或目录创建唯一的名字 Create a temporary file or directory. 123456789101112mktempCreate a temporary file or directory.- Create an empty temporary file and return the absolute p">
+<meta name="keywords" content="Shell Command">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Docker clean">
-<meta property="og:url" content="http://yoursite.com/2019/05/07/Docker-clean/index.html">
+<meta property="og:title" content="mktemp command">
+<meta property="og:url" content="http://yoursite.com/2019/05/07/mktemp-command/index.html">
 <meta property="og:site_name" content="I know nothing except the fact of my ignorance.">
-<meta property="og:description" content="1.Cleanup exited processes:docker rm $(docker ps -q -f status=exited) 3.Cleanup dangling volumes:docker volume rm $(docker volume ls -qf dangling=true) 3.Cleanup dangling images:docker rmi $(docker im">
+<meta property="og:description" content="最适合存储临时数据的位置是/tmp, mktemp 命令可以为临时文件或目录创建唯一的名字 Create a temporary file or directory. 123456789101112mktempCreate a temporary file or directory.- Create an empty temporary file and return the absolute p">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-07T08:33:46.869Z">
+<meta property="og:updated_time" content="2019-05-07T15:06:08.431Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Docker clean">
-<meta name="twitter:description" content="1.Cleanup exited processes:docker rm $(docker ps -q -f status=exited) 3.Cleanup dangling volumes:docker volume rm $(docker volume ls -qf dangling=true) 3.Cleanup dangling images:docker rmi $(docker im">
+<meta name="twitter:title" content="mktemp command">
+<meta name="twitter:description" content="最适合存储临时数据的位置是/tmp, mktemp 命令可以为临时文件或目录创建唯一的名字 Create a temporary file or directory. 123456789101112mktempCreate a temporary file or directory.- Create an empty temporary file and return the absolute p">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1">
@@ -91,7 +91,7 @@
 
 
 
-    <title> Docker clean - I know nothing except the fact of my ignorance. </title>
+    <title> mktemp command - I know nothing except the fact of my ignorance. </title>
   </head>
 
   <body>
@@ -146,7 +146,7 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          Docker clean
+          mktemp command
         
       </h1>
 
@@ -159,9 +159,19 @@
 
     
             <div class="post-content">
-            <h4 id="1-Cleanup-exited-processes"><a href="#1-Cleanup-exited-processes" class="headerlink" title="1.Cleanup exited processes:"></a>1.Cleanup exited processes:</h4><p>docker rm $(docker ps -q -f status=exited)</p>
-<h4 id="3-Cleanup-dangling-volumes"><a href="#3-Cleanup-dangling-volumes" class="headerlink" title="3.Cleanup dangling volumes:"></a>3.Cleanup dangling volumes:</h4><p>docker volume rm $(docker volume ls -qf dangling=true)</p>
-<h4 id="3-Cleanup-dangling-images"><a href="#3-Cleanup-dangling-images" class="headerlink" title="3.Cleanup dangling images:"></a>3.Cleanup dangling images:</h4><p>docker rmi $(docker images –filter “dangling=true” -q –no-trunc)</p>
+            <p>最适合存储临时数据的位置是/tmp, <strong>mktemp</strong> 命令可以为临时文件或目录创建唯一的名字</p>
+<p>Create a temporary file or directory.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">mktemp</span><br><span class="line"></span><br><span class="line">Create a temporary file or directory.</span><br><span class="line"></span><br><span class="line">- Create an empty temporary file and return the absolute path to it:</span><br><span class="line">    mktemp</span><br><span class="line"></span><br><span class="line">- Create a temporary directory and return the absolute path to it:</span><br><span class="line">    mktemp -d</span><br><span class="line"></span><br><span class="line">- Create a temporary file with a specified suffix:</span><br><span class="line">    mktemp --suffix &quot;.txt&quot;</span><br></pre></td></tr></table></figure>
+<h4 id="1-create-temporary-file-创建临时目录"><a href="#1-create-temporary-file-创建临时目录" class="headerlink" title="1.create temporary file (创建临时目录)"></a>1.create temporary file (创建临时目录)</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$filename</span>=`mktemp`</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$filename</span></span><br><span class="line">/tmp/tmp.8xefliegnD9</span><br></pre></td></tr></table></figure>
+<h4 id="2-create-temporary-directory-创建临时目录"><a href="#2-create-temporary-directory-创建临时目录" class="headerlink" title="2. create temporary directory (创建临时目录)"></a>2. create temporary directory (创建临时目录)</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dirname=`mktemp -d`</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$dirname</span></span><br><span class="line">tmp.NJ8dhf6wk</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>If you just want to generate a filename and don’t want to create the actual file or directory, you can(如果仅仅是想生成文件名，不希望创建实际的文件或目录，可以):<br><code>mktemp -u</code></p>
+</li>
+<li><p>Create a temporary filename based on the tempplate(基于模板创建临时文件名)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">➜  qr_blog mktemp study.XXX</span><br><span class="line">study.UWT</span><br><span class="line">➜  qr_blog mktemp study.XXX</span><br><span class="line">study.Usm</span><br><span class="line">➜  qr_blog mktemp study.XXX</span><br><span class="line">study.M6a</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>Mac OS 与linux用法略有区别，请视情况使用</p>
 
             </div>
           
@@ -171,7 +181,7 @@
 		
 		<div class="post-tags">
 		  
-			<a href="/tags/Docker/">Docker</a>
+			<a href="/tags/Shell-Command/">Shell Command</a>
 		  
 		</div>
 		
@@ -180,15 +190,9 @@
         
   <nav class="post-nav">
     
-      <a class="prev" href="/2019/05/07/mktemp-command/">
-        <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">mktemp command</span>
-        <span class="prev-text nav-mobile">Prev</span>
-      </a>
     
-    
-      <a class="next" href="/2019/05/07/tr-command/">
-        <span class="next-text nav-default">tr command</span>
+      <a class="next" href="/2019/05/07/Docker-clean/">
+        <span class="next-text nav-default">Docker clean</span>
         <span class="prev-text nav-mobile">Next</span>
         <i class="iconfont icon-right"></i>
       </a>
