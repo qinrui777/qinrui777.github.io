@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang>
+  <head><meta name="generator" content="Hexo 3.8.0">
+    
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+  <meta name="description" content="Shell Script specification">
+
+
+
+
+  <meta name="keywords" content="Shell,">
+
+
+
+
+
+  <link rel="alternate" href="/default" title="I know nothing except the fact of my ignorance.">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1">
+
+
+
+<link rel="canonical" href="http://yoursite.com/2019/05/28/Shell-Script-specification/">
+
+
+<meta name="description" content="Part1: 命名约定 本文档的命名约定是系统配置文件、脚本文件； 文件名、变量名、函数名不超过20个字符； 命名只能使用英文字母，数字和下划线，只有一个英文单词时使用全拼，有多个单词时，使用下划线分隔，长度较长时，可以取单词前3～4个字母。 文件名全部以小写命名，不能大小写混用（通过U盘交换文件时，大小写可能会丢失，即：大写文件名可能会全部变成小写文件名）； 避免使用Linux的保留字如true">
+<meta name="keywords" content="Shell">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Shell Script specification">
+<meta property="og:url" content="http://yoursite.com/2019/05/28/Shell-Script-specification/index.html">
+<meta property="og:site_name" content="I know nothing except the fact of my ignorance.">
+<meta property="og:description" content="Part1: 命名约定 本文档的命名约定是系统配置文件、脚本文件； 文件名、变量名、函数名不超过20个字符； 命名只能使用英文字母，数字和下划线，只有一个英文单词时使用全拼，有多个单词时，使用下划线分隔，长度较长时，可以取单词前3～4个字母。 文件名全部以小写命名，不能大小写混用（通过U盘交换文件时，大小写可能会丢失，即：大写文件名可能会全部变成小写文件名）； 避免使用Linux的保留字如true">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-05-28T04:05:22.465Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Shell Script specification">
+<meta name="twitter:description" content="Part1: 命名约定 本文档的命名约定是系统配置文件、脚本文件； 文件名、变量名、函数名不超过20个字符； 命名只能使用英文字母，数字和下划线，只有一个英文单词时使用全拼，有多个单词时，使用下划线分隔，长度较长时，可以取单词前3～4个字母。 文件名全部以小写命名，不能大小写混用（通过U盘交换文件时，大小写可能会丢失，即：大写文件名可能会全部变成小写文件名）； 避免使用Linux的保留字如true">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?8280009f2b229eaefa3b28460ccbf01e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-138071159-1', 'auto');
+        ga('send', 'pageview');
+  </script>
+
+
+
+    <title> Shell Script specification - I know nothing except the fact of my ignorance. </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">I know nothing except the fact of my ignorance.</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="https://qinrui777.github.io">
+                            
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="https://github.com/qinrui777">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Shell Script specification
+        
+      </h1>
+
+      <time class="post-time">
+          May 28 2019
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h5 id="Part1-命名约定"><a href="#Part1-命名约定" class="headerlink" title="Part1: 命名约定"></a>Part1: 命名约定</h5><ul>
+<li>本文档的命名约定是系统配置文件、脚本文件；</li>
+<li>文件名、变量名、函数名不超过20个字符；</li>
+<li>命名只能使用英文字母，数字和下划线，只有一个英文单词时使用全拼，有多个单词时，使用下划线分隔，长度较长时，可以取单词前3～4个字母。</li>
+<li>文件名全部以小写命名，不能大小写混用（通过U盘交换文件时，大小写可能会丢失，即：大写文件名可能会全部变成小写文件名）；</li>
+<li>避免使用Linux的保留字如true、关键字如PWD等（见附表）；</li>
+<li>从配置文件导出配置时，要注意过滤空行和注释</li>
+</ul>
+<h5 id="Part2-代码开头约定"><a href="#Part2-代码开头约定" class="headerlink" title="Part2: 代码开头约定"></a>Part2: 代码开头约定</h5><ul>
+<li>第一行一般为调用使用的语言 </li>
+<li>下面要有这个程序名，避免更改文件名为无法找到正确的文件</li>
+<li>版本号</li>
+<li>更改后的时间</li>
+<li>作者相关信息</li>
+<li>该程序的作用，及注意事项</li>
+<li>版权与是否开放共享GNU说明</li>
+<li>最后是各版本的更新简要说明</li>
+</ul>
+<p>e.g.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment"># -------------------------------------------------------------------------------</span></span><br><span class="line"><span class="comment"># Filename:    check_mem.sh</span></span><br><span class="line"><span class="comment"># Revision:    1.1</span></span><br><span class="line"><span class="comment"># Date:        2009/02/10</span></span><br><span class="line"><span class="comment"># Author:      Ajian</span></span><br><span class="line"><span class="comment"># Email:       ajian521#gmail.com</span></span><br><span class="line"><span class="comment"># Website:     www.ohlinux.com</span></span><br><span class="line"><span class="comment"># Description: Plugin to monitor the memory of the system</span></span><br><span class="line"><span class="comment"># Notes:       This plugin uses the "" command</span></span><br><span class="line"><span class="comment"># -------------------------------------------------------------------------------</span></span><br><span class="line"><span class="comment"># Copyright:   2009 (c) Ajian</span></span><br><span class="line"><span class="comment"># License:     GPL</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># This program is free software; you can redistribute it and/or</span></span><br><span class="line"><span class="comment"># modify it under the terms of the GNU General Public License</span></span><br><span class="line"><span class="comment"># as published by the Free Software Foundation; either version 2</span></span><br><span class="line"><span class="comment"># of the License, or (at your option) any later version.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># This program is distributed in the hope that it will be useful,</span></span><br><span class="line"><span class="comment"># but WITHOUT ANY WARRANTY; without even the implied warranty</span></span><br><span class="line"><span class="comment"># of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the</span></span><br><span class="line"><span class="comment"># GNU General Public License for more details.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># you should have received a copy of the GNU General Public License</span></span><br><span class="line"><span class="comment"># along with this program (or with Nagios);</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Credits go to Ethan Galstad for coding Nagios</span></span><br><span class="line"><span class="comment"># If any changes are made to this script, please mail me a copy of the changes</span></span><br><span class="line"><span class="comment"># -------------------------------------------------------------------------------</span></span><br><span class="line"><span class="comment">#Version 1.0</span></span><br><span class="line"><span class="comment">#The first one , can monitor the system memory</span></span><br><span class="line"><span class="comment">#Version 1.1</span></span><br><span class="line"><span class="comment">#Modify the method of the script ,more fast</span></span><br></pre></td></tr></table></figure></p>
+<h5 id="Part3-环境变量"><a href="#Part3-环境变量" class="headerlink" title="Part3: 环境变量"></a>Part3: 环境变量</h5><ul>
+<li>变量：全部是大写字母</li>
+<li>变量引用：全部以变量名加双引号引用，如”$TERMTYPE”，或“${TERMTYPE}”，如果变量类型是数值型不引用，如:</li>
+<li>如果需要从配置文件导出变量，则在变量前加一大写字母，以识别导出变量与自定义环境变量的区别，如：</li>
+<li>变量值的引用尽量以$开头，如$(ls inst_.sh)，避免使用<code>ls inst_。sh</code></li>
+<li>循环控制变量可以命名为单个字母， 比如 i、j等。 也可以是更有意义的名称， 比如 UserIndex。</li>
+<li>环境变量和全局变量 在脚本开头定义。</li>
+<li>函数中使用较多的文件，以环境变量的形式在文件开头定义，仅函数中使用的变量在函数开头定义</li>
+</ul>
+<h5 id="Part34-脚本的基本结构"><a href="#Part34-脚本的基本结构" class="headerlink" title="Part34:脚本的基本结构"></a>Part34:脚本的基本结构</h5><p>一个脚本的基本结构是这样的：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!SHEBANG</span></span><br><span class="line"> </span><br><span class="line">CONFIGURATION_VARIABLES</span><br><span class="line"> </span><br><span class="line">FUNCTION_DEFINITIONS</span><br><span class="line"> </span><br><span class="line">MAIN_CODE</span><br><span class="line">Shebang</span><br></pre></td></tr></table></figure>
+<p>Ref:</p>
+<ul>
+<li><a href="https://blog.csdn.net/wirelessqa/article/details/18863403" target="_blank" rel="noopener">https://blog.csdn.net/wirelessqa/article/details/18863403</a></li>
+</ul>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/Shell/">Shell</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/2019/05/23/Small-Tools-2-ffmpeg-Video-conversion-tool/">
+        <span class="next-text nav-default">Small Tools [2]: ffmpeg -- Video conversion tool.</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2018 -
+    
+    2019
+    <span class="footer-author">qinrui.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+      
+
+
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+    <script src="/js/src/md5.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+
+    <div id="gitalk-container"></div>
+
+    <script>
+        var gitalk = new Gitalk({
+            clientID: 'd5bbe3dcd1e4b493ccda',
+            clientSecret: '47a17a14730ceb61df029600cc92f4932334034a',
+            repo: 'qinrui777.github.io',
+            owner: 'qinrui777',
+            admin: 'qinrui777',
+            id: location.pathname,      // Ensure uniqueness and length less than 50
+            id: md5(location.pathname),
+            distractionFreeMode: 'false'  // Facebook-like distraction free mode
+        })
+
+        gitalk.render('gitalk-container')
+    </script>
+
+
+    
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>
