@@ -12,12 +12,12 @@
 
 
 
-  <meta name="description" content="Docker clean">
+  <meta name="description" content="xargs command">
 
 
 
 
-  <meta name="keywords" content="Docker,">
+  <meta name="keywords" content="Shell Command,">
 
 
 
@@ -32,21 +32,21 @@
 
 
 
-<link rel="canonical" href="http://yoursite.com/2019/05/07/Docker-clean/">
+<link rel="canonical" href="http://yoursite.com/2019/06/21/xargs-command/">
 
 
-<meta name="description" content="1.Cleanup exited processes:docker rm $(docker ps -q -f status=exited) 3.Cleanup dangling volumes:docker volume rm $(docker volume ls -qf dangling=true) 3.Cleanup dangling images:docker rmi $(docker im">
-<meta name="keywords" content="Docker">
+<meta name="description" content="xargs 命令应该紧跟在管道操作符之后。它使用标准输入作为主要的数据源，将从 stdin 中读取的数据作为指定命令的参数并执行该命令。 例如：在一组 C 语言源码文件中搜索自负串main:ls *.c | sargs grep main Example 1: 将多行输入  –&amp;gt; 单行输出1234567➜   cat example.txt1 2 3 45 67 8 910 11➜   ca">
+<meta name="keywords" content="Shell Command">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Docker clean">
-<meta property="og:url" content="http://yoursite.com/2019/05/07/Docker-clean/index.html">
+<meta property="og:title" content="xargs command">
+<meta property="og:url" content="http://yoursite.com/2019/06/21/xargs-command/index.html">
 <meta property="og:site_name" content="I know nothing except the fact of my ignorance.">
-<meta property="og:description" content="1.Cleanup exited processes:docker rm $(docker ps -q -f status=exited) 3.Cleanup dangling volumes:docker volume rm $(docker volume ls -qf dangling=true) 3.Cleanup dangling images:docker rmi $(docker im">
+<meta property="og:description" content="xargs 命令应该紧跟在管道操作符之后。它使用标准输入作为主要的数据源，将从 stdin 中读取的数据作为指定命令的参数并执行该命令。 例如：在一组 C 语言源码文件中搜索自负串main:ls *.c | sargs grep main Example 1: 将多行输入  –&amp;gt; 单行输出1234567➜   cat example.txt1 2 3 45 67 8 910 11➜   ca">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-08T03:47:40.746Z">
+<meta property="og:updated_time" content="2019-06-21T07:45:39.515Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Docker clean">
-<meta name="twitter:description" content="1.Cleanup exited processes:docker rm $(docker ps -q -f status=exited) 3.Cleanup dangling volumes:docker volume rm $(docker volume ls -qf dangling=true) 3.Cleanup dangling images:docker rmi $(docker im">
+<meta name="twitter:title" content="xargs command">
+<meta name="twitter:description" content="xargs 命令应该紧跟在管道操作符之后。它使用标准输入作为主要的数据源，将从 stdin 中读取的数据作为指定命令的参数并执行该命令。 例如：在一组 C 语言源码文件中搜索自负串main:ls *.c | sargs grep main Example 1: 将多行输入  –&amp;gt; 单行输出1234567➜   cat example.txt1 2 3 45 67 8 910 11➜   ca">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1">
@@ -91,7 +91,7 @@
 
 
 
-    <title> Docker clean - I know nothing except the fact of my ignorance. </title>
+    <title> xargs command - I know nothing except the fact of my ignorance. </title>
   </head>
 
   <body>
@@ -146,12 +146,12 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          Docker clean
+          xargs command
         
       </h1>
 
       <time class="post-time">
-          May 07 2019
+          Jun 21 2019
       </time>
     </header>
 
@@ -159,14 +159,12 @@
 
     
             <div class="post-content">
-            <h4 id="1-Cleanup-exited-processes"><a href="#1-Cleanup-exited-processes" class="headerlink" title="1.Cleanup exited processes:"></a>1.Cleanup exited processes:</h4><p>docker rm $(docker ps -q -f status=exited)</p>
-<h4 id="3-Cleanup-dangling-volumes"><a href="#3-Cleanup-dangling-volumes" class="headerlink" title="3.Cleanup dangling volumes:"></a>3.Cleanup dangling volumes:</h4><p>docker volume rm $(docker volume ls -qf dangling=true)</p>
-<h4 id="3-Cleanup-dangling-images"><a href="#3-Cleanup-dangling-images" class="headerlink" title="3.Cleanup dangling images:"></a>3.Cleanup dangling images:</h4><p>docker rmi $(docker images –filter “dangling=true” -q –no-trunc)</p>
-<p>more methods go to below link ↓</p>
-<p>ref:</p>
-<ul>
-<li><a href="https://www.jianshu.com/p/470e29801be2" target="_blank" rel="noopener">https://www.jianshu.com/p/470e29801be2</a></li>
-</ul>
+            <p>xargs 命令应该紧跟在管道操作符之后。它使用标准输入作为主要的数据源，将从 stdin 中读取的数据作为指定命令的参数并执行该命令。</p>
+<p>例如：<br>在一组 C 语言源码文件中搜索自负串main:<br><code>ls *.c | sargs grep main</code></p>
+<h4 id="Example-1-将多行输入-–-gt-单行输出"><a href="#Example-1-将多行输入-–-gt-单行输出" class="headerlink" title="Example 1: 将多行输入  –&gt; 单行输出"></a>Example 1: 将多行输入  –&gt; 单行输出</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">➜   cat example.txt</span><br><span class="line">1 2 3 4</span><br><span class="line">5 6</span><br><span class="line">7 8 9</span><br><span class="line">10 11</span><br><span class="line">➜   cat example.txt | xargs</span><br><span class="line">1 2 3 4 5 6 7 8 9 10 11</span><br></pre></td></tr></table></figure>
+<h4 id="Example-2-将单行输入-–-gt-多行输出"><a href="#Example-2-将单行输入-–-gt-多行输出" class="headerlink" title="Example 2: 将单行输入  –&gt; 多行输出"></a>Example 2: 将单行输入  –&gt; 多行输出</h4><p>xargs 的 -n 选项可以限制每次调用命令时用到的参数个数。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">➜   cat example.txt | xargs -n  3</span><br><span class="line">1 2 3</span><br><span class="line">4 5 6</span><br><span class="line">7 8 9</span><br><span class="line">10 11</span><br></pre></td></tr></table></figure></p>
+<p>工作原理：<br>xargs 命令接收来自stdin的输入，将数据解析成单个元素，然后调用指定命令讲这些元素作为该命令的参数。xargs 默认使用 <strong>空白字符</strong> 分割输入并执行 <code>/bin/echo</code></p>
+<h4 id="Example-3-自定义分隔符-d-选项"><a href="#Example-3-自定义分隔符-d-选项" class="headerlink" title="Example 3: 自定义分隔符 -d 选项"></a>Example 3: 自定义分隔符 <strong>-d 选项</strong></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"splitXsplit1Xsplit2Xsplit3"</span> | xargs -d X</span><br><span class="line">split split1 split2 split3</span><br></pre></td></tr></table></figure>
 
             </div>
           
@@ -176,7 +174,7 @@
 		
 		<div class="post-tags">
 		  
-			<a href="/tags/Docker/">Docker</a>
+			<a href="/tags/Shell-Command/">Shell Command</a>
 		  
 		</div>
 		
@@ -185,15 +183,9 @@
         
   <nav class="post-nav">
     
-      <a class="prev" href="/2019/05/07/mktemp-command/">
-        <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">mktemp command</span>
-        <span class="prev-text nav-mobile">Prev</span>
-      </a>
     
-    
-      <a class="next" href="/2019/05/07/bash-set-command/">
-        <span class="next-text nav-default">bash : set command</span>
+      <a class="next" href="/2019/06/19/http-vs-curl/">
+        <span class="next-text nav-default">http vs curl</span>
         <span class="prev-text nav-mobile">Next</span>
         <i class="iconfont icon-right"></i>
       </a>
