@@ -12,12 +12,10 @@
 
 
 
-  <meta name="description" content="Jenkins Unicode icons">
+  <meta name="description" content="Makefile 101">
 
 
 
-
-  <meta name="keywords" content="jenkins,">
 
 
 
@@ -32,21 +30,20 @@
 
 
 
-<link rel="canonical" href="http://yoursite.com/2019/07/04/Jenkins-Unicode-icons/">
+<link rel="canonical" href="http://yoursite.com/2019/07/04/Makefile-101/">
 
 
-<meta name="description" content="Unicode icons list:“\u2776” = ❶“\u27A1” = ➡“\u2756” = ❖“\u273F” = ✿“\u2795” = ➕ “\u2713” = ✓“\u2705” = ✅“\u274E” = ❎“\u2717” = ✗“\u274C” = ❌ “\u2600” = ☀“\u2601” = ☁“\u2622” = ☢“\u2623” = ☣“\u2639” =">
-<meta name="keywords" content="jenkins">
+<meta name="description" content="新建文件 ，文件名 makefile 或 Makefile 格式：target: dependencies &amp;lt;tab按键&amp;gt; command Example 1:gcc test.c -o test ➡ makefile 12test: test.c    gcc test.c -o test 执行： ➜   makegcc hello.c -o hellofrommakefile Ex">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Jenkins Unicode icons">
-<meta property="og:url" content="http://yoursite.com/2019/07/04/Jenkins-Unicode-icons/index.html">
+<meta property="og:title" content="Makefile 101">
+<meta property="og:url" content="http://yoursite.com/2019/07/04/Makefile-101/index.html">
 <meta property="og:site_name" content="I know nothing except the fact of my ignorance.">
-<meta property="og:description" content="Unicode icons list:“\u2776” = ❶“\u27A1” = ➡“\u2756” = ❖“\u273F” = ✿“\u2795” = ➕ “\u2713” = ✓“\u2705” = ✅“\u274E” = ❎“\u2717” = ✗“\u274C” = ❌ “\u2600” = ☀“\u2601” = ☁“\u2622” = ☢“\u2623” = ☣“\u2639” =">
+<meta property="og:description" content="新建文件 ，文件名 makefile 或 Makefile 格式：target: dependencies &amp;lt;tab按键&amp;gt; command Example 1:gcc test.c -o test ➡ makefile 12test: test.c    gcc test.c -o test 执行： ➜   makegcc hello.c -o hellofrommakefile Ex">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-04T08:22:52.820Z">
+<meta property="og:updated_time" content="2019-07-04T10:35:33.115Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Jenkins Unicode icons">
-<meta name="twitter:description" content="Unicode icons list:“\u2776” = ❶“\u27A1” = ➡“\u2756” = ❖“\u273F” = ✿“\u2795” = ➕ “\u2713” = ✓“\u2705” = ✅“\u274E” = ❎“\u2717” = ✗“\u274C” = ❌ “\u2600” = ☀“\u2601” = ☁“\u2622” = ☢“\u2623” = ☣“\u2639” =">
+<meta name="twitter:title" content="Makefile 101">
+<meta name="twitter:description" content="新建文件 ，文件名 makefile 或 Makefile 格式：target: dependencies &amp;lt;tab按键&amp;gt; command Example 1:gcc test.c -o test ➡ makefile 12test: test.c    gcc test.c -o test 执行： ➜   makegcc hello.c -o hellofrommakefile Ex">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1">
@@ -91,7 +88,7 @@
 
 
 
-    <title> Jenkins Unicode icons - I know nothing except the fact of my ignorance. </title>
+    <title> Makefile 101 - I know nothing except the fact of my ignorance. </title>
   </head>
 
   <body>
@@ -146,7 +143,7 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          Jenkins Unicode icons
+          Makefile 101
         
       </h1>
 
@@ -159,43 +156,32 @@
 
     
             <div class="post-content">
-            <h5 id="Unicode-icons-list"><a href="#Unicode-icons-list" class="headerlink" title="Unicode icons list:"></a>Unicode icons list:</h5><p>“\u2776” = ❶<br>“\u27A1” = ➡<br>“\u2756” = ❖<br>“\u273F” = ✿<br>“\u2795” = ➕</p>
-<p>“\u2713” = ✓<br>“\u2705” = ✅<br>“\u274E” = ❎<br>“\u2717” = ✗<br>“\u274C” = ❌</p>
-<p>“\u2600” = ☀<br>“\u2601” = ☁<br>“\u2622” = ☢<br>“\u2623” = ☣<br>“\u2639” = ☹<br>“\u263A” = ☺</p>
-<p>Example :<br>make stage name to a icon, or command message<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//declarative pipeline</span><br><span class="line">...</span><br><span class="line">    stages &#123;</span><br><span class="line">        stage(<span class="string">'\u270A RAISED FIST'</span>)&#123;</span><br><span class="line">            steps&#123;</span><br><span class="line">                script&#123;</span><br><span class="line">                    <span class="built_in">echo</span> <span class="string">"This is Stage One"</span></span><br><span class="line">                    currentBuild.displayName = <span class="string">"<span class="variable">$&#123;env.BUILD_NUMBER&#125;</span> -&gt; <span class="variable">$&#123;env.GIT_BRANCH&#125;</span>"</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">'\u273F Verify'</span> //u2700</span><br><span class="line"><span class="built_in">echo</span> <span class="string">'\u2620 kulou'</span> //u2600</span><br></pre></td></tr></table></figure>
-<p>More Ref:</p>
-<ul>
-<li><a href="http://www.fileformat.info/info/unicode/block/dingbats/list.htm" target="_blank" rel="noopener">More icons in the \u2700 Unicode Digbats block.</a></li>
-<li><a href="https://www.w3schools.com/charsets/ref_utf_symbols.asp" target="_blank" rel="noopener">More icons in the \u2600 range</a></li>
-</ul>
-
+            <p>新建文件 ，文件名 makefile 或 Makefile</p>
+<p>格式：<br>target: dependencies</p>
+<p>&lt;tab按键&gt; command</p>
+<h5 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1:"></a>Example 1:</h5><p>gcc test.c -o test ➡ makefile</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">test</span>: test.c</span><br><span class="line">    gcc test.c -o <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
+<p>执行：</p>
+<p>➜   make<br>gcc hello.c -o hellofrommakefile</p>
+<h5 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2:"></a>Example 2:</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">main: main.c tool.o</span><br><span class="line">    gcc main.c tool.o -o main</span><br><span class="line"></span><br><span class="line">tool.o: tool.c</span><br><span class="line">    gcc -c tool.c</span><br><span class="line"></span><br><span class="line">clean:</span><br><span class="line">    rm *.o main</span><br></pre></td></tr></table></figure>
+<p>执行命令 make</p>
+<p>执行 make clean</p>
+<h5 id="Example-3"><a href="#Example-3" class="headerlink" title="Example 3:"></a>Example 3:</h5><p>执行所有的target</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">all: stage1 stage2</span><br><span class="line"></span><br><span class="line">stage1:</span><br><span class="line">        @<span class="built_in">echo</span> <span class="string">"I am stage1"</span></span><br><span class="line"></span><br><span class="line">stage2:</span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"I am stage2"</span></span><br></pre></td></tr></table></figure>
             </div>
           
 
     
       <footer class="post-footer">
 		
-		<div class="post-tags">
-		  
-			<a href="/tags/jenkins/">jenkins</a>
-		  
-		</div>
-		
 
         
         
   <nav class="post-nav">
     
-      <a class="prev" href="/2019/07/04/Makefile-101/">
-        <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">Makefile 101</span>
-        <span class="prev-text nav-mobile">Prev</span>
-      </a>
     
-    
-      <a class="next" href="/2019/07/04/Jenkins-add-timestamps/">
-        <span class="next-text nav-default">Jenkins  add timestamps</span>
+      <a class="next" href="/2019/07/04/Jenkins-Unicode-icons/">
+        <span class="next-text nav-default">Jenkins Unicode icons</span>
         <span class="prev-text nav-mobile">Next</span>
         <i class="iconfont icon-right"></i>
       </a>
