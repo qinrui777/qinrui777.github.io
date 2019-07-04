@@ -12,7 +12,7 @@
 
 
 
-  <meta name="description" content="Jenkins  add timestamps">
+  <meta name="description" content="Jenkins Unicode icons">
 
 
 
@@ -32,21 +32,21 @@
 
 
 
-<link rel="canonical" href="http://yoursite.com/2019/07/04/Jenkins-add-timestamps/">
+<link rel="canonical" href="http://yoursite.com/2019/07/04/Jenkins-Unicode-icons/">
 
 
-<meta name="description" content="Method One123456//declarative pipelinepipeline &amp;#123;    agent any         options &amp;#123;         timestamps ()     &amp;#125; Method Two123456789101112131415161718192021//declarative pipelinepipeline &amp;#1">
+<meta name="description" content="Unicode icons list:“\u2776” = ❶“\u27A1” = ➡“\u2756” = ❖“\u273F” = ✿“\u2795” = ➕ “\u2713” = ✓“\u2705” = ✅“\u274E” = ❎“\u2717” = ✗“\u274C” = ❌ “\u2600” = ☀“\u2601” = ☁“\u2622” = ☢“\u2623” = ☣“\u2639” =">
 <meta name="keywords" content="jenkins">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Jenkins  add timestamps">
-<meta property="og:url" content="http://yoursite.com/2019/07/04/Jenkins-add-timestamps/index.html">
+<meta property="og:title" content="Jenkins Unicode icons">
+<meta property="og:url" content="http://yoursite.com/2019/07/04/Jenkins-Unicode-icons/index.html">
 <meta property="og:site_name" content="I know nothing except the fact of my ignorance.">
-<meta property="og:description" content="Method One123456//declarative pipelinepipeline &amp;#123;    agent any         options &amp;#123;         timestamps ()     &amp;#125; Method Two123456789101112131415161718192021//declarative pipelinepipeline &amp;#1">
+<meta property="og:description" content="Unicode icons list:“\u2776” = ❶“\u27A1” = ➡“\u2756” = ❖“\u273F” = ✿“\u2795” = ➕ “\u2713” = ✓“\u2705” = ✅“\u274E” = ❎“\u2717” = ✗“\u274C” = ❌ “\u2600” = ☀“\u2601” = ☁“\u2622” = ☢“\u2623” = ☣“\u2639” =">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-04T08:02:03.623Z">
+<meta property="og:updated_time" content="2019-07-04T08:11:47.297Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Jenkins  add timestamps">
-<meta name="twitter:description" content="Method One123456//declarative pipelinepipeline &amp;#123;    agent any         options &amp;#123;         timestamps ()     &amp;#125; Method Two123456789101112131415161718192021//declarative pipelinepipeline &amp;#1">
+<meta name="twitter:title" content="Jenkins Unicode icons">
+<meta name="twitter:description" content="Unicode icons list:“\u2776” = ❶“\u27A1” = ➡“\u2756” = ❖“\u273F” = ✿“\u2795” = ➕ “\u2713” = ✓“\u2705” = ✅“\u274E” = ❎“\u2717” = ✗“\u274C” = ❌ “\u2600” = ☀“\u2601” = ☁“\u2622” = ☢“\u2623” = ☣“\u2639” =">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1">
@@ -91,7 +91,7 @@
 
 
 
-    <title> Jenkins  add timestamps - I know nothing except the fact of my ignorance. </title>
+    <title> Jenkins Unicode icons - I know nothing except the fact of my ignorance. </title>
   </head>
 
   <body>
@@ -146,7 +146,7 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          Jenkins  add timestamps
+          Jenkins Unicode icons
         
       </h1>
 
@@ -159,11 +159,17 @@
 
     
             <div class="post-content">
-            <h4 id="Method-One"><a href="#Method-One" class="headerlink" title="Method One"></a>Method One</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//declarative pipeline</span><br><span class="line">pipeline &#123;</span><br><span class="line">    agent any     </span><br><span class="line">    options &#123; </span><br><span class="line">        timestamps () </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h4 id="Method-Two"><a href="#Method-Two" class="headerlink" title="Method Two"></a>Method Two</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">//declarative pipeline</span><br><span class="line">pipeline &#123;</span><br><span class="line">    agent any   </span><br><span class="line">    stages &#123;</span><br><span class="line">        stage(<span class="string">'Stage with timestamp'</span>)&#123;</span><br><span class="line">            steps&#123;</span><br><span class="line">                sh <span class="string">"echo <span class="variable">$&#123;env.BUILD_NUMBER&#125;</span>"</span></span><br><span class="line">                wrap([<span class="variable">$class</span>: <span class="string">'TimestamperBuildWrapper'</span>]) &#123;</span><br><span class="line">                  <span class="built_in">echo</span> <span class="string">"Done"</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;    </span><br><span class="line">&#125;</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">result :</span><br><span class="line">```bash</span><br><span class="line">....</span><br><span class="line">[Pipeline] <span class="built_in">echo</span></span><br><span class="line">15:29:52 Done</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>默认是到分钟级别，到秒级别的需要自己定义格式</p>
-</blockquote>
+            <h5 id="Unicode-icons-list"><a href="#Unicode-icons-list" class="headerlink" title="Unicode icons list:"></a>Unicode icons list:</h5><p>“\u2776” = ❶<br>“\u27A1” = ➡<br>“\u2756” = ❖<br>“\u273F” = ✿<br>“\u2795” = ➕</p>
+<p>“\u2713” = ✓<br>“\u2705” = ✅<br>“\u274E” = ❎<br>“\u2717” = ✗<br>“\u274C” = ❌</p>
+<p>“\u2600” = ☀<br>“\u2601” = ☁<br>“\u2622” = ☢<br>“\u2623” = ☣<br>“\u2639” = ☹<br>“\u263A” = ☺</p>
+<p>Example :<br>make stage name to a icon, or command message<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//declarative pipeline</span><br><span class="line">...</span><br><span class="line">    stages &#123;</span><br><span class="line">        stage(<span class="string">'\u270A RAISED FIST'</span>)&#123;</span><br><span class="line">            steps&#123;</span><br><span class="line">                script&#123;</span><br><span class="line">                    <span class="built_in">echo</span> <span class="string">"This is Stage One"</span></span><br><span class="line">                    currentBuild.displayName = <span class="string">"<span class="variable">$&#123;env.BUILD_NUMBER&#125;</span> -&gt; <span class="variable">$&#123;env.GIT_BRANCH&#125;</span>"</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">'\u273F Verify'</span> //u2700</span><br><span class="line"><span class="built_in">echo</span> <span class="string">'\u2620 kulou'</span> //u2600</span><br></pre></td></tr></table></figure>
+<p><a href="http://www.fileformat.info/info/unicode/block/dingbats/list.htm" target="_blank" rel="noopener">http://www.fileformat.info/info/unicode/block/dingbats/list.htm</a></p>
+<p>More Ref:</p>
+<ul>
+<li><a href="http://www.fileformat.info/info/unicode/block/dingbats/list.htm" target="_blank" rel="noopener">More icons in the \u2700 Unicode Digbats block.</a></li>
+<li><a href="https://www.w3schools.com/charsets/ref_utf_symbols.asp" target="_blank" rel="noopener">More icons in the \u2600 range</a></li>
+</ul>
 
             </div>
           
@@ -182,15 +188,9 @@
         
   <nav class="post-nav">
     
-      <a class="prev" href="/2019/07/04/Jenkins-Unicode-icons/">
-        <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">Jenkins Unicode icons</span>
-        <span class="prev-text nav-mobile">Prev</span>
-      </a>
     
-    
-      <a class="next" href="/2019/06/21/xargs-command/">
-        <span class="next-text nav-default">xargs command</span>
+      <a class="next" href="/2019/07/04/Jenkins-add-timestamps/">
+        <span class="next-text nav-default">Jenkins  add timestamps</span>
         <span class="prev-text nav-mobile">Next</span>
         <i class="iconfont icon-right"></i>
       </a>
