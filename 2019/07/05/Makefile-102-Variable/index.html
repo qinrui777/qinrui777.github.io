@@ -12,12 +12,12 @@
 
 
 
-  <meta name="description" content="Jenkins Unicode icons">
+  <meta name="description" content="Makefile 102:Variable">
 
 
 
 
-  <meta name="keywords" content="jenkins,">
+  <meta name="keywords" content="linux,">
 
 
 
@@ -32,21 +32,21 @@
 
 
 
-<link rel="canonical" href="http://yoursite.com/2019/07/04/Jenkins-Unicode-icons/">
+<link rel="canonical" href="http://yoursite.com/2019/07/05/Makefile-102-Variable/">
 
 
-<meta name="description" content="Unicode icons list:“\u2776” = ❶“\u27A1” = ➡“\u2756” = ❖“\u273F” = ✿“\u2795” = ➕ “\u2713” = ✓“\u2705” = ✅“\u274E” = ❎“\u2717” = ✗“\u274C” = ❌ “\u2600” = ☀“\u2601” = ☁“\u2622” = ☢“\u2623” = ☣“\u2639” =">
-<meta name="keywords" content="jenkins">
+<meta name="description" content="Variables (common use)1234origin_file = hello.chellofrommakefile: $(origin_file)	gcc hello.c -o hellofrommakefile Automatic Variables(自动变量)makefile 中有一些预定义的变量，你可以理解它像是 C 语言中的一些关键字，分别有不同的意义，我们列举几个常用的自动">
+<meta name="keywords" content="linux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Jenkins Unicode icons">
-<meta property="og:url" content="http://yoursite.com/2019/07/04/Jenkins-Unicode-icons/index.html">
+<meta property="og:title" content="Makefile 102:Variable">
+<meta property="og:url" content="http://yoursite.com/2019/07/05/Makefile-102-Variable/index.html">
 <meta property="og:site_name" content="I know nothing except the fact of my ignorance.">
-<meta property="og:description" content="Unicode icons list:“\u2776” = ❶“\u27A1” = ➡“\u2756” = ❖“\u273F” = ✿“\u2795” = ➕ “\u2713” = ✓“\u2705” = ✅“\u274E” = ❎“\u2717” = ✗“\u274C” = ❌ “\u2600” = ☀“\u2601” = ☁“\u2622” = ☢“\u2623” = ☣“\u2639” =">
+<meta property="og:description" content="Variables (common use)1234origin_file = hello.chellofrommakefile: $(origin_file)	gcc hello.c -o hellofrommakefile Automatic Variables(自动变量)makefile 中有一些预定义的变量，你可以理解它像是 C 语言中的一些关键字，分别有不同的意义，我们列举几个常用的自动">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-04T08:22:52.820Z">
+<meta property="og:updated_time" content="2019-07-05T06:24:11.177Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Jenkins Unicode icons">
-<meta name="twitter:description" content="Unicode icons list:“\u2776” = ❶“\u27A1” = ➡“\u2756” = ❖“\u273F” = ✿“\u2795” = ➕ “\u2713” = ✓“\u2705” = ✅“\u274E” = ❎“\u2717” = ✗“\u274C” = ❌ “\u2600” = ☀“\u2601” = ☁“\u2622” = ☢“\u2623” = ☣“\u2639” =">
+<meta name="twitter:title" content="Makefile 102:Variable">
+<meta name="twitter:description" content="Variables (common use)1234origin_file = hello.chellofrommakefile: $(origin_file)	gcc hello.c -o hellofrommakefile Automatic Variables(自动变量)makefile 中有一些预定义的变量，你可以理解它像是 C 语言中的一些关键字，分别有不同的意义，我们列举几个常用的自动">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1">
@@ -91,7 +91,7 @@
 
 
 
-    <title> Jenkins Unicode icons - I know nothing except the fact of my ignorance. </title>
+    <title> Makefile 102:Variable - I know nothing except the fact of my ignorance. </title>
   </head>
 
   <body>
@@ -146,12 +146,12 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          Jenkins Unicode icons
+          Makefile 102:Variable
         
       </h1>
 
       <time class="post-time">
-          Jul 04 2019
+          Jul 05 2019
       </time>
     </header>
 
@@ -159,15 +159,16 @@
 
     
             <div class="post-content">
-            <h5 id="Unicode-icons-list"><a href="#Unicode-icons-list" class="headerlink" title="Unicode icons list:"></a>Unicode icons list:</h5><p>“\u2776” = ❶<br>“\u27A1” = ➡<br>“\u2756” = ❖<br>“\u273F” = ✿<br>“\u2795” = ➕</p>
-<p>“\u2713” = ✓<br>“\u2705” = ✅<br>“\u274E” = ❎<br>“\u2717” = ✗<br>“\u274C” = ❌</p>
-<p>“\u2600” = ☀<br>“\u2601” = ☁<br>“\u2622” = ☢<br>“\u2623” = ☣<br>“\u2639” = ☹<br>“\u263A” = ☺</p>
-<p>Example :<br>make stage name to a icon, or command message<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//declarative pipeline</span><br><span class="line">...</span><br><span class="line">    stages &#123;</span><br><span class="line">        stage(<span class="string">'\u270A RAISED FIST'</span>)&#123;</span><br><span class="line">            steps&#123;</span><br><span class="line">                script&#123;</span><br><span class="line">                    <span class="built_in">echo</span> <span class="string">"This is Stage One"</span></span><br><span class="line">                    currentBuild.displayName = <span class="string">"<span class="variable">$&#123;env.BUILD_NUMBER&#125;</span> -&gt; <span class="variable">$&#123;env.GIT_BRANCH&#125;</span>"</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">'\u273F Verify'</span> //u2700</span><br><span class="line"><span class="built_in">echo</span> <span class="string">'\u2620 kulou'</span> //u2600</span><br></pre></td></tr></table></figure>
-<p>More Ref:</p>
+            <h5 id="Variables-common-use"><a href="#Variables-common-use" class="headerlink" title="Variables (common use)"></a>Variables (common use)</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">origin_file = hello.c</span><br><span class="line"></span><br><span class="line">hellofrommakefile: $(origin_file)</span><br><span class="line">	gcc hello.c -o hellofrommakefile</span><br></pre></td></tr></table></figure>
+<h5 id="Automatic-Variables-自动变量"><a href="#Automatic-Variables-自动变量" class="headerlink" title="Automatic Variables(自动变量)"></a>Automatic Variables(自动变量)</h5><p>makefile 中有一些预定义的变量，你可以理解它像是 C 语言中的一些关键字，分别有不同的意义，我们列举几个常用的自动变量，<a href="https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html#Automatic-Variables" target="_blank" rel="noopener">其他还有很多</a></p>
+<p>$@：在命令中使用，表示规则中的目标<br>$&lt;：在命令中使用，表示规则中的第一个条件<br>$^：在命令中使用，表示规则中的所有条件，组成一个列表，以空格隔开，如果这个列表中有重复的项则消除重复项。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hellofrommakefile: hello.c</span><br><span class="line">	gcc hello.c -o hellofrommakefile</span><br></pre></td></tr></table></figure>
+<p>等价于<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hellofrommakefile: hello.c</span><br><span class="line">	gcc hello.c -o <span class="variable">$@</span></span><br></pre></td></tr></table></figure></p>
+<h5 id="mplicit-Variables-内置变量"><a href="#mplicit-Variables-内置变量" class="headerlink" title="mplicit Variables(内置变量)"></a>mplicit Variables(内置变量)</h5><p>Make命令提供一系列内置变量，比如，$(CC) 指向当前使用的编译器，$(MAKE) 指向当前使用的Make工具。这主要是为了跨平台的兼容性，详细的内置变量清单见<a href="https://www.gnu.org/software/make/manual/html_node/Implicit-Variables.html" target="_blank" rel="noopener">ta</a>。</p>
+<p><strong>More Ref:</strong></p>
 <ul>
-<li><a href="http://www.fileformat.info/info/unicode/block/dingbats/list.htm" target="_blank" rel="noopener">More icons in the \u2700 Unicode Digbats block.</a></li>
-<li><a href="https://www.w3schools.com/charsets/ref_utf_symbols.asp" target="_blank" rel="noopener">More icons in the \u2600 range</a></li>
+<li><a href="http://www.chiark.greenend.org.uk/doc/make-doc/make.html/Using-Variables.html" target="_blank" rel="noopener">http://www.chiark.greenend.org.uk/doc/make-doc/make.html/Using-Variables.html</a></li>
+<li><a href="https://www.gnu.org/software/make/manual/html_node/Implicit-Variables.html" target="_blank" rel="noopener">https://www.gnu.org/software/make/manual/html_node/Implicit-Variables.html</a></li>
 </ul>
 
             </div>
@@ -178,7 +179,7 @@
 		
 		<div class="post-tags">
 		  
-			<a href="/tags/jenkins/">jenkins</a>
+			<a href="/tags/linux/">linux</a>
 		  
 		</div>
 		
@@ -187,15 +188,15 @@
         
   <nav class="post-nav">
     
-      <a class="prev" href="/2019/07/04/Makefile-101-Intro/">
+      <a class="prev" href="/2019/07/05/Makefile-103-all-clean/">
         <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">Makefile 101 :Intro</span>
+        <span class="prev-text nav-default">Makefile 103: all & clean</span>
         <span class="prev-text nav-mobile">Prev</span>
       </a>
     
     
-      <a class="next" href="/2019/07/04/Jenkins-add-timestamps/">
-        <span class="next-text nav-default">Jenkins  add timestamps</span>
+      <a class="next" href="/2019/07/04/Makefile-101-Intro/">
+        <span class="next-text nav-default">Makefile 101 :Intro</span>
         <span class="prev-text nav-mobile">Next</span>
         <i class="iconfont icon-right"></i>
       </a>

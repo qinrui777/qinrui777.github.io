@@ -12,10 +12,12 @@
 
 
 
-  <meta name="description" content="Makefile 101">
+  <meta name="description" content="Makefile 101 :Intro">
 
 
 
+
+  <meta name="keywords" content="linux,">
 
 
 
@@ -30,20 +32,21 @@
 
 
 
-<link rel="canonical" href="http://yoursite.com/2019/07/04/Makefile-101/">
+<link rel="canonical" href="http://yoursite.com/2019/07/04/Makefile-101-Intro/">
 
 
-<meta name="description" content="新建文件 ，文件名 makefile 或 Makefile 格式：target: dependencies &amp;lt;tab按键&amp;gt; command Example 1:gcc test.c -o test ➡ makefile 12test: test.c    gcc test.c -o test 执行： ➜   makegcc hello.c -o hellofrommakefile Ex">
+<meta name="description" content="新建文件 ，文件名 makefile 或 Makefile 格式：target: dependencies  command 目标：要生成的目标文件依赖：目标文件由哪些文件生成命令：通过执行该命令由依赖文件生成目标 工作原理： 1、若想生成目标，检查规则中的依赖条件是否存在，如不存在，则寻找是否有规则用来生成该依赖文件 2、检查规则中的目标是否需要更新，必须先检查它的所有依赖，依赖中有任一个被更新">
+<meta name="keywords" content="linux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Makefile 101">
-<meta property="og:url" content="http://yoursite.com/2019/07/04/Makefile-101/index.html">
+<meta property="og:title" content="Makefile 101 :Intro">
+<meta property="og:url" content="http://yoursite.com/2019/07/04/Makefile-101-Intro/index.html">
 <meta property="og:site_name" content="I know nothing except the fact of my ignorance.">
-<meta property="og:description" content="新建文件 ，文件名 makefile 或 Makefile 格式：target: dependencies &amp;lt;tab按键&amp;gt; command Example 1:gcc test.c -o test ➡ makefile 12test: test.c    gcc test.c -o test 执行： ➜   makegcc hello.c -o hellofrommakefile Ex">
+<meta property="og:description" content="新建文件 ，文件名 makefile 或 Makefile 格式：target: dependencies  command 目标：要生成的目标文件依赖：目标文件由哪些文件生成命令：通过执行该命令由依赖文件生成目标 工作原理： 1、若想生成目标，检查规则中的依赖条件是否存在，如不存在，则寻找是否有规则用来生成该依赖文件 2、检查规则中的目标是否需要更新，必须先检查它的所有依赖，依赖中有任一个被更新">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-05T03:24:00.178Z">
+<meta property="og:updated_time" content="2019-07-05T06:21:15.020Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Makefile 101">
-<meta name="twitter:description" content="新建文件 ，文件名 makefile 或 Makefile 格式：target: dependencies &amp;lt;tab按键&amp;gt; command Example 1:gcc test.c -o test ➡ makefile 12test: test.c    gcc test.c -o test 执行： ➜   makegcc hello.c -o hellofrommakefile Ex">
+<meta name="twitter:title" content="Makefile 101 :Intro">
+<meta name="twitter:description" content="新建文件 ，文件名 makefile 或 Makefile 格式：target: dependencies  command 目标：要生成的目标文件依赖：目标文件由哪些文件生成命令：通过执行该命令由依赖文件生成目标 工作原理： 1、若想生成目标，检查规则中的依赖条件是否存在，如不存在，则寻找是否有规则用来生成该依赖文件 2、检查规则中的目标是否需要更新，必须先检查它的所有依赖，依赖中有任一个被更新">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1">
@@ -88,7 +91,7 @@
 
 
 
-    <title> Makefile 101 - I know nothing except the fact of my ignorance. </title>
+    <title> Makefile 101 :Intro - I know nothing except the fact of my ignorance. </title>
   </head>
 
   <body>
@@ -143,7 +146,7 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          Makefile 101
+          Makefile 101 :Intro
         
       </h1>
 
@@ -158,11 +161,16 @@
             <div class="post-content">
             <p>新建文件 ，文件名 makefile 或 Makefile</p>
 <p>格式：<br>target: dependencies</p>
-<p>&lt;tab按键&gt; command</p>
-<h5 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1:"></a>Example 1:</h5><p>gcc test.c -o test ➡ makefile</p>
+<p><tab> command</tab></p>
+<p>目标：要生成的目标文件<br>依赖：目标文件由哪些文件生成<br>命令：通过执行该命令由依赖文件生成目标</p>
+<p>工作原理：</p>
+<p>1、若想生成目标，检查规则中的依赖条件是否存在，如不存在，则寻找是否有规则用来生成该依赖文件</p>
+<p>2、检查规则中的目标是否需要更新，必须先检查它的所有依赖，依赖中有任一个被更新，则目标必须更新</p>
+<p>分析各个目标和依赖之间的关系<br>根据依赖关系自底向上执行命令<br>根据修改时间比目标新，确定更新<br>如果目标不依赖任何条件，则执行对应命令，以示更新</p>
+<h5 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1:"></a>Example 1:</h5><p>gcc test.c -o test // 根据test.c文件，编译一个 test的可执行文件出来</p>
+<p>➡ 用makefile来完成这一过程如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">test</span>: test.c</span><br><span class="line">    gcc test.c -o <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
-<p>执行：</p>
-<p>➜   make<br>gcc hello.c -o hellofrommakefile</p>
+<p>执行：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜   make</span><br><span class="line">gcc hello.c -o hellofrommakefile</span><br></pre></td></tr></table></figure></p>
 <h5 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2:"></a>Example 2:</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">main: main.c tool.o</span><br><span class="line">    gcc main.c tool.o -o main</span><br><span class="line"></span><br><span class="line">tool.o: tool.c</span><br><span class="line">    gcc -c tool.c</span><br><span class="line"></span><br><span class="line">clean:</span><br><span class="line">    rm *.o main</span><br></pre></td></tr></table></figure>
 <p>执行命令 make</p>
 <p>执行 make clean</p>
@@ -173,16 +181,41 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">➜  example_stages cat Makefile</span><br><span class="line">.DEFAULT_GOAL := <span class="built_in">help</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">help</span>:	<span class="comment">## show this help</span></span><br><span class="line">	@fgrep -h <span class="string">"##"</span> $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e <span class="string">'s/\\$$//'</span> | sed -e <span class="string">'s/##//'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">stage1:  <span class="comment">## This message will show up when typing 'make help'</span></span><br><span class="line">	@<span class="built_in">echo</span> I am stage1</span><br><span class="line"></span><br><span class="line">stage2:</span><br><span class="line">	<span class="built_in">echo</span> <span class="string">"I am stage2"</span></span><br><span class="line">➜  example_stages make <span class="built_in">help</span></span><br><span class="line"><span class="built_in">help</span>:	 show this <span class="built_in">help</span></span><br><span class="line">stage1:   This message will show up when typing <span class="string">'make help'</span></span><br></pre></td></tr></table></figure>
 <p>output:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">➜   make <span class="built_in">help</span></span><br><span class="line"><span class="built_in">help</span>:	 show this <span class="built_in">help</span></span><br><span class="line">stage1:   This message will show up when typing <span class="string">'make help'</span></span><br></pre></td></tr></table></figure>
+<h5 id="other-FAQs"><a href="#other-FAQs" class="headerlink" title="other FAQs:"></a>other FAQs:</h5><ul>
+<li>编译的时候一直报makefile:29: *** missing separator错误。最后定位到是语法错了。输入的tab键被编辑器自动替换成4个空格了，导致一直报错;vim下可以这样写入tab键：<code>ctr+v+i</code>,会写入一个tab键</li>
+</ul>
+<ul>
+<li>对每个 .c 文件进行编译，生成 .o 文件，然后对几个 .o 文件联合编译生成可执行的文件</li>
+</ul>
+<p><strong>More Ref:</strong></p>
+<ul>
+<li><a href="https://makefiletutorial.com/" target="_blank" rel="noopener">https://makefiletutorial.com/</a></li>
+<li><a href="https://www.mycode.net.cn/platform/linux-unix/1499.html" target="_blank" rel="noopener">https://www.mycode.net.cn/platform/linux-unix/1499.html</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2015/02/make.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2015/02/make.html</a></li>
+</ul>
+
             </div>
           
 
     
       <footer class="post-footer">
 		
+		<div class="post-tags">
+		  
+			<a href="/tags/linux/">linux</a>
+		  
+		</div>
+		
 
         
         
   <nav class="post-nav">
+    
+      <a class="prev" href="/2019/07/05/Makefile-102-Variable/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Makefile 102:Variable</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
     
     
       <a class="next" href="/2019/07/04/Jenkins-Unicode-icons/">
