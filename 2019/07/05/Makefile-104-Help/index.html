@@ -17,6 +17,8 @@
 
 
 
+  <meta name="keywords" content="makefile,">
+
 
 
 
@@ -33,17 +35,18 @@
 <link rel="canonical" href="http://yoursite.com/2019/07/05/Makefile-104-Help/">
 
 
-<meta name="description" content="请拍砖～～～">
+<meta name="description" content="help 12345678910111213141516➜  example_stages cat Makefile.DEFAULT_GOAL := helphelp:	## show this help	@fgrep -h &quot;##&quot; $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e &apos;s/\\$$//&apos; | sed -e &apos;s/##//&apos;stage1:  ##">
+<meta name="keywords" content="makefile">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Makefile 104: Help">
 <meta property="og:url" content="http://yoursite.com/2019/07/05/Makefile-104-Help/index.html">
 <meta property="og:site_name" content="I know nothing except the fact of my ignorance.">
-<meta property="og:description" content="请拍砖～～～">
+<meta property="og:description" content="help 12345678910111213141516➜  example_stages cat Makefile.DEFAULT_GOAL := helphelp:	## show this help	@fgrep -h &quot;##&quot; $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e &apos;s/\\$$//&apos; | sed -e &apos;s/##//&apos;stage1:  ##">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-05T06:18:23.704Z">
+<meta property="og:updated_time" content="2019-07-05T07:11:26.534Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Makefile 104: Help">
-<meta name="twitter:description" content="请拍砖～～～">
+<meta name="twitter:description" content="help 12345678910111213141516➜  example_stages cat Makefile.DEFAULT_GOAL := helphelp:	## show this help	@fgrep -h &quot;##&quot; $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e &apos;s/\\$$//&apos; | sed -e &apos;s/##//&apos;stage1:  ##">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1">
@@ -156,12 +159,22 @@
 
     
             <div class="post-content">
-            
+            <p>help</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">➜  example_stages cat Makefile</span><br><span class="line">.DEFAULT_GOAL := <span class="built_in">help</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">help</span>:	<span class="comment">## show this help</span></span><br><span class="line">	@fgrep -h <span class="string">"##"</span> $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e <span class="string">'s/\\$$//'</span> | sed -e <span class="string">'s/##//'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">stage1:  <span class="comment">## This message will show up when typing 'make help'</span></span><br><span class="line">	@<span class="built_in">echo</span> I am stage1</span><br><span class="line"></span><br><span class="line">stage2:</span><br><span class="line">	<span class="built_in">echo</span> <span class="string">"I am stage2"</span></span><br><span class="line">➜  example_stages make <span class="built_in">help</span></span><br><span class="line"><span class="built_in">help</span>:	 show this <span class="built_in">help</span></span><br><span class="line">stage1:   This message will show up when typing <span class="string">'make help'</span></span><br></pre></td></tr></table></figure>
+<p>output:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">➜   make <span class="built_in">help</span></span><br><span class="line"><span class="built_in">help</span>:	 show this <span class="built_in">help</span></span><br><span class="line">stage1:   This message will show up when typing <span class="string">'make help'</span></span><br></pre></td></tr></table></figure>
+
             </div>
           
 
     
       <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/makefile/">makefile</a>
+		  
+		</div>
 		
 
         

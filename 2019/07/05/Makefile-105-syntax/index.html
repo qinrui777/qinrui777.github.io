@@ -17,6 +17,8 @@
 
 
 
+  <meta name="keywords" content="makefile,">
+
 
 
 
@@ -33,17 +35,18 @@
 <link rel="canonical" href="http://yoursite.com/2019/07/05/Makefile-105-syntax/">
 
 
-<meta name="description" content="5.1 注释井号（#）在Makefile中表示注释。 1234# 这是注释result.txt: source.txt    # 这是注释    cp source.txt result.txt # 这也是注释 5.1 回声（echoing）正常情况下，make会打印每条命令，然后再执行，这就叫做回声（echoing）。 123test:    # 这是测试执行上面的规则，会得到下面的结果。 12">
+<meta name="description" content="5.1 注释井号（#）在Makefile中表示注释。 1234# 这是注释result.txt: source.txt    # 这是注释    cp source.txt result.txt # 这也是注释 5.2 回声（echoing）@ suppress the normal ‘echo’ of the command that is executed.正常情况下，make会打印每条命令，">
+<meta name="keywords" content="makefile">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Makefile 105: syntax">
 <meta property="og:url" content="http://yoursite.com/2019/07/05/Makefile-105-syntax/index.html">
 <meta property="og:site_name" content="I know nothing except the fact of my ignorance.">
-<meta property="og:description" content="5.1 注释井号（#）在Makefile中表示注释。 1234# 这是注释result.txt: source.txt    # 这是注释    cp source.txt result.txt # 这也是注释 5.1 回声（echoing）正常情况下，make会打印每条命令，然后再执行，这就叫做回声（echoing）。 123test:    # 这是测试执行上面的规则，会得到下面的结果。 12">
+<meta property="og:description" content="5.1 注释井号（#）在Makefile中表示注释。 1234# 这是注释result.txt: source.txt    # 这是注释    cp source.txt result.txt # 这也是注释 5.2 回声（echoing）@ suppress the normal ‘echo’ of the command that is executed.正常情况下，make会打印每条命令，">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-05T06:41:31.056Z">
+<meta property="og:updated_time" content="2019-07-06T01:41:28.099Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Makefile 105: syntax">
-<meta name="twitter:description" content="5.1 注释井号（#）在Makefile中表示注释。 1234# 这是注释result.txt: source.txt    # 这是注释    cp source.txt result.txt # 这也是注释 5.1 回声（echoing）正常情况下，make会打印每条命令，然后再执行，这就叫做回声（echoing）。 123test:    # 这是测试执行上面的规则，会得到下面的结果。 12">
+<meta name="twitter:description" content="5.1 注释井号（#）在Makefile中表示注释。 1234# 这是注释result.txt: source.txt    # 这是注释    cp source.txt result.txt # 这也是注释 5.2 回声（echoing）@ suppress the normal ‘echo’ of the command that is executed.正常情况下，make会打印每条命令，">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1">
@@ -158,21 +161,26 @@
             <div class="post-content">
             <h5 id="5-1-注释"><a href="#5-1-注释" class="headerlink" title="5.1 注释"></a>5.1 注释</h5><p>井号（#）在Makefile中表示注释。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 这是注释</span></span><br><span class="line">result.txt: source.txt</span><br><span class="line">    <span class="comment"># 这是注释</span></span><br><span class="line">    cp source.txt result.txt <span class="comment"># 这也是注释</span></span><br></pre></td></tr></table></figure>
-<h5 id="5-1-回声（echoing）"><a href="#5-1-回声（echoing）" class="headerlink" title="5.1 回声（echoing）"></a>5.1 回声（echoing）</h5><p>正常情况下，make会打印每条命令，然后再执行，这就叫做回声（echoing）。</p>
+<h5 id="5-2-回声（echoing）"><a href="#5-2-回声（echoing）" class="headerlink" title="5.2 回声（echoing）"></a>5.2 回声（echoing）</h5><p><code>@</code> suppress the normal ‘echo’ of the command that is executed.<br>正常情况下，make会打印每条命令，然后再执行，这就叫做回声（echoing）。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">test</span>:</span><br><span class="line">    <span class="comment"># 这是测试</span></span><br><span class="line">执行上面的规则，会得到下面的结果。</span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ make <span class="built_in">test</span></span><br><span class="line"><span class="comment"># 这是测试</span></span><br></pre></td></tr></table></figure>
 <p>在命令的前面加上@，就可以关闭回声。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">test</span>:</span><br><span class="line">    @<span class="comment"># 这是测试</span></span><br></pre></td></tr></table></figure></p>
-<p>命令前增加了一个 - 符号，这个符号的目的就是如果这条命令执行失败了继续执行，不影响后续命令的执行。<br><code>`</code>bash</p>
-<p>➜   cat Makefile</p>
-<p>all: stage1 stage2</p>
-<p>stage1: ;@echo “run stage1…..”;<br>    @echo “I am stage1”<br>    -cat  xxx<br>stage2:<br>    echo “I am stage2”</p>
-<p>#执行<br>➜   make<br>run stage1…..<br>I am stage1<br>cat xxx<br>cat: xxx: No such file or directory<br>make: [stage1] Error 1 (ignored)<br>echo “I am stage2”<br>I am stage2</p>
+<h5 id="5-3-减号"><a href="#5-3-减号" class="headerlink" title="5.3 减号-"></a>5.3 减号-</h5><p><code>-</code> means ignore the exit status of the command that is executed (normally, a non-zero exit status would stop that part of htat build) </p>
+<p>通常情况下，Makefile在执行到某一条命令时，如果返回值不正常，就会推出当前make进程，通常结合 rm ,mkdir 命令使用，（空文件或者文件不存在都会返回错误）</p>
+<p>这个符号的目的就是如果这条命令执行失败了继续执行，不影响后续命令的执行。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">➜   cat Makefile</span><br><span class="line"></span><br><span class="line">all: stage1 stage2</span><br><span class="line"></span><br><span class="line">stage1: ;@<span class="built_in">echo</span> <span class="string">"run stage1....."</span>;</span><br><span class="line">	@<span class="built_in">echo</span> <span class="string">"I am stage1"</span></span><br><span class="line">	-cat  xxx</span><br><span class="line">stage2:</span><br><span class="line">	<span class="built_in">echo</span> <span class="string">"I am stage2"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#执行</span></span><br><span class="line">➜   make</span><br><span class="line">run stage1.....</span><br><span class="line">I am stage1</span><br><span class="line">cat xxx</span><br><span class="line">cat: xxx: No such file or directory</span><br><span class="line">make: [stage1] Error 1 (ignored)</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"I am stage2"</span></span><br><span class="line">I am stage2</span><br></pre></td></tr></table></figure></p>
+<h5 id="5-4-加号"><a href="#5-4-加号" class="headerlink" title="5.4 加号+"></a>5.4 加号+</h5><p><code>+</code> means execute this comand under make -n (when commands are not normally executed)<br>对于命令行前面加上加号+的含义，表明在使用 make -n 命令的时候，其他行都只是显示命令而不执行，只有+ 行的才会被执行。</p>
 
             </div>
           
 
     
       <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/makefile/">makefile</a>
+		  
+		</div>
 		
 
         
