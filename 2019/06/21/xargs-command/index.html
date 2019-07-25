@@ -43,7 +43,7 @@
 <meta property="og:site_name" content="I know nothing except the fact of my ignorance.">
 <meta property="og:description" content="xargs 命令应该紧跟在管道操作符之后。它使用标准输入作为主要的数据源，将从 stdin 中读取的数据作为指定命令的参数并执行该命令。 例如：在一组 C 语言源码文件中搜索自负串main:ls *.c | sargs grep main Example 1: 将多行输入  –&amp;gt; 单行输出1234567➜   cat example.txt1 2 3 45 67 8 910 11➜   ca">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-21T08:01:02.097Z">
+<meta property="og:updated_time" content="2019-07-25T02:46:33.505Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="xargs command">
 <meta name="twitter:description" content="xargs 命令应该紧跟在管道操作符之后。它使用标准输入作为主要的数据源，将从 stdin 中读取的数据作为指定命令的参数并执行该命令。 例如：在一组 C 语言源码文件中搜索自负串main:ls *.c | sargs grep main Example 1: 将多行输入  –&amp;gt; 单行输出1234567➜   cat example.txt1 2 3 45 67 8 910 11➜   ca">
@@ -169,6 +169,8 @@
 <p> 如果文件系统的有些文件名中包含忠哥，find 命令的 -print0 选项可以使用0（NUL）来分割查找到的元素，然后再用xargs对应的-0选项进行解析</p>
 <p> 反例：<br> <code>$find . -type f -name &quot;*.txt&quot; -print | xargs rm -f</code><br>这样做很危险，由可能会误删除文件。我们无法预测 find命令输出的分隔符究竟是什么（究竟是‘\n’还是 ‘’）。如果由文件名中包含空格符（‘ ’ ），xargs会将其误认为是分隔符。例如， <code>bashrc text.txt</code> 会被是为 bashrc 和 text.txt 。因此上面的命令不会删除 <code>bashrc text.txt</code> ,而是会把 bashrc删除</p>
 <p>正确的姿势：<br> <code>$find . -type f -name &quot;*.txt&quot; -print0 | xargs -0 rm -f</code></p>
+<h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><p> <code>docker ps -a -q | xargs --no-run-if-empty docker rm -f</code></p>
+<p> 参数 <code>--no-run-if-empty</code> 可以避免在前面的命令完全没有输出的情况下执行该命令</p>
 
             </div>
           
