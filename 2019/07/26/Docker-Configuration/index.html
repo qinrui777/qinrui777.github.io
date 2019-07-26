@@ -12,7 +12,7 @@
 
 
 
-  <meta name="description" content="Docker Contract">
+  <meta name="description" content="Docker Configuration">
 
 
 
@@ -32,25 +32,21 @@
 
 
 
-<link rel="canonical" href="http://yoursite.com/2019/07/26/Docker-Contract/">
+<link rel="canonical" href="http://yoursite.com/2019/07/26/Docker-Configuration/">
 
 
-<meta name="description" content="Docker 契约   问题想要合作团队的可交付成果是整洁的、明确的，从面减少交付流水线里的摩擦。 解决方案使用Docker契约来推动团队间整洁的可交付成果 讨论  随着公司规模扩大，经常可以看到其曾经拥有的扁平化的、精益化的组织架构——几个关键的个人“了解整个系统”，让位给了一个更加结构化的组织架构——不同的团队具有不同职责和能力。我们在效力过的组织中都对此有过切身体会。   如果没有进行技术">
+<meta name="description" content="Distribution       |  Configuration  ------------------ |  ------ Ubuntu/Debian/Gentoo   | /etc/default/dockerOpenSuse/CentOS/Red Hat| /etc/sysconfg/docker /lib/systemd/system/docker.service /user/lib">
 <meta name="keywords" content="Docker">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Docker Contract">
-<meta property="og:url" content="http://yoursite.com/2019/07/26/Docker-Contract/index.html">
+<meta property="og:title" content="Docker Configuration">
+<meta property="og:url" content="http://yoursite.com/2019/07/26/Docker-Configuration/index.html">
 <meta property="og:site_name" content="I know nothing except the fact of my ignorance.">
-<meta property="og:description" content="Docker 契约   问题想要合作团队的可交付成果是整洁的、明确的，从面减少交付流水线里的摩擦。 解决方案使用Docker契约来推动团队间整洁的可交付成果 讨论  随着公司规模扩大，经常可以看到其曾经拥有的扁平化的、精益化的组织架构——几个关键的个人“了解整个系统”，让位给了一个更加结构化的组织架构——不同的团队具有不同职责和能力。我们在效力过的组织中都对此有过切身体会。   如果没有进行技术">
+<meta property="og:description" content="Distribution       |  Configuration  ------------------ |  ------ Ubuntu/Debian/Gentoo   | /etc/default/dockerOpenSuse/CentOS/Red Hat| /etc/sysconfg/docker /lib/systemd/system/docker.service /user/lib">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/images/docker_contract_01.png">
-<meta property="og:image" content="http://yoursite.com/images/docker_contract_03.png">
-<meta property="og:image" content="http://yoursite.com/images/docker_contract_03.png">
-<meta property="og:updated_time" content="2019-07-26T06:07:04.860Z">
+<meta property="og:updated_time" content="2019-07-26T08:26:07.842Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Docker Contract">
-<meta name="twitter:description" content="Docker 契约   问题想要合作团队的可交付成果是整洁的、明确的，从面减少交付流水线里的摩擦。 解决方案使用Docker契约来推动团队间整洁的可交付成果 讨论  随着公司规模扩大，经常可以看到其曾经拥有的扁平化的、精益化的组织架构——几个关键的个人“了解整个系统”，让位给了一个更加结构化的组织架构——不同的团队具有不同职责和能力。我们在效力过的组织中都对此有过切身体会。   如果没有进行技术">
-<meta name="twitter:image" content="http://yoursite.com/images/docker_contract_01.png">
+<meta name="twitter:title" content="Docker Configuration">
+<meta name="twitter:description" content="Distribution       |  Configuration  ------------------ |  ------ Ubuntu/Debian/Gentoo   | /etc/default/dockerOpenSuse/CentOS/Red Hat| /etc/sysconfg/docker /lib/systemd/system/docker.service /user/lib">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1">
@@ -95,7 +91,7 @@
 
 
 
-    <title> Docker Contract - I know nothing except the fact of my ignorance. </title>
+    <title> Docker Configuration - I know nothing except the fact of my ignorance. </title>
   </head>
 
   <body>
@@ -150,7 +146,7 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          Docker Contract
+          Docker Configuration
         
       </h1>
 
@@ -163,21 +159,16 @@
 
     
             <div class="post-content">
-            <blockquote>
-<p>Docker 契约</p>
-</blockquote>
-<p><img src="/images/docker_contract_01.png" alt="docker_contract_01"></p>
-<p><strong>问题</strong><br>想要合作团队的可交付成果是整洁的、明确的，从面减少交付流水线里的摩擦。</p>
-<p><strong>解决方案</strong><br>使用Docker契约来推动团队间整洁的可交付成果</p>
-<p><strong>讨论</strong><br>  随着公司规模扩大，经常可以看到其曾经拥有的扁平化的、精益化的组织架构——几个关键的个人“了解整个系统”，让位给了一个更加结构化的组织架构——不同的团队具有不同职责和能力。我们在效力过的组织中都对此有过切身体会。</p>
-<p>  如果没有进行技术投入，随着团队之间相互交付的增多，摩擦也会不断升级。图7-2展示了这个场景的一个简化了但具有代表性的倩形。图7-2 中的工作流有几个大家熟知的间题。这些间题最终都归结于状态管理的困难。测试团队可能在一台不是运维团队所设置的机器上进行侧试。理论上，对所有环境的修改都应仔细地记录下来，并在出现问题时进行回滚以保持一致性。但是，商业压力与人类行为的存在总是破坏这个目标，造成 <strong>环境性漂移</strong>。</p>
-<p><img src="/images/docker_contract_03.png" alt="docker_contract_02"></p>
-<p>Docker 所能做的是在团队之间划出清洗的分界线，Docker 镜像即是<strong>分界线</strong> ，又是<strong>交换的单位</strong>，我们称为 <strong>Docker Contract (契约)</strong>,如图 7-3 所示。</p>
-<p><img src="/images/docker_contract_03.png" alt="docker_contract_03"></p>
-<p>More ref:</p>
-<ul>
-<li><a href="https://learning.oreilly.com/library/view/Docker+in+Practice/9781617292729/kindle_split_018.html#ch07lev1sec1a" target="_blank" rel="noopener">https://learning.oreilly.com/library/view/Docker+in+Practice/9781617292729/kindle_split_018.html#ch07lev1sec1a</a></li>
-</ul>
+            <pre><code>Distribution       |  Configuration 
+------------------ |  ------
+</code></pre><p>Ubuntu/Debian/Gentoo   | /etc/default/docker<br>OpenSuse/CentOS/Red Hat| /etc/sysconfg/docker</p>
+<p>/lib/systemd/system/docker.service</p>
+<p>/user/lib/systemd/system/service/docker</p>
+<h5 id="场景一："><a href="#场景一：" class="headerlink" title="场景一："></a>场景一：</h5><p>Docker默认的配置文件/etc/default/docker或者/etc/sysconfig/docker都不起作用，查看了一下/lib/systemd/system/docker.service文件，发现里面没有加载默认配置文件，一些配置不知道要怎么弄了~~~</p>
+<p>解决办法是：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ vi /lib/systemd/system/docker.service</span><br><span class="line"><span class="comment">#添加一行</span></span><br><span class="line">$ EnvironmentFile=-/etc/default/docker</span><br><span class="line">或者</span><br><span class="line">$ EnvironmentFile=-/etc/sysconfig/docker</span><br><span class="line"><span class="comment">#-代表ignore error</span></span><br></pre></td></tr></table></figure></p>
+<p>并修改</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ExecStart=/usr/bin/docker daemon -H fd://</span><br><span class="line"><span class="comment">#改成</span></span><br><span class="line">$ ExecStart=/usr/bin/docker daemon -H fd:// <span class="variable">$DOCKER_OPTS</span></span><br></pre></td></tr></table></figure>
+<p>这样才能使用/etc/default/docker里定义的DOCKER_OPTS参数</p>
 
             </div>
           
@@ -196,15 +187,9 @@
         
   <nav class="post-nav">
     
-      <a class="prev" href="/2019/07/26/Docker-Configuration/">
-        <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">Docker Configuration</span>
-        <span class="prev-text nav-mobile">Prev</span>
-      </a>
     
-    
-      <a class="next" href="/2019/07/25/docker-镜像逆向工程得到Dockerfile/">
-        <span class="next-text nav-default">docker 镜像逆向工程得到Dockerfile</span>
+      <a class="next" href="/2019/07/26/Docker-Contract/">
+        <span class="next-text nav-default">Docker Contract</span>
         <span class="prev-text nav-mobile">Next</span>
         <i class="iconfont icon-right"></i>
       </a>
