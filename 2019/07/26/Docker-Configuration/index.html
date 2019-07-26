@@ -35,18 +35,18 @@
 <link rel="canonical" href="http://yoursite.com/2019/07/26/Docker-Configuration/">
 
 
-<meta name="description" content="Distribution       |  Configuration  ------------------ |  ------ Ubuntu/Debian/Gentoo   | /etc/default/dockerOpenSuse/CentOS/Red Hat| /etc/sysconfg/docker /lib/systemd/system/docker.service /user/lib">
+<meta name="description" content="Distribution Configuration      Ubuntu/Debian/Gentoo /etc/default/docker   OpenSuse/CentOS/Red Hat /etc/sysconfg/docker    /lib/systemd/system/docker.service /user/lib/systemd/system/service/docker">
 <meta name="keywords" content="Docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker Configuration">
 <meta property="og:url" content="http://yoursite.com/2019/07/26/Docker-Configuration/index.html">
 <meta property="og:site_name" content="I know nothing except the fact of my ignorance.">
-<meta property="og:description" content="Distribution       |  Configuration  ------------------ |  ------ Ubuntu/Debian/Gentoo   | /etc/default/dockerOpenSuse/CentOS/Red Hat| /etc/sysconfg/docker /lib/systemd/system/docker.service /user/lib">
+<meta property="og:description" content="Distribution Configuration      Ubuntu/Debian/Gentoo /etc/default/docker   OpenSuse/CentOS/Red Hat /etc/sysconfg/docker    /lib/systemd/system/docker.service /user/lib/systemd/system/service/docker">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-26T08:26:07.842Z">
+<meta property="og:updated_time" content="2019-07-26T08:27:18.463Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker Configuration">
-<meta name="twitter:description" content="Distribution       |  Configuration  ------------------ |  ------ Ubuntu/Debian/Gentoo   | /etc/default/dockerOpenSuse/CentOS/Red Hat| /etc/sysconfg/docker /lib/systemd/system/docker.service /user/lib">
+<meta name="twitter:description" content="Distribution Configuration      Ubuntu/Debian/Gentoo /etc/default/docker   OpenSuse/CentOS/Red Hat /etc/sysconfg/docker    /lib/systemd/system/docker.service /user/lib/systemd/system/service/docker">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1">
@@ -159,9 +159,24 @@
 
     
             <div class="post-content">
-            <pre><code>Distribution       |  Configuration 
------------------- |  ------
-</code></pre><p>Ubuntu/Debian/Gentoo   | /etc/default/docker<br>OpenSuse/CentOS/Red Hat| /etc/sysconfg/docker</p>
+            <table>
+<thead>
+<tr>
+<th>Distribution</th>
+<th>Configuration </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ubuntu/Debian/Gentoo</td>
+<td>/etc/default/docker</td>
+</tr>
+<tr>
+<td>OpenSuse/CentOS/Red Hat</td>
+<td>/etc/sysconfg/docker</td>
+</tr>
+</tbody>
+</table>
 <p>/lib/systemd/system/docker.service</p>
 <p>/user/lib/systemd/system/service/docker</p>
 <h5 id="场景一："><a href="#场景一：" class="headerlink" title="场景一："></a>场景一：</h5><p>Docker默认的配置文件/etc/default/docker或者/etc/sysconfig/docker都不起作用，查看了一下/lib/systemd/system/docker.service文件，发现里面没有加载默认配置文件，一些配置不知道要怎么弄了~~~</p>
