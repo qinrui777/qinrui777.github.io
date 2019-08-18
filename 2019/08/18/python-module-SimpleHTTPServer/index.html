@@ -43,7 +43,7 @@
 <meta property="og:site_name" content="I know nothing except the fact of my ignorance.">
 <meta property="og:description" content="what is”The SimpleHTTPServer module can be used in the following manner in order to set up a very basic web server serving files relative to the current directory. Warning SimpleHTTPServer is not reco">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-18T07:39:33.389Z">
+<meta property="og:updated_time" content="2019-08-18T08:19:41.531Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python module SimpleHTTPServer">
 <meta name="twitter:description" content="what is”The SimpleHTTPServer module can be used in the following manner in order to set up a very basic web server serving files relative to the current directory. Warning SimpleHTTPServer is not reco">
@@ -161,10 +161,15 @@
             <div class="post-content">
             <h3 id="what-is”"><a href="#what-is”" class="headerlink" title="what is”"></a>what is”</h3><p>The <strong>SimpleHTTPServer</strong> module can be used in the following manner in order to set up a very basic web server serving files <strong>relative</strong> to the current directory.</p>
 <p>Warning SimpleHTTPServer is not recommended for production. It only implements basic security checks.</p>
-<h4 id="Example-1-fetch-files-from-a-server"><a href="#Example-1-fetch-files-from-a-server" class="headerlink" title="Example 1: fetch files from a server"></a>Example 1: fetch files from a server</h4><p>Start server on server node<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> your_file_dir</span><br><span class="line">python -m SimpleHTTPServer &lt;PORT&gt;</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
-<p>Excute command on client node<br><code>wget &lt;server_node_ip&gt;:&lt;PROT&gt;/relative path/test.sh</code></p>
-<p>or </p>
-<p>Now, go to the browser and type this URL: <code>http://&lt;server_node_ip&gt;:&lt;PROT&gt;</code>and see the output.</p>
+<h4 id="Example-1-fetch-files-from-a-server"><a href="#Example-1-fetch-files-from-a-server" class="headerlink" title="Example 1: fetch files from a server"></a>Example 1: fetch files from a server</h4><ul>
+<li><p>Start <code>SimpleHTTPServer</code> on server node</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span>   your_file_dir</span><br><span class="line">python -m SimpleHTTPServer &lt;PORT&gt;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Excute command on client node<br><code>wget &lt;SERVER_NODE_IP&gt;:&lt;PROT&gt;/relative path/test.sh</code></p>
+</li>
+</ul>
+<p><em>or</em> go to the browser and type this URL: <code>http://&lt;SERVER_NODE_IP&gt;:&lt;PROT&gt;</code> and see the output.</p>
+<p><strong>TIPS</strong></p>
 <p>The SimpleHTTPServer module has been merged into http.server in Python 3.0. The 2to3 tool will automatically adapt imports when converting your sources to 3.0.<br><code>python3 -m http.server</code></p>
 
             </div>
