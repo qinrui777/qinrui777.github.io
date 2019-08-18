@@ -12,12 +12,12 @@
 
 
 
-  <meta name="description" content="Docker Configuration">
+  <meta name="description" content="python module SimpleHTTPServer">
 
 
 
 
-  <meta name="keywords" content="Docker,">
+  <meta name="keywords" content="python,">
 
 
 
@@ -32,21 +32,21 @@
 
 
 
-<link rel="canonical" href="http://yoursite.com/2019/07/26/Docker-Configuration/">
+<link rel="canonical" href="http://yoursite.com/2019/08/18/python-module-SimpleHTTPServer/">
 
 
-<meta name="description" content="Distribution Configuration      Ubuntu/Debian/Gentoo /etc/default/docker   OpenSuse/CentOS/Red Hat /etc/sysconfig/docker    /lib/systemd/system/docker.service /user/lib/systemd/system/service/docke">
-<meta name="keywords" content="Docker">
+<meta name="description" content="what is”The SimpleHTTPServer module can be used in the following manner in order to set up a very basic web server serving files relative to the current directory. Warning SimpleHTTPServer is not reco">
+<meta name="keywords" content="python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Docker Configuration">
-<meta property="og:url" content="http://yoursite.com/2019/07/26/Docker-Configuration/index.html">
+<meta property="og:title" content="python module SimpleHTTPServer">
+<meta property="og:url" content="http://yoursite.com/2019/08/18/python-module-SimpleHTTPServer/index.html">
 <meta property="og:site_name" content="I know nothing except the fact of my ignorance.">
-<meta property="og:description" content="Distribution Configuration      Ubuntu/Debian/Gentoo /etc/default/docker   OpenSuse/CentOS/Red Hat /etc/sysconfig/docker    /lib/systemd/system/docker.service /user/lib/systemd/system/service/docke">
+<meta property="og:description" content="what is”The SimpleHTTPServer module can be used in the following manner in order to set up a very basic web server serving files relative to the current directory. Warning SimpleHTTPServer is not reco">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-26T09:25:03.463Z">
+<meta property="og:updated_time" content="2019-08-18T07:39:33.389Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Docker Configuration">
-<meta name="twitter:description" content="Distribution Configuration      Ubuntu/Debian/Gentoo /etc/default/docker   OpenSuse/CentOS/Red Hat /etc/sysconfig/docker    /lib/systemd/system/docker.service /user/lib/systemd/system/service/docke">
+<meta name="twitter:title" content="python module SimpleHTTPServer">
+<meta name="twitter:description" content="what is”The SimpleHTTPServer module can be used in the following manner in order to set up a very basic web server serving files relative to the current directory. Warning SimpleHTTPServer is not reco">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1">
@@ -91,7 +91,7 @@
 
 
 
-    <title> Docker Configuration - I know nothing except the fact of my ignorance. </title>
+    <title> python module SimpleHTTPServer - I know nothing except the fact of my ignorance. </title>
   </head>
 
   <body>
@@ -146,12 +146,12 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          Docker Configuration
+          python module SimpleHTTPServer
         
       </h1>
 
       <time class="post-time">
-          Jul 26 2019
+          Aug 18 2019
       </time>
     </header>
 
@@ -159,31 +159,13 @@
 
     
             <div class="post-content">
-            <table>
-<thead>
-<tr>
-<th style="text-align:left">Distribution</th>
-<th>Configuration </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">Ubuntu/Debian/Gentoo</td>
-<td>/etc/default/docker</td>
-</tr>
-<tr>
-<td style="text-align:left">OpenSuse/CentOS/Red Hat</td>
-<td>/etc/sysconfig/docker</td>
-</tr>
-</tbody>
-</table>
-<p>/lib/systemd/system/docker.service</p>
-<p>/user/lib/systemd/system/service/docker</p>
-<h5 id="场景一："><a href="#场景一：" class="headerlink" title="场景一："></a>场景一：</h5><p>Docker默认的配置文件/etc/default/docker或者/etc/sysconfig/docker都不起作用，查看了一下/lib/systemd/system/docker.service文件，发现里面没有加载默认配置文件，一些配置不知道要怎么弄了~~~</p>
-<p>解决办法是：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ vi /lib/systemd/system/docker.service</span><br><span class="line"><span class="comment">#添加一行</span></span><br><span class="line">$ EnvironmentFile=-/etc/default/docker</span><br><span class="line">或者</span><br><span class="line">$ EnvironmentFile=-/etc/sysconfig/docker</span><br><span class="line"><span class="comment">#-代表ignore error</span></span><br></pre></td></tr></table></figure></p>
-<p>并修改</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ExecStart=/usr/bin/docker daemon -H fd://</span><br><span class="line"><span class="comment">#改成</span></span><br><span class="line">$ ExecStart=/usr/bin/docker daemon -H fd:// <span class="variable">$DOCKER_OPTS</span></span><br></pre></td></tr></table></figure>
-<p>这样才能使用/etc/default/docker里定义的DOCKER_OPTS参数</p>
+            <h3 id="what-is”"><a href="#what-is”" class="headerlink" title="what is”"></a>what is”</h3><p>The <strong>SimpleHTTPServer</strong> module can be used in the following manner in order to set up a very basic web server serving files <strong>relative</strong> to the current directory.</p>
+<p>Warning SimpleHTTPServer is not recommended for production. It only implements basic security checks.</p>
+<h4 id="Example-1-fetch-files-from-a-server"><a href="#Example-1-fetch-files-from-a-server" class="headerlink" title="Example 1: fetch files from a server"></a>Example 1: fetch files from a server</h4><p>Start server on server node<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> your_file_dir</span><br><span class="line">python -m SimpleHTTPServer &lt;PORT&gt;</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<p>Excute command on client node<br><code>wget &lt;server_node_ip&gt;:&lt;PROT&gt;/relative path/test.sh</code></p>
+<p>or </p>
+<p>Now, go to the browser and type this URL: <code>http://&lt;server_node_ip&gt;:&lt;PROT&gt;</code>and see the output.</p>
+<p>The SimpleHTTPServer module has been merged into http.server in Python 3.0. The 2to3 tool will automatically adapt imports when converting your sources to 3.0.<br><code>python3 -m http.server</code></p>
 
             </div>
           
@@ -193,7 +175,7 @@
 		
 		<div class="post-tags">
 		  
-			<a href="/tags/Docker/">Docker</a>
+			<a href="/tags/python/">python</a>
 		  
 		</div>
 		
@@ -202,15 +184,9 @@
         
   <nav class="post-nav">
     
-      <a class="prev" href="/2019/08/18/python-module-SimpleHTTPServer/">
-        <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">python module SimpleHTTPServer</span>
-        <span class="prev-text nav-mobile">Prev</span>
-      </a>
     
-    
-      <a class="next" href="/2019/07/26/Docker-Contract/">
-        <span class="next-text nav-default">Docker Contract</span>
+      <a class="next" href="/2019/07/26/Docker-Configuration/">
+        <span class="next-text nav-default">Docker Configuration</span>
         <span class="prev-text nav-mobile">Next</span>
         <i class="iconfont icon-right"></i>
       </a>
