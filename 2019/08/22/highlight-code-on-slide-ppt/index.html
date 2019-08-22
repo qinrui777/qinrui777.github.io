@@ -33,18 +33,18 @@
 <link rel="canonical" href="http://yoursite.com/2019/08/22/highlight-code-on-slide-ppt/">
 
 
-<meta name="description" content="only for mac 问题写ppt的时候代码如何呈现，能够看起来比较明显，更好是根据不同语言高亮 解决方案highlight  Installbrew install highlight  Usehightlight -l -O rtf your_code.sh | pbcopy   hightlight –help 可以查看文档，-l 显示行号，-O rtf为格式化输出 rtf 格式文本pb">
+<meta name="description" content="only for mac 问题写ppt的时候代码如何呈现，能够看起来比较明显，更好是根据不同语言高亮 解决方案highlight  Installbrew install highlight  Usehightlight -l -O rtf your_code.sh | pbcopy    hightlight –help 可以查看文档， -l 显示行号，-O rtf为格式化输出 rtf 格式文本">
 <meta property="og:type" content="article">
 <meta property="og:title" content="highlight code on slide&#x2F;ppt">
 <meta property="og:url" content="http://yoursite.com/2019/08/22/highlight-code-on-slide-ppt/index.html">
 <meta property="og:site_name" content="I know nothing except the fact of my ignorance.">
-<meta property="og:description" content="only for mac 问题写ppt的时候代码如何呈现，能够看起来比较明显，更好是根据不同语言高亮 解决方案highlight  Installbrew install highlight  Usehightlight -l -O rtf your_code.sh | pbcopy   hightlight –help 可以查看文档，-l 显示行号，-O rtf为格式化输出 rtf 格式文本pb">
+<meta property="og:description" content="only for mac 问题写ppt的时候代码如何呈现，能够看起来比较明显，更好是根据不同语言高亮 解决方案highlight  Installbrew install highlight  Usehightlight -l -O rtf your_code.sh | pbcopy    hightlight –help 可以查看文档， -l 显示行号，-O rtf为格式化输出 rtf 格式文本">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/highlight_demo01.png">
-<meta property="og:updated_time" content="2019-08-22T03:49:47.031Z">
+<meta property="og:updated_time" content="2019-08-22T05:54:20.022Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="highlight code on slide&#x2F;ppt">
-<meta name="twitter:description" content="only for mac 问题写ppt的时候代码如何呈现，能够看起来比较明显，更好是根据不同语言高亮 解决方案highlight  Installbrew install highlight  Usehightlight -l -O rtf your_code.sh | pbcopy   hightlight –help 可以查看文档，-l 显示行号，-O rtf为格式化输出 rtf 格式文本pb">
+<meta name="twitter:description" content="only for mac 问题写ppt的时候代码如何呈现，能够看起来比较明显，更好是根据不同语言高亮 解决方案highlight  Installbrew install highlight  Usehightlight -l -O rtf your_code.sh | pbcopy    hightlight –help 可以查看文档， -l 显示行号，-O rtf为格式化输出 rtf 格式文本">
 <meta name="twitter:image" content="http://yoursite.com/images/highlight_demo01.png">
 
 
@@ -167,7 +167,11 @@
 <li><p>Use<br><code>hightlight -l -O rtf your_code.sh | pbcopy</code></p>
 </li>
 </ol>
-<p>hightlight –help 可以查看文档，<br>-l 显示行号，-O rtf为格式化输出 rtf 格式文本<br>pbcopy 是内置剪贴板</p>
+<ul>
+<li>hightlight –help 可以查看文档，</li>
+<li>-l 显示行号，-O rtf为格式化输出 rtf 格式文本</li>
+<li>pbcopy 是内置剪贴板</li>
+</ul>
 <p>到PPT里粘贴就行了，Keynote 和 PowerPoint 都可以使用.<br>example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ cat output.sh</span><br><span class="line">docker <span class="built_in">exec</span> -it -u root tw-jenkins bash</span><br><span class="line"></span><br><span class="line">chmod 777 /var/run/docker.sock</span><br><span class="line">apt-get update &amp;&amp; \</span><br><span class="line">apt-get -y install apt-transport-https \</span><br><span class="line">     ca-certificates \</span><br><span class="line">     curl \</span><br><span class="line">     gnupg2 \</span><br><span class="line">     software-properties-common &amp;&amp; \</span><br><span class="line">curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; <span class="built_in">echo</span> <span class="string">"<span class="variable">$ID</span>"</span>)/gpg &gt; /tmp/dkey; apt-key add /tmp/dkey &amp;&amp; \</span><br><span class="line">add-apt-repository \</span><br><span class="line">    <span class="string">"deb [arch=amd64] https://download.docker.com/linux/<span class="variable">$(. /etc/os-release; echo     "$ID")</span> \</span></span><br><span class="line"><span class="string">    <span class="variable">$(lsb_release -cs)</span> \</span></span><br><span class="line"><span class="string">stable"</span> &amp;&amp; \</span><br><span class="line">apt-get update &amp;&amp; \</span><br><span class="line">apt-get -y install docker-ce</span><br></pre></td></tr></table></figure></p>
 <p><code>➜  ~ highlight -l -O rtf output.sh | pbcopy</code></p>
 <p><img src="/images/highlight_demo01.png" alt="highlight_demo01.png"></p>
