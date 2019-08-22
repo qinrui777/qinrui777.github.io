@@ -12,12 +12,10 @@
 
 
 
-  <meta name="description" content="python module SimpleHTTPServer">
+  <meta name="description" content="highlight code on slide/ppt">
 
 
 
-
-  <meta name="keywords" content="python,">
 
 
 
@@ -32,21 +30,22 @@
 
 
 
-<link rel="canonical" href="http://yoursite.com/2019/08/18/python-module-SimpleHTTPServer/">
+<link rel="canonical" href="http://yoursite.com/2019/08/22/highlight-code-on-slide-ppt/">
 
 
-<meta name="description" content="what isThe SimpleHTTPServer module can be used in the following manner in order to set up a very basic web server serving files relative to the current directory. Warning SimpleHTTPServer is not recom">
-<meta name="keywords" content="python">
+<meta name="description" content="only for mac 问题写ppt的时候代码如何呈现，能够看起来比较明显，更好是根据不同语言高亮 解决方案highlight  Installbrew install highlight  Usehightlight -l -O rtf your_code.sh | pbcopy   hightlight –help 可以查看文档，-l 显示行号，-O rtf为格式化输出 rtf 格式文本pb">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python module SimpleHTTPServer">
-<meta property="og:url" content="http://yoursite.com/2019/08/18/python-module-SimpleHTTPServer/index.html">
+<meta property="og:title" content="highlight code on slide&#x2F;ppt">
+<meta property="og:url" content="http://yoursite.com/2019/08/22/highlight-code-on-slide-ppt/index.html">
 <meta property="og:site_name" content="I know nothing except the fact of my ignorance.">
-<meta property="og:description" content="what isThe SimpleHTTPServer module can be used in the following manner in order to set up a very basic web server serving files relative to the current directory. Warning SimpleHTTPServer is not recom">
+<meta property="og:description" content="only for mac 问题写ppt的时候代码如何呈现，能够看起来比较明显，更好是根据不同语言高亮 解决方案highlight  Installbrew install highlight  Usehightlight -l -O rtf your_code.sh | pbcopy   hightlight –help 可以查看文档，-l 显示行号，-O rtf为格式化输出 rtf 格式文本pb">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-18T11:35:33.284Z">
+<meta property="og:image" content="http://yoursite.com/images/highlight_demo01.png">
+<meta property="og:updated_time" content="2019-08-22T03:49:47.031Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="python module SimpleHTTPServer">
-<meta name="twitter:description" content="what isThe SimpleHTTPServer module can be used in the following manner in order to set up a very basic web server serving files relative to the current directory. Warning SimpleHTTPServer is not recom">
+<meta name="twitter:title" content="highlight code on slide&#x2F;ppt">
+<meta name="twitter:description" content="only for mac 问题写ppt的时候代码如何呈现，能够看起来比较明显，更好是根据不同语言高亮 解决方案highlight  Installbrew install highlight  Usehightlight -l -O rtf your_code.sh | pbcopy   hightlight –help 可以查看文档，-l 显示行号，-O rtf为格式化输出 rtf 格式文本pb">
+<meta name="twitter:image" content="http://yoursite.com/images/highlight_demo01.png">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1">
@@ -91,7 +90,7 @@
 
 
 
-    <title> python module SimpleHTTPServer - I know nothing except the fact of my ignorance. </title>
+    <title> highlight code on slide/ppt - I know nothing except the fact of my ignorance. </title>
   </head>
 
   <body>
@@ -146,12 +145,12 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          python module SimpleHTTPServer
+          highlight code on slide/ppt
         
       </h1>
 
       <time class="post-time">
-          Aug 18 2019
+          Aug 22 2019
       </time>
     </header>
 
@@ -159,22 +158,19 @@
 
     
             <div class="post-content">
-            <h3 id="what-is"><a href="#what-is" class="headerlink" title="what is"></a>what is</h3><p>The <strong>SimpleHTTPServer</strong> module can be used in the following manner in order to set up a very basic web server serving files <strong>relative</strong> to the current directory.</p>
-<p>Warning SimpleHTTPServer is not recommended for production. It only implements basic security checks.</p>
-<h4 id="Example-1-fetch-files-from-a-server"><a href="#Example-1-fetch-files-from-a-server" class="headerlink" title="Example 1: fetch files from a server"></a>Example 1: fetch files from a server</h4><ul>
-<li><ol>
-<li>Start <code>SimpleHTTPServer</code> on server node<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span>   your_file_dir</span><br><span class="line">python -m SimpleHTTPServer &lt;PORT&gt;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+            <p><strong>only for mac</strong></p>
+<p><strong>问题</strong><br>写ppt的时候代码如何呈现，能够看起来比较明显，更好是根据不同语言高亮</p>
+<p><strong>解决方案</strong><br>highlight</p>
+<ol>
+<li><p>Install<br><code>brew install highlight</code></p>
+</li>
+<li><p>Use<br><code>hightlight -l -O rtf your_code.sh | pbcopy</code></p>
 </li>
 </ol>
-</li>
-<li><ol start="2">
-<li>Excute command on client node<br><code>wget &lt;SERVER_NODE_IP&gt;:&lt;PROT&gt;/relative path/test.sh</code></li>
-</ol>
-</li>
-</ul>
-<p><em>or</em> go to the browser and type this URL: <code>http://&lt;SERVER_NODE_IP&gt;:&lt;PROT&gt;</code> and see the output.</p>
-<p><strong>TIPS</strong></p>
-<p>The SimpleHTTPServer module has been merged into http.server in Python 3.0. The 2to3 tool will automatically adapt imports when converting your sources to 3.0.<br><code>python3 -m http.server</code></p>
+<p>hightlight –help 可以查看文档，<br>-l 显示行号，-O rtf为格式化输出 rtf 格式文本<br>pbcopy 是内置剪贴板</p>
+<p>到PPT里粘贴就行了，Keynote 和 PowerPoint 都可以使用.<br>example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ cat output.sh</span><br><span class="line">docker <span class="built_in">exec</span> -it -u root tw-jenkins bash</span><br><span class="line"></span><br><span class="line">chmod 777 /var/run/docker.sock</span><br><span class="line">apt-get update &amp;&amp; \</span><br><span class="line">apt-get -y install apt-transport-https \</span><br><span class="line">     ca-certificates \</span><br><span class="line">     curl \</span><br><span class="line">     gnupg2 \</span><br><span class="line">     software-properties-common &amp;&amp; \</span><br><span class="line">curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; <span class="built_in">echo</span> <span class="string">"<span class="variable">$ID</span>"</span>)/gpg &gt; /tmp/dkey; apt-key add /tmp/dkey &amp;&amp; \</span><br><span class="line">add-apt-repository \</span><br><span class="line">    <span class="string">"deb [arch=amd64] https://download.docker.com/linux/<span class="variable">$(. /etc/os-release; echo     "$ID")</span> \</span></span><br><span class="line"><span class="string">    <span class="variable">$(lsb_release -cs)</span> \</span></span><br><span class="line"><span class="string">stable"</span> &amp;&amp; \</span><br><span class="line">apt-get update &amp;&amp; \</span><br><span class="line">apt-get -y install docker-ce</span><br></pre></td></tr></table></figure></p>
+<p><code>➜  ~ highlight -l -O rtf output.sh | pbcopy</code></p>
+<p><img src="/images/highlight_demo01.png" alt="highlight_demo01.png"></p>
 
             </div>
           
@@ -182,26 +178,14 @@
     
       <footer class="post-footer">
 		
-		<div class="post-tags">
-		  
-			<a href="/tags/python/">python</a>
-		  
-		</div>
-		
 
         
         
   <nav class="post-nav">
     
-      <a class="prev" href="/2019/08/22/highlight-code-on-slide-ppt/">
-        <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">highlight code on slide/ppt</span>
-        <span class="prev-text nav-mobile">Prev</span>
-      </a>
     
-    
-      <a class="next" href="/2019/07/26/Docker-Configuration/">
-        <span class="next-text nav-default">Docker Configuration</span>
+      <a class="next" href="/2019/08/18/python-module-SimpleHTTPServer/">
+        <span class="next-text nav-default">python module SimpleHTTPServer</span>
         <span class="prev-text nav-mobile">Next</span>
         <i class="iconfont icon-right"></i>
       </a>
