@@ -12,7 +12,7 @@
 
 
 
-  <meta name="description" content="tmub tutorial">
+  <meta name="description" content="tmux tutorial">
 
 
 
@@ -38,15 +38,15 @@
 <meta name="description" content="1.tmux是什么tmux (terminal multiplexer),是一个 BSD 协议发布的终端复用软件，用来在服务器端托管同时运行的 Shell. 效果如图：  tmux   几个重要概念：  1.会话(session): 建立一个 tmux 工作区会话，会话可以长期驻留，重新连接服务器不会丢失，我们只需重新 tmux attach 到之前的工作区就可以恢复会话 2.窗口(window)">
 <meta name="keywords" content="tmux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="tmub tutorial">
+<meta property="og:title" content="tmux tutorial">
 <meta property="og:url" content="http://yoursite.com/2019/09/07/tmub-tutorial/index.html">
 <meta property="og:site_name" content="I know nothing except the fact of my ignorance.">
 <meta property="og:description" content="1.tmux是什么tmux (terminal multiplexer),是一个 BSD 协议发布的终端复用软件，用来在服务器端托管同时运行的 Shell. 效果如图：  tmux   几个重要概念：  1.会话(session): 建立一个 tmux 工作区会话，会话可以长期驻留，重新连接服务器不会丢失，我们只需重新 tmux attach 到之前的工作区就可以恢复会话 2.窗口(window)">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/image_tmux_01.png">
-<meta property="og:updated_time" content="2019-09-08T02:15:44.670Z">
+<meta property="og:updated_time" content="2019-09-09T11:23:23.144Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tmub tutorial">
+<meta name="twitter:title" content="tmux tutorial">
 <meta name="twitter:description" content="1.tmux是什么tmux (terminal multiplexer),是一个 BSD 协议发布的终端复用软件，用来在服务器端托管同时运行的 Shell. 效果如图：  tmux   几个重要概念：  1.会话(session): 建立一个 tmux 工作区会话，会话可以长期驻留，重新连接服务器不会丢失，我们只需重新 tmux attach 到之前的工作区就可以恢复会话 2.窗口(window)">
 <meta name="twitter:image" content="http://yoursite.com/images/image_tmux_01.png">
 
@@ -93,7 +93,7 @@
 
 
 
-    <title> tmub tutorial - I know nothing except the fact of my ignorance. </title>
+    <title> tmux tutorial - I know nothing except the fact of my ignorance. </title>
   </head>
 
   <body>
@@ -148,7 +148,7 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          tmub tutorial
+          tmux tutorial
         
       </h1>
 
@@ -190,19 +190,19 @@
 </blockquote>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">:new&lt;回车&gt;  启动新会话</span><br><span class="line">s           列出所有会话</span><br><span class="line">$           重命名当前会话</span><br><span class="line">d           暂时离开 deattach</span><br></pre></td></tr></table></figure>
 <ul>
-<li><p>窗口(window)</p>
-<blockquote>
+<li>窗口(window)<blockquote>
 <p>快捷指令</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">c  创建新窗口</span><br><span class="line">w  列出所有窗口</span><br><span class="line">n  后一个窗口 next</span><br><span class="line">p  前一个窗口 pervious</span><br><span class="line">f  查找窗口</span><br><span class="line">,  重命名当前窗口</span><br><span class="line">&amp;  关闭当前窗口</span><br><span class="line">数字0,1,2... 也可用来切换窗口</span><br></pre></td></tr></table></figure>
-</blockquote>
-</li>
-<li><p>窗格(pane)</p>
-<blockquote>
-<p>快捷指令</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">%  垂直分割</span><br><span class="line"><span class="string">"  水平分割</span></span><br><span class="line"><span class="string">上下左右 方向按键调整光标位置</span></span><br><span class="line"><span class="string">o  选择下一面板</span></span><br><span class="line"><span class="string">x  关闭窗格</span></span><br><span class="line"><span class="string">q 显示每个窗格是第几个，当数字出现的时候按数字几就选中第几个窗格</span></span><br><span class="line"><span class="string">&#123; 与上一个窗格交换位置</span></span><br><span class="line"><span class="string">&#125; 与下一个窗格交换位置</span></span><br><span class="line"><span class="string">z 切换窗格最大化/最小化</span></span><br></pre></td></tr></table></figure>
 </blockquote>
 </li>
 </ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">c  创建新窗口</span><br><span class="line">w  列出所有窗口</span><br><span class="line">n  后一个窗口 next</span><br><span class="line">p  前一个窗口 pervious</span><br><span class="line">f  查找窗口</span><br><span class="line">,  重命名当前窗口</span><br><span class="line">&amp;  关闭当前窗口</span><br><span class="line">数字0,1,2... 也可用来切换窗口</span><br></pre></td></tr></table></figure>
+<ul>
+<li>窗格(pane)<blockquote>
+<p>快捷指令</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">%  垂直分割</span><br><span class="line"><span class="string">"  水平分割</span></span><br><span class="line"><span class="string">上下左右 方向按键调整光标位置</span></span><br><span class="line"><span class="string">o  选择下一面板</span></span><br><span class="line"><span class="string">x  关闭窗格</span></span><br><span class="line"><span class="string">q 显示每个窗格是第几个，当数字出现的时候按数字几就选中第几个窗格</span></span><br><span class="line"><span class="string">&#123; 与上一个窗格交换位置</span></span><br><span class="line"><span class="string">&#125; 与下一个窗格交换位置</span></span><br><span class="line"><span class="string">z 切换窗格最大化/最小化</span></span><br></pre></td></tr></table></figure>
 <p>其他：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">t  窗口中央显示一个数字时钟</span><br><span class="line">?  列出所有快捷键</span><br><span class="line">:  命令提示符</span><br></pre></td></tr></table></figure></p>
 <p>基本配置：</p>
 <ul>
