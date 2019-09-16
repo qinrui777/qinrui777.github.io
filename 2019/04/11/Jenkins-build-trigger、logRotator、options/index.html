@@ -17,7 +17,7 @@
 
 
 
-  <meta name="keywords" content="Job DSL,Jenkins,">
+  <meta name="keywords" content="Jenkins,">
 
 
 
@@ -36,14 +36,14 @@
 
 
 <meta name="description" content="Declarative Pipeline 与Job DSL的同一个功能的语法命令有些差异，不能直接套用，需要查对应的官方文档。  1.Jenkins Declarative Pipeline语法如下 123456789101112131415161718//Jenkinsfile (Declarative Pipeline)pipeline &amp;#123;    agent &amp;#123; label">
-<meta name="keywords" content="Job DSL,Jenkins">
+<meta name="keywords" content="Jenkins">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Jenkins build trigger、logRotator、buildDiscarder etc">
 <meta property="og:url" content="http://yoursite.com/2019/04/11/Jenkins-build-trigger、logRotator、options/index.html">
 <meta property="og:site_name" content="I know nothing except the fact of my ignorance.">
 <meta property="og:description" content="Declarative Pipeline 与Job DSL的同一个功能的语法命令有些差异，不能直接套用，需要查对应的官方文档。  1.Jenkins Declarative Pipeline语法如下 123456789101112131415161718//Jenkinsfile (Declarative Pipeline)pipeline &amp;#123;    agent &amp;#123; label">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-16T06:40:40.782Z">
+<meta property="og:updated_time" content="2019-09-16T06:45:50.935Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Jenkins build trigger、logRotator、buildDiscarder etc">
 <meta name="twitter:description" content="Declarative Pipeline 与Job DSL的同一个功能的语法命令有些差异，不能直接套用，需要查对应的官方文档。  1.Jenkins Declarative Pipeline语法如下 123456789101112131415161718//Jenkinsfile (Declarative Pipeline)pipeline &amp;#123;    agent &amp;#123; label">
@@ -164,7 +164,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">//Jenkinsfile (Declarative Pipeline)</span><br><span class="line">pipeline &#123;</span><br><span class="line">    agent &#123; label  <span class="string">'sbt'</span> &#125;</span><br><span class="line">    options&#123;</span><br><span class="line">        buildDiscarder(logRotator(numToKeepStr:<span class="string">'5'</span>))</span><br><span class="line">        disableConcurrentBuilds()</span><br><span class="line">    &#125;</span><br><span class="line">    triggers&#123;</span><br><span class="line">       pollSCM(<span class="string">'H/2 * * * 1-5'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    environment &#123;</span><br><span class="line">        MYBRANCH = <span class="string">"<span class="variable">$&#123;env.BRANCH_NAME&#125;</span>"</span></span><br><span class="line">        NEXUS_URL = <span class="string">'117.121.xxx.xx:443'</span></span><br><span class="line">        BASE_IMAGE_TAG = <span class="string">"<span class="variable">$&#123;NEXUS_URL&#125;</span>/<span class="variable">$&#123;GROUP_NAME&#125;</span>/<span class="variable">$&#123;SERVICE_NAME&#125;</span>"</span></span><br><span class="line">        BRANCH_IMAGE_TAG = <span class="string">"<span class="variable">$&#123;NEXUS_URL&#125;</span>/<span class="variable">$&#123;GROUP_NAME&#125;</span>/<span class="variable">$&#123;SERVICE_NAME&#125;</span>-<span class="variable">$&#123;MYBRANCH&#125;</span>"</span></span><br><span class="line">    &#125;</span><br><span class="line">...   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>1.1  triggers</strong></p>
 <p><strong>1.2  buildDiscarder</strong></p>
-<p><strong>1.3 disableConcurrentBuilds</strong></p>
+<p><strong>1.3  disableConcurrentBuilds</strong></p>
 <ul>
 <li>daysToKeepStr: history is only kept up to this days.</li>
 <li>numToKeepStr: only this number of build logs are kept.</li>
@@ -199,8 +199,6 @@
       <footer class="post-footer">
 		
 		<div class="post-tags">
-		  
-			<a href="/tags/Job-DSL/">Job DSL</a>
 		  
 			<a href="/tags/Jenkins/">Jenkins</a>
 		  
