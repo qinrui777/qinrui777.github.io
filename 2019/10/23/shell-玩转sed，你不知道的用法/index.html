@@ -35,18 +35,18 @@
 <link rel="canonical" href="http://yoursite.com/2019/10/23/shell-玩转sed，你不知道的用法/">
 
 
-<meta name="description" content="sed 是 stream editor（流编辑器）的缩写 sed 命令会将 s 之后的字符视为命令分隔符，这允许我们更改默认的分隔符，如 sed &amp;#39;s:this:new:g&amp;#39; example.conf、sed &amp;#39;s|this|new|g&amp;#39; example.conf, 如果作为分隔符的字符出现在模式中，必须使用 \对其进行转义    操作 作用     p 打印文本行">
+<meta name="description" content="sed 是 stream editor（流编辑器）的缩写    操作 作用     p 打印文本行(print)   n 取消默认输出   d 删除(delete)   s 字符串替换(substitude)   a 追加新的文本(append)    示例文件 1234567# cat example.confusername=this  username_2=thispassword=that">
 <meta name="keywords" content="Shell">
 <meta property="og:type" content="article">
 <meta property="og:title" content="shell 玩转sed，你不知道的用法">
 <meta property="og:url" content="http://yoursite.com/2019/10/23/shell-玩转sed，你不知道的用法/index.html">
 <meta property="og:site_name" content="I know nothing except the fact of my ignorance.">
-<meta property="og:description" content="sed 是 stream editor（流编辑器）的缩写 sed 命令会将 s 之后的字符视为命令分隔符，这允许我们更改默认的分隔符，如 sed &amp;#39;s:this:new:g&amp;#39; example.conf、sed &amp;#39;s|this|new|g&amp;#39; example.conf, 如果作为分隔符的字符出现在模式中，必须使用 \对其进行转义    操作 作用     p 打印文本行">
+<meta property="og:description" content="sed 是 stream editor（流编辑器）的缩写    操作 作用     p 打印文本行(print)   n 取消默认输出   d 删除(delete)   s 字符串替换(substitude)   a 追加新的文本(append)    示例文件 1234567# cat example.confusername=this  username_2=thispassword=that">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-10-23T03:43:06.506Z">
+<meta property="og:updated_time" content="2019-10-23T03:50:09.344Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shell 玩转sed，你不知道的用法">
-<meta name="twitter:description" content="sed 是 stream editor（流编辑器）的缩写 sed 命令会将 s 之后的字符视为命令分隔符，这允许我们更改默认的分隔符，如 sed &amp;#39;s:this:new:g&amp;#39; example.conf、sed &amp;#39;s|this|new|g&amp;#39; example.conf, 如果作为分隔符的字符出现在模式中，必须使用 \对其进行转义    操作 作用     p 打印文本行">
+<meta name="twitter:description" content="sed 是 stream editor（流编辑器）的缩写    操作 作用     p 打印文本行(print)   n 取消默认输出   d 删除(delete)   s 字符串替换(substitude)   a 追加新的文本(append)    示例文件 1234567# cat example.confusername=this  username_2=thispassword=that">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1">
@@ -160,7 +160,6 @@
     
             <div class="post-content">
             <p>sed 是 stream editor（流编辑器）的缩写</p>
-<p>sed 命令会将 <code>s</code> 之后的字符视为命令分隔符，这允许我们更改默认的分隔符，如 <code>sed &#39;s:this:new:g&#39; example.conf</code>、<code>sed &#39;s|this|new|g&#39; example.conf</code>, 如果作为分隔符的字符出现在模式中，必须使用 <code>\</code>对其进行转义</p>
 <table>
 <thead>
 <tr>
@@ -193,7 +192,8 @@
 </table>
 <p>示例文件</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat example.conf</span></span><br><span class="line">username=this  username_2=this</span><br><span class="line">password=that</span><br><span class="line"></span><br><span class="line">url=this</span><br><span class="line"></span><br><span class="line">path=this</span><br></pre></td></tr></table></figure>
-<h3 id="1-替换"><a href="#1-替换" class="headerlink" title="1.替换"></a>1.替换</h3><p><code>sed &#39;s/this/new/&#39; example.conf</code>  替换 <strong>每行</strong>中 <strong>首次</strong> 匹配的内容</p>
+<h3 id="1-替换"><a href="#1-替换" class="headerlink" title="1.替换"></a>1.替换</h3><p>sed 命令会将 <code>s</code> 之后的字符视为命令分隔符，这允许我们更改默认的分隔符，如:<br><code>sed &#39;s:this:new:g&#39; example.conf</code><br><code>sed &#39;s|this|new|g&#39; example.conf</code><br>如果作为分隔符的字符出现在模式中，必须使用 <code>\</code>对其进行转义</p>
+<p><code>sed &#39;s/this/new/&#39; example.conf</code>  替换 <strong>每行</strong>中 <strong>首次</strong> 匹配的内容</p>
 <p>ouput:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">username=new  username_2=this</span><br><span class="line">password=that</span><br><span class="line"></span><br><span class="line">url=new</span><br><span class="line"></span><br><span class="line">path=new</span><br></pre></td></tr></table></figure></p>
 <p><code>sed &#39;s/this/new/g&#39; example.conf</code> g标记可以使sed执行全局替换</p>
 <p><code>sed &#39;s/this/new/2g&#39; example.conf</code> #g可以使sed替换第N次出现的匹配</p>
@@ -202,7 +202,8 @@
 <p><code>sed -e &#39;/url/d&#39;  example.conf</code> 删除含”url”的行,输出到终端，实际没有替换文件</p>
 <p><code>sed &#39;/appleapple/d;$d&#39; example.conf</code> 删除包含appleapple的行和最后一行($)  </p>
 <p>移除空行<br><code>sed &#39;/^$/d&#39; file</code> 空行可以用 ^$ 进行匹配，最后的 /d 告诉sed不执行替换操作，而是直接删除匹配到的空行</p>
-<p>✍TIP</p>
+<hr>
+<p><strong>✍TIP</strong></p>
 <ol>
 <li><p>首先使用不带 -i选项的sed命令，查看结果是否符合预期；再加入 -i选项将更改写入文件。</p>
 </li>
