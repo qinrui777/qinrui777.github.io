@@ -43,7 +43,7 @@
 <meta property="og:site_name" content="I know nothing except the fact of my ignorance.">
 <meta property="og:description" content="sed 是 stream editor（流编辑器）的缩写 sed 命令会将 s 之后的字符视为命令分隔符，这允许我们更改默认的分隔符，如 sed &amp;#39;s:this:new:g&amp;#39; example.conf、sed &amp;#39;s|this|new|g&amp;#39; example.conf, 如果作为分隔符的字符出现在模式中，必须使用 \对其进行转义     操作 作用      p 打印文">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-10-23T03:19:53.467Z">
+<meta property="og:updated_time" content="2019-10-23T03:40:19.671Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shell 玩转sed，你不知道的用法">
 <meta name="twitter:description" content="sed 是 stream editor（流编辑器）的缩写 sed 命令会将 s 之后的字符视为命令分隔符，这允许我们更改默认的分隔符，如 sed &amp;#39;s:this:new:g&amp;#39; example.conf、sed &amp;#39;s|this|new|g&amp;#39; example.conf, 如果作为分隔符的字符出现在模式中，必须使用 \对其进行转义     操作 作用      p 打印文">
@@ -179,7 +179,7 @@
 <tr>
 <td style="text-align:left"></td>
 <td>n</td>
-<td>取下一行(next)</td>
+<td>取消默认输出</td>
 <td></td>
 </tr>
 <tr>
@@ -208,13 +208,17 @@
 <p>ouput:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">username=new  username_2=this</span><br><span class="line">password=that</span><br><span class="line"></span><br><span class="line">url=new</span><br><span class="line"></span><br><span class="line">path=new</span><br></pre></td></tr></table></figure></p>
 <p><code>sed &#39;s/this/new/g&#39; example.conf</code> g标记可以使sed执行全局替换</p>
 <p><code>sed &#39;s/this/new/2g&#39; example.conf</code> #g可以使sed替换第N次出现的匹配</p>
-<p>将1-4行的apple换成AMAZON。s代表替换，g代表如果一行出现两个apple则全部替换<br><code>sed &#39;1,4s/apple/AMAZON/g&#39; example.conf</code></p>
-<h3 id="2-删除"><a href="#2-删除" class="headerlink" title="2.删除"></a>2.删除</h3><p>删除第2到4行<br><code>sed &#39;2,4d&#39; example.conf</code> </p>
-<p>删除包含appleapple的行和最后一行($)<br><code>sed &#39;/appleapple/d;$d&#39; example.conf</code></p>
-<p>移除空行<br>空行可以用 ^$ 进行匹配，最后的 /d 告诉sed不执行替换操作，而是直接删除匹配到的空行<br><code>sed &#39;/^$/d&#39; file</code></p>
+<p>将1-4行的url换成address, s代表替换<br><code>sed &#39;1,4s/url/address/g&#39; example.conf</code></p>
+<h3 id="2-删除"><a href="#2-删除" class="headerlink" title="2.删除"></a>2.删除</h3><p><code>sed &#39;2,4d&#39; example.conf</code>  删除第2到4行  </p>
+<p><code>sed -e &#39;/url/d&#39;  example.conf</code> 删除含”url”的行,输出到终端，实际没有替换文件</p>
+<p><code>sed &#39;/appleapple/d;$d&#39; example.conf</code> 删除包含appleapple的行和最后一行($)  </p>
+<p>移除空行<br><code>sed &#39;/^$/d&#39; file</code> 空行可以用 ^$ 进行匹配，最后的 /d 告诉sed不执行替换操作，而是直接删除匹配到的空行</p>
 <p>✍TIP</p>
 <ol>
-<li>首先使用不带 -i选项的sed命令，查看结果是否符合预期；再加入 -i选项将更改写入文件。</li>
+<li><p>首先使用不带 -i选项的sed命令，查看结果是否符合预期；再加入 -i选项将更改写入文件。</p>
+</li>
+<li><p><code>sed -i.bak &#39;s/abc/def&#39; file</code> 这时的sed不仅替换文件内容，还会创建一个名为file.bak的文件，其中包含着原始文件内容的副本;如果对一个文件多次执行，则xx.bak文件只会是上一个文件的副本</p>
+</li>
 </ol>
 
             </div>
