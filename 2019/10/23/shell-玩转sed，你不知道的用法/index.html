@@ -35,18 +35,18 @@
 <link rel="canonical" href="http://yoursite.com/2019/10/23/shell-玩转sed，你不知道的用法/">
 
 
-<meta name="description" content="sed 是 stream editor（流编辑器）的缩写 sed 命令会将 s 之后的字符视为命令分隔符，这允许我们更改默认的分隔符，如 sed &amp;#39;s:this:new:g&amp;#39; example.conf、sed &amp;#39;s|this|new|g&amp;#39; example.conf, 如果作为分隔符的字符出现在模式中，必须使用 \对其进行转义     操作 作用      p 打印文">
+<meta name="description" content="sed 是 stream editor（流编辑器）的缩写 sed 命令会将 s 之后的字符视为命令分隔符，这允许我们更改默认的分隔符，如 sed &amp;#39;s:this:new:g&amp;#39; example.conf、sed &amp;#39;s|this|new|g&amp;#39; example.conf, 如果作为分隔符的字符出现在模式中，必须使用 \对其进行转义    操作 作用     p 打印文本行">
 <meta name="keywords" content="Shell">
 <meta property="og:type" content="article">
 <meta property="og:title" content="shell 玩转sed，你不知道的用法">
 <meta property="og:url" content="http://yoursite.com/2019/10/23/shell-玩转sed，你不知道的用法/index.html">
 <meta property="og:site_name" content="I know nothing except the fact of my ignorance.">
-<meta property="og:description" content="sed 是 stream editor（流编辑器）的缩写 sed 命令会将 s 之后的字符视为命令分隔符，这允许我们更改默认的分隔符，如 sed &amp;#39;s:this:new:g&amp;#39; example.conf、sed &amp;#39;s|this|new|g&amp;#39; example.conf, 如果作为分隔符的字符出现在模式中，必须使用 \对其进行转义     操作 作用      p 打印文">
+<meta property="og:description" content="sed 是 stream editor（流编辑器）的缩写 sed 命令会将 s 之后的字符视为命令分隔符，这允许我们更改默认的分隔符，如 sed &amp;#39;s:this:new:g&amp;#39; example.conf、sed &amp;#39;s|this|new|g&amp;#39; example.conf, 如果作为分隔符的字符出现在模式中，必须使用 \对其进行转义    操作 作用     p 打印文本行">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-10-23T03:40:19.671Z">
+<meta property="og:updated_time" content="2019-10-23T03:43:06.506Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shell 玩转sed，你不知道的用法">
-<meta name="twitter:description" content="sed 是 stream editor（流编辑器）的缩写 sed 命令会将 s 之后的字符视为命令分隔符，这允许我们更改默认的分隔符，如 sed &amp;#39;s:this:new:g&amp;#39; example.conf、sed &amp;#39;s|this|new|g&amp;#39; example.conf, 如果作为分隔符的字符出现在模式中，必须使用 \对其进行转义     操作 作用      p 打印文">
+<meta name="twitter:description" content="sed 是 stream editor（流编辑器）的缩写 sed 命令会将 s 之后的字符视为命令分隔符，这允许我们更改默认的分隔符，如 sed &amp;#39;s:this:new:g&amp;#39; example.conf、sed &amp;#39;s|this|new|g&amp;#39; example.conf, 如果作为分隔符的字符出现在模式中，必须使用 \对其进行转义    操作 作用     p 打印文本行">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1">
@@ -164,41 +164,30 @@
 <table>
 <thead>
 <tr>
-<th style="text-align:left"></th>
-<th>操作</th>
+<th style="text-align:left">操作</th>
 <th>作用</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left"></td>
-<td>p</td>
+<td style="text-align:left">p</td>
 <td>打印文本行(print)</td>
-<td></td>
 </tr>
 <tr>
-<td style="text-align:left"></td>
-<td>n</td>
+<td style="text-align:left">n</td>
 <td>取消默认输出</td>
-<td></td>
 </tr>
 <tr>
-<td style="text-align:left"></td>
-<td>d</td>
+<td style="text-align:left">d</td>
 <td>删除(delete)</td>
-<td></td>
 </tr>
 <tr>
-<td style="text-align:left"></td>
-<td>s</td>
+<td style="text-align:left">s</td>
 <td>字符串替换(substitude)</td>
-<td></td>
 </tr>
 <tr>
-<td style="text-align:left"></td>
-<td>a</td>
+<td style="text-align:left">a</td>
 <td>追加新的文本(append)</td>
-<td></td>
 </tr>
 </tbody>
 </table>
