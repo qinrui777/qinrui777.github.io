@@ -35,18 +35,18 @@
 <link rel="canonical" href="http://yoursite.com/2019/10/23/shell-没有vim-vi-命令怎么办/">
 
 
-<meta name="description" content="由于经常在容器中有一些debug的操作，想要编辑文件，却又发现 一无所有（没有 vim/vi 编辑命令）。解决办法可能是去安装，但下载需要时间等待，且下载的工具使用也不是很频繁。所以换个思路，用其他基础的命令替代下。 12345# cat &amp;lt;&amp;lt;EOF &amp;gt; cat_test.sh&amp;gt; #!/bin/bash&amp;gt; echo &quot;no vim/vi&quot;&amp;gt; echo &quot;Bu">
+<meta name="description" content="由于经常在容器中有一些debug的操作，想要编辑文件，却又发现 一无所有（没有 vim/vi 编辑命令）。解决办法可能是去安装，但下载需要时间等待，且下载的工具使用也不是很频繁。所以换个思路，用其他基础的命令替代下。 cat EOF 常用方法12345# cat &amp;lt;&amp;lt;EOF &amp;gt; cat_test.sh&amp;gt; #!/bin/bash&amp;gt; echo &quot;no vim/vi&quot;&amp;">
 <meta name="keywords" content="Shell">
 <meta property="og:type" content="article">
 <meta property="og:title" content="shell 没有vim&#x2F;vi 命令怎么办">
 <meta property="og:url" content="http://yoursite.com/2019/10/23/shell-没有vim-vi-命令怎么办/index.html">
 <meta property="og:site_name" content="I know nothing except the fact of my ignorance.">
-<meta property="og:description" content="由于经常在容器中有一些debug的操作，想要编辑文件，却又发现 一无所有（没有 vim/vi 编辑命令）。解决办法可能是去安装，但下载需要时间等待，且下载的工具使用也不是很频繁。所以换个思路，用其他基础的命令替代下。 12345# cat &amp;lt;&amp;lt;EOF &amp;gt; cat_test.sh&amp;gt; #!/bin/bash&amp;gt; echo &quot;no vim/vi&quot;&amp;gt; echo &quot;Bu">
+<meta property="og:description" content="由于经常在容器中有一些debug的操作，想要编辑文件，却又发现 一无所有（没有 vim/vi 编辑命令）。解决办法可能是去安装，但下载需要时间等待，且下载的工具使用也不是很频繁。所以换个思路，用其他基础的命令替代下。 cat EOF 常用方法12345# cat &amp;lt;&amp;lt;EOF &amp;gt; cat_test.sh&amp;gt; #!/bin/bash&amp;gt; echo &quot;no vim/vi&quot;&amp;">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-10-23T02:38:39.993Z">
+<meta property="og:updated_time" content="2019-10-23T02:44:33.389Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shell 没有vim&#x2F;vi 命令怎么办">
-<meta name="twitter:description" content="由于经常在容器中有一些debug的操作，想要编辑文件，却又发现 一无所有（没有 vim/vi 编辑命令）。解决办法可能是去安装，但下载需要时间等待，且下载的工具使用也不是很频繁。所以换个思路，用其他基础的命令替代下。 12345# cat &amp;lt;&amp;lt;EOF &amp;gt; cat_test.sh&amp;gt; #!/bin/bash&amp;gt; echo &quot;no vim/vi&quot;&amp;gt; echo &quot;Bu">
+<meta name="twitter:description" content="由于经常在容器中有一些debug的操作，想要编辑文件，却又发现 一无所有（没有 vim/vi 编辑命令）。解决办法可能是去安装，但下载需要时间等待，且下载的工具使用也不是很频繁。所以换个思路，用其他基础的命令替代下。 cat EOF 常用方法12345# cat &amp;lt;&amp;lt;EOF &amp;gt; cat_test.sh&amp;gt; #!/bin/bash&amp;gt; echo &quot;no vim/vi&quot;&amp;">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1">
@@ -160,10 +160,19 @@
     
             <div class="post-content">
             <p>  由于经常在容器中有一些debug的操作，想要编辑文件，却又发现 <strong>一无所有</strong>（没有 vim/vi 编辑命令）。解决办法可能是去安装，但下载需要时间等待，且下载的工具使用也不是很频繁。所以换个思路，用其他基础的命令替代下。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat &lt;&lt;EOF &gt; cat_test.sh</span></span><br><span class="line">&gt; <span class="comment">#!/bin/bash</span></span><br><span class="line">&gt; <span class="built_in">echo</span> <span class="string">"no vim/vi"</span></span><br><span class="line">&gt; <span class="built_in">echo</span> <span class="string">"But ... cat"</span></span><br><span class="line">&gt; EOF</span><br></pre></td></tr></table></figure>
-<p>可以用 <code>cat cat_test.sh</code> 核验下内容和格式是否正确；如果原文件存在且有内容，会直接<strong>覆盖</strong></p>
-<p><strong>追加</strong>内容<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat &lt;&lt;EOF &gt;&gt; cat_test.sh</span></span><br><span class="line">&gt; <span class="comment">#!/bin/bash</span></span><br><span class="line">&gt; <span class="built_in">echo</span> <span class="string">"new add context"</span></span><br><span class="line">&gt; EOF</span><br></pre></td></tr></table></figure></p>
-<p>直接清空文件: <code>&gt;cat_test.sh</code></p>
+<h3 id="cat-EOF-常用方法"><a href="#cat-EOF-常用方法" class="headerlink" title="cat EOF 常用方法"></a>cat EOF 常用方法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat &lt;&lt;EOF &gt; cat_test.sh</span></span><br><span class="line">&gt; <span class="comment">#!/bin/bash</span></span><br><span class="line">&gt; <span class="built_in">echo</span> <span class="string">"no vim/vi"</span></span><br><span class="line">&gt; <span class="built_in">echo</span> <span class="string">"But ... cat"</span></span><br><span class="line">&gt; EOF</span><br></pre></td></tr></table></figure>
+<p>可以用 <code>cat cat_test.sh</code> 核验下内容和格式是否正确；如果原文件存在且有内容，会直接 <strong>覆盖</strong></p>
+<p><strong>追加</strong> 内容<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat &lt;&lt;EOF &gt;&gt; cat_test.sh</span></span><br><span class="line">&gt; <span class="comment">#!/bin/bash</span></span><br><span class="line">&gt; <span class="built_in">echo</span> <span class="string">"new add context"</span></span><br><span class="line">&gt; EOF</span><br></pre></td></tr></table></figure></p>
+<h3 id="cat交互模式下的使用"><a href="#cat交互模式下的使用" class="headerlink" title="cat交互模式下的使用"></a>cat交互模式下的使用</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat &gt; cat_in.sh</span></span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"by cat."</span></span><br></pre></td></tr></table></figure>
+<p>ctrl + d 结束输入</p>
+<hr>
+<p><strong>tips:</strong></p>
+<ol>
+<li><p>直接清空文件: <code>&gt;cat_test.sh</code></p>
+</li>
+<li><p>其实可以用其他字符来代替EOF，它也只是个标识符而已！</p>
+</li>
+</ol>
 
             </div>
           
