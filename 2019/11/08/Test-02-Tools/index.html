@@ -33,17 +33,17 @@
 <link rel="canonical" href="http://yoursite.com/2019/11/08/Test-02-Tools/">
 
 
-<meta name="description" content="测试种类与测试工具没有一对一的关系。 项目原因最近在学习以下几个工具： 1.Postman可做api测试，newman 2.Selenium3.CucumberCucumber 是 BDD（behaviour-driven development） 模式下实现可执行规范（Executable Specifications）的开源工具，但是它的使命并不局限于做自动化验收测试，更加重要的在于其能够在团">
+<meta name="description" content="测试种类与测试工具没有一对一的关系。 项目原因最近在学习以下几个工具： 1.Postman可做api测试，newman 2.SeleniumSelenium is a suite of tools to automate web browsers across many platforms. 3.CucumberCucumber 是 BDD（behaviour-driven development">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Test 02:Tools">
 <meta property="og:url" content="http://yoursite.com/2019/11/08/Test-02-Tools/index.html">
 <meta property="og:site_name" content="I know nothing except the fact of my ignorance.">
-<meta property="og:description" content="测试种类与测试工具没有一对一的关系。 项目原因最近在学习以下几个工具： 1.Postman可做api测试，newman 2.Selenium3.CucumberCucumber 是 BDD（behaviour-driven development） 模式下实现可执行规范（Executable Specifications）的开源工具，但是它的使命并不局限于做自动化验收测试，更加重要的在于其能够在团">
+<meta property="og:description" content="测试种类与测试工具没有一对一的关系。 项目原因最近在学习以下几个工具： 1.Postman可做api测试，newman 2.SeleniumSelenium is a suite of tools to automate web browsers across many platforms. 3.CucumberCucumber 是 BDD（behaviour-driven development">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-11-08T09:37:45.878Z">
+<meta property="og:updated_time" content="2019-11-08T09:42:26.027Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Test 02:Tools">
-<meta name="twitter:description" content="测试种类与测试工具没有一对一的关系。 项目原因最近在学习以下几个工具： 1.Postman可做api测试，newman 2.Selenium3.CucumberCucumber 是 BDD（behaviour-driven development） 模式下实现可执行规范（Executable Specifications）的开源工具，但是它的使命并不局限于做自动化验收测试，更加重要的在于其能够在团">
+<meta name="twitter:description" content="测试种类与测试工具没有一对一的关系。 项目原因最近在学习以下几个工具： 1.Postman可做api测试，newman 2.SeleniumSelenium is a suite of tools to automate web browsers across many platforms. 3.CucumberCucumber 是 BDD（behaviour-driven development">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1">
@@ -159,11 +159,14 @@
             <p>测试种类与测试工具没有一对一的关系。</p>
 <p>项目原因最近在学习以下几个工具：</p>
 <h3 id="1-Postman"><a href="#1-Postman" class="headerlink" title="1.Postman"></a>1.Postman</h3><p>可做api测试，newman</p>
-<h3 id="2-Selenium"><a href="#2-Selenium" class="headerlink" title="2.Selenium"></a>2.Selenium</h3><h3 id="3-Cucumber"><a href="#3-Cucumber" class="headerlink" title="3.Cucumber"></a>3.Cucumber</h3><p>Cucumber 是 BDD（behaviour-driven development） 模式下实现可执行规范（Executable Specifications）的开源工具，但是它的使命并不局限于做自动化验收测试，更加重要的在于其能够在团队成员之间构建统一的交流基础（feature 文件）、规范交流用语（Domain Specific Language）、提高各个利益相关方（Business Stakeholders）沟通效率和效果，从而达到提升产品质量、做成客户期望得到的产品这一最终目标。<br><a href="https://www.ibm.com/developerworks/cn/java/j-lo-cucumber01/index.html" target="_blank" rel="noopener">参考</a></p>
+<h3 id="2-Selenium"><a href="#2-Selenium" class="headerlink" title="2.Selenium"></a>2.Selenium</h3><p>Selenium is a suite of tools to automate web browsers across many platforms.</p>
+<h3 id="3-Cucumber"><a href="#3-Cucumber" class="headerlink" title="3.Cucumber"></a>3.Cucumber</h3><p>Cucumber 是 BDD（behaviour-driven development） 模式下实现可执行规范（Executable Specifications）的开源工具，但是它的使命并不局限于做自动化验收测试，更加重要的在于其能够在团队成员之间构建统一的交流基础（feature 文件）、规范交流用语（Domain Specific Language）、提高各个利益相关方（Business Stakeholders）沟通效率和效果，从而达到提升产品质量、做成客户期望得到的产品这一最终目标。<br><a href="https://www.ibm.com/developerworks/cn/java/j-lo-cucumber01/index.html" target="_blank" rel="noopener">参考</a></p>
 <ul>
 <li><p>Features介绍  </p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">feature(功能)，每一个feature文件都要开始于Feature(功能)，Feature之后的描述可以随便写，直到出现Scenario(场景)，一个feature中可以有多个 Scenario，每个Scenario包含（step）步骤列表，步骤使用Given、When、Then、But、And这些关键词，cucumber对这些关键词的处理是一样的，但是我们在使用的时候需要按照场景区分。</span><br></pre></td></tr></table></figure>
+<p>feature(功能)，每一个feature文件都要开始于Feature(功能)，Feature之后的描述可以随便写，直到出现Scenario(场景)，一个feature中可以有多个 Scenario，每个Scenario包含（step）步骤列表，步骤使用Given、When、Then、But、And这些关键词，cucumber对这些关键词的处理是一样的，但是我们在使用的时候需要按照场景区分。</p>
 </li>
+</ul>
+<ul>
 <li><p>Step definitions介绍  </p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cucumber中定义的每一个step(步骤)都需要有一个step definition对应，默认的话是使用Ruby来编写定义的脚本，支持通过正则表达式从step中传递参数。</span><br></pre></td></tr></table></figure>
 </li>
