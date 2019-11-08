@@ -43,7 +43,7 @@
 <meta property="og:site_name" content="I know nothing except the fact of my ignorance.">
 <meta property="og:description" content="yffmpeg1.Install （安装） macOS (wait a min)1brew install ffmpeg   2.Usage （用法） General usage  1ffmpeg -i video.mp4 -vn sound.mp3  More usage123456789101112131415161718ffmpegVideo conversion tool.- Extrac">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-10-08T08:54:03.929Z">
+<meta property="og:updated_time" content="2019-11-08T09:37:40.277Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Small Tools [2]: ffmpeg -- Video conversion tool.">
 <meta name="twitter:description" content="yffmpeg1.Install （安装） macOS (wait a min)1brew install ffmpeg   2.Usage （用法） General usage  1ffmpeg -i video.mp4 -vn sound.mp3  More usage123456789101112131415161718ffmpegVideo conversion tool.- Extrac">
@@ -171,10 +171,7 @@
 <li>More usage<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg</span><br><span class="line"></span><br><span class="line">Video conversion tool.</span><br><span class="line"></span><br><span class="line">- Extract the sound from a video and save it as MP3:</span><br><span class="line">    ffmpeg -i video.mp4 -vn sound.mp3</span><br><span class="line"></span><br><span class="line">- Convert frames from a video or GIF into individual numbered images:</span><br><span class="line">    ffmpeg -i video.mpg|video.gif frame_%d.png</span><br><span class="line"></span><br><span class="line">- Combine numbered images (frame_1.jpg, frame_2.jpg, etc) into a video or GIF:</span><br><span class="line">    ffmpeg -i frame_%d.jpg -f image2 video.mpg|video.gif</span><br><span class="line"></span><br><span class="line">- Quickly extract a single frame from a video at time mm:ss and save it as a 128x128 resolution image:</span><br><span class="line">    ffmpeg -ss mm:ss -i video.mp4 -frames 1 -s 128x128 -f image2 image.png</span><br><span class="line"></span><br><span class="line">- Trim a video from a given start time mm:ss to an end time mm2:ss2 (omit the -to flag to trim till the end):</span><br><span class="line">    ffmpeg -ss mm:ss -to mm2:ss2 -i video.mp4 -codec copy output.mp4</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>Ref:</p>
-<ul>
-<li><a href="https://ffmpeg.org" target="_blank" rel="noopener">https://ffmpeg.org</a> (官网)</li>
-</ul>
+<p><strong>More Ref:</strong>- <a href="https://ffmpeg.org" target="_blank" rel="noopener">https://ffmpeg.org</a> (官网)</p>
 
             </div>
           

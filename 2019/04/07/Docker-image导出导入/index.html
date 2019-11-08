@@ -43,7 +43,7 @@
 <meta property="og:site_name" content="I know nothing except the fact of my ignorance.">
 <meta property="og:description" content="A: “为什么要导镜像，直接从网上下载不就行了？”B: “too young too naive，你以为哪里都能上网的，谁家的机房没事都能上个youtube,google的吗”  一般的公司内网环境是无法访问Internet的，自然也无从下载基础 docker 基础镜像。但这个时候领导交给你的任务–比如用容器运行一个 Java 程序，你在本地程序都调试好了，也在docker container形式">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-26T06:12:54.302Z">
+<meta property="og:updated_time" content="2019-11-08T09:37:16.925Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker image export and import">
 <meta name="twitter:description" content="A: “为什么要导镜像，直接从网上下载不就行了？”B: “too young too naive，你以为哪里都能上网的，谁家的机房没事都能上个youtube,google的吗”  一般的公司内网环境是无法访问Internet的，自然也无从下载基础 docker 基础镜像。但这个时候领导交给你的任务–比如用容器运行一个 Java 程序，你在本地程序都调试好了，也在docker container形式">
@@ -170,7 +170,7 @@
 </blockquote>
 <h5 id="2-乾坤大挪移"><a href="#2-乾坤大挪移" class="headerlink" title="2.乾坤大挪移"></a>2.乾坤大挪移</h5><p>拷贝这个tar包到U 盘，然后插到（或者是挂载）Server上</p>
 <h5 id="3-Import-image-导入镜像"><a href="#3-Import-image-导入镜像" class="headerlink" title="3.Import image (导入镜像)"></a>3.Import image (导入镜像)</h5><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker load &lt; my_python.tar</span><br><span class="line">docker tag 9045 my_python:1.0   //通常还需要重新命名一下，以便可读</span><br></pre></td></tr></table></figure>
-<p>Ref:</p>
+<p><strong>More Ref:</strong></p>
 <ol>
 <li><a href="https://jingsam.github.io/2017/08/26/docker-save-and-docker-export.html" target="_blank" rel="noopener">https://jingsam.github.io/2017/08/26/docker-save-and-docker-export.html</a></li>
 <li><a href="https://www.jianshu.com/p/8408e06b7273" target="_blank" rel="noopener">https://www.jianshu.com/p/8408e06b7273</a></li>
