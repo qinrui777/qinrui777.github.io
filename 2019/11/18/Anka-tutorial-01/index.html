@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang>
+  <head><meta name="generator" content="Hexo 3.8.0">
+    
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+  <meta name="description" content="Anka tutorial 01">
+
+
+
+
+  <meta name="keywords" content="anka,macOS,">
+
+
+
+
+
+  <link rel="alternate" href="/default" title="I know nothing except the fact of my ignorance.">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1">
+
+
+
+<link rel="canonical" href="http://yoursite.com/2019/11/18/Anka-tutorial-01/">
+
+
+<meta name="description" content="1.Anka 是什么  前端，后端，包括安卓的持续集成的过程都可以轻松的基于docker命令构建、打包，最终产出 docker image镜像，非常方便搭建标准化的pipeline(流水线)；但是对于iOS移动端的同学而言，似乎没有那么简单。每次打包的过程都是耗时、复杂的。另外一点由于macOS系统是捆绑在mac硬件上的，你没有苹果电脑就无法打包，相比而言docker则是纯免费开源的。针对以上问题">
+<meta name="keywords" content="anka,macOS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Anka tutorial 01">
+<meta property="og:url" content="http://yoursite.com/2019/11/18/Anka-tutorial-01/index.html">
+<meta property="og:site_name" content="I know nothing except the fact of my ignorance.">
+<meta property="og:description" content="1.Anka 是什么  前端，后端，包括安卓的持续集成的过程都可以轻松的基于docker命令构建、打包，最终产出 docker image镜像，非常方便搭建标准化的pipeline(流水线)；但是对于iOS移动端的同学而言，似乎没有那么简单。每次打包的过程都是耗时、复杂的。另外一点由于macOS系统是捆绑在mac硬件上的，你没有苹果电脑就无法打包，相比而言docker则是纯免费开源的。针对以上问题">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/anka_download.png">
+<meta property="og:image" content="http://yoursite.com/images/anka_install_continue_01.png">
+<meta property="og:image" content="http://yoursite.com/images/anka_install_continue_02.png">
+<meta property="og:image" content="http://yoursite.com/images/anka_install_success_01.png">
+<meta property="og:image" content="http://yoursite.com/images/anka_install_success_02.png">
+<meta property="og:updated_time" content="2019-11-18T15:15:55.484Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Anka tutorial 01">
+<meta name="twitter:description" content="1.Anka 是什么  前端，后端，包括安卓的持续集成的过程都可以轻松的基于docker命令构建、打包，最终产出 docker image镜像，非常方便搭建标准化的pipeline(流水线)；但是对于iOS移动端的同学而言，似乎没有那么简单。每次打包的过程都是耗时、复杂的。另外一点由于macOS系统是捆绑在mac硬件上的，你没有苹果电脑就无法打包，相比而言docker则是纯免费开源的。针对以上问题">
+<meta name="twitter:image" content="http://yoursite.com/images/anka_download.png">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?8280009f2b229eaefa3b28460ccbf01e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-138071159-1', 'auto');
+        ga('send', 'pageview');
+  </script>
+
+
+
+    <title> Anka tutorial 01 - I know nothing except the fact of my ignorance. </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">I know nothing except the fact of my ignorance.</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="https://qinrui777.github.io">
+                            
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="https://github.com/qinrui777">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Anka tutorial 01
+        
+      </h1>
+
+      <time class="post-time">
+          Nov 18 2019
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h3 id="1-Anka-是什么"><a href="#1-Anka-是什么" class="headerlink" title="1.Anka 是什么"></a>1.Anka 是什么</h3><p>  前端，后端，包括安卓的持续集成的过程都可以轻松的基于docker命令构建、打包，最终产出 docker image镜像，非常方便搭建标准化的pipeline(流水线)；但是对于iOS移动端的同学而言，似乎没有那么简单。每次打包的过程都是耗时、复杂的。另外一点由于macOS系统是捆绑在mac硬件上的，你没有苹果电脑就无法打包，相比而言docker则是纯免费开源的。针对以上问题和情况，anka就是这样一种类似于dock的针对macOS系统的虚拟化技术。<br>  于是乎，想长期使用是需要收钱的。<br>官网介绍（<a href="https://ankadoc.bitbucket.io/#what-is-anka-build）" target="_blank" rel="noopener">https://ankadoc.bitbucket.io/#what-is-anka-build）</a></p>
+<p><a href="https://ankadoc.bitbucket.io/licensing/" target="_blank" rel="noopener">https://ankadoc.bitbucket.io/licensing/</a></p>
+<p>几个组件的关系</p>
+<h3 id="2-安装"><a href="#2-安装" class="headerlink" title="2.安装"></a>2.安装</h3><p>在自己的MacBook Pro(version: 10.13.6)笔记本上安装</p>
+<p>下载地址：<br><a href="https://veertu.com/download-anka-build/" target="_blank" rel="noopener">https://veertu.com/download-anka-build/</a><br><img src="/images/anka_download.png" alt="anka download page"></p>
+<h5 id="2-1-Anka-Package-Install-and-Configuration"><a href="#2-1-Anka-Package-Install-and-Configuration" class="headerlink" title="2.1 Anka Package Install and Configuration"></a>2.1 Anka Package Install and Configuration</h5><p><a href="https://ankadoc.bitbucket.io/anka-build/#anka-package-install-and-configuration" target="_blank" rel="noopener">https://ankadoc.bitbucket.io/anka-build/#anka-package-install-and-configuration</a></p>
+<p>双击 <em>pkg</em> 包，默认选项安装，最终显示安装成功即可。<br><img src="/images/anka_install_continue_01.png" alt="anka install details 1"></p>
+<p><img src="/images/anka_install_continue_02.png" alt="anka install details 2"></p>
+<p><img src="/images/anka_install_success_01.png" alt="anka install success"></p>
+<h5 id="2-2-Controller-Registry-Install-and-Configuration"><a href="#2-2-Controller-Registry-Install-and-Configuration" class="headerlink" title="2.2 Controller/Registry Install and Configuration"></a>2.2 Controller/Registry Install and Configuration</h5><p><a href="https://ankadoc.bitbucket.io/anka-build/#controller-registry-install-and-configuration" target="_blank" rel="noopener">https://ankadoc.bitbucket.io/anka-build/#controller-registry-install-and-configuration</a></p>
+<p>同上，双击 <em>pkg</em> 包，默认安装，看到提示安装成功即可。<br><img src="/images/anka_install_success_02.png" alt="anka install success 02"></p>
+<p>xcode同时运行两个ios打包程序吗</p>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/anka/">anka</a>
+		  
+			<a href="/tags/macOS/">macOS</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/2019/11/08/Test-02-Tools/">
+        <span class="next-text nav-default">Test 02:Tools</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2018 -
+    
+    2019
+    <span class="footer-author">qinrui.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+      
+
+
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+    <script src="/js/src/md5.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+
+    <div id="gitalk-container"></div>
+
+    <script>
+        var gitalk = new Gitalk({
+            clientID: 'd5bbe3dcd1e4b493ccda',
+            clientSecret: '47a17a14730ceb61df029600cc92f4932334034a',
+            repo: 'qinrui777.github.io',
+            owner: 'qinrui777',
+            admin: 'qinrui777',
+            id: location.pathname,      // Ensure uniqueness and length less than 50
+            id: md5(location.pathname),
+            distractionFreeMode: 'false'  // Facebook-like distraction free mode
+        })
+
+        gitalk.render('gitalk-container')
+    </script>
+
+
+    
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>
