@@ -48,7 +48,9 @@
 <meta property="og:image" content="http://yoursite.com/images/anka_install_continue_02.png">
 <meta property="og:image" content="http://yoursite.com/images/anka_install_success_01.png">
 <meta property="og:image" content="http://yoursite.com/images/anka_install_success_02.png">
-<meta property="og:updated_time" content="2019-11-19T07:32:35.973Z">
+<meta property="og:image" content="http://yoursite.com/images/anka_controller_config.png">
+<meta property="og:image" content="http://yoursite.com/images/anka_apply_license.png">
+<meta property="og:updated_time" content="2019-11-20T05:37:21.268Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Anka tutorial 01">
 <meta name="twitter:description" content="1.Anka 是什么  前端，后端，包括安卓的持续集成的过程都可以轻松的基于docker命令构建、打包，最终产出 docker image镜像，非常方便搭建标准化的pipeline(流水线)；但是对于iOS移动端的同学而言，似乎没有那么简单。每次打包的过程都是耗时、复杂的。另外一点由于macOS系统是捆绑在mac硬件上的，你没有苹果电脑就无法打包，相比而言docker则是纯免费开源的。针对以上问题">
@@ -189,6 +191,10 @@
 <li><p><a href="http://localhost:8089" target="_blank" rel="noopener">http://localhost:8089</a>  罗列现有的API，其余啥也不能做</p>
 </li>
 </ul>
+<p>设置一下 Registry Address 地址:<br><img src="/images/anka_controller_config.png" width="50%" height="50%"></p>
+<h5 id="2-3-申请试用许可（trail-license）"><a href="#2-3-申请试用许可（trail-license）" class="headerlink" title="2.3 申请试用许可（trail license）"></a>2.3 申请试用许可（trail license）</h5><p><a href="https://veertu.com/anka-build-trial" target="_blank" rel="noopener">https://veertu.com/anka-build-trial</a></p>
+<p>填完信息后，会有一个成功的提示，如图所示:<br><img src="/images/anka_apply_license.png" width="50%" height="50%"></p>
+<p>激活key<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ sudo anka license activate xxxx-3750-xxxx-2265</span><br><span class="line">License activated</span><br></pre></td></tr></table></figure></p>
 
             </div>
           
@@ -208,6 +214,12 @@
         
         
   <nav class="post-nav">
+    
+      <a class="prev" href="/2019/11/19/Anka-tutorial-02/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Anka tutorial 02</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
     
     
       <a class="next" href="/2019/11/08/Test-02-Tools/">
