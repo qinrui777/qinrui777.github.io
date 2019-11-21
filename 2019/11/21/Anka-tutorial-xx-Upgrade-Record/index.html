@@ -47,7 +47,7 @@
 <meta property="og:image" content="http://yoursite.com/images/anka_1.5.x_package.png">
 <meta property="og:image" content="http://yoursite.com/images/anka_jenkins_config_1.png">
 <meta property="og:image" content="http://yoursite.com/images/anka_jenkins_vm_template.png">
-<meta property="og:updated_time" content="2019-11-21T07:28:23.781Z">
+<meta property="og:updated_time" content="2019-11-21T09:17:33.609Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Anka tutorial xx: Upgrade Record">
 <meta name="twitter:description" content="1.升级前从2018年11月到如今2019年11月，已经使用现有的版本1年多；anka也经历了多个版本，此次升级算是跨度较大，升级到目前最新的版本1.5.0 1.1 节点信息   hostname (节点名称) IP OS 组件     node1 192.168.55.xx linux anka-controller、anka-registry、etcd、beanstalk、 jenkins、s">
@@ -208,13 +208,13 @@
 <tr>
 <td style="text-align:left">etcd</td>
 <td style="text-align:left">quay.io/coreos/etcd:v3.1.6</td>
-<td style="text-align:left"></td>
+<td style="text-align:left">N/A</td>
 <td style="text-align:left"><a href="https://quay.io/repository/coreos/etcd?tab=tags" target="_blank" rel="noopener">https://quay.io/repository/coreos/etcd?tab=tags</a>, 新版本需要 自制image</td>
 </tr>
 <tr>
 <td style="text-align:left">beanstalk</td>
 <td style="text-align:left">schickling/beanstalkd</td>
-<td style="text-align:left"></td>
+<td style="text-align:left">N/A</td>
 <td style="text-align:left">新版本可不使用</td>
 </tr>
 <tr>
@@ -227,6 +227,7 @@
 <td style="text-align:left">Anka Build</td>
 <td style="text-align:left">1.4.3</td>
 <td style="text-align:left">2.1.2</td>
+<td style="text-align:left">N/A</td>
 </tr>
 </tbody>
 </table>
@@ -274,7 +275,7 @@
 </ol>
 </li>
 </ul>
-<p>提前备份 docker-compose.yml;先将下载包解压，结合老版本的docker-compose.yml文件，替换 <code>services/</code> 目录下的相关文件<br><img src="/images/anka_1.5.x_package.png" width="75%" height="75%"></p>
+<p>提前备份 docker-compose.yml;先将下载包解压，结合老版本的docker-compose.yml文件，替换 <code>services/</code> 目录下的相关文件<br><img src="/images/anka_1.5.x_package.png" width="60%" height="60%"></p>
 <p>  <strong>注意事项</strong>: </p>
 <pre><code>- etcd、registry 挂载的文件目录不可变动，不然影响旧的数据正常读取
 - 替换docker-compose.yml的一些值
