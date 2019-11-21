@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang>
+  <head><meta name="generator" content="Hexo 3.8.0">
+    
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+  <meta name="description" content="Anka tutorial xx: Upgrade Record">
+
+
+
+
+  <meta name="keywords" content="anka,macOS,">
+
+
+
+
+
+  <link rel="alternate" href="/default" title="I know nothing except the fact of my ignorance.">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1">
+
+
+
+<link rel="canonical" href="http://yoursite.com/2019/11/21/Anka-tutorial-xx-Upgrade-Record/">
+
+
+<meta name="description" content="1.升级前从2018年11月到如今2019年11月，已经使用现有的版本1年多；anka也经历了多个版本，此次升级算是跨度较大，升级到目前最新的版本1.5.0 1.1 节点信息   hostname (节点名称) IP OS 组件     node1 192.168.55.xx linux anka-controller、anka-registry、etcd、beanstalk、 jenkins、s">
+<meta name="keywords" content="anka,macOS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Anka tutorial xx: Upgrade Record">
+<meta property="og:url" content="http://yoursite.com/2019/11/21/Anka-tutorial-xx-Upgrade-Record/index.html">
+<meta property="og:site_name" content="I know nothing except the fact of my ignorance.">
+<meta property="og:description" content="1.升级前从2018年11月到如今2019年11月，已经使用现有的版本1年多；anka也经历了多个版本，此次升级算是跨度较大，升级到目前最新的版本1.5.0 1.1 节点信息   hostname (节点名称) IP OS 组件     node1 192.168.55.xx linux anka-controller、anka-registry、etcd、beanstalk、 jenkins、s">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/anka_upgrade_install_01.png">
+<meta property="og:image" content="http://yoursite.com/images/anka_1.5.x_package.png">
+<meta property="og:image" content="http://yoursite.com/images/anka_jenkins_config_1.png">
+<meta property="og:image" content="http://yoursite.com/images/anka_jenkins_vm_template.png">
+<meta property="og:updated_time" content="2019-11-21T07:28:23.781Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Anka tutorial xx: Upgrade Record">
+<meta name="twitter:description" content="1.升级前从2018年11月到如今2019年11月，已经使用现有的版本1年多；anka也经历了多个版本，此次升级算是跨度较大，升级到目前最新的版本1.5.0 1.1 节点信息   hostname (节点名称) IP OS 组件     node1 192.168.55.xx linux anka-controller、anka-registry、etcd、beanstalk、 jenkins、s">
+<meta name="twitter:image" content="http://yoursite.com/images/anka_upgrade_install_01.png">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?8280009f2b229eaefa3b28460ccbf01e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-138071159-1', 'auto');
+        ga('send', 'pageview');
+  </script>
+
+
+
+    <title> Anka tutorial xx: Upgrade Record - I know nothing except the fact of my ignorance. </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">I know nothing except the fact of my ignorance.</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="https://qinrui777.github.io">
+                            
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="https://github.com/qinrui777">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Anka tutorial xx: Upgrade Record
+        
+      </h1>
+
+      <time class="post-time">
+          Nov 21 2019
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h3 id="1-升级前"><a href="#1-升级前" class="headerlink" title="1.升级前"></a>1.升级前</h3><p>从2018年11月到如今2019年11月，已经使用现有的版本1年多；anka也经历了多个版本，此次升级算是跨度较大，升级到目前最新的版本1.5.0</p>
+<h4 id="1-1-节点信息"><a href="#1-1-节点信息" class="headerlink" title="1.1 节点信息"></a>1.1 节点信息</h4><table>
+<thead>
+<tr>
+<th style="text-align:left">hostname (节点名称)</th>
+<th style="text-align:left">IP</th>
+<th style="text-align:left">OS</th>
+<th>组件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">node1</td>
+<td style="text-align:left">192.168.55.xx</td>
+<td style="text-align:left">linux</td>
+<td>anka-controller、anka-registry、etcd、beanstalk、 jenkins、sonarqube</td>
+</tr>
+<tr>
+<td style="text-align:left">node2</td>
+<td style="text-align:left">192.168.22.xx</td>
+<td style="text-align:left">mac OS</td>
+<td>anka build</td>
+</tr>
+</tbody>
+</table>
+<h4 id="1-2-节点组件版本信息"><a href="#1-2-节点组件版本信息" class="headerlink" title="1.2 节点组件版本信息"></a>1.2 节点组件版本信息</h4><table>
+<thead>
+<tr>
+<th style="text-align:left">Name</th>
+<th style="text-align:left">Current Ver</th>
+<th style="text-align:left">Upgrade to Ver</th>
+<th style="text-align:left">Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">anka-controller</td>
+<td style="text-align:left">1.0.14-e7cc50b</td>
+<td style="text-align:left">1.5.0-ca87f665</td>
+<td style="text-align:left">自制image</td>
+</tr>
+<tr>
+<td style="text-align:left">etcd</td>
+<td style="text-align:left">quay.io/coreos/etcd:v3.1.6</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"><a href="https://quay.io/repository/coreos/etcd?tab=tags" target="_blank" rel="noopener">https://quay.io/repository/coreos/etcd?tab=tags</a>, 新版本需要 自制image</td>
+</tr>
+<tr>
+<td style="text-align:left">beanstalk</td>
+<td style="text-align:left">schickling/beanstalkd</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">新版本可不使用</td>
+</tr>
+<tr>
+<td style="text-align:left">anka-registry</td>
+<td style="text-align:left">same as controller</td>
+<td style="text-align:left">1.5.0-ca87f665</td>
+<td style="text-align:left">自制image</td>
+</tr>
+<tr>
+<td style="text-align:left">Anka Build</td>
+<td style="text-align:left">1.4.3</td>
+<td style="text-align:left">2.1.2</td>
+</tr>
+</tbody>
+</table>
+<h4 id="1-2-组件端口变更信息"><a href="#1-2-组件端口变更信息" class="headerlink" title="1.2 组件端口变更信息"></a>1.2 组件端口变更信息</h4><table>
+<thead>
+<tr>
+<th style="text-align:left">组件</th>
+<th style="text-align:center">升级前端口</th>
+<th style="text-align:center">升级后端口</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">anka-controller</td>
+<td style="text-align:center">8090</td>
+<td style="text-align:center">80</td>
+</tr>
+<tr>
+<td style="text-align:left">anka-registry</td>
+<td style="text-align:center">80</td>
+<td style="text-align:center">8089</td>
+</tr>
+</tbody>
+</table>
+<p>根据节点的OS，提前下载安装包及相关文件 <a href="https://veertu.com/download-anka-build/" target="_blank" rel="noopener">Anka Build Download page</a></p>
+<p><img src="/images/anka_upgrade_install_01.png" width="75%" height="75%"></p>
+<h3 id="2-升级步骤"><a href="#2-升级步骤" class="headerlink" title="2. 升级步骤"></a>2. 升级步骤</h3><p>官网升级步骤链接： <a href="https://ankadoc.bitbucket.io/#upgrade-steps" target="_blank" rel="noopener">https://ankadoc.bitbucket.io/#upgrade-steps</a>, 但是不够详细</p>
+<h4 id="2-1-On-the-mac-nodes-run-sudo-ankacluster-disjoin"><a href="#2-1-On-the-mac-nodes-run-sudo-ankacluster-disjoin" class="headerlink" title="2.1) On the mac nodes - run sudo ankacluster disjoin."></a>2.1) On the mac nodes - run sudo ankacluster disjoin.</h4><p>在 <strong>node 2</strong> 上操作<br><code>node2 $ sudo ankacluster disjoin -g</code></p>
+<h4 id="2-2-Install-the-new-anka-pkg-on-all-the-mac-nodes"><a href="#2-2-Install-the-new-anka-pkg-on-all-the-mac-nodes" class="headerlink" title="2.2) Install the new anka pkg on all the mac nodes."></a>2.2) Install the new anka pkg on all the mac nodes.</h4><p>在 <strong>node 2</strong> 上操作, 找到安装包,双击安装即可</p>
+<h4 id="2-3-Upgrade-the-guest-addons-inside-the-VM-templates-with-anka-start-u-Check-the-upgrade-notes-to-see-if-this-step-is-necessary"><a href="#2-3-Upgrade-the-guest-addons-inside-the-VM-templates-with-anka-start-u-Check-the-upgrade-notes-to-see-if-this-step-is-necessary" class="headerlink" title="2.3) Upgrade the guest addons inside the VM templates with anka start -u. Check the upgrade notes to see if this step is necessary."></a>2.3) Upgrade the guest addons inside the VM templates with anka start -u. Check the upgrade notes to see if this step is necessary.</h4><p>在 <strong>node 2</strong> 上操作<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#先切换到root用户，方便操作</span></span><br><span class="line"><span class="comment">#这个命令执行后会等待3min左右</span></span><br><span class="line">node2:~ root<span class="comment"># anka stop -f &lt;VM_NAME&gt;</span></span><br><span class="line">node2:~ root<span class="comment"># anka start -u &lt;VM_NAME&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="2-4-Push-the-newly-upgraded-VM-templates-to-registry-with-anka-registry-push-vmname-–tag"><a href="#2-4-Push-the-newly-upgraded-VM-templates-to-registry-with-anka-registry-push-vmname-–tag" class="headerlink" title="2.4) Push the newly upgraded VM templates to registry with anka registry push vmname –tag."></a>2.4) Push the newly upgraded VM templates to registry with anka registry push vmname –tag.</h4><p>在 <strong>node 2</strong> 上操作<br><code>node2:~ root# anka registry push &lt;VM_NAME&gt; -d &#39;&lt;Message&gt;&#39; -t v100</code></p>
+<h4 id="2-5-Go-to-the-Controller-Registry-and-upgrade"><a href="#2-5-Go-to-the-Controller-Registry-and-upgrade" class="headerlink" title="2.5) Go to the Controller/Registry and upgrade."></a>2.5) Go to the Controller/Registry and upgrade.</h4><p>在 <strong>node 1</strong> 上操作 ，之前的启动方式是docker-compose,根据yaml文件启动</p>
+<p>anka 经过一年的开发升级，这块变动较大，比如：</p>
+<ul>
+<li><ol>
+<li>beanstalk 可以不使用了 <em>(starting from anka version 2.0 beanstalk is not required, please configure the controller with the configuration that doesn’t use beanstalk)</em></li>
+</ol>
+</li>
+<li><ol start="2">
+<li>端口的变化</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>etcd由之前的 quay.io/coreos/etcd 镜像改为自己制作</li>
+</ol>
+</li>
+</ul>
+<p>提前备份 docker-compose.yml;先将下载包解压，结合老版本的docker-compose.yml文件，替换 <code>services/</code> 目录下的相关文件<br><img src="/images/anka_1.5.x_package.png" width="75%" height="75%"></p>
+<p>  <strong>注意事项</strong>: </p>
+<pre><code>- etcd、registry 挂载的文件目录不可变动，不然影响旧的数据正常读取
+- 替换docker-compose.yml的一些值
+</code></pre><h4 id="2-6-On-the-mac-nodes-run-sudo-ankacluster-join"><a href="#2-6-On-the-mac-nodes-run-sudo-ankacluster-join" class="headerlink" title="2.6) On the mac nodes - run sudo ankacluster join."></a>2.6) On the mac nodes - run sudo ankacluster join.</h4><p>在 <strong>node 2</strong> 上操作<br><code>ankacluster join -g -n mac-mini-01 http://controller.anka.intranet.in2e.com:80</code></p>
+<blockquote>
+<p>以上是官网提及的，但是与jenkins 集成中还需要更多的操作，以下作为补充</p>
+</blockquote>
+<h4 id="2-7-Change-jenkins-configuration"><a href="#2-7-Change-jenkins-configuration" class="headerlink" title="2.7) Change jenkins configuration."></a>2.7) Change jenkins configuration.</h4><ul>
+<li><p>2.7.1 修改controller地址<br><img src="/images/anka_jenkins_config_1.png" width="80%" height="80%"></p>
+</li>
+<li><p>2.7.2 修改 anka  VM templates<br>升级后，测试发现 jenkins 日志中找不到vm templates;需要重新配置 VM templates<br><img src="/images/anka_jenkins_vm_template.png" width="80%" height="80%"></p>
+</li>
+</ul>
+<blockquote>
+<p>主要记录 2019-11-20 左右升级 anka 的操作</p>
+</blockquote>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/anka/">anka</a>
+		  
+			<a href="/tags/macOS/">macOS</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/2019/11/19/Anka-tutorial-02/">
+        <span class="next-text nav-default">Anka tutorial 02</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2018 -
+    
+    2019
+    <span class="footer-author">qinrui.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+      
+
+
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+    <script src="/js/src/md5.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+
+    <div id="gitalk-container"></div>
+
+    <script>
+        var gitalk = new Gitalk({
+            clientID: 'd5bbe3dcd1e4b493ccda',
+            clientSecret: '47a17a14730ceb61df029600cc92f4932334034a',
+            repo: 'qinrui777.github.io',
+            owner: 'qinrui777',
+            admin: 'qinrui777',
+            id: location.pathname,      // Ensure uniqueness and length less than 50
+            id: md5(location.pathname),
+            distractionFreeMode: 'false'  // Facebook-like distraction free mode
+        })
+
+        gitalk.render('gitalk-container')
+    </script>
+
+
+    
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>
