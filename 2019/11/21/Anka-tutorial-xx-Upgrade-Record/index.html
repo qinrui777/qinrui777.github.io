@@ -48,7 +48,7 @@
 <meta property="og:image" content="http://yoursite.com/images/anka_jenkins_config_1.png">
 <meta property="og:image" content="http://yoursite.com/images/anka_jenkins_vm_template.png">
 <meta property="og:image" content="http://yoursite.com/images/anka_vm_capacity.png">
-<meta property="og:updated_time" content="2019-11-22T03:07:03.749Z">
+<meta property="og:updated_time" content="2019-11-22T05:55:51.634Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Anka tutorial xx: Upgrade Record">
 <meta name="twitter:description" content="1.升级前从2018年11月到如今2019年11月，已经使用现有的版本1年多；anka也经历了多个版本，此次升级算是跨度较大，升级到目前最新的版本1.5.0 1.1 节点信息   hostname (节点名称) IP OS 组件     node1 192.168.55.xx linux anka-controller、anka-registry、etcd、beanstalk、 jenkins、s">
@@ -298,7 +298,7 @@
 <p><strong>尝试解决问题：</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 先查看repo</span></span><br><span class="line">node2:~ root<span class="comment"># anka registry list-repos</span></span><br><span class="line">++</span><br><span class="line">++</span><br><span class="line">anka (default)</span><br><span class="line">+--------+-----------------------------------+</span><br><span class="line">| host   | controller.anka.intranet.xxx.com |</span><br><span class="line">+--------+-----------------------------------+</span><br><span class="line">| scheme | http                              |</span><br><span class="line">+--------+-----------------------------------+</span><br><span class="line"><span class="comment">#删除</span></span><br><span class="line">node2:~ root<span class="comment"># anka registry delete anka</span></span><br><span class="line"><span class="comment">#新增</span></span><br><span class="line">node2:~ root<span class="comment"># anka registry add anka-repo http://192.168.55.xx:8089</span></span><br><span class="line"><span class="comment">#再次list,查看以下</span></span><br><span class="line">node2:~ root<span class="comment"># anka registry list-repos</span></span><br><span class="line">++</span><br><span class="line">++</span><br><span class="line">anka-repo (default)</span><br><span class="line">+--------+---------------+</span><br><span class="line">| host   | 192.168.55.xx |</span><br><span class="line">+--------+---------------+</span><br><span class="line">| scheme | http          |</span><br><span class="line">+--------+---------------+</span><br><span class="line">| port   | 8089          |</span><br><span class="line">+--------+---------------+</span><br></pre></td></tr></table></figure></p>
 <p>一波操作后，终于可以正常 push VM, ～～～大坑</p>
 <hr>
-<p>最后：记得修改Node上的 VM capacity<br>每次disjoin -&gt; join 动作，这个值都会回到默认值 2;或者执行 <code>ankacluster join</code> 的时候可以用 <code>-m</code> 参数去指定<br>这个值的作用是，指定允许同时运行几个 mac OS 实例</p>
+<p><strong>最后-&gt;记得修改Node上的 VM capacity</strong><br>每次disjoin -&gt; join 动作，这个值都会回到默认值 2;或者执行 <code>ankacluster join</code> 的时候可以用 <code>-m</code> 参数去指定<br>这个值的作用是，指定允许同时运行几个 mac OS 实例</p>
 <p><img src="/images/anka_vm_capacity.png" width="90%" height="90%"></p>
 <blockquote>
 <p>主要记录 2019-11-20 左右升级 anka 的操作</p>
@@ -322,6 +322,12 @@
         
         
   <nav class="post-nav">
+    
+      <a class="prev" href="/2019/11/22/Import-P12-file-on-Mac-OS-X-with-CLI/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Import P12 file on Mac OS X with CLI</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
     
     
       <a class="next" href="/2019/11/19/Anka-tutorial-02/">
