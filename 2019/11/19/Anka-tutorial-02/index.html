@@ -35,19 +35,20 @@
 <link rel="canonical" href="http://yoursite.com/2019/11/19/Anka-tutorial-02/">
 
 
-<meta name="description" content="1.Joining Nodes在mac上（anka build 节点）执行    sudo ankacluster join http://localhost:80/ output:123456➜  ~ sudo ankacluster join http://localhost:80/ -n demo-macSetting tls configTesting connection to cont">
+<meta name="description" content="1.Joining Nodes在mac上（anka build 节点）执行  sudo ankacluster join http://localhost:80/ output:123456➜  ~ sudo ankacluster join http://localhost:80/ -n demo-macSetting tls configTesting connection to contro">
 <meta name="keywords" content="anka,macOS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Anka tutorial 02">
 <meta property="og:url" content="http://yoursite.com/2019/11/19/Anka-tutorial-02/index.html">
 <meta property="og:site_name" content="I know nothing except the fact of my ignorance.">
-<meta property="og:description" content="1.Joining Nodes在mac上（anka build 节点）执行    sudo ankacluster join http://localhost:80/ output:123456➜  ~ sudo ankacluster join http://localhost:80/ -n demo-macSetting tls configTesting connection to cont">
+<meta property="og:description" content="1.Joining Nodes在mac上（anka build 节点）执行  sudo ankacluster join http://localhost:80/ output:123456➜  ~ sudo ankacluster join http://localhost:80/ -n demo-macSetting tls configTesting connection to contro">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/anka_controller_node.png">
-<meta property="og:updated_time" content="2019-11-21T05:51:38.157Z">
+<meta property="og:image" content="http://yoursite.com/images/anka_vm_status.png">
+<meta property="og:updated_time" content="2019-11-27T07:54:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Anka tutorial 02">
-<meta name="twitter:description" content="1.Joining Nodes在mac上（anka build 节点）执行    sudo ankacluster join http://localhost:80/ output:123456➜  ~ sudo ankacluster join http://localhost:80/ -n demo-macSetting tls configTesting connection to cont">
+<meta name="twitter:description" content="1.Joining Nodes在mac上（anka build 节点）执行  sudo ankacluster join http://localhost:80/ output:123456➜  ~ sudo ankacluster join http://localhost:80/ -n demo-macSetting tls configTesting connection to contro">
 <meta name="twitter:image" content="http://yoursite.com/images/anka_controller_node.png">
 
 
@@ -161,14 +162,17 @@
 
     
             <div class="post-content">
-            <h5 id="1-Joining-Nodes"><a href="#1-Joining-Nodes" class="headerlink" title="1.Joining Nodes"></a>1.Joining Nodes</h5><p>在mac上（anka build 节点）执行    <code>sudo ankacluster join http://localhost:80/</code></p>
+            <h5 id="1-Joining-Nodes"><a href="#1-Joining-Nodes" class="headerlink" title="1.Joining Nodes"></a>1.Joining Nodes</h5><p>在mac上（anka build 节点）执行  <code>sudo ankacluster join http://localhost:80/</code></p>
 <p>output:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ sudo ankacluster join http://localhost:80/ -n demo-mac</span><br><span class="line">Setting tls config</span><br><span class="line">Testing connection to controller...: Ok</span><br><span class="line">Testing connection to the registry...: Ok</span><br><span class="line">Ok</span><br><span class="line">Cluster join success</span><br></pre></td></tr></table></figure></p>
 <p>去页面 <em><a href="http://localhost/#/nodes" target="_blank" rel="noopener">http://localhost/#/nodes</a></em> 查看<br><img src="/images/anka_controller_node.png"></p>
-<h5 id="2-Create-VM"><a href="#2-Create-VM" class="headerlink" title="2. Create VM"></a>2. Create VM</h5><p>先下载mac OS安装包 (安装包7G多，需要提前下载)<br><a href="https://www.macworld.co.uk/how-to/mac-software/download-old-os-x-3629363/#el%20cap" target="_blank" rel="noopener">https://www.macworld.co.uk/how-to/mac-software/download-old-os-x-3629363/#el%20cap</a></p>
+<h5 id="2-Create-VM"><a href="#2-Create-VM" class="headerlink" title="2. Create VM"></a>2. Create VM</h5><p><a href="https://ankadoc.bitbucket.io/anka-build/#create-vm" target="_blank" rel="noopener">link</a></p>
+<p>先下载mac OS安装包 (安装包7G多，需要提前下载)<br><a href="https://www.macworld.co.uk/how-to/mac-software/download-old-os-x-3629363/#el%20cap" target="_blank" rel="noopener">https://www.macworld.co.uk/how-to/mac-software/download-old-os-x-3629363/#el%20cap</a></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ anka create --ram-size 4G --cpu-count 2 --disk-size 40G --app /Applications/Install\ macOS\ Catalina.app CatalinaVm</span><br><span class="line">Installing macOS 10.15.1...</span><br><span class="line">Preparing target disk...</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>Note For Catalina Anka VMs, –ram-size value should be 4G and –disk-size should be 80G.<br>由于电脑空间不够了，于是报错了</p>
 </blockquote>
+<p>清理电脑空间后，再来一次,大约 30min<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ anka create --ram-size 4G --cpu-count 2 --disk-size 80G --app /Applications/Install\ macOS\ Catalina.app  CatalinaVm</span><br><span class="line">Installing macOS 10.15.1...</span><br><span class="line">Preparing target disk...</span><br><span class="line">Installing addons...</span><br><span class="line">Converting to ANKA format...</span><br><span class="line">Waiting <span class="keyword">for</span> installation to complete <span class="keyword">in</span> the guest (about thirty minutes approx.)...</span><br><span class="line">vm created successfully with uuid: a23d5a05-xx89-4xx4-a8b7-6f7b9xxxxxx</span><br></pre></td></tr></table></figure></p>
+<p><img src="/images/anka_vm_status.png"></p>
 
             </div>
           
