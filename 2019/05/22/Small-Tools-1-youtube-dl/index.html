@@ -43,7 +43,7 @@
 <meta property="og:site_name" content="I know nothing except the fact of my ignorance.">
 <meta property="og:description" content="youtube-dlyoutube-dl 是一个命令行视频下载利器，不仅仅可以下载YouTube的内容，也可以下载其他的视频网站内容 1.Install （安装）mac 或 linux 上12sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dlsudo chmod a+rx /">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-01T12:40:26.317Z">
+<meta property="og:updated_time" content="2019-12-01T14:01:48.014Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Small Tools [1]: youtube-dl">
 <meta name="twitter:description" content="youtube-dlyoutube-dl 是一个命令行视频下载利器，不仅仅可以下载YouTube的内容，也可以下载其他的视频网站内容 1.Install （安装）mac 或 linux 上12sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dlsudo chmod a+rx /">
@@ -162,19 +162,16 @@
             <h2 id="youtube-dl"><a href="#youtube-dl" class="headerlink" title="youtube-dl"></a>youtube-dl</h2><p><strong>youtube-dl</strong> 是一个命令行视频下载利器，不仅仅可以下载YouTube的内容，也可以下载其他的视频网站内容</p>
 <h5 id="1-Install-（安装）"><a href="#1-Install-（安装）" class="headerlink" title="1.Install （安装）"></a>1.Install （安装）</h5><p>mac 或 linux 上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl</span><br><span class="line">sudo chmod a+rx /usr/local/bin/youtube-dl</span><br></pre></td></tr></table></figure></p>
 <h5 id="2-Usage-（用法）"><a href="#2-Usage-（用法）" class="headerlink" title="2.Usage （用法）"></a>2.Usage （用法）</h5><ul>
-<li>General usage<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ youtube-dl https://www.youtube.com/watch\?v\=rNh_e6ZA8CI</span><br><span class="line">[youtube] rNh_e6ZA8CI: Downloading webpage</span><br><span class="line">[youtube] rNh_e6ZA8CI: Downloading video info webpage</span><br><span class="line">[download] Destination: 采用最慢起跑方式! 中国飞人起跑不好只排第四, 但后程爆发以0.03秒险胜夺冠-rNh_e6ZA8CI.mp4</span><br><span class="line">[download] 100% of 13.00MiB <span class="keyword">in</span> 00:43</span><br></pre></td></tr></table></figure>
+<li><p>General usage</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ youtube-dl https://www.youtube.com/watch\?v\=rNh_e6ZA8CI</span><br><span class="line">[youtube] rNh_e6ZA8CI: Downloading webpage</span><br><span class="line">[youtube] rNh_e6ZA8CI: Downloading video info webpage</span><br><span class="line">[download] Destination: 采用最慢起跑方式! 中国飞人起跑不好只排第四, 但后程爆发以0.03秒险胜夺冠-rNh_e6ZA8CI.mp4</span><br><span class="line">[download] 100% of 13.00MiB <span class="keyword">in</span> 00:43</span><br><span class="line"></span><br><span class="line"><span class="comment">### 下载到指定目录，并重命名</span></span><br><span class="line">youtube-dl https://www.youtube.com/watch\?v\=rNh_e6ZA8CI -o ./youtube-download/running_vedio.mp4</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Only Download Audio (下载youtube的音频)  </p>
 </li>
 </ul>
-<p>下载到指定目录，并重命名<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">youtube-dl https://www.youtube.com/watch\?v\=rNh_e6ZA8CI -o ./youtube-download/running_vedio.mp4</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ youtube-dl --<span class="built_in">help</span></span><br><span class="line">Usage: youtube-dl [OPTIONS] URL [URL...]</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>Only Download Audio (下载youtube的音频)</p>
 <blockquote>
 <p>（最近发现youtube有些节目，只用听得，比如 读书类、英语类）,用<code>-f</code> 参数指定格式</p>
 </blockquote>
-<p><code>youtube-dl -f 140 https://www.youtube.com/watch\?v\=9rRrsx1jgYc</code></p>
-</li>
-</ul>
+<p> <code>youtube-dl -f 140 https://www.youtube.com/watch\?v\=9rRrsx1jgYc</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">youtube-dl -F &lt;your_link&gt;</span><br><span class="line"><span class="comment">### -F, --list-formats    List all available formats of requested videos</span></span><br></pre></td></tr></table></figure>
 <p><strong>More Ref:</strong></p>
 <ul>
