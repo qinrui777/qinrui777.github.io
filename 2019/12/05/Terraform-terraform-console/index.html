@@ -12,12 +12,12 @@
 
 
 
-  <meta name="description" content="Anka tutorial 03: jenkins">
+  <meta name="description" content="Terraform : terraform console">
 
 
 
 
-  <meta name="keywords" content="anka,macOS,jenkins,">
+  <meta name="keywords" content="Terraform,">
 
 
 
@@ -32,21 +32,21 @@
 
 
 
-<link rel="canonical" href="http://yoursite.com/2019/11/28/Anka-tutorial-03-jenkins/">
+<link rel="canonical" href="http://yoursite.com/2019/12/05/Terraform-terraform-console/">
 
 
-<meta name="description" content="anka 集成 Jenkins (link)未完待续… 安装插件Manage Jenkins &amp;gt; Manage Plugins 搜索anka 新建 ssh 用的登陆凭证 新建VM的时候 默认用户名和密码分别是 anka/admin 配置jenkinsManage Jenkins &amp;gt; Configure System http://localhost/#/dashboard">
-<meta name="keywords" content="anka,macOS,jenkins">
+<meta name="description" content="1.evaluating expressionsThe terraform console command provides an interactive console for evaluating expressions.  For example:1234567891011# interactive console➜ terraform console&amp;gt; element(list(&quot;">
+<meta name="keywords" content="Terraform">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Anka tutorial 03: jenkins">
-<meta property="og:url" content="http://yoursite.com/2019/11/28/Anka-tutorial-03-jenkins/index.html">
+<meta property="og:title" content="Terraform : terraform console">
+<meta property="og:url" content="http://yoursite.com/2019/12/05/Terraform-terraform-console/index.html">
 <meta property="og:site_name" content="I know nothing except the fact of my ignorance.">
-<meta property="og:description" content="anka 集成 Jenkins (link)未完待续… 安装插件Manage Jenkins &amp;gt; Manage Plugins 搜索anka 新建 ssh 用的登陆凭证 新建VM的时候 默认用户名和密码分别是 anka/admin 配置jenkinsManage Jenkins &amp;gt; Configure System http://localhost/#/dashboard">
+<meta property="og:description" content="1.evaluating expressionsThe terraform console command provides an interactive console for evaluating expressions.  For example:1234567891011# interactive console➜ terraform console&amp;gt; element(list(&quot;">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-11-29T02:42:00.184Z">
+<meta property="og:updated_time" content="2019-12-05T03:36:40.135Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Anka tutorial 03: jenkins">
-<meta name="twitter:description" content="anka 集成 Jenkins (link)未完待续… 安装插件Manage Jenkins &amp;gt; Manage Plugins 搜索anka 新建 ssh 用的登陆凭证 新建VM的时候 默认用户名和密码分别是 anka/admin 配置jenkinsManage Jenkins &amp;gt; Configure System http://localhost/#/dashboard">
+<meta name="twitter:title" content="Terraform : terraform console">
+<meta name="twitter:description" content="1.evaluating expressionsThe terraform console command provides an interactive console for evaluating expressions.  For example:1234567891011# interactive console➜ terraform console&amp;gt; element(list(&quot;">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1">
@@ -91,7 +91,7 @@
 
 
 
-    <title> Anka tutorial 03: jenkins - I know nothing except the fact of my ignorance. </title>
+    <title> Terraform : terraform console - I know nothing except the fact of my ignorance. </title>
   </head>
 
   <body>
@@ -146,12 +146,12 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          Anka tutorial 03: jenkins
+          Terraform : terraform console
         
       </h1>
 
       <time class="post-time">
-          Nov 28 2019
+          Dec 05 2019
       </time>
     </header>
 
@@ -159,13 +159,17 @@
 
     
             <div class="post-content">
-            <h3 id="anka-集成-Jenkins-link"><a href="#anka-集成-Jenkins-link" class="headerlink" title="anka 集成 Jenkins (link)"></a>anka 集成 Jenkins <a href="https://ankadoc.bitbucket.io/anka-build/#integrate-jenkins-with-controller" target="_blank" rel="noopener">(link)</a></h3><p>未完待续…</p>
-<p>安装插件<br><code>Manage Jenkins &gt; Manage Plugins</code></p>
-<p>搜索anka</p>
-<p>新建 ssh 用的登陆凭证</p>
-<p>新建VM的时候 默认用户名和密码分别是 <code>anka/admin</code></p>
-<p>配置jenkins<br><code>Manage Jenkins &gt; Configure System</code></p>
-<p><a href="http://localhost/#/dashboard" target="_blank" rel="noopener">http://localhost/#/dashboard</a></p>
+            <ul>
+<li><h5 id="1-evaluating-expressions"><a href="#1-evaluating-expressions" class="headerlink" title="1.evaluating expressions"></a>1.evaluating expressions</h5>The terraform console command provides an interactive console for evaluating expressions.</li>
+</ul>
+<p>For example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># interactive console</span></span><br><span class="line">➜ terraform console</span><br><span class="line">&gt; element(list(<span class="string">"one"</span>,<span class="string">"two"</span>,<span class="string">"three"</span>),1)</span><br><span class="line">two</span><br><span class="line"></span><br><span class="line"><span class="comment"># non-interactive scripts</span></span><br><span class="line">➜ <span class="built_in">echo</span> <span class="string">"list("</span>1<span class="string">","</span>2<span class="string">")"</span> | terraform console</span><br><span class="line">[</span><br><span class="line">  1,</span><br><span class="line">  2,</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
+<p>or</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">➜ terraform console</span><br><span class="line">&gt; aws_instance_demo.public_ip</span><br><span class="line">54.152.62.34</span><br></pre></td></tr></table></figure>
+<ul>
+<li><h5 id="2-test-Terraform-built-in-functions-locally"><a href="#2-test-Terraform-built-in-functions-locally" class="headerlink" title="2.test Terraform built-in functions locally"></a>2.test Terraform built-in functions locally</h5></li>
+</ul>
+<p><a href="http://artemstar.com/2018/03/03/terraform-test-functions/" target="_blank" rel="noopener">test Terraform built-in functions locally</a></p>
+<p>More ref:<br><a href="https://www.terraform.io/docs/commands/console.html" target="_blank" rel="noopener">https://www.terraform.io/docs/commands/console.html</a><br><a href="http://artemstar.com/2018/03/03/terraform-test-functions/" target="_blank" rel="noopener">http://artemstar.com/2018/03/03/terraform-test-functions/</a></p>
 
             </div>
           
@@ -175,11 +179,7 @@
 		
 		<div class="post-tags">
 		  
-			<a href="/tags/anka/">anka</a>
-		  
-			<a href="/tags/macOS/">macOS</a>
-		  
-			<a href="/tags/jenkins/">jenkins</a>
+			<a href="/tags/Terraform/">Terraform</a>
 		  
 		</div>
 		
@@ -188,15 +188,9 @@
         
   <nav class="post-nav">
     
-      <a class="prev" href="/2019/12/05/Terraform-terraform-console/">
-        <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">Terraform : terraform console</span>
-        <span class="prev-text nav-mobile">Prev</span>
-      </a>
     
-    
-      <a class="next" href="/2019/11/22/Import-P12-file-on-Mac-OS-X-with-CLI/">
-        <span class="next-text nav-default">Import P12 file on Mac OS X with CLI</span>
+      <a class="next" href="/2019/11/28/Anka-tutorial-03-jenkins/">
+        <span class="next-text nav-default">Anka tutorial 03: jenkins</span>
         <span class="prev-text nav-mobile">Next</span>
         <i class="iconfont icon-right"></i>
       </a>
