@@ -35,18 +35,18 @@
 <link rel="canonical" href="http://yoursite.com/2019/12/05/Terraform-terraform-console/">
 
 
-<meta name="description" content="1.evaluating expressionsThe terraform console command provides an interactive console for evaluating expressions.  For example:1234567891011# interactive console➜ terraform console&amp;gt; element(list(&quot;">
+<meta name="description" content="1.evaluating expressionsThe terraform console command provides an interactive console for evaluating expressions. For example:1234567891011# interactive console➜ terraform console&amp;gt; element(list(&quot;on">
 <meta name="keywords" content="Terraform">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Terraform : terraform console">
 <meta property="og:url" content="http://yoursite.com/2019/12/05/Terraform-terraform-console/index.html">
 <meta property="og:site_name" content="I know nothing except the fact of my ignorance.">
-<meta property="og:description" content="1.evaluating expressionsThe terraform console command provides an interactive console for evaluating expressions.  For example:1234567891011# interactive console➜ terraform console&amp;gt; element(list(&quot;">
+<meta property="og:description" content="1.evaluating expressionsThe terraform console command provides an interactive console for evaluating expressions. For example:1234567891011# interactive console➜ terraform console&amp;gt; element(list(&quot;on">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-05T03:36:40.135Z">
+<meta property="og:updated_time" content="2019-12-05T06:23:35.758Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Terraform : terraform console">
-<meta name="twitter:description" content="1.evaluating expressionsThe terraform console command provides an interactive console for evaluating expressions.  For example:1234567891011# interactive console➜ terraform console&amp;gt; element(list(&quot;">
+<meta name="twitter:description" content="1.evaluating expressionsThe terraform console command provides an interactive console for evaluating expressions. For example:1234567891011# interactive console➜ terraform console&amp;gt; element(list(&quot;on">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1">
@@ -159,16 +159,12 @@
 
     
             <div class="post-content">
-            <ul>
-<li><h5 id="1-evaluating-expressions"><a href="#1-evaluating-expressions" class="headerlink" title="1.evaluating expressions"></a>1.evaluating expressions</h5>The terraform console command provides an interactive console for evaluating expressions.</li>
-</ul>
+            <h5 id="1-evaluating-expressions"><a href="#1-evaluating-expressions" class="headerlink" title="1.evaluating expressions"></a>1.evaluating expressions</h5><p>The terraform console command provides an interactive console for evaluating expressions.</p>
 <p>For example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># interactive console</span></span><br><span class="line">➜ terraform console</span><br><span class="line">&gt; element(list(<span class="string">"one"</span>,<span class="string">"two"</span>,<span class="string">"three"</span>),1)</span><br><span class="line">two</span><br><span class="line"></span><br><span class="line"><span class="comment"># non-interactive scripts</span></span><br><span class="line">➜ <span class="built_in">echo</span> <span class="string">"list("</span>1<span class="string">","</span>2<span class="string">")"</span> | terraform console</span><br><span class="line">[</span><br><span class="line">  1,</span><br><span class="line">  2,</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
 <p>or</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">➜ terraform console</span><br><span class="line">&gt; aws_instance_demo.public_ip</span><br><span class="line">54.152.62.34</span><br></pre></td></tr></table></figure>
-<ul>
-<li><h5 id="2-test-Terraform-built-in-functions-locally"><a href="#2-test-Terraform-built-in-functions-locally" class="headerlink" title="2.test Terraform built-in functions locally"></a>2.test Terraform built-in functions locally</h5></li>
-</ul>
-<p><a href="http://artemstar.com/2018/03/03/terraform-test-functions/" target="_blank" rel="noopener">test Terraform built-in functions locally</a></p>
+<h5 id="2-test-Terraform-built-in-functions-locally"><a href="#2-test-Terraform-built-in-functions-locally" class="headerlink" title="2.test Terraform built-in functions locally"></a>2.test Terraform built-in functions locally</h5><p>  <a href="http://artemstar.com/2018/03/03/terraform-test-functions/" target="_blank" rel="noopener">test Terraform built-in functions locally</a></p>
+<hr>
 <p>More ref:<br><a href="https://www.terraform.io/docs/commands/console.html" target="_blank" rel="noopener">https://www.terraform.io/docs/commands/console.html</a><br><a href="http://artemstar.com/2018/03/03/terraform-test-functions/" target="_blank" rel="noopener">http://artemstar.com/2018/03/03/terraform-test-functions/</a></p>
 
             </div>
