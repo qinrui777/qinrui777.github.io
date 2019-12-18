@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang>
+  <head><meta name="generator" content="Hexo 3.8.0">
+    
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+  <meta name="description" content="获取fir中的ios ipa安装包">
+
+
+
+
+  <meta name="keywords" content="Tools,">
+
+
+
+
+
+  <link rel="alternate" href="/default" title="I know nothing except the fact of my ignorance.">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1">
+
+
+
+<link rel="canonical" href="http://yoursite.com/2019/04/09/获取fir中的ios-ipa安装包/">
+
+
+<meta name="description" content="主要是针对iOS 移动端的打包，下载可能出现的需求。 通常流程： pipeline用fir cli命令，或者dev同学用fir cli直接将产出的xx.ipa软件包推送到fir仓库，Qa同学以及业务同事直接拿二维码下载安装在手机上即可。   新需求： 安全团队的同事需要直接拿xx.ipa软件包做安全方面的扫描、测试工作，怎么办？  ～～～请看下面～～～ Steps1.用浏览器打开fir链接地址 2">
+<meta name="keywords" content="Tools">
+<meta property="og:type" content="article">
+<meta property="og:title" content="获取fir中的ios ipa安装包">
+<meta property="og:url" content="http://yoursite.com/2019/04/09/获取fir中的ios-ipa安装包/index.html">
+<meta property="og:site_name" content="I know nothing except the fact of my ignorance.">
+<meta property="og:description" content="主要是针对iOS 移动端的打包，下载可能出现的需求。 通常流程： pipeline用fir cli命令，或者dev同学用fir cli直接将产出的xx.ipa软件包推送到fir仓库，Qa同学以及业务同事直接拿二维码下载安装在手机上即可。   新需求： 安全团队的同事需要直接拿xx.ipa软件包做安全方面的扫描、测试工作，怎么办？  ～～～请看下面～～～ Steps1.用浏览器打开fir链接地址 2">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/fir_image_01.png">
+<meta property="og:image" content="http://yoursite.com/images/fir_image_02.png">
+<meta property="og:image" content="http://yoursite.com/images/fir_image_03.png">
+<meta property="og:image" content="http://yoursite.com/images/fir_image_04.png">
+<meta property="og:image" content="http://yoursite.com/images/fir_image_05.png">
+<meta property="og:updated_time" content="2019-12-17T08:43:42.528Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="获取fir中的ios ipa安装包">
+<meta name="twitter:description" content="主要是针对iOS 移动端的打包，下载可能出现的需求。 通常流程： pipeline用fir cli命令，或者dev同学用fir cli直接将产出的xx.ipa软件包推送到fir仓库，Qa同学以及业务同事直接拿二维码下载安装在手机上即可。   新需求： 安全团队的同事需要直接拿xx.ipa软件包做安全方面的扫描、测试工作，怎么办？  ～～～请看下面～～～ Steps1.用浏览器打开fir链接地址 2">
+<meta name="twitter:image" content="http://yoursite.com/images/fir_image_01.png">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?8280009f2b229eaefa3b28460ccbf01e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-138071159-1', 'auto');
+        ga('send', 'pageview');
+  </script>
+
+
+
+    <title> 获取fir中的ios ipa安装包 - I know nothing except the fact of my ignorance. </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">I know nothing except the fact of my ignorance.</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="https://qinrui777.github.io">
+                            
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="https://github.com/qinrui777">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          获取fir中的ios ipa安装包
+        
+      </h1>
+
+      <time class="post-time">
+          Apr 09 2019
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h2 id="主要是针对iOS-移动端的打包，下载可能出现的需求。"><a href="#主要是针对iOS-移动端的打包，下载可能出现的需求。" class="headerlink" title="主要是针对iOS 移动端的打包，下载可能出现的需求。"></a>主要是针对iOS 移动端的打包，下载可能出现的需求。</h2><blockquote>
+<p>通常流程： pipeline用fir cli命令，或者dev同学用fir cli直接将产出的xx.ipa软件包推送到fir仓库，Qa同学以及业务同事直接拿二维码下载安装在手机上即可。</p>
+</blockquote>
+<blockquote>
+<p>新需求： 安全团队的同事需要直接拿xx.ipa软件包做安全方面的扫描、测试工作，怎么办？</p>
+</blockquote>
+<p>～～～请看下面～～～</p>
+<h3 id="Steps"><a href="#Steps" class="headerlink" title="Steps"></a>Steps</h3><h4 id="1-用浏览器打开fir链接地址"><a href="#1-用浏览器打开fir链接地址" class="headerlink" title="1.用浏览器打开fir链接地址"></a>1.用浏览器打开fir链接地址</h4><p><img src="/images/fir_image_01.png" alt="fir_image_01"></p>
+<h4 id="2-模拟手机下载的请求"><a href="#2-模拟手机下载的请求" class="headerlink" title="2.模拟手机下载的请求"></a>2.模拟手机下载的请求</h4><p>打开 <strong>开发者工具</strong> ，模拟iPhone，刷新一下<br><img src="/images/fir_image_02.png" alt="fir_image_02"></p>
+<p>点击 “下载安装”<br><img src="/images/fir_image_03.png" alt="fir_image_03"></p>
+<h4 id="3-获取url"><a href="#3-获取url" class="headerlink" title="3.获取url"></a>3.获取url</h4><p><img src="/images/fir_image_04.png" alt="fir_image_04"></p>
+<h4 id="4-获取下载ipa文件的下载地址："><a href="#4-获取下载ipa文件的下载地址：" class="headerlink" title="4.获取下载ipa文件的下载地址："></a>4.获取下载ipa文件的下载地址：</h4><p><img src="/images/fir_image_05.png" alt="fir_image_05"></p>
+<p><strong>header</strong> 的 <strong>key-value</strong> 如下：</p>
+<table>
+<thead>
+<tr>
+<th>key</th>
+<th>value </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>User-Agent</td>
+<td>Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1</td>
+</tr>
+<tr>
+<td>Upgrade-Insecure-Requests</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>当然可以直接用下面的命令得到下载地址:<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">curl -s -X GET \</span><br><span class="line">  <span class="string">'https://apps-cn.xxx.com/fir-api-&lt;3中的url&gt;'</span> \</span><br><span class="line">  -H <span class="string">'Cache-Control: no-cache'</span> \</span><br><span class="line">  -H <span class="string">'Postman-Token: 12ee4b20-c8cc-4729-8342-4d2dd32df2d4'</span> \</span><br><span class="line">  -H <span class="string">'User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1'</span> \</span><br><span class="line">  -H <span class="string">'Upgrade-Insecure-Requests: 1'</span> | grep software-package -A 3 | awk -F <span class="string">"["</span> <span class="string">'&#123;print $3&#125;'</span> | awk -F <span class="string">"]"</span> <span class="string">'&#123;print $1&#125;'</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="5-下载"><a href="#5-下载" class="headerlink" title="5.下载"></a>5.下载</h4><p>直接将第4步中的下载地址粘贴到浏览器中，或者用 <code>wget</code> 命令下载均可</p>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/Tools/">Tools</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2019/04/10/反摩尔定理-学如逆水行舟/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">反摩尔定理 = 学如逆水行舟</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/2019/04/07/Docker-image导出导入/">
+        <span class="next-text nav-default">Docker image export and import</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2018 -
+    
+    2019
+    <span class="footer-author">qinrui.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+      
+
+
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+    <script src="/js/src/md5.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+
+    <div id="gitalk-container"></div>
+
+    <script>
+        var gitalk = new Gitalk({
+            clientID: 'd5bbe3dcd1e4b493ccda',
+            clientSecret: '47a17a14730ceb61df029600cc92f4932334034a',
+            repo: 'qinrui777.github.io',
+            owner: 'qinrui777',
+            admin: 'qinrui777',
+            id: location.pathname,      // Ensure uniqueness and length less than 50
+            id: md5(location.pathname),
+            distractionFreeMode: 'false'  // Facebook-like distraction free mode
+        })
+
+        gitalk.render('gitalk-container')
+    </script>
+
+
+    
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>

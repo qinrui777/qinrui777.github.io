@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang>
+  <head><meta name="generator" content="Hexo 3.8.0">
+    
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+  <meta name="description" content="Azure tutorial 02: Storage">
+
+
+
+
+  <meta name="keywords" content="azure,">
+
+
+
+
+
+  <link rel="alternate" href="/default" title="I know nothing except the fact of my ignorance.">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1">
+
+
+
+<link rel="canonical" href="http://yoursite.com/2019/12/11/Azure-tutorial-02-Storage/">
+
+
+<meta name="description" content="storage account typehttps://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview Blob - Binary Large ObjectBinary Object - Images,Documents,Media Files, Log Files, Backup data Virtua">
+<meta name="keywords" content="azure">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Azure tutorial 02: Storage">
+<meta property="og:url" content="http://yoursite.com/2019/12/11/Azure-tutorial-02-Storage/index.html">
+<meta property="og:site_name" content="I know nothing except the fact of my ignorance.">
+<meta property="og:description" content="storage account typehttps://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview Blob - Binary Large ObjectBinary Object - Images,Documents,Media Files, Log Files, Backup data Virtua">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/azure_storage_01.png">
+<meta property="og:image" content="http://yoursite.com/images/azure_storage_02.png">
+<meta property="og:updated_time" content="2019-12-12T03:10:42.973Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Azure tutorial 02: Storage">
+<meta name="twitter:description" content="storage account typehttps://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview Blob - Binary Large ObjectBinary Object - Images,Documents,Media Files, Log Files, Backup data Virtua">
+<meta name="twitter:image" content="http://yoursite.com/images/azure_storage_01.png">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?8280009f2b229eaefa3b28460ccbf01e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-138071159-1', 'auto');
+        ga('send', 'pageview');
+  </script>
+
+
+
+    <title> Azure tutorial 02: Storage - I know nothing except the fact of my ignorance. </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">I know nothing except the fact of my ignorance.</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="https://qinrui777.github.io">
+                            
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="https://github.com/qinrui777">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Azure tutorial 02: Storage
+        
+      </h1>
+
+      <time class="post-time">
+          Dec 11 2019
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p>storage account type<br><a href="https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview</a></p>
+<p><strong>Blob</strong> - Binary Large Object<br><strong>Binary Object</strong> - Images,Documents,Media Files, Log Files, Backup data Virtual Disks</p>
+<p><strong>Blod types:</strong> </p>
+<ul>
+<li>Block Blob - Text and binary data Files</li>
+<li>Append Blobs - Optimized for append operations</li>
+<li>Page Blob - A collection of 512 byte pages optimized for random read and writes(virtual disk)</li>
+</ul>
+<p><strong>Locations and Redundancy:</strong> </p>
+<ul>
+<li>Locally-redundant storage (LRS): A simple, low-cost replication strategy. Data is replicated synchronously three times within the primary region.</li>
+<li>Zone-redundant storage (ZRS): Replication for scenarios requiring high availability. Data is replicated synchronously across three Azure availability zones in the primary region.</li>
+<li>Geo-redundant storage (GRS): Cross-regional replication to protect against regional outages. Data is replicated synchronously three times in the primary region, then replicated asynchronously to the secondary region. For read access to data in the secondary region, enable read-access geo-redundant storage (RA-GRS).</li>
+<li>Geo-zone-redundant storage (GZRS) (preview): Replication for scenarios requiring both high availability and maximum durability. Data is replicated synchronously across three Azure availability zones in the primary region, then replicated asynchronously to the secondary region. For read access to data in the secondary region, enable read-access geo-zone-redundant storage (RA-GZRS).</li>
+</ul>
+<p><strong>Access Tiers:</strong></p>
+<ul>
+<li>Hot </li>
+<li>Cool </li>
+<li>Archive</li>
+</ul>
+<p><strong>Azure Storage services:</strong></p>
+<ul>
+<li>Blob service</li>
+<li>File service</li>
+<li>Queue service</li>
+<li>Table Storage</li>
+</ul>
+<p><strong>Securing Storage Accounts:</strong></p>
+<ul>
+<li>Access Keys -Two per storage account,full access</li>
+<li>Share Access Signatures - Time based access keys that give granular control</li>
+</ul>
+<p><strong>作业：新建storage account ,并上传文件或文件夹到</strong></p>
+<p>create顺序:<br>a subscriptions -&gt;  a storage account -&gt; a SAS token   </p>
+<p>除了从azure portal页面操作之外，还提供以下两种方式</p>
+<ul>
+<li>Azure Storage Explorer - <a href="https://azure.microsoft.com/en-us/features/storage-explorer/" target="_blank" rel="noopener">install tutorial</a><blockquote>
+<p>或者浏览器中直接打开链接<a href="https://go.microsoft.com/fwlink/?LinkId=708342&amp;clcid=0x409，会自动下载" target="_blank" rel="noopener">https://go.microsoft.com/fwlink/?LinkId=708342&amp;clcid=0x409，会自动下载</a></p>
+</blockquote>
+</li>
+</ul>
+<p>打开 Azure Storage Explorer， 通过xx链接storage<br><img src="/images/azure_storage_01.png" width="80%" height="80%"></p>
+<p><img src="/images/azure_storage_02.png" width="80%" height="80%"></p>
+<ul>
+<li>azcopy - <a href="https://docs.microsoft.com/zh-cn/azure/storage/common/storage-use-azcopy-v10?WT.mc_id=thomasmaurer-blog-thmaure" target="_blank" rel="noopener">install tutorial</a></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#mac os terminal</span></span><br><span class="line">azcopy cp <span class="string">"/Users/ruqin/Desktop/testdir/hello_azure.txt"</span> <span class="string">"https://storage873375.blob.core.windows.net/container1/?[?sv=2019-02-02&amp;ss=bfqt&amp;srt=sco&amp;sp=rwdlacup&amp;se=2019-12-11T11:40:09Z&amp;st=2019-12-11T03:40:09Z&amp;spr=https&amp;sig=5%2FFHo4%2BBwxDB6wLftyB7%2FSF7gqnhaEmpFa4nheBOXQg%3D]"</span></span><br></pre></td></tr></table></figure>
+<p>报错,原始是 <code>？</code> 后边格式的问题</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#mac os terminal</span></span><br><span class="line">azcopy cp <span class="string">"/Users/ruqin/Desktop/testdir/hello_azure.txt"</span>  <span class="string">"https://storage873375.blob.core.windows.net/container1/newdir/?sv=2019-02-02&amp;ss=bfqt&amp;srt=sco&amp;sp=rwdlacup&amp;se=2019-12-11T11:40:09Z&amp;st=2019-12-11T03:40:09Z&amp;spr=https&amp;sig=5%2FFHo4%2BBwxDB6wLftyB7%2FSF7gqnhaEmpFa4nheBOXQg%3D"</span></span><br></pre></td></tr></table></figure>
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/azure/">azure</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2019/12/11/Azure-FAQs/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Azure FAQs</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/2019/12/11/Azure-tutorial-01-overview/">
+        <span class="next-text nav-default">Azure tutorial 01: overview</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2018 -
+    
+    2019
+    <span class="footer-author">qinrui.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+      
+
+
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+    <script src="/js/src/md5.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+
+    <div id="gitalk-container"></div>
+
+    <script>
+        var gitalk = new Gitalk({
+            clientID: 'd5bbe3dcd1e4b493ccda',
+            clientSecret: '47a17a14730ceb61df029600cc92f4932334034a',
+            repo: 'qinrui777.github.io',
+            owner: 'qinrui777',
+            admin: 'qinrui777',
+            id: location.pathname,      // Ensure uniqueness and length less than 50
+            id: md5(location.pathname),
+            distractionFreeMode: 'false'  // Facebook-like distraction free mode
+        })
+
+        gitalk.render('gitalk-container')
+    </script>
+
+
+    
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>

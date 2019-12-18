@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang>
+  <head><meta name="generator" content="Hexo 3.8.0">
+    
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+  <meta name="description" content="ngrok demo">
+
+
+
+
+  <meta name="keywords" content="Tools,ngrok,">
+
+
+
+
+
+  <link rel="alternate" href="/default" title="I know nothing except the fact of my ignorance.">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1">
+
+
+
+<link rel="canonical" href="http://yoursite.com/2019/07/22/ngrok-demo/">
+
+
+<meta name="description" content="怎么用https://dashboard.ngrok.com/get-started 12➜  Downloads ./ngrok authtoken &amp;lt;YOUR_AUTHTOKEN&amp;gt;Authtoken saved to configuration file: /Users/ruqin/.ngrok2/ngrok.yml Demo on jenkins 启动本地的Jenkins服务，暴">
+<meta name="keywords" content="Tools,ngrok">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ngrok demo">
+<meta property="og:url" content="http://yoursite.com/2019/07/22/ngrok-demo/index.html">
+<meta property="og:site_name" content="I know nothing except the fact of my ignorance.">
+<meta property="og:description" content="怎么用https://dashboard.ngrok.com/get-started 12➜  Downloads ./ngrok authtoken &amp;lt;YOUR_AUTHTOKEN&amp;gt;Authtoken saved to configuration file: /Users/ruqin/.ngrok2/ngrok.yml Demo on jenkins 启动本地的Jenkins服务，暴">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/ngrok_demo_01.png">
+<meta property="og:image" content="http://yoursite.com/images/ngrok_demo_03.png">
+<meta property="og:image" content="http://yoursite.com/images/ngrok_demo_02.png">
+<meta property="og:updated_time" content="2019-10-08T08:49:09.227Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ngrok demo">
+<meta name="twitter:description" content="怎么用https://dashboard.ngrok.com/get-started 12➜  Downloads ./ngrok authtoken &amp;lt;YOUR_AUTHTOKEN&amp;gt;Authtoken saved to configuration file: /Users/ruqin/.ngrok2/ngrok.yml Demo on jenkins 启动本地的Jenkins服务，暴">
+<meta name="twitter:image" content="http://yoursite.com/images/ngrok_demo_01.png">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?8280009f2b229eaefa3b28460ccbf01e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-138071159-1', 'auto');
+        ga('send', 'pageview');
+  </script>
+
+
+
+    <title> ngrok demo - I know nothing except the fact of my ignorance. </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">I know nothing except the fact of my ignorance.</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="https://qinrui777.github.io">
+                            
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="https://github.com/qinrui777">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          ngrok demo
+        
+      </h1>
+
+      <time class="post-time">
+          Jul 22 2019
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h3 id="怎么用"><a href="#怎么用" class="headerlink" title="怎么用"></a>怎么用</h3><p><a href="https://dashboard.ngrok.com/get-started" target="_blank" rel="noopener">https://dashboard.ngrok.com/get-started</a><br><img src="/images/ngrok_demo_01.png" alt="ngrok_demo_01"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  Downloads ./ngrok authtoken &lt;YOUR_AUTHTOKEN&gt;</span><br><span class="line">Authtoken saved to configuration file: /Users/ruqin/.ngrok2/ngrok.yml</span><br></pre></td></tr></table></figure>
+<h3 id="Demo-on-jenkins"><a href="#Demo-on-jenkins" class="headerlink" title="Demo on jenkins"></a>Demo on jenkins</h3><ol>
+<li>启动本地的Jenkins服务，暴露端口 <strong>8081</strong></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">➜  jenkins_demo docker run -d --name jenkins4ngrok -p 8081:8080 jenkins/jenkins:latest</span><br><span class="line">c384aca32c27d2c2df58e76619bc63a758d5e7b358e59c5bf083cb739952c4c7</span><br><span class="line">➜  jenkins_demo docker ps</span><br><span class="line">CONTAINER ID        IMAGE                    COMMAND                  CREATED             STATUS              PORTS                               NAMES</span><br><span class="line">c384aca32c27        jenkins/jenkins:latest   <span class="string">"/sbin/tini -- /usr/…"</span>   2 seconds ago       Up 1 second         50000/tcp, 0.0.0.0:8081-&gt;8080/tcp   jenkins4ngrok</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>Use ngrok, To start a HTTP tunnel on port 8081<br><code>➜  ./ngrok http 8081</code></li>
+</ol>
+<p><img src="/images/ngrok_demo_03.png" alt="ngrok_demo_03"></p>
+<ol start="3">
+<li>根据ngrok返回的，访问公网地址</li>
+</ol>
+<p>界面如下<br><img src="/images/ngrok_demo_02.png" alt="ngrok_demo_02"></p>
+<p>More Ref:</p>
+<ul>
+<li><a href="https://ngrok.com/docs" target="_blank" rel="noopener">https://ngrok.com/docs</a></li>
+</ul>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/Tools/">Tools</a>
+		  
+			<a href="/tags/ngrok/">ngrok</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2019/07/25/docker-镜像的扁平化/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">docker 镜像的扁平化</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/2019/07/15/adminMongo-a-cross-platform-user-interface-GUI-to-connect-MongoDB/">
+        <span class="next-text nav-default">adminMongo: a cross platform user interface (GUI) to connect MongoDB</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2018 -
+    
+    2019
+    <span class="footer-author">qinrui.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+      
+
+
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+    <script src="/js/src/md5.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+
+    <div id="gitalk-container"></div>
+
+    <script>
+        var gitalk = new Gitalk({
+            clientID: 'd5bbe3dcd1e4b493ccda',
+            clientSecret: '47a17a14730ceb61df029600cc92f4932334034a',
+            repo: 'qinrui777.github.io',
+            owner: 'qinrui777',
+            admin: 'qinrui777',
+            id: location.pathname,      // Ensure uniqueness and length less than 50
+            id: md5(location.pathname),
+            distractionFreeMode: 'false'  // Facebook-like distraction free mode
+        })
+
+        gitalk.render('gitalk-container')
+    </script>
+
+
+    
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang>
+  <head><meta name="generator" content="Hexo 3.8.0">
+    
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+  <meta name="description" content="tmux tutorial">
+
+
+
+
+  <meta name="keywords" content="tmux,">
+
+
+
+
+
+  <link rel="alternate" href="/default" title="I know nothing except the fact of my ignorance.">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1">
+
+
+
+<link rel="canonical" href="http://yoursite.com/2019/09/07/tmux-tutorial/">
+
+
+<meta name="description" content="1.tmux是什么tmux (terminal multiplexer),是一个 BSD 协议发布的终端复用软件，用来在服务器端托管同时运行的 Shell. 效果如图：  tmux   几个重要概念：  1.会话(session): 建立一个 tmux 工作区会话，会话可以长期驻留，重新连接服务器不会丢失，我们只需重新 tmux attach 到之前的工作区就可以恢复会话 2.窗口(window)">
+<meta name="keywords" content="tmux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="tmux tutorial">
+<meta property="og:url" content="http://yoursite.com/2019/09/07/tmux-tutorial/index.html">
+<meta property="og:site_name" content="I know nothing except the fact of my ignorance.">
+<meta property="og:description" content="1.tmux是什么tmux (terminal multiplexer),是一个 BSD 协议发布的终端复用软件，用来在服务器端托管同时运行的 Shell. 效果如图：  tmux   几个重要概念：  1.会话(session): 建立一个 tmux 工作区会话，会话可以长期驻留，重新连接服务器不会丢失，我们只需重新 tmux attach 到之前的工作区就可以恢复会话 2.窗口(window)">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/image_tmux_01.png">
+<meta property="og:updated_time" content="2019-12-05T03:18:45.396Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="tmux tutorial">
+<meta name="twitter:description" content="1.tmux是什么tmux (terminal multiplexer),是一个 BSD 协议发布的终端复用软件，用来在服务器端托管同时运行的 Shell. 效果如图：  tmux   几个重要概念：  1.会话(session): 建立一个 tmux 工作区会话，会话可以长期驻留，重新连接服务器不会丢失，我们只需重新 tmux attach 到之前的工作区就可以恢复会话 2.窗口(window)">
+<meta name="twitter:image" content="http://yoursite.com/images/image_tmux_01.png">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?8280009f2b229eaefa3b28460ccbf01e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-138071159-1', 'auto');
+        ga('send', 'pageview');
+  </script>
+
+
+
+    <title> tmux tutorial - I know nothing except the fact of my ignorance. </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">I know nothing except the fact of my ignorance.</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="https://qinrui777.github.io">
+                            
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="https://github.com/qinrui777">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          tmux tutorial
+        
+      </h1>
+
+      <time class="post-time">
+          Sep 07 2019
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h3 id="1-tmux是什么"><a href="#1-tmux是什么" class="headerlink" title="1.tmux是什么"></a>1.tmux是什么</h3><pre><code>tmux (terminal multiplexer),是一个 BSD 协议发布的终端复用软件，用来在服务器端托管同时运行的 Shell.
+</code></pre><p>效果如图：<br><img src="/images/image_tmux_01.png" alt="tmux_01"></p>
+<center> tmux </center>
+
+<p>几个重要概念：</p>
+<ul>
+<li>1.会话(session): 建立一个 tmux 工作区会话，会话可以长期驻留，重新连接服务器不会丢失，我们只需重新 tmux attach 到之前的工作区就可以恢复会话</li>
+<li>2.窗口(window): 容纳多个窗格</li>
+<li>3.窗格(pane): 可以在窗口中分成多个窗格</li>
+</ul>
+<p>主要解决以下问题：</p>
+<ul>
+<li>想同时打开多个目录不得不开很多终端标签来回切换</li>
+<li>开了一个 vim 窗口之后，想切到其他目录不得不重新打开个一个终端窗口 ssh 到服务器</li>
+<li>运行一个脚本，服务器断掉失联之后当前进程被服务器给无情地杀掉，不得不用 nohup 等方式让脚本在后台跑</li>
+<li>…</li>
+</ul>
+<h3 id="2-安装"><a href="#2-安装" class="headerlink" title="2.安装"></a>2.安装</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">brew install tmux       <span class="comment"># OSX</span></span><br><span class="line">pacman -S tmux          <span class="comment"># archlinux</span></span><br><span class="line">apt-get install tmux    <span class="comment"># Ubuntu</span></span><br><span class="line">yum install tmux        <span class="comment"># Centos</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#check tmux version</span></span><br><span class="line">➜  ~ tmux -V</span><br><span class="line">tmux 2.9a</span><br></pre></td></tr></table></figure>
+<h3 id="3-使用"><a href="#3-使用" class="headerlink" title="3.使用"></a>3.使用</h3><p>tmux的所有指令，都包含同一个前缀，默认为 <strong><code>Ctrl+b</code> </strong>，输入完前缀过后，<strong>控制台激活</strong>，命令按键才能生效。</p>
+<ul>
+<li>会话(session)<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#新建会话</span></span><br><span class="line">tmux new -s &lt;Session_Name&gt; <span class="comment"># tmux new-session -s &lt;Session_Name&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#列出所有会话</span></span><br><span class="line">tmux ls  <span class="comment"># tmux list-session</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#进入会话</span></span><br><span class="line">tmux a -t &lt;Session_Name&gt; <span class="comment"># tmux attach -t , -t mean 'to' </span></span><br><span class="line"></span><br><span class="line"><span class="comment">###当且只有一个session时，可以直接输入命令 tmux a 或 tmux attach 进入</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#关闭会话</span></span><br><span class="line">tmux <span class="built_in">kill</span>-session -s &lt;Session_Name&gt; <span class="comment"># kill命令有kill-pane、kill-server、kill-session 和 kill-window共四种</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>快捷指令<br>(先按下 Tmux 前缀 <strong>ctrl+b</strong>,然后松开，继续按下面的字母)</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">:new&lt;回车&gt;  启动新会话</span><br><span class="line">s           列出所有会话</span><br><span class="line">$           重命名当前会话</span><br><span class="line">d           暂时离开 deattach</span><br></pre></td></tr></table></figure>
+<ul>
+<li>窗口(window)<blockquote>
+<p>快捷指令</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">c  创建新窗口</span><br><span class="line">w  列出所有窗口</span><br><span class="line">n  后一个窗口 next</span><br><span class="line">p  前一个窗口 pervious</span><br><span class="line">f  查找窗口</span><br><span class="line">,  重命名当前窗口</span><br><span class="line">&amp;  关闭当前窗口</span><br><span class="line">数字0,1,2... 也可用来切换窗口</span><br></pre></td></tr></table></figure>
+<ul>
+<li>窗格(pane)<blockquote>
+<p>快捷指令</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">%  垂直分割</span><br><span class="line"><span class="string">"  水平分割</span></span><br><span class="line"><span class="string">上下左右 方向按键调整光标位置</span></span><br><span class="line"><span class="string">o  选择下一面板</span></span><br><span class="line"><span class="string">x  关闭窗格</span></span><br><span class="line"><span class="string">q 显示每个窗格是第几个，当数字出现的时候按数字几就选中第几个窗格</span></span><br><span class="line"><span class="string">&#123; 与上一个窗格交换位置</span></span><br><span class="line"><span class="string">&#125; 与下一个窗格交换位置</span></span><br><span class="line"><span class="string">z 切换窗格最大化/最小化</span></span><br></pre></td></tr></table></figure>
+<p>其他：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">t  窗口中央显示一个数字时钟</span><br><span class="line">?  列出所有快捷键</span><br><span class="line">:  命令提示符</span><br></pre></td></tr></table></figure></p>
+<p>基本配置：</p>
+<ul>
+<li><p>配置文件 <code>～/.tmux.conf</code> ,如修改 <em>默认的前缀快捷键</em></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ touch .tmux.conf</span><br><span class="line">$ cat .tmux.conf </span><br><span class="line"><span class="comment"># Change the prefix key to C-a</span></span><br><span class="line"><span class="built_in">set</span> -g prefix C<span class="_">-a</span>                          </span><br><span class="line">unbind C-b                                 </span><br><span class="line"><span class="built_in">bind</span> C<span class="_">-a</span> send-prefix</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>生效配置 <code>tmux source-file ~/.tmux.conf</code> 或用动态载入配置的方法</p>
+</li>
+</ul>
+<p>More ref:</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=norO25P7xHg&amp;list=PLtK75qxsQaMJ_DmXk9yZbCBJuG9HRwlGc&amp;index=2" target="_blank" rel="noopener">tmux:Shared Sessions</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/43687973" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/43687973</a></li>
+<li><a href="https://www.youtube.com/watch?v=BHhA_ZKjyxo&amp;list=PLtK75qxsQaMJ_DmXk9yZbCBJuG9HRwlGc" target="_blank" rel="noopener">https://www.youtube.com/watch?v=BHhA_ZKjyxo&amp;list=PLtK75qxsQaMJ_DmXk9yZbCBJuG9HRwlGc</a></li>
+<li><a href="https://gist.github.com/ryerh/14b7c24dfd623ef8edc7" target="_blank" rel="noopener">https://gist.github.com/ryerh/14b7c24dfd623ef8edc7</a></li>
+<li><a href="http://louiszhai.github.io/2017/09/30/tmux/" target="_blank" rel="noopener">http://louiszhai.github.io/2017/09/30/tmux/</a></li>
+</ul>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/tmux/">tmux</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2019/10/04/Devops-Company-List/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Devops Company List</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/2019/08/30/packer-intro/">
+        <span class="next-text nav-default">packer intro</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2018 -
+    
+    2019
+    <span class="footer-author">qinrui.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+      
+
+
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+    <script src="/js/src/md5.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+
+    <div id="gitalk-container"></div>
+
+    <script>
+        var gitalk = new Gitalk({
+            clientID: 'd5bbe3dcd1e4b493ccda',
+            clientSecret: '47a17a14730ceb61df029600cc92f4932334034a',
+            repo: 'qinrui777.github.io',
+            owner: 'qinrui777',
+            admin: 'qinrui777',
+            id: location.pathname,      // Ensure uniqueness and length less than 50
+            id: md5(location.pathname),
+            distractionFreeMode: 'false'  // Facebook-like distraction free mode
+        })
+
+        gitalk.render('gitalk-container')
+    </script>
+
+
+    
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>

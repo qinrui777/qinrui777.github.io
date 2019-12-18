@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang>
+  <head><meta name="generator" content="Hexo 3.8.0">
+    
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+  <meta name="description" content="Jenkins build trigger、logRotator、buildDiscarder etc">
+
+
+
+
+  <meta name="keywords" content="jenkins,">
+
+
+
+
+
+  <link rel="alternate" href="/default" title="I know nothing except the fact of my ignorance.">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1">
+
+
+
+<link rel="canonical" href="http://yoursite.com/2019/04/11/Jenkins-build-trigger、logRotator、options/">
+
+
+<meta name="description" content="Declarative Pipeline 与Job DSL的同一个功能的语法命令有些差异，不能直接套用，需要查对应的官方文档。  1.Jenkins Declarative Pipeline语法如下 123456789101112131415161718//Jenkinsfile (Declarative Pipeline)pipeline &amp;#123;    agent &amp;#123; label">
+<meta name="keywords" content="jenkins">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Jenkins build trigger、logRotator、buildDiscarder etc">
+<meta property="og:url" content="http://yoursite.com/2019/04/11/Jenkins-build-trigger、logRotator、options/index.html">
+<meta property="og:site_name" content="I know nothing except the fact of my ignorance.">
+<meta property="og:description" content="Declarative Pipeline 与Job DSL的同一个功能的语法命令有些差异，不能直接套用，需要查对应的官方文档。  1.Jenkins Declarative Pipeline语法如下 123456789101112131415161718//Jenkinsfile (Declarative Pipeline)pipeline &amp;#123;    agent &amp;#123; label">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-11-08T09:37:26.787Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Jenkins build trigger、logRotator、buildDiscarder etc">
+<meta name="twitter:description" content="Declarative Pipeline 与Job DSL的同一个功能的语法命令有些差异，不能直接套用，需要查对应的官方文档。  1.Jenkins Declarative Pipeline语法如下 123456789101112131415161718//Jenkinsfile (Declarative Pipeline)pipeline &amp;#123;    agent &amp;#123; label">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?8280009f2b229eaefa3b28460ccbf01e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-138071159-1', 'auto');
+        ga('send', 'pageview');
+  </script>
+
+
+
+    <title> Jenkins build trigger、logRotator、buildDiscarder etc - I know nothing except the fact of my ignorance. </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">I know nothing except the fact of my ignorance.</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="https://qinrui777.github.io">
+                            
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="https://github.com/qinrui777">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Jenkins build trigger、logRotator、buildDiscarder etc
+        
+      </h1>
+
+      <time class="post-time">
+          Apr 11 2019
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p>Declarative Pipeline 与Job DSL的同一个功能的语法命令有些差异，不能直接套用，需要查对应的官方文档。 </p>
+<h4 id="1-Jenkins-Declarative-Pipeline"><a href="#1-Jenkins-Declarative-Pipeline" class="headerlink" title="1.Jenkins Declarative Pipeline"></a>1.Jenkins Declarative Pipeline</h4><p>语法如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">//Jenkinsfile (Declarative Pipeline)</span><br><span class="line">pipeline &#123;</span><br><span class="line">    agent &#123; label  <span class="string">'sbt'</span> &#125;</span><br><span class="line">    options&#123;</span><br><span class="line">        buildDiscarder(logRotator(numToKeepStr:<span class="string">'5'</span>))</span><br><span class="line">        disableConcurrentBuilds()</span><br><span class="line">    &#125;</span><br><span class="line">    triggers&#123;</span><br><span class="line">       pollSCM(<span class="string">'H/2 * * * 1-5'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    environment &#123;</span><br><span class="line">        MYBRANCH = <span class="string">"<span class="variable">$&#123;env.BRANCH_NAME&#125;</span>"</span></span><br><span class="line">        NEXUS_URL = <span class="string">'117.121.xxx.xx:443'</span></span><br><span class="line">        BASE_IMAGE_TAG = <span class="string">"<span class="variable">$&#123;NEXUS_URL&#125;</span>/<span class="variable">$&#123;GROUP_NAME&#125;</span>/<span class="variable">$&#123;SERVICE_NAME&#125;</span>"</span></span><br><span class="line">        BRANCH_IMAGE_TAG = <span class="string">"<span class="variable">$&#123;NEXUS_URL&#125;</span>/<span class="variable">$&#123;GROUP_NAME&#125;</span>/<span class="variable">$&#123;SERVICE_NAME&#125;</span>-<span class="variable">$&#123;MYBRANCH&#125;</span>"</span></span><br><span class="line">    &#125;</span><br><span class="line">...   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>1.1  triggers</strong></p>
+<p><strong>1.2  buildDiscarder</strong></p>
+<p><strong>1.3  disableConcurrentBuilds</strong></p>
+<ul>
+<li>daysToKeepStr: history is only kept up to this days.</li>
+<li>numToKeepStr: only this number of build logs are kept.</li>
+<li>artifactDaysToKeepStr: artifacts are only kept up to this days.</li>
+<li>artifactNumToKeepStr: only this number of builds have their artifacts kept.</li>
+</ul>
+<p><strong>1.4 environment</strong></p>
+<h4 id="2-Jenkins-Job-DSL"><a href="#2-Jenkins-Job-DSL" class="headerlink" title="2.Jenkins Job DSL"></a>2.Jenkins Job DSL</h4><p>语法如下<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">pipelineJob(<span class="string">"$&#123;AndroidFolder&#125;/nightly-build"</span>) &#123;</span><br><span class="line">  description <span class="string">"""</span></span><br><span class="line"><span class="string">&lt;h3&gt;</span></span><br><span class="line"><span class="string"> Android Build for nightly build</span></span><br><span class="line"><span class="string">&lt;/h3&gt;</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">  <span class="comment">//@midnight This will run at some point between 0:00 and 2:59</span></span><br><span class="line">  triggers&#123;</span><br><span class="line">    cron <span class="string">'''TZ=Asia/Shanghai</span></span><br><span class="line"><span class="string">    @midnight</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">  &#125;</span><br><span class="line">  logRotator &#123;</span><br><span class="line">    artifactNumToKeep(<span class="number">30</span>)</span><br><span class="line">    numToKeep(<span class="number">30</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  throttleConcurrentBuilds &#123;</span><br><span class="line">    maxTotal(<span class="number">1</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  environmentVariables &#123;</span><br><span class="line">    env(<span class="string">'GIT_URL'</span>, gitUrl)</span><br><span class="line">    env(<span class="string">'GIT_BRANCH'</span>, gitBranch)</span><br><span class="line">    env(<span class="string">'GIT_CREDENTIAL_ID'</span>, <span class="string">'xxxx-git-ssh-private'</span>)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>2.1 triggers</strong></p>
+<p><strong>2.2  logRotator</strong></p>
+<ul>
+<li>artifactDaysToKeep: If specified, artifacts from builds older than this number of days will be deleted, but the logs, history, reports, etc for the build will be kept.</li>
+<li>artifactNumToKeep: If specified, only up to this number of builds have their artifacts retained.</li>
+<li>daysToKeep: If specified, build records are only kept up to this number of days.</li>
+<li>numToKeep: If specified, only up to this number of build records are kept.</li>
+</ul>
+<p><strong>2.3 throttleConcurrentBuilds</strong><br>throttleConcurrentBuilds 需要单独给Jenkins安装插件 <strong>Throttle Concurrent Builds</strong> </p>
+<p><strong>2.4 environmentVariables</strong></p>
+<p><strong>More Ref:</strong></p>
+<blockquote>
+<ol>
+<li><a href="https://jenkins.io/doc/book/pipeline/syntax/#available-options" target="_blank" rel="noopener">https://jenkins.io/doc/book/pipeline/syntax/#available-options</a></li>
+<li><a href="https://jenkinsci.github.io/job-dsl-plugin/#path/pipelineJob-logRotator" target="_blank" rel="noopener">https://jenkinsci.github.io/job-dsl-plugin/#path/pipelineJob-logRotator</a></li>
+<li><a href="https://jenkinsci.github.io/job-dsl-plugin/#path/pipelineJob-triggers" target="_blank" rel="noopener">https://jenkinsci.github.io/job-dsl-plugin/#path/pipelineJob-triggers</a></li>
+</ol>
+</blockquote>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/jenkins/">jenkins</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2019/04/18/How-to-Create-Custom-iTerm2-Window/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">How to Create Custom iTerm2 Window</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/2019/04/10/反摩尔定理-学如逆水行舟/">
+        <span class="next-text nav-default">反摩尔定理 = 学如逆水行舟</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2018 -
+    
+    2019
+    <span class="footer-author">qinrui.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+      
+
+
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+    <script src="/js/src/md5.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+
+    <div id="gitalk-container"></div>
+
+    <script>
+        var gitalk = new Gitalk({
+            clientID: 'd5bbe3dcd1e4b493ccda',
+            clientSecret: '47a17a14730ceb61df029600cc92f4932334034a',
+            repo: 'qinrui777.github.io',
+            owner: 'qinrui777',
+            admin: 'qinrui777',
+            id: location.pathname,      // Ensure uniqueness and length less than 50
+            id: md5(location.pathname),
+            distractionFreeMode: 'false'  // Facebook-like distraction free mode
+        })
+
+        gitalk.render('gitalk-container')
+    </script>
+
+
+    
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>
