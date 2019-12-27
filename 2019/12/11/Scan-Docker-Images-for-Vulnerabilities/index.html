@@ -35,18 +35,18 @@
 <link rel="canonical" href="http://yoursite.com/2019/12/11/Scan-Docker-Images-for-Vulnerabilities/">
 
 
-<meta name="description" content="可以扫描哪些方面，哪些方面检查不出来  有哪些工具，各自特点  工具开源、收费  是否方便与pipeline集成  报告形式   Tool 1: trivyoutput:1234567891011121314151617181920212223➜   trivy python:alpine2019-12-12T09:40:48.656+0800	INFO	Detecting Alpine vul">
+<meta name="description" content="可以扫描哪些方面，哪些方面检查不出来  有哪些工具，各自特点  工具开源/收费  是否方便与pipeline集成  报告形式  是否需要单独的服务端、数据库   Tool 1: trivyoutput:1234567891011121314151617181920212223➜   trivy python:alpine2019-12-12T09:40:48.656+0800	INFO	Dete">
 <meta name="keywords" content="Docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Scan Docker Images for Vulnerabilities">
 <meta property="og:url" content="http://yoursite.com/2019/12/11/Scan-Docker-Images-for-Vulnerabilities/index.html">
 <meta property="og:site_name" content="I know nothing except the fact of my ignorance.">
-<meta property="og:description" content="可以扫描哪些方面，哪些方面检查不出来  有哪些工具，各自特点  工具开源、收费  是否方便与pipeline集成  报告形式   Tool 1: trivyoutput:1234567891011121314151617181920212223➜   trivy python:alpine2019-12-12T09:40:48.656+0800	INFO	Detecting Alpine vul">
+<meta property="og:description" content="可以扫描哪些方面，哪些方面检查不出来  有哪些工具，各自特点  工具开源/收费  是否方便与pipeline集成  报告形式  是否需要单独的服务端、数据库   Tool 1: trivyoutput:1234567891011121314151617181920212223➜   trivy python:alpine2019-12-12T09:40:48.656+0800	INFO	Dete">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-12T02:16:44.970Z">
+<meta property="og:updated_time" content="2019-12-27T01:39:45.360Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Scan Docker Images for Vulnerabilities">
-<meta name="twitter:description" content="可以扫描哪些方面，哪些方面检查不出来  有哪些工具，各自特点  工具开源、收费  是否方便与pipeline集成  报告形式   Tool 1: trivyoutput:1234567891011121314151617181920212223➜   trivy python:alpine2019-12-12T09:40:48.656+0800	INFO	Detecting Alpine vul">
+<meta name="twitter:description" content="可以扫描哪些方面，哪些方面检查不出来  有哪些工具，各自特点  工具开源/收费  是否方便与pipeline集成  报告形式  是否需要单独的服务端、数据库   Tool 1: trivyoutput:1234567891011121314151617181920212223➜   trivy python:alpine2019-12-12T09:40:48.656+0800	INFO	Dete">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1">
@@ -164,11 +164,13 @@
 </li>
 <li><p>有哪些工具，各自特点</p>
 </li>
-<li><p>工具开源、收费</p>
+<li><p>工具开源/收费</p>
 </li>
 <li><p>是否方便与pipeline集成</p>
 </li>
 <li><p>报告形式</p>
+</li>
+<li><p>是否需要单独的服务端、数据库</p>
 </li>
 </ul>
 <h3 id="Tool-1-trivy"><a href="#Tool-1-trivy" class="headerlink" title="Tool 1: trivy"></a>Tool 1: <a href="https://github.com/aquasecurity/trivy" target="_blank" rel="noopener">trivy</a></h3><p>output:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">➜   trivy python:alpine</span><br><span class="line">2019-12-12T09:40:48.656+0800	INFO	Detecting Alpine vulnerabilities...</span><br><span class="line"></span><br><span class="line">python:alpine (alpine 3.10.2)</span><br><span class="line">=============================</span><br><span class="line">Total: 9 (UNKNOWN: 0, LOW: 2, MEDIUM: 7, HIGH: 0, CRITICAL: 0)</span><br><span class="line"></span><br><span class="line">+-----------+------------------+----------+-------------------+--------------------------------+</span><br><span class="line">|  LIBRARY  | VULNERABILITY ID | SEVERITY | INSTALLED VERSION | FIXED VERSION |      TITLE    |</span><br><span class="line">+-----------+------------------+----------+-------------------+---------   +-------------------+</span><br><span class="line">| e2fsprogs | CVE-2019-5094    | MEDIUM   | 1.45.2-r0| 1.45.2-r1 | e2fsprogs: crafted             |</span><br><span class="line">|           |                  |          |                   |               | ext4 partition leads to        |</span><br><span class="line">|           |                  |          |                   |               | out-of-bounds write            |</span><br><span class="line">+-----------+------------------+          +-------------------+---------------+--------------------------------+</span><br><span class="line">| expat     | CVE-2019-15903   |          | 2.2.7-r0| 2.2.7-r1  | expat: heap-based buffer       |</span><br><span class="line">|           |                  |          |                   |               | over-read via crafted XML      |</span><br><span class="line">|           |                  |          |                   |               | input                          |</span><br><span class="line">+-----------+------------------+          +-------------------+---------------+--------------------------------+</span><br><span class="line">| libgcrypt | CVE-2019-13627   |          | 1.8.4-r2| 1.8.5-r0  | libgcrypt: ECDSA timing        |</span><br><span class="line">|           |                  |          |                   |               | attack <span class="keyword">in</span> the libgcrypt20      |</span><br><span class="line">|           |                  |          |                   |               | cryptographic library          |</span><br><span class="line">+-----------+------------------+          +-------------------+--------------</span><br><span class="line">省略100行</span><br></pre></td></tr></table></figure></p>
@@ -195,6 +197,12 @@
         
         
   <nav class="post-nav">
+    
+      <a class="prev" href="/2019/12/24/The-Gig-Economy-Note/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">The Gig Economy Note</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
     
     
       <a class="next" href="/2019/12/11/Azure-FAQs/">
