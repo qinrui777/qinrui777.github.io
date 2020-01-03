@@ -33,17 +33,17 @@
 <link rel="canonical" href="http://yoursite.com/2020/01/03/移动端打包pipeline通识：从零开始/">
 
 
-<meta name="description" content="背景： 一台被格式化后的 MacBook Pro, 对某个移动端项目( xx类型 )做pipeline  makefile  install brew cask install JDK  install jenkins curl -L -O http://mirrors.jenkins-ci.org/war/latest/jenkins.war ref:  brew &amp;amp; brew cask">
+<meta name="description" content="背景： 一台被格式化后的 MacBook Pro, 对某个移动端项目( xx类型 )做android pipeline、iOS pipeline 网络：公司网络（可翻墙）  makefile  记得验证/确认 install brew cask 1234/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew">
 <meta property="og:type" content="article">
 <meta property="og:title" content="移动端打包pipeline通识：从零开始">
 <meta property="og:url" content="http://yoursite.com/2020/01/03/移动端打包pipeline通识：从零开始/index.html">
 <meta property="og:site_name" content="I know nothing except the fact of my ignorance.">
-<meta property="og:description" content="背景： 一台被格式化后的 MacBook Pro, 对某个移动端项目( xx类型 )做pipeline  makefile  install brew cask install JDK  install jenkins curl -L -O http://mirrors.jenkins-ci.org/war/latest/jenkins.war ref:  brew &amp;amp; brew cask">
+<meta property="og:description" content="背景： 一台被格式化后的 MacBook Pro, 对某个移动端项目( xx类型 )做android pipeline、iOS pipeline 网络：公司网络（可翻墙）  makefile  记得验证/确认 install brew cask 1234/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-01-03T05:09:03.344Z">
+<meta property="og:updated_time" content="2020-01-03T06:27:45.866Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="移动端打包pipeline通识：从零开始">
-<meta name="twitter:description" content="背景： 一台被格式化后的 MacBook Pro, 对某个移动端项目( xx类型 )做pipeline  makefile  install brew cask install JDK  install jenkins curl -L -O http://mirrors.jenkins-ci.org/war/latest/jenkins.war ref:  brew &amp;amp; brew cask">
+<meta name="twitter:description" content="背景： 一台被格式化后的 MacBook Pro, 对某个移动端项目( xx类型 )做android pipeline、iOS pipeline 网络：公司网络（可翻墙）  makefile  记得验证/确认 install brew cask 1234/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1">
@@ -156,14 +156,27 @@
 
     
             <div class="post-content">
-            <p>背景： 一台被格式化后的 MacBook Pro, 对某个移动端项目( xx类型 )做pipeline</p>
+            <p>背景： 一台被格式化后的 MacBook Pro, 对某个移动端项目( xx类型 )做android pipeline、iOS pipeline</p>
+<p>网络：公司网络（可翻墙）</p>
 <blockquote>
 <p>makefile</p>
 </blockquote>
+<p>记得验证/确认</p>
 <p>install brew cask</p>
-<p>install JDK </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/ruby -e <span class="string">"<span class="variable">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)</span>"</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">brew -v</span><br></pre></td></tr></table></figure>
+<p>brew cask 是在brew 的基础上一个增强的工具，用来安装Mac上的Gui程序应用包（.dmg/.pkg）, 比如qq、chrome等。它先下载解压到统一的目录中（/opt/homebrew-cask/Caskroom），省掉了自己去下载、解压、拖拽（安装）等步骤，同样，卸载相当容易与干净。然后再软链到~/Applications/目录下, 非常方便，而且还包含很多在 AppStore 里没有的常用软件。</p>
+<p><code>brew install brew-cask-completion</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">➜  Desktop brew cask</span><br><span class="line">Homebrew Cask provides a friendly CLI workflow <span class="keyword">for</span> the administration</span><br><span class="line">of macOS applications distributed as binaries.</span><br><span class="line"></span><br><span class="line">Commands:</span><br><span class="line"></span><br><span class="line">    --cache    display the file used to cache the Cask</span><br><span class="line">    audit      verifies installability of Casks</span><br><span class="line">    cat        dump raw <span class="built_in">source</span> of the given Cask to the standard output</span><br><span class="line">    create     creates the given Cask and opens it <span class="keyword">in</span> an editor</span><br><span class="line">    doctor     checks <span class="keyword">for</span> configuration issues</span><br><span class="line">    edit       edits the given Cask</span><br><span class="line">    fetch      downloads remote application files to <span class="built_in">local</span> cache</span><br><span class="line">    home       opens the homepage of the given Cask</span><br><span class="line">    info       displays information about the given Cask</span><br><span class="line">    install    installs the given Cask</span><br><span class="line">    list       with no args, lists installed Casks; given installed Casks, lists staged files</span><br><span class="line">    outdated   list the outdated installed Casks</span><br><span class="line">    reinstall  reinstalls the given Cask</span><br><span class="line">    style      checks Cask style using RuboCop</span><br><span class="line">    uninstall  uninstalls the given Cask</span><br><span class="line">    upgrade    upgrades all outdated casks</span><br><span class="line">    zap        zaps all files associated with the given Cask</span><br><span class="line"></span><br><span class="line">See also <span class="string">"man brew-cask"</span></span><br></pre></td></tr></table></figure>
+<p>install java</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget --no-cookies --no-check-certificate --header <span class="string">"Cookie: gpw_e24=http%3a%2F%2Fwww.oracle.com%2Ftechnetwork%2Fjava%2Fjavase%2Fdownloads%2Fjdk8-downloads-2133151.html; oraclelicense=accept-securebackup-cookie;"</span> <span class="string">"https://download.oracle.com/otn/java/jdk/8u231-b11/5b13a193868b4bf28bcb45c792fce896/jdk-8u231-macosx-x64.dmg"</span></span><br></pre></td></tr></table></figure>
+<p>java -version</p>
 <p>install jenkins</p>
 <p><code>curl -L -O http://mirrors.jenkins-ci.org/war/latest/jenkins.war</code></p>
+<p>start jenkins</p>
+<p>java -jar /xx/xx/jenkins.war –httpPort=8080</p>
+<blockquote>
+<p>假设希望jenkins能够开机自启动以及异常自己主动重新启动 <a href="https://yq.aliyun.com/articles/349494?spm=a2c4e.11153940.0.0.2a706e73I8msiV" target="_blank" rel="noopener">link</a></p>
+</blockquote>
 <p>ref:</p>
 <ul>
 <li><a href="https://juejin.im/post/5cd2a50e518825356d54b847" target="_blank" rel="noopener">brew &amp; brew cask</a></li>
