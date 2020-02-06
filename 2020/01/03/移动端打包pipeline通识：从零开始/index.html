@@ -40,7 +40,7 @@
 <meta property="og:site_name" content="I know nothing except the fact of my ignorance.">
 <meta property="og:description" content="背景： 一台被格式化后的 MacBook Pro, 对某个移动端项目( xx类型 )做android pipeline、iOS pipeline 网络：公司网络（可翻墙）  makefile  记得验证/确认 1-安装/Set up1.1 install brew123/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-01-06T02:17:05.441Z">
+<meta property="og:updated_time" content="2020-01-06T09:13:04.160Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="移动端打包pipeline通识：从零开始">
 <meta name="twitter:description" content="背景： 一台被格式化后的 MacBook Pro, 对某个移动端项目( xx类型 )做android pipeline、iOS pipeline 网络：公司网络（可翻墙）  makefile  记得验证/确认 1-安装/Set up1.1 install brew123/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/">
@@ -170,12 +170,13 @@
 <p>方法二： brew cask下载</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew tap homebrew/cask-versions</span><br><span class="line">brew cask install adoptopenjdk8</span><br></pre></td></tr></table></figure>
 <p>检查版本：<code>java -version</code></p>
-<h5 id="1-4-install-jenkins"><a href="#1-4-install-jenkins" class="headerlink" title="1.4 install jenkins"></a>1.4 install jenkins</h5><ul>
+<h5 id="1-4-install-jenkins"><a href="#1-4-install-jenkins" class="headerlink" title="1.4 install jenkins"></a>1.4 install jenkins</h5><p>在Mac OS上安装jenkins的N(4)种方法</p>
+<ul>
 <li>方法一： 下载war包，java命令启动<br><code>curl -L -O http://mirrors.jenkins-ci.org/war/2.211/jenkins.war</code></li>
 </ul>
 <p><code>java -jar /xx/xx/jenkins.war --httpPort=8080</code></p>
 <ul>
-<li><p>方法二： 将下载的war包文件部署到 servlet 容器，用脚本 startup.sh 启动</p>
+<li><p>方法二： 将下载的war包文件部署到 tomcat servlet 容器，用脚本 startup.sh 启动</p>
 <blockquote>
 <p>暂不介绍</p>
 </blockquote>
@@ -183,7 +184,7 @@
 <li><p>方法三： brew 安装&amp;启动</p>
 </li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#install jenkins, Requires Java 1.8, [issus](https://github.com/Homebrew/homebrew-core/issues/39037)</span></span><br><span class="line">brew install jenkins-lts</span><br><span class="line"><span class="comment"># start jenkins, default port: 8080</span></span><br><span class="line">brew services stop jenkins-lts</span><br><span class="line"><span class="comment"># stop jenkins</span></span><br><span class="line">brew services stop jenkins-lts</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#install jenkins, Requires Java 1.8, [issus](https://github.com/Homebrew/homebrew-core/issues/39037)</span></span><br><span class="line">brew install jenkins-lts</span><br><span class="line"><span class="comment"># start jenkins, default port: 8080</span></span><br><span class="line">brew services start jenkins-lts</span><br><span class="line"><span class="comment"># stop jenkins</span></span><br><span class="line">brew services stop jenkins-lts</span><br></pre></td></tr></table></figure>
 <blockquote>
 <ul>
 <li>修改默认端口 <a href="https://medium.com/@vishnuteja/install-jenkins-as-a-service-on-macos-and-change-port-number-9aa097e5cfbf" target="_blank" rel="noopener">link</a></li>
@@ -192,10 +193,15 @@
 </blockquote>
 <p><code>sudo touch /Library/LaunchDaemons/org.jenkins-ci.plist</code></p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">plist</span> <span class="attr">version</span>=<span class="string">"1.0"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">dict</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>Label<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">string</span>&gt;</span>Jenkins<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>KeepAlive<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">true</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>ProgramArguments<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">array</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">string</span>&gt;</span>/usr/bin/java<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">string</span>&gt;</span>-Dmail.smtp.starttls.enable=true<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">string</span>&gt;</span>-jar<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">string</span>&gt;</span>/usr/local/opt/jenkins/libexec/jenkins.war<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">string</span>&gt;</span>--httpListenAddress=127.0.0.1<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">string</span>&gt;</span>--httpPort=8080<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">array</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>RunAtLoad<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">true</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>UserName<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">string</span>&gt;</span>jenkins<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">dict</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plist</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>方法四： docker container 启动，添加宿主机作为一个slave node，并使用</li>
+</ul>
 <p>TODO:<br>[] jenkins加入到开机自启动<br>[X] 定制化配置等</p>
 <p>我是谁 -&gt; <code>whoami</code><br>我在哪里 -&gt; <code>pwd &amp;&amp; ls -al</code><br>我要到哪里去 -&gt;  <em>New item</em></p>
 <h3 id="配置项目pipeline"><a href="#配置项目pipeline" class="headerlink" title="配置项目pipeline"></a>配置项目pipeline</h3><p>安装项目所需工具 cocoapods </p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># install cocoapods</span></span><br><span class="line">sudo gem install cocoapods</span><br></pre></td></tr></table></figure>
+<p>检查所有工具的版本<br>xcodebuild -version<br>react-native</p>
+<p>添加jenkins 凭证</p>
 <p>ref:</p>
 <ul>
 <li><a href="https://juejin.im/post/5cd2a50e518825356d54b847" target="_blank" rel="noopener">brew &amp; brew cask</a></li>

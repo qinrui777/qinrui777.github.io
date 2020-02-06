@@ -43,7 +43,7 @@
 <meta property="og:site_name" content="I know nothing except the fact of my ignorance.">
 <meta property="og:description" content="youtube-dlyoutube-dl 是一个命令行视频下载利器，不仅仅可以下载YouTube的内容，也可以下载其他的视频网站内容 1.Install （安装）mac 或 linux 上12sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dlsudo chmod a+rx /">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-01-03T02:06:17.514Z">
+<meta property="og:updated_time" content="2020-01-09T03:45:10.154Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Small Tools [1]: youtube-dl">
 <meta name="twitter:description" content="youtube-dlyoutube-dl 是一个命令行视频下载利器，不仅仅可以下载YouTube的内容，也可以下载其他的视频网站内容 1.Install （安装）mac 或 linux 上12sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dlsudo chmod a+rx /">
@@ -172,8 +172,10 @@
 <p>（最近发现youtube有些节目，只用听得，比如 读书类、英语类）,用<code>-f</code> 参数指定格式</p>
 </blockquote>
 <p><code>youtube-dl -f 140 https://www.youtube.com/watch\?v\=9rRrsx1jgYc</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">youtube-dl -F &lt;your_link&gt;</span><br><span class="line"><span class="comment">### -F, --list-formats    List all available formats of requested videos</span></span><br></pre></td></tr></table></figure></p>
-<p>新增：</p>
-<p>最近发现新的工具 <code>you-get</code><br>对国内支持比较好，国内视频下载速度极快（比youtube-dl快很多倍），使用方便，语法简单。</p>
+<hr>  
+
+<h3 id="新增一个类似工具"><a href="#新增一个类似工具" class="headerlink" title="新增一个类似工具"></a>新增一个类似工具</h3><p>最近发现新的工具 <code>you-get</code><br>对国内支持比较好，国内视频下载速度极快（比youtube-dl快很多倍），使用方便，语法简单。</p>
+<p>比如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下载网易云音乐的mv</span></span><br><span class="line">you-get https://music.163.com/\<span class="comment">#/mv\?id\=5307835</span></span><br><span class="line"><span class="comment"># 然后提取音频</span></span><br><span class="line">ffmpeg -i 祝你一路顺风\ -\ 吴奇隆.mp4 -vn 祝你一路顺风\ -\ 吴奇隆.mp3</span><br></pre></td></tr></table></figure></p>
 <p><strong>More Ref:</strong></p>
 <ul>
 <li><a href="http://ytdl-org" target="_blank" rel="noopener">http://ytdl-org</a> (官网)</li>
