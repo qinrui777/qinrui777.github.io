@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang>
+  <head><meta name="generator" content="Hexo 3.8.0">
+    
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+  <meta name="description" content="画UML">
+
+
+
+
+  <meta name="keywords" content="Tools,">
+
+
+
+
+
+  <link rel="alternate" href="/default" title="I know nothing except the fact of my ignorance.">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1">
+
+
+
+<link rel="canonical" href="http://yoursite.com/2020/02/25/画UML/">
+
+
+<meta name="description" content="用 文字 + 工具 ，画个好图 什么是 UML全称 Unified Modelling Language PlantUML是一个开源项目，支持快速绘制各种图，包括 时序图、用例图、类图、活动图、组件图、状态图、对象图、部署图、定时图；同时还支持以下非UML图:线框、图形界面、架构图、规范和描述语言 (SDL)、Ditaa diagram、甘特图 、思维导图  官网：https://plantuml">
+<meta name="keywords" content="Tools">
+<meta property="og:type" content="article">
+<meta property="og:title" content="画UML">
+<meta property="og:url" content="http://yoursite.com/2020/02/25/画UML/index.html">
+<meta property="og:site_name" content="I know nothing except the fact of my ignorance.">
+<meta property="og:description" content="用 文字 + 工具 ，画个好图 什么是 UML全称 Unified Modelling Language PlantUML是一个开源项目，支持快速绘制各种图，包括 时序图、用例图、类图、活动图、组件图、状态图、对象图、部署图、定时图；同时还支持以下非UML图:线框、图形界面、架构图、规范和描述语言 (SDL)、Ditaa diagram、甘特图 、思维导图  官网：https://plantuml">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/uml_example2.png">
+<meta property="og:updated_time" content="2020-02-25T10:57:16.551Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="画UML">
+<meta name="twitter:description" content="用 文字 + 工具 ，画个好图 什么是 UML全称 Unified Modelling Language PlantUML是一个开源项目，支持快速绘制各种图，包括 时序图、用例图、类图、活动图、组件图、状态图、对象图、部署图、定时图；同时还支持以下非UML图:线框、图形界面、架构图、规范和描述语言 (SDL)、Ditaa diagram、甘特图 、思维导图  官网：https://plantuml">
+<meta name="twitter:image" content="http://yoursite.com/images/uml_example2.png">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?8280009f2b229eaefa3b28460ccbf01e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-138071159-1', 'auto');
+        ga('send', 'pageview');
+  </script>
+
+
+
+    <title> 画UML - I know nothing except the fact of my ignorance. </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">I know nothing except the fact of my ignorance.</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="https://qinrui777.github.io">
+                            
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="https://github.com/qinrui777">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          画UML
+        
+      </h1>
+
+      <time class="post-time">
+          Feb 25 2020
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p>用 <strong>文字</strong> + <strong>工具</strong> ，画个好图</p>
+<h3 id="什么是-UML"><a href="#什么是-UML" class="headerlink" title="什么是 UML"></a>什么是 UML</h3><p>全称 Unified Modelling Language</p>
+<h3 id="PlantUML"><a href="#PlantUML" class="headerlink" title="PlantUML"></a>PlantUML</h3><p>是一个开源项目，支持快速绘制各种图，包括 时序图、用例图、类图、活动图、组件图、状态图、对象图、部署图、定时图；同时还支持以下非UML图:线框、图形界面、架构图、规范和描述语言 (SDL)、Ditaa diagram、甘特图 、思维导图 </p>
+<p>官网：<a href="https://plantuml.com/zh/" target="_blank" rel="noopener">https://plantuml.com/zh/</a></p>
+<h3 id="举几个🌰🌰"><a href="#举几个🌰🌰" class="headerlink" title="举几个🌰🌰"></a>举几个🌰🌰</h3><p><strong>示例1: 画一个UML</strong><br>工具: VSCode +  插件 plantuml<br>步骤：</p>
+<ul>
+<li>1.打开VSCode,安装插件 plantuml <blockquote>
+<p>似乎要提前安装JDK,由于我本机已经安装，暂没验证这一步</p>
+</blockquote>
+</li>
+<li>2.新建文件 <code>example1.wsd</code></li>
+<li><p>3.添加内容如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@startmindmap</span><br><span class="line">skinparam  true</span><br><span class="line">* 数据库运维</span><br><span class="line">** 安装</span><br><span class="line">*** 如何安装</span><br><span class="line">*** 如何设置高可用</span><br><span class="line">** 备份</span><br><span class="line">** 恢复</span><br><span class="line">@endmindmap</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>4.按 <code>alt + d</code>,立马会生成UML图</p>
+</li>
+</ul>
+<p><strong>示例2: 给md文档添加 UML 图</strong><br>工具: markdown </p>
+<p><img src="/images/uml_example2.png" width="80%" height="80%"></p>
+<p><strong>More Ref:</strong>  </p>
+<ol>
+<li><a href="https://zh.wikipedia.org/wiki/%E7%BB%9F%E4%B8%80%E5%BB%BA%E6%A8%A1%E8%AF%AD%E8%A8%80" target="_blank" rel="noopener">UML维基百科</a></li>
+<li><a href="https://www.freecodecamp.org/news/inserting-uml-in-markdown-using-vscode/" target="_blank" rel="noopener">参考1</a><br><a href="https://youtu.be/0MEs4WrOZmk" target="_blank" rel="noopener">https://youtu.be/0MEs4WrOZmk</a></li>
+</ol>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/Tools/">Tools</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/2020/01/03/移动端打包pipeline通识：从零开始/">
+        <span class="next-text nav-default">移动端打包pipeline通识：从零开始</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2018 -
+    
+    2020
+    <span class="footer-author">qinrui.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+      
+
+
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+    <script src="/js/src/md5.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+
+    <div id="gitalk-container"></div>
+
+    <script>
+        var gitalk = new Gitalk({
+            clientID: 'd5bbe3dcd1e4b493ccda',
+            clientSecret: '47a17a14730ceb61df029600cc92f4932334034a',
+            repo: 'qinrui777.github.io',
+            owner: 'qinrui777',
+            admin: 'qinrui777',
+            id: location.pathname,      // Ensure uniqueness and length less than 50
+            id: md5(location.pathname),
+            distractionFreeMode: 'false'  // Facebook-like distraction free mode
+        })
+
+        gitalk.render('gitalk-container')
+    </script>
+
+
+    
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>
