@@ -44,7 +44,7 @@
 <meta property="og:description" content="TL;DR用 文字 + 工具 ，画个好图 什么是 UML全称 Unified Modelling Language,UML维基百科 什么是 PlantUML是一个开源项目，支持快速绘制各种图，包括 时序图、用例图、类图、活动图、组件图、状态图、对象图、部署图、定时图；同时还支持以下非UML图:线框、图形界面、架构图、规范和描述语言 (SDL)、Dita diagram、甘特图 、思维导图  官网：">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/uml_example2.png">
-<meta property="og:updated_time" content="2020-02-26T01:43:07.385Z">
+<meta property="og:updated_time" content="2020-03-02T06:38:13.716Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="画UML">
 <meta name="twitter:description" content="TL;DR用 文字 + 工具 ，画个好图 什么是 UML全称 Unified Modelling Language,UML维基百科 什么是 PlantUML是一个开源项目，支持快速绘制各种图，包括 时序图、用例图、类图、活动图、组件图、状态图、对象图、部署图、定时图；同时还支持以下非UML图:线框、图形界面、架构图、规范和描述语言 (SDL)、Dita diagram、甘特图 、思维导图  官网：">
@@ -180,6 +180,7 @@
 </ul>
 <p><strong>示例2: 给md文档添加 UML 图</strong><br>好处：不用单独保留一张图片，然后再插入到 <code>readme.md</code> 文档中<br>工具: markdown<br>新建md文件，比如 <code>example2.md</code>,成果如下：</p>
 <p><img src="/images/uml_example2.png" width="80%" height="80%"></p>
+<p>只能利用vscode 打开时，才能看到图形，如用浏览器，打开一个readme.md文档，是无法看到图形的</p>
 <hr>
 <p><strong>More Ref:</strong>  </p>
 <ol>
@@ -204,6 +205,12 @@
         
         
   <nav class="post-nav">
+    
+      <a class="prev" href="/2020/03/02/hexo-sytnax/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">hexo sytnax</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
     
     
       <a class="next" href="/2020/01/03/移动端打包pipeline通识：从零开始/">
@@ -252,36 +259,6 @@
       
 
 
-
-
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-    <script src="/js/src/md5.min.js"></script>
-
-    
-    
-    
-    
-    
-    
-
-    <div id="gitalk-container"></div>
-
-    <script>
-        var gitalk = new Gitalk({
-            clientID: 'd5bbe3dcd1e4b493ccda',
-            clientSecret: '47a17a14730ceb61df029600cc92f4932334034a',
-            repo: 'qinrui777.github.io',
-            owner: 'qinrui777',
-            admin: 'qinrui777',
-            id: location.pathname,      // Ensure uniqueness and length less than 50
-            id: md5(location.pathname),
-            distractionFreeMode: 'false'  // Facebook-like distraction free mode
-        })
-
-        gitalk.render('gitalk-container')
-    </script>
 
 
     
