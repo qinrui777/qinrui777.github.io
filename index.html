@@ -64,6 +64,79 @@
     
     
     
+    <article id="post-Github-Actions-E02最小Demo" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/03/17/Github-Actions-E02最小Demo/">Github Actions E02最小Demo</a>
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/03/17/Github-Actions-E02最小Demo/" class="article-date">
+  <time datetime="2020-03-17T11:24:12.000Z" itemprop="datePublished">2020-03-17</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/CICD/">CICD</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p><a href="https://www.devops-tech.cn/2020/03/16/Github-Actions-E01/" target="_blank" rel="noopener">前面一篇</a>已经说明一些概念，于是为了更好的理解，直接用一个简单的demo帮助进一步理解。</p>
+<p>示例仓库： <a href="https://github.com/cicd-draft/api-test-demo" target="_blank" rel="noopener">https://github.com/cicd-draft/api-test-demo</a></p>
+<h4 id="步骤一"><a href="#步骤一" class="headerlink" title="步骤一"></a>步骤一</h4><p>在仓库的根目录，创建名为 .github/workflows 的目录以存储工作流程文件。</p>
+<h4 id="步骤二"><a href="#步骤二" class="headerlink" title="步骤二"></a>步骤二</h4><p>在 <code>.github/workflows</code> 中，为工作流程添加 .yml 或 .yaml 文件。 例如 .github/workflows/demo.yml，。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">my</span> <span class="string">workflow</span> <span class="string">demo</span> </span><br><span class="line"></span><br><span class="line"><span class="comment"># 此处使用最常见的触发方法，还有其他的很多方法可满足不同需求</span></span><br><span class="line"><span class="attr">on:</span> </span><br><span class="line"><span class="attr">  push:</span></span><br><span class="line"><span class="attr">    branches:</span> </span><br><span class="line"><span class="bullet">      -</span> <span class="string">master</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">#工作流程运行包括一项或多项作业。 作业默认是并行运行。 要按顺序运行作业，needs 关键词在其他作业上定义依赖项。</span></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="comment">#每项作业必须关联一个 ID。&lt;job_id&gt; 必须以字母或 _ 开头</span></span><br><span class="line"><span class="attr">  my_first_job:</span></span><br><span class="line">    <span class="comment"># 作业1名称为 Demo First job,也是作业显示在 GitHub 上的名称。</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Demo</span> <span class="string">First</span> <span class="string">job</span></span><br><span class="line">    <span class="comment"># 此作业在 Linux 上运行</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">My</span> <span class="string">step</span> <span class="string">one</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">echo</span> <span class="string">"Hello ,Github actions, I'm &gt;&gt;My step one&lt;&lt;"</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">My</span> <span class="string">step</span> <span class="string">two</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        echo "My step one begin..."</span></span><br><span class="line"><span class="string">        echo "doing..."</span></span><br><span class="line"><span class="string">        echo "Finished!!!"</span></span><br><span class="line"><span class="string"></span><span class="attr">  my_second_job:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Demo</span> <span class="string">Second</span> <span class="string">job</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">macos-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">check</span> <span class="string">OS</span> <span class="string">info</span></span><br><span class="line">        <span class="string">run</span> <span class="string">:</span> <span class="string">system_profiler</span> <span class="string">SPSoftwareDataType</span></span><br></pre></td></tr></table></figure>
+<h4 id="步骤三"><a href="#步骤三" class="headerlink" title="步骤三"></a>步骤三</h4><p>将工作流程文件中的更改提交到您希望其中运行工作流程的分支。</p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GA/">GA</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-about" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -168,7 +241,10 @@
 
       
       <blockquote>
-<p>随着github actions在2019年下半年的推出，越来越多的人认识并了解到它。而也因为项目上的机遇，想尝试一下它。于是会较完整地从个人使用角度去记录一下，会有一系列的关于Github actions的文章。</p>
+<p>随着github actions在2019年下半年的推出，越来越多的人认识并了解到它。而也因为项目上的机遇，想尝试一下它。于是会较完整地从个人使用角度去记录一下，会有一系列的关于Github actions的<a href="https://www.devops-tech.cn/tags/GA/" target="_blank" rel="noopener">文章</a>。</p>
+</blockquote>
+<blockquote>
+<p>另外，为方便会将 Github actions 简称为<strong>GA</strong>; 如果官方有简写，到时候再统一更换。</p>
 </blockquote>
 <h3 id="0-Github-Actions的历史"><a href="#0-Github-Actions的历史" class="headerlink" title="0. Github Actions的历史"></a>0. Github Actions的历史</h3><p>2018年10月16日，全球最大开发者社区GitHub Universe开发者大会在旧金山召开，发布了新产品GitHub Actions。但是仅处于 <strong>limited public beta</strong>。个人是2019年9,10月份的时候看到新闻消息，听说了这个新词。当时还是 Beta 版本,需要自己简单的申请一下，才可以使用。而到这个时间点(2020.03),对于公开的 Github Public repositories 早已经可以全面使用(‘2019年11月13日 GitHub Actions 将在 GitHub Universe 上正式发布’)。</p>
 <h3 id="1-什么是Github-Actions"><a href="#1-什么是Github-Actions" class="headerlink" title="1. 什么是Github Actions"></a>1. 什么是Github Actions</h3><p>根据<a href="https://github.com/features/actions" target="_blank" rel="noopener">官网</a>的介绍如下：</p>
@@ -857,71 +933,6 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#mac os terminal</span></span><br><span class="line">azcopy cp <span class="string">"/Users/xxx/Desktop/testdir/hello_azure.txt"</span>  <span class="string">"https://storage873375.blob.core.windows.net/container1/newdir/?sv=2019-02-02&amp;ss=bfqt&amp;srt=sco&amp;sp=rwdlacup&amp;se=2019-12-11T11:40:09Z&amp;st=2019-12-11T03:40:09Z&amp;spr=https&amp;sig=5%2FFHo4%2BBwxDB6wLftyB7%2FSF7gqnhaEmpFa4nheBOXQg%3D"</span></span><br></pre></td></tr></table></figure>
 <p><a href="https://docs.microsoft.com/en-us/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs</a></p>
 
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-Azure-tutorial-01-overview" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/12/11/Azure-tutorial-01-overview/">Azure tutorial 01: overview</a>
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/12/11/Azure-tutorial-01-overview/" class="article-date">
-  <time datetime="2019-12-11T01:53:50.000Z" itemprop="datePublished">2019-12-11</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Cloud/">Cloud</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      
       
       <!-- reward -->
       

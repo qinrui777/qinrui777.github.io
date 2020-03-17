@@ -64,6 +64,73 @@
     
     
     
+    <article id="post-packer-intro" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/08/30/packer-intro/">packer intro</a>
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/08/30/packer-intro/" class="article-date">
+  <time datetime="2019-08-30T08:25:29.000Z" itemprop="datePublished">2019-08-30</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/packer/">packer</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-Terraform-100-Introduction-Install" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -789,87 +856,6 @@
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Docker/">Docker</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-ngrok-demo" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/07/22/ngrok-demo/">ngrok demo</a>
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/07/22/ngrok-demo/" class="article-date">
-  <time datetime="2019-07-22T03:34:56.000Z" itemprop="datePublished">2019-07-22</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h3 id="怎么用"><a href="#怎么用" class="headerlink" title="怎么用"></a>怎么用</h3><p><a href="https://dashboard.ngrok.com/get-started" target="_blank" rel="noopener">https://dashboard.ngrok.com/get-started</a><br><img src="/images/ngrok_demo_01.png" alt="ngrok_demo_01"></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  Downloads ./ngrok authtoken &lt;YOUR_AUTHTOKEN&gt;</span><br><span class="line">Authtoken saved to configuration file: /Users/xxx/.ngrok2/ngrok.yml</span><br></pre></td></tr></table></figure>
-<h3 id="Demo-on-jenkins"><a href="#Demo-on-jenkins" class="headerlink" title="Demo on jenkins"></a>Demo on jenkins</h3><ol>
-<li>启动本地的Jenkins服务，暴露端口 <strong>8081</strong></li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">➜  jenkins_demo docker run -d --name jenkins4ngrok -p 8081:8080 jenkins/jenkins:latest</span><br><span class="line">c384aca32c27d2c2df58e76619bc63a758d5e7b358e59c5bf083cb739952c4c7</span><br><span class="line">➜  jenkins_demo docker ps</span><br><span class="line">CONTAINER ID        IMAGE                    COMMAND                  CREATED             STATUS              PORTS                               NAMES</span><br><span class="line">c384aca32c27        jenkins/jenkins:latest   <span class="string">"/sbin/tini -- /usr/…"</span>   2 seconds ago       Up 1 second         50000/tcp, 0.0.0.0:8081-&gt;8080/tcp   jenkins4ngrok</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>Use ngrok, To start a HTTP tunnel on port 8081<br><code>➜  ./ngrok http 8081</code></li>
-</ol>
-<p><img src="/images/ngrok_demo_03.png" alt="ngrok_demo_03"></p>
-<ol start="3">
-<li>根据ngrok返回的，访问公网地址</li>
-</ol>
-<p>界面如下<br><img src="/images/ngrok_demo_02.png" alt="ngrok_demo_02"></p>
-<p>More Ref:</p>
-<ul>
-<li><a href="https://ngrok.com/docs" target="_blank" rel="noopener">https://ngrok.com/docs</a></li>
-</ul>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools/">Tools</a></li></ul>
 
 
     </footer>

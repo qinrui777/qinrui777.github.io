@@ -64,6 +64,87 @@
     
     
     
+    <article id="post-ngrok-demo" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/07/22/ngrok-demo/">ngrok demo</a>
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/07/22/ngrok-demo/" class="article-date">
+  <time datetime="2019-07-22T03:34:56.000Z" itemprop="datePublished">2019-07-22</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h3 id="怎么用"><a href="#怎么用" class="headerlink" title="怎么用"></a>怎么用</h3><p><a href="https://dashboard.ngrok.com/get-started" target="_blank" rel="noopener">https://dashboard.ngrok.com/get-started</a><br><img src="/images/ngrok_demo_01.png" alt="ngrok_demo_01"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  Downloads ./ngrok authtoken &lt;YOUR_AUTHTOKEN&gt;</span><br><span class="line">Authtoken saved to configuration file: /Users/xxx/.ngrok2/ngrok.yml</span><br></pre></td></tr></table></figure>
+<h3 id="Demo-on-jenkins"><a href="#Demo-on-jenkins" class="headerlink" title="Demo on jenkins"></a>Demo on jenkins</h3><ol>
+<li>启动本地的Jenkins服务，暴露端口 <strong>8081</strong></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">➜  jenkins_demo docker run -d --name jenkins4ngrok -p 8081:8080 jenkins/jenkins:latest</span><br><span class="line">c384aca32c27d2c2df58e76619bc63a758d5e7b358e59c5bf083cb739952c4c7</span><br><span class="line">➜  jenkins_demo docker ps</span><br><span class="line">CONTAINER ID        IMAGE                    COMMAND                  CREATED             STATUS              PORTS                               NAMES</span><br><span class="line">c384aca32c27        jenkins/jenkins:latest   <span class="string">"/sbin/tini -- /usr/…"</span>   2 seconds ago       Up 1 second         50000/tcp, 0.0.0.0:8081-&gt;8080/tcp   jenkins4ngrok</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>Use ngrok, To start a HTTP tunnel on port 8081<br><code>➜  ./ngrok http 8081</code></li>
+</ol>
+<p><img src="/images/ngrok_demo_03.png" alt="ngrok_demo_03"></p>
+<ol start="3">
+<li>根据ngrok返回的，访问公网地址</li>
+</ol>
+<p>界面如下<br><img src="/images/ngrok_demo_02.png" alt="ngrok_demo_02"></p>
+<p>More Ref:</p>
+<ul>
+<li><a href="https://ngrok.com/docs" target="_blank" rel="noopener">https://ngrok.com/docs</a></li>
+</ul>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools/">Tools</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-adminMongo-a-cross-platform-user-interface-GUI-to-connect-MongoDB" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -746,85 +827,6 @@ pipeline {
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jenkins/">jenkins</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-xargs-command" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/06/21/xargs-command/">xargs command</a>
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/06/21/xargs-command/" class="article-date">
-  <time datetime="2019-06-21T07:32:09.000Z" itemprop="datePublished">2019-06-21</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Shell/">Shell</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>xargs 命令应该紧跟在管道操作符之后。它使用标准输入作为主要的数据源，将从 stdin 中读取的数据作为指定命令的参数并执行该命令。</p>
-<p>例如：<br>在一组 C 语言源码文件中搜索自负串main:<br><code>ls *.c | sargs grep main</code></p>
-<h4 id="Example-1-将多行输入-–-gt-单行输出"><a href="#Example-1-将多行输入-–-gt-单行输出" class="headerlink" title="Example 1: 将多行输入  –&gt; 单行输出"></a>Example 1: 将多行输入  –&gt; 单行输出</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">➜   cat example.txt</span><br><span class="line">1 2 3 4</span><br><span class="line">5 6</span><br><span class="line">7 8 9</span><br><span class="line">10 11</span><br><span class="line">➜   cat example.txt | xargs</span><br><span class="line">1 2 3 4 5 6 7 8 9 10 11</span><br></pre></td></tr></table></figure>
-<h4 id="Example-2-将单行输入-–-gt-多行输出"><a href="#Example-2-将单行输入-–-gt-多行输出" class="headerlink" title="Example 2: 将单行输入  –&gt; 多行输出"></a>Example 2: 将单行输入  –&gt; 多行输出</h4><p>xargs 的 -n 选项可以限制每次调用命令时用到的参数个数。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">➜   cat example.txt | xargs -n  3</span><br><span class="line">1 2 3</span><br><span class="line">4 5 6</span><br><span class="line">7 8 9</span><br><span class="line">10 11</span><br></pre></td></tr></table></figure></p>
-<p>工作原理：<br>xargs 命令接收来自stdin的输入，将数据解析成单个元素，然后调用指定命令讲这些元素作为该命令的参数。xargs 默认使用 <strong>空白字符</strong> 分割输入并执行 <code>/bin/echo</code></p>
-<h4 id="Example-3-自定义分隔符-d-选项"><a href="#Example-3-自定义分隔符-d-选项" class="headerlink" title="Example 3: 自定义分隔符 -d 选项"></a>Example 3: 自定义分隔符 -d 选项</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"splitXsplit1Xsplit2Xsplit3"</span> | xargs -d X</span><br><span class="line">split split1 split2 split3</span><br></pre></td></tr></table></figure>
-<h4 id="Example-4-结合find使用xargs"><a href="#Example-4-结合find使用xargs" class="headerlink" title="Example 4: 结合find使用xargs"></a>Example 4: 结合find使用xargs</h4><p><code>find . -type f -name &quot;*.txt&quot; -print0 | xargs -o grep -L image</code></p>
-<p> 如果文件系统的有些文件名中包含忠哥，find 命令的 -print0 选项可以使用0（NUL）来分割查找到的元素，然后再用xargs对应的-0选项进行解析</p>
-<p> 反例：<br> <code>$find . -type f -name &quot;*.txt&quot; -print | xargs rm -f</code><br>这样做很危险，由可能会误删除文件。我们无法预测 find命令输出的分隔符究竟是什么（究竟是‘\n’还是 ‘’）。如果由文件名中包含空格符（‘ ’ ），xargs会将其误认为是分隔符。例如， <code>bashrc text.txt</code> 会被是为 bashrc 和 text.txt 。因此上面的命令不会删除 <code>bashrc text.txt</code> ,而是会把 bashrc删除</p>
-<p>正确的姿势：<br> <code>$find . -type f -name &quot;*.txt&quot; -print0 | xargs -0 rm -f</code></p>
-<h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><p> <code>docker ps -a -q | xargs --no-run-if-empty docker rm -f</code></p>
-<p> 参数 <code>--no-run-if-empty</code> 可以避免在前面的命令完全没有输出的情况下执行该命令</p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shell/">Shell</a></li></ul>
 
 
     </footer>
