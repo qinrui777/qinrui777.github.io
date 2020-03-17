@@ -136,7 +136,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/03/16/Github-Actions-E01/">Github Actions E01</a>
+  <a class="article-title" href="/2020/03/16/Github-Actions-E01/">Github Actions E01初识</a>
 </h2>
   
 
@@ -170,7 +170,7 @@
       <blockquote>
 <p>随着github actions在2019年下半年的推出，越来越多的人认识并了解到它。而也因为项目上的机遇，想尝试一下它。于是会较完整地从个人使用角度去记录一下，会有一系列的关于Github actions的文章。</p>
 </blockquote>
-<h3 id="0-Github-Actions的历史"><a href="#0-Github-Actions的历史" class="headerlink" title="0. Github Actions的历史"></a>0. Github Actions的历史</h3><p>2018年10月16日，全球最大开发者社区GitHub Universe开发者大会在旧金山召开，发布了新产品GitHub Actions。但是仅处于 <strong>limited public beta</strong>。个人是2019年9,10月份的时候看到新闻消息，听说了这个新词。当时还是 Beta 版本,需要自己简单的申请一下，才可以使用。而到这个时间点(2020.03),对于公开的 Github Public repositories 已经可以全面使用。</p>
+<h3 id="0-Github-Actions的历史"><a href="#0-Github-Actions的历史" class="headerlink" title="0. Github Actions的历史"></a>0. Github Actions的历史</h3><p>2018年10月16日，全球最大开发者社区GitHub Universe开发者大会在旧金山召开，发布了新产品GitHub Actions。但是仅处于 <strong>limited public beta</strong>。个人是2019年9,10月份的时候看到新闻消息，听说了这个新词。当时还是 Beta 版本,需要自己简单的申请一下，才可以使用。而到这个时间点(2020.03),对于公开的 Github Public repositories 早已经可以全面使用(‘2019年11月13日 GitHub Actions 将在 GitHub Universe 上正式发布’)。</p>
 <h3 id="1-什么是Github-Actions"><a href="#1-什么是Github-Actions" class="headerlink" title="1. 什么是Github Actions"></a>1. 什么是Github Actions</h3><p>根据<a href="https://github.com/features/actions" target="_blank" rel="noopener">官网</a>的介绍如下：</p>
 <p><strong>Github Actions</strong></p>
 <p>Automate your workflow from idea to production. </p>
@@ -190,7 +190,7 @@
 </li>
 <li><p>2.多平台</p>
 <blockquote>
-<p>支持3大主流操作系统 Linux, macOS, Windows,这一条无疑很有吸引力，因为毕竟一个人难以拥有三种系统的电脑（即便有方法，切换起来也会费时费劲）。而对于苹果软件而言，有一个 macOS 的构建环境实属难得，毕竟人家的系统是收费的。</p>
+<p>支持3大主流操作系统 Linux, macOS, Windows,这一条无疑很有吸引力，因为毕竟一个人难以拥有三种系统的电脑（即便有方法，切换起来也会费时费劲）。而对于苹果软件而言，有一个 macOS 的构建环境实属难得，毕竟人家的系统是收费的。也可对接很多云，如AWS、Azure 或是 GCP，也支持众多语言。</p>
 </blockquote>
 </li>
 <li><p>3.功能强</p>
@@ -199,12 +199,16 @@
 </blockquote>
 </li>
 </ul>
-<h3 id="3-基本概念"><a href="#3-基本概念" class="headerlink" title="3.基本概念"></a>3.基本概念</h3><p><strong>workflow （工作流程）</strong>：持续集成一次运行的过程。</p>
-<p><strong>job （任务）</strong>：一个 workflow 由一个或多个 job 构成，含义是一次持续集成的运行，可以完成多个任务。</p>
+<h3 id="3-基本概念"><a href="#3-基本概念" class="headerlink" title="3.基本概念"></a>3.基本概念</h3><p><strong>workflow（工作流程）</strong>：持续集成一次运行的过程。</p>
+<p><strong>job（任务）</strong>：一个 workflow 由一个或多个 job 构成，含义是一次持续集成的运行，可以完成多个任务。</p>
 <p><strong>step（步骤）</strong>：每个 job 由多个 step 构成，一步步完成。</p>
-<p><strong>action （动作）</strong>：每个 step 可以依次执行一个或多个命令（action）。</p>
+<p><strong>action（动作）</strong>：每个 step 可以依次执行一个或多个命令（action）。</p>
 <blockquote>
 <p>由于自己使用jenkins较多，一直想把以上概念与jenkins的做对比，但后来发现，还是不对比较好。因为 github actions的基本组成有自己的特色和优势，在使用时不要纠结旧的Jenkins中掌握的知识，需要抛弃旧的观念.建议:不被jenkins和其他cicd工具所限制住,最好深入理解github actions开发者的初衷，灵活运用。</p>
+</blockquote>
+<h4 id="小思考"><a href="#小思考" class="headerlink" title="小思考"></a>小思考</h4><p>一年后，两年后，Github Actions 会怎么影响其他工具？（Jenkins,Gocd, Gitlab CI, AWS CodeDeploy等等）</p>
+<blockquote>
+<p>(欢迎评论区留言)</p>
 </blockquote>
 <p><strong>More Ref:</strong></p>
 <ul>
@@ -222,7 +226,7 @@
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GC/">GC</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GA/">GA</a></li></ul>
 
 
     </footer>
