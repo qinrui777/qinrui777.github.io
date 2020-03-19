@@ -64,6 +64,122 @@
     
     
     
+    <article id="post-Azure-tutorial-02-Storage" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/12/11/Azure-tutorial-02-Storage/">Azure tutorial 02: Storage</a>
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/12/11/Azure-tutorial-02-Storage/" class="article-date">
+  <time datetime="2019-12-11T01:54:12.000Z" itemprop="datePublished">2019-12-11</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Cloud/">Cloud</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>storage account type<br><a href="https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview</a></p>
+<p><strong>Blob</strong> - Binary Large Object<br><strong>Binary Object</strong> - Images,Documents,Media Files, Log Files, Backup data Virtual Disks</p>
+<p><strong>Blod types:</strong> </p>
+<ul>
+<li>Block Blob - Text and binary data Files</li>
+<li>Append Blobs - Optimized for append operations</li>
+<li>Page Blob - A collection of 512 byte pages optimized for random read and writes(virtual disk)</li>
+</ul>
+<p><strong>Locations and Redundancy:</strong> </p>
+<ul>
+<li>Locally-redundant storage (LRS): A simple, low-cost replication strategy. Data is replicated synchronously three times within the primary region.</li>
+<li>Zone-redundant storage (ZRS): Replication for scenarios requiring high availability. Data is replicated synchronously across three Azure availability zones in the primary region.</li>
+<li>Geo-redundant storage (GRS): Cross-regional replication to protect against regional outages. Data is replicated synchronously three times in the primary region, then replicated asynchronously to the secondary region. For read access to data in the secondary region, enable read-access geo-redundant storage (RA-GRS).</li>
+<li>Geo-zone-redundant storage (GZRS) (preview): Replication for scenarios requiring both high availability and maximum durability. Data is replicated synchronously across three Azure availability zones in the primary region, then replicated asynchronously to the secondary region. For read access to data in the secondary region, enable read-access geo-zone-redundant storage (RA-GZRS).</li>
+</ul>
+<p><strong>Access Tiers:</strong></p>
+<ul>
+<li>Hot </li>
+<li>Cool </li>
+<li>Archive</li>
+</ul>
+<p><strong>Azure Storage services:</strong></p>
+<ul>
+<li>Blob service</li>
+<li>File service</li>
+<li>Queue service</li>
+<li>Table Storage</li>
+</ul>
+<p><strong>Securing Storage Accounts:</strong></p>
+<ul>
+<li>Access Keys -Two per storage account,full access</li>
+<li>Share Access Signatures - Time based access keys that give granular control</li>
+</ul>
+<p><strong>作业：新建storage account ,并上传文件或文件夹到</strong></p>
+<p>create顺序:<br>a subscriptions -&gt;  a storage account -&gt; a SAS token   </p>
+<p>除了从azure portal页面操作之外，还提供以下两种方式</p>
+<ul>
+<li>Azure Storage Explorer - <a href="https://azure.microsoft.com/en-us/features/storage-explorer/" target="_blank" rel="noopener">install tutorial</a><blockquote>
+<p>或者浏览器中直接打开链接<a href="https://go.microsoft.com/fwlink/?LinkId=708342&amp;clcid=0x409，会自动下载" target="_blank" rel="noopener">https://go.microsoft.com/fwlink/?LinkId=708342&amp;clcid=0x409，会自动下载</a></p>
+</blockquote>
+</li>
+</ul>
+<p>打开 Azure Storage Explorer， 通过xx链接storage<br><img src="/images/azure_storage_01.png" width="80%" height="80%"></p>
+<p><img src="/images/azure_storage_02.png" width="80%" height="80%"></p>
+<ul>
+<li>azcopy - <a href="https://docs.microsoft.com/zh-cn/azure/storage/common/storage-use-azcopy-v10?WT.mc_id=thomasmaurer-blog-thmaure" target="_blank" rel="noopener">install tutorial</a></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#mac os terminal</span></span><br><span class="line">azcopy cp <span class="string">"/Users/xxx/Desktop/testdir/hello_azure.txt"</span> <span class="string">"https://storage873375.blob.core.windows.net/container1/?[?sv=2019-02-02&amp;ss=bfqt&amp;srt=sco&amp;sp=rwdlacup&amp;se=2019-12-11T11:40:09Z&amp;st=2019-12-11T03:40:09Z&amp;spr=https&amp;sig=5%2FFHo4%2BBwxDB6wLftyB7%2FSF7gqnhaEmpFa4nheBOXQg%3D]"</span></span><br></pre></td></tr></table></figure>
+<p>报错,原始是 <code>？</code> 后边格式的问题</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#mac os terminal</span></span><br><span class="line">azcopy cp <span class="string">"/Users/xxx/Desktop/testdir/hello_azure.txt"</span>  <span class="string">"https://storage873375.blob.core.windows.net/container1/newdir/?sv=2019-02-02&amp;ss=bfqt&amp;srt=sco&amp;sp=rwdlacup&amp;se=2019-12-11T11:40:09Z&amp;st=2019-12-11T03:40:09Z&amp;spr=https&amp;sig=5%2FFHo4%2BBwxDB6wLftyB7%2FSF7gqnhaEmpFa4nheBOXQg%3D"</span></span><br></pre></td></tr></table></figure>
+<p><a href="https://docs.microsoft.com/en-us/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs</a></p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-Azure-tutorial-01-overview" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -942,130 +1058,6 @@
     <footer class="article-footer">
       
       
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-Test-02-Tools" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/11/08/Test-02-Tools/">Test 02:Tools</a>
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/11/08/Test-02-Tools/" class="article-date">
-  <time datetime="2019-11-08T07:38:23.000Z" itemprop="datePublished">2019-11-08</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Test/">Test</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p><mark>测试种类与测试工具没有一对一的关系。</mark></p>
-<p>项目原因最近在学习以下几个工具：</p>
-<h3 id="1-Postman"><a href="#1-Postman" class="headerlink" title="1.Postman"></a>1.Postman</h3><p>可做api测试，newman</p>
-<h3 id="2-Selenium"><a href="#2-Selenium" class="headerlink" title="2.Selenium"></a>2.Selenium</h3><p>Selenium is a suite of tools to automate web browsers across many platforms.</p>
-<h3 id="3-Cucumber"><a href="#3-Cucumber" class="headerlink" title="3.Cucumber"></a>3.Cucumber</h3><p>Cucumber 是 BDD（behaviour-driven development） 模式下实现可执行规范（Executable Specifications）的开源工具，但是它的使命并不局限于做自动化验收测试，更加重要的在于其能够在团队成员之间构建统一的交流基础（feature 文件）、规范交流用语（Domain Specific Language）、提高各个利益相关方（Business Stakeholders）沟通效率和效果，从而达到提升产品质量、做成客户期望得到的产品这一最终目标。<br><a href="https://www.ibm.com/developerworks/cn/java/j-lo-cucumber01/index.html" target="_blank" rel="noopener">参考</a></p>
-<ul>
-<li><p>Features介绍  </p>
-<p>feature(功能)，每一个feature文件都要开始于Feature(功能)，Feature之后的描述可以随便写，直到出现Scenario(场景)，一个feature中可以有多个 Scenario，每个Scenario包含（step）步骤列表，步骤使用Given、When、Then、But、And这些关键词，cucumber对这些关键词的处理是一样的，但是我们在使用的时候需要按照场景区分。</p>
-</li>
-<li><p>Step definitions介绍  </p>
-<p>Cucumber中定义的每一个step(步骤)都需要有一个step definition对应，默认的话是使用Ruby来编写定义的脚本，支持通过正则表达式从step中传递参数。</p>
-</li>
-<li><p>Given When then(假如 当 那么)  </p>
-<p>Cucumber的步骤中会包含Given、When、then这些词组，cucumber本身在技术实现上不区分这三个词组，但是在使用上推荐按照词组的意思来使用。</p>
-<ul>
-<li>Given-用例开始执行前的一个前置条件，类似与编写代码setup中的一些步骤</li>
-<li>When-用例开始执行的一些关键操作步骤，类似点击元素等</li>
-<li>Then-观察结果，就是平时用例中的验证步骤</li>
-<li>And-一个步骤中如果存在多个Given操作，后面的Given可以用And替代</li>
-<li>But-一个步骤中如果存在多个Then操作，第二个开始后面的Then可以用But替代</li>
-</ul>
-</li>
-</ul>
-<p><strong>工具情况统计</strong></p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Tool-Name</th>
-<th>CLI</th>
-<th>HTML-Report</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">Postman</td>
-<td><code>newman</code></td>
-<td>有</td>
-</tr>
-<tr>
-<td style="text-align:left">Selenium</td>
-<td>结合<code>java</code>、<code>python</code>环境运行</td>
-<td>有 <code>HTML TestRunner</code></td>
-</tr>
-<tr>
-<td style="text-align:left">Cucumber</td>
-<td><code>cucumber</code></td>
-<td>有</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<p><strong>More Ref:</strong></p>
-<ul>
-<li><a href="https://zhuanlan.zhihu.com/p/44470871" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/44470871</a></li>
-<li><a href="https://www.cnblogs.com/tynam" target="_blank" rel="noopener">某个博客</a></li>
-<li><a href="http://www.zhangyanc.club/blog/84" target="_blank" rel="noopener">http://www.zhangyanc.club/blog/84</a></li>
-</ul>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Test/">Test</a></li></ul>
-
 
     </footer>
 
