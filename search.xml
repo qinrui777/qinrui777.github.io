@@ -3,8 +3,11 @@
   <entry>
     <title>Github Actions E03触发</title>
     <url>/2020/03/18/Github-Actions-E03%E8%A7%A6%E5%8F%91/</url>
-    <content><![CDATA[<h2 id="关于触发的事件，github-actions的原文如下"><a href="#关于触发的事件，github-actions的原文如下" class="headerlink" title="关于触发的事件，github actions的原文如下"></a>关于触发的事件，github actions的原文如下</h2><p>Events that trigger workflows</p>
-<h2 id="You-can-configure-your-workflows-to-run-when-specific-activity-on-GitHub-happens-at-a-scheduled-time-or-when-an-event-outside-of-GitHub-occurs"><a href="#You-can-configure-your-workflows-to-run-when-specific-activity-on-GitHub-happens-at-a-scheduled-time-or-when-an-event-outside-of-GitHub-occurs" class="headerlink" title="You can configure your workflows to run when specific activity on GitHub happens, at a scheduled time, or when an event outside of GitHub occurs."></a>You can configure your workflows to run when specific activity on GitHub happens, at a scheduled time, or when an event outside of GitHub occurs.</h2><p>根据上面描述，大致有3类事件(<em>错了的话欢迎指正</em>)，官网文档更详细的在<a href="https://help.github.com/en/actions/reference/events-that-trigger-workflows" target="_blank" rel="noopener">这里</a>，不是在<a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/configuring-a-workflow#triggering-a-workflow-with-events" target="_blank" rel="noopener"><em>那里</em></a></p>
+    <content><![CDATA[<p>关于触发的事件，github actions的原文如下</p>
+<p><strong>Events that trigger workflows</strong></p>
+<p>You can configure your workflows to run when specific activity on GitHub happens, at a scheduled time, or when an event outside of GitHub occurs.</p>
+<hr>
+<p>根据上面描述，大致有3类事件(<em>错了的话欢迎指正</em>)，官网文档更详细的在<a href="https://help.github.com/en/actions/reference/events-that-trigger-workflows" target="_blank" rel="noopener">这里</a>，不是在<a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/configuring-a-workflow#triggering-a-workflow-with-events" target="_blank" rel="noopener"><em>那里</em></a></p>
 <blockquote>
 <p>最好看英文的，中文似乎没有翻译完，少了一个 <em>Triggering new workflows using a personal access token</em> 方法 😢</p>
 </blockquote>
@@ -32,7 +35,8 @@
 <ul>
 <li>使用个人访问令牌触发新工作流程(Triggering new workflows using a personal access token)</li>
 </ul>
-<p>原文引用：<br><figure class="highlight html"><table><tr><td class="code"><pre><span class="line">For example, if a workflow run pushes code using the repository's GITHUB_TOKEN, a new workflow will not run even when the repository contains a workflow configured to run when push events occur. </span><br><span class="line"></span><br><span class="line">If you would like to trigger a workflow from a workflow run, you can trigger the event using a personal access token. You'll need to create a personal access token and store it as a secret in your repository. To minimize your GitHub Actions usage costs, ensure that you don't create recursive or unintended workflow runs.</span><br></pre></td></tr></table></figure></p>
+<p>原文引用：<br><em>For example, if a workflow run pushes code using the repository’s GITHUB_TOKEN, a new workflow will not run even when the repository contains a workflow configured to run when push events occur. </em></p>
+<p><em>If you would like to trigger a workflow from a workflow run, you can trigger the event using a personal access token. You’ll need to create a personal access token and store it as a secret in your repository. To minimize your GitHub Actions usage costs, ensure that you don’t create recursive or unintended workflow runs.</em></p>
 <p>上面提及的2中方法，都属于用外部方法来触发 workflow。 而上一段英文也提及 workflow 触发workflow的情况，有需要可详细研究。</p>
 <hr>
 <p><strong>More Ref:</strong></p>
