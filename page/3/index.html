@@ -64,6 +64,103 @@
     
     
     
+    <article id="post-Anka-tutorial-01" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/11/18/Anka-tutorial-01/">Anka tutorial 01</a>
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/11/18/Anka-tutorial-01/" class="article-date">
+  <time datetime="2019-11-18T14:36:26.000Z" itemprop="datePublished">2019-11-18</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/CICD/">CICD</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h3 id="1-Anka-是什么"><a href="#1-Anka-是什么" class="headerlink" title="1.Anka 是什么"></a>1.Anka 是什么</h3><p>  前端，后端，包括安卓的持续集成的过程都可以轻松的基于docker命令构建、打包，最终产出 docker image镜像，非常方便搭建标准化的pipeline(流水线)；但是对于iOS移动端的同学而言，似乎没有那么简单。每次打包的过程都是耗时、复杂的。另外一点由于macOS系统是捆绑在mac硬件上的，你没有苹果电脑就无法打包，相比而言docker则是纯免费开源的。针对以上问题和情况，anka就是这样一种类似于dock的针对macOS系统的虚拟化技术。</p>
+<p>  于是乎，想长期使用是需要收钱的。</p>
+<blockquote>
+<p>官网介绍 <a href="https://ankadoc.bitbucket.io/#what-is-anka-build" target="_blank" rel="noopener">https://ankadoc.bitbucket.io/#what-is-anka-build</a></p>
+</blockquote>
+<blockquote>
+<p>费用介绍 <a href="https://ankadoc.bitbucket.io/licensing/" target="_blank" rel="noopener">https://ankadoc.bitbucket.io/licensing/</a></p>
+</blockquote>
+<p>几个组件的关系<br><a href="https://veertu.com/anka-technology/" target="_blank" rel="noopener">https://veertu.com/anka-technology/</a></p>
+<p>Anka Hypervisor<br>Anka Controller<br>Anka Registry</p>
+<h3 id="2-安装"><a href="#2-安装" class="headerlink" title="2.安装"></a>2.安装</h3><p>搭建的环境： MacBook Pro(version: 10.13.6)</p>
+<p>下载地址：<a href="https://veertu.com/download-anka-build/" target="_blank" rel="noopener">https://veertu.com/download-anka-build/</a><br><img src="/images/anka_download.png" alt="anka download page"></p>
+<h5 id="2-1-Anka-Package-Install-and-Configuration"><a href="#2-1-Anka-Package-Install-and-Configuration" class="headerlink" title="2.1 Anka Package Install and Configuration"></a>2.1 Anka Package Install and Configuration</h5><p><a href="https://ankadoc.bitbucket.io/anka-build/#anka-package-install-and-configuration" target="_blank" rel="noopener">https://ankadoc.bitbucket.io/anka-build/#anka-package-install-and-configuration</a></p>
+<p>双击 <em>pkg</em> 包，默认选项安装，最终显示安装成功即可。<br><img src="/images/anka_install_continue_01.png" width="50%" height="50%"></p>
+<p><img src="/images/anka_install_continue_02.png" width="50%" height="50%"></p>
+<p><img src="/images/anka_install_success_01.png" width="50%" height="50%"></p>
+<p>安装完成后可以用过命令 <code>anka config --list</code> 查看所有的配置，比如 vm 的存储路径等</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">➜  anka config --list</span><br><span class="line">+-----------------------------+-----------------------------------------------------------------------------+</span><br><span class="line">| registry_remotes_file_path  | /Users/xxx/.anka/remote                                                   |</span><br><span class="line">+-----------------------------+-----------------------------------------------------------------------------+</span><br><span class="line">| mac_random_bytes            | 2                                                                           |</span><br><span class="line">+-----------------------------+-----------------------------------------------------------------------------+</span><br><span class="line">| disk_eraser_tool            | /Library/Application Support/Veertu/Anka/tools/erase_disk_image.sh          |</span><br><span class="line">+-----------------------------+-----------------------------------------------------------------------------+</span><br><span class="line">| process_type                | Interactive                                                                 |</span><br><span class="line">+-----------------------------+-----------------------------------------------------------------------------+</span><br><span class="line">| default_passwd              | admin                                                                       |</span><br><span class="line">+-----------------------------+-----------------------------------------------------------------------------+</span><br><span class="line">| nvram_path                  | /Library/Application Support/Veertu/Anka/uefi/anka_vars.fd                  |</span><br><span class="line">+-----------------------------+-----------------------------------------------------------------------------+</span><br><span class="line">| vm_lib_dir                  | /Users/xxxx/Library/Application Support/Veertu/Anka/vm_lib/                |</span><br><span class="line">+-----------------------------+-----------------------------------------------------------------------------+</span><br><span class="line">| anka_image_maker_executable | /Library/Application Support/Veertu/Anka/bin/anka_image                     |</span><br><span class="line">+-----------------------------+-----------------------------------------------------------------------------+</span><br><span class="line">省略100行</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<h5 id="2-2-Controller-Registry-Install-and-Configuration"><a href="#2-2-Controller-Registry-Install-and-Configuration" class="headerlink" title="2.2 Controller/Registry Install and Configuration"></a>2.2 Controller/Registry Install and Configuration</h5><p><a href="https://ankadoc.bitbucket.io/anka-build/#controller-registry-install-and-configuration" target="_blank" rel="noopener">https://ankadoc.bitbucket.io/anka-build/#controller-registry-install-and-configuration</a></p>
+<p>同上，双击 <strong><em>.pkg</em></strong> 包，默认安装，看到提示安装成功即可。</p>
+<p><img src="/images/anka_install_success_02.png" width="50%" height="50%"></p>
+<ul>
+<li><p><a href="http://localhost:80" target="_blank" rel="noopener">http://localhost:80</a> Anka controller UI界面</p>
+</li>
+<li><p><a href="http://localhost:8089" target="_blank" rel="noopener">http://localhost:8089</a>  罗列现有的API，其余啥也不能做</p>
+</li>
+</ul>
+<p>设置一下 Registry Address 地址:<br><img src="/images/anka_controller_config.png" width="70%" height="70%"></p>
+<h5 id="2-3-申请试用许可（trail-license）"><a href="#2-3-申请试用许可（trail-license）" class="headerlink" title="2.3 申请试用许可（trail license）"></a>2.3 申请试用许可（trail license）</h5><p><a href="https://veertu.com/anka-build-trial" target="_blank" rel="noopener">https://veertu.com/anka-build-trial</a></p>
+<p>完善信息提交后，会有一个成功的提示，如图所示:<br><img src="/images/anka_apply_license.png" width="70%" height="70%"></p>
+<p>激活key<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ sudo anka license activate xxxx-3750-xxxx-2265</span><br><span class="line">License activated</span><br></pre></td></tr></table></figure></p>
+<p>查看license信息<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ anka license show</span><br><span class="line">+---------------------+---------------------+</span><br><span class="line">| license_type        | com.veertu.anka.ent |</span><br><span class="line">+---------------------+---------------------+</span><br><span class="line">| status              | valid               |</span><br><span class="line">+---------------------+---------------------+</span><br><span class="line">| expires             | 20-dec-2019         |</span><br><span class="line">+---------------------+---------------------+</span><br><span class="line">| max_number_of_cores | 32                  |</span><br><span class="line">+---------------------+---------------------+</span><br></pre></td></tr></table></figure></p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-Test-02-Tools" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -958,74 +1055,6 @@
 <p>如何使用？？</p>
 <p><strong><a href="https://wiki.mbalib.com/wiki/%E9%B1%BC%E9%AA%A8%E5%9B%BE" target="_blank" rel="noopener">鱼骨案例</a></strong></p>
 <p>ref: <a href="https://zh.wikipedia.org/wiki/%E7%9F%B3%E5%B7%9D%E5%9B%BE" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/%E7%9F%B3%E5%B7%9D%E5%9B%BE</a></p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Devops/">Devops</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-Devops-Company-List" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/10/04/Devops-Company-List/">Devops Company List</a>
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/10/04/Devops-Company-List/" class="article-date">
-  <time datetime="2019-10-04T06:05:07.000Z" itemprop="datePublished">2019-10-04</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p><a href="https://www.praqma.com/" target="_blank" rel="noopener">https://www.praqma.com/</a></p>
-<p><a href="https://www.cloudbees.com/" target="_blank" rel="noopener">https://www.cloudbees.com/</a></p>
-<p><a href="https://www.freecodecamp.org/" target="_blank" rel="noopener">https://www.freecodecamp.org/</a></p>
-<p><a href="https://devopscube.com/" target="_blank" rel="noopener">https://devopscube.com/</a></p>
-<p>技术归类：<a href="http://www.devopsbookmarks.com" target="_blank" rel="noopener">http://www.devopsbookmarks.com</a></p>
 
       
       <!-- reward -->
