@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    Github Actions E01初识 |  一笑皆春
+    Github Actions E04运行环境-runner |  一笑皆春
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -30,14 +30,14 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="post-Github-Actions-E01" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+  <article id="post-Github-Actions-E04运行环境-runner" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
     
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  Github Actions E01初识
+  Github Actions E04运行环境-runner
 </h1>
   
 
@@ -46,8 +46,8 @@
 
     
     <div class="article-meta">
-      <a href="/2020/03/16/Github-Actions-E01/" class="article-date">
-  <time datetime="2020-03-16T08:39:12.000Z" itemprop="datePublished">2020-03-16</time>
+      <a href="/2020/03/21/Github-Actions-E04运行环境-runner/" class="article-date">
+  <time datetime="2020-03-21T08:46:09.000Z" itemprop="datePublished">2020-03-21</time>
 </a>
       
   <div class="article-category">
@@ -61,7 +61,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">875字</span>
+            <span class="post-count">960字</span>
         </span>
     </span>
 
@@ -70,7 +70,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">3分钟</span>
+            <span class="post-count">4分钟</span>
         </span>
     </span>
 </div>
@@ -95,56 +95,80 @@
       
 
       
-      <blockquote>
-<p>随着github actions在2019年下半年的推出，越来越多的人认识并了解到它。而也因为项目上的机遇，想尝试一下它。于是会较完整地从个人使用角度去记录一下，会有一系列的关于Github actions的<a href="https://www.devops-tech.cn/tags/GA/" target="_blank" rel="noopener">文章</a>。</p>
+      <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
+<p>一个可以直接运行的CICD环境，用起来无疑节省了搭建环境的过程。但对于一个我们陌生的运行环境，最好还是提前了解一些基础的东西，比如：机器的操作系统及版本、内存、CPU、有多少磁盘可用、当前的用户是什么、权限有没有限制，以及workspace在什么目录，不然一旦遇到问题，就无从下手，或者找错方向。</p>
 </blockquote>
-<blockquote>
-<p>另外，为方便会将 Github actions 简称为<strong>GA</strong>; 如果官方有简写，到时候再统一更换。</p>
-</blockquote>
-<h3 id="0-Github-Actions的历史"><a href="#0-Github-Actions的历史" class="headerlink" title="0. Github Actions的历史"></a>0. Github Actions的历史</h3><p>2018年10月16日，全球最大开发者社区GitHub Universe开发者大会在旧金山召开，发布了新产品GitHub Actions。但是仅处于 <strong>limited public beta</strong>。个人是2019年9,10月份的时候看到新闻消息，听说了这个新词。当时还是 Beta 版本,需要自己简单的申请一下，才可以使用。而到这个时间点(2020.03),对于公开的 Github Public repositories 早已经可以全面使用(‘2019年11月13日 GitHub Actions 将在 GitHub Universe 上正式发布’)。</p>
-<h3 id="1-什么是Github-Actions"><a href="#1-什么是Github-Actions" class="headerlink" title="1. 什么是Github Actions"></a>1. 什么是Github Actions</h3><p>根据<a href="https://github.com/features/actions" target="_blank" rel="noopener">官网</a>的介绍如下：</p>
-<p><strong>Github Actions</strong></p>
-<p>Automate your workflow from idea to production. </p>
-<p><em>GitHub Actions makes it easy to automate all your software workflows, now with world-class CI/CD. Build, test, and deploy your code right from GitHub. Make code reviews, branch management, and issue triaging work the way you want.</em></p>
-<blockquote>
-<p>个人理解：</p>
+<h5 id="CICD环境的灵魂3问："><a href="#CICD环境的灵魂3问：" class="headerlink" title="CICD环境的灵魂3问："></a>CICD环境的灵魂3问：</h5><ul>
+<li>我是谁 <em>-&gt; 操作系统，具体版本，当前用户及权限</em></li>
+<li>我在哪里 <em>-&gt; 工作目录在哪里</em></li>
+<li>我能做什么 <em>—&gt; 有什么工具已经安装了，还是要自己安装</em></li>
+</ul>
+<h3 id="1-GitHub-hosted-runner-介绍"><a href="#1-GitHub-hosted-runner-介绍" class="headerlink" title="1. GitHub-hosted runner 介绍"></a>1. GitHub-hosted runner 介绍</h3><p>一个 GitHub-hosted runner 是由GitHub托管并安装了GitHub Actions运行程序应用程序的虚拟机。 GitHub为运行Linux，Windows和macOS操作系统的用户提供帮助。</p>
+<p>个人总结：GitHub Actions runner 是一个 application</p>
+<p>官网也提及 <em>“The GitHub Actions runner application is open source. You can contribute and file issues in the runner repository.”</em></p>
+<h3 id="2-硬件资源"><a href="#2-硬件资源" class="headerlink" title="2. 硬件资源"></a>2. 硬件资源</h3><p>GitHub hosts Linux and Windows runners on Standard_DS2_v2 virtual machines in Microsoft Azure.</p>
+<p>GitHub uses MacStadium to host the macOS runners.</p>
+<p>每个虚拟机有相同的硬件资源可使用。拿一台同配置的个人电脑，或者云上的服务器相比，GA 的服务器运行起来会快一些。</p>
 <ul>
-<li>首先做了 <code>CI/CD</code> 工具的事情，后面在使用过程中也可以看到github actions 实现了很多<code>CI/CD</code>工具 jenkins,Travis CI,CircleCI 等一些部分功能；</li>
-<li>automate(自动),可以让很多与代码库相关的事情自动，比如很多人用到的 <code>用github actions  发布hexo博客</code>， <code>用github actions给自己推送天气预报</code></li>
+<li>2-core CPU</li>
+<li>7 GB of RAM memory</li>
+<li>14 GB of SSD disk space</li>
 </ul>
-</blockquote>
-<h3 id="2-为什么使用"><a href="#2-为什么使用" class="headerlink" title="2. 为什么使用"></a>2. 为什么使用</h3><ul>
-<li><p>1.不要钱(部分)</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Virtual environment</th>
+<th>YAML workflow label</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Windows Server 2019</td>
+<td>windows-latest or windows-2019</td>
+</tr>
+<tr>
+<td style="text-align:left">Ubuntu 18.04</td>
+<td>ubuntu-latest or ubuntu-18.04</td>
+</tr>
+<tr>
+<td style="text-align:left">Ubuntu 16.04</td>
+<td>ubuntu-16.04</td>
+</tr>
+<tr>
+<td style="text-align:left">macOS Catalina 10.15</td>
+<td>macos-latest or macos-10.15</td>
+</tr>
+</tbody>
+</table>
 <blockquote>
-<p>本着github 开源的原则，公开的仓库可免费，私有仓库有限制的使用，对于企业用户也是。不过很好奇对于购买了github企业版的用户，如果想要使用github actions会怎么收费，有哪些方式可选。</p>
+<p>Inbound ICMP packets are blocked for all Azure virtual machines, so ping or traceroute commands might not work. For more information about the Standard_DS2_v2 machine resources, see “Dv2 and DSv2-series” in the Microsoft Azure documentation.</p>
 </blockquote>
-</li>
-<li><p>2.多平台</p>
+<h3 id="运行用户的权限"><a href="#运行用户的权限" class="headerlink" title="运行用户的权限"></a>运行用户的权限</h3><p>可以写一的demo查看一下当前用户，例子见下面 👇</p>
+<p>Linux和macOS虚拟机均使用无密码sudo运行。 当您需要执行命令或安装需要比当前用户更多特权的工具时，可以使用sudo而不需要提供密码。</p>
+<p>Windows虚拟机被配置为以禁用了用户帐户控制（UAC）的管理员身份运行。</p>
+<p>详情可见<a href="https://help.github.com/en/actions/reference/virtual-environments-for-github-hosted-runners#administrative-privileges-of-github-hosted-runners" target="_blank" rel="noopener">这里</a></p>
+<h3 id="文件系统-Filesystems-on-GitHub-hosted-runners"><a href="#文件系统-Filesystems-on-GitHub-hosted-runners" class="headerlink" title="文件系统(Filesystems on GitHub-hosted runners)"></a>文件系统(Filesystems on GitHub-hosted runners)</h3><p>GitHub在虚拟机上的特定目录中执行操作和shell命令, 虚拟机上的文件路径不是静态的。</p>
+<p>Docker container filesystem 后面讲到时再说</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">CI</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span> <span class="string">[push]</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  linux:</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line">    <span class="comment">#我是谁</span></span><br><span class="line"><span class="attr">      - run:</span> <span class="string">whoami</span></span><br><span class="line">    <span class="comment">#我在那儿</span></span><br><span class="line"><span class="attr">      - run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        pwd</span></span><br><span class="line"><span class="string">        echo $HOME $GITHUB_WORKSPACE $GITHUB_EVENT_PATH</span></span><br></pre></td></tr></table></figure>
+<p>在我的<a href="https://github.com/cicd-draft/api-test-demo" target="_blank" rel="noopener">repo</a>中运行的输出为：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/home/runner/work/api-test-demo/api-test-demo</span><br><span class="line">/home/runner /home/runner/work/api-test-demo/api-test-demo /home/runner/work/_temp/_github_workflow/event.json</span><br></pre></td></tr></table></figure></p>
+<p>GitHub为每个工作流创建的环境变量有很多，后面会单独讲到。<em>（环境变量: <a href="https://help.github.com/en/actions/configuring-and-managing-workflows/using-environment-variables）" target="_blank" rel="noopener">https://help.github.com/en/actions/configuring-and-managing-workflows/using-environment-variables）</a></em>。这样类似的<strong>默认的环境变量</strong>就是类似于我们在jenkins上用的 <code>BUILD_NUMBER</code>,<code>JOB_NAME</code>，当然也可以自定义环境变量。</p>
+<h3 id="软件安装"><a href="#软件安装" class="headerlink" title="软件安装"></a>软件安装</h3><p>不同的操作系统上都预先安装好了常用软件，列表可见下方的链接详情 <a href="https://help.github.com/en/actions/reference/software-installed-on-github-hosted-runners" target="_blank" rel="noopener">https://help.github.com/en/actions/reference/software-installed-on-github-hosted-runners</a></p>
+<p><a href="https://github.com/actions/virtual-environments/blob/master/images/linux/Ubuntu1804-README.md" target="_blank" rel="noopener">Ubuntu 18.04 LTS</a><br><a href="https://github.com/actions/virtual-environments/blob/master/images/linux/Ubuntu1604-README.md" target="_blank" rel="noopener">Ubuntu 16.04 LTS</a><br><a href="https://github.com/actions/virtual-environments/blob/master/images/win/Windows2019-Readme.md" target="_blank" rel="noopener">Windows Server 2019</a><br><a href="https://github.com/actions/virtual-environments/blob/master/images/win/Windows2016-Readme.md" target="_blank" rel="noopener">Windows Server 2016</a><br><a href="https://github.com/actions/virtual-environments/blob/master/images/macos/macos-10.15-Readme.md" target="_blank" rel="noopener">MacOS 10.15</a></p>
+<p>如果不想看看长长的readme，可以在运行job中先检查以下软件是否安装及具体版本；如果最后发现没有安装，就添加安装的命令即可。比如</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">CI</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span> <span class="string">[push]</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  linux:</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - run:</span> <span class="string">sudo</span> <span class="string">apt-get</span> <span class="string">install</span> <span class="string">ninja-build</span></span><br><span class="line"><span class="attr">      - run:</span> <span class="string">ninja</span> <span class="bullet">--version</span></span><br></pre></td></tr></table></figure>
+<hr>
+<p><strong>思考个问题：</strong> 自定义 runner，以及用私有的服务器运行 workflow，怎么实现？</p>
 <blockquote>
-<p>支持3大主流操作系统 Linux, macOS, Windows,这一条无疑很有吸引力，因为毕竟一个人难以拥有三种系统的电脑（即便有方法，切换起来也会费时费劲）。而对于苹果软件而言，有一个 macOS 的构建环境实属难得，毕竟人家的系统是收费的。也可对接很多云，如AWS、Azure 或是 GCP，也支持众多语言。</p>
-</blockquote>
-</li>
-<li><p>3.功能强</p>
-<blockquote>
-<p>功能太多，不一一说明，只简单提及几点，<strong>Matrix Workflows</strong>,<strong>Container Services</strong>,<strong>Caching Dependencies</strong>, <strong>Actions Marketplace</strong> 等等，具体使用后续细解。</p>
-</blockquote>
-</li>
-</ul>
-<h3 id="3-基本概念"><a href="#3-基本概念" class="headerlink" title="3.基本概念"></a>3.基本概念</h3><p><strong>workflow（工作流程）</strong>：持续集成一次运行的过程。</p>
-<p><strong>job（任务）</strong>：一个 workflow 由一个或多个 job 构成，含义是一次持续集成的运行，可以完成多个任务。</p>
-<p><strong>step（步骤）</strong>：每个 job 由多个 step 构成，一步步完成。</p>
-<p><strong>action（动作）</strong>：每个 step 可以依次执行一个或多个命令（action）。</p>
-<blockquote>
-<p>由于自己使用jenkins较多，一直想把以上概念与jenkins的做对比，但后来发现，还是不对比较好。因为 github actions的基本组成有自己的特色和优势，在使用时不要纠结旧的Jenkins中掌握的知识，需要抛弃旧的观念.建议:不被jenkins和其他cicd工具所限制住,最好深入理解github actions开发者的初衷，灵活运用。</p>
-</blockquote>
-<h4 id="小思考"><a href="#小思考" class="headerlink" title="小思考"></a>小思考</h4><p>一年后，两年后，Github Actions 会怎么影响其他工具？（Jenkins,Gocd, Gitlab CI, AWS CodeDeploy等等）</p>
-<blockquote>
-<p>(欢迎评论区留言)</p>
+<p>方法肯定是有的，相信github官方可考虑了runner私有化的场景(毕竟gitlab CI runner在那里摆着)，后续有时间再研究</p>
 </blockquote>
 <hr>
 <p><strong>More Ref:</strong></p>
 <ul>
-<li><a href="https://github.com/features/actions" target="_blank" rel="noopener">https://github.com/features/actions</a></li>
+<li><a href="https://github.com/actions/runner" target="_blank" rel="noopener">github actions runner 源码仓库</a></li>
+<li><a href="https://help.github.com/en/actions/reference/virtual-environments-for-github-hosted-runners#administrative-privileges-of-github-hosted-runners" target="_blank" rel="noopener">Administrative privileges of GitHub-hosted runners</a></li>
+<li><a href="https://help.github.com/en/actions/reference/virtual-environments-for-github-hosted-runners#docker-container-filesystem" target="_blank" rel="noopener">Docker container filesystem</a></li>
+<li><a href="https://help.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners" target="_blank" rel="noopener">About self-hosted runners</a></li>
+<li><a href="https://help.github.com/en/github/setting-up-and-managing-billing-and-payments-on-github/viewing-your-github-actions-usage" target="_blank" rel="noopener">billing</a></li>
 </ul>
 
       
@@ -214,7 +238,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/03/16/Github-Actions-E01/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/03/21/Github-Actions-E04运行环境-runner/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -232,19 +256,10 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/03/16/about/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            about
-          
-        </div>
-      </a>
     
-    
-      <a href="/2020/03/02/hexo-sytnax/" class="article-nav-link">
+      <a href="/2020/03/20/Shell-toolbox/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">hexo sytnax</div>
+        <div class="article-nav-title">Shell toolbox</div>
       </a>
     
   </nav>

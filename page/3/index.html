@@ -64,6 +64,85 @@
     
     
     
+    <article id="post-Anka-tutorial-02" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/11/19/Anka-tutorial-02/">Anka tutorial 02</a>
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/11/19/Anka-tutorial-02/" class="article-date">
+  <time datetime="2019-11-19T07:38:10.000Z" itemprop="datePublished">2019-11-19</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/CICD/">CICD</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h5 id="1-Joining-Nodes"><a href="#1-Joining-Nodes" class="headerlink" title="1.Joining Nodes"></a>1.Joining Nodes</h5><p>在mac上（anka build 节点）执行  <code>sudo ankacluster join http://localhost:80/</code></p>
+<p>output:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ sudo ankacluster join http://localhost:80/ -n demo-mac</span><br><span class="line">Setting tls config</span><br><span class="line">Testing connection to controller...: Ok</span><br><span class="line">Testing connection to the registry...: Ok</span><br><span class="line">Ok</span><br><span class="line">Cluster join success</span><br></pre></td></tr></table></figure></p>
+<p>去页面 <em><a href="http://localhost/#/nodes" target="_blank" rel="noopener">http://localhost/#/nodes</a></em> 查看<br><img src="/images/anka_controller_node.png"></p>
+<h5 id="2-Create-VM-link"><a href="#2-Create-VM-link" class="headerlink" title="2. Create VM (link)"></a>2. Create VM <a href="https://ankadoc.bitbucket.io/anka-build/#create-vm" target="_blank" rel="noopener">(link)</a></h5><p>先下载mac OS安装包 (安装包7G多，需要提前下载)<br><a href="https://www.macworld.co.uk/how-to/mac-software/download-old-os-x-3629363/#el%20cap" target="_blank" rel="noopener">https://www.macworld.co.uk/how-to/mac-software/download-old-os-x-3629363/#el%20cap</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ anka create --ram-size 4G --cpu-count 2 --disk-size 40G --app /Applications/Install\ macOS\ Catalina.app CatalinaVm</span><br><span class="line">Installing macOS 10.15.1...</span><br><span class="line">Preparing target disk...</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Note For Catalina Anka VMs, –ram-size value should be 4G and –disk-size should be 80G.<br>由于电脑空间不够了，于是报错了</p>
+</blockquote>
+<p>清理电脑空间后，再来一次，大约 30min<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ anka create --ram-size 4G --cpu-count 2 --disk-size 80G --app /Applications/Install\ macOS\ Catalina.app  CatalinaVm</span><br><span class="line">Installing macOS 10.15.1...</span><br><span class="line">Preparing target disk...</span><br><span class="line">Installing addons...</span><br><span class="line">Converting to ANKA format...</span><br><span class="line">Waiting <span class="keyword">for</span> installation to complete <span class="keyword">in</span> the guest (about thirty minutes approx.)...</span><br><span class="line">vm created successfully with uuid: a23d5a05-xx89-4xx4-a8b7-6f7b9xxxxxx</span><br></pre></td></tr></table></figure></p>
+<h5 id="3-Run-VM"><a href="#3-Run-VM" class="headerlink" title="3. Run VM"></a>3. Run VM</h5><p><img src="/images/anka_demo_720.gif" width="90%" height="90%"></p>
+<p>VM 状态之间的转换如下：<br><img src="/images/anka_vm_status.png" width="75%" height="75%"></p>
+<blockquote>
+<p>需要区别 VM 和后面提到的 instance 关系，VM 更准确点讲是 VM Template，是创建instance的模版，但模版需要通过上面的方法才可以修改；新建VM后，相当于有一个基础的模版，但是要满足其他要求，可以自行在running的 vm 中操作，然后随时保存，类似于docker container的commit操作，但anka build是suspend一个running的 vm 来保存。</p>
+</blockquote>
+<h5 id="4-Manage-VM-Templates-in-Registry-link"><a href="#4-Manage-VM-Templates-in-Registry-link" class="headerlink" title="4. Manage VM Templates in Registry(link)"></a>4. Manage VM Templates in Registry<a href="https://ankadoc.bitbucket.io/anka-build/#manage-vm-templates-in-registry" target="_blank" rel="noopener">(link)</a></h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#罗列仓库</span></span><br><span class="line">➜   anka registry list-repos</span><br><span class="line">++</span><br><span class="line">++</span><br><span class="line"><span class="comment">#添加一个新仓库</span></span><br><span class="line">➜   anka registry add demo-repo http://localhost:8089</span><br><span class="line">➜   anka registry list-repos</span><br><span class="line">++</span><br><span class="line">++</span><br><span class="line">demo-repo (default)</span><br><span class="line">+--------+-----------+</span><br><span class="line">| host   | localhost |</span><br><span class="line">+--------+-----------+</span><br><span class="line">| scheme | http      |</span><br><span class="line">+--------+-----------+</span><br><span class="line">| port   | 8089      |</span><br><span class="line">+--------+-----------+</span><br><span class="line"><span class="comment">#推送VM Templates 到新仓库，</span></span><br><span class="line">➜   anka registry push CatalinaVm -d <span class="string">"first push"</span> -t v1</span><br></pre></td></tr></table></figure>
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-Anka-tutorial-01" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -921,140 +1000,6 @@
 <p>  对于 “devops”这个词的字母是否大写我们还有很多讨论。一个简单的在线调查显示，大多数人都支持“DevOps”。我们还发现组织比较关注“Dev”和“Ops”,以至于出现了 “DevSecOps”和“DevQAOps”,因为“DevOps”隐含地只包括 “Dev” 和 “Ops”。<br>  所以最后我们选择了“devops”,这对应原来的推特上的标签，用来联系希望改善协作的人，他们希望谈话时不再区分“你们”和“我们”，而应该更多地讨论如何利用可持续的工作实践来支持企业发展。<br>  成功的项目需要有适当的输入、努力、见解以及整个组织中人们之间的协作，你的组织中存在的问题可能不只限于开发人员和运维团队。我们在这本书中有意选择使用小写的 “devops” 来反映我们的观点，这只是有一种包容，并没有其他的意思。</p>
 <h3 id="2-常见的devops误区-（P56）-devops不是什么"><a href="#2-常见的devops误区-（P56）-devops不是什么" class="headerlink" title="2.常见的devops误区 （P56）/devops不是什么"></a>2.常见的devops误区 （P56）/devops不是什么</h3><p>devops只与开发人员和系统管理员有关<br>devops是一个团队<br>devops是一个职位<br>devops表示由一半的人完成全部工作<br>devops只是关于工具<br>devops只是关于自动化<br>实现devops有一种“正确方法”（或“错误方法”）<br>…</p>
 <h3 id="3-总结"><a href="#3-总结" class="headerlink" title="3.总结"></a>3.总结</h3><p>devops 更多的是一种文化，哲学上的概念，说白了就是<strong>无法言传，只可意会</strong></p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Devops/">Devops</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-RCA-根本原因分析" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/10/08/RCA-根本原因分析/">RCA(根本原因分析)</a>
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/10/08/RCA-根本原因分析/" class="article-date">
-  <time datetime="2019-10-08T01:28:58.000Z" itemprop="datePublished">2019-10-08</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/读书笔记/">读书笔记</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>  根本原因分析（Root cause analysis,RCA）方法是明确事件或几近错失的决定性“根本”原因，并采取适当的措施避免问题再次发生。这是一个迭代的过程，会一直持续，直到找出所有组织要素，或者知道已经处理完所有数据。</p>
-<blockquote>
-<p>《Effective DevOps》(中文版) P65</p>
-</blockquote>
-<h3 id="方法一：5-Why"><a href="#方法一：5-Why" class="headerlink" title="方法一：5 Why"></a>方法一：5 Why</h3><p>  5why分析法是指对同一个问题，进行连续的提问，可能是3次，可能是5次，也可能是10次，直到能发现最根本的原因为止。</p>
-<p><strong>5 why详细应用步骤</strong></p>
-<p>一、把握现状</p>
-<ul>
-<li>1.识别问题。 问：我知道什么？</li>
-<li>2.澄清问题。 问：实际发生了什么？</li>
-<li>3.分解问题。 问：关于这个问题，我还应该知道什么？</li>
-<li>4.查找原因要点。 问：我们需要知道什么以解决问题？</li>
-<li>5.掌握问题倾向。 问：什么时间？多大频次？</li>
-</ul>
-<p>二、原因调查</p>
-<ul>
-<li>6.识别和确认异常事件的直接原因。 问：这个问题为什么会发生？</li>
-<li>7.使用5why调查法来建立一个通向根本原因的关系链 问：为什么xxx会发生？</li>
-</ul>
-<p>三、问题纠正（验证有效性）</p>
-<ul>
-<li>8.采取明确措施，验证方案是否有效。 问： 方案是否有效，情况如何？</li>
-</ul>
-<p><strong>5why应用要点</strong>  </p>
-<ul>
-<li>推论要客观、理性；</li>
-<li>避免围绕问题本身，避免责任推卸；</li>
-<li>注意层次之间的关系，不要跳步；</li>
-<li>分析要充分，以便找出根本原因；</li>
-<li>要对分析后的方案确认，并通过现场分析观察，然后改善；</li>
-</ul>
-<p><strong><a href="https://zhuanlan.zhihu.com/p/28506456" target="_blank" rel="noopener">5why案例</a></strong></p>
-<h3 id="方法二：鱼骨图"><a href="#方法二：鱼骨图" class="headerlink" title="方法二：鱼骨图"></a>方法二：鱼骨图</h3><p><strong>什么是鱼骨图</strong></p>
-<p>  鱼骨图又名“因果分析法”，是由日本管理大师石川馨先生所发展出来的，因此又被称为“石川图”。鱼骨图是一种透过现象看本质，从而发现问题“根本原因”的分析方法。这种因果图可以帮助团队以可视化的方式分析原因，并将原因归类，找出差异来源，发现不同来源之间的关系，从而对过程行为有深层次的了解。分为问题型、原因型及对策性型鱼骨分析等三种，具有简捷、实用、直观等特点。最初，鱼骨图被用于质量管理领域。</p>
-<p><strong>如何制作鱼骨图</strong></p>
-<p>制作鱼骨图分为两个步骤： 分析问题原因/结构，绘制鱼骨图</p>
-<h4 id="Step1-分析问题原因-结构"><a href="#Step1-分析问题原因-结构" class="headerlink" title="Step1: 分析问题原因/结构"></a>Step1: 分析问题原因/结构</h4><table>
-<thead>
-<tr>
-<th style="text-align:left">No</th>
-<th style="text-align:left">Context</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">步骤</td>
-<td style="text-align:left">a. 针对问题点选择层别方法（如人机料法环等） <br>b.通过头脑风暴，分别对各类别找出所有可能因素  <br>c.将找出的各要素进行归类、整理，明确其从属关系 <br> d. 分析选取重要因素 <br>e. 检查各要素的描述方法，确保语法简明、意思明确</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:left">要点</td>
-<td style="text-align:left">a. 确定大要因（大骨）<br>b. 大因素必须用中性词描述（不说明好坏），中、小因素必须使用价值判断（如…不良）<br>c.头脑风暴时，尽可能多的找出所有可能原因，尽量客观描述 <br>d. 中因素跟特性值，小因素跟中因素有直接的原因-问题关系，小因素应该分析至可以直接下对策 <br>e. 如果某种原因可同时归属于两种或两种以上因素，庆关联性最强者最准 <br>f. 选取重要因素时，不要超过7项，且应该标识在最末端</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h4 id="Step2-绘制鱼骨图"><a href="#Step2-绘制鱼骨图" class="headerlink" title="Step2: 绘制鱼骨图"></a>Step2: 绘制鱼骨图</h4><ul>
-<li>1．由问题的负责人召集与问题有关的人员组成一个工作组(work group)，该组成员必须对问题有一定深度的了解。</li>
-<li>2．问题的负责人将拟找出原因的问题写在黑板或白纸右边的一个三角形的框内，并在其尾部引出一条水平直线，该线称为鱼脊。</li>
-<li>3．工作组成员在鱼脊上画出与鱼脊成45°角的直线，并在其上标出引起问题的主要原因，这些成45°角的直线称为大骨。</li>
-<li>4．对引起问题的原因进一步细化，画出中骨、小骨……，尽可能列出所有原因</li>
-<li>5．对鱼骨图进行优化整理。</li>
-<li>6．根据鱼骨图进行讨论。</li>
-</ul>
-<p>如何使用？？</p>
-<p><strong><a href="https://wiki.mbalib.com/wiki/%E9%B1%BC%E9%AA%A8%E5%9B%BE" target="_blank" rel="noopener">鱼骨案例</a></strong></p>
-<p>ref: <a href="https://zh.wikipedia.org/wiki/%E7%9F%B3%E5%B7%9D%E5%9B%BE" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/%E7%9F%B3%E5%B7%9D%E5%9B%BE</a></p>
 
       
       <!-- reward -->

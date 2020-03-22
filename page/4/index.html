@@ -64,6 +64,140 @@
     
     
     
+    <article id="post-RCA-根本原因分析" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/10/08/RCA-根本原因分析/">RCA(根本原因分析)</a>
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/10/08/RCA-根本原因分析/" class="article-date">
+  <time datetime="2019-10-08T01:28:58.000Z" itemprop="datePublished">2019-10-08</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/读书笔记/">读书笔记</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>  根本原因分析（Root cause analysis,RCA）方法是明确事件或几近错失的决定性“根本”原因，并采取适当的措施避免问题再次发生。这是一个迭代的过程，会一直持续，直到找出所有组织要素，或者知道已经处理完所有数据。</p>
+<blockquote>
+<p>《Effective DevOps》(中文版) P65</p>
+</blockquote>
+<h3 id="方法一：5-Why"><a href="#方法一：5-Why" class="headerlink" title="方法一：5 Why"></a>方法一：5 Why</h3><p>  5why分析法是指对同一个问题，进行连续的提问，可能是3次，可能是5次，也可能是10次，直到能发现最根本的原因为止。</p>
+<p><strong>5 why详细应用步骤</strong></p>
+<p>一、把握现状</p>
+<ul>
+<li>1.识别问题。 问：我知道什么？</li>
+<li>2.澄清问题。 问：实际发生了什么？</li>
+<li>3.分解问题。 问：关于这个问题，我还应该知道什么？</li>
+<li>4.查找原因要点。 问：我们需要知道什么以解决问题？</li>
+<li>5.掌握问题倾向。 问：什么时间？多大频次？</li>
+</ul>
+<p>二、原因调查</p>
+<ul>
+<li>6.识别和确认异常事件的直接原因。 问：这个问题为什么会发生？</li>
+<li>7.使用5why调查法来建立一个通向根本原因的关系链 问：为什么xxx会发生？</li>
+</ul>
+<p>三、问题纠正（验证有效性）</p>
+<ul>
+<li>8.采取明确措施，验证方案是否有效。 问： 方案是否有效，情况如何？</li>
+</ul>
+<p><strong>5why应用要点</strong>  </p>
+<ul>
+<li>推论要客观、理性；</li>
+<li>避免围绕问题本身，避免责任推卸；</li>
+<li>注意层次之间的关系，不要跳步；</li>
+<li>分析要充分，以便找出根本原因；</li>
+<li>要对分析后的方案确认，并通过现场分析观察，然后改善；</li>
+</ul>
+<p><strong><a href="https://zhuanlan.zhihu.com/p/28506456" target="_blank" rel="noopener">5why案例</a></strong></p>
+<h3 id="方法二：鱼骨图"><a href="#方法二：鱼骨图" class="headerlink" title="方法二：鱼骨图"></a>方法二：鱼骨图</h3><p><strong>什么是鱼骨图</strong></p>
+<p>  鱼骨图又名“因果分析法”，是由日本管理大师石川馨先生所发展出来的，因此又被称为“石川图”。鱼骨图是一种透过现象看本质，从而发现问题“根本原因”的分析方法。这种因果图可以帮助团队以可视化的方式分析原因，并将原因归类，找出差异来源，发现不同来源之间的关系，从而对过程行为有深层次的了解。分为问题型、原因型及对策性型鱼骨分析等三种，具有简捷、实用、直观等特点。最初，鱼骨图被用于质量管理领域。</p>
+<p><strong>如何制作鱼骨图</strong></p>
+<p>制作鱼骨图分为两个步骤： 分析问题原因/结构，绘制鱼骨图</p>
+<h4 id="Step1-分析问题原因-结构"><a href="#Step1-分析问题原因-结构" class="headerlink" title="Step1: 分析问题原因/结构"></a>Step1: 分析问题原因/结构</h4><table>
+<thead>
+<tr>
+<th style="text-align:left">No</th>
+<th style="text-align:left">Context</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">步骤</td>
+<td style="text-align:left">a. 针对问题点选择层别方法（如人机料法环等） <br>b.通过头脑风暴，分别对各类别找出所有可能因素  <br>c.将找出的各要素进行归类、整理，明确其从属关系 <br> d. 分析选取重要因素 <br>e. 检查各要素的描述方法，确保语法简明、意思明确</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">要点</td>
+<td style="text-align:left">a. 确定大要因（大骨）<br>b. 大因素必须用中性词描述（不说明好坏），中、小因素必须使用价值判断（如…不良）<br>c.头脑风暴时，尽可能多的找出所有可能原因，尽量客观描述 <br>d. 中因素跟特性值，小因素跟中因素有直接的原因-问题关系，小因素应该分析至可以直接下对策 <br>e. 如果某种原因可同时归属于两种或两种以上因素，庆关联性最强者最准 <br>f. 选取重要因素时，不要超过7项，且应该标识在最末端</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="Step2-绘制鱼骨图"><a href="#Step2-绘制鱼骨图" class="headerlink" title="Step2: 绘制鱼骨图"></a>Step2: 绘制鱼骨图</h4><ul>
+<li>1．由问题的负责人召集与问题有关的人员组成一个工作组(work group)，该组成员必须对问题有一定深度的了解。</li>
+<li>2．问题的负责人将拟找出原因的问题写在黑板或白纸右边的一个三角形的框内，并在其尾部引出一条水平直线，该线称为鱼脊。</li>
+<li>3．工作组成员在鱼脊上画出与鱼脊成45°角的直线，并在其上标出引起问题的主要原因，这些成45°角的直线称为大骨。</li>
+<li>4．对引起问题的原因进一步细化，画出中骨、小骨……，尽可能列出所有原因</li>
+<li>5．对鱼骨图进行优化整理。</li>
+<li>6．根据鱼骨图进行讨论。</li>
+</ul>
+<p>如何使用？？</p>
+<p><strong><a href="https://wiki.mbalib.com/wiki/%E9%B1%BC%E9%AA%A8%E5%9B%BE" target="_blank" rel="noopener">鱼骨案例</a></strong></p>
+<p>ref: <a href="https://zh.wikipedia.org/wiki/%E7%9F%B3%E5%B7%9D%E5%9B%BE" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/%E7%9F%B3%E5%B7%9D%E5%9B%BE</a></p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Devops/">Devops</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-值得收藏的技术类站点" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -811,84 +945,6 @@
 <p>并修改</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ExecStart=/usr/bin/docker daemon -H fd://</span><br><span class="line"><span class="comment">#改成</span></span><br><span class="line">$ ExecStart=/usr/bin/docker daemon -H fd:// <span class="variable">$DOCKER_OPTS</span></span><br></pre></td></tr></table></figure>
 <p>这样才能使用/etc/default/docker里定义的DOCKER_OPTS参数</p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Docker/">Docker</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-Docker-Contract" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/07/26/Docker-Contract/">Docker Contract</a>
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/07/26/Docker-Contract/" class="article-date">
-  <time datetime="2019-07-26T03:41:52.000Z" itemprop="datePublished">2019-07-26</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <blockquote>
-<p>Docker 契约</p>
-</blockquote>
-<p><img src="/images/docker_contract_01.png" alt="docker_contract_01"></p>
-<p><strong>问题</strong><br>想要合作团队的可交付成果是整洁的、明确的，从面减少交付流水线里的摩擦。</p>
-<p><strong>解决方案</strong><br>使用Docker契约来推动团队间整洁的可交付成果</p>
-<p><strong>讨论</strong><br>  随着公司规模扩大，经常可以看到其曾经拥有的扁平化的、精益化的组织架构——几个关键的个人“了解整个系统”，让位给了一个更加结构化的组织架构——不同的团队具有不同职责和能力。我们在效力过的组织中都对此有过切身体会。</p>
-<p>  如果没有进行技术投入，随着团队之间相互交付的增多，摩擦也会不断升级。图7-2展示了这个场景的一个简化了但具有代表性的倩形。图7-2 中的工作流有几个大家熟知的间题。这些间题最终都归结于状态管理的困难。测试团队可能在一台不是运维团队所设置的机器上进行侧试。理论上，对所有环境的修改都应仔细地记录下来，并在出现问题时进行回滚以保持一致性。但是，商业压力与人类行为的存在总是破坏这个目标，造成 <strong>环境性漂移</strong>。</p>
-<p><img src="/images/docker_contract_03.png" alt="docker_contract_02"></p>
-<p>Docker 所能做的是在团队之间划出清洗的分界线，Docker 镜像即是<strong>分界线</strong> ，又是<strong>交换的单位</strong>，我们称为 <strong>Docker Contract (契约)</strong>,如图 7-3 所示。</p>
-<p><img src="/images/docker_contract_03.png" alt="docker_contract_03"></p>
-<p><strong>More Ref:</strong></p>
-<ul>
-<li><a href="https://learning.oreilly.com/library/view/Docker+in+Practice/9781617292729/kindle_split_018.html#ch07lev1sec1a" target="_blank" rel="noopener">https://learning.oreilly.com/library/view/Docker+in+Practice/9781617292729/kindle_split_018.html#ch07lev1sec1a</a></li>
-</ul>
 
       
       <!-- reward -->
