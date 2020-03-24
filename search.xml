@@ -4,7 +4,7 @@
     <title>Github Actions E05环境变量</title>
     <url>/2020/03/24/Github-Actions-E05%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
-<p>例如在使用Jenkins等其他CICD工具时那样，环境变量可以帮助我们在流水线中传递参数，然后使用这些变量方便利用，或是获取更多关于构建的信息(比如<code>GITHUB_REPOSITORY</code>)。 例如构建镜像时 <code>app1:master-1</code>  <code>app1:ffac53</code> ,用分支名做判断。</p>
+<p>例如在使用Jenkins等其他CICD工具时那样，环境变量可以帮助我们在流水线中传递参数，然后使用这些变量方便利用，或是获取更多关于构建的信息(比如<code>GITHUB_REPOSITORY</code>)。 例如构建镜像时 <code>app1:master-1</code>、<code>app1:ffac53</code>， 用分支名做判断等。</p>
 </blockquote>
 <h3 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1. 介绍"></a>1. 介绍</h3><p>GitHub为每个GitHub Actions工作流程运行设置默认环境变量。 您还可以在工作流文件中设置自定义环境变量。</p>
 <h3 id="2-默认的环境变量"><a href="#2-默认的环境变量" class="headerlink" title="2. 默认的环境变量"></a>2. 默认的环境变量</h3><table>
@@ -16,7 +16,8 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">HOME    用于存储用户数据的 GitHub 主目录路径。 例如  <code>/github/home</code>。</td>
+<td style="text-align:left">HOME</td>
+<td>用于存储用户数据的 GitHub 主目录路径。 例如  <code>/github/home</code>。</td>
 </tr>
 <tr>
 <td style="text-align:left">GITHUB_WORKFLOW</td>
@@ -78,7 +79,7 @@
 </tr>
 </tbody>
 </table>
-<p>作用域： 整个workflow中</p>
+<p><strong>作用域</strong>: 整个workflow中</p>
 <blockquote>
 <p>可以观察到:GitHub 会保留<code>GITHUB_</code>环境变量前缀供GitHub内部使用。设置有 GITHUB_ 前缀的环境变量或密码将导致错误。</p>
 </blockquote>
@@ -86,7 +87,13 @@
 <p>环境变量可用于工作流程中的所有作业和步骤，还可以设置仅适用于作业或步骤的环境变量，需要注意环境变量<strong>作用域</strong>。</p>
 <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">my</span> <span class="string">workflow</span> <span class="string">demo</span> </span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span> </span><br><span class="line"><span class="attr">  push:</span></span><br><span class="line"><span class="attr">    branches:</span> </span><br><span class="line"><span class="bullet">      -</span> <span class="string">master</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 用于该workflow的所有job和steps</span></span><br><span class="line"><span class="attr">env:</span></span><br><span class="line"><span class="attr">  SERVER:</span> <span class="string">production</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  env_usage_job1:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">job1</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">My</span> <span class="string">step</span> <span class="string">one</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        echo "this is job1"</span></span><br><span class="line"><span class="string">        echo $SERVER</span></span><br><span class="line"><span class="string"># 不能写成 echo $<span class="template-variable">&#123;&#123; SERVER &#125;&#125;</span></span></span><br><span class="line"><span class="string"></span><span class="attr">  second_job:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">job2</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">macos-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">My</span> <span class="string">step</span> <span class="string">one</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        echo "this is job2"</span></span><br><span class="line"><span class="string">        echo $SERVER</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment">### job 级别的</span></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  job1:</span></span><br><span class="line"><span class="attr">    env:</span></span><br><span class="line"><span class="attr">      FIRST_NAME:</span> <span class="string">Mona</span></span><br><span class="line"></span><br><span class="line"><span class="comment">### steps 级别的</span></span><br><span class="line"><span class="attr">steps:</span></span><br><span class="line"><span class="attr">  - name:</span> <span class="string">Hello</span> <span class="string">world</span></span><br><span class="line"><span class="attr">    run:</span> <span class="string">echo</span> <span class="string">Hello</span> <span class="string">world</span> <span class="string">$FIRST_NAME</span> <span class="string">$middle_name</span> <span class="string">$Last_Name!</span></span><br><span class="line"><span class="attr">    env:</span></span><br><span class="line"><span class="attr">      FIRST_NAME:</span> <span class="string">Mona</span></span><br><span class="line"><span class="attr">      middle_name:</span> <span class="string">The</span></span><br><span class="line"><span class="attr">      Last_Name:</span> <span class="string">Octocat</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>搞不懂为什么官网示例 steps 中的 env放在 run后面?</p>
+</blockquote>
 <h3 id="4-context-与-environment-variables-的关系"><a href="#4-context-与-environment-variables-的关系" class="headerlink" title="4. context 与 environment variables 的关系"></a>4. context 与 environment variables 的关系</h3><p>The github context contains information about the workflow run and the event that triggered the run. You can read most of the github context data in environment variables. For more information about environment variables, see “Using environment variables.”</p>
+<ul>
+<li>Todo</li>
+</ul>
 <hr>
 <p><strong>More Ref:</strong></p>
 <ul>
