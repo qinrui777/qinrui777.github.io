@@ -61,7 +61,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">871字</span>
+            <span class="post-count">878字</span>
         </span>
     </span>
 
@@ -117,7 +117,7 @@
 </tr>
 <tr>
 <td style="text-align:left">GITHUB_RUN_ID</td>
-<td>仓库中每次运行的唯一编号。 如果您重新运行工作流运行，此数字不会更改。</td>
+<td>仓库中每次运行的唯一编号。 如果重新运行工作流运行，此数字不会更改。</td>
 </tr>
 <tr>
 <td style="text-align:left">GITHUB_RUN_NUMBER</td>
@@ -129,7 +129,7 @@
 </tr>
 <tr>
 <td style="text-align:left">GITHUB_ACTIONS</td>
-<td>Always set to true when GitHub 操作 is running the workflow. You can use this variable to differentiate when tests are being run locally or by GitHub 操作.</td>
+<td>当GitHub操作正在运行工作流时，请始终为true。可以使用此变量来区分何时在本地或通过GitHub运行测试.</td>
 </tr>
 <tr>
 <td style="text-align:left">GITHUB_ACTOR</td>
@@ -145,21 +145,19 @@
 </tr>
 <tr>
 <td style="text-align:left">GITHUB_EVENT_PATH</td>
-<td>具有完整 web 挂钩事件有效负载的文件路径。 例如 `/github/</td>
-<td>workflow/event.json`。</td>
+<td>具有完整 web 挂钩事件有效负载的文件路径。 例如 <code>/github/workflow/event.json</code>。</td>
 </tr>
 <tr>
 <td style="text-align:left">GITHUB_WORKSPACE</td>
-<td>GitHub 工作空间目录路径。 如果您的工作流程使用 actions/</td>
-<td>checkout 操作，工作空间目录将包含存储仓库副本的子目录。 如果不使用 <code>actions/checkout</code> 操作，该目录将为空。 例如 <code>/home/runner/work/my-repo-name/my-repo-name</code>。</td>
+<td>GitHub 工作空间目录路径。 如果工作流程使用 <code>actions/checkout</code> 操作，工作空间目录将包含存储仓库副本的子目录。 如果不使用 <code>actions/checkout</code> 操作，该目录将为空。 例如 <code>/home/runner/work/my-repo-name/my-repo-name</code>。</td>
 </tr>
 <tr>
 <td style="text-align:left">GITHUB_SHA</td>
-<td>触发工作流程的提交 SHA。 例如 ffac537e6cbbf934b08745a378932722df287a53。</td>
+<td>触发工作流程的提交 SHA。例如 ffac537e6cbbf934b08745a378932722df287a53。</td>
 </tr>
 <tr>
 <td style="text-align:left">GITHUB_REF</td>
-<td>触发工作流程的分支或标记参考。 例如 refs/heads/feature-branch-1。 如果分支或标记都不适用于事件类型，则变量不会存在。</td>
+<td>触发工作流程的分支或标记参考。例如 refs/heads/feature-branch-1，如果分支或标记都不适用于事件类型，则变量不会存在。</td>
 </tr>
 <tr>
 <td style="text-align:left">GITHUB_HEAD_REF</td>
