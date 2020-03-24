@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    Github Actions E04运行环境-runner |  一笑皆春
+    Github Actions E05环境变量 |  一笑皆春
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -30,14 +30,14 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="post-Github-Actions-E04运行环境-runner" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+  <article id="post-Github-Actions-E05环境变量" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
     
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  Github Actions E04运行环境-runner
+  Github Actions E05环境变量
 </h1>
   
 
@@ -46,8 +46,8 @@
 
     
     <div class="article-meta">
-      <a href="/2020/03/21/Github-Actions-E04运行环境-runner/" class="article-date">
-  <time datetime="2020-03-21T08:46:09.000Z" itemprop="datePublished">2020-03-21</time>
+      <a href="/2020/03/24/Github-Actions-E05环境变量/" class="article-date">
+  <time datetime="2020-03-24T06:41:34.000Z" itemprop="datePublished">2020-03-24</time>
 </a>
       
   <div class="article-category">
@@ -61,7 +61,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">968字</span>
+            <span class="post-count">850字</span>
         </span>
     </span>
 
@@ -70,7 +70,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">4分钟</span>
+            <span class="post-count">3分钟</span>
         </span>
     </span>
 </div>
@@ -96,80 +96,93 @@
 
       
       <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
-<p>一个可以直接运行的CICD环境，用起来无疑节省了搭建环境的过程。但对于一个我们陌生的运行环境，最好还是提前了解一些基础的东西，比如：机器的操作系统及版本、内存、CPU、有多少磁盘可用、当前的用户是什么、权限有没有限制，以及workspace在什么目录，不然一旦遇到问题，就无从下手，或者找错方向。</p>
+<p>例如在使用Jenkins等其他CICD工具时那样，环境变量可以帮助我们在流水线中传递参数，然后使用这些变量方便利用，或是获取更多关于构建的信息(比如<code>GITHUB_REPOSITORY</code>)。 例如构建镜像时 <code>app1:master-1</code>  <code>app1:ffac53</code> ,用分支名做判断。</p>
 </blockquote>
-<p><em>##### </em>CICD环境的灵魂3问：</p>
-<ul>
-<li>我是谁 <em>-&gt; 操作系统，具体版本，当前用户及权限</em></li>
-<li>我在哪里 <em>-&gt; 工作目录在哪里</em></li>
-<li>我能做什么 <em>—&gt; 有什么工具已经安装了，还是要自己安装</em></li>
-</ul>
-<h3 id="1-GitHub-hosted-runner-介绍"><a href="#1-GitHub-hosted-runner-介绍" class="headerlink" title="1. GitHub-hosted runner 介绍"></a>1. GitHub-hosted runner 介绍</h3><p>一个 GitHub-hosted runner 是由GitHub托管并安装了GitHub Actions运行程序应用程序的虚拟机。 GitHub为运行Linux，Windows和macOS操作系统的用户提供帮助。</p>
-<p>个人总结：GitHub Actions runner 是一个 application</p>
-<p>官网也提及 <em>“The GitHub Actions runner application is open source. You can contribute and file issues in the runner repository.”</em></p>
-<h3 id="2-硬件资源"><a href="#2-硬件资源" class="headerlink" title="2. 硬件资源"></a>2. 硬件资源</h3><p>GitHub hosts Linux and Windows runners on Standard_DS2_v2 virtual machines in Microsoft Azure.</p>
-<p>GitHub uses MacStadium to host the macOS runners.</p>
-<p>每个虚拟机有相同的硬件资源可使用。拿一台同配置的个人电脑，或者云上的服务器相比，GA 的服务器运行起来会快一些。</p>
-<ul>
-<li>2-core CPU</li>
-<li>7 GB of RAM memory</li>
-<li>14 GB of SSD disk space</li>
-</ul>
-<table>
+<h3 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1. 介绍"></a>1. 介绍</h3><p>GitHub为每个GitHub Actions工作流程运行设置默认环境变量。 您还可以在工作流文件中设置自定义环境变量。</p>
+<h3 id="2-默认的环境变量"><a href="#2-默认的环境变量" class="headerlink" title="2. 默认的环境变量"></a>2. 默认的环境变量</h3><table>
 <thead>
 <tr>
-<th style="text-align:left">Virtual environment</th>
-<th>YAML workflow label</th>
+<th style="text-align:left">环境变量</th>
+<th>描述</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">Windows Server 2019</td>
-<td>windows-latest or windows-2019</td>
+<td style="text-align:left">HOME    用于存储用户数据的 GitHub 主目录路径。 例如  <code>/github/home</code>。</td>
 </tr>
 <tr>
-<td style="text-align:left">Ubuntu 18.04</td>
-<td>ubuntu-latest or ubuntu-18.04</td>
+<td style="text-align:left">GITHUB_WORKFLOW</td>
+<td>工作流程的名称。</td>
 </tr>
 <tr>
-<td style="text-align:left">Ubuntu 16.04</td>
-<td>ubuntu-16.04</td>
+<td style="text-align:left">GITHUB_RUN_ID</td>
+<td>仓库中每次运行的唯一编号。 如果您重新运行工作流运行，此数字不会更改。</td>
 </tr>
 <tr>
-<td style="text-align:left">macOS Catalina 10.15</td>
-<td>macos-latest or macos-10.15</td>
+<td style="text-align:left">GITHUB_RUN_NUMBER</td>
+<td>存储库中特定工作流程的每次运行的唯一编号。 对于工作流程的第一次运行，此数字从1开始，并在每次新运行时递增。 如果重新运行工作流运行，则此数字不会更改。</td>
+</tr>
+<tr>
+<td style="text-align:left">GITHUB_ACTION</td>
+<td>操作唯一的标识符 (id)。</td>
+</tr>
+<tr>
+<td style="text-align:left">GITHUB_ACTIONS</td>
+<td>Always set to true when GitHub 操作 is running the workflow. You can use this variable to differentiate when tests are being run locally or by GitHub 操作.</td>
+</tr>
+<tr>
+<td style="text-align:left">GITHUB_ACTOR</td>
+<td>发起工作流程的个人或应用程序的名称。 例如 octocat。</td>
+</tr>
+<tr>
+<td style="text-align:left">GITHUB_REPOSITORY</td>
+<td>所有者和仓库名称。 例如 octocat/Hello-World。</td>
+</tr>
+<tr>
+<td style="text-align:left">GITHUB_EVENT_NAME</td>
+<td>触发工作流程的 web 挂钩事件的名称。</td>
+</tr>
+<tr>
+<td style="text-align:left">GITHUB_EVENT_PATH</td>
+<td>具有完整 web 挂钩事件有效负载的文件路径。 例如 `/github/</td>
+<td>workflow/event.json`。</td>
+</tr>
+<tr>
+<td style="text-align:left">GITHUB_WORKSPACE</td>
+<td>GitHub 工作空间目录路径。 如果您的工作流程使用 actions/</td>
+<td>checkout 操作，工作空间目录将包含存储仓库副本的子目录。 如果不使用 <code>actions/checkout</code> 操作，该目录将为空。 例如 <code>/home/runner/work/my-repo-name/my-repo-name</code>。</td>
+</tr>
+<tr>
+<td style="text-align:left">GITHUB_SHA</td>
+<td>触发工作流程的提交 SHA。 例如 ffac537e6cbbf934b08745a378932722df287a53。</td>
+</tr>
+<tr>
+<td style="text-align:left">GITHUB_REF</td>
+<td>触发工作流程的分支或标记参考。 例如 refs/heads/feature-branch-1。 如果分支或标记都不适用于事件类型，则变量不会存在。</td>
+</tr>
+<tr>
+<td style="text-align:left">GITHUB_HEAD_REF</td>
+<td>仅为复刻的仓库设置。 头部仓库的分支。</td>
+</tr>
+<tr>
+<td style="text-align:left">GITHUB_BASE_REF</td>
+<td>仅为复刻的仓库设置。 基础仓库的分支。</td>
 </tr>
 </tbody>
 </table>
+<p>作用域： 整个workflow中</p>
 <blockquote>
-<p>Inbound ICMP packets are blocked for all Azure virtual machines, so ping or traceroute commands might not work. For more information about the Standard_DS2_v2 machine resources, see “Dv2 and DSv2-series” in the Microsoft Azure documentation.</p>
+<p>可以观察到:GitHub 会保留<code>GITHUB_</code>环境变量前缀供GitHub内部使用。设置有 GITHUB_ 前缀的环境变量或密码将导致错误。</p>
 </blockquote>
-<h3 id="3-运行用户的权限"><a href="#3-运行用户的权限" class="headerlink" title="3. 运行用户的权限"></a>3. 运行用户的权限</h3><p>可以写一个demo查看一下当前用户，例子见下面 👇</p>
-<p>Linux和macOS虚拟机均使用无密码sudo运行。 当您需要执行命令或安装需要比当前用户更多特权的工具时，可以使用sudo而不需要提供密码。</p>
-<p>Windows虚拟机被配置为以禁用了用户帐户控制（UAC）的管理员身份运行。</p>
-<h3 id="4-文件系统-Filesystems-on-GitHub-hosted-runners"><a href="#4-文件系统-Filesystems-on-GitHub-hosted-runners" class="headerlink" title="4. 文件系统(Filesystems on GitHub-hosted runners)"></a>4. 文件系统(Filesystems on GitHub-hosted runners)</h3><p>GitHub在虚拟机上的特定目录中执行操作和shell命令, 虚拟机上的文件路径不是静态的。</p>
-<p>Docker container filesystem 后面讲到时再说</p>
-<p>关于查看当前用户和工作目录的demo</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">CI</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span> <span class="string">[push]</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  linux:</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line">    <span class="comment">#我是谁</span></span><br><span class="line"><span class="attr">      - run:</span> <span class="string">whoami</span></span><br><span class="line">    <span class="comment">#我在那儿</span></span><br><span class="line"><span class="attr">      - run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        pwd</span></span><br><span class="line"><span class="string">        echo $HOME $GITHUB_WORKSPACE $GITHUB_EVENT_PATH</span></span><br></pre></td></tr></table></figure>
-<p>在我的<a href="https://github.com/cicd-draft/api-test-demo" target="_blank" rel="noopener">repo</a>中运行的输出为：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">runner</span><br><span class="line">/home/runner/work/api-test-demo/api-test-demo</span><br><span class="line">/home/runner /home/runner/work/api-test-demo/api-test-demo /home/runner/work/_temp/_github_workflow/event.json</span><br></pre></td></tr></table></figure></p>
-<p>GitHub为每个工作流创建的环境变量有很多，后面会单独讲到，也可以提前看一下<a href="https://help.github.com/en/actions/configuring-and-managing-workflows/using-environment-variables" target="_blank" rel="noopener">有哪些环境变量</a>。这样类似的<strong>默认的环境变量</strong>就是类似于我们在jenkins上用的 <code>BUILD_NUMBER</code>,<code>JOB_NAME</code>，当然也可以自定义环境变量。</p>
-<h3 id="5-软件安装"><a href="#5-软件安装" class="headerlink" title="5. 软件安装"></a>5. 软件安装</h3><p>不同的操作系统上都预先安装好了常用软件，详情可见下方的链接 <a href="https://help.github.com/en/actions/reference/software-installed-on-github-hosted-runners" target="_blank" rel="noopener">https://help.github.com/en/actions/reference/software-installed-on-github-hosted-runners</a></p>
-<p><a href="https://github.com/actions/virtual-environments/blob/master/images/linux/Ubuntu1804-README.md" target="_blank" rel="noopener">Ubuntu 18.04 LTS</a><br><a href="https://github.com/actions/virtual-environments/blob/master/images/linux/Ubuntu1604-README.md" target="_blank" rel="noopener">Ubuntu 16.04 LTS</a><br><a href="https://github.com/actions/virtual-environments/blob/master/images/win/Windows2019-Readme.md" target="_blank" rel="noopener">Windows Server 2019</a><br><a href="https://github.com/actions/virtual-environments/blob/master/images/win/Windows2016-Readme.md" target="_blank" rel="noopener">Windows Server 2016</a><br><a href="https://github.com/actions/virtual-environments/blob/master/images/macos/macos-10.15-Readme.md" target="_blank" rel="noopener">MacOS 10.15</a></p>
-<p>如果不想看看长长的readme，可以在运行job中先检查以下软件是否安装及具体版本；如果最后发现没有安装，就添加安装的命令即可。比如</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">CI</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span> <span class="string">[push]</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  linux:</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - run:</span> <span class="string">sudo</span> <span class="string">apt-get</span> <span class="string">install</span> <span class="string">ninja-build</span></span><br><span class="line"><span class="attr">      - run:</span> <span class="string">ninja</span> <span class="bullet">--version</span></span><br></pre></td></tr></table></figure>
-<hr>
-<p><strong>思考个问题：</strong> 自定义 runner，以及用私有的服务器运行 workflow，怎么实现？</p>
-<blockquote>
-<p>方法肯定是有的，相信github官方可考虑了runner私有化的场景(毕竟gitlab CI runner在那里摆着)，后续有时间再研究</p>
-</blockquote>
+<h3 id="3-自定义环境变量"><a href="#3-自定义环境变量" class="headerlink" title="3. 自定义环境变量"></a>3. 自定义环境变量</h3><p>默认的环境变量有时候，不足以满足我们的要求，这是就需要自定义一些，以便使用。最好定义在yml文件靠前的部分，一目了然。</p>
+<p>环境变量可用于工作流程中的所有作业和步骤，还可以设置仅适用于作业或步骤的环境变量，需要注意环境变量<strong>作用域</strong>。</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">my</span> <span class="string">workflow</span> <span class="string">demo</span> </span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span> </span><br><span class="line"><span class="attr">  push:</span></span><br><span class="line"><span class="attr">    branches:</span> </span><br><span class="line"><span class="bullet">      -</span> <span class="string">master</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 用于该workflow的所有job和steps</span></span><br><span class="line"><span class="attr">env:</span></span><br><span class="line"><span class="attr">  SERVER:</span> <span class="string">production</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  env_usage_job1:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">job1</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">My</span> <span class="string">step</span> <span class="string">one</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        echo "this is job1"</span></span><br><span class="line"><span class="string">        echo $SERVER</span></span><br><span class="line"><span class="string"># 不能写成 echo $<span class="template-variable">&#123;&#123; SERVER &#125;&#125;</span></span></span><br><span class="line"><span class="string"></span><span class="attr">  second_job:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">job2</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">macos-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">My</span> <span class="string">step</span> <span class="string">one</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        echo "this is job2"</span></span><br><span class="line"><span class="string">        echo $SERVER</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">### job 级别的</span></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  job1:</span></span><br><span class="line"><span class="attr">    env:</span></span><br><span class="line"><span class="attr">      FIRST_NAME:</span> <span class="string">Mona</span></span><br><span class="line"></span><br><span class="line"><span class="comment">### steps 级别的</span></span><br><span class="line"><span class="attr">steps:</span></span><br><span class="line"><span class="attr">  - name:</span> <span class="string">Hello</span> <span class="string">world</span></span><br><span class="line"><span class="attr">    run:</span> <span class="string">echo</span> <span class="string">Hello</span> <span class="string">world</span> <span class="string">$FIRST_NAME</span> <span class="string">$middle_name</span> <span class="string">$Last_Name!</span></span><br><span class="line"><span class="attr">    env:</span></span><br><span class="line"><span class="attr">      FIRST_NAME:</span> <span class="string">Mona</span></span><br><span class="line"><span class="attr">      middle_name:</span> <span class="string">The</span></span><br><span class="line"><span class="attr">      Last_Name:</span> <span class="string">Octocat</span></span><br></pre></td></tr></table></figure>
+<h3 id="4-context-与-environment-variables-的关系"><a href="#4-context-与-environment-variables-的关系" class="headerlink" title="4. context 与 environment variables 的关系"></a>4. context 与 environment variables 的关系</h3><p>The github context contains information about the workflow run and the event that triggered the run. You can read most of the github context data in environment variables. For more information about environment variables, see “Using environment variables.”</p>
 <hr>
 <p><strong>More Ref:</strong></p>
 <ul>
-<li><a href="https://github.com/actions/runner" target="_blank" rel="noopener">Github actions runner 源码仓库</a></li>
-<li><a href="https://help.github.com/en/actions/reference/virtual-environments-for-github-hosted-runners#administrative-privileges-of-github-hosted-runners" target="_blank" rel="noopener">Administrative privileges of GitHub-hosted runners</a></li>
-<li><a href="https://help.github.com/en/actions/reference/virtual-environments-for-github-hosted-runners#docker-container-filesystem" target="_blank" rel="noopener">Docker container filesystem</a></li>
-<li><a href="https://help.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners" target="_blank" rel="noopener">About self-hosted runners</a></li>
-<li><a href="https://help.github.com/en/github/setting-up-and-managing-billing-and-payments-on-github/viewing-your-github-actions-usage" target="_blank" rel="noopener">billing</a></li>
+<li><a href="https://help.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context" target="_blank" rel="noopener">GA Context</a></li>
 </ul>
 
       
@@ -239,7 +252,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/03/21/Github-Actions-E04运行环境-runner/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/03/24/Github-Actions-E05环境变量/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -257,19 +270,10 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/03/24/Github-Actions-E05环境变量/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            Github Actions E05环境变量
-          
-        </div>
-      </a>
     
-    
-      <a href="/2020/03/20/Shell-toolbox/" class="article-nav-link">
+      <a href="/2020/03/21/Github-Actions-E04运行环境-runner/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">Shell toolbox</div>
+        <div class="article-nav-title">Github Actions E04运行环境-runner</div>
       </a>
     
   </nav>
