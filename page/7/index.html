@@ -64,6 +64,76 @@
     
     
     
+    <article id="post-Shell-count-time" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/06/17/Shell-count-time/">Shell count time</a>
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/06/17/Shell-count-time/" class="article-date">
+  <time datetime="2019-06-17T01:56:32.000Z" itemprop="datePublished">2019-06-17</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Shell/">Shell</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">start=$(date +%s)</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> ---------</span><br><span class="line"><span class="comment">#type your command, like: sleep 50</span></span><br><span class="line">sleep 50</span><br><span class="line"></span><br><span class="line">end=$(date +%s)</span><br><span class="line"></span><br><span class="line">diff=$((end - start))</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">"\e[1;32m take time is: <span class="variable">$diff</span> \e[m"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> Count:</span><br><span class="line">tput sc</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> count <span class="keyword">in</span> `seq 0 40`</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  tput rc</span><br><span class="line">  tput ed</span><br><span class="line">  <span class="built_in">echo</span> -n <span class="variable">$count</span></span><br><span class="line">  sleep 1</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<p>用 tput sc 存储光标位置。在每次循环中，通过 tput rc 恢复之前的存储的光标位置，在终端中打印出新的 count 值，然后使用 tputs ed 清除从当前位置到行尾之间的所有内容。行被清空之后，脚本就可以显示出新的值。sleep  可以使脚本在每次循环迭代之间延迟1秒钟。</p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shell/">Shell</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-Shell-Print-text-between-specified-lines-or-patterns" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -792,77 +862,6 @@
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shell/">Shell</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-Docker-clean" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/05/07/Docker-clean/">Docker clean</a>
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/05/07/Docker-clean/" class="article-date">
-  <time datetime="2019-05-07T08:33:18.000Z" itemprop="datePublished">2019-05-07</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h4 id="1-Cleanup-exited-processes"><a href="#1-Cleanup-exited-processes" class="headerlink" title="1.Cleanup exited processes:"></a>1.Cleanup exited processes:</h4><p>docker rm $(docker ps -q -f status=exited)</p>
-<h4 id="3-Cleanup-dangling-volumes"><a href="#3-Cleanup-dangling-volumes" class="headerlink" title="3.Cleanup dangling volumes:"></a>3.Cleanup dangling volumes:</h4><p>docker volume rm $(docker volume ls -qf dangling=true)</p>
-<h4 id="3-Cleanup-dangling-images"><a href="#3-Cleanup-dangling-images" class="headerlink" title="3.Cleanup dangling images:"></a>3.Cleanup dangling images:</h4><p>docker rmi $(docker images –filter “dangling=true” -q –no-trunc)</p>
-<p>more methods go to below link ↓</p>
-<p><strong>More Ref:</strong></p>
-<ul>
-<li><a href="https://www.jianshu.com/p/470e29801be2" target="_blank" rel="noopener">https://www.jianshu.com/p/470e29801be2</a></li>
-</ul>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Docker/">Docker</a></li></ul>
 
 
     </footer>
