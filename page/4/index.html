@@ -64,6 +64,127 @@
     
     
     
+    <article id="post-shell-玩转sed，你不知道的用法" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/10/23/shell-玩转sed，你不知道的用法/"
+    >shell 玩转sed，你不知道的用法</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/10/23/shell-玩转sed，你不知道的用法/" class="article-date">
+  <time datetime="2019-10-23T02:49:44.000Z" itemprop="datePublished">2019-10-23</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Shell/">Shell</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>sed 是 stream editor（流编辑器）的缩写</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">操作</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">p</td>
+<td>打印文本行(print)</td>
+</tr>
+<tr>
+<td style="text-align:left">n</td>
+<td>取消默认输出</td>
+</tr>
+<tr>
+<td style="text-align:left">d</td>
+<td>删除(delete)</td>
+</tr>
+<tr>
+<td style="text-align:left">s</td>
+<td>字符串替换(substitude)</td>
+</tr>
+<tr>
+<td style="text-align:left">a</td>
+<td>追加新的文本(append)</td>
+</tr>
+</tbody>
+</table>
+<p>示例文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat example.conf</span></span><br><span class="line">username=this  username_2=this</span><br><span class="line">password=that</span><br><span class="line"></span><br><span class="line">url=this</span><br><span class="line"></span><br><span class="line">path=this</span><br></pre></td></tr></table></figure>
+<h3 id="1-替换"><a href="#1-替换" class="headerlink" title="1.替换"></a>1.替换</h3><p>sed 命令会将 <code>s</code> 之后的字符视为命令分隔符，这允许我们更改默认的分隔符，如:<br><code>sed &#39;s:this:new:g&#39; example.conf</code><br><code>sed &#39;s|this|new|g&#39; example.conf</code><br>如果作为分隔符的字符出现在模式中，必须使用 <code>\</code>对其进行转义</p>
+<p><code>sed &#39;s/this/new/&#39; example.conf</code>  替换 <strong>每行</strong>中 <strong>首次</strong> 匹配的内容</p>
+<p>ouput:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">username=new  username_2=this</span><br><span class="line">password=that</span><br><span class="line"></span><br><span class="line">url=new</span><br><span class="line"></span><br><span class="line">path=new</span><br></pre></td></tr></table></figure></p>
+<p><code>sed &#39;s/this/new/g&#39; example.conf</code> g标记可以使sed执行全局替换</p>
+<p><code>sed &#39;s/this/new/2g&#39; example.conf</code> #g可以使sed替换第N次出现的匹配</p>
+<p>将1-4行的url换成address, s代表替换<br><code>sed &#39;1,4s/url/address/g&#39; example.conf</code></p>
+<h3 id="2-删除"><a href="#2-删除" class="headerlink" title="2.删除"></a>2.删除</h3><p><code>sed &#39;2,4d&#39; example.conf</code>  删除第2到4行  </p>
+<p><code>sed -e &#39;/url/d&#39;  example.conf</code> 删除含”url”的行,输出到终端，实际没有替换文件</p>
+<p><code>sed &#39;/appleapple/d;$d&#39; example.conf</code> 删除包含appleapple的行和最后一行($)  </p>
+<p>移除空行<br><code>sed &#39;/^$/d&#39; file</code> 空行可以用 ^$ 进行匹配，最后的 /d 告诉sed不执行替换操作，而是直接删除匹配到的空行</p>
+<hr>
+<p><strong>✍TIP</strong></p>
+<ol>
+<li><p>首先使用不带 -i选项的sed命令，查看结果是否符合预期；再加入 -i选项将更改写入文件。</p>
+</li>
+<li><p><code>sed -i.bak &#39;s/abc/def&#39; file</code> 这时的sed不仅替换文件内容，还会创建一个名为file.bak的文件，其中包含着原始文件内容的副本;如果对一个文件多次执行，则xx.bak文件只会是上一个文件的副本</p>
+</li>
+</ol>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shell/">Shell</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-shell-没有vim-vi-命令怎么办" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -907,100 +1028,6 @@
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/packer/">packer</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-Terraform-100-Introduction-Install" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/08/27/Terraform-100-Introduction-Install/"
-    >Terraform 100: Introduction &amp; Install</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/08/27/Terraform-100-Introduction-Install/" class="article-date">
-  <time datetime="2019-08-27T06:03:32.000Z" itemprop="datePublished">2019-08-27</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Terraform/">Terraform</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h3 id="What-is-Terraform"><a href="#What-is-Terraform" class="headerlink" title="What is Terraform?"></a>What is Terraform?</h3><p>Terraform is a tool for building, changing, and versioning infrastructure safely and efficiently. Terraform can manage existing and popular service providers as well as custom in-house solutions.</p>
-<p>The key features of Terraform are:</p>
-<ul>
-<li>Infrastructure as Code</li>
-<li>Execution Plans</li>
-<li>Resource Graph</li>
-<li>Change Automation</li>
-</ul>
-<h3 id="tfenv"><a href="#tfenv" class="headerlink" title="tfenv"></a>tfenv</h3><p><strong>tfenv</strong>: Terraform version manager</p>
-<p><a href="https://github.com/tfutils/tfenv" target="_blank" rel="noopener">tfenv github</a></p>
-<ul>
-<li><h5 id="install-tfenv"><a href="#install-tfenv" class="headerlink" title="install tfenv"></a>install tfenv</h5><p>Install via Homebrew<br><code>$ brew install tfenv</code></p>
-</li>
-<li><h5 id="usage"><a href="#usage" class="headerlink" title="usage"></a>usage</h5><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ tfenv install 0.7.0</span><br><span class="line">$ tfenv install latest</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># use a specific version</span></span><br><span class="line">$ tfenv use 0.7.0</span><br><span class="line">$ tfenv use latest</span><br></pre></td></tr></table></figure>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#uninstall</span></span><br><span class="line">$ tfenv uninstall 0.7.0</span><br><span class="line">$ tfenv uninstall latest</span><br></pre></td></tr></table></figure>
-<h5 id="terraform-version"><a href="#terraform-version" class="headerlink" title=".terraform-version"></a>.terraform-version</h5><p>If you put .terraform-version file on your project root, or in your home directory, tfenv detects it and use the version written in it. </p>
-<blockquote>
-<p>I have installed two different version on my mac.</p>
-</blockquote>
-<p>Ihen I set version to <code>v0.12.4</code> in <code>.terraform-version</code> file<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">➜   terraform --version</span><br><span class="line">Terraform v0.12.4</span><br><span class="line">+ provider.aws v2.25.0</span><br><span class="line">+ provider.random v2.2.0</span><br><span class="line">+ provider.template v2.1.2</span><br></pre></td></tr></table></figure></p>
-<p>Then I change the verson to <strong><code>v0.12.5</code></strong> in <code>.terraform-version</code> file<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">➜   terraform --version</span><br><span class="line">Terraform v0.12.5</span><br><span class="line">+ provider.aws v2.25.0</span><br><span class="line">+ provider.random v2.2.0</span><br><span class="line">+ provider.template v2.1.2</span><br><span class="line"></span><br><span class="line">Your version of Terraform is out of date! The latest version</span><br><span class="line">is 0.12.7. You can update by downloading from www.terraform.io/downloads.html</span><br></pre></td></tr></table></figure></p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Terraform/">Terraform</a></li></ul>
 
 
     </footer>

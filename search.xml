@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Anka tutorial 02</title>
+    <url>/2019/11/19/Anka-tutorial-02/</url>
+    <content><![CDATA[<h5 id="1-Joining-Nodes"><a href="#1-Joining-Nodes" class="headerlink" title="1.Joining Nodes"></a>1.Joining Nodes</h5><p>在mac上（anka build 节点）执行  <code>sudo ankacluster join http://localhost:80/</code></p>
+<p>output:<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  ~ sudo ankacluster join http://localhost:80/ -n demo-mac</span><br><span class="line">Setting tls config</span><br><span class="line">Testing connection to controller...: Ok</span><br><span class="line">Testing connection to the registry...: Ok</span><br><span class="line">Ok</span><br><span class="line">Cluster join success</span><br></pre></td></tr></table></figure></p>
+<p>去页面 <em><a href="http://localhost/#/nodes" target="_blank" rel="noopener">http://localhost/#/nodes</a></em> 查看<br><img src="/images/anka_controller_node.png"></p>
+<h5 id="2-Create-VM-link"><a href="#2-Create-VM-link" class="headerlink" title="2. Create VM (link)"></a>2. Create VM <a href="https://ankadoc.bitbucket.io/anka-build/#create-vm" target="_blank" rel="noopener">(link)</a></h5><p>先下载mac OS安装包 (安装包7G多，需要提前下载)<br><a href="https://www.macworld.co.uk/how-to/mac-software/download-old-os-x-3629363/#el%20cap" target="_blank" rel="noopener">https://www.macworld.co.uk/how-to/mac-software/download-old-os-x-3629363/#el%20cap</a></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  ~ anka create --ram-size 4G --cpu-count 2 --disk-size 40G --app /Applications/Install\ macOS\ Catalina.app CatalinaVm</span><br><span class="line">Installing macOS 10.15.1...</span><br><span class="line">Preparing target disk...</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Note For Catalina Anka VMs, –ram-size value should be 4G and –disk-size should be 80G.<br>由于电脑空间不够了，于是报错了</p>
+</blockquote>
+<p>清理电脑空间后，再来一次，大约 30min<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  ~ anka create --ram-size 4G --cpu-count 2 --disk-size 80G --app /Applications/Install\ macOS\ Catalina.app  CatalinaVm</span><br><span class="line">Installing macOS 10.15.1...</span><br><span class="line">Preparing target disk...</span><br><span class="line">Installing addons...</span><br><span class="line">Converting to ANKA format...</span><br><span class="line">Waiting <span class="keyword">for</span> installation to complete <span class="keyword">in</span> the guest (about thirty minutes approx.)...</span><br><span class="line">vm created successfully with uuid: a23d5a05-xx89-4xx4-a8b7-6f7b9xxxxxx</span><br></pre></td></tr></table></figure></p>
+<h5 id="3-Run-VM"><a href="#3-Run-VM" class="headerlink" title="3. Run VM"></a>3. Run VM</h5><p><img src="/images/anka_demo_720.gif" width="90%" height="90%"></p>
+<p>VM 状态之间的转换如下：<br><img src="/images/anka_vm_status.png" width="75%" height="75%"></p>
+<blockquote>
+<p>需要区别 VM 和后面提到的 instance 关系，VM 更准确点讲是 VM Template，是创建instance的模版，但模版需要通过上面的方法才可以修改；新建VM后，相当于有一个基础的模版，但是要满足其他要求，可以自行在running的 vm 中操作，然后随时保存，类似于docker container的commit操作，但anka build是suspend一个running的 vm 来保存。</p>
+</blockquote>
+<h5 id="4-Manage-VM-Templates-in-Registry-link"><a href="#4-Manage-VM-Templates-in-Registry-link" class="headerlink" title="4. Manage VM Templates in Registry(link)"></a>4. Manage VM Templates in Registry<a href="https://ankadoc.bitbucket.io/anka-build/#manage-vm-templates-in-registry" target="_blank" rel="noopener">(link)</a></h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#罗列仓库</span></span><br><span class="line">➜   anka registry list-repos</span><br><span class="line">++</span><br><span class="line">++</span><br><span class="line"><span class="comment">#添加一个新仓库</span></span><br><span class="line">➜   anka registry add demo-repo http://localhost:8089</span><br><span class="line">➜   anka registry list-repos</span><br><span class="line">++</span><br><span class="line">++</span><br><span class="line">demo-repo (default)</span><br><span class="line">+--------+-----------+</span><br><span class="line">| host   | localhost |</span><br><span class="line">+--------+-----------+</span><br><span class="line">| scheme | http      |</span><br><span class="line">+--------+-----------+</span><br><span class="line">| port   | 8089      |</span><br><span class="line">+--------+-----------+</span><br><span class="line"><span class="comment">#推送VM Templates 到新仓库，</span></span><br><span class="line">➜   anka registry push CatalinaVm -d <span class="string">"first push"</span> -t v1</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>CICD</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Anka tutorial 01</title>
     <url>/2019/11/18/Anka-tutorial-01/</url>
     <content><![CDATA[<h3 id="1-Anka-是什么"><a href="#1-Anka-是什么" class="headerlink" title="1.Anka 是什么"></a>1.Anka 是什么</h3><p>  前端，后端，包括安卓的持续集成的过程都可以轻松的基于docker命令构建、打包，最终产出 docker image镜像，非常方便搭建标准化的pipeline(流水线)；但是对于iOS移动端的同学而言，似乎没有那么简单。每次打包的过程都是耗时、复杂的。另外一点由于macOS系统是捆绑在mac硬件上的，你没有苹果电脑就无法打包，相比而言docker则是纯免费开源的。针对以上问题和情况，anka就是这样一种类似于dock的针对macOS系统的虚拟化技术。</p>
@@ -36,28 +58,6 @@
 <p>激活key<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  ~ sudo anka license activate xxxx-3750-xxxx-2265</span><br><span class="line">License activated</span><br></pre></td></tr></table></figure></p>
 <p>查看license信息<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  ~ anka license show</span><br><span class="line">+---------------------+---------------------+</span><br><span class="line">| license_type        | com.veertu.anka.ent |</span><br><span class="line">+---------------------+---------------------+</span><br><span class="line">| status              | valid               |</span><br><span class="line">+---------------------+---------------------+</span><br><span class="line">| expires             | 20-dec-2019         |</span><br><span class="line">+---------------------+---------------------+</span><br><span class="line">| max_number_of_cores | 32                  |</span><br><span class="line">+---------------------+---------------------+</span><br></pre></td></tr></table></figure></p>
 ]]></content>
-      <categories>
-        <category>CICD</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Anka tutorial 02</title>
-    <url>/2019/11/19/Anka-tutorial-02/</url>
-    <content><![CDATA[<h5 id="1-Joining-Nodes"><a href="#1-Joining-Nodes" class="headerlink" title="1.Joining Nodes"></a>1.Joining Nodes</h5><p>在mac上（anka build 节点）执行  <code>sudo ankacluster join http://localhost:80/</code></p>
-<p>output:<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  ~ sudo ankacluster join http://localhost:80/ -n demo-mac</span><br><span class="line">Setting tls config</span><br><span class="line">Testing connection to controller...: Ok</span><br><span class="line">Testing connection to the registry...: Ok</span><br><span class="line">Ok</span><br><span class="line">Cluster join success</span><br></pre></td></tr></table></figure></p>
-<p>去页面 <em><a href="http://localhost/#/nodes" target="_blank" rel="noopener">http://localhost/#/nodes</a></em> 查看<br><img src="/images/anka_controller_node.png"></p>
-<h5 id="2-Create-VM-link"><a href="#2-Create-VM-link" class="headerlink" title="2. Create VM (link)"></a>2. Create VM <a href="https://ankadoc.bitbucket.io/anka-build/#create-vm" target="_blank" rel="noopener">(link)</a></h5><p>先下载mac OS安装包 (安装包7G多，需要提前下载)<br><a href="https://www.macworld.co.uk/how-to/mac-software/download-old-os-x-3629363/#el%20cap" target="_blank" rel="noopener">https://www.macworld.co.uk/how-to/mac-software/download-old-os-x-3629363/#el%20cap</a></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  ~ anka create --ram-size 4G --cpu-count 2 --disk-size 40G --app /Applications/Install\ macOS\ Catalina.app CatalinaVm</span><br><span class="line">Installing macOS 10.15.1...</span><br><span class="line">Preparing target disk...</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>Note For Catalina Anka VMs, –ram-size value should be 4G and –disk-size should be 80G.<br>由于电脑空间不够了，于是报错了</p>
-</blockquote>
-<p>清理电脑空间后，再来一次，大约 30min<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  ~ anka create --ram-size 4G --cpu-count 2 --disk-size 80G --app /Applications/Install\ macOS\ Catalina.app  CatalinaVm</span><br><span class="line">Installing macOS 10.15.1...</span><br><span class="line">Preparing target disk...</span><br><span class="line">Installing addons...</span><br><span class="line">Converting to ANKA format...</span><br><span class="line">Waiting <span class="keyword">for</span> installation to complete <span class="keyword">in</span> the guest (about thirty minutes approx.)...</span><br><span class="line">vm created successfully with uuid: a23d5a05-xx89-4xx4-a8b7-6f7b9xxxxxx</span><br></pre></td></tr></table></figure></p>
-<h5 id="3-Run-VM"><a href="#3-Run-VM" class="headerlink" title="3. Run VM"></a>3. Run VM</h5><p><img src="/images/anka_demo_720.gif" width="90%" height="90%"></p>
-<p>VM 状态之间的转换如下：<br><img src="/images/anka_vm_status.png" width="75%" height="75%"></p>
-<blockquote>
-<p>需要区别 VM 和后面提到的 instance 关系，VM 更准确点讲是 VM Template，是创建instance的模版，但模版需要通过上面的方法才可以修改；新建VM后，相当于有一个基础的模版，但是要满足其他要求，可以自行在running的 vm 中操作，然后随时保存，类似于docker container的commit操作，但anka build是suspend一个running的 vm 来保存。</p>
-</blockquote>
-<h5 id="4-Manage-VM-Templates-in-Registry-link"><a href="#4-Manage-VM-Templates-in-Registry-link" class="headerlink" title="4. Manage VM Templates in Registry(link)"></a>4. Manage VM Templates in Registry<a href="https://ankadoc.bitbucket.io/anka-build/#manage-vm-templates-in-registry" target="_blank" rel="noopener">(link)</a></h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#罗列仓库</span></span><br><span class="line">➜   anka registry list-repos</span><br><span class="line">++</span><br><span class="line">++</span><br><span class="line"><span class="comment">#添加一个新仓库</span></span><br><span class="line">➜   anka registry add demo-repo http://localhost:8089</span><br><span class="line">➜   anka registry list-repos</span><br><span class="line">++</span><br><span class="line">++</span><br><span class="line">demo-repo (default)</span><br><span class="line">+--------+-----------+</span><br><span class="line">| host   | localhost |</span><br><span class="line">+--------+-----------+</span><br><span class="line">| scheme | http      |</span><br><span class="line">+--------+-----------+</span><br><span class="line">| port   | 8089      |</span><br><span class="line">+--------+-----------+</span><br><span class="line"><span class="comment">#推送VM Templates 到新仓库，</span></span><br><span class="line">➜   anka registry push CatalinaVm -d <span class="string">"first push"</span> -t v1</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>CICD</category>
       </categories>
@@ -512,64 +512,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Github Actions E03触发</title>
-    <url>/2020/03/18/Github-Actions-E03%E8%A7%A6%E5%8F%91/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
-<p>知道手机能够打电话，还得知道怎么把电话号码拨出去，这样才能实现通话的功能；而CICD的场景会更为复杂，如果一个任务在你不想让它运行的时候运行，会浪费自己资源，影响产出物。</p>
-</blockquote>
-<p>关于触发工作流-workflow，github actions的原文如下</p>
-<p><strong>Events that trigger workflows</strong></p>
-<p>You can configure your workflows to run when specific activity on GitHub happens, at a scheduled time, or when an event outside of GitHub occurs.</p>
-<hr>
-<p>根据上面描述，大致有3类事件(<em>错了的话欢迎指正</em>)，官网文档更详细的在<a href="https://help.github.com/en/actions/reference/events-that-trigger-workflows" target="_blank" rel="noopener">这里</a>，不是在<a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/configuring-a-workflow#triggering-a-workflow-with-events" target="_blank" rel="noopener"><em>那里</em></a></p>
-<blockquote>
-<p>最好看英文的，中文似乎没有翻译完，少了一个 <em>Triggering new workflows using a personal access token</em> 方法 😢</p>
-</blockquote>
-<h4 id="一、Github的特定事件-Specific-activity-on-GitHub-happens"><a href="#一、Github的特定事件-Specific-activity-on-GitHub-happens" class="headerlink" title="一、Github的特定事件 (Specific activity on GitHub happens)"></a>一、Github的特定事件 (Specific activity on GitHub happens)</h4><p>算是最常见的一种方式，比如：当小明更新了master分支代码，推送到仓库后触发这个CICD流程。</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 单一事件 Trigger on push</span></span><br><span class="line"><span class="attr">on:</span> <span class="string">push</span></span><br><span class="line"><span class="comment">#------------------分割线----------------</span></span><br><span class="line"><span class="comment"># 一个事件列表也可以，Trigger the workflow on push or pull request</span></span><br><span class="line"><span class="attr">on:</span> <span class="string">[push,</span> <span class="string">pull_request]</span></span><br><span class="line"><span class="comment">#------------------分割线----------------</span></span><br><span class="line"><span class="comment"># 不同类型的事件的组合</span></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="comment"># Trigger the workflow on push or pull request,</span></span><br><span class="line">  <span class="comment"># but only for the master branch</span></span><br><span class="line"><span class="attr">  push:</span></span><br><span class="line"><span class="attr">    branches:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">master</span></span><br><span class="line"><span class="attr">  pull_request:</span></span><br><span class="line"><span class="attr">    branches:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">master</span></span><br><span class="line">  <span class="comment"># Also trigger on page_build, as well as release created events</span></span><br><span class="line"><span class="attr">  page_build:</span></span><br><span class="line"><span class="attr">  release:</span></span><br><span class="line"><span class="attr">    types:</span> <span class="comment"># This configuration does not affect the page_build event above</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">created</span></span><br></pre></td></tr></table></figure>
-<p>Github 的 webhooks event有很多，每个event又包含很多类型。查看<a href="https://developer.github.com/webhooks/#events" target="_blank" rel="noopener">所有的event</a></p>
-<p>顺带熟悉下 github webhook 的概念</p>
-<p><strong>官方介绍</strong>：Webhooks provide a way for notifications to be delivered to an external web server whenever certain actions occur on a repository or organization.<a href="https://help.github.com/en/github/extending-github/about-webhooks" target="_blank" rel="noopener">原文点这里</a></p>
-<blockquote>
-<p><em>通俗版</em>：可以将 github Webhook 理解为一个勤勤恳恳的“卧底”，它被安插到github的一个仓库或某个组织中，一旦发生了之前定义好的事情，它会第一时间把以某种约定好的方式告知给 github acionts。<br><em>简单(不严谨地)而言</em>: 当有行为触发时，Github 会发送 POST 请求至指定的 URL。</p>
-</blockquote>
-<p>请看🌰<br><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">on:</span></span><br><span class="line"><span class="attr">  issue_comment:</span></span><br><span class="line"><span class="attr">    types:</span> <span class="string">[created,</span> <span class="string">deleted]</span></span><br></pre></td></tr></table></figure></p>
-<p>默认情况下，一个事件的所有活动类型都会触发工作流程运行。也可以使用types关键字将工作流程运行限制为特定的活动类型，精确使用。</p>
-<blockquote>
-<p>延伸一下： github webhook -&gt;  广义的webhooks、 github哪些<a href="https://developer.github.com/webhooks/#events" target="_blank" rel="noopener">events</a></p>
-</blockquote>
-<h4 id="二、定时事件-Scheduled-events"><a href="#二、定时事件-Scheduled-events" class="headerlink" title="二、定时事件(Scheduled events)"></a>二、定时事件(Scheduled events)</h4><p>类似crontab的用法，使用<a href="https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html#tag_20_25_07" target="_blank" rel="noopener">POSIX cron 语法</a>在指定的时间(<strong>UTC 时间</strong>)运行。</p>
-<p>在workflow中用 date命令也可以看到输出的是UTC时间，如:<code>Thu Mar 19 12:08:10 UTC 2020</code>。使用中要根据自己的时区计算出UTC时间，然后配置上。</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">on:</span></span><br><span class="line"><span class="attr">  schedule:</span></span><br><span class="line">    <span class="comment"># * is a special character in YAML so you have to quote this string</span></span><br><span class="line"><span class="attr">    - cron:</span>  <span class="string">'*/15 * * * *'</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>注： GitHub 操作 不支持非标准语法 @yearly、@monthly、@weekly、@daily、@hourly 和 @reboot。这样的语法，如 @midnight 在jenkins中是支持的，需要区别开来。</p>
-</blockquote>
-<h4 id="三、外部事件-External-events"><a href="#三、外部事件-External-events" class="headerlink" title="三、外部事件(External events)"></a>三、外部事件(External events)</h4><ul>
-<li>通过Github API 触发叫做 repository_dispatch 的事件，以此来触发workflow.</li>
-</ul>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">on:</span> <span class="string">repository_dispatch</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>使用个人访问令牌触发新工作流程(Triggering new workflows using a personal access token)</li>
-</ul>
-<p>原文引用：<br><em>For example, if a workflow run pushes code using the repository’s GITHUB_TOKEN, a new workflow will not run even when the repository contains a workflow configured to run when push events occur. </em></p>
-<p><em>If you would like to trigger a workflow from a workflow run, you can trigger the event using a personal access token. You’ll need to create a personal access token and store it as a secret in your repository. To minimize your GitHub Actions usage costs, ensure that you don’t create recursive or unintended workflow runs.</em></p>
-<p>上面提及的2中方法，都属于用外部方法来触发 workflow。 而上一段英文也提及 workflow 触发workflow的情况，有需要可详细研究。</p>
-<hr>
-<p><strong>More Ref:</strong></p>
-<ul>
-<li><a href="https://help.github.com/en/actions/reference/events-that-trigger-workflows" target="_blank" rel="noopener">https://help.github.com/en/actions/reference/events-that-trigger-workflows</a></li>
-<li><a href="https://developer.github.com/webhooks/" target="_blank" rel="noopener">https://developer.github.com/webhooks/</a></li>
-<li><a href="https://help.github.com/cn/actions/reference/workflow-syntax-for-github-actions#patterns-to-match-branches-and-tags" target="_blank" rel="noopener">Patterns to match branches and tags</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>CICD</category>
-      </categories>
-      <tags>
-        <tag>GA</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Github Actions E02最小Demo</title>
     <url>/2020/03/17/Github-Actions-E02%E6%9C%80%E5%B0%8FDemo/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
@@ -681,6 +623,64 @@
 <li><a href="https://help.github.com/en/actions/reference/virtual-environments-for-github-hosted-runners#docker-container-filesystem" target="_blank" rel="noopener">Docker container filesystem</a></li>
 <li><a href="https://help.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners" target="_blank" rel="noopener">About self-hosted runners</a></li>
 <li><a href="https://help.github.com/en/github/setting-up-and-managing-billing-and-payments-on-github/viewing-your-github-actions-usage" target="_blank" rel="noopener">billing</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>CICD</category>
+      </categories>
+      <tags>
+        <tag>GA</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Github Actions E03触发</title>
+    <url>/2020/03/18/Github-Actions-E03%E8%A7%A6%E5%8F%91/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
+<p>知道手机能够打电话，还得知道怎么把电话号码拨出去，这样才能实现通话的功能；而CICD的场景会更为复杂，如果一个任务在你不想让它运行的时候运行，会浪费自己资源，影响产出物。</p>
+</blockquote>
+<p>关于触发工作流-workflow，github actions的原文如下</p>
+<p><strong>Events that trigger workflows</strong></p>
+<p>You can configure your workflows to run when specific activity on GitHub happens, at a scheduled time, or when an event outside of GitHub occurs.</p>
+<hr>
+<p>根据上面描述，大致有3类事件(<em>错了的话欢迎指正</em>)，官网文档更详细的在<a href="https://help.github.com/en/actions/reference/events-that-trigger-workflows" target="_blank" rel="noopener">这里</a>，不是在<a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/configuring-a-workflow#triggering-a-workflow-with-events" target="_blank" rel="noopener"><em>那里</em></a></p>
+<blockquote>
+<p>最好看英文的，中文似乎没有翻译完，少了一个 <em>Triggering new workflows using a personal access token</em> 方法 😢</p>
+</blockquote>
+<h4 id="一、Github的特定事件-Specific-activity-on-GitHub-happens"><a href="#一、Github的特定事件-Specific-activity-on-GitHub-happens" class="headerlink" title="一、Github的特定事件 (Specific activity on GitHub happens)"></a>一、Github的特定事件 (Specific activity on GitHub happens)</h4><p>算是最常见的一种方式，比如：当小明更新了master分支代码，推送到仓库后触发这个CICD流程。</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 单一事件 Trigger on push</span></span><br><span class="line"><span class="attr">on:</span> <span class="string">push</span></span><br><span class="line"><span class="comment">#------------------分割线----------------</span></span><br><span class="line"><span class="comment"># 一个事件列表也可以，Trigger the workflow on push or pull request</span></span><br><span class="line"><span class="attr">on:</span> <span class="string">[push,</span> <span class="string">pull_request]</span></span><br><span class="line"><span class="comment">#------------------分割线----------------</span></span><br><span class="line"><span class="comment"># 不同类型的事件的组合</span></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="comment"># Trigger the workflow on push or pull request,</span></span><br><span class="line">  <span class="comment"># but only for the master branch</span></span><br><span class="line"><span class="attr">  push:</span></span><br><span class="line"><span class="attr">    branches:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">master</span></span><br><span class="line"><span class="attr">  pull_request:</span></span><br><span class="line"><span class="attr">    branches:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">master</span></span><br><span class="line">  <span class="comment"># Also trigger on page_build, as well as release created events</span></span><br><span class="line"><span class="attr">  page_build:</span></span><br><span class="line"><span class="attr">  release:</span></span><br><span class="line"><span class="attr">    types:</span> <span class="comment"># This configuration does not affect the page_build event above</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">created</span></span><br></pre></td></tr></table></figure>
+<p>Github 的 webhooks event有很多，每个event又包含很多类型。查看<a href="https://developer.github.com/webhooks/#events" target="_blank" rel="noopener">所有的event</a></p>
+<p>顺带熟悉下 github webhook 的概念</p>
+<p><strong>官方介绍</strong>：Webhooks provide a way for notifications to be delivered to an external web server whenever certain actions occur on a repository or organization.<a href="https://help.github.com/en/github/extending-github/about-webhooks" target="_blank" rel="noopener">原文点这里</a></p>
+<blockquote>
+<p><em>通俗版</em>：可以将 github Webhook 理解为一个勤勤恳恳的“卧底”，它被安插到github的一个仓库或某个组织中，一旦发生了之前定义好的事情，它会第一时间把以某种约定好的方式告知给 github acionts。<br><em>简单(不严谨地)而言</em>: 当有行为触发时，Github 会发送 POST 请求至指定的 URL。</p>
+</blockquote>
+<p>请看🌰<br><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">on:</span></span><br><span class="line"><span class="attr">  issue_comment:</span></span><br><span class="line"><span class="attr">    types:</span> <span class="string">[created,</span> <span class="string">deleted]</span></span><br></pre></td></tr></table></figure></p>
+<p>默认情况下，一个事件的所有活动类型都会触发工作流程运行。也可以使用types关键字将工作流程运行限制为特定的活动类型，精确使用。</p>
+<blockquote>
+<p>延伸一下： github webhook -&gt;  广义的webhooks、 github哪些<a href="https://developer.github.com/webhooks/#events" target="_blank" rel="noopener">events</a></p>
+</blockquote>
+<h4 id="二、定时事件-Scheduled-events"><a href="#二、定时事件-Scheduled-events" class="headerlink" title="二、定时事件(Scheduled events)"></a>二、定时事件(Scheduled events)</h4><p>类似crontab的用法，使用<a href="https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html#tag_20_25_07" target="_blank" rel="noopener">POSIX cron 语法</a>在指定的时间(<strong>UTC 时间</strong>)运行。</p>
+<p>在workflow中用 date命令也可以看到输出的是UTC时间，如:<code>Thu Mar 19 12:08:10 UTC 2020</code>。使用中要根据自己的时区计算出UTC时间，然后配置上。</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">on:</span></span><br><span class="line"><span class="attr">  schedule:</span></span><br><span class="line">    <span class="comment"># * is a special character in YAML so you have to quote this string</span></span><br><span class="line"><span class="attr">    - cron:</span>  <span class="string">'*/15 * * * *'</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注： GitHub 操作 不支持非标准语法 @yearly、@monthly、@weekly、@daily、@hourly 和 @reboot。这样的语法，如 @midnight 在jenkins中是支持的，需要区别开来。</p>
+</blockquote>
+<h4 id="三、外部事件-External-events"><a href="#三、外部事件-External-events" class="headerlink" title="三、外部事件(External events)"></a>三、外部事件(External events)</h4><ul>
+<li>通过Github API 触发叫做 repository_dispatch 的事件，以此来触发workflow.</li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">on:</span> <span class="string">repository_dispatch</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用个人访问令牌触发新工作流程(Triggering new workflows using a personal access token)</li>
+</ul>
+<p>原文引用：<br><em>For example, if a workflow run pushes code using the repository’s GITHUB_TOKEN, a new workflow will not run even when the repository contains a workflow configured to run when push events occur. </em></p>
+<p><em>If you would like to trigger a workflow from a workflow run, you can trigger the event using a personal access token. You’ll need to create a personal access token and store it as a secret in your repository. To minimize your GitHub Actions usage costs, ensure that you don’t create recursive or unintended workflow runs.</em></p>
+<p>上面提及的2中方法，都属于用外部方法来触发 workflow。 而上一段英文也提及 workflow 触发workflow的情况，有需要可详细研究。</p>
+<hr>
+<p><strong>More Ref:</strong></p>
+<ul>
+<li><a href="https://help.github.com/en/actions/reference/events-that-trigger-workflows" target="_blank" rel="noopener">https://help.github.com/en/actions/reference/events-that-trigger-workflows</a></li>
+<li><a href="https://developer.github.com/webhooks/" target="_blank" rel="noopener">https://developer.github.com/webhooks/</a></li>
+<li><a href="https://help.github.com/cn/actions/reference/workflow-syntax-for-github-actions#patterns-to-match-branches-and-tags" target="_blank" rel="noopener">Patterns to match branches and tags</a></li>
 </ul>
 ]]></content>
       <categories>
@@ -850,24 +850,6 @@
       </categories>
       <tags>
         <tag>GA</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>How to Create Custom iTerm2 Window</title>
-    <url>/2019/04/18/How-to-Create-Custom-iTerm2-Window/</url>
-    <content><![CDATA[<h4 id="1-Open-iTerm-preferences-setting-打开偏好设置"><a href="#1-Open-iTerm-preferences-setting-打开偏好设置" class="headerlink" title="1.Open iTerm preferences setting (打开偏好设置)"></a>1.Open iTerm preferences setting (打开偏好设置)</h4><p><img src="/images/iterm_image_01.png" alt="iterm_image_01"></p>
-<h4 id="2-New-add-a-profile-新加一个配置"><a href="#2-New-add-a-profile-新加一个配置" class="headerlink" title="2.New add a profile (新加一个配置)"></a>2.New add a profile (新加一个配置)</h4><p><img src="/images/iterm_image_02.png" alt="iterm_image_02"></p>
-<h4 id="3-Setting-windows-name-etc-（定义名称，窗口高度，宽度等）"><a href="#3-Setting-windows-name-etc-（定义名称，窗口高度，宽度等）" class="headerlink" title="3.Setting windows name etc （定义名称，窗口高度，宽度等）"></a>3.Setting windows name etc （定义名称，窗口高度，宽度等）</h4><p><img src="/images/iterm_image_03.png" alt="iterm_image_03"></p>
-<p><img src="/images/iterm_image_04.png" alt="iterm_image_04"></p>
-<h4 id="4-define-hotkey-定义快捷键"><a href="#4-define-hotkey-定义快捷键" class="headerlink" title="4.define hotkey (定义快捷键)"></a>4.define hotkey (定义快捷键)</h4><p><img src="/images/iterm_image_05.png" alt="iterm_image_05"></p>
-<p><img src="/images/iterm_image_06.png" alt="iterm_image_06"></p>
-<h4 id="Finally-使用快捷键"><a href="#Finally-使用快捷键" class="headerlink" title="Finally 使用快捷键"></a>Finally 使用快捷键</h4><p>按 <strong>一次</strong> 出现窗口，<strong>再按一次</strong> 窗口消失。如果是多屏，可以在不同屏幕下调用出来，会话内容仍保持着。</p>
-]]></content>
-      <categories>
-        <category>Tools</category>
-      </categories>
-      <tags>
-        <tag>Tools</tag>
       </tags>
   </entry>
   <entry>
@@ -1135,16 +1117,19 @@
       </tags>
   </entry>
   <entry>
-    <title>Import P12 file on Mac OS X with CLI</title>
-    <url>/2019/11/22/Import-P12-file-on-Mac-OS-X-with-CLI/</url>
-    <content><![CDATA[<h3 id="目的：通过命令行倒入p12证书"><a href="#目的：通过命令行倒入p12证书" class="headerlink" title="目的：通过命令行倒入p12证书"></a>目的：通过命令行倒入p12证书</h3><p>Apple为了安全，在ssh登录时，是不允许读取Keychains（钥匙串）的，所以 <strong>security unlock-keychain</strong> 这行命令就很重要了。比如在Pipeline构建打包前，先解锁Keychains。</p>
-<h4 id="1-解锁"><a href="#1-解锁" class="headerlink" title="1.解锁"></a>1.解锁</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#方式一： 命令行中不含密码，交互方式</span></span><br><span class="line">➜   security unlock-keychain /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br><span class="line">password to unlock /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db:</span><br><span class="line"></span><br><span class="line"><span class="comment">#或者命令行中包含密码的方式</span></span><br><span class="line">➜   security unlock-keychain -p &lt;Mac_Login_PWD&gt; /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br><span class="line">➜   security list-keychains -s /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br></pre></td></tr></table></figure>
-<h4 id="2-导入"><a href="#2-导入" class="headerlink" title="2.导入"></a>2.导入</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#方式一： 命令行中不含密码，交互方式</span></span><br><span class="line"><span class="comment">#会有弹窗，提示输入 P12文件的密码</span></span><br><span class="line">➜   security import ~/Desktop/xxx.p12 -k /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br><span class="line">1 identity imported.</span><br><span class="line"><span class="comment">#或者命令行中包含密码的方式</span></span><br><span class="line">➜   security import ~/&lt;Your_Path&gt;/xxx.p12 -k /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db -P &lt;P12_Password&gt;</span><br><span class="line">1 identity imported.</span><br></pre></td></tr></table></figure>
-<h4 id="3-其他"><a href="#3-其他" class="headerlink" title="3.其他"></a>3.其他</h4><p>删除<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">##先展示证书，获取SHA1值; -p 可指定类型</span></span><br><span class="line">security find-identity -p codesigning /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br><span class="line"><span class="comment">##根据SHA1值删除对应的证书</span></span><br><span class="line">security delete-certificate -Z &lt;Your_SHA1&gt;</span><br></pre></td></tr></table></figure></p>
-<p>更过 security 用法，查看 <code>security --help</code> 、<code>security find-identity --help</code></p>
-<hr>
-<p>More ref:<br><a href="https://www.cnblogs.com/pixy/p/4817579.html" target="_blank" rel="noopener">https://www.cnblogs.com/pixy/p/4817579.html</a></p>
+    <title>How to Create Custom iTerm2 Window</title>
+    <url>/2019/04/18/How-to-Create-Custom-iTerm2-Window/</url>
+    <content><![CDATA[<h4 id="1-Open-iTerm-preferences-setting-打开偏好设置"><a href="#1-Open-iTerm-preferences-setting-打开偏好设置" class="headerlink" title="1.Open iTerm preferences setting (打开偏好设置)"></a>1.Open iTerm preferences setting (打开偏好设置)</h4><p><img src="/images/iterm_image_01.png" alt="iterm_image_01"></p>
+<h4 id="2-New-add-a-profile-新加一个配置"><a href="#2-New-add-a-profile-新加一个配置" class="headerlink" title="2.New add a profile (新加一个配置)"></a>2.New add a profile (新加一个配置)</h4><p><img src="/images/iterm_image_02.png" alt="iterm_image_02"></p>
+<h4 id="3-Setting-windows-name-etc-（定义名称，窗口高度，宽度等）"><a href="#3-Setting-windows-name-etc-（定义名称，窗口高度，宽度等）" class="headerlink" title="3.Setting windows name etc （定义名称，窗口高度，宽度等）"></a>3.Setting windows name etc （定义名称，窗口高度，宽度等）</h4><p><img src="/images/iterm_image_03.png" alt="iterm_image_03"></p>
+<p><img src="/images/iterm_image_04.png" alt="iterm_image_04"></p>
+<h4 id="4-define-hotkey-定义快捷键"><a href="#4-define-hotkey-定义快捷键" class="headerlink" title="4.define hotkey (定义快捷键)"></a>4.define hotkey (定义快捷键)</h4><p><img src="/images/iterm_image_05.png" alt="iterm_image_05"></p>
+<p><img src="/images/iterm_image_06.png" alt="iterm_image_06"></p>
+<h4 id="Finally-使用快捷键"><a href="#Finally-使用快捷键" class="headerlink" title="Finally 使用快捷键"></a>Finally 使用快捷键</h4><p>按 <strong>一次</strong> 出现窗口，<strong>再按一次</strong> 窗口消失。如果是多屏，可以在不同屏幕下调用出来，会话内容仍保持着。</p>
 ]]></content>
+      <categories>
+        <category>Tools</category>
+      </categories>
       <tags>
         <tag>Tools</tag>
       </tags>
@@ -1164,6 +1149,21 @@
 ]]></content>
       <tags>
         <tag>jenkins</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Import P12 file on Mac OS X with CLI</title>
+    <url>/2019/11/22/Import-P12-file-on-Mac-OS-X-with-CLI/</url>
+    <content><![CDATA[<h3 id="目的：通过命令行倒入p12证书"><a href="#目的：通过命令行倒入p12证书" class="headerlink" title="目的：通过命令行倒入p12证书"></a>目的：通过命令行倒入p12证书</h3><p>Apple为了安全，在ssh登录时，是不允许读取Keychains（钥匙串）的，所以 <strong>security unlock-keychain</strong> 这行命令就很重要了。比如在Pipeline构建打包前，先解锁Keychains。</p>
+<h4 id="1-解锁"><a href="#1-解锁" class="headerlink" title="1.解锁"></a>1.解锁</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#方式一： 命令行中不含密码，交互方式</span></span><br><span class="line">➜   security unlock-keychain /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br><span class="line">password to unlock /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db:</span><br><span class="line"></span><br><span class="line"><span class="comment">#或者命令行中包含密码的方式</span></span><br><span class="line">➜   security unlock-keychain -p &lt;Mac_Login_PWD&gt; /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br><span class="line">➜   security list-keychains -s /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br></pre></td></tr></table></figure>
+<h4 id="2-导入"><a href="#2-导入" class="headerlink" title="2.导入"></a>2.导入</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#方式一： 命令行中不含密码，交互方式</span></span><br><span class="line"><span class="comment">#会有弹窗，提示输入 P12文件的密码</span></span><br><span class="line">➜   security import ~/Desktop/xxx.p12 -k /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br><span class="line">1 identity imported.</span><br><span class="line"><span class="comment">#或者命令行中包含密码的方式</span></span><br><span class="line">➜   security import ~/&lt;Your_Path&gt;/xxx.p12 -k /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db -P &lt;P12_Password&gt;</span><br><span class="line">1 identity imported.</span><br></pre></td></tr></table></figure>
+<h4 id="3-其他"><a href="#3-其他" class="headerlink" title="3.其他"></a>3.其他</h4><p>删除<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">##先展示证书，获取SHA1值; -p 可指定类型</span></span><br><span class="line">security find-identity -p codesigning /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br><span class="line"><span class="comment">##根据SHA1值删除对应的证书</span></span><br><span class="line">security delete-certificate -Z &lt;Your_SHA1&gt;</span><br></pre></td></tr></table></figure></p>
+<p>更过 security 用法，查看 <code>security --help</code> 、<code>security find-identity --help</code></p>
+<hr>
+<p>More ref:<br><a href="https://www.cnblogs.com/pixy/p/4817579.html" target="_blank" rel="noopener">https://www.cnblogs.com/pixy/p/4817579.html</a></p>
+]]></content>
+      <tags>
+        <tag>Tools</tag>
       </tags>
   </entry>
   <entry>
@@ -1219,6 +1219,19 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>Jenkins trigger downstream job</title>
+    <url>/2019/05/30/Jenkins-trigger-downstream-job/</url>
+    <content><![CDATA[<p>origin_job 触发 second_job</p>
+<p>origin_job 如下：</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line"><span class="comment">//declarative pipeline</span></span><br><span class="line">pipeline &#123;</span><br><span class="line">    agent any </span><br><span class="line">    </span><br><span class="line">    stages &#123;</span><br><span class="line">        stage(<span class="string">'Stage One'</span>)&#123;</span><br><span class="line">            steps&#123;</span><br><span class="line">                sh <span class="string">"echo *** This is Stage One ***"</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        stage(<span class="string">'Stage Two'</span>)&#123;</span><br><span class="line">            steps&#123;</span><br><span class="line">                sh <span class="string">"echo $&#123;env.BUILD_NUMBER&#125;"</span></span><br><span class="line">                sh <span class="string">"echo $&#123;env.NODE_NAME&#125; , $&#123;env.JOB_NAME&#125;"</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        stage(<span class="string">"Invoke second job without parameters"</span>)&#123;</span><br><span class="line">            steps&#123;</span><br><span class="line">                build <span class="string">job:</span> <span class="string">'second_job'</span></span><br><span class="line">                sleep <span class="number">30</span></span><br><span class="line">           &#125;</span><br><span class="line">        &#125;   </span><br><span class="line"></span><br><span class="line">        stage(<span class="string">"Invoke second job with parameters"</span>)&#123;</span><br><span class="line">            steps&#123;</span><br><span class="line">                build <span class="string">job:</span> <span class="string">'second_job'</span>,</span><br><span class="line"><span class="symbol">                parameters:</span>[</span><br><span class="line">                    string(<span class="string">name:</span><span class="string">'Para1'</span>,<span class="string">value:</span>String.valueOf(JOB_NAME)),</span><br><span class="line">                    string(<span class="string">name:</span><span class="string">'Para2'</span>,<span class="string">value:</span>String.valueOf(BUILD_NUMBER))</span><br><span class="line">                ]</span><br><span class="line">           &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">    &#125;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>second_job </p>
+<p>点击““参数化构建””手动添加 两个参数</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pipeline &#123;</span><br><span class="line">    agent any </span><br><span class="line">    </span><br><span class="line">    stages &#123;</span><br><span class="line">        stage(<span class="string">'Stage One'</span>)&#123;</span><br><span class="line">            steps&#123;</span><br><span class="line">                sh <span class="string">"echo *** This is <span class="variable">$&#123;env.JOB_NAME&#125;</span> ,and We are stage one ***"</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    stage(<span class="string">'Echo origin_job para'</span>)&#123;</span><br><span class="line">        steps&#123;</span><br><span class="line">                sh <span class="string">"echo <span class="variable">$&#123;env.Para1&#125;</span>"</span></span><br><span class="line">                sh <span class="string">"echo <span class="variable">$&#123;env.Para2&#125;</span>"</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>jenkins</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Jenkins build trigger、logRotator、buildDiscarder etc</title>
     <url>/2019/04/11/Jenkins-build-trigger%E3%80%81logRotator%E3%80%81options/</url>
     <content><![CDATA[<p>Declarative Pipeline 与Job DSL的同一个功能的语法命令有些差异，不能直接套用，需要查对应的官方文档。 </p>
@@ -1254,19 +1267,6 @@ pipeline {
 </ol>
 </blockquote>
 ]]></content>
-      <tags>
-        <tag>jenkins</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Jenkins trigger downstream job</title>
-    <url>/2019/05/30/Jenkins-trigger-downstream-job/</url>
-    <content><![CDATA[<p>origin_job 触发 second_job</p>
-<p>origin_job 如下：</p>
-<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line"><span class="comment">//declarative pipeline</span></span><br><span class="line">pipeline &#123;</span><br><span class="line">    agent any </span><br><span class="line">    </span><br><span class="line">    stages &#123;</span><br><span class="line">        stage(<span class="string">'Stage One'</span>)&#123;</span><br><span class="line">            steps&#123;</span><br><span class="line">                sh <span class="string">"echo *** This is Stage One ***"</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        stage(<span class="string">'Stage Two'</span>)&#123;</span><br><span class="line">            steps&#123;</span><br><span class="line">                sh <span class="string">"echo $&#123;env.BUILD_NUMBER&#125;"</span></span><br><span class="line">                sh <span class="string">"echo $&#123;env.NODE_NAME&#125; , $&#123;env.JOB_NAME&#125;"</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        stage(<span class="string">"Invoke second job without parameters"</span>)&#123;</span><br><span class="line">            steps&#123;</span><br><span class="line">                build <span class="string">job:</span> <span class="string">'second_job'</span></span><br><span class="line">                sleep <span class="number">30</span></span><br><span class="line">           &#125;</span><br><span class="line">        &#125;   </span><br><span class="line"></span><br><span class="line">        stage(<span class="string">"Invoke second job with parameters"</span>)&#123;</span><br><span class="line">            steps&#123;</span><br><span class="line">                build <span class="string">job:</span> <span class="string">'second_job'</span>,</span><br><span class="line"><span class="symbol">                parameters:</span>[</span><br><span class="line">                    string(<span class="string">name:</span><span class="string">'Para1'</span>,<span class="string">value:</span>String.valueOf(JOB_NAME)),</span><br><span class="line">                    string(<span class="string">name:</span><span class="string">'Para2'</span>,<span class="string">value:</span>String.valueOf(BUILD_NUMBER))</span><br><span class="line">                ]</span><br><span class="line">           &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">    &#125;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>second_job </p>
-<p>点击““参数化构建””手动添加 两个参数</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pipeline &#123;</span><br><span class="line">    agent any </span><br><span class="line">    </span><br><span class="line">    stages &#123;</span><br><span class="line">        stage(<span class="string">'Stage One'</span>)&#123;</span><br><span class="line">            steps&#123;</span><br><span class="line">                sh <span class="string">"echo *** This is <span class="variable">$&#123;env.JOB_NAME&#125;</span> ,and We are stage one ***"</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    stage(<span class="string">'Echo origin_job para'</span>)&#123;</span><br><span class="line">        steps&#123;</span><br><span class="line">                sh <span class="string">"echo <span class="variable">$&#123;env.Para1&#125;</span>"</span></span><br><span class="line">                sh <span class="string">"echo <span class="variable">$&#123;env.Para2&#125;</span>"</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <tags>
         <tag>jenkins</tag>
       </tags>
@@ -1351,11 +1351,12 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>Makefile 103: all &amp; clean</title>
-    <url>/2019/07/05/Makefile-103-all-clean/</url>
-    <content><![CDATA[<h5 id="makefile-中的all"><a href="#makefile-中的all" class="headerlink" title="makefile 中的all"></a>makefile 中的all</h5><p>因为 makefile 的执行流程是找到第一个目标作为最终生成的目标，如果顺序错乱了，makefile 就可能报错，all 方法就是解决这个问题而存在的，并且，all 方法可以让一个 makefile 生成多个目标。示例如下：</p>
-<h5 id="makefile-中的-clean"><a href="#makefile-中的-clean" class="headerlink" title="makefile 中的 clean"></a>makefile 中的 clean</h5><p>make clean 命令是用来清除目录下临时文件的，执行 clean 这个目标时，不需要任何依赖项，也就意味着，如果目录下有一个文件名为 clean 的话，执行 make clean 命令时会判断这个目标所依赖的内容是否有变化，如有变化则重新生成，无变化则跳过，而恰恰我们这个 clean 没写依赖规则！这将导致 clean 无论如何都不会被执行。解决这个问题的办法就是将 clean 方法声明为一个伪目标，做就就是让 clean 无论如何都更新，同样我们生成的 all 目标也可能会出现这种情况，所以我们将它们两个都声明为 <strong>伪目标</strong>，方法如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">clean:</span><br><span class="line">    -rm -rf $(obj) main app </span><br><span class="line"></span><br><span class="line">.PHONY:clean all</span><br></pre></td></tr></table></figure>
+    <title>Makefile 104: Help</title>
+    <url>/2019/07/05/Makefile-104-Help/</url>
+    <content><![CDATA[<p>help</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  example_stages cat Makefile</span><br><span class="line">.DEFAULT_GOAL := <span class="built_in">help</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">help</span>:	<span class="comment">## show this help</span></span><br><span class="line">	@fgrep -h <span class="string">"##"</span> $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e <span class="string">'s/\\$$//'</span> | sed -e <span class="string">'s/##//'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">stage1:  <span class="comment">## This message will show up when typing 'make help'</span></span><br><span class="line">	@<span class="built_in">echo</span> I am stage1</span><br><span class="line"></span><br><span class="line">stage2:</span><br><span class="line">	<span class="built_in">echo</span> <span class="string">"I am stage2"</span></span><br><span class="line">➜  example_stages make <span class="built_in">help</span></span><br><span class="line"><span class="built_in">help</span>:	 show this <span class="built_in">help</span></span><br><span class="line">stage1:   This message will show up when typing <span class="string">'make help'</span></span><br></pre></td></tr></table></figure>
+<p>output:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   make <span class="built_in">help</span></span><br><span class="line"><span class="built_in">help</span>:	 show this <span class="built_in">help</span></span><br><span class="line">stage1:   This message will show up when typing <span class="string">'make help'</span></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>Linux</category>
@@ -1365,12 +1366,11 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>Makefile 104: Help</title>
-    <url>/2019/07/05/Makefile-104-Help/</url>
-    <content><![CDATA[<p>help</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  example_stages cat Makefile</span><br><span class="line">.DEFAULT_GOAL := <span class="built_in">help</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">help</span>:	<span class="comment">## show this help</span></span><br><span class="line">	@fgrep -h <span class="string">"##"</span> $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e <span class="string">'s/\\$$//'</span> | sed -e <span class="string">'s/##//'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">stage1:  <span class="comment">## This message will show up when typing 'make help'</span></span><br><span class="line">	@<span class="built_in">echo</span> I am stage1</span><br><span class="line"></span><br><span class="line">stage2:</span><br><span class="line">	<span class="built_in">echo</span> <span class="string">"I am stage2"</span></span><br><span class="line">➜  example_stages make <span class="built_in">help</span></span><br><span class="line"><span class="built_in">help</span>:	 show this <span class="built_in">help</span></span><br><span class="line">stage1:   This message will show up when typing <span class="string">'make help'</span></span><br></pre></td></tr></table></figure>
-<p>output:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   make <span class="built_in">help</span></span><br><span class="line"><span class="built_in">help</span>:	 show this <span class="built_in">help</span></span><br><span class="line">stage1:   This message will show up when typing <span class="string">'make help'</span></span><br></pre></td></tr></table></figure>
+    <title>Makefile 103: all &amp; clean</title>
+    <url>/2019/07/05/Makefile-103-all-clean/</url>
+    <content><![CDATA[<h5 id="makefile-中的all"><a href="#makefile-中的all" class="headerlink" title="makefile 中的all"></a>makefile 中的all</h5><p>因为 makefile 的执行流程是找到第一个目标作为最终生成的目标，如果顺序错乱了，makefile 就可能报错，all 方法就是解决这个问题而存在的，并且，all 方法可以让一个 makefile 生成多个目标。示例如下：</p>
+<h5 id="makefile-中的-clean"><a href="#makefile-中的-clean" class="headerlink" title="makefile 中的 clean"></a>makefile 中的 clean</h5><p>make clean 命令是用来清除目录下临时文件的，执行 clean 这个目标时，不需要任何依赖项，也就意味着，如果目录下有一个文件名为 clean 的话，执行 make clean 命令时会判断这个目标所依赖的内容是否有变化，如有变化则重新生成，无变化则跳过，而恰恰我们这个 clean 没写依赖规则！这将导致 clean 无论如何都不会被执行。解决这个问题的办法就是将 clean 方法声明为一个伪目标，做就就是让 clean 无论如何都更新，同样我们生成的 all 目标也可能会出现这种情况，所以我们将它们两个都声明为 <strong>伪目标</strong>，方法如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">clean:</span><br><span class="line">    -rm -rf $(obj) main app </span><br><span class="line"></span><br><span class="line">.PHONY:clean all</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>Linux</category>
@@ -1460,39 +1460,6 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>Ping Or fping</title>
-    <url>/2019/05/28/Ping-Or-fping/</url>
-    <content><![CDATA[<p>ping 命令我们比较常用，但是这里要介绍下 fping 命令。 fping 比 ping 拥有更多的特性。fping 默认没有包含在Linux发行版中。</p>
-<blockquote>
-<p>ping 命令使用Internet控制协议（Internet Control Message Protocol,ICMP）中的echo 分组检验网络上两台主机之间的连通性。</p>
-</blockquote>
-<p>e.g.<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> ip <span class="keyword">in</span> 192.168.0.&#123;1..255&#125; ;</span><br><span class="line"><span class="keyword">do</span> </span><br><span class="line">    ping <span class="variable">$ip</span> -c 2 &amp;&gt; /dev/null ;</span><br><span class="line"></span><br><span class="line">    uf [ $? -eq 0 ];</span><br><span class="line">    <span class="keyword">then</span> </span><br><span class="line">        <span class="built_in">echo</span> <span class="variable">$ip</span> is alive</span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure></p>
-<p>工作原理：</p>
-<ul>
-<li><code>&amp;&gt; /dev/null</code> 用于将 stderr stdout 重定向到 <code>/dev/nul</code> ,使终端不会出现任何输出</li>
-<li>脚本用 <code>$?</code> 获取退出状态。如果顺利退出，退出状态为0，否则为非0值。</li>
-</ul>
-<h5 id="fping"><a href="#fping" class="headerlink" title="fping"></a>fping</h5><p>fping 可以为多个IP地址生成 ICMP 分组，然后等待回应。其运行速度要比上面的脚本快得多。</p>
-<p>选项如下：</p>
-<ul>
-<li>选项 <code>-a</code> 指定显示出所有活动主机的IP地址；</li>
-<li>选项 <code>-u</code> 指定显示出所有不可达的主机地址；</li>
-<li>选项 <code>-g</code> 指定从 “IP地址/子网掩码；记法或者 “IP地址范围”记法中生成一组地址</li>
-</ul>
-<p>e.g.</p>
-<p><code>fping -a 192.168.0.1/24 -g</code></p>
-<p><code>fping -a 192.168.0.1 192.168.1.255 -g</code></p>
-<p><code>fping -a 192.168.0.1  192.168.0.5 192.168.0.6</code></p>
-<p><code>fping -a &lt; ip.list</code> 从列表文件 sdtin 中接收</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Shell</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Q Movie List</title>
     <url>/2019/05/12/Q-Movie-List/</url>
     <content><![CDATA[<p>Q Movie List </p>
@@ -1506,7 +1473,7 @@ pipeline {
 </blockquote>
 <h3 id="2-《骡子》-2018"><a href="#2-《骡子》-2018" class="headerlink" title="2. 《骡子》(2018)"></a>2. 《骡子》(2018)</h3><p>原名：The Mule‎<br>导演：克林特·伊斯特伍德<br>主演： 克林特·伊斯特伍德</p>
 <p><img src="/images/movie_mule_01.png" alt="Mule"></p>
-<center> 男主在公路上 </center><br>男主与妻子去世前的对话：<br><br>&gt; Mary: You were the love of my life, and the pain of my life. I need you to know, it’s all the world to me that you’re here.<br>&gt; Earl: I love you, Mary.<br>&gt; Mary: More today than yesterday? -Earl: But not as much as tomorrow.<br><br>自己的生活还是家庭？男主一生大部分时间都用在自己的黄花菜上，或者自己的老兵俱乐部等，家人对他无不责备。但是最后男主在妻子的最后一次请求中放下手中的活儿（运送毒品），选择回到妻子身边，也得到了女儿的原谅。<br><br>### 3. 《来的都是客》(1990)<br>导演：马绍惠<br>主演： 赵本山、巩汉林<br><br><img src="/images/movie_guest.png" alt="Whoever Comes Is a Guest"><br><center> 90年代，年轻的两位男主</center>
+<center> 男主在公路上 </center><br>男主与妻子去世前的对话：<br><br>&gt; Mary: You were the love of my life, and the pain of my life. I need you to know, it’s all the world to me that you’re here.<br>&gt; <strong>Earl</strong>: I love you, Mary.<br>&gt; Mary: More today than yesterday?<br>&gt; <strong>Earl</strong>: But not as much as tomorrow.<br><br>自己的生活还是家庭？男主一生大部分时间都用在自己的黄花菜上，或者自己的老兵俱乐部等，家人对他无不责备。但是最后男主在妻子的最后一次请求中放下手中的活儿（运送毒品），选择回到妻子身边，也得到了女儿的原谅。<br><br>### 3. 《来的都是客》(1990)<br>导演：马绍惠<br>主演： 赵本山、巩汉林<br><br><img src="/images/movie_guest.png" alt="Whoever Comes Is a Guest"><br><center> 90年代，年轻的两位男主</center>
 
 <p>上世纪90年代的一部<strong>喜剧</strong>、剧情片，反讽当时的吃喝风。故事情节流畅、很贴近生活。我最早知道<strong>赵本山</strong>是春晚的小品上，但没有想到过他出演了很多电影，而且是他年轻力壮的时候，当年的赵本山脸上还没有褶子，演技也在线。</p>
 <blockquote>
@@ -1538,6 +1505,39 @@ pipeline {
 ]]></content>
       <tags>
         <tag>Q List</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Ping Or fping</title>
+    <url>/2019/05/28/Ping-Or-fping/</url>
+    <content><![CDATA[<p>ping 命令我们比较常用，但是这里要介绍下 fping 命令。 fping 比 ping 拥有更多的特性。fping 默认没有包含在Linux发行版中。</p>
+<blockquote>
+<p>ping 命令使用Internet控制协议（Internet Control Message Protocol,ICMP）中的echo 分组检验网络上两台主机之间的连通性。</p>
+</blockquote>
+<p>e.g.<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> ip <span class="keyword">in</span> 192.168.0.&#123;1..255&#125; ;</span><br><span class="line"><span class="keyword">do</span> </span><br><span class="line">    ping <span class="variable">$ip</span> -c 2 &amp;&gt; /dev/null ;</span><br><span class="line"></span><br><span class="line">    uf [ $? -eq 0 ];</span><br><span class="line">    <span class="keyword">then</span> </span><br><span class="line">        <span class="built_in">echo</span> <span class="variable">$ip</span> is alive</span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure></p>
+<p>工作原理：</p>
+<ul>
+<li><code>&amp;&gt; /dev/null</code> 用于将 stderr stdout 重定向到 <code>/dev/nul</code> ,使终端不会出现任何输出</li>
+<li>脚本用 <code>$?</code> 获取退出状态。如果顺利退出，退出状态为0，否则为非0值。</li>
+</ul>
+<h5 id="fping"><a href="#fping" class="headerlink" title="fping"></a>fping</h5><p>fping 可以为多个IP地址生成 ICMP 分组，然后等待回应。其运行速度要比上面的脚本快得多。</p>
+<p>选项如下：</p>
+<ul>
+<li>选项 <code>-a</code> 指定显示出所有活动主机的IP地址；</li>
+<li>选项 <code>-u</code> 指定显示出所有不可达的主机地址；</li>
+<li>选项 <code>-g</code> 指定从 “IP地址/子网掩码；记法或者 “IP地址范围”记法中生成一组地址</li>
+</ul>
+<p>e.g.</p>
+<p><code>fping -a 192.168.0.1/24 -g</code></p>
+<p><code>fping -a 192.168.0.1 192.168.1.255 -g</code></p>
+<p><code>fping -a 192.168.0.1  192.168.0.5 192.168.0.6</code></p>
+<p><code>fping -a &lt; ip.list</code> 从列表文件 sdtin 中接收</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Shell</tag>
       </tags>
   </entry>
   <entry>
@@ -1664,20 +1664,6 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>Shell count time</title>
-    <url>/2019/06/17/Shell-count-time/</url>
-    <content><![CDATA[<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">start=$(date +%s)</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> ---------</span><br><span class="line"><span class="comment">#type your command, like: sleep 50</span></span><br><span class="line">sleep 50</span><br><span class="line"></span><br><span class="line">end=$(date +%s)</span><br><span class="line"></span><br><span class="line">diff=$((end - start))</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">"\e[1;32m take time is: <span class="variable">$diff</span> \e[m"</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> Count:</span><br><span class="line">tput sc</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> count <span class="keyword">in</span> `seq 0 40`</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  tput rc</span><br><span class="line">  tput ed</span><br><span class="line">  <span class="built_in">echo</span> -n <span class="variable">$count</span></span><br><span class="line">  sleep 1</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-<p>用 tput sc 存储光标位置。在每次循环中，通过 tput rc 恢复之前的存储的光标位置，在终端中打印出新的 count 值，然后使用 tputs ed 清除从当前位置到行尾之间的所有内容。行被清空之后，脚本就可以显示出新的值。sleep  可以使脚本在每次循环迭代之间延迟1秒钟。</p>
-]]></content>
-      <categories>
-        <category>Shell</category>
-      </categories>
-      <tags>
-        <tag>Shell</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Shell Script Standards</title>
     <url>/2019/05/29/Shell-Script-Standards/</url>
     <content><![CDATA[<h5 id="Part1-命名约定"><a href="#Part1-命名约定" class="headerlink" title="Part1: 命名约定"></a>Part1: 命名约定</h5><ul>
@@ -1725,20 +1711,11 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>Shell toolbox</title>
-    <url>/2020/03/20/Shell-toolbox/</url>
-    <content><![CDATA[<h3 id="1-crontab"><a href="#1-crontab" class="headerlink" title="1 crontab"></a>1 <a href="https://crontab.guru/examples.html" target="_blank" rel="noopener">crontab</a></h3><p>教你怎么写定时任务的网站，并给出了很多示例，比如</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#“At every 2nd minute.”</span></span><br><span class="line">*/2 * * * *</span><br><span class="line"><span class="comment"># At 22:00 on every day-of-week from Monday through Friday</span></span><br><span class="line">0 22 * * 1-5</span><br></pre></td></tr></table></figure>
-<p>不要以为会写crontab就可以了，建议有空以下内容了解下：</p>
-<ul>
-<li><a href="https://crontab.guru/tips.html" target="_blank" rel="noopener">tips小建议</a></li>
-<li><a href="https://www.endpoint.com/blog/2008/12/08/best-practices-for-cron" target="_blank" rel="noopener">最佳实践</a> </li>
-<li><a href="https://cronitor.io/docs/cron-troubleshooting-guide?utm_source=crontabguru&amp;utm_campaign=cron_troubleshooting" target="_blank" rel="noopener">问题定位</a></li>
-<li><strong>mcron</strong>: <em>Another alternative for complicated schedules</em></li>
-</ul>
-<blockquote>
-<p>最后，有兴趣可以看看 Cron Job Monitoring 的工具 <a href="https://cronitor.io/index" target="_blank" rel="noopener">cronitor</a>,不过貌似是收费的。看介绍，可用于 Cron Job, Scheduled Event（AWS),Task Scheduler, Kubernetes Cron Job, Java Cron Job, Jenkins Job多类型的监控。</p>
-</blockquote>
+    <title>Shell count time</title>
+    <url>/2019/06/17/Shell-count-time/</url>
+    <content><![CDATA[<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">start=$(date +%s)</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> ---------</span><br><span class="line"><span class="comment">#type your command, like: sleep 50</span></span><br><span class="line">sleep 50</span><br><span class="line"></span><br><span class="line">end=$(date +%s)</span><br><span class="line"></span><br><span class="line">diff=$((end - start))</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">"\e[1;32m take time is: <span class="variable">$diff</span> \e[m"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> Count:</span><br><span class="line">tput sc</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> count <span class="keyword">in</span> `seq 0 40`</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  tput rc</span><br><span class="line">  tput ed</span><br><span class="line">  <span class="built_in">echo</span> -n <span class="variable">$count</span></span><br><span class="line">  sleep 1</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<p>用 tput sc 存储光标位置。在每次循环中，通过 tput rc 恢复之前的存储的光标位置，在终端中打印出新的 count 值，然后使用 tputs ed 清除从当前位置到行尾之间的所有内容。行被清空之后，脚本就可以显示出新的值。sleep  可以使脚本在每次循环迭代之间延迟1秒钟。</p>
 ]]></content>
       <categories>
         <category>Shell</category>
@@ -1777,6 +1754,29 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>Shell toolbox</title>
+    <url>/2020/03/20/Shell-toolbox/</url>
+    <content><![CDATA[<h3 id="1-crontab"><a href="#1-crontab" class="headerlink" title="1 crontab"></a>1 <a href="https://crontab.guru/examples.html" target="_blank" rel="noopener">crontab</a></h3><p>教你怎么写定时任务的网站，并给出了很多示例，比如</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#“At every 2nd minute.”</span></span><br><span class="line">*/2 * * * *</span><br><span class="line"><span class="comment"># At 22:00 on every day-of-week from Monday through Friday</span></span><br><span class="line">0 22 * * 1-5</span><br></pre></td></tr></table></figure>
+<p>不要以为会写crontab就可以了，建议有空以下内容了解下：</p>
+<ul>
+<li><a href="https://crontab.guru/tips.html" target="_blank" rel="noopener">tips小建议</a></li>
+<li><a href="https://www.endpoint.com/blog/2008/12/08/best-practices-for-cron" target="_blank" rel="noopener">最佳实践</a> </li>
+<li><a href="https://cronitor.io/docs/cron-troubleshooting-guide?utm_source=crontabguru&amp;utm_campaign=cron_troubleshooting" target="_blank" rel="noopener">问题定位</a></li>
+<li><strong>mcron</strong>: <em>Another alternative for complicated schedules</em></li>
+</ul>
+<blockquote>
+<p>最后，有兴趣可以看看 Cron Job Monitoring 的工具 <a href="https://cronitor.io/index" target="_blank" rel="noopener">cronitor</a>,不过貌似是收费的。看介绍，可用于 Cron Job, Scheduled Event（AWS),Task Scheduler, Kubernetes Cron Job, Java Cron Job, Jenkins Job多类型的监控。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Shell</category>
+      </categories>
+      <tags>
+        <tag>Shell</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Small Tools [1]: youtube-dl</title>
     <url>/2019/05/22/Small-Tools-1-youtube-dl/</url>
     <content><![CDATA[<h2 id="youtube-dl"><a href="#youtube-dl" class="headerlink" title="youtube-dl"></a>youtube-dl</h2><p><strong>youtube-dl</strong> 是一个命令行视频下载利器，不仅仅可以下载YouTube的内容，也可以下载其他的视频网站内容</p>
@@ -1801,6 +1801,30 @@ pipeline {
 <li><a href="http://ytdl-org" target="_blank" rel="noopener">http://ytdl-org</a> (官网)</li>
 <li><a href="https://github.com/ytdl-org/youtube-dl/blob/master/README.md#readme" target="_blank" rel="noopener">https://github.com/ytdl-org/youtube-dl/blob/master/README.md#readme</a> （github）</li>
 </ul>
+]]></content>
+      <categories>
+        <category>Tools</category>
+      </categories>
+      <tags>
+        <tag>Tools</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Small Tools [2]: ffmpeg -- Video conversion tool.</title>
+    <url>/2019/05/23/Small-Tools-2-ffmpeg-Video-conversion-tool/</url>
+    <content><![CDATA[<h2 id="yffmpeg"><a href="#yffmpeg" class="headerlink" title="yffmpeg"></a>yffmpeg</h2><h5 id="1-Install-（安装）"><a href="#1-Install-（安装）" class="headerlink" title="1.Install （安装）"></a>1.Install （安装）</h5><ul>
+<li>macOS (wait a min)<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">brew install ffmpeg</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="2-Usage-（用法）"><a href="#2-Usage-（用法）" class="headerlink" title="2.Usage （用法）"></a>2.Usage （用法）</h5><ul>
+<li>General usage</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ffmpeg -i video.mp4 -vn sound.mp3</span><br></pre></td></tr></table></figure>
+<ul>
+<li>More usage<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ffmpeg</span><br><span class="line"></span><br><span class="line">Video conversion tool.</span><br><span class="line"></span><br><span class="line">- Extract the sound from a video and save it as MP3:</span><br><span class="line">    ffmpeg -i video.mp4 -vn sound.mp3</span><br><span class="line"></span><br><span class="line">- Convert frames from a video or GIF into individual numbered images:</span><br><span class="line">    ffmpeg -i video.mpg|video.gif frame_%d.png</span><br><span class="line"></span><br><span class="line">- Combine numbered images (frame_1.jpg, frame_2.jpg, etc) into a video or GIF:</span><br><span class="line">    ffmpeg -i frame_%d.jpg -f image2 video.mpg|video.gif</span><br><span class="line"></span><br><span class="line">- Quickly extract a single frame from a video at time mm:ss and save it as a 128x128 resolution image:</span><br><span class="line">    ffmpeg -ss mm:ss -i video.mp4 -frames 1 -s 128x128 -f image2 image.png</span><br><span class="line"></span><br><span class="line">- Trim a video from a given start time mm:ss to an end time mm2:ss2 (omit the -to flag to trim till the end):</span><br><span class="line">    ffmpeg -ss mm:ss -to mm2:ss2 -i video.mp4 -codec copy output.mp4</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>More Ref:</strong>- <a href="https://ffmpeg.org" target="_blank" rel="noopener">https://ffmpeg.org</a> (官网)</p>
 ]]></content>
       <categories>
         <category>Tools</category>
@@ -1988,30 +2012,6 @@ pipeline {
       </categories>
       <tags>
         <tag>Test</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Small Tools [2]: ffmpeg -- Video conversion tool.</title>
-    <url>/2019/05/23/Small-Tools-2-ffmpeg-Video-conversion-tool/</url>
-    <content><![CDATA[<h2 id="yffmpeg"><a href="#yffmpeg" class="headerlink" title="yffmpeg"></a>yffmpeg</h2><h5 id="1-Install-（安装）"><a href="#1-Install-（安装）" class="headerlink" title="1.Install （安装）"></a>1.Install （安装）</h5><ul>
-<li>macOS (wait a min)<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">brew install ffmpeg</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h5 id="2-Usage-（用法）"><a href="#2-Usage-（用法）" class="headerlink" title="2.Usage （用法）"></a>2.Usage （用法）</h5><ul>
-<li>General usage</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ffmpeg -i video.mp4 -vn sound.mp3</span><br></pre></td></tr></table></figure>
-<ul>
-<li>More usage<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ffmpeg</span><br><span class="line"></span><br><span class="line">Video conversion tool.</span><br><span class="line"></span><br><span class="line">- Extract the sound from a video and save it as MP3:</span><br><span class="line">    ffmpeg -i video.mp4 -vn sound.mp3</span><br><span class="line"></span><br><span class="line">- Convert frames from a video or GIF into individual numbered images:</span><br><span class="line">    ffmpeg -i video.mpg|video.gif frame_%d.png</span><br><span class="line"></span><br><span class="line">- Combine numbered images (frame_1.jpg, frame_2.jpg, etc) into a video or GIF:</span><br><span class="line">    ffmpeg -i frame_%d.jpg -f image2 video.mpg|video.gif</span><br><span class="line"></span><br><span class="line">- Quickly extract a single frame from a video at time mm:ss and save it as a 128x128 resolution image:</span><br><span class="line">    ffmpeg -ss mm:ss -i video.mp4 -frames 1 -s 128x128 -f image2 image.png</span><br><span class="line"></span><br><span class="line">- Trim a video from a given start time mm:ss to an end time mm2:ss2 (omit the -to flag to trim till the end):</span><br><span class="line">    ffmpeg -ss mm:ss -to mm2:ss2 -i video.mp4 -codec copy output.mp4</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p><strong>More Ref:</strong>- <a href="https://ffmpeg.org" target="_blank" rel="noopener">https://ffmpeg.org</a> (官网)</p>
-]]></content>
-      <categories>
-        <category>Tools</category>
-      </categories>
-      <tags>
-        <tag>Tools</tag>
       </tags>
   </entry>
   <entry>
@@ -2256,19 +2256,6 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>jenkins date timezone update</title>
-    <url>/2019/04/25/jenkins-date-timezone-update/</url>
-    <content><![CDATA[<h4 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h4><p>打开 【系统管理】-&gt;【脚本命令行】运行下面的命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">System.setProperty(<span class="string">'org.apache.commons.jelly.tags.fmt.timeZone'</span>, <span class="string">'Asia/Shanghai'</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="/images/jenkins_run_image_01.png" alt="jenkins_run_image_01"></p>
-<h4 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h4><pre><code class="java">JAVA_ARGS=<span class="string">"-Dorg.apache.commons.jelly.tags.fmt.timeZone=Asia/Shanghai -Dfile.encoding=UTF-8 -Djava.awt.headless=true"</span>
-</code></pre>
-]]></content>
-      <tags>
-        <tag>jenkins</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>http vs curl</title>
     <url>/2019/06/19/http-vs-curl/</url>
     <content><![CDATA[<blockquote>
@@ -2304,6 +2291,19 @@ pipeline {
       </categories>
       <tags>
         <tag>Shell</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>jenkins date timezone update</title>
+    <url>/2019/04/25/jenkins-date-timezone-update/</url>
+    <content><![CDATA[<h4 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h4><p>打开 【系统管理】-&gt;【脚本命令行】运行下面的命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">System.setProperty(<span class="string">'org.apache.commons.jelly.tags.fmt.timeZone'</span>, <span class="string">'Asia/Shanghai'</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="/images/jenkins_run_image_01.png" alt="jenkins_run_image_01"></p>
+<h4 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h4><pre><code class="java">JAVA_ARGS=<span class="string">"-Dorg.apache.commons.jelly.tags.fmt.timeZone=Asia/Shanghai -Dfile.encoding=UTF-8 -Djava.awt.headless=true"</span>
+</code></pre>
+]]></content>
+      <tags>
+        <tag>jenkins</tag>
       </tags>
   </entry>
   <entry>
@@ -2360,17 +2360,6 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>packer intro</title>
-    <url>/2019/08/30/packer-intro/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>packer</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>ngrok demo</title>
     <url>/2019/07/22/ngrok-demo/</url>
     <content><![CDATA[<h3 id="怎么用"><a href="#怎么用" class="headerlink" title="怎么用"></a>怎么用</h3><p><a href="https://dashboard.ngrok.com/get-started" target="_blank" rel="noopener">https://dashboard.ngrok.com/get-started</a><br><img src="/images/ngrok_demo_01.png" alt="ngrok_demo_01"></p>
@@ -2394,6 +2383,17 @@ pipeline {
 ]]></content>
       <tags>
         <tag>Tools</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>packer intro</title>
+    <url>/2019/08/30/packer-intro/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>packer</tag>
       </tags>
   </entry>
   <entry>
@@ -2493,6 +2493,68 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>shell 玩转sed，你不知道的用法</title>
+    <url>/2019/10/23/shell-%E7%8E%A9%E8%BD%ACsed%EF%BC%8C%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84%E7%94%A8%E6%B3%95/</url>
+    <content><![CDATA[<p>sed 是 stream editor（流编辑器）的缩写</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">操作</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">p</td>
+<td>打印文本行(print)</td>
+</tr>
+<tr>
+<td style="text-align:left">n</td>
+<td>取消默认输出</td>
+</tr>
+<tr>
+<td style="text-align:left">d</td>
+<td>删除(delete)</td>
+</tr>
+<tr>
+<td style="text-align:left">s</td>
+<td>字符串替换(substitude)</td>
+</tr>
+<tr>
+<td style="text-align:left">a</td>
+<td>追加新的文本(append)</td>
+</tr>
+</tbody>
+</table>
+<p>示例文件</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># cat example.conf</span></span><br><span class="line">username=this  username_2=this</span><br><span class="line">password=that</span><br><span class="line"></span><br><span class="line">url=this</span><br><span class="line"></span><br><span class="line">path=this</span><br></pre></td></tr></table></figure>
+<h3 id="1-替换"><a href="#1-替换" class="headerlink" title="1.替换"></a>1.替换</h3><p>sed 命令会将 <code>s</code> 之后的字符视为命令分隔符，这允许我们更改默认的分隔符，如:<br><code>sed &#39;s:this:new:g&#39; example.conf</code><br><code>sed &#39;s|this|new|g&#39; example.conf</code><br>如果作为分隔符的字符出现在模式中，必须使用 <code>\</code>对其进行转义</p>
+<p><code>sed &#39;s/this/new/&#39; example.conf</code>  替换 <strong>每行</strong>中 <strong>首次</strong> 匹配的内容</p>
+<p>ouput:<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">username=new  username_2=this</span><br><span class="line">password=that</span><br><span class="line"></span><br><span class="line">url=new</span><br><span class="line"></span><br><span class="line">path=new</span><br></pre></td></tr></table></figure></p>
+<p><code>sed &#39;s/this/new/g&#39; example.conf</code> g标记可以使sed执行全局替换</p>
+<p><code>sed &#39;s/this/new/2g&#39; example.conf</code> #g可以使sed替换第N次出现的匹配</p>
+<p>将1-4行的url换成address, s代表替换<br><code>sed &#39;1,4s/url/address/g&#39; example.conf</code></p>
+<h3 id="2-删除"><a href="#2-删除" class="headerlink" title="2.删除"></a>2.删除</h3><p><code>sed &#39;2,4d&#39; example.conf</code>  删除第2到4行  </p>
+<p><code>sed -e &#39;/url/d&#39;  example.conf</code> 删除含”url”的行,输出到终端，实际没有替换文件</p>
+<p><code>sed &#39;/appleapple/d;$d&#39; example.conf</code> 删除包含appleapple的行和最后一行($)  </p>
+<p>移除空行<br><code>sed &#39;/^$/d&#39; file</code> 空行可以用 ^$ 进行匹配，最后的 /d 告诉sed不执行替换操作，而是直接删除匹配到的空行</p>
+<hr>
+<p><strong>✍TIP</strong></p>
+<ol>
+<li><p>首先使用不带 -i选项的sed命令，查看结果是否符合预期；再加入 -i选项将更改写入文件。</p>
+</li>
+<li><p><code>sed -i.bak &#39;s/abc/def&#39; file</code> 这时的sed不仅替换文件内容，还会创建一个名为file.bak的文件，其中包含着原始文件内容的副本;如果对一个文件多次执行，则xx.bak文件只会是上一个文件的副本</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Shell</category>
+      </categories>
+      <tags>
+        <tag>Shell</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>tmux tutorial</title>
     <url>/2019/09/07/tmux-tutorial/</url>
     <content><![CDATA[<h3 id="1-tmux是什么"><a href="#1-tmux是什么" class="headerlink" title="1.tmux是什么"></a>1.tmux是什么</h3><pre><code>tmux (terminal multiplexer),是一个 BSD 协议发布的终端复用软件，用来在服务器端托管同时运行的 Shell.
@@ -2560,68 +2622,6 @@ pipeline {
       </categories>
       <tags>
         <tag>tmux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>shell 玩转sed，你不知道的用法</title>
-    <url>/2019/10/23/shell-%E7%8E%A9%E8%BD%ACsed%EF%BC%8C%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84%E7%94%A8%E6%B3%95/</url>
-    <content><![CDATA[<p>sed 是 stream editor（流编辑器）的缩写</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">操作</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">p</td>
-<td>打印文本行(print)</td>
-</tr>
-<tr>
-<td style="text-align:left">n</td>
-<td>取消默认输出</td>
-</tr>
-<tr>
-<td style="text-align:left">d</td>
-<td>删除(delete)</td>
-</tr>
-<tr>
-<td style="text-align:left">s</td>
-<td>字符串替换(substitude)</td>
-</tr>
-<tr>
-<td style="text-align:left">a</td>
-<td>追加新的文本(append)</td>
-</tr>
-</tbody>
-</table>
-<p>示例文件</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># cat example.conf</span></span><br><span class="line">username=this  username_2=this</span><br><span class="line">password=that</span><br><span class="line"></span><br><span class="line">url=this</span><br><span class="line"></span><br><span class="line">path=this</span><br></pre></td></tr></table></figure>
-<h3 id="1-替换"><a href="#1-替换" class="headerlink" title="1.替换"></a>1.替换</h3><p>sed 命令会将 <code>s</code> 之后的字符视为命令分隔符，这允许我们更改默认的分隔符，如:<br><code>sed &#39;s:this:new:g&#39; example.conf</code><br><code>sed &#39;s|this|new|g&#39; example.conf</code><br>如果作为分隔符的字符出现在模式中，必须使用 <code>\</code>对其进行转义</p>
-<p><code>sed &#39;s/this/new/&#39; example.conf</code>  替换 <strong>每行</strong>中 <strong>首次</strong> 匹配的内容</p>
-<p>ouput:<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">username=new  username_2=this</span><br><span class="line">password=that</span><br><span class="line"></span><br><span class="line">url=new</span><br><span class="line"></span><br><span class="line">path=new</span><br></pre></td></tr></table></figure></p>
-<p><code>sed &#39;s/this/new/g&#39; example.conf</code> g标记可以使sed执行全局替换</p>
-<p><code>sed &#39;s/this/new/2g&#39; example.conf</code> #g可以使sed替换第N次出现的匹配</p>
-<p>将1-4行的url换成address, s代表替换<br><code>sed &#39;1,4s/url/address/g&#39; example.conf</code></p>
-<h3 id="2-删除"><a href="#2-删除" class="headerlink" title="2.删除"></a>2.删除</h3><p><code>sed &#39;2,4d&#39; example.conf</code>  删除第2到4行  </p>
-<p><code>sed -e &#39;/url/d&#39;  example.conf</code> 删除含”url”的行,输出到终端，实际没有替换文件</p>
-<p><code>sed &#39;/appleapple/d;$d&#39; example.conf</code> 删除包含appleapple的行和最后一行($)  </p>
-<p>移除空行<br><code>sed &#39;/^$/d&#39; file</code> 空行可以用 ^$ 进行匹配，最后的 /d 告诉sed不执行替换操作，而是直接删除匹配到的空行</p>
-<hr>
-<p><strong>✍TIP</strong></p>
-<ol>
-<li><p>首先使用不带 -i选项的sed命令，查看结果是否符合预期；再加入 -i选项将更改写入文件。</p>
-</li>
-<li><p><code>sed -i.bak &#39;s/abc/def&#39; file</code> 这时的sed不仅替换文件内容，还会创建一个名为file.bak的文件，其中包含着原始文件内容的副本;如果对一个文件多次执行，则xx.bak文件只会是上一个文件的副本</p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Shell</category>
-      </categories>
-      <tags>
-        <tag>Shell</tag>
       </tags>
   </entry>
   <entry>
@@ -2828,6 +2828,44 @@ pipeline {
       <tags>
         <tag>浪潮之巅</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>巨浪下的小学</title>
+    <url>/2020/04/08/%E5%B7%A8%E6%B5%AA%E4%B8%8B%E7%9A%84%E5%B0%8F%E5%AD%A6/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>《巨浪下的小学》是一本书名，一位旅居日本的英国作家，“钻牛角尖”式地调查、反思一场日本东北部海啸的事件。更多的内容用在描述记录发生悲剧的原因、灾难后幸存者的生活、与政府打官司的过程。结局尚不揭秘，下文再聊。</p>
+<h3 id="摘抄"><a href="#摘抄" class="headerlink" title="摘抄"></a>摘抄</h3><p><code>震动本身并没有那么令人害怕，但它会越来越强烈，而且不知道何时会结束，这才令人胆战心惊</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">伤亡人数极难确定。晚上6:30，电视新闻报道称有23人死亡。但到了晚上9点，这一数字上升到61人，午夜过后，各大通讯社报道仍称死亡人数为64人。显然，随着通信逐渐恢复，具体数字还将继续上升。这种情况通常会催生一种非理性的悲观情绪，人们会倾向于相信最糟糕的可能性，而最终结果很可能没有那么坏。</span><br></pre></td></tr></table></figure>
+<p><code>恐惧生根发芽，对于看不见的毒物的恐惧在空中飘荡，在水中流淌</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">那些在战区和灾区工作的人，过了一段时间后，就会习得一种从事件中抽离出来的本领。这是一种职业需要：如果轻易就被这种死亡和痛苦的景象压垮，那没有哪个医生、救援人员或记者能干好自己的工作。获得这种本领的诀窍在于收起同情心，不要把每个人的悲剧当成自己的悲剧，而我已经掌握这一窍门。我知道发生了什么，我也知道一切是多么骇人听闻，但关键是我自己不能被吓倒。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">他们有一张“灾害地图”，用来标识易受海啸袭击的沿海地区，但上面没有釜谷。他们在编写学校应急手册时，没有考虑到海啸的可能性，也没有进行海啸疏散演习。市政府也没有人检查学校的应急准备工作。报告还总结称，学校的老师从心理上无法接受危险迫在眉睫这件事。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">海啸过后的几年时间里，日本发生了各种各样的变化，但结果是让民众因此失去而不是获得力量和信心。其中部分原因是整个东亚地区都变得越来越不安稳——朝鲜的咄咄逼人，还有中国的自信满满。但关键还是在于日本领导层与其所应该代表的民众之间的隔阂越来越大。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">“孩子被看不见的怪物谋杀了，”紫桃佐代美说，“我们向它发泄愤怒，可是它没有任何反应。它就好像一团黑影，没有人类的温暖。”她继续说，“海啸是个看得见的怪物。可是，看不见的怪物将永远存在。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">隆洋则说：“人类制造的一切最终都将被自然摧毁。高山与河流都是大自然的产物，它们将继续存在。而人类的一切都会消逝。我们需要重新思考我们给予大自然的尊重。”</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">但是，大川小学悲剧的处理问题总是笼罩着一层不光彩、不公正的阴云，他们似乎都在拼命抑制某种恐慌，笨拙地掩饰着什么。有时候，这似乎既体现了他们的无能，又像是一个蓄谋已久的阴谋。每隔几周就会出现新的面孔，但依旧面无表情且无能。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">旧盟友和老相识之间反而散发出一种同志般的快乐之情。但在场的每个人都做好了失败的准备。吉冈已经竭尽全力打这场官司，但仍然无法改变某些事实。</span><br></pre></td></tr></table></figure>
+<p>书中有很多地方，值得我反复的阅读，因为每次阅读都会有新的发现，新的思考。而作者也在尽全力地完整的呈现海啸中到底发生了什么，海啸后人们的生活、精神状况。更多的内容也可以看看豆瓣上<a href="https://book.douban.com/subject/34820857/blockquotes?sort=score&amp;start=0" target="_blank" rel="noopener">其他的摘录</a>，但最好是不要断章取义，看完上下文再作出评论。</p>
+<h3 id="几点有感"><a href="#几点有感" class="headerlink" title="几点有感"></a>几点有感</h3><blockquote>
+<p>可能对原文有误解，或者解读错误的地方，请不要全信我，欢迎指出纰漏！</p>
+</blockquote>
+<h5 id="1-灾难意识"><a href="#1-灾难意识" class="headerlink" title="1. 灾难意识"></a>1. 灾难意识</h5><p>生活在大川附近的人都感觉自己不是在海边，生活习惯更多的像是在内陆，可能是因为种植很多水稻，没见到稳重提及很多村民靠出海打渔为生。地震在日本很常见，但是地震后的海啸确是人们潜意识中难以置信的，所以也造成了悲剧的发生。就像很多灾难的发生一样，人们没有意识到、不相信，于是心态极好地不应对、不防护，结果造成了不堪的后果。</p>
+<p>“另可信其有，不可信其无”。这句话用在灾难面前还是需要做到的，毕竟你防范了也没有什么损失。</p>
+<h5 id="2-“发生了什么”"><a href="#2-“发生了什么”" class="headerlink" title="2.“发生了什么”"></a>2.“发生了什么”</h5><p>是学校缺乏正确、清晰的应急手册？还是老师们没有危机意识？ 是疏忽大意，还是定义为过失、玩忽职守？</p>
+<p>哪天海啸时，到底发生了什么？是失去孩子们的家长想知道的，并不是想得到什么，或许只想知道孩子最好和谁在一起，在做什么。而面对政府、教育部的遮掩，可能加深了家长们的猜测。看起来像是，一群人探寻一个被遮掩的真相，而一部分日本人民也有着执拗的性格。</p>
+<p>除了寻找那天的真相，另一个场景也在寻找。有的孩子遗体很快被找到，但有一些却一直在搜寻中。父母一直要找到孩子的遗体，坚持1-2个月，甚至2-3年，不幸的便是至今未找到。父母心中可能是对去世孩子的愧疚，又或者是其他的原因驱使着他们坚持。</p>
+<p>文章中很多文字可以看到作者愤怒的情绪，对制度的愤怒，对一些人某种不承认的愤怒。</p>
+<h5 id="4-灾难之后"><a href="#4-灾难之后" class="headerlink" title="4.灾难之后"></a>4.灾难之后</h5><p>人们关系的改变，失去孩子的父母关系更加密切，而于那些幸运的家庭越行越远，之前不认识的家长一同寻找各自的孩子，相互抱团 、理解 。</p>
+<p>次生灾害的发生，寻找僧人超度鬼魂…</p>
+<h5 id="5-谈一下结局"><a href="#5-谈一下结局" class="headerlink" title="5.谈一下结局"></a>5.谈一下结局</h5><p>海啸发生于2011年3月，中间历经多轮较量，最终2016年10月法院作出判决–“赔偿14.3亿日元，少于家长要求的 23亿日元”。赔偿数字不是人们追寻的，而是那个天平的位置、家长们心中的价值、事故责任归属。家长心中悬空已久的大石头，慢慢放下，然后开始余生的生活。</p>
+<h5 id="6-启示"><a href="#6-启示" class="headerlink" title="6.启示"></a>6.启示</h5><p>还有多少类型的灾难？地震、海啸、山洪、病毒、火灾、虫害、缺水少粮…</p>
+<p>需要准备什么？物质准备、精神准备、人情冷暖…</p>
+<p>灾难之后呢，该怎么应对？避免次生灾害，寻找出路，改变生活…</p>
+<blockquote>
+<p>书不尽言，言不尽意。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>读书笔记</category>
+      </categories>
   </entry>
   <entry>
     <title>枢纽1</title>
