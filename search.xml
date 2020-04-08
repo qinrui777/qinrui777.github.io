@@ -243,14 +243,6 @@
       </categories>
   </entry>
   <entry>
-    <title>Azure tutorial 01: overview</title>
-    <url>/2019/12/11/Azure-tutorial-01-overview/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Cloud</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Azure tutorial 02: Storage</title>
     <url>/2019/12/11/Azure-tutorial-02-Storage/</url>
     <content><![CDATA[<p>storage account type<br><a href="https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview</a></p>
@@ -305,6 +297,14 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#mac os terminal</span></span><br><span class="line">azcopy cp <span class="string">"/Users/xxx/Desktop/testdir/hello_azure.txt"</span>  <span class="string">"https://storage873375.blob.core.windows.net/container1/newdir/?sv=2019-02-02&amp;ss=bfqt&amp;srt=sco&amp;sp=rwdlacup&amp;se=2019-12-11T11:40:09Z&amp;st=2019-12-11T03:40:09Z&amp;spr=https&amp;sig=5%2FFHo4%2BBwxDB6wLftyB7%2FSF7gqnhaEmpFa4nheBOXQg%3D"</span></span><br></pre></td></tr></table></figure>
 <p><a href="https://docs.microsoft.com/en-us/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs</a></p>
 ]]></content>
+      <categories>
+        <category>Cloud</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Azure tutorial 01: overview</title>
+    <url>/2019/12/11/Azure-tutorial-01-overview/</url>
+    <content><![CDATA[]]></content>
       <categories>
         <category>Cloud</category>
       </categories>
@@ -1219,6 +1219,34 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>Jenkins trigger downstream job</title>
+    <url>/2019/05/30/Jenkins-trigger-downstream-job/</url>
+    <content><![CDATA[<p>origin_job 触发 second_job</p>
+<p>origin_job 如下：</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line"><span class="comment">//declarative pipeline</span></span><br><span class="line">pipeline &#123;</span><br><span class="line">    agent any </span><br><span class="line">    </span><br><span class="line">    stages &#123;</span><br><span class="line">        stage(<span class="string">'Stage One'</span>)&#123;</span><br><span class="line">            steps&#123;</span><br><span class="line">                sh <span class="string">"echo *** This is Stage One ***"</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        stage(<span class="string">'Stage Two'</span>)&#123;</span><br><span class="line">            steps&#123;</span><br><span class="line">                sh <span class="string">"echo $&#123;env.BUILD_NUMBER&#125;"</span></span><br><span class="line">                sh <span class="string">"echo $&#123;env.NODE_NAME&#125; , $&#123;env.JOB_NAME&#125;"</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        stage(<span class="string">"Invoke second job without parameters"</span>)&#123;</span><br><span class="line">            steps&#123;</span><br><span class="line">                build <span class="string">job:</span> <span class="string">'second_job'</span></span><br><span class="line">                sleep <span class="number">30</span></span><br><span class="line">           &#125;</span><br><span class="line">        &#125;   </span><br><span class="line"></span><br><span class="line">        stage(<span class="string">"Invoke second job with parameters"</span>)&#123;</span><br><span class="line">            steps&#123;</span><br><span class="line">                build <span class="string">job:</span> <span class="string">'second_job'</span>,</span><br><span class="line"><span class="symbol">                parameters:</span>[</span><br><span class="line">                    string(<span class="string">name:</span><span class="string">'Para1'</span>,<span class="string">value:</span>String.valueOf(JOB_NAME)),</span><br><span class="line">                    string(<span class="string">name:</span><span class="string">'Para2'</span>,<span class="string">value:</span>String.valueOf(BUILD_NUMBER))</span><br><span class="line">                ]</span><br><span class="line">           &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">    &#125;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>second_job </p>
+<p>点击““参数化构建””手动添加 两个参数</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pipeline &#123;</span><br><span class="line">    agent any </span><br><span class="line">    </span><br><span class="line">    stages &#123;</span><br><span class="line">        stage(<span class="string">'Stage One'</span>)&#123;</span><br><span class="line">            steps&#123;</span><br><span class="line">                sh <span class="string">"echo *** This is <span class="variable">$&#123;env.JOB_NAME&#125;</span> ,and We are stage one ***"</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    stage(<span class="string">'Echo origin_job para'</span>)&#123;</span><br><span class="line">        steps&#123;</span><br><span class="line">                sh <span class="string">"echo <span class="variable">$&#123;env.Para1&#125;</span>"</span></span><br><span class="line">                sh <span class="string">"echo <span class="variable">$&#123;env.Para2&#125;</span>"</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>jenkins</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>backup specially with shell script or python</title>
+    <url>/2019/05/21/Linux-backup-specially/</url>
+    <content><![CDATA[<h3 id="需求：-备份目录，只备份新加的文件，不备份减少的文件"><a href="#需求：-备份目录，只备份新加的文件，不备份减少的文件" class="headerlink" title="需求： 备份目录，只备份新加的文件，不备份减少的文件"></a>需求： 备份目录，只备份新加的文件，不备份减少的文件</h3><p>分析： 通常备份目录用 <code>rsync</code> 就可以达到目的，但开发同学怕误操作，删除文件，于是提出这个 <em>只增不减</em> 的需求</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="function"><span class="title">backUp</span></span>()&#123;</span><br><span class="line"><span class="built_in">local</span> sourceDir=<span class="variable">$1</span> <span class="comment">#需要备份的文件/目录</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">local</span> destDir=<span class="variable">$2</span> <span class="comment">#备份目的地</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -d <span class="string">"<span class="variable">$sourceDir</span>"</span> ] <span class="comment">#备份目录</span></span><br><span class="line"><span class="keyword">then</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">#如果目录尚未备份，则创建此目录</span></span><br><span class="line">  <span class="keyword">if</span> [ ! -d <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span> ]</span><br><span class="line">  <span class="keyword">then</span></span><br><span class="line">  <span class="built_in">echo</span> -e <span class="string">"创建目录\t<span class="variable">$sourceDir</span>"</span></span><br><span class="line">  mkdir -p <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span></span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#对目录中对每一个文件,递归调用此函数进行备份</span></span><br><span class="line"><span class="keyword">for</span> var <span class="keyword">in</span> $(ls <span class="string">"<span class="variable">$sourceDir</span>"</span>)</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">backUp <span class="string">"<span class="variable">$sourceDir</span>/<span class="variable">$var</span>"</span> <span class="string">"<span class="variable">$destDir</span>"</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"><span class="keyword">else</span> <span class="comment">#备份文件</span></span><br><span class="line">  <span class="comment">#如果文件在尚未备份，则直接复制</span></span><br><span class="line">  <span class="keyword">if</span> [ ! -f <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span> ]</span><br><span class="line">  <span class="keyword">then</span></span><br><span class="line">  <span class="built_in">echo</span> -e <span class="string">"备份文件\t<span class="variable">$sourceDir</span>"</span></span><br><span class="line">  cp <span class="string">"<span class="variable">$sourceDir</span>"</span> <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span></span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">#如果文件已存在，则比较两个文件对最后修改时间，如果文件已修改，则更新文件</span></span><br><span class="line">  lastModifi_backup=$(date -r <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span> +%s)</span><br><span class="line">  lastModifi_current=$(date -r <span class="string">"<span class="variable">$sourceDir</span>"</span> +%s)</span><br><span class="line">    <span class="keyword">if</span> [ <span class="string">"<span class="variable">$lastModifi_current</span>"</span> -gt <span class="string">"<span class="variable">$lastModifi_backup</span>"</span> ]</span><br><span class="line">    <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> -e <span class="string">"更新文件\t<span class="variable">$sourceDir</span>"</span> </span><br><span class="line">    cp <span class="string">"<span class="variable">$sourceDir</span>"</span> <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line">backUp <span class="string">"<span class="variable">$1</span>"</span> <span class="string">"<span class="variable">$2</span>"</span></span><br></pre></td></tr></table></figure>
+<p>运行脚本： <code>./backupSpecially.sh &quot;/date/originData&quot; &quot;/date/backup_dir&quot;</code></p>
+<p>发现运行shell脚本有问题，于是大神帮我写了个python</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python2.7</span></span><br><span class="line"><span class="comment"># -*- encoding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> os,time,filecmp</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">differentFileCopy</span><span class="params">(sourcePath, targetPath)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(sourcePath):</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(targetPath):</span><br><span class="line">        os.makedirs(targetPath)</span><br><span class="line">    <span class="keyword">for</span> fileName <span class="keyword">in</span> os.listdir(sourcePath):</span><br><span class="line">        absourcePath = os.path.join(sourcePath, fileName)</span><br><span class="line">        abstargetPath = os.path.join(targetPath, fileName)</span><br><span class="line">        <span class="keyword">if</span> os.path.isdir(absourcePath):</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(abstargetPath):</span><br><span class="line">                os.makedirs(abstargetPath)</span><br><span class="line">                differentFileCopy(absourcePath, abstargetPath)</span><br><span class="line">        <span class="keyword">if</span> os.path.isfile(absourcePath):</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(abstargetPath):</span><br><span class="line">                <span class="keyword">print</span> <span class="string">'copy %s to %s'</span> %(fileName,abstargetPath)</span><br><span class="line">                os.system(<span class="string">'cp'</span>+<span class="string">' '</span>+absourcePath+<span class="string">' '</span>+targetPath)</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> filecmp.cmp(absourcePath,abstargetPath):</span><br><span class="line">                <span class="keyword">print</span> <span class="string">'copy %s to %s'</span> %(fileName,abstargetPath)</span><br><span class="line">                os.system(<span class="string">'cp'</span>+<span class="string">' '</span>+absourcePath+<span class="string">' '</span>+targetPath)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    startTime = time.clock()</span><br><span class="line">    sourcePath = <span class="string">r"/date/originData"</span></span><br><span class="line">    targetPath = <span class="string">r"/date/Data_backupDir"</span></span><br><span class="line">    differentFileCopy(sourcePath, targetPath)</span><br><span class="line">    endTime = time.clock()</span><br><span class="line">    time_mi = endTime // <span class="number">60</span></span><br><span class="line">    time_s = endTime // <span class="number">1</span> % <span class="number">60</span></span><br><span class="line">    time_ms = ((endTime * <span class="number">100</span>) // <span class="number">1</span>) % <span class="number">100</span></span><br><span class="line">    print(<span class="string">"总用时:%02.0f:%02.0f:%2.0f"</span> % (time_mi, time_s, time_ms))</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Shell</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Jenkins build trigger、logRotator、buildDiscarder etc</title>
     <url>/2019/04/11/Jenkins-build-trigger%E3%80%81logRotator%E3%80%81options/</url>
     <content><![CDATA[<p>Declarative Pipeline 与Job DSL的同一个功能的语法命令有些差异，不能直接套用，需要查对应的官方文档。 </p>
@@ -1256,34 +1284,6 @@ pipeline {
 ]]></content>
       <tags>
         <tag>jenkins</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Jenkins trigger downstream job</title>
-    <url>/2019/05/30/Jenkins-trigger-downstream-job/</url>
-    <content><![CDATA[<p>origin_job 触发 second_job</p>
-<p>origin_job 如下：</p>
-<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line"><span class="comment">//declarative pipeline</span></span><br><span class="line">pipeline &#123;</span><br><span class="line">    agent any </span><br><span class="line">    </span><br><span class="line">    stages &#123;</span><br><span class="line">        stage(<span class="string">'Stage One'</span>)&#123;</span><br><span class="line">            steps&#123;</span><br><span class="line">                sh <span class="string">"echo *** This is Stage One ***"</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        stage(<span class="string">'Stage Two'</span>)&#123;</span><br><span class="line">            steps&#123;</span><br><span class="line">                sh <span class="string">"echo $&#123;env.BUILD_NUMBER&#125;"</span></span><br><span class="line">                sh <span class="string">"echo $&#123;env.NODE_NAME&#125; , $&#123;env.JOB_NAME&#125;"</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        stage(<span class="string">"Invoke second job without parameters"</span>)&#123;</span><br><span class="line">            steps&#123;</span><br><span class="line">                build <span class="string">job:</span> <span class="string">'second_job'</span></span><br><span class="line">                sleep <span class="number">30</span></span><br><span class="line">           &#125;</span><br><span class="line">        &#125;   </span><br><span class="line"></span><br><span class="line">        stage(<span class="string">"Invoke second job with parameters"</span>)&#123;</span><br><span class="line">            steps&#123;</span><br><span class="line">                build <span class="string">job:</span> <span class="string">'second_job'</span>,</span><br><span class="line"><span class="symbol">                parameters:</span>[</span><br><span class="line">                    string(<span class="string">name:</span><span class="string">'Para1'</span>,<span class="string">value:</span>String.valueOf(JOB_NAME)),</span><br><span class="line">                    string(<span class="string">name:</span><span class="string">'Para2'</span>,<span class="string">value:</span>String.valueOf(BUILD_NUMBER))</span><br><span class="line">                ]</span><br><span class="line">           &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">    &#125;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>second_job </p>
-<p>点击““参数化构建””手动添加 两个参数</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pipeline &#123;</span><br><span class="line">    agent any </span><br><span class="line">    </span><br><span class="line">    stages &#123;</span><br><span class="line">        stage(<span class="string">'Stage One'</span>)&#123;</span><br><span class="line">            steps&#123;</span><br><span class="line">                sh <span class="string">"echo *** This is <span class="variable">$&#123;env.JOB_NAME&#125;</span> ,and We are stage one ***"</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    stage(<span class="string">'Echo origin_job para'</span>)&#123;</span><br><span class="line">        steps&#123;</span><br><span class="line">                sh <span class="string">"echo <span class="variable">$&#123;env.Para1&#125;</span>"</span></span><br><span class="line">                sh <span class="string">"echo <span class="variable">$&#123;env.Para2&#125;</span>"</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <tags>
-        <tag>jenkins</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>backup specially with shell script or python</title>
-    <url>/2019/05/21/Linux-backup-specially/</url>
-    <content><![CDATA[<h3 id="需求：-备份目录，只备份新加的文件，不备份减少的文件"><a href="#需求：-备份目录，只备份新加的文件，不备份减少的文件" class="headerlink" title="需求： 备份目录，只备份新加的文件，不备份减少的文件"></a>需求： 备份目录，只备份新加的文件，不备份减少的文件</h3><p>分析： 通常备份目录用 <code>rsync</code> 就可以达到目的，但开发同学怕误操作，删除文件，于是提出这个 <em>只增不减</em> 的需求</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="function"><span class="title">backUp</span></span>()&#123;</span><br><span class="line"><span class="built_in">local</span> sourceDir=<span class="variable">$1</span> <span class="comment">#需要备份的文件/目录</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">local</span> destDir=<span class="variable">$2</span> <span class="comment">#备份目的地</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -d <span class="string">"<span class="variable">$sourceDir</span>"</span> ] <span class="comment">#备份目录</span></span><br><span class="line"><span class="keyword">then</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">#如果目录尚未备份，则创建此目录</span></span><br><span class="line">  <span class="keyword">if</span> [ ! -d <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span> ]</span><br><span class="line">  <span class="keyword">then</span></span><br><span class="line">  <span class="built_in">echo</span> -e <span class="string">"创建目录\t<span class="variable">$sourceDir</span>"</span></span><br><span class="line">  mkdir -p <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span></span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#对目录中对每一个文件,递归调用此函数进行备份</span></span><br><span class="line"><span class="keyword">for</span> var <span class="keyword">in</span> $(ls <span class="string">"<span class="variable">$sourceDir</span>"</span>)</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">backUp <span class="string">"<span class="variable">$sourceDir</span>/<span class="variable">$var</span>"</span> <span class="string">"<span class="variable">$destDir</span>"</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"><span class="keyword">else</span> <span class="comment">#备份文件</span></span><br><span class="line">  <span class="comment">#如果文件在尚未备份，则直接复制</span></span><br><span class="line">  <span class="keyword">if</span> [ ! -f <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span> ]</span><br><span class="line">  <span class="keyword">then</span></span><br><span class="line">  <span class="built_in">echo</span> -e <span class="string">"备份文件\t<span class="variable">$sourceDir</span>"</span></span><br><span class="line">  cp <span class="string">"<span class="variable">$sourceDir</span>"</span> <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span></span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">#如果文件已存在，则比较两个文件对最后修改时间，如果文件已修改，则更新文件</span></span><br><span class="line">  lastModifi_backup=$(date -r <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span> +%s)</span><br><span class="line">  lastModifi_current=$(date -r <span class="string">"<span class="variable">$sourceDir</span>"</span> +%s)</span><br><span class="line">    <span class="keyword">if</span> [ <span class="string">"<span class="variable">$lastModifi_current</span>"</span> -gt <span class="string">"<span class="variable">$lastModifi_backup</span>"</span> ]</span><br><span class="line">    <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> -e <span class="string">"更新文件\t<span class="variable">$sourceDir</span>"</span> </span><br><span class="line">    cp <span class="string">"<span class="variable">$sourceDir</span>"</span> <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line">backUp <span class="string">"<span class="variable">$1</span>"</span> <span class="string">"<span class="variable">$2</span>"</span></span><br></pre></td></tr></table></figure>
-<p>运行脚本： <code>./backupSpecially.sh &quot;/date/originData&quot; &quot;/date/backup_dir&quot;</code></p>
-<p>发现运行shell脚本有问题，于是大神帮我写了个python</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python2.7</span></span><br><span class="line"><span class="comment"># -*- encoding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> os,time,filecmp</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">differentFileCopy</span><span class="params">(sourcePath, targetPath)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(sourcePath):</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(targetPath):</span><br><span class="line">        os.makedirs(targetPath)</span><br><span class="line">    <span class="keyword">for</span> fileName <span class="keyword">in</span> os.listdir(sourcePath):</span><br><span class="line">        absourcePath = os.path.join(sourcePath, fileName)</span><br><span class="line">        abstargetPath = os.path.join(targetPath, fileName)</span><br><span class="line">        <span class="keyword">if</span> os.path.isdir(absourcePath):</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(abstargetPath):</span><br><span class="line">                os.makedirs(abstargetPath)</span><br><span class="line">                differentFileCopy(absourcePath, abstargetPath)</span><br><span class="line">        <span class="keyword">if</span> os.path.isfile(absourcePath):</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(abstargetPath):</span><br><span class="line">                <span class="keyword">print</span> <span class="string">'copy %s to %s'</span> %(fileName,abstargetPath)</span><br><span class="line">                os.system(<span class="string">'cp'</span>+<span class="string">' '</span>+absourcePath+<span class="string">' '</span>+targetPath)</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> filecmp.cmp(absourcePath,abstargetPath):</span><br><span class="line">                <span class="keyword">print</span> <span class="string">'copy %s to %s'</span> %(fileName,abstargetPath)</span><br><span class="line">                os.system(<span class="string">'cp'</span>+<span class="string">' '</span>+absourcePath+<span class="string">' '</span>+targetPath)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    startTime = time.clock()</span><br><span class="line">    sourcePath = <span class="string">r"/date/originData"</span></span><br><span class="line">    targetPath = <span class="string">r"/date/Data_backupDir"</span></span><br><span class="line">    differentFileCopy(sourcePath, targetPath)</span><br><span class="line">    endTime = time.clock()</span><br><span class="line">    time_mi = endTime // <span class="number">60</span></span><br><span class="line">    time_s = endTime // <span class="number">1</span> % <span class="number">60</span></span><br><span class="line">    time_ms = ((endTime * <span class="number">100</span>) // <span class="number">1</span>) % <span class="number">100</span></span><br><span class="line">    print(<span class="string">"总用时:%02.0f:%02.0f:%2.0f"</span> % (time_mi, time_s, time_ms))</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Shell</tag>
       </tags>
   </entry>
   <entry>
@@ -1664,20 +1664,6 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>Shell count time</title>
-    <url>/2019/06/17/Shell-count-time/</url>
-    <content><![CDATA[<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">start=$(date +%s)</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> ---------</span><br><span class="line"><span class="comment">#type your command, like: sleep 50</span></span><br><span class="line">sleep 50</span><br><span class="line"></span><br><span class="line">end=$(date +%s)</span><br><span class="line"></span><br><span class="line">diff=$((end - start))</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">"\e[1;32m take time is: <span class="variable">$diff</span> \e[m"</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> Count:</span><br><span class="line">tput sc</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> count <span class="keyword">in</span> `seq 0 40`</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  tput rc</span><br><span class="line">  tput ed</span><br><span class="line">  <span class="built_in">echo</span> -n <span class="variable">$count</span></span><br><span class="line">  sleep 1</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-<p>用 tput sc 存储光标位置。在每次循环中，通过 tput rc 恢复之前的存储的光标位置，在终端中打印出新的 count 值，然后使用 tputs ed 清除从当前位置到行尾之间的所有内容。行被清空之后，脚本就可以显示出新的值。sleep  可以使脚本在每次循环迭代之间延迟1秒钟。</p>
-]]></content>
-      <categories>
-        <category>Shell</category>
-      </categories>
-      <tags>
-        <tag>Shell</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Shell Script Standards</title>
     <url>/2019/05/29/Shell-Script-Standards/</url>
     <content><![CDATA[<h5 id="Part1-命名约定"><a href="#Part1-命名约定" class="headerlink" title="Part1: 命名约定"></a>Part1: 命名约定</h5><ul>
@@ -1716,6 +1702,20 @@ pipeline {
 <li><a href="https://blog.csdn.net/wirelessqa/article/details/18863403" target="_blank" rel="noopener">https://blog.csdn.net/wirelessqa/article/details/18863403</a></li>
 </ul>
 </blockquote>
+]]></content>
+      <categories>
+        <category>Shell</category>
+      </categories>
+      <tags>
+        <tag>Shell</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Shell count time</title>
+    <url>/2019/06/17/Shell-count-time/</url>
+    <content><![CDATA[<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">start=$(date +%s)</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> ---------</span><br><span class="line"><span class="comment">#type your command, like: sleep 50</span></span><br><span class="line">sleep 50</span><br><span class="line"></span><br><span class="line">end=$(date +%s)</span><br><span class="line"></span><br><span class="line">diff=$((end - start))</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">"\e[1;32m take time is: <span class="variable">$diff</span> \e[m"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> Count:</span><br><span class="line">tput sc</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> count <span class="keyword">in</span> `seq 0 40`</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  tput rc</span><br><span class="line">  tput ed</span><br><span class="line">  <span class="built_in">echo</span> -n <span class="variable">$count</span></span><br><span class="line">  sleep 1</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<p>用 tput sc 存储光标位置。在每次循环中，通过 tput rc 恢复之前的存储的光标位置，在终端中打印出新的 count 值，然后使用 tputs ed 清除从当前位置到行尾之间的所有内容。行被清空之后，脚本就可以显示出新的值。sleep  可以使脚本在每次循环迭代之间延迟1秒钟。</p>
 ]]></content>
       <categories>
         <category>Shell</category>
@@ -1887,6 +1887,66 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>Test 01:Introduction</title>
+    <url>/2019/11/08/Test-01-Introduction/</url>
+    <content><![CDATA[<h3 id="1-测试金字塔"><a href="#1-测试金字塔" class="headerlink" title="1.测试金字塔"></a>1.测试金字塔</h3><p><img src="/images/test_pyramid.png" width="60%" height="60%"></p>
+<p>被引用较多的关于测试的文章 -&gt; <a href="https://insights.thoughtworks.cn/practical-test-pyramid/" target="_blank" rel="noopener">测试金字塔实战</a></p>
+<p>认识：  </p>
+<ul>
+<li>1、unit单元测试，速度快，且成本低（当然这里的成本低，是指可以前移测试早发现问题，缺陷修复代价来讲，但从目前如果开发要强制单元测试，成本其实并不低，影响因素也众多）</li>
+<li>2、ui端到端测试，速度慢，且成本高（与上面解释类似）</li>
+<li>3、Service集成和接口测试，处于二者中间，其实这块我认为是测试收益最大，且最容易有成果和成效的部分；</li>
+<li>4、自动化测试金字塔模型还给我们的启示是，如果在进行ui测试时，发现缺陷，有可能是你的中间service层或是unit层有缺陷，我们应追朔本源，解决问题根据原因所在。</li>
+</ul>
+<blockquote>
+<p>不要太拘泥于测试金字塔中单个层的名称。只是一个抽象概念</p>
+</blockquote>
+<h3 id="2-测试分类"><a href="#2-测试分类" class="headerlink" title="2.测试分类"></a>2.测试分类</h3><p>测试类型按照不同维度可以有很多种分类，比如说</p>
+<ul>
+<li>1.基于是否考虑软件内部结构和实现<ul>
+<li>白盒测试</li>
+<li>黑盒测试</li>
+<li>灰盒测试</li>
+</ul>
+</li>
+<li>2.基于是否执行程序<ul>
+<li>静态测试</li>
+<li>动态测试</li>
+</ul>
+</li>
+<li>3.基于测试过程<ul>
+<li>单元测试</li>
+<li>集成测试</li>
+<li>冒烟测试</li>
+<li>功能测试(系统测试)<ul>
+<li>探索式测试</li>
+<li>场景测试</li>
+<li>流测试</li>
+<li>域测试</li>
+</ul>
+</li>
+<li>兼容性测试</li>
+<li>回归测试</li>
+<li>验收测试</li>
+<li>性能测试<ul>
+<li>压力测试</li>
+<li>负载测试</li>
+</ul>
+</li>
+<li>安全测试</li>
+</ul>
+</li>
+</ul>
+<p>大牛的测试文章<a href="https://danteyu.github.io/2017/10/21/teststrategy/" target="_blank" rel="noopener">这里</a>；还有微服务相关的测试，<a href="https://insights.thoughtworks.cn/microservices-testing-practice/" target="_blank" rel="noopener">微服务测试的思考与实践</a>;还有<strong>测试左移，测试右移</strong>。</p>
+]]></content>
+      <categories>
+        <category>Test</category>
+      </categories>
+      <tags>
+        <tag>Test</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Test 02:Tools</title>
     <url>/2019/11/08/Test-02-Tools/</url>
     <content><![CDATA[<p><mark>测试种类与测试工具没有一对一的关系。</mark></p>
@@ -1955,64 +2015,13 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>Test 01:Introduction</title>
-    <url>/2019/11/08/Test-01-Introduction/</url>
-    <content><![CDATA[<h3 id="1-测试金字塔"><a href="#1-测试金字塔" class="headerlink" title="1.测试金字塔"></a>1.测试金字塔</h3><p><img src="/images/test_pyramid.png" width="60%" height="60%"></p>
-<p>被引用较多的关于测试的文章 -&gt; <a href="https://insights.thoughtworks.cn/practical-test-pyramid/" target="_blank" rel="noopener">测试金字塔实战</a></p>
-<p>认识：  </p>
-<ul>
-<li>1、unit单元测试，速度快，且成本低（当然这里的成本低，是指可以前移测试早发现问题，缺陷修复代价来讲，但从目前如果开发要强制单元测试，成本其实并不低，影响因素也众多）</li>
-<li>2、ui端到端测试，速度慢，且成本高（与上面解释类似）</li>
-<li>3、Service集成和接口测试，处于二者中间，其实这块我认为是测试收益最大，且最容易有成果和成效的部分；</li>
-<li>4、自动化测试金字塔模型还给我们的启示是，如果在进行ui测试时，发现缺陷，有可能是你的中间service层或是unit层有缺陷，我们应追朔本源，解决问题根据原因所在。</li>
-</ul>
-<blockquote>
-<p>不要太拘泥于测试金字塔中单个层的名称。只是一个抽象概念</p>
+    <title>about</title>
+    <url>/2020/03/16/about/</url>
+    <content><![CDATA[<blockquote>
+<p>Ops, China Wuhan.</p>
 </blockquote>
-<h3 id="2-测试分类"><a href="#2-测试分类" class="headerlink" title="2.测试分类"></a>2.测试分类</h3><p>测试类型按照不同维度可以有很多种分类，比如说</p>
-<ul>
-<li>1.基于是否考虑软件内部结构和实现<ul>
-<li>白盒测试</li>
-<li>黑盒测试</li>
-<li>灰盒测试</li>
-</ul>
-</li>
-<li>2.基于是否执行程序<ul>
-<li>静态测试</li>
-<li>动态测试</li>
-</ul>
-</li>
-<li>3.基于测试过程<ul>
-<li>单元测试</li>
-<li>集成测试</li>
-<li>冒烟测试</li>
-<li>功能测试(系统测试)<ul>
-<li>探索式测试</li>
-<li>场景测试</li>
-<li>流测试</li>
-<li>域测试</li>
-</ul>
-</li>
-<li>兼容性测试</li>
-<li>回归测试</li>
-<li>验收测试</li>
-<li>性能测试<ul>
-<li>压力测试</li>
-<li>负载测试</li>
-</ul>
-</li>
-<li>安全测试</li>
-</ul>
-</li>
-</ul>
-<p>大牛的测试文章<a href="https://danteyu.github.io/2017/10/21/teststrategy/" target="_blank" rel="noopener">这里</a>；还有微服务相关的测试，<a href="https://insights.thoughtworks.cn/microservices-testing-practice/" target="_blank" rel="noopener">微服务测试的思考与实践</a>;还有<strong>测试左移，测试右移</strong>。</p>
+<p>现居: 武汉<br>GitHub: ～<br>QQ: 771963601<br>微信: ～</p>
 ]]></content>
-      <categories>
-        <category>Test</category>
-      </categories>
-      <tags>
-        <tag>Test</tag>
-      </tags>
   </entry>
   <entry>
     <title>The Gig Economy Note</title>
@@ -2034,15 +2043,6 @@ pipeline {
       <categories>
         <category>读书笔记</category>
       </categories>
-  </entry>
-  <entry>
-    <title>about</title>
-    <url>/2020/03/16/about/</url>
-    <content><![CDATA[<blockquote>
-<p>Ops, China Wuhan.</p>
-</blockquote>
-<p>现居: 武汉<br>GitHub: ～<br>QQ: 771963601<br>微信: ～</p>
-]]></content>
   </entry>
   <entry>
     <title>adminMongo: a cross platform user interface (GUI) to connect MongoDB</title>
@@ -2386,6 +2386,17 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>packer intro</title>
+    <url>/2019/08/30/packer-intro/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>packer</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>python module SimpleHTTPServer</title>
     <url>/2019/08/18/python-module-SimpleHTTPServer/</url>
     <content><![CDATA[<h3 id="what-is"><a href="#what-is" class="headerlink" title="what is"></a>what is</h3><p>The <strong>SimpleHTTPServer</strong> module can be used in the following manner in order to set up a very basic web server serving files <strong>relative</strong> to the current directory.</p>
@@ -2407,17 +2418,6 @@ pipeline {
       <tags>
         <tag>Tools</tag>
         <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>packer intro</title>
-    <url>/2019/08/30/packer-intro/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>packer</tag>
       </tags>
   </entry>
   <entry>
@@ -2834,16 +2834,26 @@ pipeline {
     <url>/2020/04/08/%E5%B7%A8%E6%B5%AA%E4%B8%8B%E7%9A%84%E5%B0%8F%E5%AD%A6/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>《巨浪下的小学》是一本书名，一位旅居日本的英国作家，“钻牛角尖”式地调查、反思一场日本东北部海啸的事件。更多的内容用在描述记录发生悲剧的原因、灾难后幸存者的生活、与政府打官司的过程。结局尚不揭秘，下文再聊。</p>
 <h3 id="摘抄"><a href="#摘抄" class="headerlink" title="摘抄"></a>摘抄</h3><blockquote>
-<p><code>震动本身并没有那么令人害怕，但它会越来越强烈，而且不知道何时会结束，这才令人胆战心惊</code></p>
+<p>震动本身并没有那么令人害怕，但它会越来越强烈，而且不知道何时会结束，这才令人胆战心惊</p>
 </blockquote>
 <blockquote>
-<p><code>伤亡人数极难确定。晚上6:30，电视新闻报道称有23人死亡。但到了晚上9点，这一数字上升到61人，午夜过后，各大通讯社报道仍称死亡人数为64人。显然，随着通信逐渐恢复，具体数字还将继续上升。这种情况通常会催生一种非理性的悲观情绪，人们会倾向于相信最糟糕的可能性，而最终结果很可能没有那么坏。</code></p>
+<p>伤亡人数极难确定。晚上6:30，电视新闻报道称有23人死亡。但到了晚上9点，这一数字上升到61人，午夜过后，各大通讯社报道仍称死亡人数为64人。显然，随着通信逐渐恢复，具体数字还将继续上升。这种情况通常会催生一种非理性的悲观情绪，人们会倾向于相信最糟糕的可能性，而最终结果很可能没有那么坏。</p>
 </blockquote>
-<p><code>恐惧生根发芽，对于看不见的毒物的恐惧在空中飘荡，在水中流淌</code></p>
-<p><code>那些在战区和灾区工作的人，过了一段时间后，就会习得一种从事件中抽离出来的本领。这是一种职业需要：如果轻易就被这种死亡和痛苦的景象压垮，那没有哪个医生、救援人员或记者能干好自己的工作。获得这种本领的诀窍在于收起同情心，不要把每个人的悲剧当成自己的悲剧，而我已经掌握这一窍门。我知道发生了什么，我也知道一切是多么骇人听闻，但关键是我自己不能被吓倒。</code></p>
-<p><code>他们有一张“灾害地图”，用来标识易受海啸袭击的沿海地区，但上面没有釜谷。他们在编写学校应急手册时，没有考虑到海啸的可能性，也没有进行海啸疏散演习。市政府也没有人检查学校的应急准备工作。报告还总结称，学校的老师从心理上无法接受危险迫在眉睫这件事。</code></p>
-<p><code>海啸过后的几年时间里，日本发生了各种各样的变化，但结果是让民众因此失去而不是获得力量和信心。其中部分原因是整个东亚地区都变得越来越不安稳——朝鲜的咄咄逼人，还有中国的自信满满。但关键还是在于日本领导层与其所应该代表的民众之间的隔阂越来越大。</code></p>
-<p><code>“孩子被看不见的怪物谋杀了，”紫桃佐代美说，“我们向它发泄愤怒，可是它没有任何反应。它就好像一团黑影，没有人类的温暖。”她继续说，“海啸是个看得见的怪物。可是，看不见的怪物将永远存在。</code></p>
+<blockquote>
+<p>恐惧生根发芽，对于看不见的毒物的恐惧在空中飘荡，在水中流淌</p>
+</blockquote>
+<blockquote>
+<p>那些在战区和灾区工作的人，过了一段时间后，就会习得一种从事件中抽离出来的本领。这是一种职业需要：如果轻易就被这种死亡和痛苦的景象压垮，那没有哪个医生、救援人员或记者能干好自己的工作。获得这种本领的诀窍在于收起同情心，不要把每个人的悲剧当成自己的悲剧，而我已经掌握这一窍门。我知道发生了什么，我也知道一切是多么骇人听闻，但关键是我自己不能被吓倒。</p>
+</blockquote>
+<blockquote>
+<p>他们有一张“灾害地图”，用来标识易受海啸袭击的沿海地区，但上面没有釜谷。他们在编写学校应急手册时，没有考虑到海啸的可能性，也没有进行海啸疏散演习。市政府也没有人检查学校的应急准备工作。报告还总结称，学校的老师从心理上无法接受危险迫在眉睫这件事。</p>
+</blockquote>
+<blockquote>
+<p>海啸过后的几年时间里，日本发生了各种各样的变化，但结果是让民众因此失去而不是获得力量和信心。其中部分原因是整个东亚地区都变得越来越不安稳——朝鲜的咄咄逼人，还有中国的自信满满。但关键还是在于日本领导层与其所应该代表的民众之间的隔阂越来越大。`</p>
+</blockquote>
+<blockquote>
+<p>“孩子被看不见的怪物谋杀了，”紫桃佐代美说，“我们向它发泄愤怒，可是它没有任何反应。它就好像一团黑影，没有人类的温暖。”她继续说，“海啸是个看得见的怪物。可是，看不见的怪物将永远存在。</p>
+</blockquote>
 <p><code>隆洋则说：“人类制造的一切最终都将被自然摧毁。高山与河流都是大自然的产物，它们将继续存在。而人类的一切都会消逝。我们需要重新思考我们给予大自然的尊重。”</code></p>
 <p><code>但是，大川小学悲剧的处理问题总是笼罩着一层不光彩、不公正的阴云，他们似乎都在拼命抑制某种恐慌，笨拙地掩饰着什么。有时候，这似乎既体现了他们的无能，又像是一个蓄谋已久的阴谋。每隔几周就会出现新的面孔，但依旧面无表情且无能。</code></p>
 <p><code>旧盟友和老相识之间反而散发出一种同志般的快乐之情。但在场的每个人都做好了失败的准备。吉冈已经竭尽全力打这场官司，但仍然无法改变某些事实。</code></p>
