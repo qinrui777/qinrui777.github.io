@@ -1401,22 +1401,6 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>Makefile 106: Functions</title>
-    <url>/2019/07/05/Makefile-106-Functions/</url>
-    <content><![CDATA[<p>（1）shell 函数</p>
-<p>（2）wildcard 函数</p>
-<p>（3）subst 函数</p>
-<p>（4）patsubst函数</p>
-<p>（5）替换后缀名</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>makefile</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>PPT Tools</title>
     <url>/2019/08/25/PPT-Tools/</url>
     <content><![CDATA[<p>TL;DR<br>  一个好的PPT，全靠自己一块一块地“搬砖”当然可以制作的很精良，但时间也就流逝了许多，介绍一些可能用到的工具，简化这些制作的步骤。</p>
@@ -1457,6 +1441,22 @@ pipeline {
       <tags>
         <tag>Tools</tag>
         <tag>PPT</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Makefile 106: Functions</title>
+    <url>/2019/07/05/Makefile-106-Functions/</url>
+    <content><![CDATA[<p>（1）shell 函数</p>
+<p>（2）wildcard 函数</p>
+<p>（3）subst 函数</p>
+<p>（4）patsubst函数</p>
+<p>（5）替换后缀名</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>makefile</tag>
       </tags>
   </entry>
   <entry>
@@ -1619,22 +1619,6 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>Shell Print text between specified lines or patterns</title>
-    <url>/2019/06/14/Shell-Print-text-between-specified-lines-or-patterns/</url>
-    <content><![CDATA[<p>awk,grep,sed,head,tail 都可以根据条件打印部分行。最简单的方法是使用 grep 打印匹配模式的行。不过，最全能的工具还是 awk.</p>
-<h4 id="Example-1-打印从-M-行到-N-行之间的文本"><a href="#Example-1-打印从-M-行到-N-行之间的文本" class="headerlink" title="Example 1: 打印从 M 行到 N 行之间的文本"></a>Example 1: 打印从 M 行到 N 行之间的文本</h4><p><code>$ awk &#39;NR==M,NR==N&#39; filename</code></p>
-<p>也可以从stdin读取输入：<br><code>cat filename | awk &#39;NR==M, NR==N&#39;</code></p>
-<h4 id="Example-2-打印位于模式-start-pattern-与-end-pattern-之间的文本"><a href="#Example-2-打印位于模式-start-pattern-与-end-pattern-之间的文本" class="headerlink" title="Example 2: 打印位于模式 start_pattern 与 end_pattern 之间的文本"></a>Example 2: 打印位于模式 start_pattern 与 end_pattern 之间的文本</h4><p><code>awk &#39;/start_pattern/,/end_pattern/&#39; filename</code></p>
-<p>awk中使用的模式为正则表达式</p>
-]]></content>
-      <categories>
-        <category>Shell</category>
-      </categories>
-      <tags>
-        <tag>Shell</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Scan Docker Images for Vulnerabilities</title>
     <url>/2019/12/11/Scan-Docker-Images-for-Vulnerabilities/</url>
     <content><![CDATA[<ul>
@@ -1661,6 +1645,22 @@ pipeline {
 ]]></content>
       <tags>
         <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Shell Print text between specified lines or patterns</title>
+    <url>/2019/06/14/Shell-Print-text-between-specified-lines-or-patterns/</url>
+    <content><![CDATA[<p>awk,grep,sed,head,tail 都可以根据条件打印部分行。最简单的方法是使用 grep 打印匹配模式的行。不过，最全能的工具还是 awk.</p>
+<h4 id="Example-1-打印从-M-行到-N-行之间的文本"><a href="#Example-1-打印从-M-行到-N-行之间的文本" class="headerlink" title="Example 1: 打印从 M 行到 N 行之间的文本"></a>Example 1: 打印从 M 行到 N 行之间的文本</h4><p><code>$ awk &#39;NR==M,NR==N&#39; filename</code></p>
+<p>也可以从stdin读取输入：<br><code>cat filename | awk &#39;NR==M, NR==N&#39;</code></p>
+<h4 id="Example-2-打印位于模式-start-pattern-与-end-pattern-之间的文本"><a href="#Example-2-打印位于模式-start-pattern-与-end-pattern-之间的文本" class="headerlink" title="Example 2: 打印位于模式 start_pattern 与 end_pattern 之间的文本"></a>Example 2: 打印位于模式 start_pattern 与 end_pattern 之间的文本</h4><p><code>awk &#39;/start_pattern/,/end_pattern/&#39; filename</code></p>
+<p>awk中使用的模式为正则表达式</p>
+]]></content>
+      <categories>
+        <category>Shell</category>
+      </categories>
+      <tags>
+        <tag>Shell</tag>
       </tags>
   </entry>
   <entry>
@@ -2058,6 +2058,35 @@ pipeline {
       </categories>
   </entry>
   <entry>
+    <title>bash : set command</title>
+    <url>/2019/05/07/bash-set-command/</url>
+    <content><![CDATA[<h2 id="set-命令教程"><a href="#set-命令教程" class="headerlink" title="set 命令教程"></a>set 命令教程</h2><p><strong>set</strong> 命令用来修改 Shell 环境的运行参数，也就是可以定制环境</p>
+<p>介绍常用的参数</p>
+<h4 id="1-set-u"><a href="#1-set-u" class="headerlink" title="1. set -u"></a>1. <code>set -u</code></h4><p>执行脚本的时候，如果遇到不存在的变量，Bash 默认忽略它。</p>
+<p><code>set -u</code> = <code>set -o nounset</code></p>
+<h4 id="2-set-x"><a href="#2-set-x" class="headerlink" title="2. set -x"></a>2. <code>set -x</code></h4><p>默认情况下，脚本执行后，屏幕只显示运行结果，没有其他内容。如果多个命令连续执行，它们的运行结果就会连续输出。有时会分不清，某一段内容是什么命令产生的。</p>
+<p><code>set -x</code> = <code>set -o xtrace</code></p>
+<h4 id="3-set-e"><a href="#3-set-e" class="headerlink" title="3. set -e"></a>3. <code>set -e</code></h4><p>使得脚本只要发生错误，就终止执行。<br><code>set -e</code> = <code>set -o errexit</code></p>
+<h4 id="4-set-o-pipefail"><a href="#4-set-o-pipefail" class="headerlink" title="4. set -o pipefail"></a>4. <code>set -o pipefail</code></h4><p>set -e有一个例外情况，就是不适用于管道命令。</p>
+<p>所谓管道命令，就是多个子命令通过管道运算符（|）组合成为一个大的命令。Bash 会把最后一个子命令的返回值，作为整个命令的返回值。也就是说，只要最后一个子命令不失败，管道命令总是会执行成功，因此它后面命令依然会执行，set -e就失效了。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env bash</span></span><br><span class="line"><span class="built_in">set</span> -eo pipefail</span><br><span class="line"></span><br><span class="line">foo | <span class="built_in">echo</span> a</span><br><span class="line"><span class="built_in">echo</span> bar</span><br></pre></td></tr></table></figure>
+<p><code>echo bar</code>没有执行 ,否则在不用  <code>pipefail</code> 的情况下，会继续执行  <code>echo bar</code></p>
+<h4 id="End"><a href="#End" class="headerlink" title="End"></a>End</h4><p>set命令的上面这四个参数，一般都放在一起使用。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 写法一</span></span><br><span class="line">set -euxo pipefail</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 写法二</span></span><br><span class="line">set -eux</span><br><span class="line">set -o pipefail</span><br></pre></td></tr></table></figure>
+<p><strong>More Ref:</strong></p>
+<ul>
+<li><a href="https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html" target="_blank" rel="noopener">https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2017/11/bash-set.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2017/11/bash-set.html</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Shell</category>
+      </categories>
+      <tags>
+        <tag>Shell</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>devops 4大支柱</title>
     <url>/2019/10/17/devops-4%E5%A4%A7%E6%94%AF%E6%9F%B1/</url>
     <content><![CDATA[<h3 id="一、个人感想"><a href="#一、个人感想" class="headerlink" title="一、个人感想"></a>一、个人感想</h3><p>  书中的标题看起来总是“高大上”的，但说出来的都是一些无形的东西，要理解这类理念需要时间的积累。这里先摘抄几句，一起“品味”一下。其中许多文化、方法论与现在的外企公司比较吻合，相对理解起来容易些; 书中涉及到了很多细节，比如 <em>招聘和面试（p250）</em>, <em>当责文化(p269)</em>、<em>显性文化(p270)</em> 、<em>报酬（p241）</em>等，都值得去了解和追寻。</p>
@@ -2088,35 +2117,6 @@ pipeline {
       <categories>
         <category>读书笔记</category>
       </categories>
-  </entry>
-  <entry>
-    <title>bash : set command</title>
-    <url>/2019/05/07/bash-set-command/</url>
-    <content><![CDATA[<h2 id="set-命令教程"><a href="#set-命令教程" class="headerlink" title="set 命令教程"></a>set 命令教程</h2><p><strong>set</strong> 命令用来修改 Shell 环境的运行参数，也就是可以定制环境</p>
-<p>介绍常用的参数</p>
-<h4 id="1-set-u"><a href="#1-set-u" class="headerlink" title="1. set -u"></a>1. <code>set -u</code></h4><p>执行脚本的时候，如果遇到不存在的变量，Bash 默认忽略它。</p>
-<p><code>set -u</code> = <code>set -o nounset</code></p>
-<h4 id="2-set-x"><a href="#2-set-x" class="headerlink" title="2. set -x"></a>2. <code>set -x</code></h4><p>默认情况下，脚本执行后，屏幕只显示运行结果，没有其他内容。如果多个命令连续执行，它们的运行结果就会连续输出。有时会分不清，某一段内容是什么命令产生的。</p>
-<p><code>set -x</code> = <code>set -o xtrace</code></p>
-<h4 id="3-set-e"><a href="#3-set-e" class="headerlink" title="3. set -e"></a>3. <code>set -e</code></h4><p>使得脚本只要发生错误，就终止执行。<br><code>set -e</code> = <code>set -o errexit</code></p>
-<h4 id="4-set-o-pipefail"><a href="#4-set-o-pipefail" class="headerlink" title="4. set -o pipefail"></a>4. <code>set -o pipefail</code></h4><p>set -e有一个例外情况，就是不适用于管道命令。</p>
-<p>所谓管道命令，就是多个子命令通过管道运算符（|）组合成为一个大的命令。Bash 会把最后一个子命令的返回值，作为整个命令的返回值。也就是说，只要最后一个子命令不失败，管道命令总是会执行成功，因此它后面命令依然会执行，set -e就失效了。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env bash</span></span><br><span class="line"><span class="built_in">set</span> -eo pipefail</span><br><span class="line"></span><br><span class="line">foo | <span class="built_in">echo</span> a</span><br><span class="line"><span class="built_in">echo</span> bar</span><br></pre></td></tr></table></figure>
-<p><code>echo bar</code>没有执行 ,否则在不用  <code>pipefail</code> 的情况下，会继续执行  <code>echo bar</code></p>
-<h4 id="End"><a href="#End" class="headerlink" title="End"></a>End</h4><p>set命令的上面这四个参数，一般都放在一起使用。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 写法一</span></span><br><span class="line">set -euxo pipefail</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 写法二</span></span><br><span class="line">set -eux</span><br><span class="line">set -o pipefail</span><br></pre></td></tr></table></figure>
-<p><strong>More Ref:</strong></p>
-<ul>
-<li><a href="https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html" target="_blank" rel="noopener">https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html</a></li>
-<li><a href="http://www.ruanyifeng.com/blog/2017/11/bash-set.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2017/11/bash-set.html</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Shell</category>
-      </categories>
-      <tags>
-        <tag>Shell</tag>
-      </tags>
   </entry>
   <entry>
     <title>&#39;devops&#39; 还是 &#39;DevOps&#39;?</title>
@@ -2175,32 +2175,6 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>docker 镜像逆向工程得到Dockerfile</title>
-    <url>/2019/07/25/docker-%E9%95%9C%E5%83%8F%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E5%BE%97%E5%88%B0Dockerfile/</url>
-    <content><![CDATA[<p>可能有时候你得到了一个从Dockerfile创建的镜像文件，但是原始的Dockerfile丢失了。你想从这个镜像文件的构建历史记录中，逆向分析出原始的Dockerfile而省去寻找此文件的漫长过程。</p>
-<p>虽然不可能在所有的情况下将一个Docker镜像完全得进行逆向工程，但如果此镜像是通过Dockerfile构建的，很有可能分析出此镜像是通过了什么命令得到的。我们以下面的Dockerfile为例，构建一个镜像，然后运行一个简单的shell脚本来演示如何分析镜像的构建历史记录，最后来看一个简洁的容器化的解决方案，来得出原始的Dockerfile。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">FROM busybox</span><br><span class="line">MAINTAINER ian.miell@gmail.com</span><br><span class="line">ENV myenvname myenvvalue</span><br><span class="line">LABEL mylabelname mylabelvalue</span><br><span class="line">WORKDIR /opt</span><br><span class="line">RUN mkdir -p copied</span><br><span class="line">COPY Dockerfile copied/Dockerfile</span><br><span class="line">RUN mkdir -p added</span><br><span class="line">ADD Dockerfile added/Dockerfile</span><br><span class="line">RUN touch /tmp/afile</span><br><span class="line">ADD Dockerfile /</span><br><span class="line">EXPOSE 80</span><br><span class="line">VOLUME /data</span><br><span class="line">ONBUILD touch /tmp/built</span><br><span class="line">ENTRYPOINT /bin/bash</span><br><span class="line">CMD -r</span><br></pre></td></tr></table></figure>
-<p>首先要构建这个示例镜像，镜像命名为reverseme：</p>
-<p><code>$ docker build -t reverseme .</code></p>
-<h5 id="SHELL解决方案"><a href="#SHELL解决方案" class="headerlink" title="SHELL解决方案"></a>SHELL解决方案</h5><p>这个基于shell的实现主要在这里用来演示逆向工程的思路与方法，它与下面的容器化解决方案相比还不是十分完整。此方案使用了docker inspect命令来提取出镜像的metadata。</p>
-<p>此shell脚本中使用了jq程序，一个可以查询和操作JSON数据的工具。为了运行此脚本，需要安装jq程序</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">history</span> reverseme | \</span><br><span class="line">awk <span class="string">'&#123;print $1&#125;'</span> | \</span><br><span class="line">grep -v IMAGE | grep -v missing | \</span><br><span class="line">tac | \</span><br><span class="line">sed <span class="string">"s/\(.*\)/docker inspect \1 | \</span></span><br><span class="line"><span class="string">jq -r \'.[0].ContainerConfig.Cmd[2] | tostring\'/"</span> | \</span><br><span class="line">sh | \</span><br><span class="line">sed <span class="string">'s/^#(nop) //'</span></span><br></pre></td></tr></table></figure>
-<p>上述代码第1行得到了组成指定镜像的层；第2行从docker history输出得到了各层的image ID；第3行排除标题行（带有“IMAGE”的那一行）及IMAGE的 ID为missing的那一行；第4行将镜像ID倒序输出，使其符合Dockerfile的顺序（“tac”是“cat”的倒序）；第5、6行使用前面命令输出的image ID构建一个docker inspect命令，它输出Docker layer metadata。而此metadata通过管道输入到jq命令中，jq命令过滤metadata，获取当时构建此镜像时Dockerfile中使用的命令。第7行运行前面通过sed构建的整个docker inspect管道链。第8行剥离不能更改文件系统的指令——那些以“#(nop)”作为前缀的指令。<br>最后得到的输出结果类似于如下这样：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">.....</span><br><span class="line">CMD [<span class="string">"sh"</span>]</span><br><span class="line">MAINTAINER ian.miell@gmail.com</span><br><span class="line">ENV myenvname=myenvvalue</span><br><span class="line">LABEL mylabelname=mylabelvalue</span><br><span class="line">WORKDIR /opt</span><br><span class="line">mkdir -p copied</span><br><span class="line">COPY file:4d91fcee48e4591e5fdc4b8963892b7d9582524f85f84b33eac5af164f928213 <span class="keyword">in</span> copied/Dockerfile</span><br><span class="line">mkdir -p added</span><br><span class="line">ADD file:4d91fcee48e4591e5fdc4b8963892b7d9582524f85f84b33eac5af164f928213 <span class="keyword">in</span> added/Dockerfile</span><br><span class="line">touch /tmp/afile</span><br><span class="line">ADD file:4d91fcee48e4591e5fdc4b8963892b7d9582524f85f84b33eac5af164f928213 <span class="keyword">in</span> /</span><br><span class="line">EXPOSE 80/tcp</span><br><span class="line">VOLUME [/data]</span><br><span class="line">ONBUILD touch /tmp/built</span><br><span class="line">ENTRYPOINT [<span class="string">"/bin/sh"</span> <span class="string">"-c"</span> <span class="string">"/bin/bash"</span>]</span><br><span class="line">CMD [<span class="string">"/bin/sh"</span> <span class="string">"-c"</span> <span class="string">"-r"</span>]</span><br></pre></td></tr></table></figure></p>
-<p>上面的输出与初始的Dockerfile有些类似了，但还有些区别。FROM指令被替换成了上述CMD指令，丢失了使用的基础镜像BusyBox的信息。ADD和COPY命令没有使用原本的文件名而是使用的校验和（checksum），文件被拷贝到的位置保存了下来。最后，CMD和ENTRYPOINT命令变成了方括号的数组形式。<br>由于缺少构建上下文，使得ADD和COPY命令不能使用，上面逆向工程恢复的Dockerfile并不能不加修改就运行。你需要找出什么文件被添加到构建上下文中。对于前面那个例子来说，你可以启动镜像，进入容器的/opt/copied目录和/opt/added目录，将文件提取出来加入到你的新的构建上下文中。</p>
-<h5 id="容器解决方案"><a href="#容器解决方案" class="headerlink" title="容器解决方案"></a>容器解决方案</h5><p>使用前面的方案得到你感兴趣镜像的信息，是一个有用并且具有指导意义的方法，然而有更加干净的方法来得到同样的结果——使用centurylink/dockerfile-from-image镜像，同时这种方法更容易维护。而且，此方案提供了与原始Dockerfile类似的FROM命令的信息（如果它可以提供的话）：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker run -v /var/run/docker.sock:/var/run/docker.sock \</span><br><span class="line">&gt;   dockerinpractice/dockerfile-from-image reverseme</span><br><span class="line">FROM busybox:latest</span><br><span class="line">MAINTAINER ian.miell@gmail.com</span><br><span class="line">ENV myenvname=myenvvalue</span><br><span class="line">LABEL mylabelname=mylabelvalue</span><br><span class="line">WORKDIR /opt</span><br><span class="line">RUN mkdir -p copied</span><br><span class="line">COPY file:4d91fcee48e4591e5fdc4b8963892b7d9582524f85f84b33eac5af164f928213 <span class="keyword">in</span> copied/Dockerfile</span><br><span class="line">RUN mkdir -p added</span><br><span class="line">ADD file:4d91fcee48e4591e5fdc4b8963892b7d9582524f85f84b33eac5af164f928213 <span class="keyword">in</span> added/Dockerfile</span><br><span class="line">RUN touch /tmp/afile</span><br><span class="line">ADD file:4d91fcee48e4591e5fdc4b8963892b7d9582524f85f84b33eac5af164f928213 <span class="keyword">in</span> /</span><br><span class="line">EXPOSE 80/tcp</span><br><span class="line">VOLUME [/data]</span><br><span class="line">ONBUILD touch /tmp/built</span><br><span class="line">ENTRYPOINT [<span class="string">"/bin/sh"</span> <span class="string">"-c"</span> <span class="string">"/bin/bash"</span>]</span><br><span class="line">CMD [<span class="string">"/bin/sh"</span> <span class="string">"-c"</span> <span class="string">"-r"</span>]</span><br></pre></td></tr></table></figure>
-<p>此技术只适用于基于Dockerfile创建的镜像——如果镜像是通过手工创建然后commit的，镜像间的区别不能体现在镜像的metadata里。</p>
-<p><strong>然而发现有bug</strong>,可参考 <a href="https://github.com/lukapeschke/dockerfile-from-image" target="_blank" rel="noopener">https://github.com/lukapeschke/dockerfile-from-image</a>, 只支持用 image_id ，不能用 image name<br>主要使用方法如下：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">## build the image</span></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/lukapeschke/dockerfile-from-image.git</span><br><span class="line"><span class="built_in">cd</span> dockerfile-from-image</span><br><span class="line">docker build -t lukapeschke/dfa .</span><br><span class="line"></span><br><span class="line"><span class="comment">## To get a Dockerfile from an existing image:</span></span><br><span class="line">docker run --rm -v <span class="string">'/var/run/docker.sock:/var/run/docker.sock'</span> lukapeschke/dfa &lt;IMAGE_ID&gt;</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>出自 《Docker IN PRACTICE》一书</p>
-</blockquote>
-<p><strong>More Ref:</strong><br><a href="https://andyyoung01.github.io/2016/08/23/%E4%BB%8E%E9%95%9C%E5%83%8F%E5%8E%86%E5%8F%B2%E8%AE%B0%E5%BD%95%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E5%87%BADockerfile/" target="_blank" rel="noopener">https://andyyoung01.github.io/2016/08/23/%E4%BB%8E%E9%95%9C%E5%83%8F%E5%8E%86%E5%8F%B2%E8%AE%B0%E5%BD%95%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E5%87%BADockerfile/</a></p>
-]]></content>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>hexo sytnax</title>
     <url>/2020/03/02/hexo-sytnax/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
@@ -2228,6 +2202,32 @@ pipeline {
 ]]></content>
       <tags>
         <tag>Tools</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>docker 镜像逆向工程得到Dockerfile</title>
+    <url>/2019/07/25/docker-%E9%95%9C%E5%83%8F%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E5%BE%97%E5%88%B0Dockerfile/</url>
+    <content><![CDATA[<p>可能有时候你得到了一个从Dockerfile创建的镜像文件，但是原始的Dockerfile丢失了。你想从这个镜像文件的构建历史记录中，逆向分析出原始的Dockerfile而省去寻找此文件的漫长过程。</p>
+<p>虽然不可能在所有的情况下将一个Docker镜像完全得进行逆向工程，但如果此镜像是通过Dockerfile构建的，很有可能分析出此镜像是通过了什么命令得到的。我们以下面的Dockerfile为例，构建一个镜像，然后运行一个简单的shell脚本来演示如何分析镜像的构建历史记录，最后来看一个简洁的容器化的解决方案，来得出原始的Dockerfile。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">FROM busybox</span><br><span class="line">MAINTAINER ian.miell@gmail.com</span><br><span class="line">ENV myenvname myenvvalue</span><br><span class="line">LABEL mylabelname mylabelvalue</span><br><span class="line">WORKDIR /opt</span><br><span class="line">RUN mkdir -p copied</span><br><span class="line">COPY Dockerfile copied/Dockerfile</span><br><span class="line">RUN mkdir -p added</span><br><span class="line">ADD Dockerfile added/Dockerfile</span><br><span class="line">RUN touch /tmp/afile</span><br><span class="line">ADD Dockerfile /</span><br><span class="line">EXPOSE 80</span><br><span class="line">VOLUME /data</span><br><span class="line">ONBUILD touch /tmp/built</span><br><span class="line">ENTRYPOINT /bin/bash</span><br><span class="line">CMD -r</span><br></pre></td></tr></table></figure>
+<p>首先要构建这个示例镜像，镜像命名为reverseme：</p>
+<p><code>$ docker build -t reverseme .</code></p>
+<h5 id="SHELL解决方案"><a href="#SHELL解决方案" class="headerlink" title="SHELL解决方案"></a>SHELL解决方案</h5><p>这个基于shell的实现主要在这里用来演示逆向工程的思路与方法，它与下面的容器化解决方案相比还不是十分完整。此方案使用了docker inspect命令来提取出镜像的metadata。</p>
+<p>此shell脚本中使用了jq程序，一个可以查询和操作JSON数据的工具。为了运行此脚本，需要安装jq程序</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">history</span> reverseme | \</span><br><span class="line">awk <span class="string">'&#123;print $1&#125;'</span> | \</span><br><span class="line">grep -v IMAGE | grep -v missing | \</span><br><span class="line">tac | \</span><br><span class="line">sed <span class="string">"s/\(.*\)/docker inspect \1 | \</span></span><br><span class="line"><span class="string">jq -r \'.[0].ContainerConfig.Cmd[2] | tostring\'/"</span> | \</span><br><span class="line">sh | \</span><br><span class="line">sed <span class="string">'s/^#(nop) //'</span></span><br></pre></td></tr></table></figure>
+<p>上述代码第1行得到了组成指定镜像的层；第2行从docker history输出得到了各层的image ID；第3行排除标题行（带有“IMAGE”的那一行）及IMAGE的 ID为missing的那一行；第4行将镜像ID倒序输出，使其符合Dockerfile的顺序（“tac”是“cat”的倒序）；第5、6行使用前面命令输出的image ID构建一个docker inspect命令，它输出Docker layer metadata。而此metadata通过管道输入到jq命令中，jq命令过滤metadata，获取当时构建此镜像时Dockerfile中使用的命令。第7行运行前面通过sed构建的整个docker inspect管道链。第8行剥离不能更改文件系统的指令——那些以“#(nop)”作为前缀的指令。<br>最后得到的输出结果类似于如下这样：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">.....</span><br><span class="line">CMD [<span class="string">"sh"</span>]</span><br><span class="line">MAINTAINER ian.miell@gmail.com</span><br><span class="line">ENV myenvname=myenvvalue</span><br><span class="line">LABEL mylabelname=mylabelvalue</span><br><span class="line">WORKDIR /opt</span><br><span class="line">mkdir -p copied</span><br><span class="line">COPY file:4d91fcee48e4591e5fdc4b8963892b7d9582524f85f84b33eac5af164f928213 <span class="keyword">in</span> copied/Dockerfile</span><br><span class="line">mkdir -p added</span><br><span class="line">ADD file:4d91fcee48e4591e5fdc4b8963892b7d9582524f85f84b33eac5af164f928213 <span class="keyword">in</span> added/Dockerfile</span><br><span class="line">touch /tmp/afile</span><br><span class="line">ADD file:4d91fcee48e4591e5fdc4b8963892b7d9582524f85f84b33eac5af164f928213 <span class="keyword">in</span> /</span><br><span class="line">EXPOSE 80/tcp</span><br><span class="line">VOLUME [/data]</span><br><span class="line">ONBUILD touch /tmp/built</span><br><span class="line">ENTRYPOINT [<span class="string">"/bin/sh"</span> <span class="string">"-c"</span> <span class="string">"/bin/bash"</span>]</span><br><span class="line">CMD [<span class="string">"/bin/sh"</span> <span class="string">"-c"</span> <span class="string">"-r"</span>]</span><br></pre></td></tr></table></figure></p>
+<p>上面的输出与初始的Dockerfile有些类似了，但还有些区别。FROM指令被替换成了上述CMD指令，丢失了使用的基础镜像BusyBox的信息。ADD和COPY命令没有使用原本的文件名而是使用的校验和（checksum），文件被拷贝到的位置保存了下来。最后，CMD和ENTRYPOINT命令变成了方括号的数组形式。<br>由于缺少构建上下文，使得ADD和COPY命令不能使用，上面逆向工程恢复的Dockerfile并不能不加修改就运行。你需要找出什么文件被添加到构建上下文中。对于前面那个例子来说，你可以启动镜像，进入容器的/opt/copied目录和/opt/added目录，将文件提取出来加入到你的新的构建上下文中。</p>
+<h5 id="容器解决方案"><a href="#容器解决方案" class="headerlink" title="容器解决方案"></a>容器解决方案</h5><p>使用前面的方案得到你感兴趣镜像的信息，是一个有用并且具有指导意义的方法，然而有更加干净的方法来得到同样的结果——使用centurylink/dockerfile-from-image镜像，同时这种方法更容易维护。而且，此方案提供了与原始Dockerfile类似的FROM命令的信息（如果它可以提供的话）：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker run -v /var/run/docker.sock:/var/run/docker.sock \</span><br><span class="line">&gt;   dockerinpractice/dockerfile-from-image reverseme</span><br><span class="line">FROM busybox:latest</span><br><span class="line">MAINTAINER ian.miell@gmail.com</span><br><span class="line">ENV myenvname=myenvvalue</span><br><span class="line">LABEL mylabelname=mylabelvalue</span><br><span class="line">WORKDIR /opt</span><br><span class="line">RUN mkdir -p copied</span><br><span class="line">COPY file:4d91fcee48e4591e5fdc4b8963892b7d9582524f85f84b33eac5af164f928213 <span class="keyword">in</span> copied/Dockerfile</span><br><span class="line">RUN mkdir -p added</span><br><span class="line">ADD file:4d91fcee48e4591e5fdc4b8963892b7d9582524f85f84b33eac5af164f928213 <span class="keyword">in</span> added/Dockerfile</span><br><span class="line">RUN touch /tmp/afile</span><br><span class="line">ADD file:4d91fcee48e4591e5fdc4b8963892b7d9582524f85f84b33eac5af164f928213 <span class="keyword">in</span> /</span><br><span class="line">EXPOSE 80/tcp</span><br><span class="line">VOLUME [/data]</span><br><span class="line">ONBUILD touch /tmp/built</span><br><span class="line">ENTRYPOINT [<span class="string">"/bin/sh"</span> <span class="string">"-c"</span> <span class="string">"/bin/bash"</span>]</span><br><span class="line">CMD [<span class="string">"/bin/sh"</span> <span class="string">"-c"</span> <span class="string">"-r"</span>]</span><br></pre></td></tr></table></figure>
+<p>此技术只适用于基于Dockerfile创建的镜像——如果镜像是通过手工创建然后commit的，镜像间的区别不能体现在镜像的metadata里。</p>
+<p><strong>然而发现有bug</strong>,可参考 <a href="https://github.com/lukapeschke/dockerfile-from-image" target="_blank" rel="noopener">https://github.com/lukapeschke/dockerfile-from-image</a>, 只支持用 image_id ，不能用 image name<br>主要使用方法如下：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">## build the image</span></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/lukapeschke/dockerfile-from-image.git</span><br><span class="line"><span class="built_in">cd</span> dockerfile-from-image</span><br><span class="line">docker build -t lukapeschke/dfa .</span><br><span class="line"></span><br><span class="line"><span class="comment">## To get a Dockerfile from an existing image:</span></span><br><span class="line">docker run --rm -v <span class="string">'/var/run/docker.sock:/var/run/docker.sock'</span> lukapeschke/dfa &lt;IMAGE_ID&gt;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>出自 《Docker IN PRACTICE》一书</p>
+</blockquote>
+<p><strong>More Ref:</strong><br><a href="https://andyyoung01.github.io/2016/08/23/%E4%BB%8E%E9%95%9C%E5%83%8F%E5%8E%86%E5%8F%B2%E8%AE%B0%E5%BD%95%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E5%87%BADockerfile/" target="_blank" rel="noopener">https://andyyoung01.github.io/2016/08/23/%E4%BB%8E%E9%95%9C%E5%83%8F%E5%8E%86%E5%8F%B2%E8%AE%B0%E5%BD%95%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E5%87%BADockerfile/</a></p>
+]]></content>
+      <tags>
+        <tag>Docker</tag>
       </tags>
   </entry>
   <entry>
@@ -2294,6 +2294,19 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>jenkins date timezone update</title>
+    <url>/2019/04/25/jenkins-date-timezone-update/</url>
+    <content><![CDATA[<h4 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h4><p>打开 【系统管理】-&gt;【脚本命令行】运行下面的命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">System.setProperty(<span class="string">'org.apache.commons.jelly.tags.fmt.timeZone'</span>, <span class="string">'Asia/Shanghai'</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="/images/jenkins_run_image_01.png" alt="jenkins_run_image_01"></p>
+<h4 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h4><pre><code class="java">JAVA_ARGS=<span class="string">"-Dorg.apache.commons.jelly.tags.fmt.timeZone=Asia/Shanghai -Dfile.encoding=UTF-8 -Djava.awt.headless=true"</span>
+</code></pre>
+]]></content>
+      <tags>
+        <tag>jenkins</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>kubectl 常用命令</title>
     <url>/2019/10/21/kubectl-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<h3 id="label操作"><a href="#label操作" class="headerlink" title="label操作"></a>label操作</h3><p>删除 label version=xx</p>
@@ -2320,19 +2333,6 @@ pipeline {
 ]]></content>
       <tags>
         <tag>k8s</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>jenkins date timezone update</title>
-    <url>/2019/04/25/jenkins-date-timezone-update/</url>
-    <content><![CDATA[<h4 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h4><p>打开 【系统管理】-&gt;【脚本命令行】运行下面的命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">System.setProperty(<span class="string">'org.apache.commons.jelly.tags.fmt.timeZone'</span>, <span class="string">'Asia/Shanghai'</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="/images/jenkins_run_image_01.png" alt="jenkins_run_image_01"></p>
-<h4 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h4><pre><code class="java">JAVA_ARGS=<span class="string">"-Dorg.apache.commons.jelly.tags.fmt.timeZone=Asia/Shanghai -Dfile.encoding=UTF-8 -Djava.awt.headless=true"</span>
-</code></pre>
-]]></content>
-      <tags>
-        <tag>jenkins</tag>
       </tags>
   </entry>
   <entry>
@@ -2386,6 +2386,17 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>packer intro</title>
+    <url>/2019/08/30/packer-intro/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>packer</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>python module SimpleHTTPServer</title>
     <url>/2019/08/18/python-module-SimpleHTTPServer/</url>
     <content><![CDATA[<h3 id="what-is"><a href="#what-is" class="headerlink" title="what is"></a>what is</h3><p>The <strong>SimpleHTTPServer</strong> module can be used in the following manner in order to set up a very basic web server serving files <strong>relative</strong> to the current directory.</p>
@@ -2407,17 +2418,6 @@ pipeline {
       <tags>
         <tag>Tools</tag>
         <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>packer intro</title>
-    <url>/2019/08/30/packer-intro/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>packer</tag>
       </tags>
   </entry>
   <entry>
@@ -2853,10 +2853,10 @@ pipeline {
 <p>哪天海啸时，到底发生了什么？是失去孩子们的家长想知道的，并不是想得到什么，或许只想知道孩子最好和谁在一起，在做什么。而面对政府、教育部的遮掩，可能加深了家长们的猜测。看起来像是，一群人探寻一个被遮掩的真相，而一部分日本人民也有着执拗的性格。</p>
 <p>除了寻找那天的真相，另一个场景也在寻找。有的孩子遗体很快被找到，但有一些却一直在搜寻中。父母一直要找到孩子的遗体，坚持1-2个月，甚至2-3年，不幸的便是至今未找到。父母心中可能是对去世孩子的愧疚，又或者是其他的原因驱使着他们坚持。</p>
 <p>文章中很多文字可以看到作者愤怒的情绪，对制度的愤怒，对一些人某种不承认的愤怒。</p>
-<h5 id="4-灾难之后"><a href="#4-灾难之后" class="headerlink" title="4.灾难之后"></a>4.灾难之后</h5><p>人们关系的改变，失去孩子的父母关系更加密切，而于那些幸运的家庭越行越远，之前不认识的家长一同寻找各自的孩子，相互抱团 、理解 。</p>
+<h5 id="3-灾难之后"><a href="#3-灾难之后" class="headerlink" title="3.灾难之后"></a>3.灾难之后</h5><p>人们关系的改变，失去孩子的父母关系更加密切，而于那些幸运的家庭越行越远，之前不认识的家长一同寻找各自的孩子，相互抱团 、理解 。</p>
 <p>次生灾害的发生，寻找僧人超度鬼魂…</p>
-<h5 id="5-谈一下结局"><a href="#5-谈一下结局" class="headerlink" title="5.谈一下结局"></a>5.谈一下结局</h5><p>海啸发生于2011年3月，中间历经多轮较量，最终2016年10月法院作出判决–“赔偿14.3亿日元，少于家长要求的 23亿日元”。赔偿数字不是人们追寻的，而是那个天平的位置、家长们心中的价值、事故责任归属。家长心中悬空已久的大石头，慢慢放下，然后开始余生的生活。</p>
-<h5 id="6-启示"><a href="#6-启示" class="headerlink" title="6.启示"></a>6.启示</h5><p>还有多少类型的灾难？地震、海啸、山洪、病毒、火灾、虫害、缺水少粮…</p>
+<h5 id="4-谈一下结局"><a href="#4-谈一下结局" class="headerlink" title="4.谈一下结局"></a>4.谈一下结局</h5><p>海啸发生于2011年3月，中间历经多轮较量，最终2016年10月法院作出判决–“赔偿14.3亿日元，少于家长要求的 23亿日元”。赔偿数字不是人们追寻的，而是那个天平的位置、家长们心中的价值、事故责任归属。家长心中悬空已久的大石头，慢慢放下，然后开始余生的生活。</p>
+<h5 id="5-启示"><a href="#5-启示" class="headerlink" title="5.启示"></a>5.启示</h5><p>还有多少类型的灾难？地震、海啸、山洪、病毒、火灾、虫害、缺水少粮…</p>
 <p>需要准备什么？物质准备、精神准备、人情冷暖…</p>
 <p>灾难之后呢，该怎么应对？避免次生灾害，寻找出路，改变生活…</p>
 <blockquote>
