@@ -63,6 +63,22 @@
       </categories>
   </entry>
   <entry>
+    <title>Anka tutorial 03: jenkins</title>
+    <url>/2019/11/28/Anka-tutorial-03-jenkins/</url>
+    <content><![CDATA[<h3 id="anka-集成-Jenkins-link"><a href="#anka-集成-Jenkins-link" class="headerlink" title="anka 集成 Jenkins (link)"></a>anka 集成 Jenkins <a href="https://ankadoc.bitbucket.io/anka-build/#integrate-jenkins-with-controller" target="_blank" rel="noopener">(link)</a></h3><p>未完待续…</p>
+<p>安装插件<br><code>Manage Jenkins &gt; Manage Plugins</code></p>
+<p>搜索anka</p>
+<p>新建 ssh 用的登陆凭证</p>
+<p>新建VM的时候 默认用户名和密码分别是 <code>anka/admin</code></p>
+<p>配置jenkins<br><code>Manage Jenkins &gt; Configure System</code></p>
+<p><img src="/images/anka_jenkins_01.png" width="80%" height="80%"></p>
+<p><a href="http://localhost/#/dashboard" target="_blank" rel="noopener">http://localhost/#/dashboard</a></p>
+]]></content>
+      <categories>
+        <category>CICD</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Anka tutorial xx: Upgrade Record</title>
     <url>/2019/11/21/Anka-tutorial-xx-Upgrade-Record/</url>
     <content><![CDATA[<h3 id="1-升级前"><a href="#1-升级前" class="headerlink" title="1.升级前"></a>1.升级前</h3><p>从2018年11月到如今2019年11月，已经使用现有的版本1年多；anka也经历了多个版本，此次升级算是跨度较大，升级到目前最新的版本1.5.0</p>
@@ -209,22 +225,6 @@
       </categories>
   </entry>
   <entry>
-    <title>Anka tutorial 03: jenkins</title>
-    <url>/2019/11/28/Anka-tutorial-03-jenkins/</url>
-    <content><![CDATA[<h3 id="anka-集成-Jenkins-link"><a href="#anka-集成-Jenkins-link" class="headerlink" title="anka 集成 Jenkins (link)"></a>anka 集成 Jenkins <a href="https://ankadoc.bitbucket.io/anka-build/#integrate-jenkins-with-controller" target="_blank" rel="noopener">(link)</a></h3><p>未完待续…</p>
-<p>安装插件<br><code>Manage Jenkins &gt; Manage Plugins</code></p>
-<p>搜索anka</p>
-<p>新建 ssh 用的登陆凭证</p>
-<p>新建VM的时候 默认用户名和密码分别是 <code>anka/admin</code></p>
-<p>配置jenkins<br><code>Manage Jenkins &gt; Configure System</code></p>
-<p><img src="/images/anka_jenkins_01.png" width="80%" height="80%"></p>
-<p><a href="http://localhost/#/dashboard" target="_blank" rel="noopener">http://localhost/#/dashboard</a></p>
-]]></content>
-      <categories>
-        <category>CICD</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Azure FAQs</title>
     <url>/2019/12/11/Azure-FAQs/</url>
     <content><![CDATA[<h3 id="1-asm-arm"><a href="#1-asm-arm" class="headerlink" title="1. asm, arm"></a>1. asm, arm</h3><ul>
@@ -249,6 +249,24 @@
       <categories>
         <category>Cloud</category>
       </categories>
+  </entry>
+  <entry>
+    <title>Bash function skill</title>
+    <url>/2019/06/18/Bash-function-skill/</url>
+    <content><![CDATA[<p>bash 函数技巧</p>
+<h4 id="1-递归函数"><a href="#1-递归函数" class="headerlink" title="1. 递归函数"></a>1. 递归函数</h4><h4 id="2-导出函数"><a href="#2-导出函数" class="headerlink" title="2.导出函数"></a>2.导出函数</h4><p>函数也可以像环境变量一样用 export 导出<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   <span class="function"><span class="title">foo</span></span>() &#123;<span class="built_in">echo</span> <span class="string">"This is foo function"</span>&#125;</span><br><span class="line">➜   <span class="built_in">export</span> -f foo</span><br><span class="line"><span class="function"><span class="title">foo</span></span> () &#123;</span><br><span class="line">	<span class="built_in">echo</span> <span class="string">"This is foo function"</span></span><br><span class="line">&#125;</span><br><span class="line">➜   foo</span><br><span class="line">This is foo <span class="keyword">function</span></span><br><span class="line">➜</span><br></pre></td></tr></table></figure></p>
+<h4 id="3-读取命令返回值"><a href="#3-读取命令返回值" class="headerlink" title="3. 读取命令返回值"></a>3. 读取命令返回值</h4><p>命令的返回值被保存在变量 <code>$?</code> 中<br>返回值被称为 <strong>退出状态</strong> 。它可用于确定命令执行成功与否。如果命令成功退出，那么退出状态为0，否则为非0.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   cat success_test.sh </span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#file name: success_test.sh</span></span><br><span class="line"><span class="comment">#对命令行参数求值，比如 success_test.sh `ls | grep txt`</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"parameter is :"</span><span class="variable">$@</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">eval</span> <span class="variable">$@</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ $? -eq 0 ];</span><br><span class="line"><span class="keyword">then</span> </span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"<span class="variable">$CMD</span> executed successfully."</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"<span class="variable">$CMD</span> terminated unsuccessfully."</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+<p>执行：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   success_test.sh <span class="string">'ls'</span></span><br><span class="line">parameter is :ls</span><br><span class="line">certbot-auto	t1		t3		test.sh</span><br><span class="line">success_test.sh	t2		test.jsonnet</span><br><span class="line"> executed successfully.</span><br></pre></td></tr></table></figure></p>
+<h4 id="4-向命令传递参数"><a href="#4-向命令传递参数" class="headerlink" title="4. 向命令传递参数"></a>4. 向命令传递参数</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   cat showArgs.sh</span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> `seq 1 <span class="variable">$#</span>`</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$i</span> is <span class="variable">$1</span></span><br><span class="line"><span class="built_in">shift</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<p>执行：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   showArgs.sh a b cc</span><br><span class="line">1 is a</span><br><span class="line">2 is b</span><br><span class="line">3 is cc</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>Shell</category>
+      </categories>
+      <tags>
+        <tag>Shell</tag>
+      </tags>
   </entry>
   <entry>
     <title>Azure tutorial 02: Storage</title>
@@ -308,24 +326,6 @@
       <categories>
         <category>Cloud</category>
       </categories>
-  </entry>
-  <entry>
-    <title>Bash function skill</title>
-    <url>/2019/06/18/Bash-function-skill/</url>
-    <content><![CDATA[<p>bash 函数技巧</p>
-<h4 id="1-递归函数"><a href="#1-递归函数" class="headerlink" title="1. 递归函数"></a>1. 递归函数</h4><h4 id="2-导出函数"><a href="#2-导出函数" class="headerlink" title="2.导出函数"></a>2.导出函数</h4><p>函数也可以像环境变量一样用 export 导出<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   <span class="function"><span class="title">foo</span></span>() &#123;<span class="built_in">echo</span> <span class="string">"This is foo function"</span>&#125;</span><br><span class="line">➜   <span class="built_in">export</span> -f foo</span><br><span class="line"><span class="function"><span class="title">foo</span></span> () &#123;</span><br><span class="line">	<span class="built_in">echo</span> <span class="string">"This is foo function"</span></span><br><span class="line">&#125;</span><br><span class="line">➜   foo</span><br><span class="line">This is foo <span class="keyword">function</span></span><br><span class="line">➜</span><br></pre></td></tr></table></figure></p>
-<h4 id="3-读取命令返回值"><a href="#3-读取命令返回值" class="headerlink" title="3. 读取命令返回值"></a>3. 读取命令返回值</h4><p>命令的返回值被保存在变量 <code>$?</code> 中<br>返回值被称为 <strong>退出状态</strong> 。它可用于确定命令执行成功与否。如果命令成功退出，那么退出状态为0，否则为非0.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   cat success_test.sh </span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#file name: success_test.sh</span></span><br><span class="line"><span class="comment">#对命令行参数求值，比如 success_test.sh `ls | grep txt`</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"parameter is :"</span><span class="variable">$@</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">eval</span> <span class="variable">$@</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ $? -eq 0 ];</span><br><span class="line"><span class="keyword">then</span> </span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"<span class="variable">$CMD</span> executed successfully."</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"<span class="variable">$CMD</span> terminated unsuccessfully."</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
-<p>执行：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   success_test.sh <span class="string">'ls'</span></span><br><span class="line">parameter is :ls</span><br><span class="line">certbot-auto	t1		t3		test.sh</span><br><span class="line">success_test.sh	t2		test.jsonnet</span><br><span class="line"> executed successfully.</span><br></pre></td></tr></table></figure></p>
-<h4 id="4-向命令传递参数"><a href="#4-向命令传递参数" class="headerlink" title="4. 向命令传递参数"></a>4. 向命令传递参数</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   cat showArgs.sh</span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> `seq 1 <span class="variable">$#</span>`</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$i</span> is <span class="variable">$1</span></span><br><span class="line"><span class="built_in">shift</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-<p>执行：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   showArgs.sh a b cc</span><br><span class="line">1 is a</span><br><span class="line">2 is b</span><br><span class="line">3 is cc</span><br></pre></td></tr></table></figure></p>
-]]></content>
-      <categories>
-        <category>Shell</category>
-      </categories>
-      <tags>
-        <tag>Shell</tag>
-      </tags>
   </entry>
   <entry>
     <title>Crontab on Liunx or Jenkins</title>
@@ -1287,6 +1287,28 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>Makefile 102:Variable</title>
+    <url>/2019/07/05/Makefile-102-Variable/</url>
+    <content><![CDATA[<h5 id="Variables-common-use"><a href="#Variables-common-use" class="headerlink" title="Variables (common use)"></a>Variables (common use)</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">origin_file = hello.c</span><br><span class="line"></span><br><span class="line">hellofrommakefile: $(origin_file)</span><br><span class="line">	gcc hello.c -o hellofrommakefile</span><br></pre></td></tr></table></figure>
+<h5 id="Automatic-Variables-自动变量"><a href="#Automatic-Variables-自动变量" class="headerlink" title="Automatic Variables(自动变量)"></a>Automatic Variables(自动变量)</h5><p>makefile 中有一些预定义的变量，你可以理解它像是 C 语言中的一些关键字，分别有不同的意义，我们列举几个常用的自动变量，<a href="https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html#Automatic-Variables" target="_blank" rel="noopener">其他还有很多</a></p>
+<p>$@：在命令中使用，表示规则中的目标<br>$&lt;：在命令中使用，表示规则中的第一个条件<br>$^：在命令中使用，表示规则中的所有条件，组成一个列表，以空格隔开，如果这个列表中有重复的项则消除重复项。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hellofrommakefile: hello.c</span><br><span class="line">	gcc hello.c -o hellofrommakefile</span><br></pre></td></tr></table></figure>
+<p>等价于<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hellofrommakefile: hello.c</span><br><span class="line">	gcc hello.c -o <span class="variable">$@</span></span><br></pre></td></tr></table></figure></p>
+<h5 id="mplicit-Variables-内置变量"><a href="#mplicit-Variables-内置变量" class="headerlink" title="mplicit Variables(内置变量)"></a>mplicit Variables(内置变量)</h5><p>Make命令提供一系列内置变量，比如，$(CC) 指向当前使用的编译器，$(MAKE) 指向当前使用的Make工具。这主要是为了跨平台的兼容性，详细的内置变量清单见<a href="https://www.gnu.org/software/make/manual/html_node/Implicit-Variables.html" target="_blank" rel="noopener">ta</a>。</p>
+<p><strong>More Ref:</strong></p>
+<ul>
+<li><a href="http://www.chiark.greenend.org.uk/doc/make-doc/make.html/Using-Variables.html" target="_blank" rel="noopener">http://www.chiark.greenend.org.uk/doc/make-doc/make.html/Using-Variables.html</a></li>
+<li><a href="https://www.gnu.org/software/make/manual/html_node/Implicit-Variables.html" target="_blank" rel="noopener">https://www.gnu.org/software/make/manual/html_node/Implicit-Variables.html</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>makefile</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Makefile 101 :Intro</title>
     <url>/2019/07/04/Makefile-101-Intro/</url>
     <content><![CDATA[<p>新建文件 ，文件名 makefile 或 Makefile</p>
@@ -1319,28 +1341,6 @@ pipeline {
 <li><a href="https://www.mycode.net.cn/platform/linux-unix/1499.html" target="_blank" rel="noopener">https://www.mycode.net.cn/platform/linux-unix/1499.html</a></li>
 <li><a href="http://www.ruanyifeng.com/blog/2015/02/make.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2015/02/make.html</a></li>
 <li><a href="https://blog.csdn.net/chinawangfei/article/details/42125241" target="_blank" rel="noopener">https://blog.csdn.net/chinawangfei/article/details/42125241</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>makefile</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Makefile 102:Variable</title>
-    <url>/2019/07/05/Makefile-102-Variable/</url>
-    <content><![CDATA[<h5 id="Variables-common-use"><a href="#Variables-common-use" class="headerlink" title="Variables (common use)"></a>Variables (common use)</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">origin_file = hello.c</span><br><span class="line"></span><br><span class="line">hellofrommakefile: $(origin_file)</span><br><span class="line">	gcc hello.c -o hellofrommakefile</span><br></pre></td></tr></table></figure>
-<h5 id="Automatic-Variables-自动变量"><a href="#Automatic-Variables-自动变量" class="headerlink" title="Automatic Variables(自动变量)"></a>Automatic Variables(自动变量)</h5><p>makefile 中有一些预定义的变量，你可以理解它像是 C 语言中的一些关键字，分别有不同的意义，我们列举几个常用的自动变量，<a href="https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html#Automatic-Variables" target="_blank" rel="noopener">其他还有很多</a></p>
-<p>$@：在命令中使用，表示规则中的目标<br>$&lt;：在命令中使用，表示规则中的第一个条件<br>$^：在命令中使用，表示规则中的所有条件，组成一个列表，以空格隔开，如果这个列表中有重复的项则消除重复项。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hellofrommakefile: hello.c</span><br><span class="line">	gcc hello.c -o hellofrommakefile</span><br></pre></td></tr></table></figure>
-<p>等价于<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hellofrommakefile: hello.c</span><br><span class="line">	gcc hello.c -o <span class="variable">$@</span></span><br></pre></td></tr></table></figure></p>
-<h5 id="mplicit-Variables-内置变量"><a href="#mplicit-Variables-内置变量" class="headerlink" title="mplicit Variables(内置变量)"></a>mplicit Variables(内置变量)</h5><p>Make命令提供一系列内置变量，比如，$(CC) 指向当前使用的编译器，$(MAKE) 指向当前使用的Make工具。这主要是为了跨平台的兼容性，详细的内置变量清单见<a href="https://www.gnu.org/software/make/manual/html_node/Implicit-Variables.html" target="_blank" rel="noopener">ta</a>。</p>
-<p><strong>More Ref:</strong></p>
-<ul>
-<li><a href="http://www.chiark.greenend.org.uk/doc/make-doc/make.html/Using-Variables.html" target="_blank" rel="noopener">http://www.chiark.greenend.org.uk/doc/make-doc/make.html/Using-Variables.html</a></li>
-<li><a href="https://www.gnu.org/software/make/manual/html_node/Implicit-Variables.html" target="_blank" rel="noopener">https://www.gnu.org/software/make/manual/html_node/Implicit-Variables.html</a></li>
 </ul>
 ]]></content>
       <categories>
@@ -1544,6 +1544,35 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>Scan Docker Images for Vulnerabilities</title>
+    <url>/2019/12/11/Scan-Docker-Images-for-Vulnerabilities/</url>
+    <content><![CDATA[<ul>
+<li><p>可以扫描哪些方面，哪些方面检查不出来</p>
+</li>
+<li><p>有哪些工具，各自特点</p>
+</li>
+<li><p>工具开源/收费</p>
+</li>
+<li><p>是否方便与pipeline集成</p>
+</li>
+<li><p>报告形式</p>
+</li>
+<li><p>是否需要单独的服务端、数据库</p>
+</li>
+</ul>
+<h3 id="Tool-1-trivy"><a href="#Tool-1-trivy" class="headerlink" title="Tool 1: trivy"></a>Tool 1: <a href="https://github.com/aquasecurity/trivy" target="_blank" rel="noopener">trivy</a></h3><p>output:<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   trivy python:alpine</span><br><span class="line">2019-12-12T09:40:48.656+0800	INFO	Detecting Alpine vulnerabilities...</span><br><span class="line"></span><br><span class="line">python:alpine (alpine 3.10.2)</span><br><span class="line">=============================</span><br><span class="line">Total: 9 (UNKNOWN: 0, LOW: 2, MEDIUM: 7, HIGH: 0, CRITICAL: 0)</span><br><span class="line"></span><br><span class="line">+-----------+------------------+----------+-------------------+--------------------------------+</span><br><span class="line">|  LIBRARY  | VULNERABILITY ID | SEVERITY | INSTALLED VERSION | FIXED VERSION |      TITLE    |</span><br><span class="line">+-----------+------------------+----------+-------------------+---------   +-------------------+</span><br><span class="line">| e2fsprogs | CVE-2019-5094    | MEDIUM   | 1.45.2-r0| 1.45.2-r1 | e2fsprogs: crafted             |</span><br><span class="line">|           |                  |          |                   |               | ext4 partition leads to        |</span><br><span class="line">|           |                  |          |                   |               | out-of-bounds write            |</span><br><span class="line">+-----------+------------------+          +-------------------+---------------+--------------------------------+</span><br><span class="line">| expat     | CVE-2019-15903   |          | 2.2.7-r0| 2.2.7-r1  | expat: heap-based buffer       |</span><br><span class="line">|           |                  |          |                   |               | over-read via crafted XML      |</span><br><span class="line">|           |                  |          |                   |               | input                          |</span><br><span class="line">+-----------+------------------+          +-------------------+---------------+--------------------------------+</span><br><span class="line">| libgcrypt | CVE-2019-13627   |          | 1.8.4-r2| 1.8.5-r0  | libgcrypt: ECDSA timing        |</span><br><span class="line">|           |                  |          |                   |               | attack <span class="keyword">in</span> the libgcrypt20      |</span><br><span class="line">|           |                  |          |                   |               | cryptographic library          |</span><br><span class="line">+-----------+------------------+          +-------------------+--------------</span><br><span class="line">省略100行</span><br></pre></td></tr></table></figure></p>
+<h3 id="Tool-2-Anchore"><a href="#Tool-2-Anchore" class="headerlink" title="Tool 2: Anchore"></a>Tool 2: <a href="https://github.com/anchore/anchore-engine" target="_blank" rel="noopener">Anchore</a></h3><p>Anchore consists of a commercial edition (Anchore Enterprise) and an open-source edition (Anchor Engine).</p>
+<h3 id="Tool-3-open-scap"><a href="#Tool-3-open-scap" class="headerlink" title="Tool 3: open-scap"></a>Tool 3: open-scap</h3><h3 id="Tool-4-Dagda"><a href="#Tool-4-Dagda" class="headerlink" title="Tool 4: Dagda"></a>Tool 4: <a href="https://github.com/eliasgranderubio/dagda" target="_blank" rel="noopener">Dagda</a></h3><h3 id="Tool-5-Clair"><a href="#Tool-5-Clair" class="headerlink" title="Tool 5: Clair"></a>Tool 5: <a href="https://github.com/quay/clair" target="_blank" rel="noopener">Clair</a></h3><p>ref:</p>
+<ul>
+<li><a href="https://www.scality.com/solved/5-free-tools-to-navigate-through-docker-containers-security/" target="_blank" rel="noopener">https://www.scality.com/solved/5-free-tools-to-navigate-through-docker-containers-security/</a></li>
+<li><a href="https://resources.whitesourcesoftware.com/blog-whitesource/docker-image-security-scanning" target="_blank" rel="noopener">https://resources.whitesourcesoftware.com/blog-whitesource/docker-image-security-scanning</a></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>RCA(根本原因分析)</title>
     <url>/2019/10/08/RCA-%E6%A0%B9%E6%9C%AC%E5%8E%9F%E5%9B%A0%E5%88%86%E6%9E%90/</url>
     <content><![CDATA[<p>  根本原因分析（Root cause analysis,RCA）方法是明确事件或几近错失的决定性“根本”原因，并采取适当的措施避免问题再次发生。这是一个迭代的过程，会一直持续，直到找出所有组织要素，或者知道已经处理完所有数据。</p>
@@ -1619,35 +1648,6 @@ pipeline {
       </categories>
       <tags>
         <tag>Devops</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Scan Docker Images for Vulnerabilities</title>
-    <url>/2019/12/11/Scan-Docker-Images-for-Vulnerabilities/</url>
-    <content><![CDATA[<ul>
-<li><p>可以扫描哪些方面，哪些方面检查不出来</p>
-</li>
-<li><p>有哪些工具，各自特点</p>
-</li>
-<li><p>工具开源/收费</p>
-</li>
-<li><p>是否方便与pipeline集成</p>
-</li>
-<li><p>报告形式</p>
-</li>
-<li><p>是否需要单独的服务端、数据库</p>
-</li>
-</ul>
-<h3 id="Tool-1-trivy"><a href="#Tool-1-trivy" class="headerlink" title="Tool 1: trivy"></a>Tool 1: <a href="https://github.com/aquasecurity/trivy" target="_blank" rel="noopener">trivy</a></h3><p>output:<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   trivy python:alpine</span><br><span class="line">2019-12-12T09:40:48.656+0800	INFO	Detecting Alpine vulnerabilities...</span><br><span class="line"></span><br><span class="line">python:alpine (alpine 3.10.2)</span><br><span class="line">=============================</span><br><span class="line">Total: 9 (UNKNOWN: 0, LOW: 2, MEDIUM: 7, HIGH: 0, CRITICAL: 0)</span><br><span class="line"></span><br><span class="line">+-----------+------------------+----------+-------------------+--------------------------------+</span><br><span class="line">|  LIBRARY  | VULNERABILITY ID | SEVERITY | INSTALLED VERSION | FIXED VERSION |      TITLE    |</span><br><span class="line">+-----------+------------------+----------+-------------------+---------   +-------------------+</span><br><span class="line">| e2fsprogs | CVE-2019-5094    | MEDIUM   | 1.45.2-r0| 1.45.2-r1 | e2fsprogs: crafted             |</span><br><span class="line">|           |                  |          |                   |               | ext4 partition leads to        |</span><br><span class="line">|           |                  |          |                   |               | out-of-bounds write            |</span><br><span class="line">+-----------+------------------+          +-------------------+---------------+--------------------------------+</span><br><span class="line">| expat     | CVE-2019-15903   |          | 2.2.7-r0| 2.2.7-r1  | expat: heap-based buffer       |</span><br><span class="line">|           |                  |          |                   |               | over-read via crafted XML      |</span><br><span class="line">|           |                  |          |                   |               | input                          |</span><br><span class="line">+-----------+------------------+          +-------------------+---------------+--------------------------------+</span><br><span class="line">| libgcrypt | CVE-2019-13627   |          | 1.8.4-r2| 1.8.5-r0  | libgcrypt: ECDSA timing        |</span><br><span class="line">|           |                  |          |                   |               | attack <span class="keyword">in</span> the libgcrypt20      |</span><br><span class="line">|           |                  |          |                   |               | cryptographic library          |</span><br><span class="line">+-----------+------------------+          +-------------------+--------------</span><br><span class="line">省略100行</span><br></pre></td></tr></table></figure></p>
-<h3 id="Tool-2-Anchore"><a href="#Tool-2-Anchore" class="headerlink" title="Tool 2: Anchore"></a>Tool 2: <a href="https://github.com/anchore/anchore-engine" target="_blank" rel="noopener">Anchore</a></h3><p>Anchore consists of a commercial edition (Anchore Enterprise) and an open-source edition (Anchor Engine).</p>
-<h3 id="Tool-3-open-scap"><a href="#Tool-3-open-scap" class="headerlink" title="Tool 3: open-scap"></a>Tool 3: open-scap</h3><h3 id="Tool-4-Dagda"><a href="#Tool-4-Dagda" class="headerlink" title="Tool 4: Dagda"></a>Tool 4: <a href="https://github.com/eliasgranderubio/dagda" target="_blank" rel="noopener">Dagda</a></h3><h3 id="Tool-5-Clair"><a href="#Tool-5-Clair" class="headerlink" title="Tool 5: Clair"></a>Tool 5: <a href="https://github.com/quay/clair" target="_blank" rel="noopener">Clair</a></h3><p>ref:</p>
-<ul>
-<li><a href="https://www.scality.com/solved/5-free-tools-to-navigate-through-docker-containers-security/" target="_blank" rel="noopener">https://www.scality.com/solved/5-free-tools-to-navigate-through-docker-containers-security/</a></li>
-<li><a href="https://resources.whitesourcesoftware.com/blog-whitesource/docker-image-security-scanning" target="_blank" rel="noopener">https://resources.whitesourcesoftware.com/blog-whitesource/docker-image-security-scanning</a></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>Docker</tag>
       </tags>
   </entry>
   <entry>
@@ -1728,6 +1728,29 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>Shell toolbox</title>
+    <url>/2020/03/20/Shell-toolbox/</url>
+    <content><![CDATA[<h3 id="1-crontab"><a href="#1-crontab" class="headerlink" title="1 crontab"></a>1 <a href="https://crontab.guru/examples.html" target="_blank" rel="noopener">crontab</a></h3><p>教你怎么写定时任务的网站，并给出了很多示例，比如</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#“At every 2nd minute.”</span></span><br><span class="line">*/2 * * * *</span><br><span class="line"><span class="comment"># At 22:00 on every day-of-week from Monday through Friday</span></span><br><span class="line">0 22 * * 1-5</span><br></pre></td></tr></table></figure>
+<p>不要以为会写crontab就可以了，建议有空以下内容了解下：</p>
+<ul>
+<li><a href="https://crontab.guru/tips.html" target="_blank" rel="noopener">tips小建议</a></li>
+<li><a href="https://www.endpoint.com/blog/2008/12/08/best-practices-for-cron" target="_blank" rel="noopener">最佳实践</a> </li>
+<li><a href="https://cronitor.io/docs/cron-troubleshooting-guide?utm_source=crontabguru&amp;utm_campaign=cron_troubleshooting" target="_blank" rel="noopener">问题定位</a></li>
+<li><strong>mcron</strong>: <em>Another alternative for complicated schedules</em></li>
+</ul>
+<blockquote>
+<p>最后，有兴趣可以看看 Cron Job Monitoring 的工具 <a href="https://cronitor.io/index" target="_blank" rel="noopener">cronitor</a>,不过貌似是收费的。看介绍，可用于 Cron Job, Scheduled Event（AWS),Task Scheduler, Kubernetes Cron Job, Java Cron Job, Jenkins Job多类型的监控。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Shell</category>
+      </categories>
+      <tags>
+        <tag>Shell</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Shell output/Terminal  color</title>
     <url>/2019/04/28/Shell-output-Terminal-color/</url>
     <content><![CDATA[<h2 id="change-dispaly-color-on-the-terminal"><a href="#change-dispaly-color-on-the-terminal" class="headerlink" title="change dispaly color on the terminal"></a>change dispaly color on the terminal</h2><p>The  tput  utility uses the terminfo database to make the values of terminal-depen-dent capabilities and information available to the shell (see sh(1)), to initialize or reset the terminal, or return the long name of the requested terminal type.</p>
@@ -1749,29 +1772,6 @@ pipeline {
 </ul>
 <p>bash script example:</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> -e</span><br><span class="line"></span><br><span class="line">reset=$(tput sgr0)</span><br><span class="line"></span><br><span class="line">green=$(tput setaf 2 )</span><br><span class="line">blue=$(tput setaf 25)</span><br><span class="line">red=$(tput setaf 1;tput bold)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">info</span></span>() &#123;</span><br><span class="line">    <span class="built_in">printf</span> <span class="string">"<span class="variable">$&#123;blue&#125;</span>➜ %s<span class="variable">$&#123;reset&#125;</span>\n"</span> <span class="string">"<span class="variable">$@</span>"</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="title">error</span></span>() &#123;</span><br><span class="line">    <span class="built_in">printf</span> <span class="string">"<span class="variable">$&#123;red&#125;</span>× %s<span class="variable">$&#123;reset&#125;</span>\n"</span> <span class="string">"<span class="variable">$@</span>"</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="title">success</span></span>() &#123;</span><br><span class="line">    <span class="built_in">printf</span> <span class="string">"<span class="variable">$&#123;green&#125;</span>✔ %s<span class="variable">$&#123;reset&#125;</span>\n"</span> <span class="string">"<span class="variable">$@</span>"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">infoWithTime</span></span>()&#123;</span><br><span class="line">    <span class="built_in">printf</span> <span class="string">"<span class="variable">$&#123;blue&#125;</span>➜ %s<span class="variable">$&#123;reset&#125;</span>\n"</span> <span class="string">"<span class="variable">$@</span> | now: `date +'%F %T'`"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">info <span class="string">"setup ,,info......"</span></span><br><span class="line"></span><br><span class="line">error <span class="string">"haha,error..."</span></span><br><span class="line"></span><br><span class="line">success <span class="string">"old color"</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span> $(tput setaf 2;tput bold)<span class="string">'color show\n'</span> $(tput sgr0)</span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span> $(tput setf 2;tput bold)<span class="string">'color show\n'</span> $(tput sgr0)</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Shell</category>
-      </categories>
-      <tags>
-        <tag>Shell</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Shell toolbox</title>
-    <url>/2020/03/20/Shell-toolbox/</url>
-    <content><![CDATA[<h3 id="1-crontab"><a href="#1-crontab" class="headerlink" title="1 crontab"></a>1 <a href="https://crontab.guru/examples.html" target="_blank" rel="noopener">crontab</a></h3><p>教你怎么写定时任务的网站，并给出了很多示例，比如</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#“At every 2nd minute.”</span></span><br><span class="line">*/2 * * * *</span><br><span class="line"><span class="comment"># At 22:00 on every day-of-week from Monday through Friday</span></span><br><span class="line">0 22 * * 1-5</span><br></pre></td></tr></table></figure>
-<p>不要以为会写crontab就可以了，建议有空以下内容了解下：</p>
-<ul>
-<li><a href="https://crontab.guru/tips.html" target="_blank" rel="noopener">tips小建议</a></li>
-<li><a href="https://www.endpoint.com/blog/2008/12/08/best-practices-for-cron" target="_blank" rel="noopener">最佳实践</a> </li>
-<li><a href="https://cronitor.io/docs/cron-troubleshooting-guide?utm_source=crontabguru&amp;utm_campaign=cron_troubleshooting" target="_blank" rel="noopener">问题定位</a></li>
-<li><strong>mcron</strong>: <em>Another alternative for complicated schedules</em></li>
-</ul>
-<blockquote>
-<p>最后，有兴趣可以看看 Cron Job Monitoring 的工具 <a href="https://cronitor.io/index" target="_blank" rel="noopener">cronitor</a>,不过貌似是收费的。看介绍，可用于 Cron Job, Scheduled Event（AWS),Task Scheduler, Kubernetes Cron Job, Java Cron Job, Jenkins Job多类型的监控。</p>
-</blockquote>
-]]></content>
       <categories>
         <category>Shell</category>
       </categories>
@@ -2039,6 +2039,15 @@ pipeline {
       </categories>
   </entry>
   <entry>
+    <title>about</title>
+    <url>/2020/03/16/about/</url>
+    <content><![CDATA[<blockquote>
+<p>Ops, China Wuhan.</p>
+</blockquote>
+<p>现居: 武汉<br>GitHub: ～<br>QQ: 771963601<br>微信: ～</p>
+]]></content>
+  </entry>
+  <entry>
     <title>Vivaldi入手</title>
     <url>/2020/04/09/Vivaldi%E5%85%A5%E6%89%8B/</url>
     <content><![CDATA[<h3 id="0-前言"><a href="#0-前言" class="headerlink" title="0.前言"></a>0.前言</h3><p>最近才在一些论坛上听说 <strong>Vivaldi</strong> 浏览器的大名（我孤陋寡闻了😅）。毕竟入手一个浏览器工具又不花钱，那Chrome挺好用的，为什么要换？</p>
@@ -2084,15 +2093,6 @@ pipeline {
       <tags>
         <tag>Tools</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>about</title>
-    <url>/2020/03/16/about/</url>
-    <content><![CDATA[<blockquote>
-<p>Ops, China Wuhan.</p>
-</blockquote>
-<p>现居: 武汉<br>GitHub: ～<br>QQ: 771963601<br>微信: ～</p>
-]]></content>
   </entry>
   <entry>
     <title>adminMongo: a cross platform user interface (GUI) to connect MongoDB</title>
@@ -2345,6 +2345,48 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>jenkins date timezone update</title>
+    <url>/2019/04/25/jenkins-date-timezone-update/</url>
+    <content><![CDATA[<h4 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h4><p>打开 【系统管理】-&gt;【脚本命令行】运行下面的命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">System.setProperty(<span class="string">'org.apache.commons.jelly.tags.fmt.timeZone'</span>, <span class="string">'Asia/Shanghai'</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="/images/jenkins_run_image_01.png" alt="jenkins_run_image_01"></p>
+<h4 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h4><pre><code class="java">JAVA_ARGS=<span class="string">"-Dorg.apache.commons.jelly.tags.fmt.timeZone=Asia/Shanghai -Dfile.encoding=UTF-8 -Djava.awt.headless=true"</span>
+</code></pre>
+]]></content>
+      <tags>
+        <tag>jenkins</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>kubectl 常用命令</title>
+    <url>/2019/10/21/kubectl-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<h3 id="label操作"><a href="#label操作" class="headerlink" title="label操作"></a>label操作</h3><p>删除 label version=xx</p>
+<p><code>kubectl label pod webui-746df859ff-z5fwt version-</code></p>
+<p>添加 label<br><code>kubectl label pods labelex owner=michael</code></p>
+<h3 id="deploy操作"><a href="#deploy操作" class="headerlink" title="deploy操作"></a>deploy操作</h3><p><code>kubectl create delpoy [deploy_name] --image=nginx</code></p>
+<p><code>kubectl create deployment httpenv --image=iasonliu/httpenv</code></p>
+<p>kubectl run [pod_name] –image=busybox</p>
+<p>example:<br><code>kubectl run pingpong --image=alpine ping 1.1.1.1</code> or <code>kubectl run pingpong2 --image alpine ping 1.1.1.1</code></p>
+<blockquote>
+<p>当我们使用 kubectl run something启动deplyment的时候，label会是 run=something</p>
+</blockquote>
+<p><code>kubectl set image deployment/nginx busybox=busybox nginx=nginx:1.9.1</code></p>
+<h3 id="service操作"><a href="#service操作" class="headerlink" title="service操作"></a>service操作</h3><p>为webui创建service<br><code>kubectl expose deploy/webui --type=NodePort --port=80</code></p>
+<h3 id="log操作"><a href="#log操作" class="headerlink" title="log操作"></a>log操作</h3><p>查看deploy日志<br><code>kubectl logs deploy/pingpong</code></p>
+<p>查看pod日志<br><code>kubect logs [ pod_name]</code></p>
+<hr>
+<p>More Ref:</p>
+<ul>
+<li><a href="http://kubernetesbyexample.com/" target="_blank" rel="noopener">http://kubernetesbyexample.com/</a></li>
+<li><a href="https://linuxacademy.com/blog/containers/kubernetes-cheat-sheet/" target="_blank" rel="noopener">https://linuxacademy.com/blog/containers/kubernetes-cheat-sheet/</a></li>
+<li><a href="http://docs.kubernetes.org.cn/683.html" target="_blank" rel="noopener">http://docs.kubernetes.org.cn/683.html</a></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>k8s</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>mktemp command</title>
     <url>/2019/05/07/mktemp-command/</url>
     <content><![CDATA[<p>最适合存储临时数据的位置是/tmp, <strong>mktemp</strong> 命令可以为临时文件或目录创建唯一的名字</p>
@@ -2395,48 +2437,6 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>jenkins date timezone update</title>
-    <url>/2019/04/25/jenkins-date-timezone-update/</url>
-    <content><![CDATA[<h4 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h4><p>打开 【系统管理】-&gt;【脚本命令行】运行下面的命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">System.setProperty(<span class="string">'org.apache.commons.jelly.tags.fmt.timeZone'</span>, <span class="string">'Asia/Shanghai'</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="/images/jenkins_run_image_01.png" alt="jenkins_run_image_01"></p>
-<h4 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h4><pre><code class="java">JAVA_ARGS=<span class="string">"-Dorg.apache.commons.jelly.tags.fmt.timeZone=Asia/Shanghai -Dfile.encoding=UTF-8 -Djava.awt.headless=true"</span>
-</code></pre>
-]]></content>
-      <tags>
-        <tag>jenkins</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>kubectl 常用命令</title>
-    <url>/2019/10/21/kubectl-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<h3 id="label操作"><a href="#label操作" class="headerlink" title="label操作"></a>label操作</h3><p>删除 label version=xx</p>
-<p><code>kubectl label pod webui-746df859ff-z5fwt version-</code></p>
-<p>添加 label<br><code>kubectl label pods labelex owner=michael</code></p>
-<h3 id="deploy操作"><a href="#deploy操作" class="headerlink" title="deploy操作"></a>deploy操作</h3><p><code>kubectl create delpoy [deploy_name] --image=nginx</code></p>
-<p><code>kubectl create deployment httpenv --image=iasonliu/httpenv</code></p>
-<p>kubectl run [pod_name] –image=busybox</p>
-<p>example:<br><code>kubectl run pingpong --image=alpine ping 1.1.1.1</code> or <code>kubectl run pingpong2 --image alpine ping 1.1.1.1</code></p>
-<blockquote>
-<p>当我们使用 kubectl run something启动deplyment的时候，label会是 run=something</p>
-</blockquote>
-<p><code>kubectl set image deployment/nginx busybox=busybox nginx=nginx:1.9.1</code></p>
-<h3 id="service操作"><a href="#service操作" class="headerlink" title="service操作"></a>service操作</h3><p>为webui创建service<br><code>kubectl expose deploy/webui --type=NodePort --port=80</code></p>
-<h3 id="log操作"><a href="#log操作" class="headerlink" title="log操作"></a>log操作</h3><p>查看deploy日志<br><code>kubectl logs deploy/pingpong</code></p>
-<p>查看pod日志<br><code>kubect logs [ pod_name]</code></p>
-<hr>
-<p>More Ref:</p>
-<ul>
-<li><a href="http://kubernetesbyexample.com/" target="_blank" rel="noopener">http://kubernetesbyexample.com/</a></li>
-<li><a href="https://linuxacademy.com/blog/containers/kubernetes-cheat-sheet/" target="_blank" rel="noopener">https://linuxacademy.com/blog/containers/kubernetes-cheat-sheet/</a></li>
-<li><a href="http://docs.kubernetes.org.cn/683.html" target="_blank" rel="noopener">http://docs.kubernetes.org.cn/683.html</a></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>k8s</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>packer intro</title>
     <url>/2019/08/30/packer-intro/</url>
     <content><![CDATA[]]></content>
@@ -2469,6 +2469,31 @@ pipeline {
       <tags>
         <tag>Tools</tag>
         <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>shell 没有vim/vi 命令怎么办</title>
+    <url>/2019/10/23/shell-%E6%B2%A1%E6%9C%89vim-vi-%E5%91%BD%E4%BB%A4%E6%80%8E%E4%B9%88%E5%8A%9E/</url>
+    <content><![CDATA[<p>  由于经常在容器中有一些debug的操作，想要编辑文件，却又发现 <strong>一无所有</strong>（没有 vim/vi 编辑命令）。解决办法可能是去安装，但下载需要时间等待，且下载的工具使用也不是很频繁。所以换个思路，用其他基础的命令替代下。</p>
+<h3 id="cat-EOF-常用方法"><a href="#cat-EOF-常用方法" class="headerlink" title="cat EOF 常用方法"></a>cat EOF 常用方法</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># cat &lt;&lt;EOF &gt; cat_test.sh</span></span><br><span class="line">&gt; <span class="comment">#!/bin/bash</span></span><br><span class="line">&gt; <span class="built_in">echo</span> <span class="string">"no vim/vi"</span></span><br><span class="line">&gt; <span class="built_in">echo</span> <span class="string">"But ... cat"</span></span><br><span class="line">&gt; EOF</span><br></pre></td></tr></table></figure>
+<p>可以用 <code>cat cat_test.sh</code> 核验下内容和格式是否正确；如果原文件存在且有内容，会直接 <strong>覆盖</strong> ☝</p>
+<p><strong>追加</strong> 内容<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># cat &lt;&lt;EOF &gt;&gt; cat_test.sh</span></span><br><span class="line">&gt; <span class="comment">#!/bin/bash</span></span><br><span class="line">&gt; <span class="built_in">echo</span> <span class="string">"new add context"</span></span><br><span class="line">&gt; EOF</span><br></pre></td></tr></table></figure></p>
+<h3 id="cat交互模式下的使用"><a href="#cat交互模式下的使用" class="headerlink" title="cat交互模式下的使用"></a>cat交互模式下的使用</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># cat &gt; cat_in.sh</span></span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"by cat."</span></span><br></pre></td></tr></table></figure>
+<p>ctrl + d 结束输入</p>
+<hr>
+<p><strong>✍TIP</strong></p>
+<ol>
+<li><p>直接清空文件: <code>&gt;cat_test.sh</code></p>
+</li>
+<li><p>其实可以用其他字符来代替EOF，它也只是个标识符而已！</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Shell</category>
+      </categories>
+      <tags>
+        <tag>Shell</tag>
       </tags>
   </entry>
   <entry>
@@ -2510,31 +2535,6 @@ pipeline {
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"> <span class="comment"># cat img_downloader.sh</span></span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$#</span> -ne 3 ];</span><br><span class="line">  <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"Usage: <span class="variable">$0</span> URL -d DIRECTORY"</span></span><br><span class="line">    <span class="built_in">exit</span> 1</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> [ <span class="variable">$#</span> -gt 0 ]</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  <span class="keyword">case</span> <span class="variable">$1</span> <span class="keyword">in</span></span><br><span class="line">  -d) <span class="built_in">shift</span>; directory=<span class="variable">$1</span>; <span class="built_in">shift</span> ;;</span><br><span class="line">  *) url=<span class="variable">$1</span>; <span class="built_in">shift</span>;;</span><br><span class="line">  <span class="keyword">esac</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"directory is :<span class="variable">$directory</span>"</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"url is :<span class="variable">$url</span>"</span></span><br></pre></td></tr></table></figure>
 <p>运行结果如下：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"> <span class="comment"># ./img_downloader.sh -d images baidu.com</span></span><br><span class="line">directory is :images</span><br><span class="line">url is :baidu.com</span><br><span class="line"> <span class="comment"># ./img_downloader.sh baidu.com -d images</span></span><br><span class="line">directory is :images</span><br><span class="line">url is :baidu.com</span><br></pre></td></tr></table></figure></p>
 <p>采用这种方法解析命令行参数的好处在于可以将 <em>-d</em> 置于命令行中的任意位置</p>
-]]></content>
-      <categories>
-        <category>Shell</category>
-      </categories>
-      <tags>
-        <tag>Shell</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>shell 没有vim/vi 命令怎么办</title>
-    <url>/2019/10/23/shell-%E6%B2%A1%E6%9C%89vim-vi-%E5%91%BD%E4%BB%A4%E6%80%8E%E4%B9%88%E5%8A%9E/</url>
-    <content><![CDATA[<p>  由于经常在容器中有一些debug的操作，想要编辑文件，却又发现 <strong>一无所有</strong>（没有 vim/vi 编辑命令）。解决办法可能是去安装，但下载需要时间等待，且下载的工具使用也不是很频繁。所以换个思路，用其他基础的命令替代下。</p>
-<h3 id="cat-EOF-常用方法"><a href="#cat-EOF-常用方法" class="headerlink" title="cat EOF 常用方法"></a>cat EOF 常用方法</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># cat &lt;&lt;EOF &gt; cat_test.sh</span></span><br><span class="line">&gt; <span class="comment">#!/bin/bash</span></span><br><span class="line">&gt; <span class="built_in">echo</span> <span class="string">"no vim/vi"</span></span><br><span class="line">&gt; <span class="built_in">echo</span> <span class="string">"But ... cat"</span></span><br><span class="line">&gt; EOF</span><br></pre></td></tr></table></figure>
-<p>可以用 <code>cat cat_test.sh</code> 核验下内容和格式是否正确；如果原文件存在且有内容，会直接 <strong>覆盖</strong> ☝</p>
-<p><strong>追加</strong> 内容<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># cat &lt;&lt;EOF &gt;&gt; cat_test.sh</span></span><br><span class="line">&gt; <span class="comment">#!/bin/bash</span></span><br><span class="line">&gt; <span class="built_in">echo</span> <span class="string">"new add context"</span></span><br><span class="line">&gt; EOF</span><br></pre></td></tr></table></figure></p>
-<h3 id="cat交互模式下的使用"><a href="#cat交互模式下的使用" class="headerlink" title="cat交互模式下的使用"></a>cat交互模式下的使用</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># cat &gt; cat_in.sh</span></span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"by cat."</span></span><br></pre></td></tr></table></figure>
-<p>ctrl + d 结束输入</p>
-<hr>
-<p><strong>✍TIP</strong></p>
-<ol>
-<li><p>直接清空文件: <code>&gt;cat_test.sh</code></p>
-</li>
-<li><p>其实可以用其他字符来代替EOF，它也只是个标识符而已！</p>
-</li>
-</ol>
 ]]></content>
       <categories>
         <category>Shell</category>
@@ -2955,11 +2955,6 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>疫情的启示[伪上帝之眼]</title>
-    <url>/2020/04/10/%E7%96%AB%E6%83%85%E7%9A%84%E5%90%AF%E7%A4%BA-%E4%BC%AA%E4%B8%8A%E5%B8%9D%E4%B9%8B%E7%9C%BC/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>画UML</title>
     <url>/2020/02/25/%E7%94%BBUML/</url>
     <content><![CDATA[<p>TL;DR<br>用 <strong>文字</strong> + <strong>工具</strong> ，画个好图</p>
@@ -2996,6 +2991,11 @@ pipeline {
       <tags>
         <tag>Tools</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>疫情的启示[伪上帝之眼]</title>
+    <url>/2020/04/10/%E7%96%AB%E6%83%85%E7%9A%84%E5%90%AF%E7%A4%BA-%E4%BC%AA%E4%B8%8A%E5%B8%9D%E4%B9%8B%E7%9C%BC/</url>
+    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>移动端打包pipeline通识：从零开始</title>
