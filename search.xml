@@ -79,6 +79,24 @@
       </categories>
   </entry>
   <entry>
+    <title>Azure FAQs</title>
+    <url>/2019/12/11/Azure-FAQs/</url>
+    <content><![CDATA[<h3 id="1-asm-arm"><a href="#1-asm-arm" class="headerlink" title="1. asm, arm"></a>1. asm, arm</h3><ul>
+<li>asm: Azure Service Manager</li>
+<li>arm: Azure Resource Manager</li>
+</ul>
+<p>最开始一直都是classic模型，它的模型中有service的概念，所以它也叫 asm（Azure Service Manager）。2014年开始提出arm（Azure Resource Manager），其管理平台叫portal。2015年底arm发布。</p>
+<p>当前情况是微软正在将azure的所有功能往arm上迁移。以后都推荐使用arm。但 是当前状况是arm不完全向后兼容asm，有些功能只有asm上才有，所以还有很多 用户还是在使用classic。</p>
+<blockquote>
+<p>ref: <a href="https://pengpengxp.github.io/archive/before-2018-11-10/2017-06-28-Azure%E7%BB%8F%E5%85%B8%E6%A8%A1%E5%BC%8F%E5%92%8C%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB.html#orgbb66971" target="_blank" rel="noopener">https://pengpengxp.github.io/archive/before-2018-11-10/2017-06-28-Azure%E7%BB%8F%E5%85%B8%E6%A8%A1%E5%BC%8F%E5%92%8C%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB.html#orgbb66971</a></p>
+</blockquote>
+<h3 id="2-AWS-to-Azure-services-comparison"><a href="#2-AWS-to-Azure-services-comparison" class="headerlink" title="2. AWS to Azure services comparison"></a>2. AWS to Azure services comparison</h3><p>详见链接 <a href="https://docs.microsoft.com/en-us/azure/architecture/aws-professional/services" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/azure/architecture/aws-professional/services</a></p>
+]]></content>
+      <categories>
+        <category>Cloud</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Anka tutorial xx: Upgrade Record</title>
     <url>/2019/11/21/Anka-tutorial-xx-Upgrade-Record/</url>
     <content><![CDATA[<h3 id="1-升级前"><a href="#1-升级前" class="headerlink" title="1.升级前"></a>1.升级前</h3><p>从2018年11月到如今2019年11月，已经使用现有的版本1年多；anka也经历了多个版本，此次升级算是跨度较大，升级到目前最新的版本1.5.0</p>
@@ -222,24 +240,6 @@
 ]]></content>
       <categories>
         <category>CICD</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Azure FAQs</title>
-    <url>/2019/12/11/Azure-FAQs/</url>
-    <content><![CDATA[<h3 id="1-asm-arm"><a href="#1-asm-arm" class="headerlink" title="1. asm, arm"></a>1. asm, arm</h3><ul>
-<li>asm: Azure Service Manager</li>
-<li>arm: Azure Resource Manager</li>
-</ul>
-<p>最开始一直都是classic模型，它的模型中有service的概念，所以它也叫 asm（Azure Service Manager）。2014年开始提出arm（Azure Resource Manager），其管理平台叫portal。2015年底arm发布。</p>
-<p>当前情况是微软正在将azure的所有功能往arm上迁移。以后都推荐使用arm。但 是当前状况是arm不完全向后兼容asm，有些功能只有asm上才有，所以还有很多 用户还是在使用classic。</p>
-<blockquote>
-<p>ref: <a href="https://pengpengxp.github.io/archive/before-2018-11-10/2017-06-28-Azure%E7%BB%8F%E5%85%B8%E6%A8%A1%E5%BC%8F%E5%92%8C%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB.html#orgbb66971" target="_blank" rel="noopener">https://pengpengxp.github.io/archive/before-2018-11-10/2017-06-28-Azure%E7%BB%8F%E5%85%B8%E6%A8%A1%E5%BC%8F%E5%92%8C%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB.html#orgbb66971</a></p>
-</blockquote>
-<h3 id="2-AWS-to-Azure-services-comparison"><a href="#2-AWS-to-Azure-services-comparison" class="headerlink" title="2. AWS to Azure services comparison"></a>2. AWS to Azure services comparison</h3><p>详见链接 <a href="https://docs.microsoft.com/en-us/azure/architecture/aws-professional/services" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/azure/architecture/aws-professional/services</a></p>
-]]></content>
-      <categories>
-        <category>Cloud</category>
       </categories>
   </entry>
   <entry>
@@ -2071,13 +2071,14 @@ pipeline {
 </blockquote>
 <p>更多详细的功能也可以看发布<a href="https://en.wikipedia.org/wiki/Vivaldi_(web_browser" target="_blank" rel="noopener">计划</a>#Releases)，毕竟每次新加功能都会在发布计划里提到。</p>
 <hr>
-<p>很多功能还未尝试，等用过后再来聊聊。不过听说<em>快捷键</em>、<em>网页笔记</em>（保存百度文库的复制内容？）算是特色吧,[ ]TODO，但其实以前也没研究过chrome，firefox有没有类似功能。移动端来看，目前还只有 Android 版 Vivaldi，而且还是测试版本，估计等待不久就会出正式版。对开发人员而言，如何调试程序、定位bug，清理缓存数据？是否会有新的交互方式呢，[ ]TODO</p>
+<p>[ ]TODO<br>很多功能还未尝试，等用过后再来聊聊。不过听说<em>快捷键</em>、<em>网页笔记</em>（保存百度文库的复制内容？）算是特色吧,</p>
+<p>[ ]TODO<br>但其实以前也没研究过chrome，firefox有没有类似功能。移动端来看，目前还只有 Android 版 Vivaldi，而且还是测试版本，估计等待不久就会出正式版。对开发人员而言，如何调试程序、定位bug，清理缓存数据？是否会有新的交互方式呢，</p>
 <hr>
 <p><strong>More Ref:</strong></p>
 <ul>
 <li><p><a href="https://www.youtube.com/playlist?list=PL72e6dBabYNVRfpvEUt-WNfV7tZuKDAPB" target="_blank" rel="noopener">youtube播放列表</a></p>
 </li>
-<li><p>详细的功能也可以看发布计划,<a href="https://en.wikipedia.org/wiki/Vivaldi_(web_browser)#Releases,毕竟每次新加功能都会在发布计划里提到" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Vivaldi_(web_browser)#Releases,毕竟每次新加功能都会在发布计划里提到</a></p>
+<li><p>详细的功能也可以看发布计划,<a href="https://en.wikipedia.org/wiki/Vivaldi_(web_browser)#Releases" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Vivaldi_(web_browser)#Releases</a>, 毕竟每次新加功能都会在发布计划里提到</p>
 </li>
 </ul>
 ]]></content>
@@ -2387,6 +2388,30 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>mktemp command</title>
+    <url>/2019/05/07/mktemp-command/</url>
+    <content><![CDATA[<p>最适合存储临时数据的位置是/tmp, <strong>mktemp</strong> 命令可以为临时文件或目录创建唯一的名字</p>
+<p>Create a temporary file or directory.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mktemp</span><br><span class="line"></span><br><span class="line">Create a temporary file or directory.</span><br><span class="line"></span><br><span class="line">- Create an empty temporary file and return the absolute path to it:</span><br><span class="line">    mktemp</span><br><span class="line"></span><br><span class="line">- Create a temporary directory and return the absolute path to it:</span><br><span class="line">    mktemp -d</span><br><span class="line"></span><br><span class="line">- Create a temporary file with a specified suffix:</span><br><span class="line">    mktemp --suffix &quot;.txt&quot;</span><br></pre></td></tr></table></figure>
+<h4 id="1-create-temporary-file-创建临时目录"><a href="#1-create-temporary-file-创建临时目录" class="headerlink" title="1.create temporary file (创建临时目录)"></a>1.create temporary file (创建临时目录)</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$filename</span>=`mktemp`</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$filename</span></span><br><span class="line">/tmp/tmp.8xefliegnD9</span><br></pre></td></tr></table></figure>
+<h4 id="2-create-temporary-directory-创建临时目录"><a href="#2-create-temporary-directory-创建临时目录" class="headerlink" title="2. create temporary directory (创建临时目录)"></a>2. create temporary directory (创建临时目录)</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dirname=`mktemp -d`</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$dirname</span></span><br><span class="line">tmp.NJ8dhf6wk</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>If you just want to generate a filename and don’t want to create the actual file or directory, you can(如果仅仅是想生成文件名，不希望创建实际的文件或目录，可以):<br><code>mktemp -u</code></p>
+</li>
+<li><p>Create a temporary filename based on the tempplate(基于模板创建临时文件名)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  qr_blog mktemp study.XXX</span><br><span class="line">study.UWT</span><br><span class="line">➜  qr_blog mktemp study.XXX</span><br><span class="line">study.Usm</span><br><span class="line">➜  qr_blog mktemp study.XXX</span><br><span class="line">study.M6a</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>Mac OS 与linux用法略有区别，请视情况使用</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Shell</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ngrok demo</title>
     <url>/2019/07/22/ngrok-demo/</url>
     <content><![CDATA[<h3 id="怎么用"><a href="#怎么用" class="headerlink" title="怎么用"></a>怎么用</h3><p><a href="https://dashboard.ngrok.com/get-started" target="_blank" rel="noopener">https://dashboard.ngrok.com/get-started</a><br><img src="/images/ngrok_demo_01.png" alt="ngrok_demo_01"></p>
@@ -2410,30 +2435,6 @@ pipeline {
 ]]></content>
       <tags>
         <tag>Tools</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>mktemp command</title>
-    <url>/2019/05/07/mktemp-command/</url>
-    <content><![CDATA[<p>最适合存储临时数据的位置是/tmp, <strong>mktemp</strong> 命令可以为临时文件或目录创建唯一的名字</p>
-<p>Create a temporary file or directory.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mktemp</span><br><span class="line"></span><br><span class="line">Create a temporary file or directory.</span><br><span class="line"></span><br><span class="line">- Create an empty temporary file and return the absolute path to it:</span><br><span class="line">    mktemp</span><br><span class="line"></span><br><span class="line">- Create a temporary directory and return the absolute path to it:</span><br><span class="line">    mktemp -d</span><br><span class="line"></span><br><span class="line">- Create a temporary file with a specified suffix:</span><br><span class="line">    mktemp --suffix &quot;.txt&quot;</span><br></pre></td></tr></table></figure>
-<h4 id="1-create-temporary-file-创建临时目录"><a href="#1-create-temporary-file-创建临时目录" class="headerlink" title="1.create temporary file (创建临时目录)"></a>1.create temporary file (创建临时目录)</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$filename</span>=`mktemp`</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$filename</span></span><br><span class="line">/tmp/tmp.8xefliegnD9</span><br></pre></td></tr></table></figure>
-<h4 id="2-create-temporary-directory-创建临时目录"><a href="#2-create-temporary-directory-创建临时目录" class="headerlink" title="2. create temporary directory (创建临时目录)"></a>2. create temporary directory (创建临时目录)</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dirname=`mktemp -d`</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$dirname</span></span><br><span class="line">tmp.NJ8dhf6wk</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>If you just want to generate a filename and don’t want to create the actual file or directory, you can(如果仅仅是想生成文件名，不希望创建实际的文件或目录，可以):<br><code>mktemp -u</code></p>
-</li>
-<li><p>Create a temporary filename based on the tempplate(基于模板创建临时文件名)</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  qr_blog mktemp study.XXX</span><br><span class="line">study.UWT</span><br><span class="line">➜  qr_blog mktemp study.XXX</span><br><span class="line">study.Usm</span><br><span class="line">➜  qr_blog mktemp study.XXX</span><br><span class="line">study.M6a</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>Mac OS 与linux用法略有区别，请视情况使用</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Shell</tag>
       </tags>
   </entry>
   <entry>
