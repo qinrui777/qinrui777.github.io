@@ -225,14 +225,6 @@
       </categories>
   </entry>
   <entry>
-    <title>Azure tutorial 01: overview</title>
-    <url>/2019/12/11/Azure-tutorial-01-overview/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Cloud</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Azure FAQs</title>
     <url>/2019/12/11/Azure-FAQs/</url>
     <content><![CDATA[<h3 id="1-asm-arm"><a href="#1-asm-arm" class="headerlink" title="1. asm, arm"></a>1. asm, arm</h3><ul>
@@ -246,6 +238,14 @@
 </blockquote>
 <h3 id="2-AWS-to-Azure-services-comparison"><a href="#2-AWS-to-Azure-services-comparison" class="headerlink" title="2. AWS to Azure services comparison"></a>2. AWS to Azure services comparison</h3><p>详见链接 <a href="https://docs.microsoft.com/en-us/azure/architecture/aws-professional/services" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/azure/architecture/aws-professional/services</a></p>
 ]]></content>
+      <categories>
+        <category>Cloud</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Azure tutorial 01: overview</title>
+    <url>/2019/12/11/Azure-tutorial-01-overview/</url>
+    <content><![CDATA[]]></content>
       <categories>
         <category>Cloud</category>
       </categories>
@@ -328,6 +328,24 @@
       </tags>
   </entry>
   <entry>
+    <title>Crontab on Liunx or Jenkins</title>
+    <url>/2019/04/28/Crontab-on-Liunx-or-Jenkins/</url>
+    <content><![CDATA[<p>源起：<br><code>@midnight</code>  This will run at some point between 0:00 and 2:59</p>
+<p><code>H(0-30) 02 * * *</code> between 2:00 a.m. – 02:30 a.m.<br>//will build the same time every day</p>
+<p><strong>More Ref:</strong></p>
+<ul>
+<li><a href="https://crontab-generator.org/" target="_blank" rel="noopener">https://crontab-generator.org/</a></li>
+<li><a href="https://blogs.microsoft.co.il/meravk/2015/06/10/how-to-schedule-a-build-in-jenkins/" target="_blank" rel="noopener">https://blogs.microsoft.co.il/meravk/2015/06/10/how-to-schedule-a-build-in-jenkins/</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>jenkins</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Docker Configuration</title>
     <url>/2019/07/26/Docker-Configuration/</url>
     <content><![CDATA[<table>
@@ -358,24 +376,6 @@
 ]]></content>
       <tags>
         <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Crontab on Liunx or Jenkins</title>
-    <url>/2019/04/28/Crontab-on-Liunx-or-Jenkins/</url>
-    <content><![CDATA[<p>源起：<br><code>@midnight</code>  This will run at some point between 0:00 and 2:59</p>
-<p><code>H(0-30) 02 * * *</code> between 2:00 a.m. – 02:30 a.m.<br>//will build the same time every day</p>
-<p><strong>More Ref:</strong></p>
-<ul>
-<li><a href="https://crontab-generator.org/" target="_blank" rel="noopener">https://crontab-generator.org/</a></li>
-<li><a href="https://blogs.microsoft.co.il/meravk/2015/06/10/how-to-schedule-a-build-in-jenkins/" target="_blank" rel="noopener">https://blogs.microsoft.co.il/meravk/2015/06/10/how-to-schedule-a-build-in-jenkins/</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>jenkins</tag>
       </tags>
   </entry>
   <entry>
@@ -1449,6 +1449,9 @@ pipeline {
 <li>炫酷的几何图形  <a href="http://weavesilk.com/" target="_blank" rel="noopener">http://weavesilk.com/</a></li>
 <li>炫酷图形工具集合 <a href="https://wangyasai.github.io/designtools.html" target="_blank" rel="noopener">https://wangyasai.github.io/designtools.html</a> （包含黑客背景、speed line等）</li>
 </ul>
+<ul>
+<li><a href="https://github.com/vkarampinis/awesome-icons" target="_blank" rel="noopener">https://github.com/vkarampinis/awesome-icons</a> 各种 + 在线编辑svg格式，拖动、改变颜色等 <a href="https://svg.wxeditor.com/" target="_blank" rel="noopener">https://svg.wxeditor.com/</a></li>
+</ul>
 <blockquote>
 <p>Icons made by Smashicons、iconixar、Vitaly Gorbachev、Vectors Market from <a href="http://www.flaticon.com" target="_blank" rel="noopener">www.flaticon.com</a></p>
 </blockquote>
@@ -1810,6 +1813,30 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>Small Tools [2]: ffmpeg -- Video conversion tool.</title>
+    <url>/2019/05/23/Small-Tools-2-ffmpeg-Video-conversion-tool/</url>
+    <content><![CDATA[<h2 id="yffmpeg"><a href="#yffmpeg" class="headerlink" title="yffmpeg"></a>yffmpeg</h2><h5 id="1-Install-（安装）"><a href="#1-Install-（安装）" class="headerlink" title="1.Install （安装）"></a>1.Install （安装）</h5><ul>
+<li>macOS (wait a min)<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">brew install ffmpeg</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="2-Usage-（用法）"><a href="#2-Usage-（用法）" class="headerlink" title="2.Usage （用法）"></a>2.Usage （用法）</h5><ul>
+<li>General usage</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ffmpeg -i video.mp4 -vn sound.mp3</span><br></pre></td></tr></table></figure>
+<ul>
+<li>More usage<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ffmpeg</span><br><span class="line"></span><br><span class="line">Video conversion tool.</span><br><span class="line"></span><br><span class="line">- Extract the sound from a video and save it as MP3:</span><br><span class="line">    ffmpeg -i video.mp4 -vn sound.mp3</span><br><span class="line"></span><br><span class="line">- Convert frames from a video or GIF into individual numbered images:</span><br><span class="line">    ffmpeg -i video.mpg|video.gif frame_%d.png</span><br><span class="line"></span><br><span class="line">- Combine numbered images (frame_1.jpg, frame_2.jpg, etc) into a video or GIF:</span><br><span class="line">    ffmpeg -i frame_%d.jpg -f image2 video.mpg|video.gif</span><br><span class="line"></span><br><span class="line">- Quickly extract a single frame from a video at time mm:ss and save it as a 128x128 resolution image:</span><br><span class="line">    ffmpeg -ss mm:ss -i video.mp4 -frames 1 -s 128x128 -f image2 image.png</span><br><span class="line"></span><br><span class="line">- Trim a video from a given start time mm:ss to an end time mm2:ss2 (omit the -to flag to trim till the end):</span><br><span class="line">    ffmpeg -ss mm:ss -to mm2:ss2 -i video.mp4 -codec copy output.mp4</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>More Ref:</strong>- <a href="https://ffmpeg.org" target="_blank" rel="noopener">https://ffmpeg.org</a> (官网)</p>
+]]></content>
+      <categories>
+        <category>Tools</category>
+      </categories>
+      <tags>
+        <tag>Tools</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Terraform 100: Introduction &amp; Install</title>
     <url>/2019/08/27/Terraform-100-Introduction-Install/</url>
     <content><![CDATA[<h3 id="What-is-Terraform"><a href="#What-is-Terraform" class="headerlink" title="What is Terraform?"></a>What is Terraform?</h3><p>Terraform is a tool for building, changing, and versioning infrastructure safely and efficiently. Terraform can manage existing and popular service providers as well as custom in-house solutions.</p>
@@ -1842,30 +1869,6 @@ pipeline {
       </categories>
       <tags>
         <tag>Terraform</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Small Tools [2]: ffmpeg -- Video conversion tool.</title>
-    <url>/2019/05/23/Small-Tools-2-ffmpeg-Video-conversion-tool/</url>
-    <content><![CDATA[<h2 id="yffmpeg"><a href="#yffmpeg" class="headerlink" title="yffmpeg"></a>yffmpeg</h2><h5 id="1-Install-（安装）"><a href="#1-Install-（安装）" class="headerlink" title="1.Install （安装）"></a>1.Install （安装）</h5><ul>
-<li>macOS (wait a min)<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">brew install ffmpeg</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h5 id="2-Usage-（用法）"><a href="#2-Usage-（用法）" class="headerlink" title="2.Usage （用法）"></a>2.Usage （用法）</h5><ul>
-<li>General usage</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ffmpeg -i video.mp4 -vn sound.mp3</span><br></pre></td></tr></table></figure>
-<ul>
-<li>More usage<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ffmpeg</span><br><span class="line"></span><br><span class="line">Video conversion tool.</span><br><span class="line"></span><br><span class="line">- Extract the sound from a video and save it as MP3:</span><br><span class="line">    ffmpeg -i video.mp4 -vn sound.mp3</span><br><span class="line"></span><br><span class="line">- Convert frames from a video or GIF into individual numbered images:</span><br><span class="line">    ffmpeg -i video.mpg|video.gif frame_%d.png</span><br><span class="line"></span><br><span class="line">- Combine numbered images (frame_1.jpg, frame_2.jpg, etc) into a video or GIF:</span><br><span class="line">    ffmpeg -i frame_%d.jpg -f image2 video.mpg|video.gif</span><br><span class="line"></span><br><span class="line">- Quickly extract a single frame from a video at time mm:ss and save it as a 128x128 resolution image:</span><br><span class="line">    ffmpeg -ss mm:ss -i video.mp4 -frames 1 -s 128x128 -f image2 image.png</span><br><span class="line"></span><br><span class="line">- Trim a video from a given start time mm:ss to an end time mm2:ss2 (omit the -to flag to trim till the end):</span><br><span class="line">    ffmpeg -ss mm:ss -to mm2:ss2 -i video.mp4 -codec copy output.mp4</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p><strong>More Ref:</strong>- <a href="https://ffmpeg.org" target="_blank" rel="noopener">https://ffmpeg.org</a> (官网)</p>
-]]></content>
-      <categories>
-        <category>Tools</category>
-      </categories>
-      <tags>
-        <tag>Tools</tag>
       </tags>
   </entry>
   <entry>
@@ -2034,6 +2037,53 @@ pipeline {
       <categories>
         <category>读书笔记</category>
       </categories>
+  </entry>
+  <entry>
+    <title>Vivaldi入手</title>
+    <url>/2020/04/09/Vivaldi%E5%85%A5%E6%89%8B/</url>
+    <content><![CDATA[<h3 id="0-前言"><a href="#0-前言" class="headerlink" title="0.前言"></a>0.前言</h3><p>最近才在一些论坛上听说 <strong>Vivaldi</strong> 浏览器的大名（我孤陋寡闻了😅）。毕竟入手一个浏览器工具又不花钱，那Chrome挺好用的，为什么要换？</p>
+<blockquote>
+<p>尝尝新鲜的，换着试试看，毕竟不尝试一段时间怎么知道好不好。</p>
+</blockquote>
+<h3 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1.介绍"></a>1.介绍</h3><p>从<a href="https://en.wikipedia.org/wiki/Vivaldi_(web_browser" target="_blank" rel="noopener">维基百科的介绍</a>)来看，Vivaldi的来头可不小，创始人是 Opera 浏览器的前任CEO，估计中间有很多商业故事。使用 Chromium 做内核，能直接安装Chrome网上应用店的应用程序.2016年4月发布第一个版本，距今正好4年，算是比较年轻。后生可畏，轻装上阵，说不定比庞大的chrome会有一些小优势。</p>
+<p><code>Vivaldi is a freeware, cross-platform web browser developed by Vivaldi Technologies, a company founded by Opera Software co-founder and former CEO Jon Stephenson von Tetzchner and Tatsuki Tomita. It was officially launched on April 6, 2016.</code></p>
+<h3 id="2-安装"><a href="#2-安装" class="headerlink" title="2.安装"></a>2.安装</h3><p>直接到官网 <a href="https://vivaldi.com/" target="_blank" rel="noopener">https://vivaldi.com/</a> 下载安装对应系统的版本即可。我当前安装的具体版本是：<code>Vivaldi    2.11.1811.52 (Stable channel) (64-bit)</code></p>
+<h3 id="3-使用"><a href="#3-使用" class="headerlink" title="3.使用"></a>3.使用</h3><p>打开安装好的浏览器后会有一个链接 <code>vivaldi://welcome</code> ，引导做初始化设置</p>
+<p><strong>Welcome to Vivaldi</strong></p>
+<blockquote>
+<p>没啥～</p>
+</blockquote>
+<p><strong>Import Bookmarks &amp; Settings</strong></p>
+<blockquote>
+<p>不要要导入导出的步骤，vivaldi会要求输入电脑的密码获取权限拿其他浏览器的书签内容。</p>
+</blockquote>
+<p><strong>Pick a Theme</strong></p>
+<blockquote>
+<p>选背景主题，不多说，但是据说能够做很多自定义的设置，比如某个网站打开后指定其tab颜色。</p>
+</blockquote>
+<p><strong>Position Your Tabs</strong></p>
+<blockquote>
+<p>这里的Tabs指的是一般浏览器最上头一栏，可以切换你的网页的部分。vivaldi 支持你把这个Tabs放到 顶部、左边、右边、底部，但是一般还是习惯 顶部，暂时不换了。尝试了一下放到左边，占据的面积会大一些，因为会直接显示每个网页的缩略图，清晰的让你看到网页大致内容。</p>
+</blockquote>
+<p><strong>Get Going</strong></p>
+<blockquote>
+<p>观看指南的链接、加入社区的链接、关注多个社交账、号是否接收邮件</p>
+</blockquote>
+<p>更多详细的功能也可以看发布<a href="https://en.wikipedia.org/wiki/Vivaldi_(web_browser" target="_blank" rel="noopener">计划</a>#Releases)，毕竟每次新加功能都会在发布计划里提到。</p>
+<hr>
+<p>很多功能还未尝试，等用过后再来聊聊。不过听说<em>快捷键</em>、<em>网页笔记</em>（保存百度文库的复制内容？）算是特色吧,[ ]TODO，但其实以前也没研究过chrome，firefox有没有类似功能。移动端来看，目前还只有 Android 版 Vivaldi，而且还是测试版本，估计等待不久就会出正式版。对开发人员而言，如何调试程序、定位bug，清理缓存数据？是否会有新的交互方式呢，[ ]TODO</p>
+<hr>
+<p><strong>More Ref:</strong></p>
+<ul>
+<li><p><a href="https://www.youtube.com/playlist?list=PL72e6dBabYNVRfpvEUt-WNfV7tZuKDAPB" target="_blank" rel="noopener">youtube播放列表</a></p>
+</li>
+<li><p>详细的功能也可以看发布<a href="https://en.wikipedia.org/wiki/Vivaldi_(web_browser" target="_blank" rel="noopener">计划</a>#Releases)，毕竟每次新加功能都会在发布计划里提到</p>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>Tools</tag>
+      </tags>
   </entry>
   <entry>
     <title>about</title>
@@ -2218,13 +2268,14 @@ pipeline {
 <blockquote>
 <p>也不知道合不合适，目录包含标签，是一个大的范围，标签是具体的东西，属于其中，一个目录可包含多个标签。</p>
 </blockquote>
-<h3 id="加密"><a href="#加密" class="headerlink" title="加密"></a>加密</h3><p><a href="https://github.com/MikeCoder/hexo-blog-encrypt" target="_blank" rel="noopener">hexo-blog-encrypt</a></p>
+<h3 id="加密"><a href="#加密" class="headerlink" title="加密"></a>加密</h3><p><a href="https://github.com/MikeCoder/hexo-blog-encrypt" target="_blank" rel="noopener">hexo-blog-encrypt</a> ，具体过程也是参考链接完成安装、使用的。</p>
 <h3 id="图床"><a href="#图床" class="headerlink" title="图床"></a>图床</h3><p>选用 <a href="https://imgchr.com/" target="_blank" rel="noopener">路过图床</a></p>
 <ul>
 <li>不用注册账号</li>
 <li>未注册最大5M,注册后最大10M。大小都够了，不行的话可以提前用 <a href="https://tinypng.com/" target="_blank" rel="noopener">https://tinypng.com/</a> 压缩一些</li>
 <li>上传后提供多种格式供嵌入代码</li>
 </ul>
+<h3 id="评论"><a href="#评论" class="headerlink" title="评论"></a>评论</h3><p>使用<a href="https://disqus.com/" target="_blank" rel="noopener">disqus</a>,其账号保持和github的账号一致，毕竟blog内容也在github上。用github用的邮箱注册一把，</p>
 ]]></content>
       <tags>
         <tag>Tools</tag>
@@ -2294,19 +2345,6 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>jenkins date timezone update</title>
-    <url>/2019/04/25/jenkins-date-timezone-update/</url>
-    <content><![CDATA[<h4 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h4><p>打开 【系统管理】-&gt;【脚本命令行】运行下面的命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">System.setProperty(<span class="string">'org.apache.commons.jelly.tags.fmt.timeZone'</span>, <span class="string">'Asia/Shanghai'</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="/images/jenkins_run_image_01.png" alt="jenkins_run_image_01"></p>
-<h4 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h4><pre><code class="java">JAVA_ARGS=<span class="string">"-Dorg.apache.commons.jelly.tags.fmt.timeZone=Asia/Shanghai -Dfile.encoding=UTF-8 -Djava.awt.headless=true"</span>
-</code></pre>
-]]></content>
-      <tags>
-        <tag>jenkins</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>mktemp command</title>
     <url>/2019/05/07/mktemp-command/</url>
     <content><![CDATA[<p>最适合存储临时数据的位置是/tmp, <strong>mktemp</strong> 命令可以为临时文件或目录创建唯一的名字</p>
@@ -2328,6 +2366,45 @@ pipeline {
       </categories>
       <tags>
         <tag>Shell</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ngrok demo</title>
+    <url>/2019/07/22/ngrok-demo/</url>
+    <content><![CDATA[<h3 id="怎么用"><a href="#怎么用" class="headerlink" title="怎么用"></a>怎么用</h3><p><a href="https://dashboard.ngrok.com/get-started" target="_blank" rel="noopener">https://dashboard.ngrok.com/get-started</a><br><img src="/images/ngrok_demo_01.png" alt="ngrok_demo_01"></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  Downloads ./ngrok authtoken &lt;YOUR_AUTHTOKEN&gt;</span><br><span class="line">Authtoken saved to configuration file: /Users/xxx/.ngrok2/ngrok.yml</span><br></pre></td></tr></table></figure>
+<h3 id="Demo-on-jenkins"><a href="#Demo-on-jenkins" class="headerlink" title="Demo on jenkins"></a>Demo on jenkins</h3><ol>
+<li>启动本地的Jenkins服务，暴露端口 <strong>8081</strong></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  jenkins_demo docker run -d --name jenkins4ngrok -p 8081:8080 jenkins/jenkins:latest</span><br><span class="line">c384aca32c27d2c2df58e76619bc63a758d5e7b358e59c5bf083cb739952c4c7</span><br><span class="line">➜  jenkins_demo docker ps</span><br><span class="line">CONTAINER ID        IMAGE                    COMMAND                  CREATED             STATUS              PORTS                               NAMES</span><br><span class="line">c384aca32c27        jenkins/jenkins:latest   <span class="string">"/sbin/tini -- /usr/…"</span>   2 seconds ago       Up 1 second         50000/tcp, 0.0.0.0:8081-&gt;8080/tcp   jenkins4ngrok</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>Use ngrok, To start a HTTP tunnel on port 8081<br><code>➜  ./ngrok http 8081</code></li>
+</ol>
+<p><img src="/images/ngrok_demo_03.png" alt="ngrok_demo_03"></p>
+<ol start="3">
+<li>根据ngrok返回的，访问公网地址</li>
+</ol>
+<p>界面如下<br><img src="/images/ngrok_demo_02.png" alt="ngrok_demo_02"></p>
+<p>More Ref:</p>
+<ul>
+<li><a href="https://ngrok.com/docs" target="_blank" rel="noopener">https://ngrok.com/docs</a></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>Tools</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>jenkins date timezone update</title>
+    <url>/2019/04/25/jenkins-date-timezone-update/</url>
+    <content><![CDATA[<h4 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h4><p>打开 【系统管理】-&gt;【脚本命令行】运行下面的命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">System.setProperty(<span class="string">'org.apache.commons.jelly.tags.fmt.timeZone'</span>, <span class="string">'Asia/Shanghai'</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="/images/jenkins_run_image_01.png" alt="jenkins_run_image_01"></p>
+<h4 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h4><pre><code class="java">JAVA_ARGS=<span class="string">"-Dorg.apache.commons.jelly.tags.fmt.timeZone=Asia/Shanghai -Dfile.encoding=UTF-8 -Djava.awt.headless=true"</span>
+</code></pre>
+]]></content>
+      <tags>
+        <tag>jenkins</tag>
       </tags>
   </entry>
   <entry>
@@ -2357,32 +2434,6 @@ pipeline {
 ]]></content>
       <tags>
         <tag>k8s</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ngrok demo</title>
-    <url>/2019/07/22/ngrok-demo/</url>
-    <content><![CDATA[<h3 id="怎么用"><a href="#怎么用" class="headerlink" title="怎么用"></a>怎么用</h3><p><a href="https://dashboard.ngrok.com/get-started" target="_blank" rel="noopener">https://dashboard.ngrok.com/get-started</a><br><img src="/images/ngrok_demo_01.png" alt="ngrok_demo_01"></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  Downloads ./ngrok authtoken &lt;YOUR_AUTHTOKEN&gt;</span><br><span class="line">Authtoken saved to configuration file: /Users/xxx/.ngrok2/ngrok.yml</span><br></pre></td></tr></table></figure>
-<h3 id="Demo-on-jenkins"><a href="#Demo-on-jenkins" class="headerlink" title="Demo on jenkins"></a>Demo on jenkins</h3><ol>
-<li>启动本地的Jenkins服务，暴露端口 <strong>8081</strong></li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  jenkins_demo docker run -d --name jenkins4ngrok -p 8081:8080 jenkins/jenkins:latest</span><br><span class="line">c384aca32c27d2c2df58e76619bc63a758d5e7b358e59c5bf083cb739952c4c7</span><br><span class="line">➜  jenkins_demo docker ps</span><br><span class="line">CONTAINER ID        IMAGE                    COMMAND                  CREATED             STATUS              PORTS                               NAMES</span><br><span class="line">c384aca32c27        jenkins/jenkins:latest   <span class="string">"/sbin/tini -- /usr/…"</span>   2 seconds ago       Up 1 second         50000/tcp, 0.0.0.0:8081-&gt;8080/tcp   jenkins4ngrok</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>Use ngrok, To start a HTTP tunnel on port 8081<br><code>➜  ./ngrok http 8081</code></li>
-</ol>
-<p><img src="/images/ngrok_demo_03.png" alt="ngrok_demo_03"></p>
-<ol start="3">
-<li>根据ngrok返回的，访问公网地址</li>
-</ol>
-<p>界面如下<br><img src="/images/ngrok_demo_02.png" alt="ngrok_demo_02"></p>
-<p>More Ref:</p>
-<ul>
-<li><a href="https://ngrok.com/docs" target="_blank" rel="noopener">https://ngrok.com/docs</a></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>Tools</tag>
       </tags>
   </entry>
   <entry>
@@ -2867,13 +2918,13 @@ pipeline {
 <h3 id="几点有感"><a href="#几点有感" class="headerlink" title="几点有感"></a>几点有感</h3><blockquote>
 <p>可能对原文有误解，或者解读错误的地方，请不要全信我，欢迎指出纰漏！</p>
 </blockquote>
-<h5 id="1-灾难意识"><a href="#1-灾难意识" class="headerlink" title="1.灾难意识"></a>1.灾难意识</h5><p>生活在大川附近的人都感觉自己不是在海边，生活习惯更多的像是在内陆，可能是因为种植很多水稻，没见到稳重提及很多村民靠出海打渔为生。地震在日本很常见，但是地震后的海啸确是人们潜意识中难以置信的，所以也造成了悲剧的发生。就像很多灾难的发生一样，人们没有意识到、不相信，于是心态极好地不应对、不防护，结果造成了不堪的后果。</p>
+<h5 id="1-灾难意识"><a href="#1-灾难意识" class="headerlink" title="1.灾难意识"></a>1.灾难意识</h5><p>生活在大川附近的人都感觉自己不是在海边，生活习惯更多的像是在内陆，可能是因为种植很多水稻，没见到文中提及很多村民靠出海打渔为生。地震在日本很常见，但是地震后的海啸确是人们潜意识中难以置信的，所以也造成了悲剧的发生。就像很多灾难的发生一样，人们没有意识到、不相信，于是心态极好地不应对、不防护，结果造成了不堪的后果。</p>
 <p>“另可信其有，不可信其无”。这句话用在灾难面前还是需要做到的，毕竟你防范了也没有什么损失。</p>
 <h5 id="2-“发生了什么”"><a href="#2-“发生了什么”" class="headerlink" title="2.“发生了什么”"></a>2.“发生了什么”</h5><p>是学校缺乏正确、清晰的应急手册？还是老师们没有危机意识？ 是疏忽大意，还是定义为过失、玩忽职守？</p>
-<p>哪天海啸时，到底发生了什么？是失去孩子们的家长想知道的，并不是想得到什么，或许只想知道孩子最好和谁在一起，在做什么。而面对政府、教育部的遮掩，可能加深了家长们的猜测。看起来像是，一群人探寻一个被遮掩的真相，而一部分日本人民也有着执拗的性格。</p>
+<p>那天海啸时，到底发生了什么？是失去孩子们的家长想知道的，并不是想得到什么，或许只想知道孩子最好和谁在一起，在做什么。而面对政府、教育部的遮掩，可能加深了家长们的猜测。看起来像是，一群人探寻一个被遮掩的真相，而一部分日本人民也有着执拗的性格。</p>
 <p>除了寻找那天的真相，另一个场景也在寻找。有的孩子遗体很快被找到，但有一些却一直在搜寻中。父母一直要找到孩子的遗体，坚持1-2个月，甚至2-3年，不幸的便是至今未找到。父母心中可能是对去世孩子的愧疚，又或者是其他的原因驱使着他们坚持。</p>
 <p>文章中很多文字可以看到作者愤怒的情绪，对制度的愤怒，对一些人某种不承认的愤怒。</p>
-<h5 id="3-灾难之后"><a href="#3-灾难之后" class="headerlink" title="3.灾难之后"></a>3.灾难之后</h5><p>人们关系的改变，失去孩子的父母关系更加密切，而于那些幸运的家庭越行越远，之前不认识的家长一同寻找各自的孩子，相互抱团 、理解 。</p>
+<h5 id="3-灾难之后"><a href="#3-灾难之后" class="headerlink" title="3.灾难之后"></a>3.灾难之后</h5><p>人们关系的改变，失去孩子的父母关系更加密切，而与那些幸运的家庭越行越远，之前不认识的家长一同寻找各自的孩子，相互抱团 、理解 。</p>
 <p>次生灾害的发生，寻找僧人超度鬼魂…</p>
 <h5 id="4-谈一下结局"><a href="#4-谈一下结局" class="headerlink" title="4.谈一下结局"></a>4.谈一下结局</h5><p>海啸发生于2011年3月，中间历经多轮较量，最终2016年10月法院作出判决–“赔偿14.3亿日元，少于家长要求的 23亿日元”。赔偿数字不是人们追寻的，而是那个天平的位置、家长们心中的价值、事故责任归属。家长心中悬空已久的大石头，慢慢放下，然后开始余生的生活。</p>
 <h5 id="5-启示"><a href="#5-启示" class="headerlink" title="5.启示"></a>5.启示</h5><p>还有多少类型的灾难？地震、海啸、山洪、病毒、火灾、虫害、缺水少粮…</p>
@@ -2902,6 +2953,11 @@ pipeline {
       <tags>
         <tag>Q List</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>疫情的启示[伪上帝之眼]</title>
+    <url>/2020/04/10/%E7%96%AB%E6%83%85%E7%9A%84%E5%90%AF%E7%A4%BA-%E4%BC%AA%E4%B8%8A%E5%B8%9D%E4%B9%8B%E7%9C%BC/</url>
+    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>画UML</title>
