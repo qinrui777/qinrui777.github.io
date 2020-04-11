@@ -251,6 +251,24 @@
       </categories>
   </entry>
   <entry>
+    <title>Bash function skill</title>
+    <url>/2019/06/18/Bash-function-skill/</url>
+    <content><![CDATA[<p>bash 函数技巧</p>
+<h4 id="1-递归函数"><a href="#1-递归函数" class="headerlink" title="1. 递归函数"></a>1. 递归函数</h4><h4 id="2-导出函数"><a href="#2-导出函数" class="headerlink" title="2.导出函数"></a>2.导出函数</h4><p>函数也可以像环境变量一样用 export 导出<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   <span class="function"><span class="title">foo</span></span>() &#123;<span class="built_in">echo</span> <span class="string">"This is foo function"</span>&#125;</span><br><span class="line">➜   <span class="built_in">export</span> -f foo</span><br><span class="line"><span class="function"><span class="title">foo</span></span> () &#123;</span><br><span class="line">	<span class="built_in">echo</span> <span class="string">"This is foo function"</span></span><br><span class="line">&#125;</span><br><span class="line">➜   foo</span><br><span class="line">This is foo <span class="keyword">function</span></span><br><span class="line">➜</span><br></pre></td></tr></table></figure></p>
+<h4 id="3-读取命令返回值"><a href="#3-读取命令返回值" class="headerlink" title="3. 读取命令返回值"></a>3. 读取命令返回值</h4><p>命令的返回值被保存在变量 <code>$?</code> 中<br>返回值被称为 <strong>退出状态</strong> 。它可用于确定命令执行成功与否。如果命令成功退出，那么退出状态为0，否则为非0.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   cat success_test.sh </span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#file name: success_test.sh</span></span><br><span class="line"><span class="comment">#对命令行参数求值，比如 success_test.sh `ls | grep txt`</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"parameter is :"</span><span class="variable">$@</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">eval</span> <span class="variable">$@</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ $? -eq 0 ];</span><br><span class="line"><span class="keyword">then</span> </span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"<span class="variable">$CMD</span> executed successfully."</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"<span class="variable">$CMD</span> terminated unsuccessfully."</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+<p>执行：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   success_test.sh <span class="string">'ls'</span></span><br><span class="line">parameter is :ls</span><br><span class="line">certbot-auto	t1		t3		test.sh</span><br><span class="line">success_test.sh	t2		test.jsonnet</span><br><span class="line"> executed successfully.</span><br></pre></td></tr></table></figure></p>
+<h4 id="4-向命令传递参数"><a href="#4-向命令传递参数" class="headerlink" title="4. 向命令传递参数"></a>4. 向命令传递参数</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   cat showArgs.sh</span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> `seq 1 <span class="variable">$#</span>`</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$i</span> is <span class="variable">$1</span></span><br><span class="line"><span class="built_in">shift</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<p>执行：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   showArgs.sh a b cc</span><br><span class="line">1 is a</span><br><span class="line">2 is b</span><br><span class="line">3 is cc</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>Shell</category>
+      </categories>
+      <tags>
+        <tag>Shell</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Azure tutorial 02: Storage</title>
     <url>/2019/12/11/Azure-tutorial-02-Storage/</url>
     <content><![CDATA[<p>storage account type<br><a href="https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview</a></p>
@@ -308,24 +326,6 @@
       <categories>
         <category>Cloud</category>
       </categories>
-  </entry>
-  <entry>
-    <title>Bash function skill</title>
-    <url>/2019/06/18/Bash-function-skill/</url>
-    <content><![CDATA[<p>bash 函数技巧</p>
-<h4 id="1-递归函数"><a href="#1-递归函数" class="headerlink" title="1. 递归函数"></a>1. 递归函数</h4><h4 id="2-导出函数"><a href="#2-导出函数" class="headerlink" title="2.导出函数"></a>2.导出函数</h4><p>函数也可以像环境变量一样用 export 导出<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   <span class="function"><span class="title">foo</span></span>() &#123;<span class="built_in">echo</span> <span class="string">"This is foo function"</span>&#125;</span><br><span class="line">➜   <span class="built_in">export</span> -f foo</span><br><span class="line"><span class="function"><span class="title">foo</span></span> () &#123;</span><br><span class="line">	<span class="built_in">echo</span> <span class="string">"This is foo function"</span></span><br><span class="line">&#125;</span><br><span class="line">➜   foo</span><br><span class="line">This is foo <span class="keyword">function</span></span><br><span class="line">➜</span><br></pre></td></tr></table></figure></p>
-<h4 id="3-读取命令返回值"><a href="#3-读取命令返回值" class="headerlink" title="3. 读取命令返回值"></a>3. 读取命令返回值</h4><p>命令的返回值被保存在变量 <code>$?</code> 中<br>返回值被称为 <strong>退出状态</strong> 。它可用于确定命令执行成功与否。如果命令成功退出，那么退出状态为0，否则为非0.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   cat success_test.sh </span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#file name: success_test.sh</span></span><br><span class="line"><span class="comment">#对命令行参数求值，比如 success_test.sh `ls | grep txt`</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"parameter is :"</span><span class="variable">$@</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">eval</span> <span class="variable">$@</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ $? -eq 0 ];</span><br><span class="line"><span class="keyword">then</span> </span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"<span class="variable">$CMD</span> executed successfully."</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"<span class="variable">$CMD</span> terminated unsuccessfully."</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
-<p>执行：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   success_test.sh <span class="string">'ls'</span></span><br><span class="line">parameter is :ls</span><br><span class="line">certbot-auto	t1		t3		test.sh</span><br><span class="line">success_test.sh	t2		test.jsonnet</span><br><span class="line"> executed successfully.</span><br></pre></td></tr></table></figure></p>
-<h4 id="4-向命令传递参数"><a href="#4-向命令传递参数" class="headerlink" title="4. 向命令传递参数"></a>4. 向命令传递参数</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   cat showArgs.sh</span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> `seq 1 <span class="variable">$#</span>`</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$i</span> is <span class="variable">$1</span></span><br><span class="line"><span class="built_in">shift</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-<p>执行：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   showArgs.sh a b cc</span><br><span class="line">1 is a</span><br><span class="line">2 is b</span><br><span class="line">3 is cc</span><br></pre></td></tr></table></figure></p>
-]]></content>
-      <categories>
-        <category>Shell</category>
-      </categories>
-      <tags>
-        <tag>Shell</tag>
-      </tags>
   </entry>
   <entry>
     <title>Crontab on Liunx or Jenkins</title>
@@ -1837,6 +1837,24 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>Terraform : terraform console</title>
+    <url>/2019/12/05/Terraform-terraform-console/</url>
+    <content><![CDATA[<h5 id="1-evaluating-expressions"><a href="#1-evaluating-expressions" class="headerlink" title="1.evaluating expressions"></a>1.evaluating expressions</h5><p>The terraform console command provides an interactive console for evaluating expressions.</p>
+<p>For example:<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># interactive console</span></span><br><span class="line">➜ terraform console</span><br><span class="line">&gt; element(list(<span class="string">"one"</span>,<span class="string">"two"</span>,<span class="string">"three"</span>),1)</span><br><span class="line">two</span><br><span class="line"></span><br><span class="line"><span class="comment"># non-interactive scripts</span></span><br><span class="line">➜ <span class="built_in">echo</span> <span class="string">"list("</span>1<span class="string">","</span>2<span class="string">")"</span> | terraform console</span><br><span class="line">[</span><br><span class="line">  1,</span><br><span class="line">  2,</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
+<p>or</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜ terraform console</span><br><span class="line">&gt; aws_instance_demo.public_ip</span><br><span class="line">54.152.62.34</span><br></pre></td></tr></table></figure>
+<h5 id="2-test-Terraform-built-in-functions-locally"><a href="#2-test-Terraform-built-in-functions-locally" class="headerlink" title="2.test Terraform built-in functions locally"></a>2.test Terraform built-in functions locally</h5><p>  <a href="http://artemstar.com/2018/03/03/terraform-test-functions/" target="_blank" rel="noopener">test Terraform built-in functions locally</a></p>
+<hr>
+<p>More ref:<br><a href="https://www.terraform.io/docs/commands/console.html" target="_blank" rel="noopener">https://www.terraform.io/docs/commands/console.html</a><br><a href="http://artemstar.com/2018/03/03/terraform-test-functions/" target="_blank" rel="noopener">http://artemstar.com/2018/03/03/terraform-test-functions/</a></p>
+]]></content>
+      <categories>
+        <category>Terraform</category>
+      </categories>
+      <tags>
+        <tag>Terraform</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Terraform 100: Introduction &amp; Install</title>
     <url>/2019/08/27/Terraform-100-Introduction-Install/</url>
     <content><![CDATA[<h3 id="What-is-Terraform"><a href="#What-is-Terraform" class="headerlink" title="What is Terraform?"></a>What is Terraform?</h3><p>Terraform is a tool for building, changing, and versioning infrastructure safely and efficiently. Terraform can manage existing and popular service providers as well as custom in-house solutions.</p>
@@ -1863,24 +1881,6 @@ pipeline {
 </blockquote>
 <p>Ihen I set version to <code>v0.12.4</code> in <code>.terraform-version</code> file<br><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">➜   terraform --version</span><br><span class="line">Terraform v0.12.4</span><br><span class="line">+ provider.aws v2.25.0</span><br><span class="line">+ provider.random v2.2.0</span><br><span class="line">+ provider.template v2.1.2</span><br></pre></td></tr></table></figure></p>
 <p>Then I change the verson to <strong><code>v0.12.5</code></strong> in <code>.terraform-version</code> file<br><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">➜   terraform --version</span><br><span class="line">Terraform v0.12.5</span><br><span class="line">+ provider.aws v2.25.0</span><br><span class="line">+ provider.random v2.2.0</span><br><span class="line">+ provider.template v2.1.2</span><br><span class="line"></span><br><span class="line">Your version of Terraform is out of date! The latest version</span><br><span class="line">is 0.12.7. You can update by downloading from www.terraform.io/downloads.html</span><br></pre></td></tr></table></figure></p>
-]]></content>
-      <categories>
-        <category>Terraform</category>
-      </categories>
-      <tags>
-        <tag>Terraform</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Terraform : terraform console</title>
-    <url>/2019/12/05/Terraform-terraform-console/</url>
-    <content><![CDATA[<h5 id="1-evaluating-expressions"><a href="#1-evaluating-expressions" class="headerlink" title="1.evaluating expressions"></a>1.evaluating expressions</h5><p>The terraform console command provides an interactive console for evaluating expressions.</p>
-<p>For example:<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># interactive console</span></span><br><span class="line">➜ terraform console</span><br><span class="line">&gt; element(list(<span class="string">"one"</span>,<span class="string">"two"</span>,<span class="string">"three"</span>),1)</span><br><span class="line">two</span><br><span class="line"></span><br><span class="line"><span class="comment"># non-interactive scripts</span></span><br><span class="line">➜ <span class="built_in">echo</span> <span class="string">"list("</span>1<span class="string">","</span>2<span class="string">")"</span> | terraform console</span><br><span class="line">[</span><br><span class="line">  1,</span><br><span class="line">  2,</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
-<p>or</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜ terraform console</span><br><span class="line">&gt; aws_instance_demo.public_ip</span><br><span class="line">54.152.62.34</span><br></pre></td></tr></table></figure>
-<h5 id="2-test-Terraform-built-in-functions-locally"><a href="#2-test-Terraform-built-in-functions-locally" class="headerlink" title="2.test Terraform built-in functions locally"></a>2.test Terraform built-in functions locally</h5><p>  <a href="http://artemstar.com/2018/03/03/terraform-test-functions/" target="_blank" rel="noopener">test Terraform built-in functions locally</a></p>
-<hr>
-<p>More ref:<br><a href="https://www.terraform.io/docs/commands/console.html" target="_blank" rel="noopener">https://www.terraform.io/docs/commands/console.html</a><br><a href="http://artemstar.com/2018/03/03/terraform-test-functions/" target="_blank" rel="noopener">http://artemstar.com/2018/03/03/terraform-test-functions/</a></p>
 ]]></content>
       <categories>
         <category>Terraform</category>
@@ -2091,6 +2091,15 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>about</title>
+    <url>/2020/03/16/about/</url>
+    <content><![CDATA[<blockquote>
+<p>Ops, China Wuhan.</p>
+</blockquote>
+<p>现居: 武汉<br>GitHub: ～<br>QQ: 771963601<br>微信: ～</p>
+]]></content>
+  </entry>
+  <entry>
     <title>adminMongo: a cross platform user interface (GUI) to connect MongoDB</title>
     <url>/2019/07/15/adminMongo-a-cross-platform-user-interface-GUI-to-connect-MongoDB/</url>
     <content><![CDATA[<p><strong>Github address</strong>:<br><a href="https://github.com/mrvautin/adminMongo" target="_blank" rel="noopener">https://github.com/mrvautin/adminMongo</a></p>
@@ -2102,15 +2111,6 @@ pipeline {
       <categories>
         <category>Linux</category>
       </categories>
-  </entry>
-  <entry>
-    <title>about</title>
-    <url>/2020/03/16/about/</url>
-    <content><![CDATA[<blockquote>
-<p>Ops, China Wuhan.</p>
-</blockquote>
-<p>现居: 武汉<br>GitHub: ～<br>QQ: 771963601<br>微信: ～</p>
-]]></content>
   </entry>
   <entry>
     <title>bash : set command</title>
