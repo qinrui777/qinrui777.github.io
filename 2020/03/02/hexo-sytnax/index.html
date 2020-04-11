@@ -58,7 +58,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">249字</span>
+            <span class="post-count">269字</span>
         </span>
     </span>
 
@@ -115,6 +115,8 @@
 <li>上传后提供多种格式供嵌入代码</li>
 </ul>
 <h3 id="评论"><a href="#评论" class="headerlink" title="评论"></a>评论</h3><p>使用<a href="https://disqus.com/" target="_blank" rel="noopener">disqus</a>,其账号保持和github的账号一致，毕竟blog内容也在github上。用github用的邮箱注册一把，</p>
+<p>Valine 是基于 LeanCloud 作为数据存储的</p>
+<p>邮箱验证 手机验证</p>
 
       
       <!-- reward -->
@@ -234,13 +236,13 @@
 <script>
     new Valine({
         el: '#vcomments',
-        app_id: '',
-        app_key: '',
+        app_id: 'X6Y1Wvvs8IaYr2fYpUoaxhrW-MdYXbMMI',
+        app_key: 'wGDwzO37hos5dhhJvOT9uO0c',
         path: window.location.pathname,
         notify: 'false',
         verify: 'false',
         avatar: 'mp',
-        placeholder: '给我的文章加点评论吧~',
+        placeholder: '~欢迎相关和尊重的评论, 偏离主题的评论可能会被删除。# placeholder',
         recordIP: true
     });
     const infoEle = document.querySelector('#vcomments .info');
