@@ -63,6 +63,24 @@
       </categories>
   </entry>
   <entry>
+    <title>Azure FAQs</title>
+    <url>/2019/12/11/Azure-FAQs/</url>
+    <content><![CDATA[<h3 id="1-asm-arm"><a href="#1-asm-arm" class="headerlink" title="1. asm, arm"></a>1. asm, arm</h3><ul>
+<li>asm: Azure Service Manager</li>
+<li>arm: Azure Resource Manager</li>
+</ul>
+<p>最开始一直都是classic模型，它的模型中有service的概念，所以它也叫 asm（Azure Service Manager）。2014年开始提出arm（Azure Resource Manager），其管理平台叫portal。2015年底arm发布。</p>
+<p>当前情况是微软正在将azure的所有功能往arm上迁移。以后都推荐使用arm。但 是当前状况是arm不完全向后兼容asm，有些功能只有asm上才有，所以还有很多 用户还是在使用classic。</p>
+<blockquote>
+<p>ref: <a href="https://pengpengxp.github.io/archive/before-2018-11-10/2017-06-28-Azure%E7%BB%8F%E5%85%B8%E6%A8%A1%E5%BC%8F%E5%92%8C%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB.html#orgbb66971" target="_blank" rel="noopener">https://pengpengxp.github.io/archive/before-2018-11-10/2017-06-28-Azure%E7%BB%8F%E5%85%B8%E6%A8%A1%E5%BC%8F%E5%92%8C%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB.html#orgbb66971</a></p>
+</blockquote>
+<h3 id="2-AWS-to-Azure-services-comparison"><a href="#2-AWS-to-Azure-services-comparison" class="headerlink" title="2. AWS to Azure services comparison"></a>2. AWS to Azure services comparison</h3><p>详见链接 <a href="https://docs.microsoft.com/en-us/azure/architecture/aws-professional/services" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/azure/architecture/aws-professional/services</a></p>
+]]></content>
+      <categories>
+        <category>Cloud</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Anka tutorial 03: jenkins</title>
     <url>/2019/11/28/Anka-tutorial-03-jenkins/</url>
     <content><![CDATA[<h3 id="anka-集成-Jenkins-link"><a href="#anka-集成-Jenkins-link" class="headerlink" title="anka 集成 Jenkins (link)"></a>anka 集成 Jenkins <a href="https://ankadoc.bitbucket.io/anka-build/#integrate-jenkins-with-controller" target="_blank" rel="noopener">(link)</a></h3><p>未完待续…</p>
@@ -225,24 +243,6 @@
       </categories>
   </entry>
   <entry>
-    <title>Azure FAQs</title>
-    <url>/2019/12/11/Azure-FAQs/</url>
-    <content><![CDATA[<h3 id="1-asm-arm"><a href="#1-asm-arm" class="headerlink" title="1. asm, arm"></a>1. asm, arm</h3><ul>
-<li>asm: Azure Service Manager</li>
-<li>arm: Azure Resource Manager</li>
-</ul>
-<p>最开始一直都是classic模型，它的模型中有service的概念，所以它也叫 asm（Azure Service Manager）。2014年开始提出arm（Azure Resource Manager），其管理平台叫portal。2015年底arm发布。</p>
-<p>当前情况是微软正在将azure的所有功能往arm上迁移。以后都推荐使用arm。但 是当前状况是arm不完全向后兼容asm，有些功能只有asm上才有，所以还有很多 用户还是在使用classic。</p>
-<blockquote>
-<p>ref: <a href="https://pengpengxp.github.io/archive/before-2018-11-10/2017-06-28-Azure%E7%BB%8F%E5%85%B8%E6%A8%A1%E5%BC%8F%E5%92%8C%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB.html#orgbb66971" target="_blank" rel="noopener">https://pengpengxp.github.io/archive/before-2018-11-10/2017-06-28-Azure%E7%BB%8F%E5%85%B8%E6%A8%A1%E5%BC%8F%E5%92%8C%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB.html#orgbb66971</a></p>
-</blockquote>
-<h3 id="2-AWS-to-Azure-services-comparison"><a href="#2-AWS-to-Azure-services-comparison" class="headerlink" title="2. AWS to Azure services comparison"></a>2. AWS to Azure services comparison</h3><p>详见链接 <a href="https://docs.microsoft.com/en-us/azure/architecture/aws-professional/services" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/azure/architecture/aws-professional/services</a></p>
-]]></content>
-      <categories>
-        <category>Cloud</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Azure tutorial 01: overview</title>
     <url>/2019/12/11/Azure-tutorial-01-overview/</url>
     <content><![CDATA[]]></content>
@@ -310,24 +310,6 @@
       </categories>
   </entry>
   <entry>
-    <title>Crontab on Liunx or Jenkins</title>
-    <url>/2019/04/28/Crontab-on-Liunx-or-Jenkins/</url>
-    <content><![CDATA[<p>源起：<br><code>@midnight</code>  This will run at some point between 0:00 and 2:59</p>
-<p><code>H(0-30) 02 * * *</code> between 2:00 a.m. – 02:30 a.m.<br>//will build the same time every day</p>
-<p><strong>More Ref:</strong></p>
-<ul>
-<li><a href="https://crontab-generator.org/" target="_blank" rel="noopener">https://crontab-generator.org/</a></li>
-<li><a href="https://blogs.microsoft.co.il/meravk/2015/06/10/how-to-schedule-a-build-in-jenkins/" target="_blank" rel="noopener">https://blogs.microsoft.co.il/meravk/2015/06/10/how-to-schedule-a-build-in-jenkins/</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>jenkins</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Bash function skill</title>
     <url>/2019/06/18/Bash-function-skill/</url>
     <content><![CDATA[<p>bash 函数技巧</p>
@@ -343,6 +325,24 @@
       </categories>
       <tags>
         <tag>Shell</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Crontab on Liunx or Jenkins</title>
+    <url>/2019/04/28/Crontab-on-Liunx-or-Jenkins/</url>
+    <content><![CDATA[<p>源起：<br><code>@midnight</code>  This will run at some point between 0:00 and 2:59</p>
+<p><code>H(0-30) 02 * * *</code> between 2:00 a.m. – 02:30 a.m.<br>//will build the same time every day</p>
+<p><strong>More Ref:</strong></p>
+<ul>
+<li><a href="https://crontab-generator.org/" target="_blank" rel="noopener">https://crontab-generator.org/</a></li>
+<li><a href="https://blogs.microsoft.co.il/meravk/2015/06/10/how-to-schedule-a-build-in-jenkins/" target="_blank" rel="noopener">https://blogs.microsoft.co.il/meravk/2015/06/10/how-to-schedule-a-build-in-jenkins/</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>jenkins</tag>
       </tags>
   </entry>
   <entry>
@@ -379,22 +379,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Docker clean</title>
-    <url>/2019/05/07/Docker-clean/</url>
-    <content><![CDATA[<h4 id="1-Cleanup-exited-processes"><a href="#1-Cleanup-exited-processes" class="headerlink" title="1.Cleanup exited processes:"></a>1.Cleanup exited processes:</h4><p>docker rm $(docker ps -q -f status=exited)</p>
-<h4 id="3-Cleanup-dangling-volumes"><a href="#3-Cleanup-dangling-volumes" class="headerlink" title="3.Cleanup dangling volumes:"></a>3.Cleanup dangling volumes:</h4><p>docker volume rm $(docker volume ls -qf dangling=true)</p>
-<h4 id="3-Cleanup-dangling-images"><a href="#3-Cleanup-dangling-images" class="headerlink" title="3.Cleanup dangling images:"></a>3.Cleanup dangling images:</h4><p>docker rmi $(docker images –filter “dangling=true” -q –no-trunc)</p>
-<p>more methods go to below link ↓</p>
-<p><strong>More Ref:</strong></p>
-<ul>
-<li><a href="https://www.jianshu.com/p/470e29801be2" target="_blank" rel="noopener">https://www.jianshu.com/p/470e29801be2</a></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Docker Contract</title>
     <url>/2019/07/26/Docker-Contract/</url>
     <content><![CDATA[<blockquote>
@@ -411,6 +395,22 @@
 <p><strong>More Ref:</strong></p>
 <ul>
 <li><a href="https://learning.oreilly.com/library/view/Docker+in+Practice/9781617292729/kindle_split_018.html#ch07lev1sec1a" target="_blank" rel="noopener">https://learning.oreilly.com/library/view/Docker+in+Practice/9781617292729/kindle_split_018.html#ch07lev1sec1a</a></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Docker clean</title>
+    <url>/2019/05/07/Docker-clean/</url>
+    <content><![CDATA[<h4 id="1-Cleanup-exited-processes"><a href="#1-Cleanup-exited-processes" class="headerlink" title="1.Cleanup exited processes:"></a>1.Cleanup exited processes:</h4><p>docker rm $(docker ps -q -f status=exited)</p>
+<h4 id="3-Cleanup-dangling-volumes"><a href="#3-Cleanup-dangling-volumes" class="headerlink" title="3.Cleanup dangling volumes:"></a>3.Cleanup dangling volumes:</h4><p>docker volume rm $(docker volume ls -qf dangling=true)</p>
+<h4 id="3-Cleanup-dangling-images"><a href="#3-Cleanup-dangling-images" class="headerlink" title="3.Cleanup dangling images:"></a>3.Cleanup dangling images:</h4><p>docker rmi $(docker images –filter “dangling=true” -q –no-trunc)</p>
+<p>more methods go to below link ↓</p>
+<p><strong>More Ref:</strong></p>
+<ul>
+<li><a href="https://www.jianshu.com/p/470e29801be2" target="_blank" rel="noopener">https://www.jianshu.com/p/470e29801be2</a></li>
 </ul>
 ]]></content>
       <tags>
@@ -1135,6 +1135,21 @@
       </tags>
   </entry>
   <entry>
+    <title>Import P12 file on Mac OS X with CLI</title>
+    <url>/2019/11/22/Import-P12-file-on-Mac-OS-X-with-CLI/</url>
+    <content><![CDATA[<h3 id="目的：通过命令行倒入p12证书"><a href="#目的：通过命令行倒入p12证书" class="headerlink" title="目的：通过命令行倒入p12证书"></a>目的：通过命令行倒入p12证书</h3><p>Apple为了安全，在ssh登录时，是不允许读取Keychains（钥匙串）的，所以 <strong>security unlock-keychain</strong> 这行命令就很重要了。比如在Pipeline构建打包前，先解锁Keychains。</p>
+<h4 id="1-解锁"><a href="#1-解锁" class="headerlink" title="1.解锁"></a>1.解锁</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#方式一： 命令行中不含密码，交互方式</span></span><br><span class="line">➜   security unlock-keychain /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br><span class="line">password to unlock /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db:</span><br><span class="line"></span><br><span class="line"><span class="comment">#或者命令行中包含密码的方式</span></span><br><span class="line">➜   security unlock-keychain -p &lt;Mac_Login_PWD&gt; /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br><span class="line">➜   security list-keychains -s /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br></pre></td></tr></table></figure>
+<h4 id="2-导入"><a href="#2-导入" class="headerlink" title="2.导入"></a>2.导入</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#方式一： 命令行中不含密码，交互方式</span></span><br><span class="line"><span class="comment">#会有弹窗，提示输入 P12文件的密码</span></span><br><span class="line">➜   security import ~/Desktop/xxx.p12 -k /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br><span class="line">1 identity imported.</span><br><span class="line"><span class="comment">#或者命令行中包含密码的方式</span></span><br><span class="line">➜   security import ~/&lt;Your_Path&gt;/xxx.p12 -k /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db -P &lt;P12_Password&gt;</span><br><span class="line">1 identity imported.</span><br></pre></td></tr></table></figure>
+<h4 id="3-其他"><a href="#3-其他" class="headerlink" title="3.其他"></a>3.其他</h4><p>删除<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">##先展示证书，获取SHA1值; -p 可指定类型</span></span><br><span class="line">security find-identity -p codesigning /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br><span class="line"><span class="comment">##根据SHA1值删除对应的证书</span></span><br><span class="line">security delete-certificate -Z &lt;Your_SHA1&gt;</span><br></pre></td></tr></table></figure></p>
+<p>更过 security 用法，查看 <code>security --help</code> 、<code>security find-identity --help</code></p>
+<hr>
+<p>More ref:<br><a href="https://www.cnblogs.com/pixy/p/4817579.html" target="_blank" rel="noopener">https://www.cnblogs.com/pixy/p/4817579.html</a></p>
+]]></content>
+      <tags>
+        <tag>Tools</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Jenkins Dashboard with Grafana and Prometheus </title>
     <url>/2019/04/22/Jenkins-Dashboard-with-Grafana-and-Prometheus/</url>
     <content><![CDATA[<h3 id="1-Go-to-“manage-Jenkins”-then-“manage-plugins”-and-install-“-Prometheus-metrics-plugin”"><a href="#1-Go-to-“manage-Jenkins”-then-“manage-plugins”-and-install-“-Prometheus-metrics-plugin”" class="headerlink" title="1.Go to “manage Jenkins” then “manage plugins” and install “ Prometheus metrics plugin”"></a>1.Go to “manage Jenkins” then “manage plugins” and install “ Prometheus metrics plugin”</h3><p>This plugin will expose an endpoint (default /prometheus) with metrics where a Prometheus Server can scrape data.</p>
@@ -1149,21 +1164,6 @@
 ]]></content>
       <tags>
         <tag>jenkins</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Import P12 file on Mac OS X with CLI</title>
-    <url>/2019/11/22/Import-P12-file-on-Mac-OS-X-with-CLI/</url>
-    <content><![CDATA[<h3 id="目的：通过命令行倒入p12证书"><a href="#目的：通过命令行倒入p12证书" class="headerlink" title="目的：通过命令行倒入p12证书"></a>目的：通过命令行倒入p12证书</h3><p>Apple为了安全，在ssh登录时，是不允许读取Keychains（钥匙串）的，所以 <strong>security unlock-keychain</strong> 这行命令就很重要了。比如在Pipeline构建打包前，先解锁Keychains。</p>
-<h4 id="1-解锁"><a href="#1-解锁" class="headerlink" title="1.解锁"></a>1.解锁</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#方式一： 命令行中不含密码，交互方式</span></span><br><span class="line">➜   security unlock-keychain /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br><span class="line">password to unlock /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db:</span><br><span class="line"></span><br><span class="line"><span class="comment">#或者命令行中包含密码的方式</span></span><br><span class="line">➜   security unlock-keychain -p &lt;Mac_Login_PWD&gt; /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br><span class="line">➜   security list-keychains -s /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br></pre></td></tr></table></figure>
-<h4 id="2-导入"><a href="#2-导入" class="headerlink" title="2.导入"></a>2.导入</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#方式一： 命令行中不含密码，交互方式</span></span><br><span class="line"><span class="comment">#会有弹窗，提示输入 P12文件的密码</span></span><br><span class="line">➜   security import ~/Desktop/xxx.p12 -k /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br><span class="line">1 identity imported.</span><br><span class="line"><span class="comment">#或者命令行中包含密码的方式</span></span><br><span class="line">➜   security import ~/&lt;Your_Path&gt;/xxx.p12 -k /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db -P &lt;P12_Password&gt;</span><br><span class="line">1 identity imported.</span><br></pre></td></tr></table></figure>
-<h4 id="3-其他"><a href="#3-其他" class="headerlink" title="3.其他"></a>3.其他</h4><p>删除<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">##先展示证书，获取SHA1值; -p 可指定类型</span></span><br><span class="line">security find-identity -p codesigning /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br><span class="line"><span class="comment">##根据SHA1值删除对应的证书</span></span><br><span class="line">security delete-certificate -Z &lt;Your_SHA1&gt;</span><br></pre></td></tr></table></figure></p>
-<p>更过 security 用法，查看 <code>security --help</code> 、<code>security find-identity --help</code></p>
-<hr>
-<p>More ref:<br><a href="https://www.cnblogs.com/pixy/p/4817579.html" target="_blank" rel="noopener">https://www.cnblogs.com/pixy/p/4817579.html</a></p>
-]]></content>
-      <tags>
-        <tag>Tools</tag>
       </tags>
   </entry>
   <entry>
@@ -1496,6 +1496,54 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>Q Movie List</title>
+    <url>/2019/05/12/Q-Movie-List/</url>
+    <content><![CDATA[<p>Q Movie List </p>
+<h3 id="1-《夜以继日》-2018"><a href="#1-《夜以继日》-2018" class="headerlink" title="1.《夜以继日》(2018)"></a>1.《夜以继日》(2018)</h3><p>原名：Asako I &amp; II<br>导演：滨口龙介<br>主演: 东出昌大 / 唐田英里佳</p>
+<p><img src="/images/movie_Asako_I_II_01.png" alt="Asako_I_II"></p>
+<center> 夜以继日 男女主 </center>
+
+<p>两个相貌相同的男人，一个拥有着迷人的魅力，随性的坏男孩；一个是朴实无华，处处为别人考虑的体贴男孩。恋爱中的理想和现实的选择被表现淋漓尽致，深入人心。没有对错，明白什么是生活，什么是可贵的。</p>
+<blockquote>
+<p>日本电影总把三观不太正的想法表现得很有道理的样子 😓</p>
+</blockquote>
+<h3 id="2-《骡子》-2018"><a href="#2-《骡子》-2018" class="headerlink" title="2. 《骡子》(2018)"></a>2. 《骡子》(2018)</h3><p>原名：The Mule‎<br>导演：克林特·伊斯特伍德<br>主演： 克林特·伊斯特伍德</p>
+<p><img src="/images/movie_mule_01.png" alt="Mule"></p>
+<center> 男主在公路上 </center><br>男主与妻子去世前的对话：<br><br>&gt; Mary: You were the love of my life, and the pain of my life. I need you to know, it’s all the world to me that you’re here.<br>&gt; <strong>Earl</strong>: I love you, Mary.<br>&gt; Mary: More today than yesterday?<br>&gt; <strong>Earl</strong>: But not as much as tomorrow.<br><br>自己的生活还是家庭？男主一生大部分时间都用在自己的黄花菜上，或者自己的老兵俱乐部等，家人对他无不责备。但是最后男主在妻子的最后一次请求中放下手中的活儿（运送毒品），选择回到妻子身边，也得到了女儿的原谅。<br><br>### 3. 《来的都是客》(1990)<br>导演：马绍惠<br>主演： 赵本山、巩汉林<br><br><img src="/images/movie_guest.png" alt="Whoever Comes Is a Guest"><br><center> 90年代，年轻的两位男主</center>
+
+<p>上世纪90年代的一部<strong>喜剧</strong>、剧情片，反讽当时的吃喝风。故事情节流畅、很贴近生活。我最早知道<strong>赵本山</strong>是春晚的小品上，但没有想到过他出演了很多电影，而且是他年轻力壮的时候，当年的赵本山脸上还没有褶子，演技也在线。</p>
+<blockquote>
+<p>适合长辈观看，放人开怀大笑、精神放松，把我妈逗乐了。</p>
+</blockquote>
+<h3 id="4-《回到被爱的每一天》-2015"><a href="#4-《回到被爱的每一天》-2015" class="headerlink" title="4. 《回到被爱的每一天》 (2015)"></a>4. 《回到被爱的每一天》 (2015)</h3><p>导演、编剧: 何平<br>主演: 王佳佳、张译 </p>
+<p><img src="/images/movie_The_Promised_Land.png?30" alt="The Promised Land"></p>
+<center> 海报 </center>
+
+<p>一部较文艺、朴素的电影，没有大起大落，只是慢慢的讲述一个故事，看的时候要有耐心。电影的色调，搭配拍摄地的风景，使画面看起来有一种平静的美。大城市、小家乡，都是年轻人的选择，但什么样的选择更好只有自己的内心才能感觉得到。在商业电影盛行的前几年，这样纯粹的电影算是难得一见的吧。</p>
+<h3 id="5-《只有芸知道》（2019）"><a href="#5-《只有芸知道》（2019）" class="headerlink" title="5. 《只有芸知道》（2019）"></a>5. 《只有芸知道》（2019）</h3><p>导演: 冯小刚<br>主演: 黄轩,杨采钰,徐帆</p>
+<p><img src="/images/movie_only_cloud_knows.png?30" alt="only cloud knows "></p>
+<center> 简单的新婚 </center>
+
+<p>爱情片，人物不多，风景很美，一件件往事慢慢回忆给我们，两个人在异国他乡找到彼此，又相伴十几年，都愿意为对方付出。记录一句台词，“有了房子，有了生意，就是给她最大的安全感。”<br>“其实房子和生意都不能给我安全感，只有你可以。” “我想和Simon换个活法”</p>
+<p>林太的武汉话地道有味，也是在少见的异国他乡爱情片中(印象中北京话、四川话更多)。而此次的疫情恐怕让全中国都熟悉了一下武汉话，也让全世界都了解了武汉这个地名。</p>
+<p>才发现这是2019年的电影，但似乎市场上影响不大，可能是影院排片较少，也幸好影片中商业化较少。另外，黄轩的演技值得肯定，以前一直觉得他眼神有问题，但是这部电影挺好的。</p>
+<h3 id="6-《丈夫得了抑郁症》（2011）"><a href="#6-《丈夫得了抑郁症》（2011）" class="headerlink" title="6. 《丈夫得了抑郁症》（2011）"></a>6. 《丈夫得了抑郁症》（2011）</h3><p>导演: 佐佐部清<br>主演: 宫崎葵,堺雅人</p>
+<p><img src="https://s1.ax1x.com/2020/04/04/G0uDJA.png" alt="G0uDJA.png"></p>
+<center> 因为抑郁症，男主感到很自责 </center>
+
+<p>一场抑郁症，伴随是中长期的，身陷其中的男主处于一中特殊的痛苦、无力的生活中。随着时间的推移，作为妻子的女主也终于认识到生活的巨大改变。同时，自身也承担了更多事情：做饭、打扫、买菜、努力工作等等。男主从最开始为了妻子而治病，改变为为了自己而治病。</p>
+<p>女主厚着脸皮请求编辑给予工作机会，也同时说出了丈夫得了抑郁症的事情。而变得释怀，不介意他人的想法。</p>
+<p>最后两人在“同窗会”上的一段发言算是一年的总结，也让两人对婚姻有了更深的认识和理解。</p>
+<p><strong>生活甜蜜幸福的时候、职场得意的时候，不妨也踩一下刹车，或者停车，看一下反面类型的电影，给予自己冷静下来的机会，审时度势，未雨绸缪。</strong></p>
+<p>当然，电影中有很多地方并不值得严谨地推敲，现实中这样美好的结局恐怕凤毛菱角。但个人觉得不影响电影想表达的内容，以及给人以正能量的暗示。</p>
+<p>有很多台词还是值得回味的，有点儿生活哲学、人生哲学的样子，比如<br>“能一直完好无所便是价值所在”<br>“如果努力很痛苦，那就别努力了”<br>“人不努力也是可以的”<br>“不去想忧郁症的原因，而是想它的意义。”</p>
+<p>其他话题：<strong>婚礼同学会</strong>，这个同学会挺有意思的，就是在同一个教堂结婚的夫妇组成的同学；<strong>失业保险</strong></p>
+]]></content>
+      <tags>
+        <tag>Q List</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>RCA(根本原因分析)</title>
     <url>/2019/10/08/RCA-%E6%A0%B9%E6%9C%AC%E5%8E%9F%E5%9B%A0%E5%88%86%E6%9E%90/</url>
     <content><![CDATA[<p>  根本原因分析（Root cause analysis,RCA）方法是明确事件或几近错失的决定性“根本”原因，并采取适当的措施避免问题再次发生。这是一个迭代的过程，会一直持续，直到找出所有组织要素，或者知道已经处理完所有数据。</p>
@@ -1571,54 +1619,6 @@ pipeline {
       </categories>
       <tags>
         <tag>Devops</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Q Movie List</title>
-    <url>/2019/05/12/Q-Movie-List/</url>
-    <content><![CDATA[<p>Q Movie List </p>
-<h3 id="1-《夜以继日》-2018"><a href="#1-《夜以继日》-2018" class="headerlink" title="1.《夜以继日》(2018)"></a>1.《夜以继日》(2018)</h3><p>原名：Asako I &amp; II<br>导演：滨口龙介<br>主演: 东出昌大 / 唐田英里佳</p>
-<p><img src="/images/movie_Asako_I_II_01.png" alt="Asako_I_II"></p>
-<center> 夜以继日 男女主 </center>
-
-<p>两个相貌相同的男人，一个拥有着迷人的魅力，随性的坏男孩；一个是朴实无华，处处为别人考虑的体贴男孩。恋爱中的理想和现实的选择被表现淋漓尽致，深入人心。没有对错，明白什么是生活，什么是可贵的。</p>
-<blockquote>
-<p>日本电影总把三观不太正的想法表现得很有道理的样子 😓</p>
-</blockquote>
-<h3 id="2-《骡子》-2018"><a href="#2-《骡子》-2018" class="headerlink" title="2. 《骡子》(2018)"></a>2. 《骡子》(2018)</h3><p>原名：The Mule‎<br>导演：克林特·伊斯特伍德<br>主演： 克林特·伊斯特伍德</p>
-<p><img src="/images/movie_mule_01.png" alt="Mule"></p>
-<center> 男主在公路上 </center><br>男主与妻子去世前的对话：<br><br>&gt; Mary: You were the love of my life, and the pain of my life. I need you to know, it’s all the world to me that you’re here.<br>&gt; <strong>Earl</strong>: I love you, Mary.<br>&gt; Mary: More today than yesterday?<br>&gt; <strong>Earl</strong>: But not as much as tomorrow.<br><br>自己的生活还是家庭？男主一生大部分时间都用在自己的黄花菜上，或者自己的老兵俱乐部等，家人对他无不责备。但是最后男主在妻子的最后一次请求中放下手中的活儿（运送毒品），选择回到妻子身边，也得到了女儿的原谅。<br><br>### 3. 《来的都是客》(1990)<br>导演：马绍惠<br>主演： 赵本山、巩汉林<br><br><img src="/images/movie_guest.png" alt="Whoever Comes Is a Guest"><br><center> 90年代，年轻的两位男主</center>
-
-<p>上世纪90年代的一部<strong>喜剧</strong>、剧情片，反讽当时的吃喝风。故事情节流畅、很贴近生活。我最早知道<strong>赵本山</strong>是春晚的小品上，但没有想到过他出演了很多电影，而且是他年轻力壮的时候，当年的赵本山脸上还没有褶子，演技也在线。</p>
-<blockquote>
-<p>适合长辈观看，放人开怀大笑、精神放松，把我妈逗乐了。</p>
-</blockquote>
-<h3 id="4-《回到被爱的每一天》-2015"><a href="#4-《回到被爱的每一天》-2015" class="headerlink" title="4. 《回到被爱的每一天》 (2015)"></a>4. 《回到被爱的每一天》 (2015)</h3><p>导演、编剧: 何平<br>主演: 王佳佳、张译 </p>
-<p><img src="/images/movie_The_Promised_Land.png?30" alt="The Promised Land"></p>
-<center> 海报 </center>
-
-<p>一部较文艺、朴素的电影，没有大起大落，只是慢慢的讲述一个故事，看的时候要有耐心。电影的色调，搭配拍摄地的风景，使画面看起来有一种平静的美。大城市、小家乡，都是年轻人的选择，但什么样的选择更好只有自己的内心才能感觉得到。在商业电影盛行的前几年，这样纯粹的电影算是难得一见的吧。</p>
-<h3 id="5-《只有芸知道》（2019）"><a href="#5-《只有芸知道》（2019）" class="headerlink" title="5. 《只有芸知道》（2019）"></a>5. 《只有芸知道》（2019）</h3><p>导演: 冯小刚<br>主演: 黄轩,杨采钰,徐帆</p>
-<p><img src="/images/movie_only_cloud_knows.png?30" alt="only cloud knows "></p>
-<center> 简单的新婚 </center>
-
-<p>爱情片，人物不多，风景很美，一件件往事慢慢回忆给我们，两个人在异国他乡找到彼此，又相伴十几年，都愿意为对方付出。记录一句台词，“有了房子，有了生意，就是给她最大的安全感。”<br>“其实房子和生意都不能给我安全感，只有你可以。” “我想和Simon换个活法”</p>
-<p>林太的武汉话地道有味，也是在少见的异国他乡爱情片中(印象中北京话、四川话更多)。而此次的疫情恐怕让全中国都熟悉了一下武汉话，也让全世界都了解了武汉这个地名。</p>
-<p>才发现这是2019年的电影，但似乎市场上影响不大，可能是影院排片较少，也幸好影片中商业化较少。另外，黄轩的演技值得肯定，以前一直觉得他眼神有问题，但是这部电影挺好的。</p>
-<h3 id="6-《丈夫得了抑郁症》（2011）"><a href="#6-《丈夫得了抑郁症》（2011）" class="headerlink" title="6. 《丈夫得了抑郁症》（2011）"></a>6. 《丈夫得了抑郁症》（2011）</h3><p>导演: 佐佐部清<br>主演: 宫崎葵,堺雅人</p>
-<p><img src="https://s1.ax1x.com/2020/04/04/G0uDJA.png" alt="G0uDJA.png"></p>
-<center> 因为抑郁症，男主感到很自责 </center>
-
-<p>一场抑郁症，伴随是中长期的，身陷其中的男主处于一中特殊的痛苦、无力的生活中。随着时间的推移，作为妻子的女主也终于认识到生活的巨大改变。同时，自身也承担了更多事情：做饭、打扫、买菜、努力工作等等。男主从最开始为了妻子而治病，改变为为了自己而治病。</p>
-<p>女主厚着脸皮请求编辑给予工作机会，也同时说出了丈夫得了抑郁症的事情。而变得释怀，不介意他人的想法。</p>
-<p>最后两人在“同窗会”上的一段发言算是一年的总结，也让两人对婚姻有了更深的认识和理解。</p>
-<p><strong>生活甜蜜幸福的时候、职场得意的时候，不妨也踩一下刹车，或者停车，看一下反面类型的电影，给予自己冷静下来的机会，审时度势，未雨绸缪。</strong></p>
-<p>当然，电影中有很多地方并不值得严谨地推敲，现实中这样美好的结局恐怕凤毛菱角。但个人觉得不影响电影想表达的内容，以及给人以正能量的暗示。</p>
-<p>有很多台词还是值得回味的，有点儿生活哲学、人生哲学的样子，比如<br>“能一直完好无所便是价值所在”<br>“如果努力很痛苦，那就别努力了”<br>“人不努力也是可以的”<br>“不去想忧郁症的原因，而是想它的意义。”</p>
-<p>其他话题：<strong>婚礼同学会</strong>，这个同学会挺有意思的，就是在同一个教堂结婚的夫妇组成的同学；<strong>失业保险</strong></p>
-]]></content>
-      <tags>
-        <tag>Q List</tag>
       </tags>
   </entry>
   <entry>
