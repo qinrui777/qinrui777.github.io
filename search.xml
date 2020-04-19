@@ -63,22 +63,6 @@
       </categories>
   </entry>
   <entry>
-    <title>Anka tutorial 03: jenkins</title>
-    <url>/2019/11/28/Anka-tutorial-03-jenkins/</url>
-    <content><![CDATA[<h3 id="anka-集成-Jenkins-link"><a href="#anka-集成-Jenkins-link" class="headerlink" title="anka 集成 Jenkins (link)"></a>anka 集成 Jenkins <a href="https://ankadoc.bitbucket.io/anka-build/#integrate-jenkins-with-controller" target="_blank" rel="noopener">(link)</a></h3><p>未完待续…</p>
-<p>安装插件<br><code>Manage Jenkins &gt; Manage Plugins</code></p>
-<p>搜索anka</p>
-<p>新建 ssh 用的登陆凭证</p>
-<p>新建VM的时候 默认用户名和密码分别是 <code>anka/admin</code></p>
-<p>配置jenkins<br><code>Manage Jenkins &gt; Configure System</code></p>
-<p><img src="/images/anka_jenkins_01.png" width="80%" height="80%"></p>
-<p><a href="http://localhost/#/dashboard" target="_blank" rel="noopener">http://localhost/#/dashboard</a></p>
-]]></content>
-      <categories>
-        <category>CICD</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Anka tutorial xx: Upgrade Record</title>
     <url>/2019/11/21/Anka-tutorial-xx-Upgrade-Record/</url>
     <content><![CDATA[<h3 id="1-升级前"><a href="#1-升级前" class="headerlink" title="1.升级前"></a>1.升级前</h3><p>从2018年11月到如今2019年11月，已经使用现有的版本1年多；anka也经历了多个版本，此次升级算是跨度较大，升级到目前最新的版本1.5.0</p>
@@ -219,6 +203,22 @@
 <blockquote>
 <p>主要记录 2019-11-20 左右升级 anka 的操作</p>
 </blockquote>
+]]></content>
+      <categories>
+        <category>CICD</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Anka tutorial 03: jenkins</title>
+    <url>/2019/11/28/Anka-tutorial-03-jenkins/</url>
+    <content><![CDATA[<h3 id="anka-集成-Jenkins-link"><a href="#anka-集成-Jenkins-link" class="headerlink" title="anka 集成 Jenkins (link)"></a>anka 集成 Jenkins <a href="https://ankadoc.bitbucket.io/anka-build/#integrate-jenkins-with-controller" target="_blank" rel="noopener">(link)</a></h3><p>未完待续…</p>
+<p>安装插件<br><code>Manage Jenkins &gt; Manage Plugins</code></p>
+<p>搜索anka</p>
+<p>新建 ssh 用的登陆凭证</p>
+<p>新建VM的时候 默认用户名和密码分别是 <code>anka/admin</code></p>
+<p>配置jenkins<br><code>Manage Jenkins &gt; Configure System</code></p>
+<p><img src="/images/anka_jenkins_01.png" width="80%" height="80%"></p>
+<p><a href="http://localhost/#/dashboard" target="_blank" rel="noopener">http://localhost/#/dashboard</a></p>
 ]]></content>
       <categories>
         <category>CICD</category>
@@ -379,6 +379,22 @@
       </tags>
   </entry>
   <entry>
+    <title>Docker clean</title>
+    <url>/2019/05/07/Docker-clean/</url>
+    <content><![CDATA[<h4 id="1-Cleanup-exited-processes"><a href="#1-Cleanup-exited-processes" class="headerlink" title="1.Cleanup exited processes:"></a>1.Cleanup exited processes:</h4><p>docker rm $(docker ps -q -f status=exited)</p>
+<h4 id="3-Cleanup-dangling-volumes"><a href="#3-Cleanup-dangling-volumes" class="headerlink" title="3.Cleanup dangling volumes:"></a>3.Cleanup dangling volumes:</h4><p>docker volume rm $(docker volume ls -qf dangling=true)</p>
+<h4 id="3-Cleanup-dangling-images"><a href="#3-Cleanup-dangling-images" class="headerlink" title="3.Cleanup dangling images:"></a>3.Cleanup dangling images:</h4><p>docker rmi $(docker images –filter “dangling=true” -q –no-trunc)</p>
+<p>more methods go to below link ↓</p>
+<p><strong>More Ref:</strong></p>
+<ul>
+<li><a href="https://www.jianshu.com/p/470e29801be2" target="_blank" rel="noopener">https://www.jianshu.com/p/470e29801be2</a></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Docker Contract</title>
     <url>/2019/07/26/Docker-Contract/</url>
     <content><![CDATA[<blockquote>
@@ -395,22 +411,6 @@
 <p><strong>More Ref:</strong></p>
 <ul>
 <li><a href="https://learning.oreilly.com/library/view/Docker+in+Practice/9781617292729/kindle_split_018.html#ch07lev1sec1a" target="_blank" rel="noopener">https://learning.oreilly.com/library/view/Docker+in+Practice/9781617292729/kindle_split_018.html#ch07lev1sec1a</a></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Docker clean</title>
-    <url>/2019/05/07/Docker-clean/</url>
-    <content><![CDATA[<h4 id="1-Cleanup-exited-processes"><a href="#1-Cleanup-exited-processes" class="headerlink" title="1.Cleanup exited processes:"></a>1.Cleanup exited processes:</h4><p>docker rm $(docker ps -q -f status=exited)</p>
-<h4 id="3-Cleanup-dangling-volumes"><a href="#3-Cleanup-dangling-volumes" class="headerlink" title="3.Cleanup dangling volumes:"></a>3.Cleanup dangling volumes:</h4><p>docker volume rm $(docker volume ls -qf dangling=true)</p>
-<h4 id="3-Cleanup-dangling-images"><a href="#3-Cleanup-dangling-images" class="headerlink" title="3.Cleanup dangling images:"></a>3.Cleanup dangling images:</h4><p>docker rmi $(docker images –filter “dangling=true” -q –no-trunc)</p>
-<p>more methods go to below link ↓</p>
-<p><strong>More Ref:</strong></p>
-<ul>
-<li><a href="https://www.jianshu.com/p/470e29801be2" target="_blank" rel="noopener">https://www.jianshu.com/p/470e29801be2</a></li>
 </ul>
 ]]></content>
       <tags>
@@ -797,62 +797,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Github Actions E06产出物</title>
-    <url>/2020/03/30/Github-Actions-E06%E4%BA%A7%E5%87%BA%E7%89%A9/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
-<p>大多数时候，workflow的产出物都会直接传到对应的某些仓库，比如docker image会送到docker hub这种仓库存储。这种时候是不需要在workflow再额外的管理产出物，但也不能全盘否定；有时候我们没有一个方便的地方去存储某些形式的文件等，就需要我们有类似jenkins <code>archiveArtifacts</code> 功能。但github actions能做的会更多，请期待。</p>
-</blockquote>
-<h3 id="1-关于artifacts"><a href="#1-关于artifacts" class="headerlink" title="1. 关于artifacts"></a>1. 关于artifacts</h3><p>构件是指在工作流程运行过程中产生的文件或文件集。<br>GitHub 提供两项可用于上传和下载构建构件的操作。 上传到工作流程运行的文件将使用 .zip 格式存档。 更多信息请参阅 <code>action/upload-artifact</code> 和 <code>download-artifact</code> 操作。</p>
-<p>这些是您可能想要上传的一些常见构建和测试输出构件：</p>
-<ul>
-<li>日志文件和核心转储文件</li>
-<li>测试结果、失败和屏幕截图</li>
-<li>二进制或存档文件</li>
-<li>压力测试性能输出和代码覆盖结果</li>
-</ul>
-<p>当作业完成时，运行程序将终止并删除虚拟环境的实例。</p>
-<h3 id="2-上传"><a href="#2-上传" class="headerlink" title="2. 上传"></a>2. 上传</h3><p>常见的场景: 一个java程序的产出物是一个jar包，在构建之后需要得到这个jar用于其他环境部署。</p>
-<p>依旧用 <a href="https://github.com/cicd-draft/api-test-demo" target="_blank" rel="noopener">api-test-demo</a> 这个仓库做演示，主要分为以下个步骤：</p>
-<ul>
-<li>1.下载代码；</li>
-<li>2.构建jar包(存放于指定到路径<code>build/libs/api-demo-0.0.1-SNAPSHOT.jar</code>)；</li>
-<li>3.上传jar包</li>
-</ul>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">my</span> <span class="string">workflow</span> <span class="string">demo</span> </span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span> </span><br><span class="line"><span class="attr">  push:</span></span><br><span class="line"><span class="attr">    branches:</span> </span><br><span class="line"><span class="bullet">      -</span> <span class="string">master</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  artifacts_demo_job:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">job1</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">Checkout</span> <span class="string">code</span></span><br><span class="line"><span class="attr">      uses:</span> <span class="string">actions/checkout@v1</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">Build</span> <span class="string">jar</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        pwd  &amp;&amp; ls -l</span></span><br><span class="line"><span class="string">        ./gradlew -x jar build</span></span><br><span class="line"><span class="string">        ls -l build/libs/api-demo-0.0.1-SNAPSHOT.jar</span></span><br><span class="line"><span class="string"></span><span class="attr">    - name:</span> <span class="string">Archive</span> <span class="string">SNAPSHOT.jar</span></span><br><span class="line"><span class="attr">      uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">      with:</span></span><br><span class="line"><span class="attr">        name:</span> <span class="string">api_snapshot_jar</span></span><br><span class="line"><span class="attr">        path:</span> <span class="string">build/libs/api-demo-0.0.1-SNAPSHOT.jar</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>github actions 工作流的产出物都放在哪里的，保留多久</p>
-</blockquote>
-<h3 id="3-下载"><a href="#3-下载" class="headerlink" title="3. 下载"></a>3. 下载</h3><p>步骤官方说明如下：</p>
-<ul>
-<li>1.On GitHub, navigate to the main page of the repository.</li>
-<li>2.Under your repository name, click Actions.</li>
-<li>3.In the left sidebar, click the workflow you want to see.</li>
-<li>4.Under “Workflow runs”, click the name of the run you want to see.</li>
-<li>5.To download artifacts, use the Artifacts drop-down menu, and select the artifact you want to download.</li>
-<li>6.To delete artifacts, use the Artifacts drop-down menu, and click .</li>
-</ul>
-<p>注意事项：</p>
-<ul>
-<li>保留90天</li>
-<li>一旦删除某一个构件，无法恢复</li>
-</ul>
-<h3 id="4-在工作流程中作业之间传递数据"><a href="#4-在工作流程中作业之间传递数据" class="headerlink" title="4. 在工作流程中作业之间传递数据"></a>4. 在工作流程中作业之间传递数据</h3><p><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts#passing-data-between-jobs-in-a-workflow" target="_blank" rel="noopener">https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts#passing-data-between-jobs-in-a-workflow</a></p>
-<p>由于同一个workflow的多个job分别运行在不同的虚拟主机上，下面示例工作流程说明如何在相同工作流程中的任务之间传递数据。关键词 <strong>need</strong> 用来确保job按顺序运行.</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Share</span> <span class="string">data</span> <span class="string">between</span> <span class="string">jobs</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span> <span class="string">[push]</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  job_1:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Add</span> <span class="number">3</span> <span class="string">and</span> <span class="number">7</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          expr 3 + 7 &gt; math-homework.txt</span></span><br><span class="line"><span class="string"></span><span class="attr">      - name:</span> <span class="string">Upload</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">1</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">          path:</span> <span class="string">math-homework.txt</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  job_2:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Multiply</span> <span class="string">by</span> <span class="number">9</span></span><br><span class="line"><span class="attr">    needs:</span> <span class="string">job_1</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">windows-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Download</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">1</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/download-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">      - shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          value=`cat homework/math-homework.txt`</span></span><br><span class="line"><span class="string">          expr $value \* 9 &gt; homework/math-homework.txt</span></span><br><span class="line"><span class="string"></span><span class="attr">      - name:</span> <span class="string">Upload</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">2</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">          path:</span> <span class="string">homework/math-homework.txt</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  job_3:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Display</span> <span class="string">results</span></span><br><span class="line"><span class="attr">    needs:</span> <span class="string">job_2</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">macOS-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Download</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">2</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/download-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Print</span> <span class="string">the</span> <span class="string">final</span> <span class="string">result</span></span><br><span class="line"><span class="attr">        shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          value=`cat homework/math-homework.txt`</span></span><br><span class="line"><span class="string">          echo The result is $value</span></span><br></pre></td></tr></table></figure>
-<hr>
-<p><strong>More Ref:</strong></p>
-<ul>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts" target="_blank" rel="noopener">关于该篇的原文</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>CICD</category>
-      </categories>
-      <tags>
-        <tag>GA</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Github Actions E07上下文和表达式语法</title>
     <url>/2020/04/01/Github-Actions-E07%E4%B8%8A%E4%B8%8B%E6%96%87%E5%92%8C%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AF%AD%E6%B3%95/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
@@ -1117,6 +1061,62 @@
       </tags>
   </entry>
   <entry>
+    <title>Github Actions E06产出物</title>
+    <url>/2020/03/30/Github-Actions-E06%E4%BA%A7%E5%87%BA%E7%89%A9/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
+<p>大多数时候，workflow的产出物都会直接传到对应的某些仓库，比如docker image会送到docker hub这种仓库存储。这种时候是不需要在workflow再额外的管理产出物，但也不能全盘否定；有时候我们没有一个方便的地方去存储某些形式的文件等，就需要我们有类似jenkins <code>archiveArtifacts</code> 功能。但github actions能做的会更多，请期待。</p>
+</blockquote>
+<h3 id="1-关于artifacts"><a href="#1-关于artifacts" class="headerlink" title="1. 关于artifacts"></a>1. 关于artifacts</h3><p>构件是指在工作流程运行过程中产生的文件或文件集。<br>GitHub 提供两项可用于上传和下载构建构件的操作。 上传到工作流程运行的文件将使用 .zip 格式存档。 更多信息请参阅 <code>action/upload-artifact</code> 和 <code>download-artifact</code> 操作。</p>
+<p>这些是您可能想要上传的一些常见构建和测试输出构件：</p>
+<ul>
+<li>日志文件和核心转储文件</li>
+<li>测试结果、失败和屏幕截图</li>
+<li>二进制或存档文件</li>
+<li>压力测试性能输出和代码覆盖结果</li>
+</ul>
+<p>当作业完成时，运行程序将终止并删除虚拟环境的实例。</p>
+<h3 id="2-上传"><a href="#2-上传" class="headerlink" title="2. 上传"></a>2. 上传</h3><p>常见的场景: 一个java程序的产出物是一个jar包，在构建之后需要得到这个jar用于其他环境部署。</p>
+<p>依旧用 <a href="https://github.com/cicd-draft/api-test-demo" target="_blank" rel="noopener">api-test-demo</a> 这个仓库做演示，主要分为以下个步骤：</p>
+<ul>
+<li>1.下载代码；</li>
+<li>2.构建jar包(存放于指定到路径<code>build/libs/api-demo-0.0.1-SNAPSHOT.jar</code>)；</li>
+<li>3.上传jar包</li>
+</ul>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">my</span> <span class="string">workflow</span> <span class="string">demo</span> </span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span> </span><br><span class="line"><span class="attr">  push:</span></span><br><span class="line"><span class="attr">    branches:</span> </span><br><span class="line"><span class="bullet">      -</span> <span class="string">master</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  artifacts_demo_job:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">job1</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">Checkout</span> <span class="string">code</span></span><br><span class="line"><span class="attr">      uses:</span> <span class="string">actions/checkout@v1</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">Build</span> <span class="string">jar</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        pwd  &amp;&amp; ls -l</span></span><br><span class="line"><span class="string">        ./gradlew -x jar build</span></span><br><span class="line"><span class="string">        ls -l build/libs/api-demo-0.0.1-SNAPSHOT.jar</span></span><br><span class="line"><span class="string"></span><span class="attr">    - name:</span> <span class="string">Archive</span> <span class="string">SNAPSHOT.jar</span></span><br><span class="line"><span class="attr">      uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">      with:</span></span><br><span class="line"><span class="attr">        name:</span> <span class="string">api_snapshot_jar</span></span><br><span class="line"><span class="attr">        path:</span> <span class="string">build/libs/api-demo-0.0.1-SNAPSHOT.jar</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>github actions 工作流的产出物都放在哪里的，保留多久</p>
+</blockquote>
+<h3 id="3-下载"><a href="#3-下载" class="headerlink" title="3. 下载"></a>3. 下载</h3><p>步骤官方说明如下：</p>
+<ul>
+<li>1.On GitHub, navigate to the main page of the repository.</li>
+<li>2.Under your repository name, click Actions.</li>
+<li>3.In the left sidebar, click the workflow you want to see.</li>
+<li>4.Under “Workflow runs”, click the name of the run you want to see.</li>
+<li>5.To download artifacts, use the Artifacts drop-down menu, and select the artifact you want to download.</li>
+<li>6.To delete artifacts, use the Artifacts drop-down menu, and click .</li>
+</ul>
+<p>注意事项：</p>
+<ul>
+<li>保留90天</li>
+<li>一旦删除某一个构件，无法恢复</li>
+</ul>
+<h3 id="4-在工作流程中作业之间传递数据"><a href="#4-在工作流程中作业之间传递数据" class="headerlink" title="4. 在工作流程中作业之间传递数据"></a>4. 在工作流程中作业之间传递数据</h3><p><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts#passing-data-between-jobs-in-a-workflow" target="_blank" rel="noopener">https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts#passing-data-between-jobs-in-a-workflow</a></p>
+<p>由于同一个workflow的多个job分别运行在不同的虚拟主机上，下面示例工作流程说明如何在相同工作流程中的任务之间传递数据。关键词 <strong>need</strong> 用来确保job按顺序运行.</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Share</span> <span class="string">data</span> <span class="string">between</span> <span class="string">jobs</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span> <span class="string">[push]</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  job_1:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Add</span> <span class="number">3</span> <span class="string">and</span> <span class="number">7</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          expr 3 + 7 &gt; math-homework.txt</span></span><br><span class="line"><span class="string"></span><span class="attr">      - name:</span> <span class="string">Upload</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">1</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">          path:</span> <span class="string">math-homework.txt</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  job_2:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Multiply</span> <span class="string">by</span> <span class="number">9</span></span><br><span class="line"><span class="attr">    needs:</span> <span class="string">job_1</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">windows-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Download</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">1</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/download-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">      - shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          value=`cat homework/math-homework.txt`</span></span><br><span class="line"><span class="string">          expr $value \* 9 &gt; homework/math-homework.txt</span></span><br><span class="line"><span class="string"></span><span class="attr">      - name:</span> <span class="string">Upload</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">2</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">          path:</span> <span class="string">homework/math-homework.txt</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  job_3:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Display</span> <span class="string">results</span></span><br><span class="line"><span class="attr">    needs:</span> <span class="string">job_2</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">macOS-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Download</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">2</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/download-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Print</span> <span class="string">the</span> <span class="string">final</span> <span class="string">result</span></span><br><span class="line"><span class="attr">        shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          value=`cat homework/math-homework.txt`</span></span><br><span class="line"><span class="string">          echo The result is $value</span></span><br></pre></td></tr></table></figure>
+<hr>
+<p><strong>More Ref:</strong></p>
+<ul>
+<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts" target="_blank" rel="noopener">关于该篇的原文</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>CICD</category>
+      </categories>
+      <tags>
+        <tag>GA</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>How to Create Custom iTerm2 Window</title>
     <url>/2019/04/18/How-to-Create-Custom-iTerm2-Window/</url>
     <content><![CDATA[<h4 id="1-Open-iTerm-preferences-setting-打开偏好设置"><a href="#1-Open-iTerm-preferences-setting-打开偏好设置" class="headerlink" title="1.Open iTerm preferences setting (打开偏好设置)"></a>1.Open iTerm preferences setting (打开偏好设置)</h4><p><img src="/images/iterm_image_01.png" alt="iterm_image_01"></p>
@@ -1150,6 +1150,23 @@
       </tags>
   </entry>
   <entry>
+    <title>Jenkins Dashboard with Grafana and Prometheus </title>
+    <url>/2019/04/22/Jenkins-Dashboard-with-Grafana-and-Prometheus/</url>
+    <content><![CDATA[<h3 id="1-Go-to-“manage-Jenkins”-then-“manage-plugins”-and-install-“-Prometheus-metrics-plugin”"><a href="#1-Go-to-“manage-Jenkins”-then-“manage-plugins”-and-install-“-Prometheus-metrics-plugin”" class="headerlink" title="1.Go to “manage Jenkins” then “manage plugins” and install “ Prometheus metrics plugin”"></a>1.Go to “manage Jenkins” then “manage plugins” and install “ Prometheus metrics plugin”</h3><p>This plugin will expose an endpoint (default /prometheus) with metrics where a Prometheus Server can scrape data.</p>
+<p><img src="/images/jenkins_dashboard_02.png" alt="jenkins_dashboard_02"></p>
+<h3 id="2-Configure-Prometheus-to-scrape-metrics-from-Jenkins"><a href="#2-Configure-Prometheus-to-scrape-metrics-from-Jenkins" class="headerlink" title="2.Configure Prometheus to scrape metrics from Jenkins"></a>2.Configure Prometheus to scrape metrics from Jenkins</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">- job_name: ‘jenkins’</span><br><span class="line">  metrics_path: /prometheus</span><br><span class="line">  static_configs:</span><br><span class="line">    - targets: [‘Jenkins_Host:PORT’]</span><br></pre></td></tr></table></figure>
+<p>you can go to your prometheus ,find some metrics to dispaly.</p>
+<p><img src="/images/jenkins_dashboard_01.png" alt="jenkins_dashboard_01"></p>
+<h3 id="3-Create-a-grafana-Dashboard"><a href="#3-Create-a-grafana-Dashboard" class="headerlink" title="3.Create a  grafana Dashboard"></a>3.Create a  grafana Dashboard</h3><p>dashboard link : <a href="https://grafana.com/dashboards/9964" target="_blank" rel="noopener">https://grafana.com/dashboards/9964</a></p>
+<p>then go to the grafana website import json file :<br><img src="/images/jenkins_dashboard_03.png" alt="jenkins_dashboard_03"></p>
+<p>you can search in the grafana dashboard (<a href="https://grafana.com/dashboards" target="_blank" rel="noopener">https://grafana.com/dashboards</a>)</p>
+<h3 id="4-Customize-your-dashboard"><a href="#4-Customize-your-dashboard" class="headerlink" title="4.Customize your dashboard"></a>4.Customize your dashboard</h3><p>example:<br><img src="/images/jenkins_dashboard_04.png" alt="jenkins_dashboard_04"></p>
+]]></content>
+      <tags>
+        <tag>jenkins</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Jenkins Unicode icons</title>
     <url>/2019/07/04/Jenkins-Unicode-icons/</url>
     <content><![CDATA[<h5 id="Unicode-icons-list"><a href="#Unicode-icons-list" class="headerlink" title="Unicode icons list:"></a>Unicode icons list:</h5><p>“\u2776” = ❶<br>“\u27A1” = ➡<br>“\u2756” = ❖<br>“\u273F” = ✿<br>“\u2795” = ➕</p>
@@ -1162,23 +1179,6 @@
 <li><a href="http://www.fileformat.info/info/unicode/block/dingbats/list.htm" target="_blank" rel="noopener">More icons in the \u2700 Unicode Digbats block.</a></li>
 <li><a href="https://www.w3schools.com/charsets/ref_utf_symbols.asp" target="_blank" rel="noopener">More icons in the \u2600 range</a></li>
 </ul>
-]]></content>
-      <tags>
-        <tag>jenkins</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Jenkins Dashboard with Grafana and Prometheus </title>
-    <url>/2019/04/22/Jenkins-Dashboard-with-Grafana-and-Prometheus/</url>
-    <content><![CDATA[<h3 id="1-Go-to-“manage-Jenkins”-then-“manage-plugins”-and-install-“-Prometheus-metrics-plugin”"><a href="#1-Go-to-“manage-Jenkins”-then-“manage-plugins”-and-install-“-Prometheus-metrics-plugin”" class="headerlink" title="1.Go to “manage Jenkins” then “manage plugins” and install “ Prometheus metrics plugin”"></a>1.Go to “manage Jenkins” then “manage plugins” and install “ Prometheus metrics plugin”</h3><p>This plugin will expose an endpoint (default /prometheus) with metrics where a Prometheus Server can scrape data.</p>
-<p><img src="/images/jenkins_dashboard_02.png" alt="jenkins_dashboard_02"></p>
-<h3 id="2-Configure-Prometheus-to-scrape-metrics-from-Jenkins"><a href="#2-Configure-Prometheus-to-scrape-metrics-from-Jenkins" class="headerlink" title="2.Configure Prometheus to scrape metrics from Jenkins"></a>2.Configure Prometheus to scrape metrics from Jenkins</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">- job_name: ‘jenkins’</span><br><span class="line">  metrics_path: /prometheus</span><br><span class="line">  static_configs:</span><br><span class="line">    - targets: [‘Jenkins_Host:PORT’]</span><br></pre></td></tr></table></figure>
-<p>you can go to your prometheus ,find some metrics to dispaly.</p>
-<p><img src="/images/jenkins_dashboard_01.png" alt="jenkins_dashboard_01"></p>
-<h3 id="3-Create-a-grafana-Dashboard"><a href="#3-Create-a-grafana-Dashboard" class="headerlink" title="3.Create a  grafana Dashboard"></a>3.Create a  grafana Dashboard</h3><p>dashboard link : <a href="https://grafana.com/dashboards/9964" target="_blank" rel="noopener">https://grafana.com/dashboards/9964</a></p>
-<p>then go to the grafana website import json file :<br><img src="/images/jenkins_dashboard_03.png" alt="jenkins_dashboard_03"></p>
-<p>you can search in the grafana dashboard (<a href="https://grafana.com/dashboards" target="_blank" rel="noopener">https://grafana.com/dashboards</a>)</p>
-<h3 id="4-Customize-your-dashboard"><a href="#4-Customize-your-dashboard" class="headerlink" title="4.Customize your dashboard"></a>4.Customize your dashboard</h3><p>example:<br><img src="/images/jenkins_dashboard_04.png" alt="jenkins_dashboard_04"></p>
 ]]></content>
       <tags>
         <tag>jenkins</tag>
@@ -1272,6 +1272,21 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>backup specially with shell script or python</title>
+    <url>/2019/05/21/Linux-backup-specially/</url>
+    <content><![CDATA[<h3 id="需求：-备份目录，只备份新加的文件，不备份减少的文件"><a href="#需求：-备份目录，只备份新加的文件，不备份减少的文件" class="headerlink" title="需求： 备份目录，只备份新加的文件，不备份减少的文件"></a>需求： 备份目录，只备份新加的文件，不备份减少的文件</h3><p>分析： 通常备份目录用 <code>rsync</code> 就可以达到目的，但开发同学怕误操作，删除文件，于是提出这个 <em>只增不减</em> 的需求</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="function"><span class="title">backUp</span></span>()&#123;</span><br><span class="line"><span class="built_in">local</span> sourceDir=<span class="variable">$1</span> <span class="comment">#需要备份的文件/目录</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">local</span> destDir=<span class="variable">$2</span> <span class="comment">#备份目的地</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -d <span class="string">"<span class="variable">$sourceDir</span>"</span> ] <span class="comment">#备份目录</span></span><br><span class="line"><span class="keyword">then</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">#如果目录尚未备份，则创建此目录</span></span><br><span class="line">  <span class="keyword">if</span> [ ! -d <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span> ]</span><br><span class="line">  <span class="keyword">then</span></span><br><span class="line">  <span class="built_in">echo</span> -e <span class="string">"创建目录\t<span class="variable">$sourceDir</span>"</span></span><br><span class="line">  mkdir -p <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span></span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#对目录中对每一个文件,递归调用此函数进行备份</span></span><br><span class="line"><span class="keyword">for</span> var <span class="keyword">in</span> $(ls <span class="string">"<span class="variable">$sourceDir</span>"</span>)</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">backUp <span class="string">"<span class="variable">$sourceDir</span>/<span class="variable">$var</span>"</span> <span class="string">"<span class="variable">$destDir</span>"</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"><span class="keyword">else</span> <span class="comment">#备份文件</span></span><br><span class="line">  <span class="comment">#如果文件在尚未备份，则直接复制</span></span><br><span class="line">  <span class="keyword">if</span> [ ! -f <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span> ]</span><br><span class="line">  <span class="keyword">then</span></span><br><span class="line">  <span class="built_in">echo</span> -e <span class="string">"备份文件\t<span class="variable">$sourceDir</span>"</span></span><br><span class="line">  cp <span class="string">"<span class="variable">$sourceDir</span>"</span> <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span></span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">#如果文件已存在，则比较两个文件对最后修改时间，如果文件已修改，则更新文件</span></span><br><span class="line">  lastModifi_backup=$(date -r <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span> +%s)</span><br><span class="line">  lastModifi_current=$(date -r <span class="string">"<span class="variable">$sourceDir</span>"</span> +%s)</span><br><span class="line">    <span class="keyword">if</span> [ <span class="string">"<span class="variable">$lastModifi_current</span>"</span> -gt <span class="string">"<span class="variable">$lastModifi_backup</span>"</span> ]</span><br><span class="line">    <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> -e <span class="string">"更新文件\t<span class="variable">$sourceDir</span>"</span> </span><br><span class="line">    cp <span class="string">"<span class="variable">$sourceDir</span>"</span> <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line">backUp <span class="string">"<span class="variable">$1</span>"</span> <span class="string">"<span class="variable">$2</span>"</span></span><br></pre></td></tr></table></figure>
+<p>运行脚本： <code>./backupSpecially.sh &quot;/date/originData&quot; &quot;/date/backup_dir&quot;</code></p>
+<p>发现运行shell脚本有问题，于是大神帮我写了个python</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python2.7</span></span><br><span class="line"><span class="comment"># -*- encoding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> os,time,filecmp</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">differentFileCopy</span><span class="params">(sourcePath, targetPath)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(sourcePath):</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(targetPath):</span><br><span class="line">        os.makedirs(targetPath)</span><br><span class="line">    <span class="keyword">for</span> fileName <span class="keyword">in</span> os.listdir(sourcePath):</span><br><span class="line">        absourcePath = os.path.join(sourcePath, fileName)</span><br><span class="line">        abstargetPath = os.path.join(targetPath, fileName)</span><br><span class="line">        <span class="keyword">if</span> os.path.isdir(absourcePath):</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(abstargetPath):</span><br><span class="line">                os.makedirs(abstargetPath)</span><br><span class="line">                differentFileCopy(absourcePath, abstargetPath)</span><br><span class="line">        <span class="keyword">if</span> os.path.isfile(absourcePath):</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(abstargetPath):</span><br><span class="line">                <span class="keyword">print</span> <span class="string">'copy %s to %s'</span> %(fileName,abstargetPath)</span><br><span class="line">                os.system(<span class="string">'cp'</span>+<span class="string">' '</span>+absourcePath+<span class="string">' '</span>+targetPath)</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> filecmp.cmp(absourcePath,abstargetPath):</span><br><span class="line">                <span class="keyword">print</span> <span class="string">'copy %s to %s'</span> %(fileName,abstargetPath)</span><br><span class="line">                os.system(<span class="string">'cp'</span>+<span class="string">' '</span>+absourcePath+<span class="string">' '</span>+targetPath)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    startTime = time.clock()</span><br><span class="line">    sourcePath = <span class="string">r"/date/originData"</span></span><br><span class="line">    targetPath = <span class="string">r"/date/Data_backupDir"</span></span><br><span class="line">    differentFileCopy(sourcePath, targetPath)</span><br><span class="line">    endTime = time.clock()</span><br><span class="line">    time_mi = endTime // <span class="number">60</span></span><br><span class="line">    time_s = endTime // <span class="number">1</span> % <span class="number">60</span></span><br><span class="line">    time_ms = ((endTime * <span class="number">100</span>) // <span class="number">1</span>) % <span class="number">100</span></span><br><span class="line">    print(<span class="string">"总用时:%02.0f:%02.0f:%2.0f"</span> % (time_mi, time_s, time_ms))</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Shell</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Makefile 101 :Intro</title>
     <url>/2019/07/04/Makefile-101-Intro/</url>
     <content><![CDATA[<p>新建文件 ，文件名 makefile 或 Makefile</p>
@@ -1311,21 +1326,6 @@ pipeline {
       </categories>
       <tags>
         <tag>makefile</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>backup specially with shell script or python</title>
-    <url>/2019/05/21/Linux-backup-specially/</url>
-    <content><![CDATA[<h3 id="需求：-备份目录，只备份新加的文件，不备份减少的文件"><a href="#需求：-备份目录，只备份新加的文件，不备份减少的文件" class="headerlink" title="需求： 备份目录，只备份新加的文件，不备份减少的文件"></a>需求： 备份目录，只备份新加的文件，不备份减少的文件</h3><p>分析： 通常备份目录用 <code>rsync</code> 就可以达到目的，但开发同学怕误操作，删除文件，于是提出这个 <em>只增不减</em> 的需求</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="function"><span class="title">backUp</span></span>()&#123;</span><br><span class="line"><span class="built_in">local</span> sourceDir=<span class="variable">$1</span> <span class="comment">#需要备份的文件/目录</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">local</span> destDir=<span class="variable">$2</span> <span class="comment">#备份目的地</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -d <span class="string">"<span class="variable">$sourceDir</span>"</span> ] <span class="comment">#备份目录</span></span><br><span class="line"><span class="keyword">then</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">#如果目录尚未备份，则创建此目录</span></span><br><span class="line">  <span class="keyword">if</span> [ ! -d <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span> ]</span><br><span class="line">  <span class="keyword">then</span></span><br><span class="line">  <span class="built_in">echo</span> -e <span class="string">"创建目录\t<span class="variable">$sourceDir</span>"</span></span><br><span class="line">  mkdir -p <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span></span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#对目录中对每一个文件,递归调用此函数进行备份</span></span><br><span class="line"><span class="keyword">for</span> var <span class="keyword">in</span> $(ls <span class="string">"<span class="variable">$sourceDir</span>"</span>)</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">backUp <span class="string">"<span class="variable">$sourceDir</span>/<span class="variable">$var</span>"</span> <span class="string">"<span class="variable">$destDir</span>"</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"><span class="keyword">else</span> <span class="comment">#备份文件</span></span><br><span class="line">  <span class="comment">#如果文件在尚未备份，则直接复制</span></span><br><span class="line">  <span class="keyword">if</span> [ ! -f <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span> ]</span><br><span class="line">  <span class="keyword">then</span></span><br><span class="line">  <span class="built_in">echo</span> -e <span class="string">"备份文件\t<span class="variable">$sourceDir</span>"</span></span><br><span class="line">  cp <span class="string">"<span class="variable">$sourceDir</span>"</span> <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span></span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">#如果文件已存在，则比较两个文件对最后修改时间，如果文件已修改，则更新文件</span></span><br><span class="line">  lastModifi_backup=$(date -r <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span> +%s)</span><br><span class="line">  lastModifi_current=$(date -r <span class="string">"<span class="variable">$sourceDir</span>"</span> +%s)</span><br><span class="line">    <span class="keyword">if</span> [ <span class="string">"<span class="variable">$lastModifi_current</span>"</span> -gt <span class="string">"<span class="variable">$lastModifi_backup</span>"</span> ]</span><br><span class="line">    <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> -e <span class="string">"更新文件\t<span class="variable">$sourceDir</span>"</span> </span><br><span class="line">    cp <span class="string">"<span class="variable">$sourceDir</span>"</span> <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line">backUp <span class="string">"<span class="variable">$1</span>"</span> <span class="string">"<span class="variable">$2</span>"</span></span><br></pre></td></tr></table></figure>
-<p>运行脚本： <code>./backupSpecially.sh &quot;/date/originData&quot; &quot;/date/backup_dir&quot;</code></p>
-<p>发现运行shell脚本有问题，于是大神帮我写了个python</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python2.7</span></span><br><span class="line"><span class="comment"># -*- encoding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> os,time,filecmp</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">differentFileCopy</span><span class="params">(sourcePath, targetPath)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(sourcePath):</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(targetPath):</span><br><span class="line">        os.makedirs(targetPath)</span><br><span class="line">    <span class="keyword">for</span> fileName <span class="keyword">in</span> os.listdir(sourcePath):</span><br><span class="line">        absourcePath = os.path.join(sourcePath, fileName)</span><br><span class="line">        abstargetPath = os.path.join(targetPath, fileName)</span><br><span class="line">        <span class="keyword">if</span> os.path.isdir(absourcePath):</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(abstargetPath):</span><br><span class="line">                os.makedirs(abstargetPath)</span><br><span class="line">                differentFileCopy(absourcePath, abstargetPath)</span><br><span class="line">        <span class="keyword">if</span> os.path.isfile(absourcePath):</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(abstargetPath):</span><br><span class="line">                <span class="keyword">print</span> <span class="string">'copy %s to %s'</span> %(fileName,abstargetPath)</span><br><span class="line">                os.system(<span class="string">'cp'</span>+<span class="string">' '</span>+absourcePath+<span class="string">' '</span>+targetPath)</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> filecmp.cmp(absourcePath,abstargetPath):</span><br><span class="line">                <span class="keyword">print</span> <span class="string">'copy %s to %s'</span> %(fileName,abstargetPath)</span><br><span class="line">                os.system(<span class="string">'cp'</span>+<span class="string">' '</span>+absourcePath+<span class="string">' '</span>+targetPath)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    startTime = time.clock()</span><br><span class="line">    sourcePath = <span class="string">r"/date/originData"</span></span><br><span class="line">    targetPath = <span class="string">r"/date/Data_backupDir"</span></span><br><span class="line">    differentFileCopy(sourcePath, targetPath)</span><br><span class="line">    endTime = time.clock()</span><br><span class="line">    time_mi = endTime // <span class="number">60</span></span><br><span class="line">    time_s = endTime // <span class="number">1</span> % <span class="number">60</span></span><br><span class="line">    time_ms = ((endTime * <span class="number">100</span>) // <span class="number">1</span>) % <span class="number">100</span></span><br><span class="line">    print(<span class="string">"总用时:%02.0f:%02.0f:%2.0f"</span> % (time_mi, time_s, time_ms))</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Shell</tag>
       </tags>
   </entry>
   <entry>
@@ -1380,22 +1380,6 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>Makefile 106: Functions</title>
-    <url>/2019/07/05/Makefile-106-Functions/</url>
-    <content><![CDATA[<p>（1）shell 函数</p>
-<p>（2）wildcard 函数</p>
-<p>（3）subst 函数</p>
-<p>（4）patsubst函数</p>
-<p>（5）替换后缀名</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>makefile</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Makefile 105: syntax</title>
     <url>/2019/07/05/Makefile-105-syntax/</url>
     <content><![CDATA[<h5 id="5-1-注释"><a href="#5-1-注释" class="headerlink" title="5.1 注释"></a>5.1 注释</h5><p>井号（#）在Makefile中表示注释。</p>
@@ -1414,6 +1398,55 @@ pipeline {
       </categories>
       <tags>
         <tag>makefile</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Makefile 106: Functions</title>
+    <url>/2019/07/05/Makefile-106-Functions/</url>
+    <content><![CDATA[<p>（1）shell 函数</p>
+<p>（2）wildcard 函数</p>
+<p>（3）subst 函数</p>
+<p>（4）patsubst函数</p>
+<p>（5）替换后缀名</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>makefile</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Ping Or fping</title>
+    <url>/2019/05/28/Ping-Or-fping/</url>
+    <content><![CDATA[<p>ping 命令我们比较常用，但是这里要介绍下 fping 命令。 fping 比 ping 拥有更多的特性。fping 默认没有包含在Linux发行版中。</p>
+<blockquote>
+<p>ping 命令使用Internet控制协议（Internet Control Message Protocol,ICMP）中的echo 分组检验网络上两台主机之间的连通性。</p>
+</blockquote>
+<p>e.g.<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> ip <span class="keyword">in</span> 192.168.0.&#123;1..255&#125; ;</span><br><span class="line"><span class="keyword">do</span> </span><br><span class="line">    ping <span class="variable">$ip</span> -c 2 &amp;&gt; /dev/null ;</span><br><span class="line"></span><br><span class="line">    uf [ $? -eq 0 ];</span><br><span class="line">    <span class="keyword">then</span> </span><br><span class="line">        <span class="built_in">echo</span> <span class="variable">$ip</span> is alive</span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure></p>
+<p>工作原理：</p>
+<ul>
+<li><code>&amp;&gt; /dev/null</code> 用于将 stderr stdout 重定向到 <code>/dev/nul</code> ,使终端不会出现任何输出</li>
+<li>脚本用 <code>$?</code> 获取退出状态。如果顺利退出，退出状态为0，否则为非0值。</li>
+</ul>
+<h5 id="fping"><a href="#fping" class="headerlink" title="fping"></a>fping</h5><p>fping 可以为多个IP地址生成 ICMP 分组，然后等待回应。其运行速度要比上面的脚本快得多。</p>
+<p>选项如下：</p>
+<ul>
+<li>选项 <code>-a</code> 指定显示出所有活动主机的IP地址；</li>
+<li>选项 <code>-u</code> 指定显示出所有不可达的主机地址；</li>
+<li>选项 <code>-g</code> 指定从 “IP地址/子网掩码；记法或者 “IP地址范围”记法中生成一组地址</li>
+</ul>
+<p>e.g.</p>
+<p><code>fping -a 192.168.0.1/24 -g</code></p>
+<p><code>fping -a 192.168.0.1 192.168.1.255 -g</code></p>
+<p><code>fping -a 192.168.0.1  192.168.0.5 192.168.0.6</code></p>
+<p><code>fping -a &lt; ip.list</code> 从列表文件 sdtin 中接收</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Shell</tag>
       </tags>
   </entry>
   <entry>
@@ -1461,39 +1494,6 @@ pipeline {
       <tags>
         <tag>Tools</tag>
         <tag>PPT</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Ping Or fping</title>
-    <url>/2019/05/28/Ping-Or-fping/</url>
-    <content><![CDATA[<p>ping 命令我们比较常用，但是这里要介绍下 fping 命令。 fping 比 ping 拥有更多的特性。fping 默认没有包含在Linux发行版中。</p>
-<blockquote>
-<p>ping 命令使用Internet控制协议（Internet Control Message Protocol,ICMP）中的echo 分组检验网络上两台主机之间的连通性。</p>
-</blockquote>
-<p>e.g.<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> ip <span class="keyword">in</span> 192.168.0.&#123;1..255&#125; ;</span><br><span class="line"><span class="keyword">do</span> </span><br><span class="line">    ping <span class="variable">$ip</span> -c 2 &amp;&gt; /dev/null ;</span><br><span class="line"></span><br><span class="line">    uf [ $? -eq 0 ];</span><br><span class="line">    <span class="keyword">then</span> </span><br><span class="line">        <span class="built_in">echo</span> <span class="variable">$ip</span> is alive</span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure></p>
-<p>工作原理：</p>
-<ul>
-<li><code>&amp;&gt; /dev/null</code> 用于将 stderr stdout 重定向到 <code>/dev/nul</code> ,使终端不会出现任何输出</li>
-<li>脚本用 <code>$?</code> 获取退出状态。如果顺利退出，退出状态为0，否则为非0值。</li>
-</ul>
-<h5 id="fping"><a href="#fping" class="headerlink" title="fping"></a>fping</h5><p>fping 可以为多个IP地址生成 ICMP 分组，然后等待回应。其运行速度要比上面的脚本快得多。</p>
-<p>选项如下：</p>
-<ul>
-<li>选项 <code>-a</code> 指定显示出所有活动主机的IP地址；</li>
-<li>选项 <code>-u</code> 指定显示出所有不可达的主机地址；</li>
-<li>选项 <code>-g</code> 指定从 “IP地址/子网掩码；记法或者 “IP地址范围”记法中生成一组地址</li>
-</ul>
-<p>e.g.</p>
-<p><code>fping -a 192.168.0.1/24 -g</code></p>
-<p><code>fping -a 192.168.0.1 192.168.1.255 -g</code></p>
-<p><code>fping -a 192.168.0.1  192.168.0.5 192.168.0.6</code></p>
-<p><code>fping -a &lt; ip.list</code> 从列表文件 sdtin 中接收</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Shell</tag>
       </tags>
   </entry>
   <entry>
@@ -2249,7 +2249,8 @@ pipeline {
 <li><code>Settings-&gt; App keys</code> 获取<strong>AppID</strong>，<strong>AppKey</strong>。放到对应主题的 <code>_config.yml</code>中</li>
 </ul>
 <h3 id="链接中的括号"><a href="#链接中的括号" class="headerlink" title="链接中的括号"></a>链接中的括号</h3><p><strong>解决方法:</strong><br>%28 代替(, %29代替) 主要是后者会歧义链接部分的结束.，这是使用url符号码去代替ascii的符号，能够解决这个问题。</p>
-<p><strong>例如：</strong><br>更多关于 Telegram 的介绍可以查看 Wikipedia <a href="https://en.wikipedia.org/wiki/Telegram_(software)" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Telegram_(software)</a></p>
+<p><strong>例如：</strong><br>更多关于 Telegram 的介绍可以查看 <a href="https://en.wikipedia.org/wiki/Telegram_%28software%29" target="_blank" rel="noopener">Wikipedia</a></p>
+<p>更多关于 Telegram 的介绍可以查看 <a href="https://en.wikipedia.org/wiki/Telegram_&#40;software&#41;" target="_blank" rel="noopener">Wikipedia</a></p>
 <h3 id="提示块"><a href="#提示块" class="headerlink" title="提示块"></a>提示块</h3><blockquote>
 <p>目前主题貌似暂时不支持<br>[note]<br><strong>Note:</strong> This is a note.</p>
 </blockquote>
@@ -2330,19 +2331,6 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>jenkins date timezone update</title>
-    <url>/2019/04/25/jenkins-date-timezone-update/</url>
-    <content><![CDATA[<h4 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h4><p>打开 【系统管理】-&gt;【脚本命令行】运行下面的命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">System.setProperty(<span class="string">'org.apache.commons.jelly.tags.fmt.timeZone'</span>, <span class="string">'Asia/Shanghai'</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="/images/jenkins_run_image_01.png" alt="jenkins_run_image_01"></p>
-<h4 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h4><pre><code class="java">JAVA_ARGS=<span class="string">"-Dorg.apache.commons.jelly.tags.fmt.timeZone=Asia/Shanghai -Dfile.encoding=UTF-8 -Djava.awt.headless=true"</span>
-</code></pre>
-]]></content>
-      <tags>
-        <tag>jenkins</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>kubectl 常用命令</title>
     <url>/2019/10/21/kubectl-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<h3 id="label操作"><a href="#label操作" class="headerlink" title="label操作"></a>label操作</h3><p>删除 label version=xx</p>
@@ -2369,6 +2357,19 @@ pipeline {
 ]]></content>
       <tags>
         <tag>k8s</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>jenkins date timezone update</title>
+    <url>/2019/04/25/jenkins-date-timezone-update/</url>
+    <content><![CDATA[<h4 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h4><p>打开 【系统管理】-&gt;【脚本命令行】运行下面的命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">System.setProperty(<span class="string">'org.apache.commons.jelly.tags.fmt.timeZone'</span>, <span class="string">'Asia/Shanghai'</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="/images/jenkins_run_image_01.png" alt="jenkins_run_image_01"></p>
+<h4 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h4><pre><code class="java">JAVA_ARGS=<span class="string">"-Dorg.apache.commons.jelly.tags.fmt.timeZone=Asia/Shanghai -Dfile.encoding=UTF-8 -Djava.awt.headless=true"</span>
+</code></pre>
+]]></content>
+      <tags>
+        <tag>jenkins</tag>
       </tags>
   </entry>
   <entry>
@@ -2591,29 +2592,6 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>xargs command</title>
-    <url>/2019/06/21/xargs-command/</url>
-    <content><![CDATA[<p>xargs 命令应该紧跟在管道操作符之后。它使用标准输入作为主要的数据源，将从 stdin 中读取的数据作为指定命令的参数并执行该命令。</p>
-<p>例如：<br>在一组 C 语言源码文件中搜索自负串main:<br><code>ls *.c | sargs grep main</code></p>
-<h4 id="Example-1-将多行输入-–-gt-单行输出"><a href="#Example-1-将多行输入-–-gt-单行输出" class="headerlink" title="Example 1: 将多行输入  –&gt; 单行输出"></a>Example 1: 将多行输入  –&gt; 单行输出</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   cat example.txt</span><br><span class="line">1 2 3 4</span><br><span class="line">5 6</span><br><span class="line">7 8 9</span><br><span class="line">10 11</span><br><span class="line">➜   cat example.txt | xargs</span><br><span class="line">1 2 3 4 5 6 7 8 9 10 11</span><br></pre></td></tr></table></figure>
-<h4 id="Example-2-将单行输入-–-gt-多行输出"><a href="#Example-2-将单行输入-–-gt-多行输出" class="headerlink" title="Example 2: 将单行输入  –&gt; 多行输出"></a>Example 2: 将单行输入  –&gt; 多行输出</h4><p>xargs 的 -n 选项可以限制每次调用命令时用到的参数个数。<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   cat example.txt | xargs -n  3</span><br><span class="line">1 2 3</span><br><span class="line">4 5 6</span><br><span class="line">7 8 9</span><br><span class="line">10 11</span><br></pre></td></tr></table></figure></p>
-<p>工作原理：<br>xargs 命令接收来自stdin的输入，将数据解析成单个元素，然后调用指定命令讲这些元素作为该命令的参数。xargs 默认使用 <strong>空白字符</strong> 分割输入并执行 <code>/bin/echo</code></p>
-<h4 id="Example-3-自定义分隔符-d-选项"><a href="#Example-3-自定义分隔符-d-选项" class="headerlink" title="Example 3: 自定义分隔符 -d 选项"></a>Example 3: 自定义分隔符 -d 选项</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"splitXsplit1Xsplit2Xsplit3"</span> | xargs -d X</span><br><span class="line">split split1 split2 split3</span><br></pre></td></tr></table></figure>
-<h4 id="Example-4-结合find使用xargs"><a href="#Example-4-结合find使用xargs" class="headerlink" title="Example 4: 结合find使用xargs"></a>Example 4: 结合find使用xargs</h4><p><code>find . -type f -name &quot;*.txt&quot; -print0 | xargs -o grep -L image</code></p>
-<p> 如果文件系统的有些文件名中包含忠哥，find 命令的 -print0 选项可以使用0（NUL）来分割查找到的元素，然后再用xargs对应的-0选项进行解析</p>
-<p> 反例：<br> <code>$find . -type f -name &quot;*.txt&quot; -print | xargs rm -f</code><br>这样做很危险，由可能会误删除文件。我们无法预测 find命令输出的分隔符究竟是什么（究竟是‘\n’还是 ‘’）。如果由文件名中包含空格符（‘ ’ ），xargs会将其误认为是分隔符。例如， <code>bashrc text.txt</code> 会被是为 bashrc 和 text.txt 。因此上面的命令不会删除 <code>bashrc text.txt</code> ,而是会把 bashrc删除</p>
-<p>正确的姿势：<br> <code>$find . -type f -name &quot;*.txt&quot; -print0 | xargs -0 rm -f</code></p>
-<h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><p> <code>docker ps -a -q | xargs --no-run-if-empty docker rm -f</code></p>
-<p> 参数 <code>--no-run-if-empty</code> 可以避免在前面的命令完全没有输出的情况下执行该命令</p>
-]]></content>
-      <categories>
-        <category>Shell</category>
-      </categories>
-      <tags>
-        <tag>Shell</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>tmux tutorial</title>
     <url>/2019/09/07/tmux-tutorial/</url>
     <content><![CDATA[<h3 id="1-tmux是什么"><a href="#1-tmux是什么" class="headerlink" title="1.tmux是什么"></a>1.tmux是什么</h3><pre><code>tmux (terminal multiplexer),是一个 BSD 协议发布的终端复用软件，用来在服务器端托管同时运行的 Shell.
@@ -2681,6 +2659,29 @@ pipeline {
       </categories>
       <tags>
         <tag>tmux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>xargs command</title>
+    <url>/2019/06/21/xargs-command/</url>
+    <content><![CDATA[<p>xargs 命令应该紧跟在管道操作符之后。它使用标准输入作为主要的数据源，将从 stdin 中读取的数据作为指定命令的参数并执行该命令。</p>
+<p>例如：<br>在一组 C 语言源码文件中搜索自负串main:<br><code>ls *.c | sargs grep main</code></p>
+<h4 id="Example-1-将多行输入-–-gt-单行输出"><a href="#Example-1-将多行输入-–-gt-单行输出" class="headerlink" title="Example 1: 将多行输入  –&gt; 单行输出"></a>Example 1: 将多行输入  –&gt; 单行输出</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   cat example.txt</span><br><span class="line">1 2 3 4</span><br><span class="line">5 6</span><br><span class="line">7 8 9</span><br><span class="line">10 11</span><br><span class="line">➜   cat example.txt | xargs</span><br><span class="line">1 2 3 4 5 6 7 8 9 10 11</span><br></pre></td></tr></table></figure>
+<h4 id="Example-2-将单行输入-–-gt-多行输出"><a href="#Example-2-将单行输入-–-gt-多行输出" class="headerlink" title="Example 2: 将单行输入  –&gt; 多行输出"></a>Example 2: 将单行输入  –&gt; 多行输出</h4><p>xargs 的 -n 选项可以限制每次调用命令时用到的参数个数。<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   cat example.txt | xargs -n  3</span><br><span class="line">1 2 3</span><br><span class="line">4 5 6</span><br><span class="line">7 8 9</span><br><span class="line">10 11</span><br></pre></td></tr></table></figure></p>
+<p>工作原理：<br>xargs 命令接收来自stdin的输入，将数据解析成单个元素，然后调用指定命令讲这些元素作为该命令的参数。xargs 默认使用 <strong>空白字符</strong> 分割输入并执行 <code>/bin/echo</code></p>
+<h4 id="Example-3-自定义分隔符-d-选项"><a href="#Example-3-自定义分隔符-d-选项" class="headerlink" title="Example 3: 自定义分隔符 -d 选项"></a>Example 3: 自定义分隔符 -d 选项</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"splitXsplit1Xsplit2Xsplit3"</span> | xargs -d X</span><br><span class="line">split split1 split2 split3</span><br></pre></td></tr></table></figure>
+<h4 id="Example-4-结合find使用xargs"><a href="#Example-4-结合find使用xargs" class="headerlink" title="Example 4: 结合find使用xargs"></a>Example 4: 结合find使用xargs</h4><p><code>find . -type f -name &quot;*.txt&quot; -print0 | xargs -o grep -L image</code></p>
+<p> 如果文件系统的有些文件名中包含忠哥，find 命令的 -print0 选项可以使用0（NUL）来分割查找到的元素，然后再用xargs对应的-0选项进行解析</p>
+<p> 反例：<br> <code>$find . -type f -name &quot;*.txt&quot; -print | xargs rm -f</code><br>这样做很危险，由可能会误删除文件。我们无法预测 find命令输出的分隔符究竟是什么（究竟是‘\n’还是 ‘’）。如果由文件名中包含空格符（‘ ’ ），xargs会将其误认为是分隔符。例如， <code>bashrc text.txt</code> 会被是为 bashrc 和 text.txt 。因此上面的命令不会删除 <code>bashrc text.txt</code> ,而是会把 bashrc删除</p>
+<p>正确的姿势：<br> <code>$find . -type f -name &quot;*.txt&quot; -print0 | xargs -0 rm -f</code></p>
+<h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><p> <code>docker ps -a -q | xargs --no-run-if-empty docker rm -f</code></p>
+<p> 参数 <code>--no-run-if-empty</code> 可以避免在前面的命令完全没有输出的情况下执行该命令</p>
+]]></content>
+      <categories>
+        <category>Shell</category>
+      </categories>
+      <tags>
+        <tag>Shell</tag>
       </tags>
   </entry>
   <entry>
@@ -2848,8 +2849,7 @@ pipeline {
 <p>作用和特色有点太多，还是直接上图吧👇</p>
 <p><img src="https://s1.ax1x.com/2020/04/19/Juq1FU.png" alt="Juq1FU.png"></p>
 <p>更多关于 Telegram 的介绍可以查看 <a href="https://en.wikipedia.org/wiki/Telegram_%28software%29" target="_blank" rel="noopener">Wikipedia</a></p>
-<p>&#40;</p>
-<p>&#41;</p>
+<p>更多关于 Telegram 的介绍可以查看 <a href="https://en.wikipedia.org/wiki/Telegram_&#40;software&#41;" target="_blank" rel="noopener">Wikipedia</a></p>
 <h3 id="2-怎么用"><a href="#2-怎么用" class="headerlink" title="2. 怎么用"></a>2. 怎么用</h3><p>在中国大陆境内无法直接连接，注册和使用都需要科学上网。</p>
 <p>自己注册过程如下：</p>
 <ul>
@@ -2938,25 +2938,6 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>安迪-比尔定律(Andy and Bill’s Law)</title>
-    <url>/2019/03/27/%E5%AE%89%E8%BF%AA-%E6%AF%94%E5%B0%94%E5%AE%9A%E5%BE%8B-Andy-and-Bill%E2%80%99s-Law/</url>
-    <content><![CDATA[<h3 id="这句话出处是哪里？"><a href="#这句话出处是哪里？" class="headerlink" title="这句话出处是哪里？"></a>这句话出处是哪里？</h3><pre><code>“Andy gives,Bill takes away.(安迪提供什么，比尔拿走什么)&quot;
-</code></pre><h3 id="什么是安迪-比尔定律？"><a href="#什么是安迪-比尔定律？" class="headerlink" title="什么是安迪-比尔定律？"></a>什么是安迪-比尔定律？</h3><p>Andy指的是原英特尔公司CEO 安迪•格鲁<a href="https://zh.wikipedia.org/wiki/%E5%AE%89%E8%BF%AA%C2%B7%E8%91%9B%E6%B4%9B%E5%A4%AB" target="_blank" rel="noopener">Andy Grove</a>；Bill就是微软的比尔•盖茨.</p>
-<p>这句话的意思是，英特尔公司总裁安迪·格罗夫一旦向市场推广了一种新型芯片产品，微软CEO比尔盖茨就会及时的升级自己的软件产品，吸收新型芯片的高性能。硬件提高的性能，很快被软件消耗掉了。似乎两方是一对黄金搭档，心照不宣。</p>
-<blockquote>
-<p>简而言之，安迪-比尔定律揭示了硬件和软件相互促进彼此，不断更新换代的现象。</p>
-</blockquote>
-<h3 id="为什么要“更新”？"><a href="#为什么要“更新”？" class="headerlink" title="为什么要“更新”？"></a>为什么要“更新”？</h3><h6 id="1-从买卖双方分析："><a href="#1-从买卖双方分析：" class="headerlink" title="1.从买卖双方分析："></a>1.从买卖双方分析：</h6><p>对于厂商、公司而言，只有不断的推出新产品，才能有营收，才能获得更大的市场，最终通常是为了赚更多的钱。对于个人而言，个人的欲望在不断的增长，大哥比方：以前村里的张三有个mp3听听歌就可能满足的不行了，但是看着县里的李四拿着最新的mp4不仅能听歌，还能下载电影看，于是就渴望也有一个新玩意。过了一年半载出了一个新的手机，不仅有上述功能，还可以在线打游戏，只有拥有它才可以和别的小伙伴一起“冲锋陷阵”…</p>
-<h6 id="2-从硬件、软件公司分析："><a href="#2-从硬件、软件公司分析：" class="headerlink" title="2.从硬件、软件公司分析："></a>2.从硬件、软件公司分析：</h6><p>还是拿上面的例子，硬件公司老是生产mp3，等到大家差不多人手一个的时候，就赚不到更多的钱了。而这个时候有软件公司开发的新的软件，需要用新的设备才能运行，硬件公司还能又卖一波新硬件，而且又是新的市场，单价一般而言更贵，于是乎这样赚钱的机会怎么能放过。同业的竞争公司看到这样的趋势，也加紧研发去抢新的蛋糕（旧的蛋糕都快被人吃的差不多了，新的蛋糕就看谁做的快做的好了）。软件公司这时也纷纷用新的思路去做更多的软件，吸引新用户，也想着做一些更牛逼的软件（虽然现在硬件水平跟不上，但是总有一天那些硬件会有的，加紧研发自己的软件就准没错）。</p>
-]]></content>
-      <categories>
-        <category>读书笔记</category>
-      </categories>
-      <tags>
-        <tag>浪潮之巅</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>反摩尔定理 = 学如逆水行舟</title>
     <url>/2019/04/10/%E5%8F%8D%E6%91%A9%E5%B0%94%E5%AE%9A%E7%90%86-%E5%AD%A6%E5%A6%82%E9%80%86%E6%B0%B4%E8%A1%8C%E8%88%9F/</url>
     <content><![CDATA[<h3 id="1-什么是反摩尔定理？"><a href="#1-什么是反摩尔定理？" class="headerlink" title="1.什么是反摩尔定理？"></a>1.什么是反摩尔定理？</h3><p>Google(谷歌)的 CEO 埃里克•施密特在一次采访中指出，如果你反过来看摩尔定理， 一个 IT 公司如果今天和十八个月前卖掉同样多的、同样的产品，它的营业额就要降一半。IT 界把它称为 <strong>反摩尔定理</strong>。</p>
@@ -2971,6 +2952,25 @@ pipeline {
 <blockquote>
 <p>小编之前就知道一个，有点儿孤陋寡闻了 &gt;::&lt;</p>
 </blockquote>
+]]></content>
+      <categories>
+        <category>读书笔记</category>
+      </categories>
+      <tags>
+        <tag>浪潮之巅</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>安迪-比尔定律(Andy and Bill’s Law)</title>
+    <url>/2019/03/27/%E5%AE%89%E8%BF%AA-%E6%AF%94%E5%B0%94%E5%AE%9A%E5%BE%8B-Andy-and-Bill%E2%80%99s-Law/</url>
+    <content><![CDATA[<h3 id="这句话出处是哪里？"><a href="#这句话出处是哪里？" class="headerlink" title="这句话出处是哪里？"></a>这句话出处是哪里？</h3><pre><code>“Andy gives,Bill takes away.(安迪提供什么，比尔拿走什么)&quot;
+</code></pre><h3 id="什么是安迪-比尔定律？"><a href="#什么是安迪-比尔定律？" class="headerlink" title="什么是安迪-比尔定律？"></a>什么是安迪-比尔定律？</h3><p>Andy指的是原英特尔公司CEO 安迪•格鲁<a href="https://zh.wikipedia.org/wiki/%E5%AE%89%E8%BF%AA%C2%B7%E8%91%9B%E6%B4%9B%E5%A4%AB" target="_blank" rel="noopener">Andy Grove</a>；Bill就是微软的比尔•盖茨.</p>
+<p>这句话的意思是，英特尔公司总裁安迪·格罗夫一旦向市场推广了一种新型芯片产品，微软CEO比尔盖茨就会及时的升级自己的软件产品，吸收新型芯片的高性能。硬件提高的性能，很快被软件消耗掉了。似乎两方是一对黄金搭档，心照不宣。</p>
+<blockquote>
+<p>简而言之，安迪-比尔定律揭示了硬件和软件相互促进彼此，不断更新换代的现象。</p>
+</blockquote>
+<h3 id="为什么要“更新”？"><a href="#为什么要“更新”？" class="headerlink" title="为什么要“更新”？"></a>为什么要“更新”？</h3><h6 id="1-从买卖双方分析："><a href="#1-从买卖双方分析：" class="headerlink" title="1.从买卖双方分析："></a>1.从买卖双方分析：</h6><p>对于厂商、公司而言，只有不断的推出新产品，才能有营收，才能获得更大的市场，最终通常是为了赚更多的钱。对于个人而言，个人的欲望在不断的增长，大哥比方：以前村里的张三有个mp3听听歌就可能满足的不行了，但是看着县里的李四拿着最新的mp4不仅能听歌，还能下载电影看，于是就渴望也有一个新玩意。过了一年半载出了一个新的手机，不仅有上述功能，还可以在线打游戏，只有拥有它才可以和别的小伙伴一起“冲锋陷阵”…</p>
+<h6 id="2-从硬件、软件公司分析："><a href="#2-从硬件、软件公司分析：" class="headerlink" title="2.从硬件、软件公司分析："></a>2.从硬件、软件公司分析：</h6><p>还是拿上面的例子，硬件公司老是生产mp3，等到大家差不多人手一个的时候，就赚不到更多的钱了。而这个时候有软件公司开发的新的软件，需要用新的设备才能运行，硬件公司还能又卖一波新硬件，而且又是新的市场，单价一般而言更贵，于是乎这样赚钱的机会怎么能放过。同业的竞争公司看到这样的趋势，也加紧研发去抢新的蛋糕（旧的蛋糕都快被人吃的差不多了，新的蛋糕就看谁做的快做的好了）。软件公司这时也纷纷用新的思路去做更多的软件，吸引新用户，也想着做一些更牛逼的软件（虽然现在硬件水平跟不上，但是总有一天那些硬件会有的，加紧研发自己的软件就准没错）。</p>
 ]]></content>
       <categories>
         <category>读书笔记</category>
