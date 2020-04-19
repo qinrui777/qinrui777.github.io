@@ -442,6 +442,40 @@
       </tags>
   </entry>
   <entry>
+    <title>Github Actions E02最小Demo</title>
+    <url>/2020/03/17/Github-Actions-E02%E6%9C%80%E5%B0%8FDemo/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
+<p><a href="https://www.devops-tech.cn/2020/03/16/Github-Actions-E01/" target="_blank" rel="noopener">前面一篇</a>已经说明一些概念，于是为了更好的理解，直接用一个简单的demo帮助进一步理解概念。</p>
+</blockquote>
+<p>示例仓库： <a href="https://github.com/cicd-draft/api-test-demo" target="_blank" rel="noopener">https://github.com/cicd-draft/api-test-demo</a></p>
+<h3 id="1-配置工作流"><a href="#1-配置工作流" class="headerlink" title="1.配置工作流"></a>1.配置工作流</h3><h4 id="1-1-步骤一"><a href="#1-1-步骤一" class="headerlink" title="1.1 步骤一"></a>1.1 步骤一</h4><p>在仓库的根目录，创建名为 .github/workflows 的目录以存储工作流程文件。</p>
+<h4 id="1-2-步骤二"><a href="#1-2-步骤二" class="headerlink" title="1.2 步骤二"></a>1.2 步骤二</h4><p>在 <code>.github/workflows</code> 中，为工作流程添加 .yml 或 .yaml 文件。 例如 .github/workflows/demo.yml。</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">my</span> <span class="string">workflow</span> <span class="string">demo</span> </span><br><span class="line"></span><br><span class="line"><span class="comment"># 此处使用最常见的触发方法，还有其他的很多方法可满足不同需求</span></span><br><span class="line"><span class="attr">on:</span> </span><br><span class="line"><span class="attr">  push:</span></span><br><span class="line"><span class="attr">    branches:</span> </span><br><span class="line"><span class="bullet">      -</span> <span class="string">master</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">#工作流程运行包括一项或多项作业。 作业默认是并行运行。 要按顺序运行作业，needs 关键词在其他作业上定义依赖项。</span></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="comment">#每项作业必须关联一个 ID。&lt;job_id&gt; 必须以字母或 _ 开头</span></span><br><span class="line"><span class="attr">  my_first_job:</span></span><br><span class="line">    <span class="comment"># 作业1名称为 Demo First job,也是作业显示在 GitHub 上的名称。</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Demo</span> <span class="string">First</span> <span class="string">job</span></span><br><span class="line">    <span class="comment"># 此作业在 Linux 上运行</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">My</span> <span class="string">step</span> <span class="string">one</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">echo</span> <span class="string">"Hello ,Github actions, I'm &gt;&gt;My step one&lt;&lt;"</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">My</span> <span class="string">step</span> <span class="string">two</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        echo "My step one begin..."</span></span><br><span class="line"><span class="string">        echo "doing..."</span></span><br><span class="line"><span class="string">        echo "Finished!!!"</span></span><br><span class="line"><span class="string"></span><span class="attr">  my_second_job:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Demo</span> <span class="string">Second</span> <span class="string">job</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">macos-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">check</span> <span class="string">OS</span> <span class="string">info</span></span><br><span class="line">        <span class="string">run</span> <span class="string">:</span> <span class="string">system_profiler</span> <span class="string">SPSoftwareDataType</span></span><br></pre></td></tr></table></figure>
+<h4 id="1-3-步骤三"><a href="#1-3-步骤三" class="headerlink" title="1.3 步骤三"></a>1.3 步骤三</h4><p>将工作流程文件中的更改提交到您希望其中运行工作流程的分支。</p>
+<p>到这里一个简单的demo就算完成了，可以去 <strong>Actions</strong> 按钮下查看运行情况。</p>
+<h3 id="2-管理工作流"><a href="#2-管理工作流" class="headerlink" title="2.管理工作流"></a>2.管理工作流</h3><p><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run" target="_blank" rel="noopener">官网链接</a>有详细说明以下每个操作中的细节</p>
+<blockquote>
+<p>由于图片太多,就不做搬运工了</p>
+</blockquote>
+<ul>
+<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#about-workflow-permissions" target="_blank" rel="noopener">关于工作流程权限</a></li>
+<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#about-workflow-management" target="_blank" rel="noopener">关于工作流程管理</a></li>
+<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#viewing-your-workflow-history" target="_blank" rel="noopener">查看工作流程历史记录</a></li>
+<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#canceling-a-workflow-run" target="_blank" rel="noopener">取消工作流程运行</a></li>
+<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#viewing-logs-to-diagnose-failures" target="_blank" rel="noopener">查看日志以诊断故障</a></li>
+<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#searching-logs" target="_blank" rel="noopener">搜索日志</a></li>
+<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#downloading-logs" target="_blank" rel="noopener">下载日志</a></li>
+<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#enabling-debug-logging" target="_blank" rel="noopener">启用调试日志</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>CICD</category>
+      </categories>
+      <tags>
+        <tag>GA</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Github Actions E01初识</title>
     <url>/2020/03/16/Github-Actions-E01%E5%88%9D%E8%AF%86/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
@@ -502,40 +536,6 @@
 <p><strong>More Ref:</strong></p>
 <ul>
 <li><a href="https://github.com/features/actions" target="_blank" rel="noopener">https://github.com/features/actions</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>CICD</category>
-      </categories>
-      <tags>
-        <tag>GA</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Github Actions E02最小Demo</title>
-    <url>/2020/03/17/Github-Actions-E02%E6%9C%80%E5%B0%8FDemo/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
-<p><a href="https://www.devops-tech.cn/2020/03/16/Github-Actions-E01/" target="_blank" rel="noopener">前面一篇</a>已经说明一些概念，于是为了更好的理解，直接用一个简单的demo帮助进一步理解概念。</p>
-</blockquote>
-<p>示例仓库： <a href="https://github.com/cicd-draft/api-test-demo" target="_blank" rel="noopener">https://github.com/cicd-draft/api-test-demo</a></p>
-<h3 id="1-配置工作流"><a href="#1-配置工作流" class="headerlink" title="1.配置工作流"></a>1.配置工作流</h3><h4 id="1-1-步骤一"><a href="#1-1-步骤一" class="headerlink" title="1.1 步骤一"></a>1.1 步骤一</h4><p>在仓库的根目录，创建名为 .github/workflows 的目录以存储工作流程文件。</p>
-<h4 id="1-2-步骤二"><a href="#1-2-步骤二" class="headerlink" title="1.2 步骤二"></a>1.2 步骤二</h4><p>在 <code>.github/workflows</code> 中，为工作流程添加 .yml 或 .yaml 文件。 例如 .github/workflows/demo.yml。</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">my</span> <span class="string">workflow</span> <span class="string">demo</span> </span><br><span class="line"></span><br><span class="line"><span class="comment"># 此处使用最常见的触发方法，还有其他的很多方法可满足不同需求</span></span><br><span class="line"><span class="attr">on:</span> </span><br><span class="line"><span class="attr">  push:</span></span><br><span class="line"><span class="attr">    branches:</span> </span><br><span class="line"><span class="bullet">      -</span> <span class="string">master</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">#工作流程运行包括一项或多项作业。 作业默认是并行运行。 要按顺序运行作业，needs 关键词在其他作业上定义依赖项。</span></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="comment">#每项作业必须关联一个 ID。&lt;job_id&gt; 必须以字母或 _ 开头</span></span><br><span class="line"><span class="attr">  my_first_job:</span></span><br><span class="line">    <span class="comment"># 作业1名称为 Demo First job,也是作业显示在 GitHub 上的名称。</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Demo</span> <span class="string">First</span> <span class="string">job</span></span><br><span class="line">    <span class="comment"># 此作业在 Linux 上运行</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">My</span> <span class="string">step</span> <span class="string">one</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">echo</span> <span class="string">"Hello ,Github actions, I'm &gt;&gt;My step one&lt;&lt;"</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">My</span> <span class="string">step</span> <span class="string">two</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        echo "My step one begin..."</span></span><br><span class="line"><span class="string">        echo "doing..."</span></span><br><span class="line"><span class="string">        echo "Finished!!!"</span></span><br><span class="line"><span class="string"></span><span class="attr">  my_second_job:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Demo</span> <span class="string">Second</span> <span class="string">job</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">macos-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">check</span> <span class="string">OS</span> <span class="string">info</span></span><br><span class="line">        <span class="string">run</span> <span class="string">:</span> <span class="string">system_profiler</span> <span class="string">SPSoftwareDataType</span></span><br></pre></td></tr></table></figure>
-<h4 id="1-3-步骤三"><a href="#1-3-步骤三" class="headerlink" title="1.3 步骤三"></a>1.3 步骤三</h4><p>将工作流程文件中的更改提交到您希望其中运行工作流程的分支。</p>
-<p>到这里一个简单的demo就算完成了，可以去 <strong>Actions</strong> 按钮下查看运行情况。</p>
-<h3 id="2-管理工作流"><a href="#2-管理工作流" class="headerlink" title="2.管理工作流"></a>2.管理工作流</h3><p><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run" target="_blank" rel="noopener">官网链接</a>有详细说明以下每个操作中的细节</p>
-<blockquote>
-<p>由于图片太多,就不做搬运工了</p>
-</blockquote>
-<ul>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#about-workflow-permissions" target="_blank" rel="noopener">关于工作流程权限</a></li>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#about-workflow-management" target="_blank" rel="noopener">关于工作流程管理</a></li>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#viewing-your-workflow-history" target="_blank" rel="noopener">查看工作流程历史记录</a></li>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#canceling-a-workflow-run" target="_blank" rel="noopener">取消工作流程运行</a></li>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#viewing-logs-to-diagnose-failures" target="_blank" rel="noopener">查看日志以诊断故障</a></li>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#searching-logs" target="_blank" rel="noopener">搜索日志</a></li>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#downloading-logs" target="_blank" rel="noopener">下载日志</a></li>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#enabling-debug-logging" target="_blank" rel="noopener">启用调试日志</a></li>
 </ul>
 ]]></content>
       <categories>
@@ -691,6 +691,62 @@
       </tags>
   </entry>
   <entry>
+    <title>Github Actions E06产出物</title>
+    <url>/2020/03/30/Github-Actions-E06%E4%BA%A7%E5%87%BA%E7%89%A9/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
+<p>大多数时候，workflow的产出物都会直接传到对应的某些仓库，比如docker image会送到docker hub这种仓库存储。这种时候是不需要在workflow再额外的管理产出物，但也不能全盘否定；有时候我们没有一个方便的地方去存储某些形式的文件等，就需要我们有类似jenkins <code>archiveArtifacts</code> 功能。但github actions能做的会更多，请期待。</p>
+</blockquote>
+<h3 id="1-关于artifacts"><a href="#1-关于artifacts" class="headerlink" title="1. 关于artifacts"></a>1. 关于artifacts</h3><p>构件是指在工作流程运行过程中产生的文件或文件集。<br>GitHub 提供两项可用于上传和下载构建构件的操作。 上传到工作流程运行的文件将使用 .zip 格式存档。 更多信息请参阅 <code>action/upload-artifact</code> 和 <code>download-artifact</code> 操作。</p>
+<p>这些是您可能想要上传的一些常见构建和测试输出构件：</p>
+<ul>
+<li>日志文件和核心转储文件</li>
+<li>测试结果、失败和屏幕截图</li>
+<li>二进制或存档文件</li>
+<li>压力测试性能输出和代码覆盖结果</li>
+</ul>
+<p>当作业完成时，运行程序将终止并删除虚拟环境的实例。</p>
+<h3 id="2-上传"><a href="#2-上传" class="headerlink" title="2. 上传"></a>2. 上传</h3><p>常见的场景: 一个java程序的产出物是一个jar包，在构建之后需要得到这个jar用于其他环境部署。</p>
+<p>依旧用 <a href="https://github.com/cicd-draft/api-test-demo" target="_blank" rel="noopener">api-test-demo</a> 这个仓库做演示，主要分为以下个步骤：</p>
+<ul>
+<li>1.下载代码；</li>
+<li>2.构建jar包(存放于指定到路径<code>build/libs/api-demo-0.0.1-SNAPSHOT.jar</code>)；</li>
+<li>3.上传jar包</li>
+</ul>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">my</span> <span class="string">workflow</span> <span class="string">demo</span> </span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span> </span><br><span class="line"><span class="attr">  push:</span></span><br><span class="line"><span class="attr">    branches:</span> </span><br><span class="line"><span class="bullet">      -</span> <span class="string">master</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  artifacts_demo_job:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">job1</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">Checkout</span> <span class="string">code</span></span><br><span class="line"><span class="attr">      uses:</span> <span class="string">actions/checkout@v1</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">Build</span> <span class="string">jar</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        pwd  &amp;&amp; ls -l</span></span><br><span class="line"><span class="string">        ./gradlew -x jar build</span></span><br><span class="line"><span class="string">        ls -l build/libs/api-demo-0.0.1-SNAPSHOT.jar</span></span><br><span class="line"><span class="string"></span><span class="attr">    - name:</span> <span class="string">Archive</span> <span class="string">SNAPSHOT.jar</span></span><br><span class="line"><span class="attr">      uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">      with:</span></span><br><span class="line"><span class="attr">        name:</span> <span class="string">api_snapshot_jar</span></span><br><span class="line"><span class="attr">        path:</span> <span class="string">build/libs/api-demo-0.0.1-SNAPSHOT.jar</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>github actions 工作流的产出物都放在哪里的，保留多久</p>
+</blockquote>
+<h3 id="3-下载"><a href="#3-下载" class="headerlink" title="3. 下载"></a>3. 下载</h3><p>步骤官方说明如下：</p>
+<ul>
+<li>1.On GitHub, navigate to the main page of the repository.</li>
+<li>2.Under your repository name, click Actions.</li>
+<li>3.In the left sidebar, click the workflow you want to see.</li>
+<li>4.Under “Workflow runs”, click the name of the run you want to see.</li>
+<li>5.To download artifacts, use the Artifacts drop-down menu, and select the artifact you want to download.</li>
+<li>6.To delete artifacts, use the Artifacts drop-down menu, and click .</li>
+</ul>
+<p>注意事项：</p>
+<ul>
+<li>保留90天</li>
+<li>一旦删除某一个构件，无法恢复</li>
+</ul>
+<h3 id="4-在工作流程中作业之间传递数据"><a href="#4-在工作流程中作业之间传递数据" class="headerlink" title="4. 在工作流程中作业之间传递数据"></a>4. 在工作流程中作业之间传递数据</h3><p><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts#passing-data-between-jobs-in-a-workflow" target="_blank" rel="noopener">https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts#passing-data-between-jobs-in-a-workflow</a></p>
+<p>由于同一个workflow的多个job分别运行在不同的虚拟主机上，下面示例工作流程说明如何在相同工作流程中的任务之间传递数据。关键词 <strong>need</strong> 用来确保job按顺序运行.</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Share</span> <span class="string">data</span> <span class="string">between</span> <span class="string">jobs</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span> <span class="string">[push]</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  job_1:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Add</span> <span class="number">3</span> <span class="string">and</span> <span class="number">7</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          expr 3 + 7 &gt; math-homework.txt</span></span><br><span class="line"><span class="string"></span><span class="attr">      - name:</span> <span class="string">Upload</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">1</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">          path:</span> <span class="string">math-homework.txt</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  job_2:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Multiply</span> <span class="string">by</span> <span class="number">9</span></span><br><span class="line"><span class="attr">    needs:</span> <span class="string">job_1</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">windows-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Download</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">1</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/download-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">      - shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          value=`cat homework/math-homework.txt`</span></span><br><span class="line"><span class="string">          expr $value \* 9 &gt; homework/math-homework.txt</span></span><br><span class="line"><span class="string"></span><span class="attr">      - name:</span> <span class="string">Upload</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">2</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">          path:</span> <span class="string">homework/math-homework.txt</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  job_3:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Display</span> <span class="string">results</span></span><br><span class="line"><span class="attr">    needs:</span> <span class="string">job_2</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">macOS-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Download</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">2</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/download-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Print</span> <span class="string">the</span> <span class="string">final</span> <span class="string">result</span></span><br><span class="line"><span class="attr">        shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          value=`cat homework/math-homework.txt`</span></span><br><span class="line"><span class="string">          echo The result is $value</span></span><br></pre></td></tr></table></figure>
+<hr>
+<p><strong>More Ref:</strong></p>
+<ul>
+<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts" target="_blank" rel="noopener">关于该篇的原文</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>CICD</category>
+      </categories>
+      <tags>
+        <tag>GA</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Github Actions E05环境变量</title>
     <url>/2020/03/24/Github-Actions-E05%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
@@ -787,62 +843,6 @@
 <p><strong>More Ref:</strong></p>
 <ul>
 <li><a href="https://help.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context" target="_blank" rel="noopener">GA Context</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>CICD</category>
-      </categories>
-      <tags>
-        <tag>GA</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Github Actions E06产出物</title>
-    <url>/2020/03/30/Github-Actions-E06%E4%BA%A7%E5%87%BA%E7%89%A9/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
-<p>大多数时候，workflow的产出物都会直接传到对应的某些仓库，比如docker image会送到docker hub这种仓库存储。这种时候是不需要在workflow再额外的管理产出物，但也不能全盘否定；有时候我们没有一个方便的地方去存储某些形式的文件等，就需要我们有类似jenkins <code>archiveArtifacts</code> 功能。但github actions能做的会更多，请期待。</p>
-</blockquote>
-<h3 id="1-关于artifacts"><a href="#1-关于artifacts" class="headerlink" title="1. 关于artifacts"></a>1. 关于artifacts</h3><p>构件是指在工作流程运行过程中产生的文件或文件集。<br>GitHub 提供两项可用于上传和下载构建构件的操作。 上传到工作流程运行的文件将使用 .zip 格式存档。 更多信息请参阅 <code>action/upload-artifact</code> 和 <code>download-artifact</code> 操作。</p>
-<p>这些是您可能想要上传的一些常见构建和测试输出构件：</p>
-<ul>
-<li>日志文件和核心转储文件</li>
-<li>测试结果、失败和屏幕截图</li>
-<li>二进制或存档文件</li>
-<li>压力测试性能输出和代码覆盖结果</li>
-</ul>
-<p>当作业完成时，运行程序将终止并删除虚拟环境的实例。</p>
-<h3 id="2-上传"><a href="#2-上传" class="headerlink" title="2. 上传"></a>2. 上传</h3><p>常见的场景: 一个java程序的产出物是一个jar包，在构建之后需要得到这个jar用于其他环境部署。</p>
-<p>依旧用 <a href="https://github.com/cicd-draft/api-test-demo" target="_blank" rel="noopener">api-test-demo</a> 这个仓库做演示，主要分为以下个步骤：</p>
-<ul>
-<li>1.下载代码；</li>
-<li>2.构建jar包(存放于指定到路径<code>build/libs/api-demo-0.0.1-SNAPSHOT.jar</code>)；</li>
-<li>3.上传jar包</li>
-</ul>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">my</span> <span class="string">workflow</span> <span class="string">demo</span> </span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span> </span><br><span class="line"><span class="attr">  push:</span></span><br><span class="line"><span class="attr">    branches:</span> </span><br><span class="line"><span class="bullet">      -</span> <span class="string">master</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  artifacts_demo_job:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">job1</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">Checkout</span> <span class="string">code</span></span><br><span class="line"><span class="attr">      uses:</span> <span class="string">actions/checkout@v1</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">Build</span> <span class="string">jar</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        pwd  &amp;&amp; ls -l</span></span><br><span class="line"><span class="string">        ./gradlew -x jar build</span></span><br><span class="line"><span class="string">        ls -l build/libs/api-demo-0.0.1-SNAPSHOT.jar</span></span><br><span class="line"><span class="string"></span><span class="attr">    - name:</span> <span class="string">Archive</span> <span class="string">SNAPSHOT.jar</span></span><br><span class="line"><span class="attr">      uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">      with:</span></span><br><span class="line"><span class="attr">        name:</span> <span class="string">api_snapshot_jar</span></span><br><span class="line"><span class="attr">        path:</span> <span class="string">build/libs/api-demo-0.0.1-SNAPSHOT.jar</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>github actions 工作流的产出物都放在哪里的，保留多久</p>
-</blockquote>
-<h3 id="3-下载"><a href="#3-下载" class="headerlink" title="3. 下载"></a>3. 下载</h3><p>步骤官方说明如下：</p>
-<ul>
-<li>1.On GitHub, navigate to the main page of the repository.</li>
-<li>2.Under your repository name, click Actions.</li>
-<li>3.In the left sidebar, click the workflow you want to see.</li>
-<li>4.Under “Workflow runs”, click the name of the run you want to see.</li>
-<li>5.To download artifacts, use the Artifacts drop-down menu, and select the artifact you want to download.</li>
-<li>6.To delete artifacts, use the Artifacts drop-down menu, and click .</li>
-</ul>
-<p>注意事项：</p>
-<ul>
-<li>保留90天</li>
-<li>一旦删除某一个构件，无法恢复</li>
-</ul>
-<h3 id="4-在工作流程中作业之间传递数据"><a href="#4-在工作流程中作业之间传递数据" class="headerlink" title="4. 在工作流程中作业之间传递数据"></a>4. 在工作流程中作业之间传递数据</h3><p><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts#passing-data-between-jobs-in-a-workflow" target="_blank" rel="noopener">https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts#passing-data-between-jobs-in-a-workflow</a></p>
-<p>由于同一个workflow的多个job分别运行在不同的虚拟主机上，下面示例工作流程说明如何在相同工作流程中的任务之间传递数据。关键词 <strong>need</strong> 用来确保job按顺序运行.</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Share</span> <span class="string">data</span> <span class="string">between</span> <span class="string">jobs</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span> <span class="string">[push]</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  job_1:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Add</span> <span class="number">3</span> <span class="string">and</span> <span class="number">7</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          expr 3 + 7 &gt; math-homework.txt</span></span><br><span class="line"><span class="string"></span><span class="attr">      - name:</span> <span class="string">Upload</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">1</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">          path:</span> <span class="string">math-homework.txt</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  job_2:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Multiply</span> <span class="string">by</span> <span class="number">9</span></span><br><span class="line"><span class="attr">    needs:</span> <span class="string">job_1</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">windows-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Download</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">1</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/download-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">      - shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          value=`cat homework/math-homework.txt`</span></span><br><span class="line"><span class="string">          expr $value \* 9 &gt; homework/math-homework.txt</span></span><br><span class="line"><span class="string"></span><span class="attr">      - name:</span> <span class="string">Upload</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">2</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">          path:</span> <span class="string">homework/math-homework.txt</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  job_3:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Display</span> <span class="string">results</span></span><br><span class="line"><span class="attr">    needs:</span> <span class="string">job_2</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">macOS-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Download</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">2</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/download-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Print</span> <span class="string">the</span> <span class="string">final</span> <span class="string">result</span></span><br><span class="line"><span class="attr">        shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          value=`cat homework/math-homework.txt`</span></span><br><span class="line"><span class="string">          echo The result is $value</span></span><br></pre></td></tr></table></figure>
-<hr>
-<p><strong>More Ref:</strong></p>
-<ul>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts" target="_blank" rel="noopener">关于该篇的原文</a></li>
 </ul>
 ]]></content>
       <categories>
@@ -1838,24 +1838,6 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>Terraform : terraform console</title>
-    <url>/2019/12/05/Terraform-terraform-console/</url>
-    <content><![CDATA[<h5 id="1-evaluating-expressions"><a href="#1-evaluating-expressions" class="headerlink" title="1.evaluating expressions"></a>1.evaluating expressions</h5><p>The terraform console command provides an interactive console for evaluating expressions.</p>
-<p>For example:<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># interactive console</span></span><br><span class="line">➜ terraform console</span><br><span class="line">&gt; element(list(<span class="string">"one"</span>,<span class="string">"two"</span>,<span class="string">"three"</span>),1)</span><br><span class="line">two</span><br><span class="line"></span><br><span class="line"><span class="comment"># non-interactive scripts</span></span><br><span class="line">➜ <span class="built_in">echo</span> <span class="string">"list("</span>1<span class="string">","</span>2<span class="string">")"</span> | terraform console</span><br><span class="line">[</span><br><span class="line">  1,</span><br><span class="line">  2,</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
-<p>or</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜ terraform console</span><br><span class="line">&gt; aws_instance_demo.public_ip</span><br><span class="line">54.152.62.34</span><br></pre></td></tr></table></figure>
-<h5 id="2-test-Terraform-built-in-functions-locally"><a href="#2-test-Terraform-built-in-functions-locally" class="headerlink" title="2.test Terraform built-in functions locally"></a>2.test Terraform built-in functions locally</h5><p>  <a href="http://artemstar.com/2018/03/03/terraform-test-functions/" target="_blank" rel="noopener">test Terraform built-in functions locally</a></p>
-<hr>
-<p>More ref:<br><a href="https://www.terraform.io/docs/commands/console.html" target="_blank" rel="noopener">https://www.terraform.io/docs/commands/console.html</a><br><a href="http://artemstar.com/2018/03/03/terraform-test-functions/" target="_blank" rel="noopener">http://artemstar.com/2018/03/03/terraform-test-functions/</a></p>
-]]></content>
-      <categories>
-        <category>Terraform</category>
-      </categories>
-      <tags>
-        <tag>Terraform</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Terraform 100: Introduction &amp; Install</title>
     <url>/2019/08/27/Terraform-100-Introduction-Install/</url>
     <content><![CDATA[<h3 id="What-is-Terraform"><a href="#What-is-Terraform" class="headerlink" title="What is Terraform?"></a>What is Terraform?</h3><p>Terraform is a tool for building, changing, and versioning infrastructure safely and efficiently. Terraform can manage existing and popular service providers as well as custom in-house solutions.</p>
@@ -1882,6 +1864,24 @@ pipeline {
 </blockquote>
 <p>Ihen I set version to <code>v0.12.4</code> in <code>.terraform-version</code> file<br><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">➜   terraform --version</span><br><span class="line">Terraform v0.12.4</span><br><span class="line">+ provider.aws v2.25.0</span><br><span class="line">+ provider.random v2.2.0</span><br><span class="line">+ provider.template v2.1.2</span><br></pre></td></tr></table></figure></p>
 <p>Then I change the verson to <strong><code>v0.12.5</code></strong> in <code>.terraform-version</code> file<br><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">➜   terraform --version</span><br><span class="line">Terraform v0.12.5</span><br><span class="line">+ provider.aws v2.25.0</span><br><span class="line">+ provider.random v2.2.0</span><br><span class="line">+ provider.template v2.1.2</span><br><span class="line"></span><br><span class="line">Your version of Terraform is out of date! The latest version</span><br><span class="line">is 0.12.7. You can update by downloading from www.terraform.io/downloads.html</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>Terraform</category>
+      </categories>
+      <tags>
+        <tag>Terraform</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Terraform : terraform console</title>
+    <url>/2019/12/05/Terraform-terraform-console/</url>
+    <content><![CDATA[<h5 id="1-evaluating-expressions"><a href="#1-evaluating-expressions" class="headerlink" title="1.evaluating expressions"></a>1.evaluating expressions</h5><p>The terraform console command provides an interactive console for evaluating expressions.</p>
+<p>For example:<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># interactive console</span></span><br><span class="line">➜ terraform console</span><br><span class="line">&gt; element(list(<span class="string">"one"</span>,<span class="string">"two"</span>,<span class="string">"three"</span>),1)</span><br><span class="line">two</span><br><span class="line"></span><br><span class="line"><span class="comment"># non-interactive scripts</span></span><br><span class="line">➜ <span class="built_in">echo</span> <span class="string">"list("</span>1<span class="string">","</span>2<span class="string">")"</span> | terraform console</span><br><span class="line">[</span><br><span class="line">  1,</span><br><span class="line">  2,</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
+<p>or</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜ terraform console</span><br><span class="line">&gt; aws_instance_demo.public_ip</span><br><span class="line">54.152.62.34</span><br></pre></td></tr></table></figure>
+<h5 id="2-test-Terraform-built-in-functions-locally"><a href="#2-test-Terraform-built-in-functions-locally" class="headerlink" title="2.test Terraform built-in functions locally"></a>2.test Terraform built-in functions locally</h5><p>  <a href="http://artemstar.com/2018/03/03/terraform-test-functions/" target="_blank" rel="noopener">test Terraform built-in functions locally</a></p>
+<hr>
+<p>More ref:<br><a href="https://www.terraform.io/docs/commands/console.html" target="_blank" rel="noopener">https://www.terraform.io/docs/commands/console.html</a><br><a href="http://artemstar.com/2018/03/03/terraform-test-functions/" target="_blank" rel="noopener">http://artemstar.com/2018/03/03/terraform-test-functions/</a></p>
 ]]></content>
       <categories>
         <category>Terraform</category>
@@ -2161,6 +2161,24 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>docker 镜像的扁平化</title>
+    <url>/2019/07/25/docker-%E9%95%9C%E5%83%8F%E7%9A%84%E6%89%81%E5%B9%B3%E5%8C%96/</url>
+    <content><![CDATA[<blockquote>
+<p>Dockerfile 的设计以及它们产出 Docker 镜像的结果便是，最终镜像里包含了 Dockerfile 里每一步的数据状态。在构建镜像的过程中，可能需要复制私密信息来确保构建工作可以顺利进行。这些所谓的私密信息可能是 ssH 密钥、证书或者密码文件等。在提交镜像前删除这些私密信息的话可能不会提供任何实质性的保护，因为它们将出现在最终镜像的更高分层里，而恶意用户则可以轻松地从镜像中提取它们。解决这一问题的其中一个办法便是将得到的镜像扁平化。</p>
+</blockquote>
+<p><strong>问题</strong><br>想要从镜像的分层历史中移除私密信息。</p>
+<p><strong>解决方案</strong><br>基于该镜像创建一个容器，将它导出再导人，然后给它打上最初镜像田的标签。</p>
+<p><strong>讨论</strong><br>为了演示这种做法的可用场景，让我们在一个新目录里创建一个简单的 Dockerfile ，该目录下藏着一个大秘密。运行 mkdir secrets “ cd Secrets ，然后在该目录里创建一个包含如下内容的 Dockerfile :</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">FROM busybox</span><br><span class="line">RUN <span class="built_in">echo</span> <span class="string">"My Big secret"</span> &gt;&gt; /tmp/secret_key</span><br><span class="line">RUN cat /tmp/secret_key</span><br><span class="line">RUn rm /tmp/secret_key</span><br></pre></td></tr></table></figure>
+<p>运行  <code>docker build -t mysecret .</code><br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   docker build -t mysecret .</span><br><span class="line">Sending build context to Docker daemon  2.048kB</span><br><span class="line">Step 1/4 : FROM busybox</span><br><span class="line"> ---&gt; 8c811b4aec35</span><br><span class="line">Step 2/4 : RUN <span class="built_in">echo</span> <span class="string">"My Big secret"</span> &gt;&gt; /tmp/secret_key</span><br><span class="line"> ---&gt; Running <span class="keyword">in</span> 2b6f94ac0148</span><br><span class="line">Removing intermediate container 2b6f94ac0148</span><br><span class="line"> ---&gt; a9ecbe44119c</span><br><span class="line">Step 3/4 : RUN cat /tmp/secret_key</span><br><span class="line"> ---&gt; Running <span class="keyword">in</span> b515370b1b88</span><br><span class="line">My Big secret</span><br><span class="line">Removing intermediate container b515370b1b88</span><br><span class="line"> ---&gt; 8a890a1ace7c</span><br><span class="line">Step 4/4 : RUn rm /tmp/secret_key</span><br><span class="line"> ---&gt; Running <span class="keyword">in</span> c9910e46efc2</span><br><span class="line">Removing intermediate container c9910e46efc2</span><br><span class="line"> ---&gt; 6010dbf70359</span><br><span class="line">Successfully built 6010dbf70359</span><br><span class="line">Successfully tagged mysecret:latest</span><br></pre></td></tr></table></figure></p>
+<p>可以使用docker history 命令检查得到的Docker镜像的分层.如果该镜像上传到公有仓库，被他人下载，在没有原始 Dockerfile 到情况下，可以轻松获取私密信息。<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   docker <span class="built_in">history</span> mysecret:latest</span><br><span class="line">IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT</span><br><span class="line">6010dbf70359        22 seconds ago      /bin/sh -c rm /tmp/secret_key                   0B</span><br><span class="line">8a890a1ace7c        23 seconds ago      /bin/sh -c cat /tmp/secret_key                  0B</span><br><span class="line">a9ecbe44119c        25 seconds ago      /bin/sh -c <span class="built_in">echo</span> <span class="string">"My Big secret"</span> &gt;&gt; /tmp/secr…   14B</span><br><span class="line">8c811b4aec35        14 months ago       /bin/sh -c <span class="comment">#(nop)  CMD ["sh"]                   0B</span></span><br><span class="line">&lt;missing&gt;           14 months ago       /bin/sh -c <span class="comment">#(nop) ADD file:5f0439d8328ab58c0…   1.15MB</span></span><br></pre></td></tr></table></figure></p>
+<h5 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h5><p>将该镜像导出为一个简单运行的容器，然后再重新导入并给得到的镜像打上标签</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   docker run -d mysecret /bin/<span class="literal">true</span></span><br><span class="line">02cbd0f59623472acc4571c1b654cdca40730d036d7a96a7dbaacaaf264177aa</span><br><span class="line">➜   docker <span class="built_in">export</span> 02cbd0f5962 | docker import - mysecret</span><br><span class="line">sha256:080b122e43cb5d46efec5aa0b6abd0570e1abc52b3293f77b091bf22722c1168</span><br><span class="line">➜   docker <span class="built_in">history</span> mysecret</span><br><span class="line">IMAGE               CREATED             CREATED BY          SIZE                COMMENT</span><br><span class="line">080b122e43cb        9 seconds ago                           1.15MB              Imported from -</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>docker 镜像逆向工程得到Dockerfile</title>
     <url>/2019/07/25/docker-%E9%95%9C%E5%83%8F%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E5%BE%97%E5%88%B0Dockerfile/</url>
     <content><![CDATA[<p>可能有时候你得到了一个从Dockerfile创建的镜像文件，但是原始的Dockerfile丢失了。你想从这个镜像文件的构建历史记录中，逆向分析出原始的Dockerfile而省去寻找此文件的漫长过程。</p>
@@ -2182,24 +2200,6 @@ pipeline {
 </blockquote>
 <p><strong>More Ref:</strong><br><a href="https://andyyoung01.github.io/2016/08/23/%E4%BB%8E%E9%95%9C%E5%83%8F%E5%8E%86%E5%8F%B2%E8%AE%B0%E5%BD%95%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E5%87%BADockerfile/" target="_blank" rel="noopener">https://andyyoung01.github.io/2016/08/23/%E4%BB%8E%E9%95%9C%E5%83%8F%E5%8E%86%E5%8F%B2%E8%AE%B0%E5%BD%95%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E5%87%BADockerfile/</a></p>
 ]]></content>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>docker 镜像的扁平化</title>
-    <url>/2019/07/25/docker-%E9%95%9C%E5%83%8F%E7%9A%84%E6%89%81%E5%B9%B3%E5%8C%96/</url>
-    <content><![CDATA[<blockquote>
-<p>Dockerfile 的设计以及它们产出 Docker 镜像的结果便是，最终镜像里包含了 Dockerfile 里每一步的数据状态。在构建镜像的过程中，可能需要复制私密信息来确保构建工作可以顺利进行。这些所谓的私密信息可能是 ssH 密钥、证书或者密码文件等。在提交镜像前删除这些私密信息的话可能不会提供任何实质性的保护，因为它们将出现在最终镜像的更高分层里，而恶意用户则可以轻松地从镜像中提取它们。解决这一问题的其中一个办法便是将得到的镜像扁平化。</p>
-</blockquote>
-<p><strong>问题</strong><br>想要从镜像的分层历史中移除私密信息。</p>
-<p><strong>解决方案</strong><br>基于该镜像创建一个容器，将它导出再导人，然后给它打上最初镜像田的标签。</p>
-<p><strong>讨论</strong><br>为了演示这种做法的可用场景，让我们在一个新目录里创建一个简单的 Dockerfile ，该目录下藏着一个大秘密。运行 mkdir secrets “ cd Secrets ，然后在该目录里创建一个包含如下内容的 Dockerfile :</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">FROM busybox</span><br><span class="line">RUN <span class="built_in">echo</span> <span class="string">"My Big secret"</span> &gt;&gt; /tmp/secret_key</span><br><span class="line">RUN cat /tmp/secret_key</span><br><span class="line">RUn rm /tmp/secret_key</span><br></pre></td></tr></table></figure>
-<p>运行  <code>docker build -t mysecret .</code><br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   docker build -t mysecret .</span><br><span class="line">Sending build context to Docker daemon  2.048kB</span><br><span class="line">Step 1/4 : FROM busybox</span><br><span class="line"> ---&gt; 8c811b4aec35</span><br><span class="line">Step 2/4 : RUN <span class="built_in">echo</span> <span class="string">"My Big secret"</span> &gt;&gt; /tmp/secret_key</span><br><span class="line"> ---&gt; Running <span class="keyword">in</span> 2b6f94ac0148</span><br><span class="line">Removing intermediate container 2b6f94ac0148</span><br><span class="line"> ---&gt; a9ecbe44119c</span><br><span class="line">Step 3/4 : RUN cat /tmp/secret_key</span><br><span class="line"> ---&gt; Running <span class="keyword">in</span> b515370b1b88</span><br><span class="line">My Big secret</span><br><span class="line">Removing intermediate container b515370b1b88</span><br><span class="line"> ---&gt; 8a890a1ace7c</span><br><span class="line">Step 4/4 : RUn rm /tmp/secret_key</span><br><span class="line"> ---&gt; Running <span class="keyword">in</span> c9910e46efc2</span><br><span class="line">Removing intermediate container c9910e46efc2</span><br><span class="line"> ---&gt; 6010dbf70359</span><br><span class="line">Successfully built 6010dbf70359</span><br><span class="line">Successfully tagged mysecret:latest</span><br></pre></td></tr></table></figure></p>
-<p>可以使用docker history 命令检查得到的Docker镜像的分层.如果该镜像上传到公有仓库，被他人下载，在没有原始 Dockerfile 到情况下，可以轻松获取私密信息。<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   docker <span class="built_in">history</span> mysecret:latest</span><br><span class="line">IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT</span><br><span class="line">6010dbf70359        22 seconds ago      /bin/sh -c rm /tmp/secret_key                   0B</span><br><span class="line">8a890a1ace7c        23 seconds ago      /bin/sh -c cat /tmp/secret_key                  0B</span><br><span class="line">a9ecbe44119c        25 seconds ago      /bin/sh -c <span class="built_in">echo</span> <span class="string">"My Big secret"</span> &gt;&gt; /tmp/secr…   14B</span><br><span class="line">8c811b4aec35        14 months ago       /bin/sh -c <span class="comment">#(nop)  CMD ["sh"]                   0B</span></span><br><span class="line">&lt;missing&gt;           14 months ago       /bin/sh -c <span class="comment">#(nop) ADD file:5f0439d8328ab58c0…   1.15MB</span></span><br></pre></td></tr></table></figure></p>
-<h5 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h5><p>将该镜像导出为一个简单运行的容器，然后再重新导入并给得到的镜像打上标签</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   docker run -d mysecret /bin/<span class="literal">true</span></span><br><span class="line">02cbd0f59623472acc4571c1b654cdca40730d036d7a96a7dbaacaaf264177aa</span><br><span class="line">➜   docker <span class="built_in">export</span> 02cbd0f5962 | docker import - mysecret</span><br><span class="line">sha256:080b122e43cb5d46efec5aa0b6abd0570e1abc52b3293f77b091bf22722c1168</span><br><span class="line">➜   docker <span class="built_in">history</span> mysecret</span><br><span class="line">IMAGE               CREATED             CREATED BY          SIZE                COMMENT</span><br><span class="line">080b122e43cb        9 seconds ago                           1.15MB              Imported from -</span><br></pre></td></tr></table></figure>]]></content>
       <tags>
         <tag>Docker</tag>
       </tags>
@@ -2845,7 +2845,7 @@ pipeline {
 <h3 id="1-是什么？"><a href="#1-是什么？" class="headerlink" title="1. 是什么？"></a>1. 是什么？</h3><p><a href="https://telegram.org/" target="_blank" rel="noopener">Telegram</a> —— 中文名又称”电报”，或简称”TG”。Telegram 是跨平台的即时通信软件。</p>
 <p>作用和特色有点太多，还是直接上图吧👇</p>
 <p><img src="https://s1.ax1x.com/2020/04/19/Juq1FU.png" alt="Juq1FU.png"></p>
-<p>更多关于 Telegram 的介绍可以查看 <a href="https://en.wikipedia.org/wiki/Telegram_\(software\" target="_blank" rel="noopener">Wikipedia</a>）。</p>
+<p>更多关于 Telegram 的介绍可以查看 [Wikipedia](<a href="https://en.wikipedia.org/wiki/Telegram_&amp;#40software&amp;#40）。" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Telegram_&amp;#40software&amp;#40）。</a></p>
 <h3 id="2-怎么用"><a href="#2-怎么用" class="headerlink" title="2. 怎么用"></a>2. 怎么用</h3><p>在中国大陆境内无法直接连接，注册和使用都需要科学上网。</p>
 <p>自己注册过程如下：</p>
 <ul>
