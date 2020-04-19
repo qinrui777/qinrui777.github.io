@@ -41,6 +41,22 @@
       </categories>
   </entry>
   <entry>
+    <title>Anka tutorial 03: jenkins</title>
+    <url>/2019/11/28/Anka-tutorial-03-jenkins/</url>
+    <content><![CDATA[<h3 id="anka-集成-Jenkins-link"><a href="#anka-集成-Jenkins-link" class="headerlink" title="anka 集成 Jenkins (link)"></a>anka 集成 Jenkins <a href="https://ankadoc.bitbucket.io/anka-build/#integrate-jenkins-with-controller" target="_blank" rel="noopener">(link)</a></h3><p>未完待续…</p>
+<p>安装插件<br><code>Manage Jenkins &gt; Manage Plugins</code></p>
+<p>搜索anka</p>
+<p>新建 ssh 用的登陆凭证</p>
+<p>新建VM的时候 默认用户名和密码分别是 <code>anka/admin</code></p>
+<p>配置jenkins<br><code>Manage Jenkins &gt; Configure System</code></p>
+<p><img src="/images/anka_jenkins_01.png" width="80%" height="80%"></p>
+<p><a href="http://localhost/#/dashboard" target="_blank" rel="noopener">http://localhost/#/dashboard</a></p>
+]]></content>
+      <categories>
+        <category>CICD</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Anka tutorial 02</title>
     <url>/2019/11/19/Anka-tutorial-02/</url>
     <content><![CDATA[<h5 id="1-Joining-Nodes"><a href="#1-Joining-Nodes" class="headerlink" title="1.Joining Nodes"></a>1.Joining Nodes</h5><p>在mac上（anka build 节点）执行  <code>sudo ankacluster join http://localhost:80/</code></p>
@@ -60,40 +76,6 @@
 <h5 id="4-Manage-VM-Templates-in-Registry-link"><a href="#4-Manage-VM-Templates-in-Registry-link" class="headerlink" title="4. Manage VM Templates in Registry(link)"></a>4. Manage VM Templates in Registry<a href="https://ankadoc.bitbucket.io/anka-build/#manage-vm-templates-in-registry" target="_blank" rel="noopener">(link)</a></h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#罗列仓库</span></span><br><span class="line">➜   anka registry list-repos</span><br><span class="line">++</span><br><span class="line">++</span><br><span class="line"><span class="comment">#添加一个新仓库</span></span><br><span class="line">➜   anka registry add demo-repo http://localhost:8089</span><br><span class="line">➜   anka registry list-repos</span><br><span class="line">++</span><br><span class="line">++</span><br><span class="line">demo-repo (default)</span><br><span class="line">+--------+-----------+</span><br><span class="line">| host   | localhost |</span><br><span class="line">+--------+-----------+</span><br><span class="line">| scheme | http      |</span><br><span class="line">+--------+-----------+</span><br><span class="line">| port   | 8089      |</span><br><span class="line">+--------+-----------+</span><br><span class="line"><span class="comment">#推送VM Templates 到新仓库，</span></span><br><span class="line">➜   anka registry push CatalinaVm -d <span class="string">"first push"</span> -t v1</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>CICD</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Anka tutorial 03: jenkins</title>
-    <url>/2019/11/28/Anka-tutorial-03-jenkins/</url>
-    <content><![CDATA[<h3 id="anka-集成-Jenkins-link"><a href="#anka-集成-Jenkins-link" class="headerlink" title="anka 集成 Jenkins (link)"></a>anka 集成 Jenkins <a href="https://ankadoc.bitbucket.io/anka-build/#integrate-jenkins-with-controller" target="_blank" rel="noopener">(link)</a></h3><p>未完待续…</p>
-<p>安装插件<br><code>Manage Jenkins &gt; Manage Plugins</code></p>
-<p>搜索anka</p>
-<p>新建 ssh 用的登陆凭证</p>
-<p>新建VM的时候 默认用户名和密码分别是 <code>anka/admin</code></p>
-<p>配置jenkins<br><code>Manage Jenkins &gt; Configure System</code></p>
-<p><img src="/images/anka_jenkins_01.png" width="80%" height="80%"></p>
-<p><a href="http://localhost/#/dashboard" target="_blank" rel="noopener">http://localhost/#/dashboard</a></p>
-]]></content>
-      <categories>
-        <category>CICD</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Azure FAQs</title>
-    <url>/2019/12/11/Azure-FAQs/</url>
-    <content><![CDATA[<h3 id="1-asm-arm"><a href="#1-asm-arm" class="headerlink" title="1. asm, arm"></a>1. asm, arm</h3><ul>
-<li>asm: Azure Service Manager</li>
-<li>arm: Azure Resource Manager</li>
-</ul>
-<p>最开始一直都是classic模型，它的模型中有service的概念，所以它也叫 asm（Azure Service Manager）。2014年开始提出arm（Azure Resource Manager），其管理平台叫portal。2015年底arm发布。</p>
-<p>当前情况是微软正在将azure的所有功能往arm上迁移。以后都推荐使用arm。但 是当前状况是arm不完全向后兼容asm，有些功能只有asm上才有，所以还有很多 用户还是在使用classic。</p>
-<blockquote>
-<p>ref: <a href="https://pengpengxp.github.io/archive/before-2018-11-10/2017-06-28-Azure%E7%BB%8F%E5%85%B8%E6%A8%A1%E5%BC%8F%E5%92%8C%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB.html#orgbb66971" target="_blank" rel="noopener">https://pengpengxp.github.io/archive/before-2018-11-10/2017-06-28-Azure%E7%BB%8F%E5%85%B8%E6%A8%A1%E5%BC%8F%E5%92%8C%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB.html#orgbb66971</a></p>
-</blockquote>
-<h3 id="2-AWS-to-Azure-services-comparison"><a href="#2-AWS-to-Azure-services-comparison" class="headerlink" title="2. AWS to Azure services comparison"></a>2. AWS to Azure services comparison</h3><p>详见链接 <a href="https://docs.microsoft.com/en-us/azure/architecture/aws-professional/services" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/azure/architecture/aws-professional/services</a></p>
-]]></content>
-      <categories>
-        <category>Cloud</category>
       </categories>
   </entry>
   <entry>
@@ -310,6 +292,24 @@
       </categories>
   </entry>
   <entry>
+    <title>Azure FAQs</title>
+    <url>/2019/12/11/Azure-FAQs/</url>
+    <content><![CDATA[<h3 id="1-asm-arm"><a href="#1-asm-arm" class="headerlink" title="1. asm, arm"></a>1. asm, arm</h3><ul>
+<li>asm: Azure Service Manager</li>
+<li>arm: Azure Resource Manager</li>
+</ul>
+<p>最开始一直都是classic模型，它的模型中有service的概念，所以它也叫 asm（Azure Service Manager）。2014年开始提出arm（Azure Resource Manager），其管理平台叫portal。2015年底arm发布。</p>
+<p>当前情况是微软正在将azure的所有功能往arm上迁移。以后都推荐使用arm。但 是当前状况是arm不完全向后兼容asm，有些功能只有asm上才有，所以还有很多 用户还是在使用classic。</p>
+<blockquote>
+<p>ref: <a href="https://pengpengxp.github.io/archive/before-2018-11-10/2017-06-28-Azure%E7%BB%8F%E5%85%B8%E6%A8%A1%E5%BC%8F%E5%92%8C%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB.html#orgbb66971" target="_blank" rel="noopener">https://pengpengxp.github.io/archive/before-2018-11-10/2017-06-28-Azure%E7%BB%8F%E5%85%B8%E6%A8%A1%E5%BC%8F%E5%92%8C%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB.html#orgbb66971</a></p>
+</blockquote>
+<h3 id="2-AWS-to-Azure-services-comparison"><a href="#2-AWS-to-Azure-services-comparison" class="headerlink" title="2. AWS to Azure services comparison"></a>2. AWS to Azure services comparison</h3><p>详见链接 <a href="https://docs.microsoft.com/en-us/azure/architecture/aws-professional/services" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/azure/architecture/aws-professional/services</a></p>
+]]></content>
+      <categories>
+        <category>Cloud</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Bash function skill</title>
     <url>/2019/06/18/Bash-function-skill/</url>
     <content><![CDATA[<p>bash 函数技巧</p>
@@ -325,6 +325,24 @@
       </categories>
       <tags>
         <tag>Shell</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Crontab on Liunx or Jenkins</title>
+    <url>/2019/04/28/Crontab-on-Liunx-or-Jenkins/</url>
+    <content><![CDATA[<p>源起：<br><code>@midnight</code>  This will run at some point between 0:00 and 2:59</p>
+<p><code>H(0-30) 02 * * *</code> between 2:00 a.m. – 02:30 a.m.<br>//will build the same time every day</p>
+<p><strong>More Ref:</strong></p>
+<ul>
+<li><a href="https://crontab-generator.org/" target="_blank" rel="noopener">https://crontab-generator.org/</a></li>
+<li><a href="https://blogs.microsoft.co.il/meravk/2015/06/10/how-to-schedule-a-build-in-jenkins/" target="_blank" rel="noopener">https://blogs.microsoft.co.il/meravk/2015/06/10/how-to-schedule-a-build-in-jenkins/</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>jenkins</tag>
       </tags>
   </entry>
   <entry>
@@ -358,24 +376,6 @@
 ]]></content>
       <tags>
         <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Crontab on Liunx or Jenkins</title>
-    <url>/2019/04/28/Crontab-on-Liunx-or-Jenkins/</url>
-    <content><![CDATA[<p>源起：<br><code>@midnight</code>  This will run at some point between 0:00 and 2:59</p>
-<p><code>H(0-30) 02 * * *</code> between 2:00 a.m. – 02:30 a.m.<br>//will build the same time every day</p>
-<p><strong>More Ref:</strong></p>
-<ul>
-<li><a href="https://crontab-generator.org/" target="_blank" rel="noopener">https://crontab-generator.org/</a></li>
-<li><a href="https://blogs.microsoft.co.il/meravk/2015/06/10/how-to-schedule-a-build-in-jenkins/" target="_blank" rel="noopener">https://blogs.microsoft.co.il/meravk/2015/06/10/how-to-schedule-a-build-in-jenkins/</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>jenkins</tag>
       </tags>
   </entry>
   <entry>
@@ -442,40 +442,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Github Actions E02最小Demo</title>
-    <url>/2020/03/17/Github-Actions-E02%E6%9C%80%E5%B0%8FDemo/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
-<p><a href="https://www.devops-tech.cn/2020/03/16/Github-Actions-E01/" target="_blank" rel="noopener">前面一篇</a>已经说明一些概念，于是为了更好的理解，直接用一个简单的demo帮助进一步理解概念。</p>
-</blockquote>
-<p>示例仓库： <a href="https://github.com/cicd-draft/api-test-demo" target="_blank" rel="noopener">https://github.com/cicd-draft/api-test-demo</a></p>
-<h3 id="1-配置工作流"><a href="#1-配置工作流" class="headerlink" title="1.配置工作流"></a>1.配置工作流</h3><h4 id="1-1-步骤一"><a href="#1-1-步骤一" class="headerlink" title="1.1 步骤一"></a>1.1 步骤一</h4><p>在仓库的根目录，创建名为 .github/workflows 的目录以存储工作流程文件。</p>
-<h4 id="1-2-步骤二"><a href="#1-2-步骤二" class="headerlink" title="1.2 步骤二"></a>1.2 步骤二</h4><p>在 <code>.github/workflows</code> 中，为工作流程添加 .yml 或 .yaml 文件。 例如 .github/workflows/demo.yml。</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">my</span> <span class="string">workflow</span> <span class="string">demo</span> </span><br><span class="line"></span><br><span class="line"><span class="comment"># 此处使用最常见的触发方法，还有其他的很多方法可满足不同需求</span></span><br><span class="line"><span class="attr">on:</span> </span><br><span class="line"><span class="attr">  push:</span></span><br><span class="line"><span class="attr">    branches:</span> </span><br><span class="line"><span class="bullet">      -</span> <span class="string">master</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">#工作流程运行包括一项或多项作业。 作业默认是并行运行。 要按顺序运行作业，needs 关键词在其他作业上定义依赖项。</span></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="comment">#每项作业必须关联一个 ID。&lt;job_id&gt; 必须以字母或 _ 开头</span></span><br><span class="line"><span class="attr">  my_first_job:</span></span><br><span class="line">    <span class="comment"># 作业1名称为 Demo First job,也是作业显示在 GitHub 上的名称。</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Demo</span> <span class="string">First</span> <span class="string">job</span></span><br><span class="line">    <span class="comment"># 此作业在 Linux 上运行</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">My</span> <span class="string">step</span> <span class="string">one</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">echo</span> <span class="string">"Hello ,Github actions, I'm &gt;&gt;My step one&lt;&lt;"</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">My</span> <span class="string">step</span> <span class="string">two</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        echo "My step one begin..."</span></span><br><span class="line"><span class="string">        echo "doing..."</span></span><br><span class="line"><span class="string">        echo "Finished!!!"</span></span><br><span class="line"><span class="string"></span><span class="attr">  my_second_job:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Demo</span> <span class="string">Second</span> <span class="string">job</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">macos-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">check</span> <span class="string">OS</span> <span class="string">info</span></span><br><span class="line">        <span class="string">run</span> <span class="string">:</span> <span class="string">system_profiler</span> <span class="string">SPSoftwareDataType</span></span><br></pre></td></tr></table></figure>
-<h4 id="1-3-步骤三"><a href="#1-3-步骤三" class="headerlink" title="1.3 步骤三"></a>1.3 步骤三</h4><p>将工作流程文件中的更改提交到您希望其中运行工作流程的分支。</p>
-<p>到这里一个简单的demo就算完成了，可以去 <strong>Actions</strong> 按钮下查看运行情况。</p>
-<h3 id="2-管理工作流"><a href="#2-管理工作流" class="headerlink" title="2.管理工作流"></a>2.管理工作流</h3><p><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run" target="_blank" rel="noopener">官网链接</a>有详细说明以下每个操作中的细节</p>
-<blockquote>
-<p>由于图片太多,就不做搬运工了</p>
-</blockquote>
-<ul>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#about-workflow-permissions" target="_blank" rel="noopener">关于工作流程权限</a></li>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#about-workflow-management" target="_blank" rel="noopener">关于工作流程管理</a></li>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#viewing-your-workflow-history" target="_blank" rel="noopener">查看工作流程历史记录</a></li>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#canceling-a-workflow-run" target="_blank" rel="noopener">取消工作流程运行</a></li>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#viewing-logs-to-diagnose-failures" target="_blank" rel="noopener">查看日志以诊断故障</a></li>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#searching-logs" target="_blank" rel="noopener">搜索日志</a></li>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#downloading-logs" target="_blank" rel="noopener">下载日志</a></li>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#enabling-debug-logging" target="_blank" rel="noopener">启用调试日志</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>CICD</category>
-      </categories>
-      <tags>
-        <tag>GA</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Github Actions E01初识</title>
     <url>/2020/03/16/Github-Actions-E01%E5%88%9D%E8%AF%86/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
@@ -536,6 +502,40 @@
 <p><strong>More Ref:</strong></p>
 <ul>
 <li><a href="https://github.com/features/actions" target="_blank" rel="noopener">https://github.com/features/actions</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>CICD</category>
+      </categories>
+      <tags>
+        <tag>GA</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Github Actions E02最小Demo</title>
+    <url>/2020/03/17/Github-Actions-E02%E6%9C%80%E5%B0%8FDemo/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
+<p><a href="https://www.devops-tech.cn/2020/03/16/Github-Actions-E01/" target="_blank" rel="noopener">前面一篇</a>已经说明一些概念，于是为了更好的理解，直接用一个简单的demo帮助进一步理解概念。</p>
+</blockquote>
+<p>示例仓库： <a href="https://github.com/cicd-draft/api-test-demo" target="_blank" rel="noopener">https://github.com/cicd-draft/api-test-demo</a></p>
+<h3 id="1-配置工作流"><a href="#1-配置工作流" class="headerlink" title="1.配置工作流"></a>1.配置工作流</h3><h4 id="1-1-步骤一"><a href="#1-1-步骤一" class="headerlink" title="1.1 步骤一"></a>1.1 步骤一</h4><p>在仓库的根目录，创建名为 .github/workflows 的目录以存储工作流程文件。</p>
+<h4 id="1-2-步骤二"><a href="#1-2-步骤二" class="headerlink" title="1.2 步骤二"></a>1.2 步骤二</h4><p>在 <code>.github/workflows</code> 中，为工作流程添加 .yml 或 .yaml 文件。 例如 .github/workflows/demo.yml。</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">my</span> <span class="string">workflow</span> <span class="string">demo</span> </span><br><span class="line"></span><br><span class="line"><span class="comment"># 此处使用最常见的触发方法，还有其他的很多方法可满足不同需求</span></span><br><span class="line"><span class="attr">on:</span> </span><br><span class="line"><span class="attr">  push:</span></span><br><span class="line"><span class="attr">    branches:</span> </span><br><span class="line"><span class="bullet">      -</span> <span class="string">master</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">#工作流程运行包括一项或多项作业。 作业默认是并行运行。 要按顺序运行作业，needs 关键词在其他作业上定义依赖项。</span></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="comment">#每项作业必须关联一个 ID。&lt;job_id&gt; 必须以字母或 _ 开头</span></span><br><span class="line"><span class="attr">  my_first_job:</span></span><br><span class="line">    <span class="comment"># 作业1名称为 Demo First job,也是作业显示在 GitHub 上的名称。</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Demo</span> <span class="string">First</span> <span class="string">job</span></span><br><span class="line">    <span class="comment"># 此作业在 Linux 上运行</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">My</span> <span class="string">step</span> <span class="string">one</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">echo</span> <span class="string">"Hello ,Github actions, I'm &gt;&gt;My step one&lt;&lt;"</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">My</span> <span class="string">step</span> <span class="string">two</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        echo "My step one begin..."</span></span><br><span class="line"><span class="string">        echo "doing..."</span></span><br><span class="line"><span class="string">        echo "Finished!!!"</span></span><br><span class="line"><span class="string"></span><span class="attr">  my_second_job:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Demo</span> <span class="string">Second</span> <span class="string">job</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">macos-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">check</span> <span class="string">OS</span> <span class="string">info</span></span><br><span class="line">        <span class="string">run</span> <span class="string">:</span> <span class="string">system_profiler</span> <span class="string">SPSoftwareDataType</span></span><br></pre></td></tr></table></figure>
+<h4 id="1-3-步骤三"><a href="#1-3-步骤三" class="headerlink" title="1.3 步骤三"></a>1.3 步骤三</h4><p>将工作流程文件中的更改提交到您希望其中运行工作流程的分支。</p>
+<p>到这里一个简单的demo就算完成了，可以去 <strong>Actions</strong> 按钮下查看运行情况。</p>
+<h3 id="2-管理工作流"><a href="#2-管理工作流" class="headerlink" title="2.管理工作流"></a>2.管理工作流</h3><p><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run" target="_blank" rel="noopener">官网链接</a>有详细说明以下每个操作中的细节</p>
+<blockquote>
+<p>由于图片太多,就不做搬运工了</p>
+</blockquote>
+<ul>
+<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#about-workflow-permissions" target="_blank" rel="noopener">关于工作流程权限</a></li>
+<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#about-workflow-management" target="_blank" rel="noopener">关于工作流程管理</a></li>
+<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#viewing-your-workflow-history" target="_blank" rel="noopener">查看工作流程历史记录</a></li>
+<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#canceling-a-workflow-run" target="_blank" rel="noopener">取消工作流程运行</a></li>
+<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#viewing-logs-to-diagnose-failures" target="_blank" rel="noopener">查看日志以诊断故障</a></li>
+<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#searching-logs" target="_blank" rel="noopener">搜索日志</a></li>
+<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#downloading-logs" target="_blank" rel="noopener">下载日志</a></li>
+<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#enabling-debug-logging" target="_blank" rel="noopener">启用调试日志</a></li>
 </ul>
 ]]></content>
       <categories>
@@ -787,6 +787,62 @@
 <p><strong>More Ref:</strong></p>
 <ul>
 <li><a href="https://help.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context" target="_blank" rel="noopener">GA Context</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>CICD</category>
+      </categories>
+      <tags>
+        <tag>GA</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Github Actions E06产出物</title>
+    <url>/2020/03/30/Github-Actions-E06%E4%BA%A7%E5%87%BA%E7%89%A9/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
+<p>大多数时候，workflow的产出物都会直接传到对应的某些仓库，比如docker image会送到docker hub这种仓库存储。这种时候是不需要在workflow再额外的管理产出物，但也不能全盘否定；有时候我们没有一个方便的地方去存储某些形式的文件等，就需要我们有类似jenkins <code>archiveArtifacts</code> 功能。但github actions能做的会更多，请期待。</p>
+</blockquote>
+<h3 id="1-关于artifacts"><a href="#1-关于artifacts" class="headerlink" title="1. 关于artifacts"></a>1. 关于artifacts</h3><p>构件是指在工作流程运行过程中产生的文件或文件集。<br>GitHub 提供两项可用于上传和下载构建构件的操作。 上传到工作流程运行的文件将使用 .zip 格式存档。 更多信息请参阅 <code>action/upload-artifact</code> 和 <code>download-artifact</code> 操作。</p>
+<p>这些是您可能想要上传的一些常见构建和测试输出构件：</p>
+<ul>
+<li>日志文件和核心转储文件</li>
+<li>测试结果、失败和屏幕截图</li>
+<li>二进制或存档文件</li>
+<li>压力测试性能输出和代码覆盖结果</li>
+</ul>
+<p>当作业完成时，运行程序将终止并删除虚拟环境的实例。</p>
+<h3 id="2-上传"><a href="#2-上传" class="headerlink" title="2. 上传"></a>2. 上传</h3><p>常见的场景: 一个java程序的产出物是一个jar包，在构建之后需要得到这个jar用于其他环境部署。</p>
+<p>依旧用 <a href="https://github.com/cicd-draft/api-test-demo" target="_blank" rel="noopener">api-test-demo</a> 这个仓库做演示，主要分为以下个步骤：</p>
+<ul>
+<li>1.下载代码；</li>
+<li>2.构建jar包(存放于指定到路径<code>build/libs/api-demo-0.0.1-SNAPSHOT.jar</code>)；</li>
+<li>3.上传jar包</li>
+</ul>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">my</span> <span class="string">workflow</span> <span class="string">demo</span> </span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span> </span><br><span class="line"><span class="attr">  push:</span></span><br><span class="line"><span class="attr">    branches:</span> </span><br><span class="line"><span class="bullet">      -</span> <span class="string">master</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  artifacts_demo_job:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">job1</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">Checkout</span> <span class="string">code</span></span><br><span class="line"><span class="attr">      uses:</span> <span class="string">actions/checkout@v1</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">Build</span> <span class="string">jar</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        pwd  &amp;&amp; ls -l</span></span><br><span class="line"><span class="string">        ./gradlew -x jar build</span></span><br><span class="line"><span class="string">        ls -l build/libs/api-demo-0.0.1-SNAPSHOT.jar</span></span><br><span class="line"><span class="string"></span><span class="attr">    - name:</span> <span class="string">Archive</span> <span class="string">SNAPSHOT.jar</span></span><br><span class="line"><span class="attr">      uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">      with:</span></span><br><span class="line"><span class="attr">        name:</span> <span class="string">api_snapshot_jar</span></span><br><span class="line"><span class="attr">        path:</span> <span class="string">build/libs/api-demo-0.0.1-SNAPSHOT.jar</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>github actions 工作流的产出物都放在哪里的，保留多久</p>
+</blockquote>
+<h3 id="3-下载"><a href="#3-下载" class="headerlink" title="3. 下载"></a>3. 下载</h3><p>步骤官方说明如下：</p>
+<ul>
+<li>1.On GitHub, navigate to the main page of the repository.</li>
+<li>2.Under your repository name, click Actions.</li>
+<li>3.In the left sidebar, click the workflow you want to see.</li>
+<li>4.Under “Workflow runs”, click the name of the run you want to see.</li>
+<li>5.To download artifacts, use the Artifacts drop-down menu, and select the artifact you want to download.</li>
+<li>6.To delete artifacts, use the Artifacts drop-down menu, and click .</li>
+</ul>
+<p>注意事项：</p>
+<ul>
+<li>保留90天</li>
+<li>一旦删除某一个构件，无法恢复</li>
+</ul>
+<h3 id="4-在工作流程中作业之间传递数据"><a href="#4-在工作流程中作业之间传递数据" class="headerlink" title="4. 在工作流程中作业之间传递数据"></a>4. 在工作流程中作业之间传递数据</h3><p><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts#passing-data-between-jobs-in-a-workflow" target="_blank" rel="noopener">https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts#passing-data-between-jobs-in-a-workflow</a></p>
+<p>由于同一个workflow的多个job分别运行在不同的虚拟主机上，下面示例工作流程说明如何在相同工作流程中的任务之间传递数据。关键词 <strong>need</strong> 用来确保job按顺序运行.</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Share</span> <span class="string">data</span> <span class="string">between</span> <span class="string">jobs</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span> <span class="string">[push]</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  job_1:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Add</span> <span class="number">3</span> <span class="string">and</span> <span class="number">7</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          expr 3 + 7 &gt; math-homework.txt</span></span><br><span class="line"><span class="string"></span><span class="attr">      - name:</span> <span class="string">Upload</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">1</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">          path:</span> <span class="string">math-homework.txt</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  job_2:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Multiply</span> <span class="string">by</span> <span class="number">9</span></span><br><span class="line"><span class="attr">    needs:</span> <span class="string">job_1</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">windows-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Download</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">1</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/download-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">      - shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          value=`cat homework/math-homework.txt`</span></span><br><span class="line"><span class="string">          expr $value \* 9 &gt; homework/math-homework.txt</span></span><br><span class="line"><span class="string"></span><span class="attr">      - name:</span> <span class="string">Upload</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">2</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">          path:</span> <span class="string">homework/math-homework.txt</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  job_3:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Display</span> <span class="string">results</span></span><br><span class="line"><span class="attr">    needs:</span> <span class="string">job_2</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">macOS-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Download</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">2</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/download-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Print</span> <span class="string">the</span> <span class="string">final</span> <span class="string">result</span></span><br><span class="line"><span class="attr">        shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          value=`cat homework/math-homework.txt`</span></span><br><span class="line"><span class="string">          echo The result is $value</span></span><br></pre></td></tr></table></figure>
+<hr>
+<p><strong>More Ref:</strong></p>
+<ul>
+<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts" target="_blank" rel="noopener">关于该篇的原文</a></li>
 </ul>
 ]]></content>
       <categories>
@@ -1052,62 +1108,6 @@
 <p>过滤条件 fruits.*.name 返回数组 [ “apple”, “orange”, “pear” ]</p>
 <hr>
 <p><strong>由于项目实践还不多，等我哪天需要用到这些功能，以完成一些特殊情况的需求时，再来一一举例。</strong></p>
-]]></content>
-      <categories>
-        <category>CICD</category>
-      </categories>
-      <tags>
-        <tag>GA</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Github Actions E06产出物</title>
-    <url>/2020/03/30/Github-Actions-E06%E4%BA%A7%E5%87%BA%E7%89%A9/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
-<p>大多数时候，workflow的产出物都会直接传到对应的某些仓库，比如docker image会送到docker hub这种仓库存储。这种时候是不需要在workflow再额外的管理产出物，但也不能全盘否定；有时候我们没有一个方便的地方去存储某些形式的文件等，就需要我们有类似jenkins <code>archiveArtifacts</code> 功能。但github actions能做的会更多，请期待。</p>
-</blockquote>
-<h3 id="1-关于artifacts"><a href="#1-关于artifacts" class="headerlink" title="1. 关于artifacts"></a>1. 关于artifacts</h3><p>构件是指在工作流程运行过程中产生的文件或文件集。<br>GitHub 提供两项可用于上传和下载构建构件的操作。 上传到工作流程运行的文件将使用 .zip 格式存档。 更多信息请参阅 <code>action/upload-artifact</code> 和 <code>download-artifact</code> 操作。</p>
-<p>这些是您可能想要上传的一些常见构建和测试输出构件：</p>
-<ul>
-<li>日志文件和核心转储文件</li>
-<li>测试结果、失败和屏幕截图</li>
-<li>二进制或存档文件</li>
-<li>压力测试性能输出和代码覆盖结果</li>
-</ul>
-<p>当作业完成时，运行程序将终止并删除虚拟环境的实例。</p>
-<h3 id="2-上传"><a href="#2-上传" class="headerlink" title="2. 上传"></a>2. 上传</h3><p>常见的场景: 一个java程序的产出物是一个jar包，在构建之后需要得到这个jar用于其他环境部署。</p>
-<p>依旧用 <a href="https://github.com/cicd-draft/api-test-demo" target="_blank" rel="noopener">api-test-demo</a> 这个仓库做演示，主要分为以下个步骤：</p>
-<ul>
-<li>1.下载代码；</li>
-<li>2.构建jar包(存放于指定到路径<code>build/libs/api-demo-0.0.1-SNAPSHOT.jar</code>)；</li>
-<li>3.上传jar包</li>
-</ul>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">my</span> <span class="string">workflow</span> <span class="string">demo</span> </span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span> </span><br><span class="line"><span class="attr">  push:</span></span><br><span class="line"><span class="attr">    branches:</span> </span><br><span class="line"><span class="bullet">      -</span> <span class="string">master</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  artifacts_demo_job:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">job1</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">Checkout</span> <span class="string">code</span></span><br><span class="line"><span class="attr">      uses:</span> <span class="string">actions/checkout@v1</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">Build</span> <span class="string">jar</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        pwd  &amp;&amp; ls -l</span></span><br><span class="line"><span class="string">        ./gradlew -x jar build</span></span><br><span class="line"><span class="string">        ls -l build/libs/api-demo-0.0.1-SNAPSHOT.jar</span></span><br><span class="line"><span class="string"></span><span class="attr">    - name:</span> <span class="string">Archive</span> <span class="string">SNAPSHOT.jar</span></span><br><span class="line"><span class="attr">      uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">      with:</span></span><br><span class="line"><span class="attr">        name:</span> <span class="string">api_snapshot_jar</span></span><br><span class="line"><span class="attr">        path:</span> <span class="string">build/libs/api-demo-0.0.1-SNAPSHOT.jar</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>github actions 工作流的产出物都放在哪里的，保留多久</p>
-</blockquote>
-<h3 id="3-下载"><a href="#3-下载" class="headerlink" title="3. 下载"></a>3. 下载</h3><p>步骤官方说明如下：</p>
-<ul>
-<li>1.On GitHub, navigate to the main page of the repository.</li>
-<li>2.Under your repository name, click Actions.</li>
-<li>3.In the left sidebar, click the workflow you want to see.</li>
-<li>4.Under “Workflow runs”, click the name of the run you want to see.</li>
-<li>5.To download artifacts, use the Artifacts drop-down menu, and select the artifact you want to download.</li>
-<li>6.To delete artifacts, use the Artifacts drop-down menu, and click .</li>
-</ul>
-<p>注意事项：</p>
-<ul>
-<li>保留90天</li>
-<li>一旦删除某一个构件，无法恢复</li>
-</ul>
-<h3 id="4-在工作流程中作业之间传递数据"><a href="#4-在工作流程中作业之间传递数据" class="headerlink" title="4. 在工作流程中作业之间传递数据"></a>4. 在工作流程中作业之间传递数据</h3><p><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts#passing-data-between-jobs-in-a-workflow" target="_blank" rel="noopener">https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts#passing-data-between-jobs-in-a-workflow</a></p>
-<p>由于同一个workflow的多个job分别运行在不同的虚拟主机上，下面示例工作流程说明如何在相同工作流程中的任务之间传递数据。关键词 <strong>need</strong> 用来确保job按顺序运行.</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Share</span> <span class="string">data</span> <span class="string">between</span> <span class="string">jobs</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span> <span class="string">[push]</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  job_1:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Add</span> <span class="number">3</span> <span class="string">and</span> <span class="number">7</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          expr 3 + 7 &gt; math-homework.txt</span></span><br><span class="line"><span class="string"></span><span class="attr">      - name:</span> <span class="string">Upload</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">1</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">          path:</span> <span class="string">math-homework.txt</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  job_2:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Multiply</span> <span class="string">by</span> <span class="number">9</span></span><br><span class="line"><span class="attr">    needs:</span> <span class="string">job_1</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">windows-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Download</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">1</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/download-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">      - shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          value=`cat homework/math-homework.txt`</span></span><br><span class="line"><span class="string">          expr $value \* 9 &gt; homework/math-homework.txt</span></span><br><span class="line"><span class="string"></span><span class="attr">      - name:</span> <span class="string">Upload</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">2</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">          path:</span> <span class="string">homework/math-homework.txt</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  job_3:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Display</span> <span class="string">results</span></span><br><span class="line"><span class="attr">    needs:</span> <span class="string">job_2</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">macOS-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Download</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">2</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/download-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Print</span> <span class="string">the</span> <span class="string">final</span> <span class="string">result</span></span><br><span class="line"><span class="attr">        shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          value=`cat homework/math-homework.txt`</span></span><br><span class="line"><span class="string">          echo The result is $value</span></span><br></pre></td></tr></table></figure>
-<hr>
-<p><strong>More Ref:</strong></p>
-<ul>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts" target="_blank" rel="noopener">关于该篇的原文</a></li>
-</ul>
 ]]></content>
       <categories>
         <category>CICD</category>
@@ -1417,39 +1417,6 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>Ping Or fping</title>
-    <url>/2019/05/28/Ping-Or-fping/</url>
-    <content><![CDATA[<p>ping 命令我们比较常用，但是这里要介绍下 fping 命令。 fping 比 ping 拥有更多的特性。fping 默认没有包含在Linux发行版中。</p>
-<blockquote>
-<p>ping 命令使用Internet控制协议（Internet Control Message Protocol,ICMP）中的echo 分组检验网络上两台主机之间的连通性。</p>
-</blockquote>
-<p>e.g.<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> ip <span class="keyword">in</span> 192.168.0.&#123;1..255&#125; ;</span><br><span class="line"><span class="keyword">do</span> </span><br><span class="line">    ping <span class="variable">$ip</span> -c 2 &amp;&gt; /dev/null ;</span><br><span class="line"></span><br><span class="line">    uf [ $? -eq 0 ];</span><br><span class="line">    <span class="keyword">then</span> </span><br><span class="line">        <span class="built_in">echo</span> <span class="variable">$ip</span> is alive</span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure></p>
-<p>工作原理：</p>
-<ul>
-<li><code>&amp;&gt; /dev/null</code> 用于将 stderr stdout 重定向到 <code>/dev/nul</code> ,使终端不会出现任何输出</li>
-<li>脚本用 <code>$?</code> 获取退出状态。如果顺利退出，退出状态为0，否则为非0值。</li>
-</ul>
-<h5 id="fping"><a href="#fping" class="headerlink" title="fping"></a>fping</h5><p>fping 可以为多个IP地址生成 ICMP 分组，然后等待回应。其运行速度要比上面的脚本快得多。</p>
-<p>选项如下：</p>
-<ul>
-<li>选项 <code>-a</code> 指定显示出所有活动主机的IP地址；</li>
-<li>选项 <code>-u</code> 指定显示出所有不可达的主机地址；</li>
-<li>选项 <code>-g</code> 指定从 “IP地址/子网掩码；记法或者 “IP地址范围”记法中生成一组地址</li>
-</ul>
-<p>e.g.</p>
-<p><code>fping -a 192.168.0.1/24 -g</code></p>
-<p><code>fping -a 192.168.0.1 192.168.1.255 -g</code></p>
-<p><code>fping -a 192.168.0.1  192.168.0.5 192.168.0.6</code></p>
-<p><code>fping -a &lt; ip.list</code> 从列表文件 sdtin 中接收</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Shell</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>PPT Tools</title>
     <url>/2019/08/25/PPT-Tools/</url>
     <content><![CDATA[<p>TL;DR<br>  一个好的PPT，全靠自己一块一块地“搬砖”当然可以制作的很精良，但时间也就流逝了许多，介绍一些可能用到的工具，简化这些制作的步骤。</p>
@@ -1494,6 +1461,39 @@ pipeline {
       <tags>
         <tag>Tools</tag>
         <tag>PPT</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Ping Or fping</title>
+    <url>/2019/05/28/Ping-Or-fping/</url>
+    <content><![CDATA[<p>ping 命令我们比较常用，但是这里要介绍下 fping 命令。 fping 比 ping 拥有更多的特性。fping 默认没有包含在Linux发行版中。</p>
+<blockquote>
+<p>ping 命令使用Internet控制协议（Internet Control Message Protocol,ICMP）中的echo 分组检验网络上两台主机之间的连通性。</p>
+</blockquote>
+<p>e.g.<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> ip <span class="keyword">in</span> 192.168.0.&#123;1..255&#125; ;</span><br><span class="line"><span class="keyword">do</span> </span><br><span class="line">    ping <span class="variable">$ip</span> -c 2 &amp;&gt; /dev/null ;</span><br><span class="line"></span><br><span class="line">    uf [ $? -eq 0 ];</span><br><span class="line">    <span class="keyword">then</span> </span><br><span class="line">        <span class="built_in">echo</span> <span class="variable">$ip</span> is alive</span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure></p>
+<p>工作原理：</p>
+<ul>
+<li><code>&amp;&gt; /dev/null</code> 用于将 stderr stdout 重定向到 <code>/dev/nul</code> ,使终端不会出现任何输出</li>
+<li>脚本用 <code>$?</code> 获取退出状态。如果顺利退出，退出状态为0，否则为非0值。</li>
+</ul>
+<h5 id="fping"><a href="#fping" class="headerlink" title="fping"></a>fping</h5><p>fping 可以为多个IP地址生成 ICMP 分组，然后等待回应。其运行速度要比上面的脚本快得多。</p>
+<p>选项如下：</p>
+<ul>
+<li>选项 <code>-a</code> 指定显示出所有活动主机的IP地址；</li>
+<li>选项 <code>-u</code> 指定显示出所有不可达的主机地址；</li>
+<li>选项 <code>-g</code> 指定从 “IP地址/子网掩码；记法或者 “IP地址范围”记法中生成一组地址</li>
+</ul>
+<p>e.g.</p>
+<p><code>fping -a 192.168.0.1/24 -g</code></p>
+<p><code>fping -a 192.168.0.1 192.168.1.255 -g</code></p>
+<p><code>fping -a 192.168.0.1  192.168.0.5 192.168.0.6</code></p>
+<p><code>fping -a &lt; ip.list</code> 从列表文件 sdtin 中接收</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Shell</tag>
       </tags>
   </entry>
   <entry>
@@ -2019,60 +2019,6 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>Vivaldi入手</title>
-    <url>/2020/04/09/Vivaldi%E5%85%A5%E6%89%8B/</url>
-    <content><![CDATA[<h3 id="0-前言"><a href="#0-前言" class="headerlink" title="0.前言"></a>0.前言</h3><p>最近才在一些论坛上听说 <strong>Vivaldi</strong> 浏览器的大名（我孤陋寡闻了😅）。毕竟入手一个浏览器工具又不花钱，那Chrome挺好用的，为什么要换？</p>
-<blockquote>
-<p>尝尝新鲜的，换着试试看，毕竟不尝试一段时间怎么知道好不好。</p>
-</blockquote>
-<h3 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1.介绍"></a>1.介绍</h3><p>从<a href="https://en.wikipedia.org/wiki/Vivaldi_(web_browser" target="_blank" rel="noopener">维基百科的介绍</a>)来看，Vivaldi的来头可不小，创始人是 Opera 浏览器的前任CEO，估计中间有很多商业故事。使用 Chromium 做内核，能直接安装Chrome网上应用店的应用程序.2016年4月发布第一个版本，距今正好4年，算是比较年轻。后生可畏，轻装上阵，说不定比庞大的chrome会有一些小优势。</p>
-<p><code>Vivaldi is a freeware, cross-platform web browser developed by Vivaldi Technologies, a company founded by Opera Software co-founder and former CEO Jon Stephenson von Tetzchner and Tatsuki Tomita. It was officially launched on April 6, 2016.</code></p>
-<h3 id="2-安装"><a href="#2-安装" class="headerlink" title="2.安装"></a>2.安装</h3><p>直接到官网 <a href="https://vivaldi.com/" target="_blank" rel="noopener">https://vivaldi.com/</a> 下载安装对应系统的版本即可。我当前安装的具体版本是：<code>Vivaldi    2.11.1811.52 (Stable channel) (64-bit)</code></p>
-<h3 id="3-使用"><a href="#3-使用" class="headerlink" title="3.使用"></a>3.使用</h3><p>打开安装好的浏览器后会有一个链接 <code>vivaldi://welcome</code> ，引导做初始化设置</p>
-<h5 id="3-1-引导"><a href="#3-1-引导" class="headerlink" title="3.1 引导"></a>3.1 引导</h5><p><strong>Welcome to Vivaldi</strong></p>
-<blockquote>
-<p>没啥～</p>
-</blockquote>
-<p><strong>Import Bookmarks &amp; Settings</strong></p>
-<blockquote>
-<p>不要要导入导出的步骤，vivaldi会要求输入电脑的密码获取权限拿其他浏览器的书签内容。</p>
-</blockquote>
-<p><strong>Pick a Theme</strong></p>
-<blockquote>
-<p>选背景主题，不多说，但是据说能够做很多自定义的设置，比如某个网站打开后指定其tab颜色。</p>
-</blockquote>
-<p><strong>Position Your Tabs</strong></p>
-<blockquote>
-<p>这里的Tabs指的是一般浏览器最上头一栏，可以切换你的网页的部分。vivaldi 支持你把这个Tabs放到 顶部、左边、右边、底部，但是一般还是习惯 顶部，暂时不换了。尝试了一下放到左边，占据的面积会大一些，因为会直接显示每个网页的缩略图，清晰的让你看到网页大致内容。</p>
-</blockquote>
-<p><strong>Get Going</strong></p>
-<blockquote>
-<p>观看指南的链接、加入社区的链接、关注多个社交账、号是否接收邮件</p>
-</blockquote>
-<p>更多详细的功能也可以看发布<a href="https://en.wikipedia.org/wiki/Vivaldi_(web_browser" target="_blank" rel="noopener">计划</a>#Releases)，毕竟每次新加功能都会在发布计划里提到。</p>
-<h5 id="3-2-实际使用"><a href="#3-2-实际使用" class="headerlink" title="3.2 实际使用"></a>3.2 实际使用</h5><p>很容易实现在多panel功能，效果如下，方便对比、或者参考：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">+-------------+ +-------------+</span><br><span class="line">|             | |             |</span><br><span class="line">|             | |             |</span><br><span class="line">| website 1   | |   website 2 |</span><br><span class="line">|             | |             |</span><br><span class="line">|             | |             |</span><br><span class="line">|             | |             |</span><br><span class="line">|             | |             |</span><br><span class="line">+-------------+ +-------------+</span><br></pre></td></tr></table></figure>
-<p>针对网页记笔记，右边网页，左边笔记，后期也可查找、使用。<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">+-----------------------------+</span><br><span class="line">|    ||                       |</span><br><span class="line">|    ||                       |</span><br><span class="line">|note||                       |</span><br><span class="line">|    ||       website         |</span><br><span class="line">|    ||                       |</span><br><span class="line">+-----|                       |</span><br><span class="line">|    ||                       |</span><br><span class="line">+-----------------------------+</span><br></pre></td></tr></table></figure></p>
-<hr>
-<ul>
-<li style="list-style: none"><input type="checkbox"> TODO 很多功能还未尝试，等用过后再来聊聊。不过听说<em>快捷键</em>、<em>网页笔记</em>（保存百度文库的复制内容？）算是特色吧</li>
-</ul>
-<ul>
-<li style="list-style: none"><input type="checkbox"> TODO 但其实以前也没研究过chrome，firefox有没有类似功能。移动端来看，目前还只有 Android 版 Vivaldi，而且还是测试版本，估计等待不久就会出正式版。对开发人员而言，如何调试程序、定位bug，清理缓存数据？是否会有新的交互方式呢，</li>
-</ul>
-<hr>
-<p><strong>More Ref:</strong></p>
-<ul>
-<li><a href="https://www.youtube.com/playlist?list=PL72e6dBabYNVRfpvEUt-WNfV7tZuKDAPB" target="_blank" rel="noopener">youtube播放列表</a></li>
-<li>详细的功能也可以看发布计划,<a href="https://en.wikipedia.org/wiki/Vivaldi_(web_browser)#Releases" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Vivaldi_(web_browser)#Releases</a>, 毕竟每次新加功能都会在发布计划里提到</li>
-<li>小工具<a href="http://asciiflow.com/" target="_blank" rel="noopener">asciiflow</a></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>Tools</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>The Gig Economy Note</title>
     <url>/2019/12/24/The-Gig-Economy-Note/</url>
     <content><![CDATA[<p>零工经济是指一种经济价值，它来源于一种不断增长的趋势，即人们开始从事工作时间不定的工作，而这有别于以工作时间固定不变为特征的传统工作</p>
@@ -2319,16 +2265,28 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>jenkins date timezone update</title>
-    <url>/2019/04/25/jenkins-date-timezone-update/</url>
-    <content><![CDATA[<h4 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h4><p>打开 【系统管理】-&gt;【脚本命令行】运行下面的命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">System.setProperty(<span class="string">'org.apache.commons.jelly.tags.fmt.timeZone'</span>, <span class="string">'Asia/Shanghai'</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="/images/jenkins_run_image_01.png" alt="jenkins_run_image_01"></p>
-<h4 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h4><pre><code class="java">JAVA_ARGS=<span class="string">"-Dorg.apache.commons.jelly.tags.fmt.timeZone=Asia/Shanghai -Dfile.encoding=UTF-8 -Djava.awt.headless=true"</span>
-</code></pre>
+    <title>highlight code on slide/ppt</title>
+    <url>/2019/08/22/highlight-code-on-slide-ppt/</url>
+    <content><![CDATA[<p><strong>only for mac</strong></p>
+<p><strong>问题</strong><br>写ppt的时候代码如何呈现，能够看起来比较明显，更好是根据不同语言高亮</p>
+<p><strong>解决方案</strong><br>highlight</p>
+<ol>
+<li><p>Install<br><code>brew install highlight</code></p>
+</li>
+<li><p>Use<br><code>hightlight -l -O rtf your_code.sh | pbcopy</code></p>
+</li>
+</ol>
+<ul>
+<li>hightlight –help 可以查看文档，</li>
+<li>-l 显示行号，-O rtf为格式化输出 rtf 格式文本</li>
+<li>pbcopy 是内置剪贴板</li>
+</ul>
+<p>到PPT里粘贴就行了，Keynote 和 PowerPoint 都可以使用.<br>example:<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  ~ cat output.sh</span><br><span class="line">docker <span class="built_in">exec</span> -it -u root tw-jenkins bash</span><br><span class="line"></span><br><span class="line">chmod 777 /var/run/docker.sock</span><br><span class="line">apt-get update &amp;&amp; \</span><br><span class="line">apt-get -y install apt-transport-https \</span><br><span class="line">     ca-certificates \</span><br><span class="line">     curl \</span><br><span class="line">     gnupg2 \</span><br><span class="line">     software-properties-common &amp;&amp; \</span><br><span class="line">curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; <span class="built_in">echo</span> <span class="string">"<span class="variable">$ID</span>"</span>)/gpg &gt; /tmp/dkey; apt-key add /tmp/dkey &amp;&amp; \</span><br><span class="line">add-apt-repository \</span><br><span class="line">    <span class="string">"deb [arch=amd64] https://download.docker.com/linux/<span class="variable">$(. /etc/os-release; echo     "$ID")</span> \</span></span><br><span class="line"><span class="string">    <span class="variable">$(lsb_release -cs)</span> \</span></span><br><span class="line"><span class="string">stable"</span> &amp;&amp; \</span><br><span class="line">apt-get update &amp;&amp; \</span><br><span class="line">apt-get -y install docker-ce</span><br></pre></td></tr></table></figure></p>
+<p><code>➜  ~ highlight -l -O rtf output.sh | pbcopy</code></p>
+<p><img src="/images/highlight_demo01.png" alt="highlight_demo01.png"></p>
 ]]></content>
       <tags>
-        <tag>jenkins</tag>
+        <tag>PPT</tag>
       </tags>
   </entry>
   <entry>
@@ -2370,52 +2328,16 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>highlight code on slide/ppt</title>
-    <url>/2019/08/22/highlight-code-on-slide-ppt/</url>
-    <content><![CDATA[<p><strong>only for mac</strong></p>
-<p><strong>问题</strong><br>写ppt的时候代码如何呈现，能够看起来比较明显，更好是根据不同语言高亮</p>
-<p><strong>解决方案</strong><br>highlight</p>
-<ol>
-<li><p>Install<br><code>brew install highlight</code></p>
-</li>
-<li><p>Use<br><code>hightlight -l -O rtf your_code.sh | pbcopy</code></p>
-</li>
-</ol>
-<ul>
-<li>hightlight –help 可以查看文档，</li>
-<li>-l 显示行号，-O rtf为格式化输出 rtf 格式文本</li>
-<li>pbcopy 是内置剪贴板</li>
-</ul>
-<p>到PPT里粘贴就行了，Keynote 和 PowerPoint 都可以使用.<br>example:<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  ~ cat output.sh</span><br><span class="line">docker <span class="built_in">exec</span> -it -u root tw-jenkins bash</span><br><span class="line"></span><br><span class="line">chmod 777 /var/run/docker.sock</span><br><span class="line">apt-get update &amp;&amp; \</span><br><span class="line">apt-get -y install apt-transport-https \</span><br><span class="line">     ca-certificates \</span><br><span class="line">     curl \</span><br><span class="line">     gnupg2 \</span><br><span class="line">     software-properties-common &amp;&amp; \</span><br><span class="line">curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; <span class="built_in">echo</span> <span class="string">"<span class="variable">$ID</span>"</span>)/gpg &gt; /tmp/dkey; apt-key add /tmp/dkey &amp;&amp; \</span><br><span class="line">add-apt-repository \</span><br><span class="line">    <span class="string">"deb [arch=amd64] https://download.docker.com/linux/<span class="variable">$(. /etc/os-release; echo     "$ID")</span> \</span></span><br><span class="line"><span class="string">    <span class="variable">$(lsb_release -cs)</span> \</span></span><br><span class="line"><span class="string">stable"</span> &amp;&amp; \</span><br><span class="line">apt-get update &amp;&amp; \</span><br><span class="line">apt-get -y install docker-ce</span><br></pre></td></tr></table></figure></p>
-<p><code>➜  ~ highlight -l -O rtf output.sh | pbcopy</code></p>
-<p><img src="/images/highlight_demo01.png" alt="highlight_demo01.png"></p>
+    <title>jenkins date timezone update</title>
+    <url>/2019/04/25/jenkins-date-timezone-update/</url>
+    <content><![CDATA[<h4 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h4><p>打开 【系统管理】-&gt;【脚本命令行】运行下面的命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">System.setProperty(<span class="string">'org.apache.commons.jelly.tags.fmt.timeZone'</span>, <span class="string">'Asia/Shanghai'</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="/images/jenkins_run_image_01.png" alt="jenkins_run_image_01"></p>
+<h4 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h4><pre><code class="java">JAVA_ARGS=<span class="string">"-Dorg.apache.commons.jelly.tags.fmt.timeZone=Asia/Shanghai -Dfile.encoding=UTF-8 -Djava.awt.headless=true"</span>
+</code></pre>
 ]]></content>
       <tags>
-        <tag>PPT</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>mktemp command</title>
-    <url>/2019/05/07/mktemp-command/</url>
-    <content><![CDATA[<p>最适合存储临时数据的位置是/tmp, <strong>mktemp</strong> 命令可以为临时文件或目录创建唯一的名字</p>
-<p>Create a temporary file or directory.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mktemp</span><br><span class="line"></span><br><span class="line">Create a temporary file or directory.</span><br><span class="line"></span><br><span class="line">- Create an empty temporary file and return the absolute path to it:</span><br><span class="line">    mktemp</span><br><span class="line"></span><br><span class="line">- Create a temporary directory and return the absolute path to it:</span><br><span class="line">    mktemp -d</span><br><span class="line"></span><br><span class="line">- Create a temporary file with a specified suffix:</span><br><span class="line">    mktemp --suffix &quot;.txt&quot;</span><br></pre></td></tr></table></figure>
-<h4 id="1-create-temporary-file-创建临时目录"><a href="#1-create-temporary-file-创建临时目录" class="headerlink" title="1.create temporary file (创建临时目录)"></a>1.create temporary file (创建临时目录)</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$filename</span>=`mktemp`</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$filename</span></span><br><span class="line">/tmp/tmp.8xefliegnD9</span><br></pre></td></tr></table></figure>
-<h4 id="2-create-temporary-directory-创建临时目录"><a href="#2-create-temporary-directory-创建临时目录" class="headerlink" title="2. create temporary directory (创建临时目录)"></a>2. create temporary directory (创建临时目录)</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dirname=`mktemp -d`</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$dirname</span></span><br><span class="line">tmp.NJ8dhf6wk</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>If you just want to generate a filename and don’t want to create the actual file or directory, you can(如果仅仅是想生成文件名，不希望创建实际的文件或目录，可以):<br><code>mktemp -u</code></p>
-</li>
-<li><p>Create a temporary filename based on the tempplate(基于模板创建临时文件名)</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  qr_blog mktemp study.XXX</span><br><span class="line">study.UWT</span><br><span class="line">➜  qr_blog mktemp study.XXX</span><br><span class="line">study.Usm</span><br><span class="line">➜  qr_blog mktemp study.XXX</span><br><span class="line">study.M6a</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>Mac OS 与linux用法略有区别，请视情况使用</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Shell</tag>
+        <tag>jenkins</tag>
       </tags>
   </entry>
   <entry>
@@ -2448,6 +2370,30 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>mktemp command</title>
+    <url>/2019/05/07/mktemp-command/</url>
+    <content><![CDATA[<p>最适合存储临时数据的位置是/tmp, <strong>mktemp</strong> 命令可以为临时文件或目录创建唯一的名字</p>
+<p>Create a temporary file or directory.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mktemp</span><br><span class="line"></span><br><span class="line">Create a temporary file or directory.</span><br><span class="line"></span><br><span class="line">- Create an empty temporary file and return the absolute path to it:</span><br><span class="line">    mktemp</span><br><span class="line"></span><br><span class="line">- Create a temporary directory and return the absolute path to it:</span><br><span class="line">    mktemp -d</span><br><span class="line"></span><br><span class="line">- Create a temporary file with a specified suffix:</span><br><span class="line">    mktemp --suffix &quot;.txt&quot;</span><br></pre></td></tr></table></figure>
+<h4 id="1-create-temporary-file-创建临时目录"><a href="#1-create-temporary-file-创建临时目录" class="headerlink" title="1.create temporary file (创建临时目录)"></a>1.create temporary file (创建临时目录)</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$filename</span>=`mktemp`</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$filename</span></span><br><span class="line">/tmp/tmp.8xefliegnD9</span><br></pre></td></tr></table></figure>
+<h4 id="2-create-temporary-directory-创建临时目录"><a href="#2-create-temporary-directory-创建临时目录" class="headerlink" title="2. create temporary directory (创建临时目录)"></a>2. create temporary directory (创建临时目录)</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dirname=`mktemp -d`</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$dirname</span></span><br><span class="line">tmp.NJ8dhf6wk</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>If you just want to generate a filename and don’t want to create the actual file or directory, you can(如果仅仅是想生成文件名，不希望创建实际的文件或目录，可以):<br><code>mktemp -u</code></p>
+</li>
+<li><p>Create a temporary filename based on the tempplate(基于模板创建临时文件名)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  qr_blog mktemp study.XXX</span><br><span class="line">study.UWT</span><br><span class="line">➜  qr_blog mktemp study.XXX</span><br><span class="line">study.Usm</span><br><span class="line">➜  qr_blog mktemp study.XXX</span><br><span class="line">study.M6a</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>Mac OS 与linux用法略有区别，请视情况使用</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Shell</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ngrok demo</title>
     <url>/2019/07/22/ngrok-demo/</url>
     <content><![CDATA[<h3 id="怎么用"><a href="#怎么用" class="headerlink" title="怎么用"></a>怎么用</h3><p><a href="https://dashboard.ngrok.com/get-started" target="_blank" rel="noopener">https://dashboard.ngrok.com/get-started</a><br><img src="/images/ngrok_demo_01.png" alt="ngrok_demo_01"></p>
@@ -2471,6 +2417,17 @@ pipeline {
 ]]></content>
       <tags>
         <tag>Tools</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>packer intro</title>
+    <url>/2019/08/30/packer-intro/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>packer</tag>
       </tags>
   </entry>
   <entry>
@@ -2542,17 +2499,6 @@ pipeline {
       </categories>
       <tags>
         <tag>Shell</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>packer intro</title>
-    <url>/2019/08/30/packer-intro/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>packer</tag>
       </tags>
   </entry>
   <entry>
@@ -2640,6 +2586,76 @@ pipeline {
       </categories>
       <tags>
         <tag>Shell</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>tmux tutorial</title>
+    <url>/2019/09/07/tmux-tutorial/</url>
+    <content><![CDATA[<h3 id="1-tmux是什么"><a href="#1-tmux是什么" class="headerlink" title="1.tmux是什么"></a>1.tmux是什么</h3><pre><code>tmux (terminal multiplexer),是一个 BSD 协议发布的终端复用软件，用来在服务器端托管同时运行的 Shell.
+</code></pre><p>效果如图：<br><img src="/images/image_tmux_01.png" alt="tmux_01"></p>
+<center> tmux </center>
+
+<p>几个重要概念：</p>
+<ul>
+<li>1.会话(session): 建立一个 tmux 工作区会话，会话可以长期驻留，重新连接服务器不会丢失，我们只需重新 tmux attach 到之前的工作区就可以恢复会话</li>
+<li>2.窗口(window): 容纳多个窗格</li>
+<li>3.窗格(pane): 可以在窗口中分成多个窗格</li>
+</ul>
+<p>主要解决以下问题：</p>
+<ul>
+<li>想同时打开多个目录不得不开很多终端标签来回切换</li>
+<li>开了一个 vim 窗口之后，想切到其他目录不得不重新打开个一个终端窗口 ssh 到服务器</li>
+<li>运行一个脚本，服务器断掉失联之后当前进程被服务器给无情地杀掉，不得不用 nohup 等方式让脚本在后台跑</li>
+<li>…</li>
+</ul>
+<h3 id="2-安装"><a href="#2-安装" class="headerlink" title="2.安装"></a>2.安装</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">brew install tmux       <span class="comment"># OSX</span></span><br><span class="line">pacman -S tmux          <span class="comment"># archlinux</span></span><br><span class="line">apt-get install tmux    <span class="comment"># Ubuntu</span></span><br><span class="line">yum install tmux        <span class="comment"># Centos</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#check tmux version</span></span><br><span class="line">➜  ~ tmux -V</span><br><span class="line">tmux 2.9a</span><br></pre></td></tr></table></figure>
+<h3 id="3-使用"><a href="#3-使用" class="headerlink" title="3.使用"></a>3.使用</h3><p>tmux的所有指令，都包含同一个前缀，默认为 <strong><code>Ctrl+b</code> </strong>，输入完前缀过后，<strong>控制台激活</strong>，命令按键才能生效。</p>
+<ul>
+<li>会话(session)<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#新建会话</span></span><br><span class="line">tmux new -s &lt;Session_Name&gt; <span class="comment"># tmux new-session -s &lt;Session_Name&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#列出所有会话</span></span><br><span class="line">tmux ls  <span class="comment"># tmux list-session</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#进入会话</span></span><br><span class="line">tmux a -t &lt;Session_Name&gt; <span class="comment"># tmux attach -t , -t mean 'to' </span></span><br><span class="line"></span><br><span class="line"><span class="comment">###当且只有一个session时，可以直接输入命令 tmux a 或 tmux attach 进入</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#关闭会话</span></span><br><span class="line">tmux <span class="built_in">kill</span>-session -s &lt;Session_Name&gt; <span class="comment"># kill命令有kill-pane、kill-server、kill-session 和 kill-window共四种</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>快捷指令<br>(先按下 Tmux 前缀 <strong>ctrl+b</strong>,然后松开，继续按下面的字母)</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">:new&lt;回车&gt;  启动新会话</span><br><span class="line">s           列出所有会话</span><br><span class="line">$           重命名当前会话</span><br><span class="line">d           暂时离开 deattach</span><br></pre></td></tr></table></figure>
+<ul>
+<li>窗口(window)<blockquote>
+<p>快捷指令</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">c  创建新窗口</span><br><span class="line">w  列出所有窗口</span><br><span class="line">n  后一个窗口 next</span><br><span class="line">p  前一个窗口 pervious</span><br><span class="line">f  查找窗口</span><br><span class="line">,  重命名当前窗口</span><br><span class="line">&amp;  关闭当前窗口</span><br><span class="line">数字0,1,2... 也可用来切换窗口</span><br></pre></td></tr></table></figure>
+<ul>
+<li>窗格(pane)<blockquote>
+<p>快捷指令</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">%  垂直分割</span><br><span class="line"><span class="string">"  水平分割</span></span><br><span class="line"><span class="string">上下左右 方向按键调整光标位置</span></span><br><span class="line"><span class="string">o  选择下一面板</span></span><br><span class="line"><span class="string">x  关闭窗格</span></span><br><span class="line"><span class="string">q 显示每个窗格是第几个，当数字出现的时候按数字几就选中第几个窗格</span></span><br><span class="line"><span class="string">&#123; 与上一个窗格交换位置</span></span><br><span class="line"><span class="string">&#125; 与下一个窗格交换位置</span></span><br><span class="line"><span class="string">z 切换窗格最大化/最小化</span></span><br></pre></td></tr></table></figure>
+<p>其他：<br><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">t  窗口中央显示一个数字时钟</span><br><span class="line">?  列出所有快捷键</span><br><span class="line">:  命令提示符</span><br></pre></td></tr></table></figure></p>
+<p>基本配置：</p>
+<ul>
+<li><p>配置文件 <code>～/.tmux.conf</code> ,如修改 <em>默认的前缀快捷键</em></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ touch .tmux.conf</span><br><span class="line">$ cat .tmux.conf </span><br><span class="line"><span class="comment"># Change the prefix key to C-a</span></span><br><span class="line"><span class="built_in">set</span> -g prefix C<span class="_">-a</span>                          </span><br><span class="line">unbind C-b                                 </span><br><span class="line"><span class="built_in">bind</span> C<span class="_">-a</span> send-prefix</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>生效配置 <code>tmux source-file ~/.tmux.conf</code> 或用动态载入配置的方法</p>
+</li>
+</ul>
+<p>More ref:</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=norO25P7xHg&amp;list=PLtK75qxsQaMJ_DmXk9yZbCBJuG9HRwlGc&amp;index=2" target="_blank" rel="noopener">tmux:Shared Sessions</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/43687973" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/43687973</a></li>
+<li><a href="https://www.youtube.com/watch?v=BHhA_ZKjyxo&amp;list=PLtK75qxsQaMJ_DmXk9yZbCBJuG9HRwlGc" target="_blank" rel="noopener">https://www.youtube.com/watch?v=BHhA_ZKjyxo&amp;list=PLtK75qxsQaMJ_DmXk9yZbCBJuG9HRwlGc</a></li>
+<li><a href="https://gist.github.com/ryerh/14b7c24dfd623ef8edc7" target="_blank" rel="noopener">https://gist.github.com/ryerh/14b7c24dfd623ef8edc7</a></li>
+<li><a href="http://louiszhai.github.io/2017/09/30/tmux/" target="_blank" rel="noopener">http://louiszhai.github.io/2017/09/30/tmux/</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Tools</category>
+      </categories>
+      <tags>
+        <tag>tmux</tag>
       </tags>
   </entry>
   <entry>
@@ -2746,76 +2762,6 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>tmux tutorial</title>
-    <url>/2019/09/07/tmux-tutorial/</url>
-    <content><![CDATA[<h3 id="1-tmux是什么"><a href="#1-tmux是什么" class="headerlink" title="1.tmux是什么"></a>1.tmux是什么</h3><pre><code>tmux (terminal multiplexer),是一个 BSD 协议发布的终端复用软件，用来在服务器端托管同时运行的 Shell.
-</code></pre><p>效果如图：<br><img src="/images/image_tmux_01.png" alt="tmux_01"></p>
-<center> tmux </center>
-
-<p>几个重要概念：</p>
-<ul>
-<li>1.会话(session): 建立一个 tmux 工作区会话，会话可以长期驻留，重新连接服务器不会丢失，我们只需重新 tmux attach 到之前的工作区就可以恢复会话</li>
-<li>2.窗口(window): 容纳多个窗格</li>
-<li>3.窗格(pane): 可以在窗口中分成多个窗格</li>
-</ul>
-<p>主要解决以下问题：</p>
-<ul>
-<li>想同时打开多个目录不得不开很多终端标签来回切换</li>
-<li>开了一个 vim 窗口之后，想切到其他目录不得不重新打开个一个终端窗口 ssh 到服务器</li>
-<li>运行一个脚本，服务器断掉失联之后当前进程被服务器给无情地杀掉，不得不用 nohup 等方式让脚本在后台跑</li>
-<li>…</li>
-</ul>
-<h3 id="2-安装"><a href="#2-安装" class="headerlink" title="2.安装"></a>2.安装</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">brew install tmux       <span class="comment"># OSX</span></span><br><span class="line">pacman -S tmux          <span class="comment"># archlinux</span></span><br><span class="line">apt-get install tmux    <span class="comment"># Ubuntu</span></span><br><span class="line">yum install tmux        <span class="comment"># Centos</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#check tmux version</span></span><br><span class="line">➜  ~ tmux -V</span><br><span class="line">tmux 2.9a</span><br></pre></td></tr></table></figure>
-<h3 id="3-使用"><a href="#3-使用" class="headerlink" title="3.使用"></a>3.使用</h3><p>tmux的所有指令，都包含同一个前缀，默认为 <strong><code>Ctrl+b</code> </strong>，输入完前缀过后，<strong>控制台激活</strong>，命令按键才能生效。</p>
-<ul>
-<li>会话(session)<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#新建会话</span></span><br><span class="line">tmux new -s &lt;Session_Name&gt; <span class="comment"># tmux new-session -s &lt;Session_Name&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#列出所有会话</span></span><br><span class="line">tmux ls  <span class="comment"># tmux list-session</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#进入会话</span></span><br><span class="line">tmux a -t &lt;Session_Name&gt; <span class="comment"># tmux attach -t , -t mean 'to' </span></span><br><span class="line"></span><br><span class="line"><span class="comment">###当且只有一个session时，可以直接输入命令 tmux a 或 tmux attach 进入</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#关闭会话</span></span><br><span class="line">tmux <span class="built_in">kill</span>-session -s &lt;Session_Name&gt; <span class="comment"># kill命令有kill-pane、kill-server、kill-session 和 kill-window共四种</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<blockquote>
-<p>快捷指令<br>(先按下 Tmux 前缀 <strong>ctrl+b</strong>,然后松开，继续按下面的字母)</p>
-</blockquote>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">:new&lt;回车&gt;  启动新会话</span><br><span class="line">s           列出所有会话</span><br><span class="line">$           重命名当前会话</span><br><span class="line">d           暂时离开 deattach</span><br></pre></td></tr></table></figure>
-<ul>
-<li>窗口(window)<blockquote>
-<p>快捷指令</p>
-</blockquote>
-</li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">c  创建新窗口</span><br><span class="line">w  列出所有窗口</span><br><span class="line">n  后一个窗口 next</span><br><span class="line">p  前一个窗口 pervious</span><br><span class="line">f  查找窗口</span><br><span class="line">,  重命名当前窗口</span><br><span class="line">&amp;  关闭当前窗口</span><br><span class="line">数字0,1,2... 也可用来切换窗口</span><br></pre></td></tr></table></figure>
-<ul>
-<li>窗格(pane)<blockquote>
-<p>快捷指令</p>
-</blockquote>
-</li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">%  垂直分割</span><br><span class="line"><span class="string">"  水平分割</span></span><br><span class="line"><span class="string">上下左右 方向按键调整光标位置</span></span><br><span class="line"><span class="string">o  选择下一面板</span></span><br><span class="line"><span class="string">x  关闭窗格</span></span><br><span class="line"><span class="string">q 显示每个窗格是第几个，当数字出现的时候按数字几就选中第几个窗格</span></span><br><span class="line"><span class="string">&#123; 与上一个窗格交换位置</span></span><br><span class="line"><span class="string">&#125; 与下一个窗格交换位置</span></span><br><span class="line"><span class="string">z 切换窗格最大化/最小化</span></span><br></pre></td></tr></table></figure>
-<p>其他：<br><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">t  窗口中央显示一个数字时钟</span><br><span class="line">?  列出所有快捷键</span><br><span class="line">:  命令提示符</span><br></pre></td></tr></table></figure></p>
-<p>基本配置：</p>
-<ul>
-<li><p>配置文件 <code>～/.tmux.conf</code> ,如修改 <em>默认的前缀快捷键</em></p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ touch .tmux.conf</span><br><span class="line">$ cat .tmux.conf </span><br><span class="line"><span class="comment"># Change the prefix key to C-a</span></span><br><span class="line"><span class="built_in">set</span> -g prefix C<span class="_">-a</span>                          </span><br><span class="line">unbind C-b                                 </span><br><span class="line"><span class="built_in">bind</span> C<span class="_">-a</span> send-prefix</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>生效配置 <code>tmux source-file ~/.tmux.conf</code> 或用动态载入配置的方法</p>
-</li>
-</ul>
-<p>More ref:</p>
-<ul>
-<li><a href="https://www.youtube.com/watch?v=norO25P7xHg&amp;list=PLtK75qxsQaMJ_DmXk9yZbCBJuG9HRwlGc&amp;index=2" target="_blank" rel="noopener">tmux:Shared Sessions</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/43687973" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/43687973</a></li>
-<li><a href="https://www.youtube.com/watch?v=BHhA_ZKjyxo&amp;list=PLtK75qxsQaMJ_DmXk9yZbCBJuG9HRwlGc" target="_blank" rel="noopener">https://www.youtube.com/watch?v=BHhA_ZKjyxo&amp;list=PLtK75qxsQaMJ_DmXk9yZbCBJuG9HRwlGc</a></li>
-<li><a href="https://gist.github.com/ryerh/14b7c24dfd623ef8edc7" target="_blank" rel="noopener">https://gist.github.com/ryerh/14b7c24dfd623ef8edc7</a></li>
-<li><a href="http://louiszhai.github.io/2017/09/30/tmux/" target="_blank" rel="noopener">http://louiszhai.github.io/2017/09/30/tmux/</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Tools</category>
-      </categories>
-      <tags>
-        <tag>tmux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>youtube 推荐频道(Tech)</title>
     <url>/2019/12/10/youtube-%E6%8E%A8%E8%8D%90%E9%A2%91%E9%81%93-Tech/</url>
     <content><![CDATA[<ul>
@@ -2858,6 +2804,18 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>乱七八说</title>
+    <url>/2020/04/15/%E4%B9%B1%E4%B8%83%E5%85%AB%E8%AF%B4/</url>
+    <content><![CDATA[<p>不随意在论坛上发布言论，容易被不知上下文的人乱七八说。</p>
+<blockquote>
+<p>相比较，在技术论坛上，将自己的问题描述清楚，很多人乐意、有兴趣来帮你解决；最好把上下文给全一点，即使没有给全，一般技术人员会耐心的询问。但很多日常生活的论坛，缺乏谨慎、客观、耐心，弄不好就是一场大战。</p>
+</blockquote>
+]]></content>
+      <tags>
+        <tag>Q List</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>值得收藏的技术类站点</title>
     <url>/2019/10/04/%E5%80%BC%E5%BE%97%E6%94%B6%E8%97%8F%E7%9A%84%E6%8A%80%E6%9C%AF%E7%B1%BB%E7%AB%99%E7%82%B9/</url>
     <content><![CDATA[<p>一些技术公司，及其站点网站的列表，有很多高质量的文章和最佳实践。</p>
@@ -2871,6 +2829,100 @@ pipeline {
       <categories>
         <category>Tools</category>
       </categories>
+      <tags>
+        <tag>Tools</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Vivaldi入手</title>
+    <url>/2020/04/09/%E5%85%A5%E6%89%8BVivaldi/</url>
+    <content><![CDATA[<h3 id="0-前言"><a href="#0-前言" class="headerlink" title="0.前言"></a>0.前言</h3><p>最近才在一些论坛上听说 <strong>Vivaldi</strong> 浏览器的大名（我孤陋寡闻了😅）。毕竟入手一个浏览器工具又不花钱，那Chrome挺好用的，为什么要换？</p>
+<blockquote>
+<p>尝尝新鲜的，换着试试看，毕竟不尝试一段时间怎么知道好不好。</p>
+</blockquote>
+<h3 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1.介绍"></a>1.介绍</h3><p>从<a href="https://en.wikipedia.org/wiki/Vivaldi_(web_browser" target="_blank" rel="noopener">维基百科的介绍</a>)来看，Vivaldi的来头可不小，创始人是 Opera 浏览器的前任CEO，估计中间有很多商业故事。使用 Chromium 做内核，能直接安装Chrome网上应用店的应用程序.2016年4月发布第一个版本，距今正好4年，算是比较年轻。后生可畏，轻装上阵，说不定比庞大的chrome会有一些小优势。</p>
+<p><code>Vivaldi is a freeware, cross-platform web browser developed by Vivaldi Technologies, a company founded by Opera Software co-founder and former CEO Jon Stephenson von Tetzchner and Tatsuki Tomita. It was officially launched on April 6, 2016.</code></p>
+<h3 id="2-安装"><a href="#2-安装" class="headerlink" title="2.安装"></a>2.安装</h3><p>直接到官网 <a href="https://vivaldi.com/" target="_blank" rel="noopener">https://vivaldi.com/</a> 下载安装对应系统的版本即可。我当前安装的具体版本是：<code>Vivaldi    2.11.1811.52 (Stable channel) (64-bit)</code></p>
+<h3 id="3-使用"><a href="#3-使用" class="headerlink" title="3.使用"></a>3.使用</h3><p>打开安装好的浏览器后会有一个链接 <code>vivaldi://welcome</code> ，引导做初始化设置</p>
+<h5 id="3-1-引导"><a href="#3-1-引导" class="headerlink" title="3.1 引导"></a>3.1 引导</h5><p><strong>Welcome to Vivaldi</strong></p>
+<blockquote>
+<p>没啥～</p>
+</blockquote>
+<p><strong>Import Bookmarks &amp; Settings</strong></p>
+<blockquote>
+<p>不要要导入导出的步骤，vivaldi会要求输入电脑的密码获取权限拿其他浏览器的书签内容。</p>
+</blockquote>
+<p><strong>Pick a Theme</strong></p>
+<blockquote>
+<p>选背景主题，不多说，但是据说能够做很多自定义的设置，比如某个网站打开后指定其tab颜色。</p>
+</blockquote>
+<p><strong>Position Your Tabs</strong></p>
+<blockquote>
+<p>这里的Tabs指的是一般浏览器最上头一栏，可以切换你的网页的部分。vivaldi 支持你把这个Tabs放到 顶部、左边、右边、底部，但是一般还是习惯 顶部，暂时不换了。尝试了一下放到左边，占据的面积会大一些，因为会直接显示每个网页的缩略图，清晰的让你看到网页大致内容。</p>
+</blockquote>
+<p><strong>Get Going</strong></p>
+<blockquote>
+<p>观看指南的链接、加入社区的链接、关注多个社交账、号是否接收邮件</p>
+</blockquote>
+<p>更多详细的功能也可以看发布<a href="https://en.wikipedia.org/wiki/Vivaldi_(web_browser" target="_blank" rel="noopener">计划</a>#Releases)，毕竟每次新加功能都会在发布计划里提到。</p>
+<h5 id="3-2-实际使用"><a href="#3-2-实际使用" class="headerlink" title="3.2 实际使用"></a>3.2 实际使用</h5><p>很容易实现在多panel功能，效果如下，方便对比、或者参考：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">+-------------+ +-------------+</span><br><span class="line">|             | |             |</span><br><span class="line">|             | |             |</span><br><span class="line">| website 1   | |   website 2 |</span><br><span class="line">|             | |             |</span><br><span class="line">|             | |             |</span><br><span class="line">|             | |             |</span><br><span class="line">|             | |             |</span><br><span class="line">+-------------+ +-------------+</span><br></pre></td></tr></table></figure>
+<p>针对网页记笔记，右边网页，左边笔记，后期也可查找、使用。<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">+-----------------------------+</span><br><span class="line">|    ||                       |</span><br><span class="line">|    ||                       |</span><br><span class="line">|note||                       |</span><br><span class="line">|    ||       website         |</span><br><span class="line">|    ||                       |</span><br><span class="line">+-----|                       |</span><br><span class="line">|    ||                       |</span><br><span class="line">+-----------------------------+</span><br></pre></td></tr></table></figure></p>
+<hr>
+<ul>
+<li style="list-style: none"><input type="checkbox"> TODO 很多功能还未尝试，等用过后再来聊聊。不过听说<em>快捷键</em>、<em>网页笔记</em>（保存百度文库的复制内容？）算是特色吧</li>
+</ul>
+<ul>
+<li style="list-style: none"><input type="checkbox"> TODO 但其实以前也没研究过chrome，firefox有没有类似功能。移动端来看，目前还只有 Android 版 Vivaldi，而且还是测试版本，估计等待不久就会出正式版。对开发人员而言，如何调试程序、定位bug，清理缓存数据？是否会有新的交互方式呢，</li>
+</ul>
+<hr>
+<p><strong>More Ref:</strong></p>
+<ul>
+<li><a href="https://www.youtube.com/playlist?list=PL72e6dBabYNVRfpvEUt-WNfV7tZuKDAPB" target="_blank" rel="noopener">youtube播放列表</a></li>
+<li>详细的功能也可以看发布计划,<a href="https://en.wikipedia.org/wiki/Vivaldi_(web_browser)#Releases" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Vivaldi_(web_browser)#Releases</a>, 毕竟每次新加功能都会在发布计划里提到</li>
+<li>小工具<a href="http://asciiflow.com/" target="_blank" rel="noopener">asciiflow</a></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>Tools</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>入手Telegram</title>
+    <url>/2020/04/17/%E5%85%A5%E6%89%8BTelegram/</url>
+    <content><![CDATA[<p>听说有很多有趣的组织、个人都有电报，于是想看看。</p>
+<h3 id="1-是什么？"><a href="#1-是什么？" class="headerlink" title="1. 是什么？"></a>1. 是什么？</h3><p><a href="https://telegram.org/" target="_blank" rel="noopener">Telegram</a> —— 中文名又称”电报”，或简称”TG”。Telegram 是跨平台的即时通信软件，</p>
+<p><img src="https://imgchr.com/i/Juq1FU" alt="telegram-why-what"></p>
+<p>更多关于 Telegram 的介绍可以查看 <a href="https://en.wikipedia.org/wiki/Telegram_(software" target="_blank" rel="noopener">Wikipedia</a>)。</p>
+<h3 id="2-怎么用"><a href="#2-怎么用" class="headerlink" title="2. 怎么用"></a>2. 怎么用</h3><p>在中国大陆境内无法直接连接，注册和使用都需要科学上网。</p>
+<p>自己注册过程如下：</p>
+<ul>
+<li><ol>
+<li>为了不下载东西，在网页直接注册 <a href="https://web.telegram.org/" target="_blank" rel="noopener">https://web.telegram.org/</a><br>多次尝试无法注册，提示如下：<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">Too fast</span><br><span class="line">You are performing too many actions. Please try again later.</span><br><span class="line">Click for technical details</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
+<blockquote>
+<p>其实尝试的次数并不多，1-2次后就有以上提示了。+ 86的中国大陆号码似乎收不到验证码</p>
+</blockquote>
+<ul>
+<li><ol start="2">
+<li>找一个临时的美国号码<blockquote>
+<p>不太好使</p>
+</blockquote>
+</li>
+</ol>
+</li>
+<li><p>[] 尚未注册成功</p>
+</li>
+</ul>
+<h3 id="3-怎么用"><a href="#3-怎么用" class="headerlink" title="3. 怎么用"></a>3. 怎么用</h3><ul>
+<li>[] todo </li>
+</ul>
+<hr>
+<p><strong>More Ref:</strong><br><a href="https://www.notion.so/Telegram-95a6c23f0bb1466892b55f9ec8c755fd" target="_blank" rel="noopener">Telegram 教程全指南</a><br><a href="https://telegram.org/faq" target="_blank" rel="noopener">官网faq</a></p>
+]]></content>
       <tags>
         <tag>Tools</tag>
       </tags>
@@ -2915,22 +2967,6 @@ pipeline {
       </categories>
       <tags>
         <tag>浪潮之巅</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>枢纽1</title>
-    <url>/2020/04/02/%E6%9E%A2%E7%BA%BD1/</url>
-    <content><![CDATA[<div id="hexo-blog-encrypt" data-wpm="用心想想，ta可能用什么密码" data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
-  <div class="hbe-input-container">
-  <input type="password" id="hbePass" placeholder="" />
-    <label for="hbePass">Hey, password is required here.</label>
-    <div class="bottom-line"></div>
-  </div>
-  <script id="hbeData" type="hbeData" data-hmacdigest="c47e18f1b6f53d858e78bda78827132950495876d71922e41c4f877e813f7085">7faa57a996895b16c827c61fe8d27d9bd8c8ddb5aa724c94ed1934c807058b60ca0b478029088315ff2ed593d3d1012fdf288b8733e868409aac7e8920f59b64b553f2cec04ef0d3a7b623836aa4d7236b067b45852a1791b0f290ed55f5eccd8a69e0702a2ecac10ba4cbe4418317df084da7c68e3a97a0b0f10456d1c65c421f01d0dfad2a02f0ecc0d3701c076221cde05a91ae306bb07084273d51c9d8345195657471fa8e5515dff65bfbab989b13f31c70c25b17f634f5798920206bfd19de182e83e8783db001c468a6376e8af803f66d39f1df7832f4420b3257b040931ff9d9ed983fd997c8c5c82c8bd738357708cbd02eae1d833496a3e2b08eb1476bee9d641f2d7a0d8090a2d374d611483589e6048dbebcb46c6fb7f1ce1e3c20ec60707610a85a934c6364b5edf1f071cd0f342ab384070804743d4f9e976f0c68376d7e17b4ecab25fef28a1b8850d5582d6d24d9d6abcb0aacb1f95393f0572d13debdd427d077c1953d10800e400bb9fe8bbde9d3952788711c9bb284ef3e2284f2fe8e4dc6c76270f5e841fe86800e76ed7dec3b868c8fc8fb66f97e1787ee35a53fecddf6071da65725938a37149b7ddc67e52f3debfe8ebc22019f83a653eb0af49cc6546e360320093aa2eaf2e75ac551b0547134adde88ca7862a415a4274ad4b621b1ec52db9e88dce0759a8dd5e3298de093f98412358212630e0568b22cbddf770aceb55a8571334fd449ea59aa355e5cdfc97c6ab2894129c26e39aade65e6873a4cfe44de38be57a7612a822ab2742c6b09603b3b782a42f1820fb31cb63a993c732df11e768dd79ae5202eb180b76c41001c70c209208be79ac21608a51e530e3f3d8527a03b4758affe5dac1e75ba47b7c146a3fb6d3b4de1d4c7528e831a392e9c1a49ec987c1c5a2788e8963e75e819201d27e17e899355469a046524c8c6f3ccee82ffd227670209289a94ed3532158956d1f4725a658f734440b192100987bd19149aca83f2c97679a43fff34b8300c51f7ed88e3dad2dda0756bd3fd5b8ebe504fd738754c04f4cebf22d83921b067eebc7b12a93f2c9b2e08e9bdafe249d17142d2464233b44061076f864ad04af43598ec0ff14a9582382f5f94520cd1f787841f1dff3da910abf92442f9da20c539475a329c2de179ebe6981430e773a8566e8bcce894cd7dbc72efcfad8324721b6bed3d70aee3c4fd7326d5a2372e1607f3bfd2e037bb9e768b30ef28bf2b626775722ac713e9223e33d86960307e8957574ddbc92cbefcd99a31fefe16511357b8dfe451b7ae66981c93739ece5c15c01265d2faea9c94d275e115239b0de00b15482a94ba666ab3cb62869cd01d1023f87868b93a918083154e8cb4fa4e3e488b7f9634df17aae4b5cb73dca683a24cab338e38849e60e829582ad527c6a919651e5dc653742daa2d10af980fb4d632ff0f78c2c7cc0e3ab326ddcb756067f0eaf2a9c9d16cdbb84ff460fe4f8b4c997718fa830559727106b99ce6e33bbf22840d264874a1f6457c01276bbcf6f6bee3fe3a24d08d004294288e0a2eb58b2845f87166da0b0578730e039b418cd1e8004b7e6f1197fa26a5dc3d8fdb6e28c19f83fc19224b238d73a87f0564ba5b0e757aa1e85bcd981686ffe54db58c2b700bb4d87fbd56f7f8714a95444d90e4dced8f4a696f5ef8eaf84db2490457b6c8ea93a3cb5710dc718c7f35e6c72f4bd1c4b7731ef7d1c66d2204d3b27eab5423bd2d5732a5c26c1215061ec483c01620c3febb2b2e620870a80bc1a4541a55bfd7efe11d792edd13bb2e3344aeaa2ccf15dfff3c765cd0cde1968a651decbdb24b205986588ff4a6a5037748727f3a196807028a2be3377368924bbe13095e087d1005b7e8efedc98df83a653ee78f0d25850db8554e08b67ee280cb19eecf075c437eb22e04fb99ceb719834358686be45f9000999ff2d6c147bf189e579d7f327bef5dd3a600a9c06740446d856d899fd4c8f5c15b5c217600e7c233b597fe8f2c702ddd64adda900ee05fc4d65e5610eea815b286cd653420fcfd2a0bc1fbb189f817cef07e24b463d585102c4fff9877bb3db950a9cbf8beffb7cab2a8e69cbeddb3f6949f42cfc01f69d50b68970781163238ce89b073e06364615428341fe6a20598fc30566ae84a24b7e34005c595ae261377715de71d3432dc738b33b82bec777557d07b92f370a2ccfda4879c43aff70717d2bded412efb7e49bc0f5ae550fa3ad352c9c0aa0d58a251608cf6cb5b1938091c78b4dc20a7ae58c9ea942e9a34e0fa67cb03ec71209ebe3f90e7842e68408a065df3b8a3e6ce8d066119b20d98adf6b48ab27794dfb14af1b93513847f271c4d1604f25dd50da3215e8d4b3bb4f5c336b4993f7f49c8f449d2f65fd42892d986246f10af6faf9b771d34eb46c1bbea2803478aaa59037c2cead0276d6ade3a085d4c098d9ce7c762770bac16451cf79632fd6fc26daad3f86356347bf77d112f10b2db6e0b58bded0208ff42b50a338b51169d1fedab2edfcd3bc418dabb3fb7fcc7399dc597d6b3961d28a5d2a7b2b8e9feada37b0f81efd72398e0c15b963a63d39a1185e5f965654f9c846d3afc776e0a1f383412336cf0b1d2949cb8d92b754f5fe0c18255dc3155067c24b422abe7bdb750862cb3de270fbe3dcadb4b80a5dcbd1d3f78fb238b59f60f1a3123d84b816bd1fc58675be0412ec244a22f2817226f60a9a4ccd821d2498e1115c5bacfc9d6fbd541dc4211f551b2ea10037505e9cb5d5cd7df28ac29e80ed353baa1f55c4678a6f7951a57b76380f9c44427e6a5a2bd00a999029b4bbb5e48a72fc0cf8c23d47f998f72d4874fdd453ef1cb20763a771e9895ee48fdb698dca97ef789cc6139731707e279af6dd1f4fec101bc38f13dfb5a65c7b882ed721fc0329b3b4cb7b825cbaeff98fb57fef21d0624c819413366628da739dd5c593ef4454fa909804ca96381201834243884e435c08811bbfd8030050bca5e4df3af10f04524dc8672cc8ca12888a229d85be4e116f02af25965dd2955972aae36931d7426d47c97e89f4eeda9a4d7724ec7665cbc183b374f446efe971f103008ee55a8091d6776878948f9c0c6e40e403c13865fabf990a9f901555ee668470e37a00a4b709041e4fa65f04745760be87e06697a23332e4d5a4764361a3b3f9cfaec8f2a1d31de1273a957222a3460bb355fff8c76617999852cf2078e956e8091f486fff50e9e3ee4b04284a0360002e94ecfd24ea4864560f85bc7688ce3a4277337af903e671c08e7617e42219000986f03da753e2475086c50648a778feafd4a3f977cc26122bc80044b48be0daa66b39d00d8d21ed63fa2cacfcbec52964c6bef3b1d001eb83cd43359ea63c1ed7764b7f4f90fd90b54edc5c422a0bd0a8648d16a230450983a64eb0f17b8f2bd155940431881d1543e5fd9c74acc48f799e5c62937bce109165147af95d2a05b977378251a2acb8908aa99d6169e326a0d542819b11bf3ba7a0160f4fd809afc59f161fa7cde160beb4e27eb6bac94f7c62913e36b12f59ddedb9c56384340fb9705de082a43ff33b7e484b7ea2f943f68c73bec7e63e085ebd67d2e1c7227a9b519d493fd2a374335950c3bacafef803e6bbac2f808b537fdabe3998aff3a985a5db75321e1a32037fdae4835e556bbe963d7841db44b035e7e7714edf4092ac3435507b06c85fd234d2fd4b5ce804520f8137c7ec382458e57f2e76ccf9b301b8b0474dcdd722eb3c21525d0a3354742fbc71cc78eac08f0a78fd20ae2644715b750dbd4f12134375e40eedabdebc1d3eb772c2327df456eef8658736b9d0c973b4d9485df867ea7941dcd78370efef74e6631c9981cec381f11537c011510f2f34d2e482a776e6a93defb2f68945905b77bc5bbea73ebed4b63423d733f1801cf0f65a56cb25374f710ba967a210f6c1aecc8d8a0908c4fb274bf997fc326ca3705b3b62992295eaf71261d134c4bb5b4009e368ebab5bf5cedb25003b36912a52365848dbb009fb331434cf19679dccac10a609b13ac3cd26448039ca20d076fe31ee00d0ec85cfa829ba14f80014e28287b7a5d063fa51fa4a34d3dc243aeeae0787d59b85ca65de147a8e2d619b72de3237f8586af702b9b350a7830b2928597197d7e3ff294d12225143ccbf0f620722724024c62d7d840f1496308d67a87bfe07fe572f8f708d8ae04dda364ad0d5e54dfd8079906d41b78f5afe11c04e0ee16add48c198e3dff0043b7df63a3f7a4c746e550a5725a6fcf7e0d73d0f33b7b4eacfe143c5f06fa1e7d207f8110bf4551ea5c4d906be7e91b8bc9f6f6c8aa3bbcc10b96c94e75ed690a6df37319181d1dffca3d2c2eff7a765080fb63a3117c9257ea5d08e6d52b4c964c61e6adc63b4e13d15493fbe2e26c4064fb3415f989b953920cd7c946711a75be7888834cd79717ad6b17d0edfa8857fbb9521b9c50034ed855e2f2221e36cf7d1676efbc1bd89e9a9007498663504f13296fb7054c9add971f52e8d10b267176d27565fe301783864ce52c8cc2438c81097dc4e1a23e73721fcbe34d91aed94d01640a33f955581e1a36aad2feee359941b6cc784addca4bf577dd127d4a3743ae49da59eadc41aa1ec3282b8df61d80ae64568fe576a58d99d6aba691b764de236cdc7bf309a79e32badfadcb80c5968711abe88cd4cbcfcc31edcc46fae3566dd4034e5ecfaf173d4da4414677716cccbde68da8a29205364c05dbbb7612d08240cdd88865745ad9c52e005cbd969cb29919723b5037823c775cc236d5015ca0414db0d1381169ac7da6d2b8f865869b2c6282e978358424faf23502c8b6e8b1e45e92f84cf4029155507bf51f0ba31e87bb80d3bc3a251e1c4dc6bb65143548fe7b5a67b605ca22eb587960c84c46067e29370d86051f44f0905daf4f187c4b0d0915dc16e27caff32df42eb34360d70a63188c9c665d0e217074ece5e478a9c66439e67e73accf25d379f33a52220e24566dfe429e5a1bb3aee0965873872857bd8fb3061a4571a130e7ed200522c043689362baf186f11861515a2b2daaade313bffdff4506449e68ad27689d78b4d58812ea43a6eef014d9c91ef12a3b79ec9440d12b9c9e57836f82c7fef2b37a71b2445281db9c6d8fc45dd18f992eb7b27f134205207a6baf7cf23e1f083e36ccb025eb30132490b6759cb66b3ac99e9d663e9d3ac28c64b6568a8d86ca91a66588e6f9ea775be1cb77fc0032ac628ecb7024f25f8e75d4443b7009bedb8dd6de681a185fc2114b23b15dd6cace22c96ce19009f49efc68a0f972a6d0780db6c0565750e1a70d8f679c42c70d247ae2fb961a31a0c3a40939cee41f5297eea3814356dbd84af876a97863c7da4266dda2d8372d48c309a16696e58e5d1ff0010acecd39c206bb2909cb778384783eab93b7a587f26d9882f7e015040cb25e94a66ed54113a71783f117ee1362b882ae7297856706b38a1c6d77169da874634eb595cadbee5da0fcd00f887db478263096b5365cefc70aedd7663965992da2442083dde0d431e0074645cbc66391a5b0537e46658feffce6a8e5c4ed10038fce25c50c3893e0de6a9f97bee3b8f3e391acef3cbdf03c5501c5aa3f792c1ea9c1f0c36ac39f65ff3ef0795e8d134f91e6b30f1e204c06099693430aceba6ed1f753297645c0d949322d14ab35a3b813bb62a382fd7c9af54465f90d624d9072cc045217f62d62032e8f22fbd3e49a47ef2edc1f29465b2c32c3ad98d5955b309db5c16edffa8eb5d3e8b8868f519606c63d7ccafa8984f31fe36823fca6486a1a690f2929de1a15ed6047460dde8bd741fe666edfd20a59e4b072a9bb65d53bb8ce8cf1676008f69f769bea2ca77736db0a7812f43070abe03c841b90ecefa9c1b19f2f1a87dbaed87118fb5d859a1221f14331cc2eef37e09d831a6e00da593fe4e1368807546b588f8b47e702d0d0e994f4c9519efa53789dc50576d6a035b8efbebf2023100729ddb5beeec5a5aa0729db7077525cdbe36a964ed181b827ad565804158ce231ca9b6c68bf85f7181cc587ef4c9110ba6fe96e00c38efb83c0316f9580c4a069c1284f54c6b113f04bd8e9baaaa4c85da757b92096a97003f8cee37bd958432f856a79cee90eea69f0e3f2d4e665c7536d657f5bc9487d3d169f0ab69be233efbaeed68d005fe9a6811c7ed24c25920d3761121f719f220e164ce2d98a30c24dd363f5b7316354eb1f26091b794b608f37623283be0a2c8a4b8083bbb82969917b871fedbefc9bf2b3f666db17329c35151b730f0ebe98727fb4eb8fd3faef0bfe302a23f687e70677a2dfa403ea418aa9a1ed29d89ae4fe427a581f1f5849f0aeedcd5e09929cbd9bc98fd3a566bcef4536d2f58b40e7e9d770ebc40f12ae5aab11532883ef249c003698aeb4cbbd899bc4b4a0b0ee6a9b84900b4902ec7f35a869635d7ee855a556afc3c4a6aa035273bc866d8389783a0d83116e209e028262c9f7b1e261ad5ab7c2749e3ea5dac3a2fdc3e8169fa6e39b8ddf7fdee79bee3d9f02e8351e6efbf4ec056a49be654767d9cd6e4ddb4408e6b456dea9d3fc69d65b4e49939808614c6e238ff8aee8a7592ae674442ffaebd7f7cadc8e70254fb03d7e75ecb9a6e618ae51e81c162e7044b3c88c46bfa7d0143116b824361578b8b97543166b320ee2677d4620ee4bb1a3a057355ceccdeb152d838b3a01a094ae8c6d5ef2311787d93de5b64bc70fc00893fdd4d124cfb818eac9ec48e8f62d055b25290e1bb6dabb32b0937c579837f084bede0e7b7b7c0434ee561c6be5c434c5a7cd5f08ab8ed21c3d55b286011b5bfd890c225a8658cd57d97d5bc6dd3e355d342d03be3f4b950b869228fcc32c7e9d762077c0f30f9a6bff4fa22f50fbf3ff012cb3139698625c482c6732ce16f3873eb23ef849db41d8cc042b655965b26233215d9d1a61b44505d012f8f3fc1e58fd5b6714ae84ffaca99e3ef532551999326a33dc7f7419877dfbd5576247153f756c23ac034cd095525a91cd732b7a7ff10dd9abd456f065f0660993db30e782f83da3964faf4a586800c379312b4a48d56f4608ba0afc0e4ddd6d63ae41aa243a49a7d1cf3ce9c5e186126a43a29b1af4583da9dba44febe48f79d70e5396d3d3333debd846452b1d2ab857c3e9aa8937459097996b73214adb56b614d0974a2fbe93653ffbd86ed14b66c433689972e83068b0fc77a44b815b15effaebb6413d17476e6d12fed73b27b18ffc91dfb00127227e4ce2c11420659c610c15c9430edcc947f7ddfd8947f430ad5bd45f91c556658d190b6b1dee1a499339bf32a48fb4cfafd3faa7c7447a70d9225fc59508ab9031dfc802a6fbcb7af69af4103c59aa63224fdda3c8146bac503e9bef1b89691ad31bd033fe36aaae77059027d01fdcf1195d92c613fdaf67424118d5f2e6aade2910791ffc4b0fe818a7463dc8241b3f5193bcfb91e18fc46cc9136278a6d52b1637cc3b8213918b07fe0d65ebdae127593adca254c09f02299e63c65cbfab7dc1f0dd4420030160c59e7ea752cd9d7f468ae78702cda8</script>
-</div>
-<script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
-      <tags>
-        <tag>Q List</tag>
       </tags>
   </entry>
   <entry>
@@ -2990,6 +3026,22 @@ pipeline {
       <categories>
         <category>读书笔记</category>
       </categories>
+  </entry>
+  <entry>
+    <title>枢纽1</title>
+    <url>/2020/04/02/%E6%9E%A2%E7%BA%BD1/</url>
+    <content><![CDATA[<div id="hexo-blog-encrypt" data-wpm="用心想想，ta可能用什么密码" data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <div class="hbe-input-container">
+  <input type="password" id="hbePass" placeholder="" />
+    <label for="hbePass">Hey, password is required here.</label>
+    <div class="bottom-line"></div>
+  </div>
+  <script id="hbeData" type="hbeData" data-hmacdigest="c47e18f1b6f53d858e78bda78827132950495876d71922e41c4f877e813f7085">7faa57a996895b16c827c61fe8d27d9bd8c8ddb5aa724c94ed1934c807058b60ca0b478029088315ff2ed593d3d1012fdf288b8733e868409aac7e8920f59b64b553f2cec04ef0d3a7b623836aa4d7236b067b45852a1791b0f290ed55f5eccd8a69e0702a2ecac10ba4cbe4418317df084da7c68e3a97a0b0f10456d1c65c421f01d0dfad2a02f0ecc0d3701c076221cde05a91ae306bb07084273d51c9d8345195657471fa8e5515dff65bfbab989b13f31c70c25b17f634f5798920206bfd19de182e83e8783db001c468a6376e8af803f66d39f1df7832f4420b3257b040931ff9d9ed983fd997c8c5c82c8bd738357708cbd02eae1d833496a3e2b08eb1476bee9d641f2d7a0d8090a2d374d611483589e6048dbebcb46c6fb7f1ce1e3c20ec60707610a85a934c6364b5edf1f071cd0f342ab384070804743d4f9e976f0c68376d7e17b4ecab25fef28a1b8850d5582d6d24d9d6abcb0aacb1f95393f0572d13debdd427d077c1953d10800e400bb9fe8bbde9d3952788711c9bb284ef3e2284f2fe8e4dc6c76270f5e841fe86800e76ed7dec3b868c8fc8fb66f97e1787ee35a53fecddf6071da65725938a37149b7ddc67e52f3debfe8ebc22019f83a653eb0af49cc6546e360320093aa2eaf2e75ac551b0547134adde88ca7862a415a4274ad4b621b1ec52db9e88dce0759a8dd5e3298de093f98412358212630e0568b22cbddf770aceb55a8571334fd449ea59aa355e5cdfc97c6ab2894129c26e39aade65e6873a4cfe44de38be57a7612a822ab2742c6b09603b3b782a42f1820fb31cb63a993c732df11e768dd79ae5202eb180b76c41001c70c209208be79ac21608a51e530e3f3d8527a03b4758affe5dac1e75ba47b7c146a3fb6d3b4de1d4c7528e831a392e9c1a49ec987c1c5a2788e8963e75e819201d27e17e899355469a046524c8c6f3ccee82ffd227670209289a94ed3532158956d1f4725a658f734440b192100987bd19149aca83f2c97679a43fff34b8300c51f7ed88e3dad2dda0756bd3fd5b8ebe504fd738754c04f4cebf22d83921b067eebc7b12a93f2c9b2e08e9bdafe249d17142d2464233b44061076f864ad04af43598ec0ff14a9582382f5f94520cd1f787841f1dff3da910abf92442f9da20c539475a329c2de179ebe6981430e773a8566e8bcce894cd7dbc72efcfad8324721b6bed3d70aee3c4fd7326d5a2372e1607f3bfd2e037bb9e768b30ef28bf2b626775722ac713e9223e33d86960307e8957574ddbc92cbefcd99a31fefe16511357b8dfe451b7ae66981c93739ece5c15c01265d2faea9c94d275e115239b0de00b15482a94ba666ab3cb62869cd01d1023f87868b93a918083154e8cb4fa4e3e488b7f9634df17aae4b5cb73dca683a24cab338e38849e60e829582ad527c6a919651e5dc653742daa2d10af980fb4d632ff0f78c2c7cc0e3ab326ddcb756067f0eaf2a9c9d16cdbb84ff460fe4f8b4c997718fa830559727106b99ce6e33bbf22840d264874a1f6457c01276bbcf6f6bee3fe3a24d08d004294288e0a2eb58b2845f87166da0b0578730e039b418cd1e8004b7e6f1197fa26a5dc3d8fdb6e28c19f83fc19224b238d73a87f0564ba5b0e757aa1e85bcd981686ffe54db58c2b700bb4d87fbd56f7f8714a95444d90e4dced8f4a696f5ef8eaf84db2490457b6c8ea93a3cb5710dc718c7f35e6c72f4bd1c4b7731ef7d1c66d2204d3b27eab5423bd2d5732a5c26c1215061ec483c01620c3febb2b2e620870a80bc1a4541a55bfd7efe11d792edd13bb2e3344aeaa2ccf15dfff3c765cd0cde1968a651decbdb24b205986588ff4a6a5037748727f3a196807028a2be3377368924bbe13095e087d1005b7e8efedc98df83a653ee78f0d25850db8554e08b67ee280cb19eecf075c437eb22e04fb99ceb719834358686be45f9000999ff2d6c147bf189e579d7f327bef5dd3a600a9c06740446d856d899fd4c8f5c15b5c217600e7c233b597fe8f2c702ddd64adda900ee05fc4d65e5610eea815b286cd653420fcfd2a0bc1fbb189f817cef07e24b463d585102c4fff9877bb3db950a9cbf8beffb7cab2a8e69cbeddb3f6949f42cfc01f69d50b68970781163238ce89b073e06364615428341fe6a20598fc30566ae84a24b7e34005c595ae261377715de71d3432dc738b33b82bec777557d07b92f370a2ccfda4879c43aff70717d2bded412efb7e49bc0f5ae550fa3ad352c9c0aa0d58a251608cf6cb5b1938091c78b4dc20a7ae58c9ea942e9a34e0fa67cb03ec71209ebe3f90e7842e68408a065df3b8a3e6ce8d066119b20d98adf6b48ab27794dfb14af1b93513847f271c4d1604f25dd50da3215e8d4b3bb4f5c336b4993f7f49c8f449d2f65fd42892d986246f10af6faf9b771d34eb46c1bbea2803478aaa59037c2cead0276d6ade3a085d4c098d9ce7c762770bac16451cf79632fd6fc26daad3f86356347bf77d112f10b2db6e0b58bded0208ff42b50a338b51169d1fedab2edfcd3bc418dabb3fb7fcc7399dc597d6b3961d28a5d2a7b2b8e9feada37b0f81efd72398e0c15b963a63d39a1185e5f965654f9c846d3afc776e0a1f383412336cf0b1d2949cb8d92b754f5fe0c18255dc3155067c24b422abe7bdb750862cb3de270fbe3dcadb4b80a5dcbd1d3f78fb238b59f60f1a3123d84b816bd1fc58675be0412ec244a22f2817226f60a9a4ccd821d2498e1115c5bacfc9d6fbd541dc4211f551b2ea10037505e9cb5d5cd7df28ac29e80ed353baa1f55c4678a6f7951a57b76380f9c44427e6a5a2bd00a999029b4bbb5e48a72fc0cf8c23d47f998f72d4874fdd453ef1cb20763a771e9895ee48fdb698dca97ef789cc6139731707e279af6dd1f4fec101bc38f13dfb5a65c7b882ed721fc0329b3b4cb7b825cbaeff98fb57fef21d0624c819413366628da739dd5c593ef4454fa909804ca96381201834243884e435c08811bbfd8030050bca5e4df3af10f04524dc8672cc8ca12888a229d85be4e116f02af25965dd2955972aae36931d7426d47c97e89f4eeda9a4d7724ec7665cbc183b374f446efe971f103008ee55a8091d6776878948f9c0c6e40e403c13865fabf990a9f901555ee668470e37a00a4b709041e4fa65f04745760be87e06697a23332e4d5a4764361a3b3f9cfaec8f2a1d31de1273a957222a3460bb355fff8c76617999852cf2078e956e8091f486fff50e9e3ee4b04284a0360002e94ecfd24ea4864560f85bc7688ce3a4277337af903e671c08e7617e42219000986f03da753e2475086c50648a778feafd4a3f977cc26122bc80044b48be0daa66b39d00d8d21ed63fa2cacfcbec52964c6bef3b1d001eb83cd43359ea63c1ed7764b7f4f90fd90b54edc5c422a0bd0a8648d16a230450983a64eb0f17b8f2bd155940431881d1543e5fd9c74acc48f799e5c62937bce109165147af95d2a05b977378251a2acb8908aa99d6169e326a0d542819b11bf3ba7a0160f4fd809afc59f161fa7cde160beb4e27eb6bac94f7c62913e36b12f59ddedb9c56384340fb9705de082a43ff33b7e484b7ea2f943f68c73bec7e63e085ebd67d2e1c7227a9b519d493fd2a374335950c3bacafef803e6bbac2f808b537fdabe3998aff3a985a5db75321e1a32037fdae4835e556bbe963d7841db44b035e7e7714edf4092ac3435507b06c85fd234d2fd4b5ce804520f8137c7ec382458e57f2e76ccf9b301b8b0474dcdd722eb3c21525d0a3354742fbc71cc78eac08f0a78fd20ae2644715b750dbd4f12134375e40eedabdebc1d3eb772c2327df456eef8658736b9d0c973b4d9485df867ea7941dcd78370efef74e6631c9981cec381f11537c011510f2f34d2e482a776e6a93defb2f68945905b77bc5bbea73ebed4b63423d733f1801cf0f65a56cb25374f710ba967a210f6c1aecc8d8a0908c4fb274bf997fc326ca3705b3b62992295eaf71261d134c4bb5b4009e368ebab5bf5cedb25003b36912a52365848dbb009fb331434cf19679dccac10a609b13ac3cd26448039ca20d076fe31ee00d0ec85cfa829ba14f80014e28287b7a5d063fa51fa4a34d3dc243aeeae0787d59b85ca65de147a8e2d619b72de3237f8586af702b9b350a7830b2928597197d7e3ff294d12225143ccbf0f620722724024c62d7d840f1496308d67a87bfe07fe572f8f708d8ae04dda364ad0d5e54dfd8079906d41b78f5afe11c04e0ee16add48c198e3dff0043b7df63a3f7a4c746e550a5725a6fcf7e0d73d0f33b7b4eacfe143c5f06fa1e7d207f8110bf4551ea5c4d906be7e91b8bc9f6f6c8aa3bbcc10b96c94e75ed690a6df37319181d1dffca3d2c2eff7a765080fb63a3117c9257ea5d08e6d52b4c964c61e6adc63b4e13d15493fbe2e26c4064fb3415f989b953920cd7c946711a75be7888834cd79717ad6b17d0edfa8857fbb9521b9c50034ed855e2f2221e36cf7d1676efbc1bd89e9a9007498663504f13296fb7054c9add971f52e8d10b267176d27565fe301783864ce52c8cc2438c81097dc4e1a23e73721fcbe34d91aed94d01640a33f955581e1a36aad2feee359941b6cc784addca4bf577dd127d4a3743ae49da59eadc41aa1ec3282b8df61d80ae64568fe576a58d99d6aba691b764de236cdc7bf309a79e32badfadcb80c5968711abe88cd4cbcfcc31edcc46fae3566dd4034e5ecfaf173d4da4414677716cccbde68da8a29205364c05dbbb7612d08240cdd88865745ad9c52e005cbd969cb29919723b5037823c775cc236d5015ca0414db0d1381169ac7da6d2b8f865869b2c6282e978358424faf23502c8b6e8b1e45e92f84cf4029155507bf51f0ba31e87bb80d3bc3a251e1c4dc6bb65143548fe7b5a67b605ca22eb587960c84c46067e29370d86051f44f0905daf4f187c4b0d0915dc16e27caff32df42eb34360d70a63188c9c665d0e217074ece5e478a9c66439e67e73accf25d379f33a52220e24566dfe429e5a1bb3aee0965873872857bd8fb3061a4571a130e7ed200522c043689362baf186f11861515a2b2daaade313bffdff4506449e68ad27689d78b4d58812ea43a6eef014d9c91ef12a3b79ec9440d12b9c9e57836f82c7fef2b37a71b2445281db9c6d8fc45dd18f992eb7b27f134205207a6baf7cf23e1f083e36ccb025eb30132490b6759cb66b3ac99e9d663e9d3ac28c64b6568a8d86ca91a66588e6f9ea775be1cb77fc0032ac628ecb7024f25f8e75d4443b7009bedb8dd6de681a185fc2114b23b15dd6cace22c96ce19009f49efc68a0f972a6d0780db6c0565750e1a70d8f679c42c70d247ae2fb961a31a0c3a40939cee41f5297eea3814356dbd84af876a97863c7da4266dda2d8372d48c309a16696e58e5d1ff0010acecd39c206bb2909cb778384783eab93b7a587f26d9882f7e015040cb25e94a66ed54113a71783f117ee1362b882ae7297856706b38a1c6d77169da874634eb595cadbee5da0fcd00f887db478263096b5365cefc70aedd7663965992da2442083dde0d431e0074645cbc66391a5b0537e46658feffce6a8e5c4ed10038fce25c50c3893e0de6a9f97bee3b8f3e391acef3cbdf03c5501c5aa3f792c1ea9c1f0c36ac39f65ff3ef0795e8d134f91e6b30f1e204c06099693430aceba6ed1f753297645c0d949322d14ab35a3b813bb62a382fd7c9af54465f90d624d9072cc045217f62d62032e8f22fbd3e49a47ef2edc1f29465b2c32c3ad98d5955b309db5c16edffa8eb5d3e8b8868f519606c63d7ccafa8984f31fe36823fca6486a1a690f2929de1a15ed6047460dde8bd741fe666edfd20a59e4b072a9bb65d53bb8ce8cf1676008f69f769bea2ca77736db0a7812f43070abe03c841b90ecefa9c1b19f2f1a87dbaed87118fb5d859a1221f14331cc2eef37e09d831a6e00da593fe4e1368807546b588f8b47e702d0d0e994f4c9519efa53789dc50576d6a035b8efbebf2023100729ddb5beeec5a5aa0729db7077525cdbe36a964ed181b827ad565804158ce231ca9b6c68bf85f7181cc587ef4c9110ba6fe96e00c38efb83c0316f9580c4a069c1284f54c6b113f04bd8e9baaaa4c85da757b92096a97003f8cee37bd958432f856a79cee90eea69f0e3f2d4e665c7536d657f5bc9487d3d169f0ab69be233efbaeed68d005fe9a6811c7ed24c25920d3761121f719f220e164ce2d98a30c24dd363f5b7316354eb1f26091b794b608f37623283be0a2c8a4b8083bbb82969917b871fedbefc9bf2b3f666db17329c35151b730f0ebe98727fb4eb8fd3faef0bfe302a23f687e70677a2dfa403ea418aa9a1ed29d89ae4fe427a581f1f5849f0aeedcd5e09929cbd9bc98fd3a566bcef4536d2f58b40e7e9d770ebc40f12ae5aab11532883ef249c003698aeb4cbbd899bc4b4a0b0ee6a9b84900b4902ec7f35a869635d7ee855a556afc3c4a6aa035273bc866d8389783a0d83116e209e028262c9f7b1e261ad5ab7c2749e3ea5dac3a2fdc3e8169fa6e39b8ddf7fdee79bee3d9f02e8351e6efbf4ec056a49be654767d9cd6e4ddb4408e6b456dea9d3fc69d65b4e49939808614c6e238ff8aee8a7592ae674442ffaebd7f7cadc8e70254fb03d7e75ecb9a6e618ae51e81c162e7044b3c88c46bfa7d0143116b824361578b8b97543166b320ee2677d4620ee4bb1a3a057355ceccdeb152d838b3a01a094ae8c6d5ef2311787d93de5b64bc70fc00893fdd4d124cfb818eac9ec48e8f62d055b25290e1bb6dabb32b0937c579837f084bede0e7b7b7c0434ee561c6be5c434c5a7cd5f08ab8ed21c3d55b286011b5bfd890c225a8658cd57d97d5bc6dd3e355d342d03be3f4b950b869228fcc32c7e9d762077c0f30f9a6bff4fa22f50fbf3ff012cb3139698625c482c6732ce16f3873eb23ef849db41d8cc042b655965b26233215d9d1a61b44505d012f8f3fc1e58fd5b6714ae84ffaca99e3ef532551999326a33dc7f7419877dfbd5576247153f756c23ac034cd095525a91cd732b7a7ff10dd9abd456f065f0660993db30e782f83da3964faf4a586800c379312b4a48d56f4608ba0afc0e4ddd6d63ae41aa243a49a7d1cf3ce9c5e186126a43a29b1af4583da9dba44febe48f79d70e5396d3d3333debd846452b1d2ab857c3e9aa8937459097996b73214adb56b614d0974a2fbe93653ffbd86ed14b66c433689972e83068b0fc77a44b815b15effaebb6413d17476e6d12fed73b27b18ffc91dfb00127227e4ce2c11420659c610c15c9430edcc947f7ddfd8947f430ad5bd45f91c556658d190b6b1dee1a499339bf32a48fb4cfafd3faa7c7447a70d9225fc59508ab9031dfc802a6fbcb7af69af4103c59aa63224fdda3c8146bac503e9bef1b89691ad31bd033fe36aaae77059027d01fdcf1195d92c613fdaf67424118d5f2e6aade2910791ffc4b0fe818a7463dc8241b3f5193bcfb91e18fc46cc9136278a6d52b1637cc3b8213918b07fe0d65ebdae127593adca254c09f02299e63c65cbfab7dc1f0dd4420030160c59e7ea752cd9d7f468ae78702cda8</script>
+</div>
+<script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
+      <tags>
+        <tag>Q List</tag>
+      </tags>
   </entry>
   <entry>
     <title>画UML</title>
@@ -3144,6 +3196,131 @@ pipeline {
 </table>
 <p>当然可以直接用下面的命令得到下载地址:<br><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">curl -s -X GET \</span><br><span class="line">  <span class="string">'https://apps-cn.xxx.com/fir-api-&lt;3中的url&gt;'</span> \</span><br><span class="line">  -H <span class="string">'Cache-Control: no-cache'</span> \</span><br><span class="line">  -H <span class="string">'Postman-Token: 12ee4b20-c8cc-4729-8342-4d2dd32df2d4'</span> \</span><br><span class="line">  -H <span class="string">'User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1'</span> \</span><br><span class="line">  -H <span class="string">'Upgrade-Insecure-Requests: 1'</span> | grep software-package -A 3 | awk -F <span class="string">"["</span> <span class="string">'&#123;print $3&#125;'</span> | awk -F <span class="string">"]"</span> <span class="string">'&#123;print $1&#125;'</span></span><br></pre></td></tr></table></figure></p>
 <h4 id="5-下载"><a href="#5-下载" class="headerlink" title="5.下载"></a>5.下载</h4><p>直接将第4步中的下载地址粘贴到浏览器中，或者用 <code>wget</code> 命令下载均可</p>
+]]></content>
+      <tags>
+        <tag>Tools</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>再看git</title>
+    <url>/2020/04/17/%E5%86%8D%E7%9C%8Bgit/</url>
+    <content><![CDATA[<p>主要参考资料如下：</p>
+<ul>
+<li><a href="https://git-scm.com/book/zh/v2" target="_blank" rel="noopener">Pro Git book</a></li>
+</ul>
+<h3 id="1-Git特色"><a href="#1-Git特色" class="headerlink" title="1. Git特色"></a>1. Git特色</h3><ul>
+<li>近乎所有操作都是本地执行</li>
+<li>直接记录快照，而非差异比较</li>
+<li>Git 保证完整性<blockquote>
+<p>Git 中所有的数据在存储前都计算校验和，然后以校验和来引用。 这意味着不可能在 Git 不知情时更改任何文件内容或目录内容。 这个功能建构在 Git 底层，是构成 Git 哲学不可或缺的部分。 若你在传送过程中丢失信息或损坏文件，Git 就能发现。</p>
+</blockquote>
+</li>
+</ul>
+<p>Git 用以计算校验和的机制叫做 SHA-1 散列（hash，哈希）。 这是一个由 40 个十六进制字符（0-9 和 a-f）组成的字符串，基于 Git 中文件的内容或目录结构计算出来。</p>
+<h3 id="2-不同状态"><a href="#2-不同状态" class="headerlink" title="2. 不同状态"></a>2. 不同状态</h3><p>git项目的三个阶段：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">+-----------------+       +-----------------+       +-----------------+</span><br><span class="line">|    工 作 区      |       |     暂 存 区     |       |     .git目 录    |</span><br><span class="line">+--------+--------+       +--------+--------+       +---------+-------+</span><br><span class="line">         |                         |                          |</span><br><span class="line">         |                         |                          |</span><br><span class="line">         |                checkout repo                       |</span><br><span class="line">         |    &lt;--------------------+------------------------+ |</span><br><span class="line">         |                         |                          |</span><br><span class="line">         |        git add          |                          |</span><br><span class="line">         | +--------------------&gt;  |                          |</span><br><span class="line">         |                         |                          |</span><br><span class="line">         |                         |        git commit        |</span><br><span class="line">         |                         +-----------------------&gt;  |</span><br><span class="line">         |                         |                          |</span><br><span class="line">         |                         |                          |</span><br><span class="line">         +                         +                          +</span><br></pre></td></tr></table></figure>
+<p>文件可能处于其中之一： 已修改（modified）、 已暂存（staged）、已提交（committed）、</p>
+<ul>
+<li>已修改表示修改了文件，但还没保存到数据库中。</li>
+<li>已暂存表示对一个已修改文件的当前版本做了标记，使之包含在下次提交的快照中。</li>
+<li><p>已提交表示数据已经安全地保存在本地数据库中。</p>
+<h3 id="3-配置"><a href="#3-配置" class="headerlink" title="3. 配置"></a>3. 配置</h3><p>Git 自带一个 git config 的工具来帮助设置控制 Git 外观和行为的配置变量。 这些变量存储在三个不同的位置：</p>
+</li>
+<li><ol>
+<li>系统级<br>/etc/gitconfig 文件: 包含系统上每一个用户及他们仓库的通用配置。 如果在执行 git config 时带上 –system 选项，那么它就会读写该文件中的配置变量。 （由于它是系统配置文件，因此你需要管理员或超级用户权限来修改它。）<br>命令：<code>git config --system -l</code><blockquote>
+<p> mac OS下 似乎默认没有这个文件 <code>/etc/gitconfig</code></p>
+</blockquote>
+</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>(用户)全局级<br>~/.gitconfig 或 ~/.config/git/config 文件：只针对当前用户。 你可以传递 –global 选项让 Git 读写此文件，这会对你系统上 所有 的仓库生效。<br>命令如：<code>git config --global -l</code></li>
+</ol>
+</li>
+<li><ol start="3">
+<li>仓库级<br>当前使用仓库的 Git 目录中的 config 文件（即 .git/config）：针对该仓库。 你可以传递 –local 选项让 Git 强制读写此文件，虽然默认情况下用的就是它。。 （当然，你需要进入某个 Git 仓库中才能让该选项生效。）<br><code>git config --local -l</code></li>
+</ol>
+</li>
+</ul>
+<p>每一个级别会覆盖上一级别的配置，所以 .git/config 的配置变量会覆盖 /etc/gitconfig 中的配置变量，即(用户)全局级 &gt; 系统级</p>
+<h4 id="检查配置信息"><a href="#检查配置信息" class="headerlink" title="检查配置信息"></a>检查配置信息</h4><p>如果想要检查你的配置，可以使用 git config –list 命令来列出所有 Git 当时能找到的配置。<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git config --list</span><br><span class="line">user.name=John Doe</span><br><span class="line">user.email=johndoe@example.com</span><br><span class="line">color.status=auto</span><br><span class="line">color.branch=auto</span><br><span class="line">color.interactive=auto</span><br><span class="line">color.diff=auto</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<p>你可能会看到重复的变量名，因为 Git 会从不同的文件中读取同一个配置（例如：/etc/gitconfig 与 ~/.gitconfig）。 这种情况下，<strong>Git 会使用它找到的每一个变量的最后一个配置</strong>。</p>
+<p>你可以通过输入 git config <key>： 来检查 Git 的某一项配置</key></p>
+<h3 id="4-常用命令"><a href="#4-常用命令" class="headerlink" title="4. 常用命令"></a>4. 常用命令</h3><blockquote>
+<p>参考 <a href="https://zhuanlan.zhihu.com/p/107324618。下面是按照子命令讲解，但如果按照场景讲解可能会更匹配日常使用。" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/107324618。下面是按照子命令讲解，但如果按照场景讲解可能会更匹配日常使用。</a></p>
+</blockquote>
+<ul>
+<li><p>git clone/fetch/checkout</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> &lt;url&gt; <span class="comment">#克隆现有的仓库</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>git branch </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch  <span class="comment"># 显示当前分支</span></span><br><span class="line">git branch -a <span class="comment"># 查看本地分支、远程所有分支</span></span><br><span class="line">git branch branchName <span class="comment"># 新建分支</span></span><br><span class="line">git branch -m branchOld branchNew <span class="comment"># 修改分支名称，从 branchOld 改为 branchNew</span></span><br><span class="line">git push origin --delete dev2  <span class="comment"># 删除分支名 dev2 的远程分支,居然一行命令就搞定了</span></span><br><span class="line">git branch &lt;branchName&gt; &lt;start point&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>git checkout</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">git checkout branchName <span class="comment">#命令会将当前工作分支切换到branchName</span></span><br><span class="line">git checkout -b newBranch <span class="comment">#从当前分支copy一份到新分支，并切换到新分支下，等同于2步：1-git branch newBranch-git checkout newBranch</span></span><br><span class="line"><span class="comment"># 加入-B可选参数后会强制创建新分支，并且会覆盖原来存在的同名分支。</span></span><br><span class="line">git checkout -- CONTRIBUTING.md <span class="comment">#撤消对文件的修改。如果你并不想保留对 CONTRIBUTING.md 文件的修改怎么办？用这个命令</span></span><br><span class="line"><span class="comment"># 取消暂存的文件</span></span><br><span class="line">git reset HEAD &lt;file&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>请务必记得 git checkout – <file> 是一个危险的命令。 你对那个文件在本地的任何修改都会消失——Git 会用最近提交的版本覆盖掉它。 除非你确实清楚不想要对那个文件的本地修改了，否则请不要使用这个命令。</file></p>
+</blockquote>
+<ul>
+<li>git branch </li>
+</ul>
+<ul>
+<li><p>git status</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#查看文件状态</span></span><br><span class="line">git status <span class="comment">#标准输出</span></span><br><span class="line">git status -s(或--short) <span class="comment"># 简洁输出;新添加的未跟踪文件前面有 ?? 标记，新添加到暂存区中的文件前面有 A 标记，修改过的文件前面有 M 标记。</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>git add </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#跟踪(track)新文件,或者说将 文件从 工作区加入到暂存区;在add之前，可以status查看到新文件是 Untracked files</span></span><br><span class="line">git add filename <span class="comment">#添加指定文件 </span></span><br><span class="line">git add *.c <span class="comment">#添加匹配结果指定的文件</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>git diff</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#diff 比较,命令可以不指定 &lt;filename&gt;，则对全部文件操作</span></span><br><span class="line">git diff --staged <span class="comment"># 暂存取 vs .git目录/仓库</span></span><br><span class="line">git diff --cached &lt;filename&gt; <span class="comment">#暂存区 vs Git仓库, --staged 和 --cached 是同义词</span></span><br><span class="line"></span><br><span class="line">git diff &lt;commit&gt; &lt;filename&gt; <span class="comment">#工作目录 vs Git仓库</span></span><br><span class="line">git diff &lt;commit&gt; &lt;commit&gt; <span class="comment">#Git仓库 vs Git仓库</span></span><br><span class="line"></span><br><span class="line">git diff branch1 branch2 --<span class="built_in">stat</span>      //显示2个分支所有有差异的文件列表</span><br><span class="line">git diff branch1 branch2             //显示2个分支所有有差异的文件的详细差异</span><br><span class="line">git diff branch1 branch2 file_path   //显示2个分支指定文件的详细差异</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>git rm</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git rm -f file-path <span class="comment">#从跟踪文件列表中清除，并从磁盘上删除文件</span></span><br><span class="line">git rm --cached file-path <span class="comment">#从跟踪文件列表中清除，仍然将源文件保存在磁盘上</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>git mv</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git mv README.md README</span><br><span class="line"></span><br><span class="line"><span class="comment">#运行 git mv 就相当于运行了下面三条命令：</span></span><br><span class="line">mv README.md README</span><br><span class="line">git rm README.md</span><br><span class="line">git add README</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>git commit</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git commit -m “desc”  <span class="comment"># 正常提交</span></span><br><span class="line">git commit -a -m “desc”  <span class="comment">#？？</span></span><br><span class="line"><span class="comment"># -a, --all</span></span><br><span class="line"><span class="comment">#           Tell the command to automatically stage files that have been modified and</span></span><br><span class="line"><span class="comment">#           deleted, but new files you have not told Git about are not affected.</span></span><br><span class="line"></span><br><span class="line">git commit --amend <span class="comment">#有时候我们提交完了才发现漏掉了几个文件没有添加，或者提交信息写错了。 此时，可以运行带有 --amend 选项的提交命令来重新提交,这是有交互的</span></span><br><span class="line">git commit –amend -m “desc” <span class="comment">#追加提交，这是没有交互的</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>git remote<br>参见 <a href="https://git-scm.com/book/zh/v2/Git-%E5%9F%BA%E7%A1%80-%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8" target="_blank" rel="noopener">远程仓库的使用</a></p>
+</li>
+</ul>
+<p>如果你使用 clone 命令克隆了一个仓库，命令会自动将其添加为远程仓库并默认以 “origin” 为简写。 所以，git fetch origin 会抓取克隆（或上一次抓取）后新推送的所有工作。 必须注意 git fetch 命令只会将数据下载到你的本地仓库——它并不会自动合并或修改你当前的工作。 当准备好时你必须手动将其合并入你的工作。</p>
+<p>upstream ??</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote <span class="comment">#它会列出你指定的每一个远程服务器的简写。 常见输出：origin</span></span><br><span class="line">git remote -v <span class="comment">#显示需要读写远程仓库使用的 Git 保存的简写与其对应的 URL。</span></span><br><span class="line">git remote add &lt;shortname&gt; &lt;url&gt; <span class="comment">#添加一个新的远程 Git 仓库，同时指定一个方便使用的简写：</span></span><br><span class="line">git fetch &lt;remote&gt; <span class="comment">#该命令会访问远程仓库，从中拉取所有你还没有的数据。 执行完成后，你将会拥有那个远程仓库中所有分支的引用，可以随时合并或查看。</span></span><br><span class="line"> git remote show &lt;remote&gt;  <span class="comment">#如果想要查看某一个远程仓库的更多信息，可以使用,例如 git remote show origin</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>git push</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push origin <span class="built_in">test</span>:<span class="built_in">test</span>  <span class="comment"># 提交本地test分支 作为远程的test分支</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>git merge</p>
+</li>
+</ul>
+<ul>
+<li>git log<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">log</span> &lt;dev&gt; <span class="comment">#查看分支 dev 的提交历史记录，默认是时间倒序，最近的提交排在最上面），不写分支名查看当前分支的提交历史记录</span></span><br><span class="line">git <span class="built_in">log</span> --reverse <span class="comment">#时间正序显示提交历史记录</span></span><br><span class="line">git <span class="built_in">log</span> --oneline <span class="comment"># 一行显示提交历史记录</span></span><br><span class="line">git <span class="built_in">log</span> --graph <span class="comment">#图示法显示提交历史</span></span><br><span class="line">git <span class="built_in">log</span> --reverse --oneline --graph <span class="comment">#时间正序 + 一行显示 + 图示法显示</span></span><br><span class="line">git <span class="built_in">log</span> -n <span class="comment">#显示最近的 n 个提交</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>origin 是什么  git 的 origin 的含义 cnblogs.com/xuyaowen/p/git-origin.html</p>
+<p>追踪关系</p>
+<p>其他：<br>HEAD 最近一次 commit<br>HEAD^ 上次提交<br>HEAD~100 上100次提交</p>
+<p>git revert </p>
+<p>英文来定义一下 fetch 和 pull 更为明白：</p>
+<p>git fetch is the command that says “bring my local copy of the remote repository up to date.”<br>git pull says “bring the changes in the remote repository where I keep my own code.”</p>
+<h3 id="5-一些场景"><a href="#5-一些场景" class="headerlink" title="5. 一些场景"></a>5. 一些场景</h3><ul>
+<li>建立个人镜像的仓库 mirror</li>
+<li>清除github上某个文件的历史版本</li>
+</ul>
+<p>cached 是什么状态</p>
+<p>本地和远程的关系，还要把新分支推到远程也就是在远程建立一样的一个分支。所以我们在本地和远程建立分支后还要把他们关联起来，这样才有意义！！！</p>
+<hr>
+<p><strong>More Ref:</strong></p>
+<p><a href="http://asciiflow.com/" target="_blank" rel="noopener">http://asciiflow.com/</a></p>
+<ul>
+<li><a href="https://www.jianshu.com/p/2f3c5f3ad3d9" target="_blank" rel="noopener">分支</a><br><a href="https://zhuanlan.zhihu.com/p/107324618" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/107324618</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/96631135?utm_source=qq&amp;utm_medium=social&amp;utm_oi=30019480977408" target="_blank" rel="noopener">Git内部原理</a></li>
+</ul>
 ]]></content>
       <tags>
         <tag>Tools</tag>
