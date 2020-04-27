@@ -58,7 +58,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">2.6k字</span>
+            <span class="post-count">2.8k字</span>
         </span>
     </span>
 
@@ -176,9 +176,11 @@
 </li>
 <li><p>git merge</p>
 <ul>
-<li>[] todo</li>
+<li>[] todo<br>(在本地merge分支xx 到master，然后push)</li>
 </ul>
 </li>
+</ul>
+<ul>
 <li><p>git log</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> &lt;dev&gt; <span class="comment">#查看分支 dev 的提交历史记录，默认是时间倒序，最近的提交排在最上面），不写分支名查看当前分支的提交历史记录</span></span><br><span class="line">git <span class="built_in">log</span> --reverse <span class="comment">#时间正序显示提交历史记录</span></span><br><span class="line">git <span class="built_in">log</span> --oneline <span class="comment"># 一行显示提交历史记录</span></span><br><span class="line">git <span class="built_in">log</span> --graph <span class="comment">#图示法显示提交历史</span></span><br><span class="line">git <span class="built_in">log</span> --reverse --oneline --graph <span class="comment">#时间正序 + 一行显示 + 图示法显示</span></span><br><span class="line">git <span class="built_in">log</span> -n <span class="comment">#显示最近的 n 个提交</span></span><br></pre></td></tr></table></figure>
 </li>
@@ -194,8 +196,16 @@
 <h3 id="5-一些场景"><a href="#5-一些场景" class="headerlink" title="5. 一些场景"></a>5. 一些场景</h3><ul>
 <li>建立个人镜像的仓库 mirror</li>
 <li>清除github上某个文件的历史版本</li>
+<li>命令行提pull request  </li>
 </ul>
-<p>cached 是什么状态</p>
+<p><strong>Pull Request (PR) is a Github feature that allows users to collaborate better together.</strong></p>
+<p><a href="https://hub.github.com/" target="_blank" rel="noopener">hub</a>这个工具可以,以下针对github.com做的测试，如果是对于企业内部的github可能需要区别对待，或测试是否有效。另外，运行 <code>git request-pull master ./</code>这样的命令，只会做pr的内容比较，实际上是不出提交一个pr的<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">➜  api-test-demo git:(<span class="built_in">test</span>-pr) ✗ hub pull-request  <span class="comment">#会出现交互，提示输入 pr 的 comment</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#上面完成后，最后输出</span></span><br><span class="line">https://github.com/cicd-draft/api-test-demo/pull/1</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>提第一次安装、使用时，提示输入 <code>github.com username</code>,<code>github.com password</code>。参考链接： <a href="https://hackernoon.com/how-to-git-pr-from-the-command-line-a5b204a57ab" target="_blank" rel="noopener">https://hackernoon.com/how-to-git-pr-from-the-command-line-a5b204a57ab</a> 及 <a href="https://hub.github.com/" target="_blank" rel="noopener">https://hub.github.com/</a></p>
+</blockquote>
+<ul>
+<li>cherry-pick<br>cached 是什么状态</li>
+</ul>
 <p>本地和远程的关系，还要把新分支推到远程也就是在远程建立一样的一个分支。所以我们在本地和远程建立分支后还要把他们关联起来，这样才有意义！！！</p>
 <hr>
 <p><strong>More Ref:</strong></p>
@@ -291,6 +301,15 @@
   
   
   <nav class="article-nav">
+    
+      <a href="/2020/04/19/Github-Actions-E08插播一条消息/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            Github Actions E08插播一条消息
+          
+        </div>
+      </a>
     
     
       <a href="/2020/04/17/入手Telegram/" class="article-nav-link">

@@ -64,6 +64,155 @@
     
     
     
+    <article id="post-Anka-tutorial-03-jenkins" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/11/28/Anka-tutorial-03-jenkins/"
+    >Anka tutorial 03: jenkins</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/11/28/Anka-tutorial-03-jenkins/" class="article-date">
+  <time datetime="2019-11-28T03:02:20.000Z" itemprop="datePublished">2019-11-28</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/CICD/">CICD</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h3 id="anka-集成-Jenkins-link"><a href="#anka-集成-Jenkins-link" class="headerlink" title="anka 集成 Jenkins (link)"></a>anka 集成 Jenkins <a href="https://ankadoc.bitbucket.io/anka-build/#integrate-jenkins-with-controller" target="_blank" rel="noopener">(link)</a></h3><p>未完待续…</p>
+<p>安装插件<br><code>Manage Jenkins &gt; Manage Plugins</code></p>
+<p>搜索anka</p>
+<p>新建 ssh 用的登陆凭证</p>
+<p>新建VM的时候 默认用户名和密码分别是 <code>anka/admin</code></p>
+<p>配置jenkins<br><code>Manage Jenkins &gt; Configure System</code></p>
+<p><img src="/images/anka_jenkins_01.png" width="80%" height="80%"></p>
+<p><a href="http://localhost/#/dashboard" target="_blank" rel="noopener">http://localhost/#/dashboard</a></p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-Import-P12-file-on-Mac-OS-X-with-CLI" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/11/22/Import-P12-file-on-Mac-OS-X-with-CLI/"
+    >Import P12 file on Mac OS X with CLI</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/11/22/Import-P12-file-on-Mac-OS-X-with-CLI/" class="article-date">
+  <time datetime="2019-11-22T03:38:40.000Z" itemprop="datePublished">2019-11-22</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h3 id="目的：通过命令行倒入p12证书"><a href="#目的：通过命令行倒入p12证书" class="headerlink" title="目的：通过命令行倒入p12证书"></a>目的：通过命令行倒入p12证书</h3><p>Apple为了安全，在ssh登录时，是不允许读取Keychains（钥匙串）的，所以 <strong>security unlock-keychain</strong> 这行命令就很重要了。比如在Pipeline构建打包前，先解锁Keychains。</p>
+<h4 id="1-解锁"><a href="#1-解锁" class="headerlink" title="1.解锁"></a>1.解锁</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#方式一： 命令行中不含密码，交互方式</span></span><br><span class="line">➜   security unlock-keychain /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br><span class="line">password to unlock /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db:</span><br><span class="line"></span><br><span class="line"><span class="comment">#或者命令行中包含密码的方式</span></span><br><span class="line">➜   security unlock-keychain -p &lt;Mac_Login_PWD&gt; /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br><span class="line">➜   security list-keychains -s /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br></pre></td></tr></table></figure>
+<h4 id="2-导入"><a href="#2-导入" class="headerlink" title="2.导入"></a>2.导入</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#方式一： 命令行中不含密码，交互方式</span></span><br><span class="line"><span class="comment">#会有弹窗，提示输入 P12文件的密码</span></span><br><span class="line">➜   security import ~/Desktop/xxx.p12 -k /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br><span class="line">1 identity imported.</span><br><span class="line"><span class="comment">#或者命令行中包含密码的方式</span></span><br><span class="line">➜   security import ~/&lt;Your_Path&gt;/xxx.p12 -k /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db -P &lt;P12_Password&gt;</span><br><span class="line">1 identity imported.</span><br></pre></td></tr></table></figure>
+<h4 id="3-其他"><a href="#3-其他" class="headerlink" title="3.其他"></a>3.其他</h4><p>删除<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">##先展示证书，获取SHA1值; -p 可指定类型</span></span><br><span class="line">security find-identity -p codesigning /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br><span class="line"><span class="comment">##根据SHA1值删除对应的证书</span></span><br><span class="line">security delete-certificate -Z &lt;Your_SHA1&gt;</span><br></pre></td></tr></table></figure></p>
+<p>更过 security 用法，查看 <code>security --help</code> 、<code>security find-identity --help</code></p>
+<hr>
+<p>More ref:<br><a href="https://www.cnblogs.com/pixy/p/4817579.html" target="_blank" rel="noopener">https://www.cnblogs.com/pixy/p/4817579.html</a></p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools/">Tools</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-Anka-tutorial-xx-Upgrade-Record" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -782,6 +931,14 @@
 <p><code>sed -e &#39;/url/d&#39;  example.conf</code> 删除含”url”的行,输出到终端，实际没有替换文件</p>
 <p><code>sed &#39;/appleapple/d;$d&#39; example.conf</code> 删除包含appleapple的行和最后一行($)  </p>
 <p>移除空行<br><code>sed &#39;/^$/d&#39; file</code> 空行可以用 ^$ 进行匹配，最后的 /d 告诉sed不执行替换操作，而是直接删除匹配到的空行</p>
+<p>检查替换内容<br><code>sed -n &#39;s/mysql_host_key/mysql_host_key_new/g&#39;p  test-application.yml</code></p>
+<p>-n停止修改后的文本的输出。然后使用p打印修改后的行</p>
+<h3 id="macOS-不一样的-sed"><a href="#macOS-不一样的-sed" class="headerlink" title="macOS 不一样的 sed"></a>macOS 不一样的 sed</h3><p><strong>报错如下</strong>：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed -i <span class="string">'s/mysql_host_key/mysql_host_key_new/g'</span>  <span class="built_in">test</span>-application.yml</span><br><span class="line">sed: 1: <span class="string">"test-application.yml"</span>: undefined label <span class="string">'est-application.yml'</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>原因</strong>： The sed command is a bit different in Mac OS X, the ‘-i’ option required a parameter to tell what extension to add for the backup file.</p>
+<p>解决办法：<br><code>sed -i &#39;.bak&#39; &#39;s/mysql_host_key/mysql_host_key_new/g&#39;  test-application.yml</code></p>
+<blockquote>
+<p> 参见 <a href="https://mkyong.com/mac/sed-command-hits-undefined-label-error-on-mac-os-x/" target="_blank" rel="noopener">https://mkyong.com/mac/sed-command-hits-undefined-label-error-on-mac-os-x/</a></p>
+</blockquote>
 <hr>
 <p><strong>✍TIP</strong></p>
 <ol>
@@ -1009,192 +1166,13 @@
 
 </article>
     
-    <article id="post-kubectl-常用命令" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/10/21/kubectl-常用命令/"
-    >kubectl 常用命令</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/10/21/kubectl-常用命令/" class="article-date">
-  <time datetime="2019-10-21T07:35:21.000Z" itemprop="datePublished">2019-10-21</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h3 id="label操作"><a href="#label操作" class="headerlink" title="label操作"></a>label操作</h3><p>删除 label version=xx</p>
-<p><code>kubectl label pod webui-746df859ff-z5fwt version-</code></p>
-<p>添加 label<br><code>kubectl label pods labelex owner=michael</code></p>
-<h3 id="deploy操作"><a href="#deploy操作" class="headerlink" title="deploy操作"></a>deploy操作</h3><p><code>kubectl create delpoy [deploy_name] --image=nginx</code></p>
-<p><code>kubectl create deployment httpenv --image=iasonliu/httpenv</code></p>
-<p>kubectl run [pod_name] –image=busybox</p>
-<p>example:<br><code>kubectl run pingpong --image=alpine ping 1.1.1.1</code> or <code>kubectl run pingpong2 --image alpine ping 1.1.1.1</code></p>
-<blockquote>
-<p>当我们使用 kubectl run something启动deplyment的时候，label会是 run=something</p>
-</blockquote>
-<p><code>kubectl set image deployment/nginx busybox=busybox nginx=nginx:1.9.1</code></p>
-<h3 id="service操作"><a href="#service操作" class="headerlink" title="service操作"></a>service操作</h3><p>为webui创建service<br><code>kubectl expose deploy/webui --type=NodePort --port=80</code></p>
-<h3 id="log操作"><a href="#log操作" class="headerlink" title="log操作"></a>log操作</h3><p>查看deploy日志<br><code>kubectl logs deploy/pingpong</code></p>
-<p>查看pod日志<br><code>kubect logs [ pod_name]</code></p>
-<hr>
-<p>More Ref:</p>
-<ul>
-<li><a href="http://kubernetesbyexample.com/" target="_blank" rel="noopener">http://kubernetesbyexample.com/</a></li>
-<li><a href="https://linuxacademy.com/blog/containers/kubernetes-cheat-sheet/" target="_blank" rel="noopener">https://linuxacademy.com/blog/containers/kubernetes-cheat-sheet/</a></li>
-<li><a href="http://docs.kubernetes.org.cn/683.html" target="_blank" rel="noopener">http://docs.kubernetes.org.cn/683.html</a></li>
-</ul>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/k8s/">k8s</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-devops-4大支柱" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/10/17/devops-4大支柱/"
-    >devops 4大支柱</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/10/17/devops-4大支柱/" class="article-date">
-  <time datetime="2019-10-17T02:32:04.000Z" itemprop="datePublished">2019-10-17</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/读书笔记/">读书笔记</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h3 id="一、个人感想"><a href="#一、个人感想" class="headerlink" title="一、个人感想"></a>一、个人感想</h3><p>  书中的标题看起来总是“高大上”的，但说出来的都是一些无形的东西，要理解这类理念需要时间的积累。这里先摘抄几句，一起“品味”一下。其中许多文化、方法论与现在的外企公司比较吻合，相对理解起来容易些; 书中涉及到了很多细节，比如 <em>招聘和面试（p250）</em>, <em>当责文化(p269)</em>、<em>显性文化(p270)</em> 、<em>报酬（p241）</em>等，都值得去了解和追寻。</p>
-<ul>
-<li><p>“Patrick Debois说过，devops是一个 <strong>人类问题</strong> ，这说明每个组织都有该组织中的人特有的一种devops文化。”（p67）</p>
-</li>
-<li><p>“要实现成功的devops变革，有效的工具使用当然是必要的，但这些还不够…..实际上，解决组织中出现的人际冲突和团队之间的冲突对于培养持久的关系并最终形成一个 <strong>devops环境</strong> 至关重要。”（p67）</p>
-</li>
-<li><p>“基于有效实现devops的4大支柱，可以解决影响软件开发的 <strong>文化</strong> 和 <strong>技术问题</strong>。”（p69）</p>
-</li>
-<li><p>“工具的价值和成本是不一样的。… 即使是几乎所有人都认为很重要的工具（如配置管理或源码控制工具）也有不同，有些可能对某个特定的环境更为使用。<br>根据经验、知识和流程的不同，工具也有变化。  工具必须适应环境的上下文。如果没有上下文，最好的工具就无从谈起，而上下文是不断变化的。” （p189）</p>
-</li>
-<li><p>“工具不能与有效实现devops的另外3各支柱完全分离。最终工具还是要由人来使用…工具不仅影响我们如何工作和交互，也会受其影响…”（p220）</p>
-</li>
-</ul>
-<h3 id="二、基本套路"><a href="#二、基本套路" class="headerlink" title="二、基本套路"></a>二、基本套路</h3><p>4个章节基本套路如下</p>
-<ol>
-<li><p>解释 XX,定义 XX，附带研究一个案例</p>
-</li>
-<li><p>说明<strong>误区</strong> 告诉我们什么样的情形我们理解错误</p>
-</li>
-<li><p>说明<strong>错误排查</strong> 告诉我们如何处理困境，并根据情况解决问题</p>
-</li>
-</ol>
-<h3 id="三、脑图"><a href="#三、脑图" class="headerlink" title="三、脑图"></a>三、脑图</h3><p>见下方<br><img src="/images/devops_4pillars.png" alt="devops 4 pillars"></p>
-<p>原始地址：<a href="https://mubu.com/docfgrtOS4mn0" target="_blank" rel="noopener">https://mubu.com/docfgrtOS4mn0</a></p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
   </article>
   
 
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/3/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/5/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/3/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/5/">下一页</a>
   </nav>
   
 </section>

@@ -64,6 +64,192 @@
     
     
     
+    <article id="post-入门gpg" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/04/23/入门gpg/"
+    >入门gpg</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/04/23/入门gpg/" class="article-date">
+  <time datetime="2020-04-23T09:22:20.000Z" itemprop="datePublished">2020-04-23</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>GPG 的全称是 GNU Privacy Guard ，可以看作是一个软件，可以用来进行密钥的管理。其实和我们用的一些图形化的密码管理类似，不过GPG 好像更多是命令行交互的，所以一般人不太习惯。另外，中间包含的概念也较多。</p>
+<p>用过enpass, 1password的可以将一些概念类比起来，比如 master password ， 子密码</p>
+<blockquote>
+<p>我们应该使用且只使用子密钥，主密钥应该放在一个绝对安全的地方。</p>
+</blockquote>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>在 Mac 上可以使用 Homebrew 安装 gopass</p>
+<p><code>brew install gopass</code></p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>生成主密钥<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gpg --full-generate-key</span><br></pre></td></tr></table></figure></p>
+<p>交互</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">➜ gpg --edit-key 771963601@qq.com</span><br><span class="line">gpg (GnuPG) 2.2.20; Copyright (C) 2020 Free Software Foundation, Inc.</span><br><span class="line">This is free software: you are free to change and redistribute it.</span><br><span class="line">There is NO WARRANTY, to the extent permitted by law.</span><br><span class="line"></span><br><span class="line">Secret key is available.</span><br><span class="line"></span><br><span class="line">sec  rsa2048/00C21CE66A8AE9E0</span><br><span class="line">     created: 2020-04-23  expires: 2022-04-23  usage: SC</span><br><span class="line">     trust: ultimate      validity: ultimate</span><br><span class="line">ssb  rsa2048/9DCC33D2FECB246F</span><br><span class="line">     created: 2020-04-23  expires: never       usage: E</span><br><span class="line">[ultimate] (1). qinrui &lt;771963601@qq.com&gt;</span><br><span class="line"></span><br><span class="line">gpg&gt;</span><br></pre></td></tr></table></figure>
+<p>请注意上面的字符串”sec  rsa2048/xxxxx”，斜杆后面就是”用户ID”的Hash字符串，可以用来替代”用户ID”。</p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-Github-Actions-E08插播一条消息" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/04/19/Github-Actions-E08插播一条消息/"
+    >Github Actions E08插播一条消息</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/04/19/Github-Actions-E08插播一条消息/" class="article-date">
+  <time datetime="2020-04-19T14:01:53.000Z" itemprop="datePublished">2020-04-19</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/CICD/">CICD</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
+<p>消息是个好消息，简单不完全的结果就是：普通组织下的私有仓库可以使用github actions了。<em>题外话：有的消息会影响当天的工作任务，有的消息会影响人的一生。</em></p>
+</blockquote>
+<h3 id="1-起因"><a href="#1-起因" class="headerlink" title="1. 起因"></a>1. 起因</h3><p>github actions的免费是我们都知道的，但这句话并不完整、准确。github actions为支持开源，对于public repo是完全免费的，但是对于私有的项目是有时限的。可见下图,可在 <a href="https://github.com/features/actions" target="_blank" rel="noopener">https://github.com/features/actions</a> 中找到该信息。</p>
+<p><img src="https://s1.ax1x.com/2020/04/20/JM5Qvq.png" alt="JM5Qvq.png"></p>
+<center> 图1: github actions pricing</center>
+
+<p>正好，有一个项目上，我们想推荐客户使用github actions，最好是能免费使用；即使不能完全免费，如果可以限时免费也是可以的，这样作为开发人员可以尝试一下，并成功后向客户说明情况，以便进一步预估、申请部分费用。这里说到一个点：<strong>不谈钱，一切都好说；谈到钱，流程就会麻烦些，毕竟从公司支出的每一笔钱都要有个缘由</strong>。</p>
+<p>客户的项目情况整理如下，因为没有org的管理权限，一些team、org属性并看不到。客户自建了一个org，里边有个team关联着，然后org里的仓库都是private的。</p>
+<h3 id="2-问题过程"><a href="#2-问题过程" class="headerlink" title="2. 问题过程"></a>2. 问题过程</h3><p><strong>时间： 2020.04.08 左右</strong><br>为了实验一下，我和同事在我自己的 <code>org:cicd_draft</code> 下做实验。将组织下的 <code>repo: api-test-demo</code>下进行了一些尝试。为了模拟客户的情况，打算先将 <code>repo: api-test-demo</code> 从 public 变成 private。 如下图 gc_00<br><img src="https://s1.ax1x.com/2020/04/20/JM53rV.png" alt="JM53rV.png"></p>
+<center> 图2 </center>
+
+<p>首先提示需要 upgrade cicd_draft,点击后提示 <strong>upgrade options</strong>,如下图<br><img src="https://s1.ax1x.com/2020/04/20/JMqIpD.png" alt="JMqIpD.png"></p>
+<center> 图3 </center>
+
+<p>再仔细会想一下，似乎我的org与客户的org，或是我的team与客户的team不太一样，尽管我想把这些变量弄成一致的，以便后续的尝试。也显示一个问题：<em>我还对org team repo这几个东西的属性、类型还不太了解，以及他们之间的关系是否有依赖呢</em>。而后的分析，感觉客户使用的仓库类型不简单啊，可能是个历史遗留产物，见👇</p>
+<blockquote>
+<p>GitHub Actions is not available for private repos in legacy per-repository plans.</p>
+</blockquote>
+<blockquote>
+<p>legacy的一个意思是： denoting software or hardware that has been superseded but is difficult to replace because of its wide use.</p>
+</blockquote>
+<p>有几点事实如下：</p>
+<ol>
+<li>普通的team- <strong>Github Team For Open Source</strong>，无法拥有私有仓库。（在4.8号那个时间点，是的）</li>
+<li>客户拥有私有仓库，说明team的属性不是普通的，</li>
+</ol>
+<h3 id="3-转机"><a href="#3-转机" class="headerlink" title="3. 转机"></a>3. 转机</h3><p>源于一条消息： <strong>GitHub Free gives teams private repositories with unlimited collaborators at no cost.</strong></p>
+<p>因为我的github注册邮箱收到了这个大消息邮件。<br><img src="https://s1.ax1x.com/2020/04/20/JM5xs0.jpg" alt="JM5xs0.jpg"></p>
+<p><center> 图4：我的邮件截图 </center><br>现在这个消息可以在 <a href="https://github.com/pricing" target="_blank" rel="noopener">https://github.com/pricing</a> 网页较上部看到，但估计一段时间后会被其他“大动作”替换掉。</p>
+<blockquote>
+<p>———————分割线———————-</p>
+</blockquote>
+<p><strong>Github team 定义</strong>：Teams are groups of organization members that reflect your company or group’s structure with cascading access permissions and mentions.</p>
+<p>github repo 类型 、github org 、github team 类型，以及之间的强关系、弱关系。</p>
+<p>从个人可以免费创建几个私有仓库，到无限量的私有仓库，又到team的免费升级</p>
+<hr>
+<p><strong>More Ref:</strong></p>
+<ul>
+<li><a href="https://help.github.com/en/enterprise/2.19/admin/user-management/organizations-and-teams" target="_blank" rel="noopener">user-management/organizations-and-teams</a></li>
+</ul>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GA/">GA</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-再看git" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -185,9 +371,11 @@
 </li>
 <li><p>git merge</p>
 <ul>
-<li>[] todo</li>
+<li>[] todo<br>(在本地merge分支xx 到master，然后push)</li>
 </ul>
 </li>
+</ul>
+<ul>
 <li><p>git log</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> &lt;dev&gt; <span class="comment">#查看分支 dev 的提交历史记录，默认是时间倒序，最近的提交排在最上面），不写分支名查看当前分支的提交历史记录</span></span><br><span class="line">git <span class="built_in">log</span> --reverse <span class="comment">#时间正序显示提交历史记录</span></span><br><span class="line">git <span class="built_in">log</span> --oneline <span class="comment"># 一行显示提交历史记录</span></span><br><span class="line">git <span class="built_in">log</span> --graph <span class="comment">#图示法显示提交历史</span></span><br><span class="line">git <span class="built_in">log</span> --reverse --oneline --graph <span class="comment">#时间正序 + 一行显示 + 图示法显示</span></span><br><span class="line">git <span class="built_in">log</span> -n <span class="comment">#显示最近的 n 个提交</span></span><br></pre></td></tr></table></figure>
 </li>
@@ -203,8 +391,16 @@
 <h3 id="5-一些场景"><a href="#5-一些场景" class="headerlink" title="5. 一些场景"></a>5. 一些场景</h3><ul>
 <li>建立个人镜像的仓库 mirror</li>
 <li>清除github上某个文件的历史版本</li>
+<li>命令行提pull request  </li>
 </ul>
-<p>cached 是什么状态</p>
+<p><strong>Pull Request (PR) is a Github feature that allows users to collaborate better together.</strong></p>
+<p><a href="https://hub.github.com/" target="_blank" rel="noopener">hub</a>这个工具可以,以下针对github.com做的测试，如果是对于企业内部的github可能需要区别对待，或测试是否有效。另外，运行 <code>git request-pull master ./</code>这样的命令，只会做pr的内容比较，实际上是不出提交一个pr的<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">➜  api-test-demo git:(<span class="built_in">test</span>-pr) ✗ hub pull-request  <span class="comment">#会出现交互，提示输入 pr 的 comment</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#上面完成后，最后输出</span></span><br><span class="line">https://github.com/cicd-draft/api-test-demo/pull/1</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>提第一次安装、使用时，提示输入 <code>github.com username</code>,<code>github.com password</code>。参考链接： <a href="https://hackernoon.com/how-to-git-pr-from-the-command-line-a5b204a57ab" target="_blank" rel="noopener">https://hackernoon.com/how-to-git-pr-from-the-command-line-a5b204a57ab</a> 及 <a href="https://hub.github.com/" target="_blank" rel="noopener">https://hub.github.com/</a></p>
+</blockquote>
+<ul>
+<li>cherry-pick<br>cached 是什么状态</li>
+</ul>
 <p>本地和远程的关系，还要把新分支推到远程也就是在远程建立一样的一个分支。所以我们在本地和远程建立分支后还要把他们关联起来，这样才有意义！！！</p>
 <hr>
 <p><strong>More Ref:</strong></p>
@@ -342,7 +538,7 @@
 
 </article>
     
-    <article id="post-乱七八说" class="article article-type-post" itemscope
+    <article id="post-断简残篇" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -350,8 +546,8 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/04/15/乱七八说/"
-    >乱七八说</a
+  <a class="article-title" href="/2020/04/15/断简残篇/"
+    >断简残篇</a
   >
 </h2>
   
@@ -361,7 +557,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/04/15/乱七八说/" class="article-date">
+      <a href="/2020/04/15/断简残篇/" class="article-date">
   <time datetime="2020-04-15T09:05:03.000Z" itemprop="datePublished">2020-04-15</time>
 </a>
       
@@ -379,24 +575,24 @@
       
 
       
-      <h3 id="自言自语"><a href="#自言自语" class="headerlink" title="自言自语"></a>自言自语</h3><p>不随意在论坛上发布言论，容易被不知上下文的人乱七八说。</p>
-<blockquote>
-<p>相比较，在技术论坛上，将自己的问题描述清楚，很多人乐意、有兴趣来帮你解决；最好把上下文给全一点，即使没有给全，一般技术人员会耐心的询问。但很多日常生活的论坛，缺乏谨慎、客观、耐心，弄不好就是一场大战。</p>
-</blockquote>
-<p>————————–分割线—————————</p>
-<blockquote>
-<p>由于内容不多，下面的就一并放在一个链接里，日后再new一个</p>
-</blockquote>
+      <p><a href="#jump">说明文字</a></p>
+<h3 id="自言自语"><a href="#自言自语" class="headerlink" title="自言自语"></a>自言自语</h3><p>不随意在论坛上发布言论，容易被不知上下文的人乱七八说。</p>
+<p><em>注：相比较，在技术论坛上，将自己的问题描述清楚，很多人乐意、有兴趣来帮你解决；最好把上下文给全一点，即使没有给全，一般技术人员会耐心的询问。但很多日常生活的论坛，缺乏谨慎、客观、耐心，弄不好就是一场大战。</em></p>
+<p>————————–分割线—————————<br>由于内容不多，下面的就一并放在一个链接里，日后再new一个</p>
 <h3 id="ta说的"><a href="#ta说的" class="headerlink" title="ta说的"></a>ta说的</h3><blockquote>
-<p>“自由有各种不同的类型，而最宝贵那一种，在这个以胜利、成就和炫耀为基准的花花世界中，很少被人提及。<br>真正重要的那种自由，意味着专注、自觉、自律、不懈努”</p>
+<p>自由有各种不同的类型，而最宝贵那一种，在这个以胜利、成就和炫耀为基准的花花世界中，很少被人提及。真正重要的那种自由，意味着专注、自觉、自律、不懈努。</p>
 </blockquote>
 <blockquote>
-<p>关乎于真正教育的真正价值，与成绩无关，与学位无关，而在于一种自觉——意识到什么是真实的，什么是必要的；这种自觉就隐藏在我们身边平淡无奇的生活之中，我们必须时时刻刻一遍又一遍地提醒自己”</p>
+<p>关乎于真正教育的真正价值，与成绩无关，与学位无关，而在于一种自觉——意识到什么是真实的，什么是必要的；这种自觉就隐藏在我们身边平淡无奇的生活之中，我们必须时时刻刻一遍又一遍地提醒自己。</p>
 </blockquote>
-<p>来自 <strong>大卫·福斯特·华莱士</strong>《生命中最简单又最困难的事》。最近才知道这么一个人，他是特别爱哲思的一个人，对于生活中最显而易见的平常之事，却用不同于常人的角度思考者，提及的也是最容易被我们忽视的东西。看他的文字比较费脑子，但能感受到其真诚、朴实。  有人说哲学就是抬杠，就是钻牛角尖，就是较真儿…也没有错吧。</p>
+<p><em>注：来自 <strong>大卫·福斯特·华莱士</strong>《生命中最简单又最困难的事》。最近才知道这么一个人，他是特别爱哲思的一个人，对于生活中最显而易见的平常之事，却用不同于常人的角度思考者，提及的也是最容易被我们忽视的东西。看他的文字比较费脑子，但能感受到其真诚、朴实。  有人说哲学就是抬杠，就是钻牛角尖，就是较真儿…也没有错吧。</em></p>
 <blockquote>
-<p>“生活不总是一帆风顺，我们要学会提醒自己走出思维定势的泥沼。”  – from 《生命中最简单又最困难的事》导读部分</p>
+<p>生活不总是一帆风顺，我们要学会提醒自己走出思维定势的泥沼。</p>
 </blockquote>
+<p><em>注：来自《生命中最简单又最困难的事》导读部分</em></p>
+<p>真正的体贴是让人察觉不到的</p>
+<p>穷得开朗</p>
+<p><span id="jump">跳转到的位置</span></p>
 
       
       <!-- reward -->
@@ -858,451 +1054,13 @@
 
 </article>
     
-    <article id="post-Github-Actions-E07上下文和表达式语法" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/04/01/Github-Actions-E07上下文和表达式语法/"
-    >Github Actions E07上下文和表达式语法</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/04/01/Github-Actions-E07上下文和表达式语法/" class="article-date">
-  <time datetime="2020-04-01T02:28:06.000Z" itemprop="datePublished">2020-04-01</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/CICD/">CICD</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
-<p>如果没有这些内容，workflow照样可以运行起来；但利用上下文获取的信息和内置的表达式功能可以大大帮助我们轻松地完成更多的事情。另外，上下文和环境变量中的部分内容的目的是一样的，在选择时，用自己习惯的之一就好。</p>
-</blockquote>
-<h3 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1. 介绍"></a>1. 介绍</h3><p>可以使用表达式程序化设置工作流程文件中的变量和访问上下文。表达式可以是文字值、上下文引用或函数的任意组合。可以使用运算符组合文字、上下文引用和函数</p>
-<p>在if条件条件下使用表达式时，不需要使用表达式语法，因为GitHub会自动将if条件条件计算为表达式。</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># if 条件的示例表达式</span></span><br><span class="line"><span class="attr">steps:</span></span><br><span class="line"><span class="attr">  - uses:</span> <span class="string">actions/hello-world-javascript-action@master</span></span><br><span class="line"><span class="attr">    if:</span> <span class="string">&lt;expression&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="2-上下文"><a href="#2-上下文" class="headerlink" title="2. 上下文"></a>2. 上下文</h3><p>Contexts are a way to access information about workflow runs, runner environments, jobs, and steps. 上下文使用表达式语法。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">上下文名称</th>
-<th>类型</th>
-<th style="text-align:left">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">github</td>
-<td>对象</td>
-<td style="text-align:left">工作流程运行的相关信息。 更多信息请参阅 github 上下文。</td>
-</tr>
-<tr>
-<td style="text-align:left">env</td>
-<td>对象</td>
-<td style="text-align:left">Contains environment variables set in a workflow, job, or step. For more information, see env context .</td>
-</tr>
-<tr>
-<td style="text-align:left">job</td>
-<td>对象</td>
-<td style="text-align:left">当前执行的作业相关信息。 更多信息请参阅 job 上下文。</td>
-</tr>
-<tr>
-<td style="text-align:left">steps</td>
-<td>对象</td>
-<td style="text-align:left">此作业中已经运行的步骤的相关信息。 更多信息请参阅 steps 上下文。</td>
-</tr>
-<tr>
-<td style="text-align:left">runner</td>
-<td>对象</td>
-<td style="text-align:left">运行当前作业的运行程序相关信息。 For more information, see runner context.</td>
-</tr>
-<tr>
-<td style="text-align:left">secrets</td>
-<td>对象</td>
-<td style="text-align:left">用于访问仓库中设置的密码。 For more information about secrets, see “Creating and using encrypted secrets.”</td>
-</tr>
-<tr>
-<td style="text-align:left">strategy</td>
-<td>对象</td>
-<td style="text-align:left">用于访问配置的策略参数及当前作业的相关信息。 策略参数包括 fail-fast、job-index、job-total 和 max-parallel。</td>
-</tr>
-<tr>
-<td style="text-align:left">matrix</td>
-<td>对象</td>
-<td style="text-align:left">用于访问为当前作业配置的矩阵参数。 例如，如果使用 os 和 node 版本配置矩阵构建，matrix 上下文对象将包含当前作业的 os 和 node 版本。</td>
-</tr>
-</tbody>
-</table>
-<h4 id="2-1-github-context"><a href="#2-1-github-context" class="headerlink" title="2.1 github context"></a>2.1 github context</h4><p>官网中也提到 <strong>你可以在环境变量中读取到大多数的 github 上下文</strong></p>
-<p>作为表达式的一部分，您可以使用以下两种语法之一访问上下文信息。</p>
-<p>索引语法：github[‘sha’]<br>属性解除参考语法：github.sha </p>
-<blockquote>
-<p>注意: 在使用敏感信息时，需要更加小心。在控制台日志输出时，Github 会遮掩sercrets。但是当导出或打印上下文时应谨慎行事。</p>
-</blockquote>
-<h4 id="2-2-env-context"><a href="#2-2-env-context" class="headerlink" title="2.2 env context"></a>2.2 env context</h4><p>env上下文包含在工作流，作业或步骤中设置的环境变量。 有关在工作流中设置环境变量的更多信息，可参见之前的文章–<a href="https://www.devops-tech.cn/2020/03/24/Github-Actions-E05%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" target="_blank" rel="noopener">Github Actions E05环境变量</a></p>
-<p>env上下文语法允许您在工作流文件中使用环境变量的值。 如果要在runner中使用环境变量的值，请使用runner操作系统的常规方法读取环境变量。</p>
-<h4 id="2-3-job-context"><a href="#2-3-job-context" class="headerlink" title="2.3 job context"></a>2.3 job context</h4><p>job 上下文包含当前正在运行的作业相关信息。</p>
-<h4 id="2-4-steps-context"><a href="#2-4-steps-context" class="headerlink" title="2.4 steps context"></a>2.4 steps context</h4><p>steps 上下文包含当前作业中已经运行的步骤相关信息。</p>
-<h4 id="2-5-runner-context"><a href="#2-5-runner-context" class="headerlink" title="2.5 runner context"></a>2.5 runner context</h4><h4 id="2-6-secrets-context"><a href="#2-6-secrets-context" class="headerlink" title="2.6 secrets context"></a>2.6 secrets context</h4><h4 id="2-7-strategy-context"><a href="#2-7-strategy-context" class="headerlink" title="2.7 strategy context"></a>2.7 strategy context</h4><h4 id="2-8-matrix-context"><a href="#2-8-matrix-context" class="headerlink" title="2.8 matrix context"></a>2.8 matrix context</h4><p>各种上下文列表(还没看得到 strategy、matrix的使用)</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">属性名称</th>
-<th>类型</th>
-<th style="text-align:left">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">github</td>
-<td>object</td>
-<td style="text-align:left">工作流程中任何作业或步骤期间可用的顶层上下文。</td>
-</tr>
-<tr>
-<td style="text-align:left">github.event</td>
-<td>object</td>
-<td style="text-align:left">完整事件 web 挂钩有效负载。 更多信息请参阅“触发工作流程的事件”。</td>
-</tr>
-<tr>
-<td style="text-align:left">github.event_path</td>
-<td>string</td>
-<td style="text-align:left">The path to the full event webhook payload on the runner.</td>
-</tr>
-<tr>
-<td style="text-align:left">github.workflow</td>
-<td>string</td>
-<td style="text-align:left">工作流程的名称。 如果工作流程文件未指定 name，此属性的值将是仓库中工作流程文件的完整路径。</td>
-</tr>
-<tr>
-<td style="text-align:left">github…</td>
-<td></td>
-<td style="text-align:left">github上下文还有很多，详情请见xx</td>
-</tr>
-<tr>
-<td style="text-align:left">env</td>
-<td>object</td>
-<td style="text-align:left">此上下文针对作业中的每个步骤而改变。 您可以从作业中的任何步骤访问此上下文。</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>env.&lt;env name&gt;</code></td>
-<td>string</td>
-<td style="text-align:left">某一个具体环境变量的值。  (完)</td>
-</tr>
-<tr>
-<td style="text-align:left">job</td>
-<td>object</td>
-<td style="text-align:left">此上下文针对工作流程运行中的每项作业而改变。 您可以从作业中的任何步骤访问此上下文。</td>
-</tr>
-<tr>
-<td style="text-align:left">job.status</td>
-<td>string</td>
-<td style="text-align:left">作业的当前状态。 可能的值包括 success、failure 或 cancelled。</td>
-</tr>
-<tr>
-<td style="text-align:left">job.container</td>
-<td>object</td>
-<td style="text-align:left">作业的容器相关信息。 有关容器的更多信息，请参阅“GitHub 操作 的工作流程语法”。</td>
-</tr>
-<tr>
-<td style="text-align:left">job.container.id</td>
-<td>string</td>
-<td style="text-align:left">容器的 id。</td>
-</tr>
-<tr>
-<td style="text-align:left">job…</td>
-<td></td>
-<td style="text-align:left">job 上下文还有很多，详情请见xx</td>
-</tr>
-<tr>
-<td style="text-align:left">steps</td>
-<td>object</td>
-<td style="text-align:left">此上下文针对作业中的每个步骤而改变。 您可以从作业中的任何步骤访问此上下文。</td>
-</tr>
-<tr>
-<td style="text-align:left">steps.<step id>.outputs</step></td>
-<td>object</td>
-<td style="text-align:left">为步骤定义的输出集。 更多信息请参阅“GitHub 操作 的元数据语法”。</td>
-</tr>
-<tr>
-<td style="text-align:left">steps.<step id>.outputs.<output name></output></step></td>
-<td>string</td>
-<td style="text-align:left">特定输出的值。（完）</td>
-</tr>
-</tbody>
-</table>
-<h3 id="3-文字"><a href="#3-文字" class="headerlink" title="3. 文字"></a>3. 文字</h3><p>作为表达式的一部分，您可以使用 boolean、null、number 或 string 数据类型。 Boolean 文字不区分大小写，因此可以使用 true 或 True。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">数据类型</th>
-<th>文字值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">boolean</td>
-<td>true 或 false</td>
-</tr>
-<tr>
-<td style="text-align:left">null</td>
-<td>null</td>
-</tr>
-<tr>
-<td style="text-align:left">number</td>
-<td>JSON 支持的任何数字格式。</td>
-</tr>
-<tr>
-<td style="text-align:left">string</td>
-<td>必须使用单引号。 使用单引号逸出文字单引号。</td>
-</tr>
-</tbody>
-</table>
-<h3 id="4-运算符"><a href="#4-运算符" class="headerlink" title="4. 运算符"></a>4. 运算符</h3><table>
-<thead>
-<tr>
-<th style="text-align:left">运算符</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><code>( )</code></td>
-<td>逻辑分组</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>[ ]</code></td>
-<td>索引</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>.</code></td>
-<td>属性解除参考</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>!</code></td>
-<td>非</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&lt;</code></td>
-<td>小于</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&lt;=</code></td>
-<td>小于或等于</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&gt;</code></td>
-<td>大于</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&gt;=</code></td>
-<td>大于或等于</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>==</code></td>
-<td>等于</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>!=</code></td>
-<td>不等于</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&amp;&amp;</code></td>
-<td>和</td>
-</tr>
-<tr>
-<td style="text-align:left">&#124; &#124;</td>
-<td>或</td>
-</tr>
-</tbody>
-</table>
-<p>GitHub 进行宽松的等式比较。</p>
-<ul>
-<li>如果类型不匹配，GitHub 强制转换类型为数字。 GitHub 使用这些转换将数据类型转换为数字：</li>
-<li>一个 NaN 与另一个 NaN 的比较不会产生 true。</li>
-<li>GitHub 在比较字符串时忽略大小写。</li>
-<li>对象和数组仅在为同一实例时才视为相等。</li>
-</ul>
-<h3 id="5-函数"><a href="#5-函数" class="headerlink" title="5. 函数"></a>5. 函数</h3><p>GitHub 提供一组内置的函数，可用于表达式。 有些函数抛出值到字符串以进行比较。 GitHub 使用这些转换将数据类型转换为字符串。 函数有 contains、startsWith、 endsWith、 format、 join、 toJson、 hashFiles，还有一类作业状态检查函数，有 success、always、 cancelled、 failure。有些类似Jenkins中的post使用的一些判断条件，但github actions是使用于step中的。具体使用详情可见<a href="https://help.github.com/cn/actions/reference/context-and-expression-syntax-for-github-actions#functions" target="_blank" rel="noopener">官网</a></p>
-<h3 id="6-对象过滤器"><a href="#6-对象过滤器" class="headerlink" title="6. 对象过滤器"></a>6. 对象过滤器</h3><p>可以使用 * 语法应用过滤条件并从集合中选择匹配的项目。</p>
-<p>例如，考虑名为 fruits 的对象数组。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  &#123; <span class="string">"name"</span>: <span class="string">"apple"</span>, <span class="string">"quantity"</span>: 1 &#125;,</span><br><span class="line">  &#123; <span class="string">"name"</span>: <span class="string">"orange"</span>, <span class="string">"quantity"</span>: 2 &#125;,</span><br><span class="line">  &#123; <span class="string">"name"</span>: <span class="string">"pear"</span>, <span class="string">"quantity"</span>: 1 &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
-<p>过滤条件 fruits.*.name 返回数组 [ “apple”, “orange”, “pear” ]</p>
-<hr>
-<p><strong>由于项目实践还不多，等我哪天需要用到这些功能，以完成一些特殊情况的需求时，再来一一举例。</strong></p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GA/">GA</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-Github-Actions-E06产出物" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/03/30/Github-Actions-E06产出物/"
-    >Github Actions E06产出物</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/03/30/Github-Actions-E06产出物/" class="article-date">
-  <time datetime="2020-03-30T07:29:31.000Z" itemprop="datePublished">2020-03-30</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/CICD/">CICD</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
-<p>大多数时候，workflow的产出物都会直接传到对应的某些仓库，比如docker image会送到docker hub这种仓库存储。这种时候是不需要在workflow再额外的管理产出物，但也不能全盘否定；有时候我们没有一个方便的地方去存储某些形式的文件等，就需要我们有类似jenkins <code>archiveArtifacts</code> 功能。但github actions能做的会更多，请期待。</p>
-</blockquote>
-<h3 id="1-关于artifacts"><a href="#1-关于artifacts" class="headerlink" title="1. 关于artifacts"></a>1. 关于artifacts</h3><p>构件是指在工作流程运行过程中产生的文件或文件集。<br>GitHub 提供两项可用于上传和下载构建构件的操作。 上传到工作流程运行的文件将使用 .zip 格式存档。 更多信息请参阅 <code>action/upload-artifact</code> 和 <code>download-artifact</code> 操作。</p>
-<p>这些是您可能想要上传的一些常见构建和测试输出构件：</p>
-<ul>
-<li>日志文件和核心转储文件</li>
-<li>测试结果、失败和屏幕截图</li>
-<li>二进制或存档文件</li>
-<li>压力测试性能输出和代码覆盖结果</li>
-</ul>
-<p>当作业完成时，运行程序将终止并删除虚拟环境的实例。</p>
-<h3 id="2-上传"><a href="#2-上传" class="headerlink" title="2. 上传"></a>2. 上传</h3><p>常见的场景: 一个java程序的产出物是一个jar包，在构建之后需要得到这个jar用于其他环境部署。</p>
-<p>依旧用 <a href="https://github.com/cicd-draft/api-test-demo" target="_blank" rel="noopener">api-test-demo</a> 这个仓库做演示，主要分为以下个步骤：</p>
-<ul>
-<li>1.下载代码；</li>
-<li>2.构建jar包(存放于指定到路径<code>build/libs/api-demo-0.0.1-SNAPSHOT.jar</code>)；</li>
-<li>3.上传jar包</li>
-</ul>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">my</span> <span class="string">workflow</span> <span class="string">demo</span> </span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span> </span><br><span class="line"><span class="attr">  push:</span></span><br><span class="line"><span class="attr">    branches:</span> </span><br><span class="line"><span class="bullet">      -</span> <span class="string">master</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  artifacts_demo_job:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">job1</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">Checkout</span> <span class="string">code</span></span><br><span class="line"><span class="attr">      uses:</span> <span class="string">actions/checkout@v1</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">Build</span> <span class="string">jar</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        pwd  &amp;&amp; ls -l</span></span><br><span class="line"><span class="string">        ./gradlew -x jar build</span></span><br><span class="line"><span class="string">        ls -l build/libs/api-demo-0.0.1-SNAPSHOT.jar</span></span><br><span class="line"><span class="string"></span><span class="attr">    - name:</span> <span class="string">Archive</span> <span class="string">SNAPSHOT.jar</span></span><br><span class="line"><span class="attr">      uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">      with:</span></span><br><span class="line"><span class="attr">        name:</span> <span class="string">api_snapshot_jar</span></span><br><span class="line"><span class="attr">        path:</span> <span class="string">build/libs/api-demo-0.0.1-SNAPSHOT.jar</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>github actions 工作流的产出物都放在哪里的，保留多久</p>
-</blockquote>
-<h3 id="3-下载"><a href="#3-下载" class="headerlink" title="3. 下载"></a>3. 下载</h3><p>步骤官方说明如下：</p>
-<ul>
-<li>1.On GitHub, navigate to the main page of the repository.</li>
-<li>2.Under your repository name, click Actions.</li>
-<li>3.In the left sidebar, click the workflow you want to see.</li>
-<li>4.Under “Workflow runs”, click the name of the run you want to see.</li>
-<li>5.To download artifacts, use the Artifacts drop-down menu, and select the artifact you want to download.</li>
-<li>6.To delete artifacts, use the Artifacts drop-down menu, and click .</li>
-</ul>
-<p>注意事项：</p>
-<ul>
-<li>保留90天</li>
-<li>一旦删除某一个构件，无法恢复</li>
-</ul>
-<h3 id="4-在工作流程中作业之间传递数据"><a href="#4-在工作流程中作业之间传递数据" class="headerlink" title="4. 在工作流程中作业之间传递数据"></a>4. 在工作流程中作业之间传递数据</h3><p><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts#passing-data-between-jobs-in-a-workflow" target="_blank" rel="noopener">https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts#passing-data-between-jobs-in-a-workflow</a></p>
-<p>由于同一个workflow的多个job分别运行在不同的虚拟主机上，下面示例工作流程说明如何在相同工作流程中的任务之间传递数据。关键词 <strong>need</strong> 用来确保job按顺序运行.</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Share</span> <span class="string">data</span> <span class="string">between</span> <span class="string">jobs</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span> <span class="string">[push]</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  job_1:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Add</span> <span class="number">3</span> <span class="string">and</span> <span class="number">7</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          expr 3 + 7 &gt; math-homework.txt</span></span><br><span class="line"><span class="string"></span><span class="attr">      - name:</span> <span class="string">Upload</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">1</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">          path:</span> <span class="string">math-homework.txt</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  job_2:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Multiply</span> <span class="string">by</span> <span class="number">9</span></span><br><span class="line"><span class="attr">    needs:</span> <span class="string">job_1</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">windows-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Download</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">1</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/download-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">      - shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          value=`cat homework/math-homework.txt`</span></span><br><span class="line"><span class="string">          expr $value \* 9 &gt; homework/math-homework.txt</span></span><br><span class="line"><span class="string"></span><span class="attr">      - name:</span> <span class="string">Upload</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">2</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">          path:</span> <span class="string">homework/math-homework.txt</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  job_3:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Display</span> <span class="string">results</span></span><br><span class="line"><span class="attr">    needs:</span> <span class="string">job_2</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">macOS-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Download</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">2</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/download-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Print</span> <span class="string">the</span> <span class="string">final</span> <span class="string">result</span></span><br><span class="line"><span class="attr">        shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          value=`cat homework/math-homework.txt`</span></span><br><span class="line"><span class="string">          echo The result is $value</span></span><br></pre></td></tr></table></figure>
-<hr>
-<p><strong>More Ref:</strong></p>
-<ul>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts" target="_blank" rel="noopener">关于该篇的原文</a></li>
-</ul>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GA/">GA</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
   </article>
   
 
   
   <nav class="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
   </nav>
   
 </section>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    shell 玩转sed，你不知道的用法 |  一笑皆春
+    入门gpg |  一笑皆春
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -30,7 +30,7 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="post-shell-玩转sed，你不知道的用法" class="article article-type-post" itemscope
+  <article id="post-入门gpg" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -38,7 +38,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  shell 玩转sed，你不知道的用法
+  入门gpg
 </h1>
   
 
@@ -47,14 +47,10 @@
 
     
     <div class="article-meta">
-      <a href="/2019/10/23/shell-玩转sed，你不知道的用法/" class="article-date">
-  <time datetime="2019-10-23T02:49:44.000Z" itemprop="datePublished">2019-10-23</time>
+      <a href="/2020/04/23/入门gpg/" class="article-date">
+  <time datetime="2020-04-23T09:22:20.000Z" itemprop="datePublished">2020-04-23</time>
 </a>
       
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Shell/">Shell</a>
-  </div>
-
       
       
 <div class="word_count">
@@ -62,7 +58,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">583字</span>
+            <span class="post-count">281字</span>
         </span>
     </span>
 
@@ -71,7 +67,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">2分钟</span>
+            <span class="post-count">1分钟</span>
         </span>
     </span>
 </div>
@@ -96,65 +92,17 @@
       
 
       
-      <p>sed 是 stream editor（流编辑器）的缩写</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">操作</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">p</td>
-<td>打印文本行(print)</td>
-</tr>
-<tr>
-<td style="text-align:left">n</td>
-<td>取消默认输出</td>
-</tr>
-<tr>
-<td style="text-align:left">d</td>
-<td>删除(delete)</td>
-</tr>
-<tr>
-<td style="text-align:left">s</td>
-<td>字符串替换(substitude)</td>
-</tr>
-<tr>
-<td style="text-align:left">a</td>
-<td>追加新的文本(append)</td>
-</tr>
-</tbody>
-</table>
-<p>示例文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat example.conf</span></span><br><span class="line">username=this  username_2=this</span><br><span class="line">password=that</span><br><span class="line"></span><br><span class="line">url=this</span><br><span class="line"></span><br><span class="line">path=this</span><br></pre></td></tr></table></figure>
-<h3 id="1-替换"><a href="#1-替换" class="headerlink" title="1.替换"></a>1.替换</h3><p>sed 命令会将 <code>s</code> 之后的字符视为命令分隔符，这允许我们更改默认的分隔符，如:<br><code>sed &#39;s:this:new:g&#39; example.conf</code><br><code>sed &#39;s|this|new|g&#39; example.conf</code><br>如果作为分隔符的字符出现在模式中，必须使用 <code>\</code>对其进行转义</p>
-<p><code>sed &#39;s/this/new/&#39; example.conf</code>  替换 <strong>每行</strong>中 <strong>首次</strong> 匹配的内容</p>
-<p>ouput:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">username=new  username_2=this</span><br><span class="line">password=that</span><br><span class="line"></span><br><span class="line">url=new</span><br><span class="line"></span><br><span class="line">path=new</span><br></pre></td></tr></table></figure></p>
-<p><code>sed &#39;s/this/new/g&#39; example.conf</code> g标记可以使sed执行全局替换</p>
-<p><code>sed &#39;s/this/new/2g&#39; example.conf</code> #g可以使sed替换第N次出现的匹配</p>
-<p>将1-4行的url换成address, s代表替换<br><code>sed &#39;1,4s/url/address/g&#39; example.conf</code></p>
-<h3 id="2-删除"><a href="#2-删除" class="headerlink" title="2.删除"></a>2.删除</h3><p><code>sed &#39;2,4d&#39; example.conf</code>  删除第2到4行  </p>
-<p><code>sed -e &#39;/url/d&#39;  example.conf</code> 删除含”url”的行,输出到终端，实际没有替换文件</p>
-<p><code>sed &#39;/appleapple/d;$d&#39; example.conf</code> 删除包含appleapple的行和最后一行($)  </p>
-<p>移除空行<br><code>sed &#39;/^$/d&#39; file</code> 空行可以用 ^$ 进行匹配，最后的 /d 告诉sed不执行替换操作，而是直接删除匹配到的空行</p>
-<p>检查替换内容<br><code>sed -n &#39;s/mysql_host_key/mysql_host_key_new/g&#39;p  test-application.yml</code></p>
-<p>-n停止修改后的文本的输出。然后使用p打印修改后的行</p>
-<h3 id="macOS-不一样的-sed"><a href="#macOS-不一样的-sed" class="headerlink" title="macOS 不一样的 sed"></a>macOS 不一样的 sed</h3><p><strong>报错如下</strong>：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed -i <span class="string">'s/mysql_host_key/mysql_host_key_new/g'</span>  <span class="built_in">test</span>-application.yml</span><br><span class="line">sed: 1: <span class="string">"test-application.yml"</span>: undefined label <span class="string">'est-application.yml'</span></span><br></pre></td></tr></table></figure></p>
-<p><strong>原因</strong>： The sed command is a bit different in Mac OS X, the ‘-i’ option required a parameter to tell what extension to add for the backup file.</p>
-<p>解决办法：<br><code>sed -i &#39;.bak&#39; &#39;s/mysql_host_key/mysql_host_key_new/g&#39;  test-application.yml</code></p>
+      <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>GPG 的全称是 GNU Privacy Guard ，可以看作是一个软件，可以用来进行密钥的管理。其实和我们用的一些图形化的密码管理类似，不过GPG 好像更多是命令行交互的，所以一般人不太习惯。另外，中间包含的概念也较多。</p>
+<p>用过enpass, 1password的可以将一些概念类比起来，比如 master password ， 子密码</p>
 <blockquote>
-<p> 参见 <a href="https://mkyong.com/mac/sed-command-hits-undefined-label-error-on-mac-os-x/" target="_blank" rel="noopener">https://mkyong.com/mac/sed-command-hits-undefined-label-error-on-mac-os-x/</a></p>
+<p>我们应该使用且只使用子密钥，主密钥应该放在一个绝对安全的地方。</p>
 </blockquote>
-<hr>
-<p><strong>✍TIP</strong></p>
-<ol>
-<li><p>首先使用不带 -i选项的sed命令，查看结果是否符合预期；再加入 -i选项将更改写入文件。</p>
-</li>
-<li><p><code>sed -i.bak &#39;s/abc/def&#39; file</code> 这时的sed不仅替换文件内容，还会创建一个名为file.bak的文件，其中包含着原始文件内容的副本;如果对一个文件多次执行，则xx.bak文件只会是上一个文件的副本</p>
-</li>
-</ol>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>在 Mac 上可以使用 Homebrew 安装 gopass</p>
+<p><code>brew install gopass</code></p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>生成主密钥<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gpg --full-generate-key</span><br></pre></td></tr></table></figure></p>
+<p>交互</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">➜ gpg --edit-key 771963601@qq.com</span><br><span class="line">gpg (GnuPG) 2.2.20; Copyright (C) 2020 Free Software Foundation, Inc.</span><br><span class="line">This is free software: you are free to change and redistribute it.</span><br><span class="line">There is NO WARRANTY, to the extent permitted by law.</span><br><span class="line"></span><br><span class="line">Secret key is available.</span><br><span class="line"></span><br><span class="line">sec  rsa2048/00C21CE66A8AE9E0</span><br><span class="line">     created: 2020-04-23  expires: 2022-04-23  usage: SC</span><br><span class="line">     trust: ultimate      validity: ultimate</span><br><span class="line">ssb  rsa2048/9DCC33D2FECB246F</span><br><span class="line">     created: 2020-04-23  expires: never       usage: E</span><br><span class="line">[ultimate] (1). qinrui &lt;771963601@qq.com&gt;</span><br><span class="line"></span><br><span class="line">gpg&gt;</span><br></pre></td></tr></table></figure>
+<p>请注意上面的字符串”sec  rsa2048/xxxxx”，斜杆后面就是”用户ID”的Hash字符串，可以用来替代”用户ID”。</p>
 
       
       <!-- reward -->
@@ -224,15 +172,13 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2019/10/23/shell-玩转sed，你不知道的用法/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/04/23/入门gpg/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shell/">Shell</a></li></ul>
-
 
     </footer>
 
@@ -242,19 +188,10 @@
   
   <nav class="article-nav">
     
-      <a href="/2019/11/08/Test-01-Introduction/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            Test 01:Introduction
-          
-        </div>
-      </a>
     
-    
-      <a href="/2019/10/23/shell-没有vim-vi-命令怎么办/" class="article-nav-link">
+      <a href="/2020/04/19/Github-Actions-E08插播一条消息/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">shell 没有vim/vi 命令怎么办</div>
+        <div class="article-nav-title">Github Actions E08插播一条消息</div>
       </a>
     
   </nav>
