@@ -1,28 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Anka tutorial 02</title>
-    <url>/2019/11/19/Anka-tutorial-02/</url>
-    <content><![CDATA[<h5 id="1-Joining-Nodes"><a href="#1-Joining-Nodes" class="headerlink" title="1.Joining Nodes"></a>1.Joining Nodes</h5><p>在mac上（anka build 节点）执行  <code>sudo ankacluster join http://localhost:80/</code></p>
-<p>output:<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  ~ sudo ankacluster join http://localhost:80/ -n demo-mac</span><br><span class="line">Setting tls config</span><br><span class="line">Testing connection to controller...: Ok</span><br><span class="line">Testing connection to the registry...: Ok</span><br><span class="line">Ok</span><br><span class="line">Cluster join success</span><br></pre></td></tr></table></figure></p>
-<p>去页面 <em><a href="http://localhost/#/nodes" target="_blank" rel="noopener">http://localhost/#/nodes</a></em> 查看<br><img src="/images/anka_controller_node.png"></p>
-<h5 id="2-Create-VM-link"><a href="#2-Create-VM-link" class="headerlink" title="2. Create VM (link)"></a>2. Create VM <a href="https://ankadoc.bitbucket.io/anka-build/#create-vm" target="_blank" rel="noopener">(link)</a></h5><p>先下载mac OS安装包 (安装包7G多，需要提前下载)<br><a href="https://www.macworld.co.uk/how-to/mac-software/download-old-os-x-3629363/#el%20cap" target="_blank" rel="noopener">https://www.macworld.co.uk/how-to/mac-software/download-old-os-x-3629363/#el%20cap</a></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  ~ anka create --ram-size 4G --cpu-count 2 --disk-size 40G --app /Applications/Install\ macOS\ Catalina.app CatalinaVm</span><br><span class="line">Installing macOS 10.15.1...</span><br><span class="line">Preparing target disk...</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>Note For Catalina Anka VMs, –ram-size value should be 4G and –disk-size should be 80G.<br>由于电脑空间不够了，于是报错了</p>
-</blockquote>
-<p>清理电脑空间后，再来一次，大约 30min<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  ~ anka create --ram-size 4G --cpu-count 2 --disk-size 80G --app /Applications/Install\ macOS\ Catalina.app  CatalinaVm</span><br><span class="line">Installing macOS 10.15.1...</span><br><span class="line">Preparing target disk...</span><br><span class="line">Installing addons...</span><br><span class="line">Converting to ANKA format...</span><br><span class="line">Waiting <span class="keyword">for</span> installation to complete <span class="keyword">in</span> the guest (about thirty minutes approx.)...</span><br><span class="line">vm created successfully with uuid: a23d5a05-xx89-4xx4-a8b7-6f7b9xxxxxx</span><br></pre></td></tr></table></figure></p>
-<h5 id="3-Run-VM"><a href="#3-Run-VM" class="headerlink" title="3. Run VM"></a>3. Run VM</h5><p><img src="/images/anka_demo_720.gif" width="90%" height="90%"></p>
-<p>VM 状态之间的转换如下：<br><img src="/images/anka_vm_status.png" width="75%" height="75%"></p>
-<blockquote>
-<p>需要区别 VM 和后面提到的 instance 关系，VM 更准确点讲是 VM Template，是创建instance的模版，但模版需要通过上面的方法才可以修改；新建VM后，相当于有一个基础的模版，但是要满足其他要求，可以自行在running的 vm 中操作，然后随时保存，类似于docker container的commit操作，但anka build是suspend一个running的 vm 来保存。</p>
-</blockquote>
-<h5 id="4-Manage-VM-Templates-in-Registry-link"><a href="#4-Manage-VM-Templates-in-Registry-link" class="headerlink" title="4. Manage VM Templates in Registry(link)"></a>4. Manage VM Templates in Registry<a href="https://ankadoc.bitbucket.io/anka-build/#manage-vm-templates-in-registry" target="_blank" rel="noopener">(link)</a></h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#罗列仓库</span></span><br><span class="line">➜   anka registry list-repos</span><br><span class="line">++</span><br><span class="line">++</span><br><span class="line"><span class="comment">#添加一个新仓库</span></span><br><span class="line">➜   anka registry add demo-repo http://localhost:8089</span><br><span class="line">➜   anka registry list-repos</span><br><span class="line">++</span><br><span class="line">++</span><br><span class="line">demo-repo (default)</span><br><span class="line">+--------+-----------+</span><br><span class="line">| host   | localhost |</span><br><span class="line">+--------+-----------+</span><br><span class="line">| scheme | http      |</span><br><span class="line">+--------+-----------+</span><br><span class="line">| port   | 8089      |</span><br><span class="line">+--------+-----------+</span><br><span class="line"><span class="comment">#推送VM Templates 到新仓库，</span></span><br><span class="line">➜   anka registry push CatalinaVm -d <span class="string">"first push"</span> -t v1</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>CICD</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Anka tutorial 01</title>
     <url>/2019/11/18/Anka-tutorial-01/</url>
     <content><![CDATA[<h3 id="1-Anka-是什么"><a href="#1-Anka-是什么" class="headerlink" title="1.Anka 是什么"></a>1.Anka 是什么</h3><p>  前端，后端，包括安卓的持续集成的过程都可以轻松的基于docker命令构建、打包，最终产出 docker image镜像，非常方便搭建标准化的pipeline(流水线)；但是对于iOS移动端的同学而言，似乎没有那么简单。每次打包的过程都是耗时、复杂的。另外一点由于macOS系统是捆绑在mac硬件上的，你没有苹果电脑就无法打包，相比而言docker则是纯免费开源的。针对以上问题和情况，anka就是这样一种类似于dock的针对macOS系统的虚拟化技术。</p>
@@ -58,6 +36,28 @@
 <p>激活key<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  ~ sudo anka license activate xxxx-3750-xxxx-2265</span><br><span class="line">License activated</span><br></pre></td></tr></table></figure></p>
 <p>查看license信息<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  ~ anka license show</span><br><span class="line">+---------------------+---------------------+</span><br><span class="line">| license_type        | com.veertu.anka.ent |</span><br><span class="line">+---------------------+---------------------+</span><br><span class="line">| status              | valid               |</span><br><span class="line">+---------------------+---------------------+</span><br><span class="line">| expires             | 20-dec-2019         |</span><br><span class="line">+---------------------+---------------------+</span><br><span class="line">| max_number_of_cores | 32                  |</span><br><span class="line">+---------------------+---------------------+</span><br></pre></td></tr></table></figure></p>
 ]]></content>
+      <categories>
+        <category>CICD</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Anka tutorial 02</title>
+    <url>/2019/11/19/Anka-tutorial-02/</url>
+    <content><![CDATA[<h5 id="1-Joining-Nodes"><a href="#1-Joining-Nodes" class="headerlink" title="1.Joining Nodes"></a>1.Joining Nodes</h5><p>在mac上（anka build 节点）执行  <code>sudo ankacluster join http://localhost:80/</code></p>
+<p>output:<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  ~ sudo ankacluster join http://localhost:80/ -n demo-mac</span><br><span class="line">Setting tls config</span><br><span class="line">Testing connection to controller...: Ok</span><br><span class="line">Testing connection to the registry...: Ok</span><br><span class="line">Ok</span><br><span class="line">Cluster join success</span><br></pre></td></tr></table></figure></p>
+<p>去页面 <em><a href="http://localhost/#/nodes" target="_blank" rel="noopener">http://localhost/#/nodes</a></em> 查看<br><img src="/images/anka_controller_node.png"></p>
+<h5 id="2-Create-VM-link"><a href="#2-Create-VM-link" class="headerlink" title="2. Create VM (link)"></a>2. Create VM <a href="https://ankadoc.bitbucket.io/anka-build/#create-vm" target="_blank" rel="noopener">(link)</a></h5><p>先下载mac OS安装包 (安装包7G多，需要提前下载)<br><a href="https://www.macworld.co.uk/how-to/mac-software/download-old-os-x-3629363/#el%20cap" target="_blank" rel="noopener">https://www.macworld.co.uk/how-to/mac-software/download-old-os-x-3629363/#el%20cap</a></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  ~ anka create --ram-size 4G --cpu-count 2 --disk-size 40G --app /Applications/Install\ macOS\ Catalina.app CatalinaVm</span><br><span class="line">Installing macOS 10.15.1...</span><br><span class="line">Preparing target disk...</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Note For Catalina Anka VMs, –ram-size value should be 4G and –disk-size should be 80G.<br>由于电脑空间不够了，于是报错了</p>
+</blockquote>
+<p>清理电脑空间后，再来一次，大约 30min<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  ~ anka create --ram-size 4G --cpu-count 2 --disk-size 80G --app /Applications/Install\ macOS\ Catalina.app  CatalinaVm</span><br><span class="line">Installing macOS 10.15.1...</span><br><span class="line">Preparing target disk...</span><br><span class="line">Installing addons...</span><br><span class="line">Converting to ANKA format...</span><br><span class="line">Waiting <span class="keyword">for</span> installation to complete <span class="keyword">in</span> the guest (about thirty minutes approx.)...</span><br><span class="line">vm created successfully with uuid: a23d5a05-xx89-4xx4-a8b7-6f7b9xxxxxx</span><br></pre></td></tr></table></figure></p>
+<h5 id="3-Run-VM"><a href="#3-Run-VM" class="headerlink" title="3. Run VM"></a>3. Run VM</h5><p><img src="/images/anka_demo_720.gif" width="90%" height="90%"></p>
+<p>VM 状态之间的转换如下：<br><img src="/images/anka_vm_status.png" width="75%" height="75%"></p>
+<blockquote>
+<p>需要区别 VM 和后面提到的 instance 关系，VM 更准确点讲是 VM Template，是创建instance的模版，但模版需要通过上面的方法才可以修改；新建VM后，相当于有一个基础的模版，但是要满足其他要求，可以自行在running的 vm 中操作，然后随时保存，类似于docker container的commit操作，但anka build是suspend一个running的 vm 来保存。</p>
+</blockquote>
+<h5 id="4-Manage-VM-Templates-in-Registry-link"><a href="#4-Manage-VM-Templates-in-Registry-link" class="headerlink" title="4. Manage VM Templates in Registry(link)"></a>4. Manage VM Templates in Registry<a href="https://ankadoc.bitbucket.io/anka-build/#manage-vm-templates-in-registry" target="_blank" rel="noopener">(link)</a></h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#罗列仓库</span></span><br><span class="line">➜   anka registry list-repos</span><br><span class="line">++</span><br><span class="line">++</span><br><span class="line"><span class="comment">#添加一个新仓库</span></span><br><span class="line">➜   anka registry add demo-repo http://localhost:8089</span><br><span class="line">➜   anka registry list-repos</span><br><span class="line">++</span><br><span class="line">++</span><br><span class="line">demo-repo (default)</span><br><span class="line">+--------+-----------+</span><br><span class="line">| host   | localhost |</span><br><span class="line">+--------+-----------+</span><br><span class="line">| scheme | http      |</span><br><span class="line">+--------+-----------+</span><br><span class="line">| port   | 8089      |</span><br><span class="line">+--------+-----------+</span><br><span class="line"><span class="comment">#推送VM Templates 到新仓库，</span></span><br><span class="line">➜   anka registry push CatalinaVm -d <span class="string">"first push"</span> -t v1</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>CICD</category>
       </categories>
@@ -243,6 +243,14 @@
       </categories>
   </entry>
   <entry>
+    <title>Azure tutorial 01: overview</title>
+    <url>/2019/12/11/Azure-tutorial-01-overview/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Cloud</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Azure tutorial 02: Storage</title>
     <url>/2019/12/11/Azure-tutorial-02-Storage/</url>
     <content><![CDATA[<p>storage account type<br><a href="https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview</a></p>
@@ -297,14 +305,6 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#mac os terminal</span></span><br><span class="line">azcopy cp <span class="string">"/Users/xxx/Desktop/testdir/hello_azure.txt"</span>  <span class="string">"https://storage873375.blob.core.windows.net/container1/newdir/?sv=2019-02-02&amp;ss=bfqt&amp;srt=sco&amp;sp=rwdlacup&amp;se=2019-12-11T11:40:09Z&amp;st=2019-12-11T03:40:09Z&amp;spr=https&amp;sig=5%2FFHo4%2BBwxDB6wLftyB7%2FSF7gqnhaEmpFa4nheBOXQg%3D"</span></span><br></pre></td></tr></table></figure>
 <p><a href="https://docs.microsoft.com/en-us/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs</a></p>
 ]]></content>
-      <categories>
-        <category>Cloud</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Azure tutorial 01: overview</title>
-    <url>/2019/12/11/Azure-tutorial-01-overview/</url>
-    <content><![CDATA[]]></content>
       <categories>
         <category>Cloud</category>
       </categories>
@@ -402,6 +402,22 @@
       </tags>
   </entry>
   <entry>
+    <title>Docker clean</title>
+    <url>/2019/05/07/Docker-clean/</url>
+    <content><![CDATA[<h4 id="1-Cleanup-exited-processes"><a href="#1-Cleanup-exited-processes" class="headerlink" title="1.Cleanup exited processes:"></a>1.Cleanup exited processes:</h4><p>docker rm $(docker ps -q -f status=exited)</p>
+<h4 id="3-Cleanup-dangling-volumes"><a href="#3-Cleanup-dangling-volumes" class="headerlink" title="3.Cleanup dangling volumes:"></a>3.Cleanup dangling volumes:</h4><p>docker volume rm $(docker volume ls -qf dangling=true)</p>
+<h4 id="3-Cleanup-dangling-images"><a href="#3-Cleanup-dangling-images" class="headerlink" title="3.Cleanup dangling images:"></a>3.Cleanup dangling images:</h4><p>docker rmi $(docker images –filter “dangling=true” -q –no-trunc)</p>
+<p>more methods go to below link ↓</p>
+<p><strong>More Ref:</strong></p>
+<ul>
+<li><a href="https://www.jianshu.com/p/470e29801be2" target="_blank" rel="noopener">https://www.jianshu.com/p/470e29801be2</a></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Docker image export and import</title>
     <url>/2019/04/07/Docker-image%E5%AF%BC%E5%87%BA%E5%AF%BC%E5%85%A5/</url>
     <content><![CDATA[<p>A: “为什么要导镜像，直接从网上下载不就行了？”<br>B: “too young too naive，你以为哪里都能上网的，谁家的机房没事都能上个youtube,google的吗”</p>
@@ -420,22 +436,6 @@
 <li><a href="https://jingsam.github.io/2017/08/26/docker-save-and-docker-export.html" target="_blank" rel="noopener">https://jingsam.github.io/2017/08/26/docker-save-and-docker-export.html</a></li>
 <li><a href="https://www.jianshu.com/p/8408e06b7273" target="_blank" rel="noopener">https://www.jianshu.com/p/8408e06b7273</a></li>
 </ol>
-]]></content>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Docker clean</title>
-    <url>/2019/05/07/Docker-clean/</url>
-    <content><![CDATA[<h4 id="1-Cleanup-exited-processes"><a href="#1-Cleanup-exited-processes" class="headerlink" title="1.Cleanup exited processes:"></a>1.Cleanup exited processes:</h4><p>docker rm $(docker ps -q -f status=exited)</p>
-<h4 id="3-Cleanup-dangling-volumes"><a href="#3-Cleanup-dangling-volumes" class="headerlink" title="3.Cleanup dangling volumes:"></a>3.Cleanup dangling volumes:</h4><p>docker volume rm $(docker volume ls -qf dangling=true)</p>
-<h4 id="3-Cleanup-dangling-images"><a href="#3-Cleanup-dangling-images" class="headerlink" title="3.Cleanup dangling images:"></a>3.Cleanup dangling images:</h4><p>docker rmi $(docker images –filter “dangling=true” -q –no-trunc)</p>
-<p>more methods go to below link ↓</p>
-<p><strong>More Ref:</strong></p>
-<ul>
-<li><a href="https://www.jianshu.com/p/470e29801be2" target="_blank" rel="noopener">https://www.jianshu.com/p/470e29801be2</a></li>
-</ul>
 ]]></content>
       <tags>
         <tag>Docker</tag>
@@ -691,6 +691,62 @@
       </tags>
   </entry>
   <entry>
+    <title>Github Actions E06产出物</title>
+    <url>/2020/03/30/Github-Actions-E06%E4%BA%A7%E5%87%BA%E7%89%A9/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
+<p>大多数时候，workflow的产出物都会直接传到对应的某些仓库，比如docker image会送到docker hub这种仓库存储。这种时候是不需要在workflow再额外的管理产出物，但也不能全盘否定；有时候我们没有一个方便的地方去存储某些形式的文件等，就需要我们有类似jenkins <code>archiveArtifacts</code> 功能。但github actions能做的会更多，请期待。</p>
+</blockquote>
+<h3 id="1-关于artifacts"><a href="#1-关于artifacts" class="headerlink" title="1. 关于artifacts"></a>1. 关于artifacts</h3><p>构件是指在工作流程运行过程中产生的文件或文件集。<br>GitHub 提供两项可用于上传和下载构建构件的操作。 上传到工作流程运行的文件将使用 .zip 格式存档。 更多信息请参阅 <code>action/upload-artifact</code> 和 <code>download-artifact</code> 操作。</p>
+<p>这些是您可能想要上传的一些常见构建和测试输出构件：</p>
+<ul>
+<li>日志文件和核心转储文件</li>
+<li>测试结果、失败和屏幕截图</li>
+<li>二进制或存档文件</li>
+<li>压力测试性能输出和代码覆盖结果</li>
+</ul>
+<p>当作业完成时，运行程序将终止并删除虚拟环境的实例。</p>
+<h3 id="2-上传"><a href="#2-上传" class="headerlink" title="2. 上传"></a>2. 上传</h3><p>常见的场景: 一个java程序的产出物是一个jar包，在构建之后需要得到这个jar用于其他环境部署。</p>
+<p>依旧用 <a href="https://github.com/cicd-draft/api-test-demo" target="_blank" rel="noopener">api-test-demo</a> 这个仓库做演示，主要分为以下个步骤：</p>
+<ul>
+<li>1.下载代码；</li>
+<li>2.构建jar包(存放于指定到路径<code>build/libs/api-demo-0.0.1-SNAPSHOT.jar</code>)；</li>
+<li>3.上传jar包</li>
+</ul>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">my</span> <span class="string">workflow</span> <span class="string">demo</span> </span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span> </span><br><span class="line"><span class="attr">  push:</span></span><br><span class="line"><span class="attr">    branches:</span> </span><br><span class="line"><span class="bullet">      -</span> <span class="string">master</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  artifacts_demo_job:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">job1</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">Checkout</span> <span class="string">code</span></span><br><span class="line"><span class="attr">      uses:</span> <span class="string">actions/checkout@v1</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">Build</span> <span class="string">jar</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        pwd  &amp;&amp; ls -l</span></span><br><span class="line"><span class="string">        ./gradlew -x jar build</span></span><br><span class="line"><span class="string">        ls -l build/libs/api-demo-0.0.1-SNAPSHOT.jar</span></span><br><span class="line"><span class="string"></span><span class="attr">    - name:</span> <span class="string">Archive</span> <span class="string">SNAPSHOT.jar</span></span><br><span class="line"><span class="attr">      uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">      with:</span></span><br><span class="line"><span class="attr">        name:</span> <span class="string">api_snapshot_jar</span></span><br><span class="line"><span class="attr">        path:</span> <span class="string">build/libs/api-demo-0.0.1-SNAPSHOT.jar</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>github actions 工作流的产出物都放在哪里的，保留多久</p>
+</blockquote>
+<h3 id="3-下载"><a href="#3-下载" class="headerlink" title="3. 下载"></a>3. 下载</h3><p>步骤官方说明如下：</p>
+<ul>
+<li>1.On GitHub, navigate to the main page of the repository.</li>
+<li>2.Under your repository name, click Actions.</li>
+<li>3.In the left sidebar, click the workflow you want to see.</li>
+<li>4.Under “Workflow runs”, click the name of the run you want to see.</li>
+<li>5.To download artifacts, use the Artifacts drop-down menu, and select the artifact you want to download.</li>
+<li>6.To delete artifacts, use the Artifacts drop-down menu, and click .</li>
+</ul>
+<p>注意事项：</p>
+<ul>
+<li>保留90天</li>
+<li>一旦删除某一个构件，无法恢复</li>
+</ul>
+<h3 id="4-在工作流程中作业之间传递数据"><a href="#4-在工作流程中作业之间传递数据" class="headerlink" title="4. 在工作流程中作业之间传递数据"></a>4. 在工作流程中作业之间传递数据</h3><p><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts#passing-data-between-jobs-in-a-workflow" target="_blank" rel="noopener">https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts#passing-data-between-jobs-in-a-workflow</a></p>
+<p>由于同一个workflow的多个job分别运行在不同的虚拟主机上，下面示例工作流程说明如何在相同工作流程中的任务之间传递数据。关键词 <strong>need</strong> 用来确保job按顺序运行.</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Share</span> <span class="string">data</span> <span class="string">between</span> <span class="string">jobs</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span> <span class="string">[push]</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  job_1:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Add</span> <span class="number">3</span> <span class="string">and</span> <span class="number">7</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          expr 3 + 7 &gt; math-homework.txt</span></span><br><span class="line"><span class="string"></span><span class="attr">      - name:</span> <span class="string">Upload</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">1</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">          path:</span> <span class="string">math-homework.txt</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  job_2:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Multiply</span> <span class="string">by</span> <span class="number">9</span></span><br><span class="line"><span class="attr">    needs:</span> <span class="string">job_1</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">windows-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Download</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">1</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/download-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">      - shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          value=`cat homework/math-homework.txt`</span></span><br><span class="line"><span class="string">          expr $value \* 9 &gt; homework/math-homework.txt</span></span><br><span class="line"><span class="string"></span><span class="attr">      - name:</span> <span class="string">Upload</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">2</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">          path:</span> <span class="string">homework/math-homework.txt</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  job_3:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Display</span> <span class="string">results</span></span><br><span class="line"><span class="attr">    needs:</span> <span class="string">job_2</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">macOS-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Download</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">2</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/download-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Print</span> <span class="string">the</span> <span class="string">final</span> <span class="string">result</span></span><br><span class="line"><span class="attr">        shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          value=`cat homework/math-homework.txt`</span></span><br><span class="line"><span class="string">          echo The result is $value</span></span><br></pre></td></tr></table></figure>
+<hr>
+<p><strong>More Ref:</strong></p>
+<ul>
+<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts" target="_blank" rel="noopener">关于该篇的原文</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>CICD</category>
+      </categories>
+      <tags>
+        <tag>GA</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Github Actions E05环境变量</title>
     <url>/2020/03/24/Github-Actions-E05%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
@@ -787,62 +843,6 @@
 <p><strong>More Ref:</strong></p>
 <ul>
 <li><a href="https://help.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context" target="_blank" rel="noopener">GA Context</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>CICD</category>
-      </categories>
-      <tags>
-        <tag>GA</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Github Actions E06产出物</title>
-    <url>/2020/03/30/Github-Actions-E06%E4%BA%A7%E5%87%BA%E7%89%A9/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
-<p>大多数时候，workflow的产出物都会直接传到对应的某些仓库，比如docker image会送到docker hub这种仓库存储。这种时候是不需要在workflow再额外的管理产出物，但也不能全盘否定；有时候我们没有一个方便的地方去存储某些形式的文件等，就需要我们有类似jenkins <code>archiveArtifacts</code> 功能。但github actions能做的会更多，请期待。</p>
-</blockquote>
-<h3 id="1-关于artifacts"><a href="#1-关于artifacts" class="headerlink" title="1. 关于artifacts"></a>1. 关于artifacts</h3><p>构件是指在工作流程运行过程中产生的文件或文件集。<br>GitHub 提供两项可用于上传和下载构建构件的操作。 上传到工作流程运行的文件将使用 .zip 格式存档。 更多信息请参阅 <code>action/upload-artifact</code> 和 <code>download-artifact</code> 操作。</p>
-<p>这些是您可能想要上传的一些常见构建和测试输出构件：</p>
-<ul>
-<li>日志文件和核心转储文件</li>
-<li>测试结果、失败和屏幕截图</li>
-<li>二进制或存档文件</li>
-<li>压力测试性能输出和代码覆盖结果</li>
-</ul>
-<p>当作业完成时，运行程序将终止并删除虚拟环境的实例。</p>
-<h3 id="2-上传"><a href="#2-上传" class="headerlink" title="2. 上传"></a>2. 上传</h3><p>常见的场景: 一个java程序的产出物是一个jar包，在构建之后需要得到这个jar用于其他环境部署。</p>
-<p>依旧用 <a href="https://github.com/cicd-draft/api-test-demo" target="_blank" rel="noopener">api-test-demo</a> 这个仓库做演示，主要分为以下个步骤：</p>
-<ul>
-<li>1.下载代码；</li>
-<li>2.构建jar包(存放于指定到路径<code>build/libs/api-demo-0.0.1-SNAPSHOT.jar</code>)；</li>
-<li>3.上传jar包</li>
-</ul>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">my</span> <span class="string">workflow</span> <span class="string">demo</span> </span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span> </span><br><span class="line"><span class="attr">  push:</span></span><br><span class="line"><span class="attr">    branches:</span> </span><br><span class="line"><span class="bullet">      -</span> <span class="string">master</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  artifacts_demo_job:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">job1</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">Checkout</span> <span class="string">code</span></span><br><span class="line"><span class="attr">      uses:</span> <span class="string">actions/checkout@v1</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">Build</span> <span class="string">jar</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        pwd  &amp;&amp; ls -l</span></span><br><span class="line"><span class="string">        ./gradlew -x jar build</span></span><br><span class="line"><span class="string">        ls -l build/libs/api-demo-0.0.1-SNAPSHOT.jar</span></span><br><span class="line"><span class="string"></span><span class="attr">    - name:</span> <span class="string">Archive</span> <span class="string">SNAPSHOT.jar</span></span><br><span class="line"><span class="attr">      uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">      with:</span></span><br><span class="line"><span class="attr">        name:</span> <span class="string">api_snapshot_jar</span></span><br><span class="line"><span class="attr">        path:</span> <span class="string">build/libs/api-demo-0.0.1-SNAPSHOT.jar</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>github actions 工作流的产出物都放在哪里的，保留多久</p>
-</blockquote>
-<h3 id="3-下载"><a href="#3-下载" class="headerlink" title="3. 下载"></a>3. 下载</h3><p>步骤官方说明如下：</p>
-<ul>
-<li>1.On GitHub, navigate to the main page of the repository.</li>
-<li>2.Under your repository name, click Actions.</li>
-<li>3.In the left sidebar, click the workflow you want to see.</li>
-<li>4.Under “Workflow runs”, click the name of the run you want to see.</li>
-<li>5.To download artifacts, use the Artifacts drop-down menu, and select the artifact you want to download.</li>
-<li>6.To delete artifacts, use the Artifacts drop-down menu, and click .</li>
-</ul>
-<p>注意事项：</p>
-<ul>
-<li>保留90天</li>
-<li>一旦删除某一个构件，无法恢复</li>
-</ul>
-<h3 id="4-在工作流程中作业之间传递数据"><a href="#4-在工作流程中作业之间传递数据" class="headerlink" title="4. 在工作流程中作业之间传递数据"></a>4. 在工作流程中作业之间传递数据</h3><p><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts#passing-data-between-jobs-in-a-workflow" target="_blank" rel="noopener">https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts#passing-data-between-jobs-in-a-workflow</a></p>
-<p>由于同一个workflow的多个job分别运行在不同的虚拟主机上，下面示例工作流程说明如何在相同工作流程中的任务之间传递数据。关键词 <strong>need</strong> 用来确保job按顺序运行.</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Share</span> <span class="string">data</span> <span class="string">between</span> <span class="string">jobs</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span> <span class="string">[push]</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  job_1:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Add</span> <span class="number">3</span> <span class="string">and</span> <span class="number">7</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          expr 3 + 7 &gt; math-homework.txt</span></span><br><span class="line"><span class="string"></span><span class="attr">      - name:</span> <span class="string">Upload</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">1</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">          path:</span> <span class="string">math-homework.txt</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  job_2:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Multiply</span> <span class="string">by</span> <span class="number">9</span></span><br><span class="line"><span class="attr">    needs:</span> <span class="string">job_1</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">windows-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Download</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">1</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/download-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">      - shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          value=`cat homework/math-homework.txt`</span></span><br><span class="line"><span class="string">          expr $value \* 9 &gt; homework/math-homework.txt</span></span><br><span class="line"><span class="string"></span><span class="attr">      - name:</span> <span class="string">Upload</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">2</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">          path:</span> <span class="string">homework/math-homework.txt</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  job_3:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Display</span> <span class="string">results</span></span><br><span class="line"><span class="attr">    needs:</span> <span class="string">job_2</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">macOS-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Download</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">2</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/download-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Print</span> <span class="string">the</span> <span class="string">final</span> <span class="string">result</span></span><br><span class="line"><span class="attr">        shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          value=`cat homework/math-homework.txt`</span></span><br><span class="line"><span class="string">          echo The result is $value</span></span><br></pre></td></tr></table></figure>
-<hr>
-<p><strong>More Ref:</strong></p>
-<ul>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts" target="_blank" rel="noopener">关于该篇的原文</a></li>
 </ul>
 ]]></content>
       <categories>
@@ -1219,6 +1219,24 @@
       </tags>
   </entry>
   <entry>
+    <title>Jenkins Unicode icons</title>
+    <url>/2019/07/04/Jenkins-Unicode-icons/</url>
+    <content><![CDATA[<h5 id="Unicode-icons-list"><a href="#Unicode-icons-list" class="headerlink" title="Unicode icons list:"></a>Unicode icons list:</h5><p>“\u2776” = ❶<br>“\u27A1” = ➡<br>“\u2756” = ❖<br>“\u273F” = ✿<br>“\u2795” = ➕</p>
+<p>“\u2713” = ✓<br>“\u2705” = ✅<br>“\u274E” = ❎<br>“\u2717” = ✗<br>“\u274C” = ❌</p>
+<p>“\u2600” = ☀<br>“\u2601” = ☁<br>“\u2622” = ☢<br>“\u2623” = ☣<br>“\u2639” = ☹<br>“\u263A” = ☺</p>
+<p>Example :<br>make stage name to a icon, or command message<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//declarative pipeline</span><br><span class="line">...</span><br><span class="line">    stages &#123;</span><br><span class="line">        stage(<span class="string">'\u270A RAISED FIST'</span>)&#123;</span><br><span class="line">            steps&#123;</span><br><span class="line">                script&#123;</span><br><span class="line">                    <span class="built_in">echo</span> <span class="string">"This is Stage One"</span></span><br><span class="line">                    currentBuild.displayName = <span class="string">"<span class="variable">$&#123;env.BUILD_NUMBER&#125;</span> -&gt; <span class="variable">$&#123;env.GIT_BRANCH&#125;</span>"</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">'\u273F Verify'</span> //u2700</span><br><span class="line"><span class="built_in">echo</span> <span class="string">'\u2620 kulou'</span> //u2600</span><br></pre></td></tr></table></figure>
+<p><strong>More Ref:</strong></p>
+<ul>
+<li><a href="http://www.fileformat.info/info/unicode/block/dingbats/list.htm" target="_blank" rel="noopener">More icons in the \u2700 Unicode Digbats block.</a></li>
+<li><a href="https://www.w3schools.com/charsets/ref_utf_symbols.asp" target="_blank" rel="noopener">More icons in the \u2600 range</a></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>jenkins</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Jenkins  add timestamps</title>
     <url>/2019/07/04/Jenkins-add-timestamps/</url>
     <content><![CDATA[<p><strong>Timestamper plugin</strong>: Adds timestamps to the Console Output</p>
@@ -1246,24 +1264,6 @@ pipeline {
 <p><strong>More Ref:</strong></p>
 <ul>
 <li><a href="https://plugins.jenkins.io/timestamper" target="_blank" rel="noopener">Timestamper</a></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>jenkins</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Jenkins Unicode icons</title>
-    <url>/2019/07/04/Jenkins-Unicode-icons/</url>
-    <content><![CDATA[<h5 id="Unicode-icons-list"><a href="#Unicode-icons-list" class="headerlink" title="Unicode icons list:"></a>Unicode icons list:</h5><p>“\u2776” = ❶<br>“\u27A1” = ➡<br>“\u2756” = ❖<br>“\u273F” = ✿<br>“\u2795” = ➕</p>
-<p>“\u2713” = ✓<br>“\u2705” = ✅<br>“\u274E” = ❎<br>“\u2717” = ✗<br>“\u274C” = ❌</p>
-<p>“\u2600” = ☀<br>“\u2601” = ☁<br>“\u2622” = ☢<br>“\u2623” = ☣<br>“\u2639” = ☹<br>“\u263A” = ☺</p>
-<p>Example :<br>make stage name to a icon, or command message<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//declarative pipeline</span><br><span class="line">...</span><br><span class="line">    stages &#123;</span><br><span class="line">        stage(<span class="string">'\u270A RAISED FIST'</span>)&#123;</span><br><span class="line">            steps&#123;</span><br><span class="line">                script&#123;</span><br><span class="line">                    <span class="built_in">echo</span> <span class="string">"This is Stage One"</span></span><br><span class="line">                    currentBuild.displayName = <span class="string">"<span class="variable">$&#123;env.BUILD_NUMBER&#125;</span> -&gt; <span class="variable">$&#123;env.GIT_BRANCH&#125;</span>"</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">'\u273F Verify'</span> //u2700</span><br><span class="line"><span class="built_in">echo</span> <span class="string">'\u2620 kulou'</span> //u2600</span><br></pre></td></tr></table></figure>
-<p><strong>More Ref:</strong></p>
-<ul>
-<li><a href="http://www.fileformat.info/info/unicode/block/dingbats/list.htm" target="_blank" rel="noopener">More icons in the \u2700 Unicode Digbats block.</a></li>
-<li><a href="https://www.w3schools.com/charsets/ref_utf_symbols.asp" target="_blank" rel="noopener">More icons in the \u2600 range</a></li>
 </ul>
 ]]></content>
       <tags>
@@ -2286,6 +2286,7 @@ pipeline {
 <center> 常用的偏门小技巧 </center>
 
 <h3 id="书写风格"><a href="#书写风格" class="headerlink" title="书写风格"></a>书写风格</h3><p><a href="https://einverne.github.io/markdown-style-guide/zh.html" target="_blank" rel="noopener">Markdown书写风格指南</a></p>
+<p><a href="https://gerrit.googlesource.com/gitiles/+/master/Documentation/markdown.md" target="_blank" rel="noopener">https://gerrit.googlesource.com/gitiles/+/master/Documentation/markdown.md</a></p>
 <h3 id="文章框架"><a href="#文章框架" class="headerlink" title="文章框架"></a>文章框架</h3><p>同一类型的文章，比如技术类的，最好有一个框架用来提醒自己，把事情尽量写清楚；推荐看看<br><a href="https://github.com/do-community/do-article-templates" target="_blank" rel="noopener">文章框架</a></p>
 <p>目录categories和标签tags的说明:</p>
 <blockquote>
@@ -2333,7 +2334,9 @@ pipeline {
 <h3 id="删除线"><a href="#删除线" class="headerlink" title="删除线"></a>删除线</h3><p><del>跑路指南哇</del></p>
 <h3 id="锚点"><a href="#锚点" class="headerlink" title="锚点"></a>锚点</h3><p><a href="#jump">说明文字,点击这里会跳到下面的位置</a></p>
 <p><span id="jump">跳转到的位置</span></p>
-<h3 id="上标、下标"><a href="#上标、下标" class="headerlink" title="上标、下标"></a>上标、下标</h3><figure class="highlight tex"><table><tr><td class="code"><pre><span class="line">H&lt;sub&gt;2&lt;/sub&gt;O  CO&lt;sub&gt;2&lt;/sub&gt;</span><br><span class="line">爆米&lt;sup&gt;TM&lt;/sup&gt;</span><br></pre></td></tr></table></figure>]]></content>
+<h3 id="上标、下标"><a href="#上标、下标" class="headerlink" title="上标、下标"></a>上标、下标</h3><figure class="highlight tex"><table><tr><td class="code"><pre><span class="line">H&lt;sub&gt;2&lt;/sub&gt;O  CO&lt;sub&gt;2&lt;/sub&gt;</span><br><span class="line">爆米&lt;sup&gt;TM&lt;/sup&gt;</span><br></pre></td></tr></table></figure>
+<p>效果：<br><figure class="highlight html"><table><tr><td class="code"><pre><span class="line">H2O CO2</span><br><span class="line">爆米TM</span><br></pre></td></tr></table></figure></p>
+]]></content>
       <tags>
         <tag>Tools</tag>
       </tags>
@@ -2415,6 +2418,30 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>mktemp command</title>
+    <url>/2019/05/07/mktemp-command/</url>
+    <content><![CDATA[<p>最适合存储临时数据的位置是/tmp, <strong>mktemp</strong> 命令可以为临时文件或目录创建唯一的名字</p>
+<p>Create a temporary file or directory.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mktemp</span><br><span class="line"></span><br><span class="line">Create a temporary file or directory.</span><br><span class="line"></span><br><span class="line">- Create an empty temporary file and return the absolute path to it:</span><br><span class="line">    mktemp</span><br><span class="line"></span><br><span class="line">- Create a temporary directory and return the absolute path to it:</span><br><span class="line">    mktemp -d</span><br><span class="line"></span><br><span class="line">- Create a temporary file with a specified suffix:</span><br><span class="line">    mktemp --suffix &quot;.txt&quot;</span><br></pre></td></tr></table></figure>
+<h4 id="1-create-temporary-file-创建临时目录"><a href="#1-create-temporary-file-创建临时目录" class="headerlink" title="1.create temporary file (创建临时目录)"></a>1.create temporary file (创建临时目录)</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$filename</span>=`mktemp`</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$filename</span></span><br><span class="line">/tmp/tmp.8xefliegnD9</span><br></pre></td></tr></table></figure>
+<h4 id="2-create-temporary-directory-创建临时目录"><a href="#2-create-temporary-directory-创建临时目录" class="headerlink" title="2. create temporary directory (创建临时目录)"></a>2. create temporary directory (创建临时目录)</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dirname=`mktemp -d`</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$dirname</span></span><br><span class="line">tmp.NJ8dhf6wk</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>If you just want to generate a filename and don’t want to create the actual file or directory, you can(如果仅仅是想生成文件名，不希望创建实际的文件或目录，可以):<br><code>mktemp -u</code></p>
+</li>
+<li><p>Create a temporary filename based on the tempplate(基于模板创建临时文件名)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  qr_blog mktemp study.XXX</span><br><span class="line">study.UWT</span><br><span class="line">➜  qr_blog mktemp study.XXX</span><br><span class="line">study.Usm</span><br><span class="line">➜  qr_blog mktemp study.XXX</span><br><span class="line">study.M6a</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>Mac OS 与linux用法略有区别，请视情况使用</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Shell</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>kubectl 常用命令</title>
     <url>/2019/10/21/kubectl-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<h3 id="label操作"><a href="#label操作" class="headerlink" title="label操作"></a>label操作</h3><p>删除 label version=xx</p>
@@ -2441,30 +2468,6 @@ pipeline {
 ]]></content>
       <tags>
         <tag>k8s</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>mktemp command</title>
-    <url>/2019/05/07/mktemp-command/</url>
-    <content><![CDATA[<p>最适合存储临时数据的位置是/tmp, <strong>mktemp</strong> 命令可以为临时文件或目录创建唯一的名字</p>
-<p>Create a temporary file or directory.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mktemp</span><br><span class="line"></span><br><span class="line">Create a temporary file or directory.</span><br><span class="line"></span><br><span class="line">- Create an empty temporary file and return the absolute path to it:</span><br><span class="line">    mktemp</span><br><span class="line"></span><br><span class="line">- Create a temporary directory and return the absolute path to it:</span><br><span class="line">    mktemp -d</span><br><span class="line"></span><br><span class="line">- Create a temporary file with a specified suffix:</span><br><span class="line">    mktemp --suffix &quot;.txt&quot;</span><br></pre></td></tr></table></figure>
-<h4 id="1-create-temporary-file-创建临时目录"><a href="#1-create-temporary-file-创建临时目录" class="headerlink" title="1.create temporary file (创建临时目录)"></a>1.create temporary file (创建临时目录)</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$filename</span>=`mktemp`</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$filename</span></span><br><span class="line">/tmp/tmp.8xefliegnD9</span><br></pre></td></tr></table></figure>
-<h4 id="2-create-temporary-directory-创建临时目录"><a href="#2-create-temporary-directory-创建临时目录" class="headerlink" title="2. create temporary directory (创建临时目录)"></a>2. create temporary directory (创建临时目录)</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dirname=`mktemp -d`</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$dirname</span></span><br><span class="line">tmp.NJ8dhf6wk</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>If you just want to generate a filename and don’t want to create the actual file or directory, you can(如果仅仅是想生成文件名，不希望创建实际的文件或目录，可以):<br><code>mktemp -u</code></p>
-</li>
-<li><p>Create a temporary filename based on the tempplate(基于模板创建临时文件名)</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  qr_blog mktemp study.XXX</span><br><span class="line">study.UWT</span><br><span class="line">➜  qr_blog mktemp study.XXX</span><br><span class="line">study.Usm</span><br><span class="line">➜  qr_blog mktemp study.XXX</span><br><span class="line">study.M6a</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>Mac OS 与linux用法略有区别，请视情况使用</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Shell</tag>
       </tags>
   </entry>
   <entry>
@@ -2844,24 +2847,6 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>值得收藏的技术类站点</title>
-    <url>/2019/10/04/%E5%80%BC%E5%BE%97%E6%94%B6%E8%97%8F%E7%9A%84%E6%8A%80%E6%9C%AF%E7%B1%BB%E7%AB%99%E7%82%B9/</url>
-    <content><![CDATA[<p>一些技术公司，及其站点网站的列表，有很多高质量的文章和最佳实践。</p>
-<p><a href="https://www.praqma.com/" target="_blank" rel="noopener">https://www.praqma.com/</a></p>
-<p><a href="https://www.cloudbees.com/" target="_blank" rel="noopener">https://www.cloudbees.com/</a></p>
-<p><a href="https://www.freecodecamp.org/" target="_blank" rel="noopener">https://www.freecodecamp.org/</a></p>
-<p><a href="https://devopscube.com/" target="_blank" rel="noopener">https://devopscube.com/</a></p>
-<p><a href="https://www.endpoint.com/blog" target="_blank" rel="noopener">https://www.endpoint.com/blog</a></p>
-<p>技术归类：<a href="http://www.devopsbookmarks.com" target="_blank" rel="noopener">http://www.devopsbookmarks.com</a></p>
-]]></content>
-      <categories>
-        <category>Tools</category>
-      </categories>
-      <tags>
-        <tag>Tools</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>youtube 推荐频道(Tech)</title>
     <url>/2019/12/10/youtube-%E6%8E%A8%E8%8D%90%E9%A2%91%E9%81%93-Tech/</url>
     <content><![CDATA[<ul>
@@ -2901,6 +2886,24 @@ pipeline {
 ]]></content>
       <tags>
         <tag>Q List</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>值得收藏的技术类站点</title>
+    <url>/2019/10/04/%E5%80%BC%E5%BE%97%E6%94%B6%E8%97%8F%E7%9A%84%E6%8A%80%E6%9C%AF%E7%B1%BB%E7%AB%99%E7%82%B9/</url>
+    <content><![CDATA[<p>一些技术公司，及其站点网站的列表，有很多高质量的文章和最佳实践。</p>
+<p><a href="https://www.praqma.com/" target="_blank" rel="noopener">https://www.praqma.com/</a></p>
+<p><a href="https://www.cloudbees.com/" target="_blank" rel="noopener">https://www.cloudbees.com/</a></p>
+<p><a href="https://www.freecodecamp.org/" target="_blank" rel="noopener">https://www.freecodecamp.org/</a></p>
+<p><a href="https://devopscube.com/" target="_blank" rel="noopener">https://devopscube.com/</a></p>
+<p><a href="https://www.endpoint.com/blog" target="_blank" rel="noopener">https://www.endpoint.com/blog</a></p>
+<p>技术归类：<a href="http://www.devopsbookmarks.com" target="_blank" rel="noopener">http://www.devopsbookmarks.com</a></p>
+]]></content>
+      <categories>
+        <category>Tools</category>
+      </categories>
+      <tags>
+        <tag>Tools</tag>
       </tags>
   </entry>
   <entry>
@@ -3015,6 +3018,25 @@ pipeline {
 ]]></content>
   </entry>
   <entry>
+    <title>安迪-比尔定律(Andy and Bill’s Law)</title>
+    <url>/2019/03/27/%E5%AE%89%E8%BF%AA-%E6%AF%94%E5%B0%94%E5%AE%9A%E5%BE%8B-Andy-and-Bill%E2%80%99s-Law/</url>
+    <content><![CDATA[<h3 id="这句话出处是哪里？"><a href="#这句话出处是哪里？" class="headerlink" title="这句话出处是哪里？"></a>这句话出处是哪里？</h3><pre><code>“Andy gives,Bill takes away.(安迪提供什么，比尔拿走什么)&quot;
+</code></pre><h3 id="什么是安迪-比尔定律？"><a href="#什么是安迪-比尔定律？" class="headerlink" title="什么是安迪-比尔定律？"></a>什么是安迪-比尔定律？</h3><p>Andy指的是原英特尔公司CEO 安迪•格鲁<a href="https://zh.wikipedia.org/wiki/%E5%AE%89%E8%BF%AA%C2%B7%E8%91%9B%E6%B4%9B%E5%A4%AB" target="_blank" rel="noopener">Andy Grove</a>；Bill就是微软的比尔•盖茨.</p>
+<p>这句话的意思是，英特尔公司总裁安迪·格罗夫一旦向市场推广了一种新型芯片产品，微软CEO比尔盖茨就会及时的升级自己的软件产品，吸收新型芯片的高性能。硬件提高的性能，很快被软件消耗掉了。似乎两方是一对黄金搭档，心照不宣。</p>
+<blockquote>
+<p>简而言之，安迪-比尔定律揭示了硬件和软件相互促进彼此，不断更新换代的现象。</p>
+</blockquote>
+<h3 id="为什么要“更新”？"><a href="#为什么要“更新”？" class="headerlink" title="为什么要“更新”？"></a>为什么要“更新”？</h3><h6 id="1-从买卖双方分析："><a href="#1-从买卖双方分析：" class="headerlink" title="1.从买卖双方分析："></a>1.从买卖双方分析：</h6><p>对于厂商、公司而言，只有不断的推出新产品，才能有营收，才能获得更大的市场，最终通常是为了赚更多的钱。对于个人而言，个人的欲望在不断的增长，大哥比方：以前村里的张三有个mp3听听歌就可能满足的不行了，但是看着县里的李四拿着最新的mp4不仅能听歌，还能下载电影看，于是就渴望也有一个新玩意。过了一年半载出了一个新的手机，不仅有上述功能，还可以在线打游戏，只有拥有它才可以和别的小伙伴一起“冲锋陷阵”…</p>
+<h6 id="2-从硬件、软件公司分析："><a href="#2-从硬件、软件公司分析：" class="headerlink" title="2.从硬件、软件公司分析："></a>2.从硬件、软件公司分析：</h6><p>还是拿上面的例子，硬件公司老是生产mp3，等到大家差不多人手一个的时候，就赚不到更多的钱了。而这个时候有软件公司开发的新的软件，需要用新的设备才能运行，硬件公司还能又卖一波新硬件，而且又是新的市场，单价一般而言更贵，于是乎这样赚钱的机会怎么能放过。同业的竞争公司看到这样的趋势，也加紧研发去抢新的蛋糕（旧的蛋糕都快被人吃的差不多了，新的蛋糕就看谁做的快做的好了）。软件公司这时也纷纷用新的思路去做更多的软件，吸引新用户，也想着做一些更牛逼的软件（虽然现在硬件水平跟不上，但是总有一天那些硬件会有的，加紧研发自己的软件就准没错）。</p>
+]]></content>
+      <categories>
+        <category>读书笔记</category>
+      </categories>
+      <tags>
+        <tag>浪潮之巅</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>反摩尔定理 = 学如逆水行舟</title>
     <url>/2019/04/10/%E5%8F%8D%E6%91%A9%E5%B0%94%E5%AE%9A%E7%90%86-%E5%AD%A6%E5%A6%82%E9%80%86%E6%B0%B4%E8%A1%8C%E8%88%9F/</url>
     <content><![CDATA[<h3 id="1-什么是反摩尔定理？"><a href="#1-什么是反摩尔定理？" class="headerlink" title="1.什么是反摩尔定理？"></a>1.什么是反摩尔定理？</h3><p>Google(谷歌)的 CEO 埃里克•施密特在一次采访中指出，如果你反过来看摩尔定理， 一个 IT 公司如果今天和十八个月前卖掉同样多的、同样的产品，它的营业额就要降一半。IT 界把它称为 <strong>反摩尔定理</strong>。</p>
@@ -3029,25 +3051,6 @@ pipeline {
 <blockquote>
 <p>小编之前就知道一个，有点儿孤陋寡闻了 &gt;::&lt;</p>
 </blockquote>
-]]></content>
-      <categories>
-        <category>读书笔记</category>
-      </categories>
-      <tags>
-        <tag>浪潮之巅</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>安迪-比尔定律(Andy and Bill’s Law)</title>
-    <url>/2019/03/27/%E5%AE%89%E8%BF%AA-%E6%AF%94%E5%B0%94%E5%AE%9A%E5%BE%8B-Andy-and-Bill%E2%80%99s-Law/</url>
-    <content><![CDATA[<h3 id="这句话出处是哪里？"><a href="#这句话出处是哪里？" class="headerlink" title="这句话出处是哪里？"></a>这句话出处是哪里？</h3><pre><code>“Andy gives,Bill takes away.(安迪提供什么，比尔拿走什么)&quot;
-</code></pre><h3 id="什么是安迪-比尔定律？"><a href="#什么是安迪-比尔定律？" class="headerlink" title="什么是安迪-比尔定律？"></a>什么是安迪-比尔定律？</h3><p>Andy指的是原英特尔公司CEO 安迪•格鲁<a href="https://zh.wikipedia.org/wiki/%E5%AE%89%E8%BF%AA%C2%B7%E8%91%9B%E6%B4%9B%E5%A4%AB" target="_blank" rel="noopener">Andy Grove</a>；Bill就是微软的比尔•盖茨.</p>
-<p>这句话的意思是，英特尔公司总裁安迪·格罗夫一旦向市场推广了一种新型芯片产品，微软CEO比尔盖茨就会及时的升级自己的软件产品，吸收新型芯片的高性能。硬件提高的性能，很快被软件消耗掉了。似乎两方是一对黄金搭档，心照不宣。</p>
-<blockquote>
-<p>简而言之，安迪-比尔定律揭示了硬件和软件相互促进彼此，不断更新换代的现象。</p>
-</blockquote>
-<h3 id="为什么要“更新”？"><a href="#为什么要“更新”？" class="headerlink" title="为什么要“更新”？"></a>为什么要“更新”？</h3><h6 id="1-从买卖双方分析："><a href="#1-从买卖双方分析：" class="headerlink" title="1.从买卖双方分析："></a>1.从买卖双方分析：</h6><p>对于厂商、公司而言，只有不断的推出新产品，才能有营收，才能获得更大的市场，最终通常是为了赚更多的钱。对于个人而言，个人的欲望在不断的增长，大哥比方：以前村里的张三有个mp3听听歌就可能满足的不行了，但是看着县里的李四拿着最新的mp4不仅能听歌，还能下载电影看，于是就渴望也有一个新玩意。过了一年半载出了一个新的手机，不仅有上述功能，还可以在线打游戏，只有拥有它才可以和别的小伙伴一起“冲锋陷阵”…</p>
-<h6 id="2-从硬件、软件公司分析："><a href="#2-从硬件、软件公司分析：" class="headerlink" title="2.从硬件、软件公司分析："></a>2.从硬件、软件公司分析：</h6><p>还是拿上面的例子，硬件公司老是生产mp3，等到大家差不多人手一个的时候，就赚不到更多的钱了。而这个时候有软件公司开发的新的软件，需要用新的设备才能运行，硬件公司还能又卖一波新硬件，而且又是新的市场，单价一般而言更贵，于是乎这样赚钱的机会怎么能放过。同业的竞争公司看到这样的趋势，也加紧研发去抢新的蛋糕（旧的蛋糕都快被人吃的差不多了，新的蛋糕就看谁做的快做的好了）。软件公司这时也纷纷用新的思路去做更多的软件，吸引新用户，也想着做一些更牛逼的软件（虽然现在硬件水平跟不上，但是总有一天那些硬件会有的，加紧研发自己的软件就准没错）。</p>
 ]]></content>
       <categories>
         <category>读书笔记</category>
@@ -3200,22 +3203,6 @@ pipeline {
     <content><![CDATA[]]></content>
   </entry>
   <entry>
-    <title>给博客上个锁</title>
-    <url>/2020/04/02/%E7%BB%99%E5%8D%9A%E5%AE%A2%E4%B8%8A%E4%B8%AA%E9%94%81/</url>
-    <content><![CDATA[<div id="hexo-blog-encrypt" data-wpm="用心想想，ta可能用什么密码" data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
-  <div class="hbe-input-container">
-  <input type="password" id="hbePass" placeholder="" />
-    <label for="hbePass">Hey, password is required here.</label>
-    <div class="bottom-line"></div>
-  </div>
-  <script id="hbeData" type="hbeData" data-hmacdigest="e3ba2a2745f8b54091e691830ca3c77c3a7af95ed890a95b99fb0973d65cc760">0636e496fac5754b4846b68700f647e94a4117673556fa334fa7165fc370f9069161e79c8834690f4047090bb3173fefae7b982705e2cc745c5e45d536789e6551e690f5c596272a2013f609b0de93ad65af9d04921726938b4901a59059d4c8bb78419fbe5dc1fa202a70e7231fe668ac5944687c627ca9167dc8955ac4d3816a2024df6da403018fe6a0153087f1a91540097d87ed1882dc676f4f365b53611eb5f005085562b3f360a58a1e5ce35e92f053d0b30408b17428d688a183e31bd291ad11e815cbb6abb4ca90557bbaff50ef98a4bd78ab961c7096e939d7db0743a633ffc32f0fbe11a7c3c1039e6e70031966007de4a3b607470a98a15ef60aed34b07f43327dd4a9ccc152b4aaa13b7856aa28d1e60e92acb51f9916c2c5d51ea06c0cd302ccc9690cea3e6e1da60263790ae70114dd45faf2e1fb83d78e2dc7aa081d5fb268e038ff8bac2b3403c03cbd2f052bd3462fd2fa2e1ca5c82ae28a13272a1f9fe56d912518e82ba051f6c64d3897c0551868e6b3bebbc045976cf26d68473581adbcf6f69424d8e68039ac161a16cf883c0bc7e384fe56480e426c140d50d831c8a654cf1a97445de55e9e053d6dd3848b6d2bd1492021d815abe38af0bc6a2ae6fac5a3ae80d7f102a298a56f3c64266584d84a073ee4b4abd303df5a0ba80c028c70c2cb7d172449e172bf2a7eeeeb0cb0ef88df43ec67de95606395746167a9b4317452fec4ea073eaf547eab815ce1933c90b8aa1dc35bb9273145d9a895989e5f3098ceaf4ecb9cbb994186b661969c7709daa9732e1801ff4ba5342d74e5792e340254d0e081305a11525448371d70322bf0aafa8bc2d52309a680a731256e00a7818fd4bfc17029d459e50f4b5896e52cc439ff7028974a5ca97a936ec583c5e1d9c5c604f8da5dc387303e0de9bbc4120300fde0a18c2afea9b7d40e0ef8cdfb3e7870525cd689d0787a2a3ca31a61049d90ec16ddd843f43e13744f4a8e37f10a471d26a129b3e645f4b21e383e66784724eeddf21b806f256217a7be51e7102306a862d166fd1cb967fccfb8219cb57c29f16368f0ab23e77b850adc66607292d28f8154fed37c000fbd9333d32b88547283729f90ca51e63bbfd684a112eea3f9736687abc05aea61198c3533c71e6c7df189c69c7b3b209b8b32d42af2afd584fed6d3c7984b2aec8791bf241b5ec30ca0fea825d3c1a1243d5e2a1d53e4c78bb5abdb0e339fc320bf3d522aa63ccc042b9f858a5f64f55f229d72e1d6e9384988b05e4ff1e03a2f9fb9fdfa37a8511f1af99e4694e8eda3c452e2aaac2984de46f699bce3a0ceb5b95b0a5d41f341b362761673ebba9b3eb301a7eaf7ed72b2020207fc3fa7574477dc4cfee4871b9da9f656204acd171d878193508ac551906c13915ad6b33d0d927dd3270903581464d795b74cb8e61737fe85585fbf37f2784a01db379547937322b6140b1947eafd91520a0dbdcb110ad55b0cd26fac9774f414c150d3f67cd8b4a656df5b7e0ce0f2b6bda2eca1b4ad596a044fb291f07e945e0ea98166fb2221f200887b61243eeb464b3a04c785e006288e1afe659eb19e1f63b92666df0a704352ab77223ff73bac3cd80bc9899fd110ee9f43757a40fc6b19f13be03d943a3a1fa62e5e8bf277e4f789de8b6e7ffe4a603852545819f0fbc00ce819e54ca5c10ca8fbdbac007651bc16b6538031362f4c3f07cc916ead54971893a949e21f798f2473a28852cff7c2472218d62a629f0ad4cf5cafc25531f4320771910fdea49cf4bda06aa3e1bac8d8c475b422b8acdee48ff144125e5d8644df73014f5e24e8b0f7e205e3ff9173e1e26f52fd268119d07bb13aa725bc6a67a00eec25a01ad74166d99e7effc9aeb8198b9cda6c7907a901b72042cebde47a3dd6b17f9018011f9f3f0e3bd4661945f28375e0c96eb539d287eb83e196cbb4ccd63962abd1850fa6ce63ad65d4ad95554c28e3592cd4d0e1908870d9e5177d8c1c03ebff26d66469c79f46d74c7979ab4fae8e4a5f741db7a8e3350ecc9bf12d8ca6dc94a34e9adf82e61d6c969b5a1b1dbddf7f81755c4c8eeda3abdf508c48a09f6f3622dfce218a80a60bbb6b805c54d1b8211e05fd4f1d1f1c68381314244455d446cbcbaee11190afdee551dd058e2deb59aa4714ec9f6da8c714d1b8169b1fdfee28e6d04231d9be218df18122227861e534d092e6ff724da72ea640972bd7bad5dfb751e2f12753518b5290ef07b38b375c74685faef31a7449c1914e2b0edee0d2c1dc2cd1b7d3d07d143068b79f2484c580718325e6911a5297a63e3e7bc2c23e685c1550c8ad921747a8e963382e960763fa6fe9bac9c7cec88ba9e00b96694757e3b96911fd0e765c793a9ced17280ebcdf65eaba3c12005b2bb569625b00880829b6b11d0342ab7b0b7109e7d7bb5bd22db27b71fdcee206a2fdccf7b4361c43ebfb835ee67c3481aad90fb009d49dd3b07b0df300241c3ae9543fc03a62984ca24712b81fb568efaa4f1b380cd864ad056ddff46e04e8616c59cb6283f216b2a5123abdf19d38fe54abb75d316ce5006a7052a26fb6ca99b7a8530f247d0e85ae716c250071fbd6df6221ace515e0d59e8b85dbf5c46479cee097dcd92e9bd0448ca2891a6f3c0ff5dcd79230dc0d32914395ea1a8c0c4a9c7b101d7a0866ce8e7e5a11319512259d3e618ef3749c697a14963a938a1e411a773146b888a1f50a048be99083503765ab48f70d51527c2a42ed23f5c61023cc608b88cc8f0f30c882c1dfab61d5b67ebf8d8505339d580c47d0d00509c682a27b9666d344b8fb3f1f3539f6debd283ed116141d8e75d68157f5ff23af46bf0f9dc07090caff5df45fffd03de379bae518b55182995f0b285083ba3d8edb851932bed9c4b929efdeaa6889c8cb12887dcf20c474d348abd93be04158b667d5fac3a9ea53d376ea9c1b3bb1d949a3237473fad8c0ca511fc5b39b0f900dfec3416f2608999a24bda115b0837275e4f757b07c38ff594e942f805c1ddf17c43e9df5886b28377313ee0cc17ea827687b98a0a923155c23480c3f4dc44bb1c7ffe0ab7bf2d4aebaf5855cf76ce2461c7d35e79d3be683f471d8c8628f96e4fa349fa7c19046e06b79915e2f28062f4dd43204293ec54ae500f84c601a8ab21a0dc5eed8dd4ee2bdd0c31319354aafe7349ee4352bfb3640dbf5f42b52f4d05a64d6488edeb96b57174ab86257bf5c2cfca1f2d7fcf686011bb509e21a91737cf7de793b159809e1933a205f674a404786eb577fd5ce508ff03a19c542751c889730045c1cb1ec83de23dbd655fdb928883144270281a38c4ed6d8305eee05e3f3740327dd75237835ea277f27303c17d2a87c4182775bc2cfde962f379579fecc580efe012b0b090fee8e0ea5d4c8344c9a08ca38aa672063bb2e56e1ec9ebf46bee7144131be3e825dea763ddaddad93d480cfa863f7b43efcba03c208788bacb63e67af3fd707ba5dad19dfa11207af91c9e44cbcba1027c38127b999d053ded27b9f100cff3d5e6c48ea7f6d9d6630df5aa91f22e5190c6d905c9d9a06194a9cafc9c3a031835ef665f8d14b82ab653b3a6858bc7248827a217fd61befe9dc3eec7aefd980dba84f54952a5aca1fa659166a520a1d44eb334e5c00e6195e4eca08b25caeb6dadc7042ae60cd30bf76d9f65680e570c5fb12eb28c32fb9eaf6f0ce60f96a948f96f8d2d8343b964ac51fcaa55c19d333c0da82a3f929cafe3582e2eea5f9eff69809270767d64514fa718a37ef5ef87f85d583e09f604033a4bc310c9453d74568eb506f63da59000fca36daa0c286cc174cc6b0ef87cc8640c7cbf464064361c12dfce261c73b78252fa5239df24b5a96a5771cf055acab5686dea5225e49afafd5b9370967db170b3512afa6de695fa8057907d237a812d12908f9ab933a48ad838cbf1b8e2d60ce9d58d9d7867bf840b446f98775aa7ea9107fc5f58158be1faf941b067c1ce2b5699321f4e9ef45928e4b8cb2bb02fa76ba7a039f03b80bc0f5158507f6fe69e971d78224b5f36950fa4c040b0d00b0cb7cff60e0d5a9ef4bfd10af83c3dd7bea328ba93a7fa849cc14d11f444c79dd3a1f012a6ddae38178db8b61941b3009ce1a61294710f5a0381483e93bbc387be684fef0c0b454deaed33f30d37ce6441db3d0e46ebcd61609d3b8fd7de6ecf45c584153094800969de7021d5856b14a46f380e4fc511b9d3cd442a017d054edec712620a13299e5f905c1308f8f14941bbca6b4d756695b26d885a072e13df3fd128d31357c0b682b140f2b6ffa6f1686b9a326cb180400df1ab4053e683b4a560580fd962c06f4813db0a535e25091fe1cc1bd8874abfb4c5ad23aa67bafa7e625023bec42a1fb83f895663e2e751ea91ac79612767daf6c8995a7caedff3fd1e9fd32718f8bd4a177d6f900f424acf7d00706f4c057635b7f0b984e32a48cc15c3a94a2740287e8c46816c945b714756b6188268e0566ba342df9bfcbfb741cd193e09bc6eee3f1b900260e255f7c74c107c3edc0b16546488bd4fd8012e6a042561f829e521d2738c3afde18b031681a4a85cb4143780dfa66bdfc1540981b1a4a116cb0ae1833995ed8f239c948b42a4e7f7f79796f272859e3452b5fa562c2f457bec41c6e35b8233cf73606b4c652e75f045866186f9c52a942d40f1c048359ba5520ab120cecbf8e881abfd26c74f271164974003249d75c93ceaf9207a917c4d1e3b779dd4f4e3bb487d5ed8e9984fa09699af683c6542e8bc7761b444cfdb20e7ab5cbb7b5d3afbf517d8b49a1f9436a9e206e48a9bdb814432d90b812c1393cb04446bb0b106ebfe5184569ca8b7089be6a32bde910dfb6179621dec5a11115b95e3bbb3011b359fdee22aa564b6800d7b0f65fd50e3bfb76767799d2f5557a9c06740b12776447302703ace3e2a2e35d772ffaa02334d4655f67ce590b46a8430a9ad7c664ef35ff8405c1b74a928b98d3f184a365ecad096e87991a915cbfde596e5641889db797d8c5e266a582dcb4006442d1967d7b13f9f3faaaa7bb0346afc8bc25cb837a810f825c33221faa632da499ce9aaa449570330c16967fa13a24692c43096d2d2f66ff5b334caff452a9f539b9a60f1be63e5b913aba65fd2b4f768664b9c787b80b847cd35ecc4cbb2989a911742fd28fb09e45dbb44e756b82b57b3755eebc4674f3ae76dd32a99a03d0af33941dd568bf7a9be6d47ff0dff28034b05ab6f10261bdab31fd58daf7e869b2011762d0a400a54ca0b58225a1e29dd50ac6fb0a2cbcbff3223ff1c1193e06b9738baa4bac27820649d2afc2f5cf39453cee7117a50de708ab8d89da49c8def7e3eec5565290a2143c77b44eb581543122c5604db379a904c6715150e54bc42fae1e31f316bb302c342e56a906d4d923bbaf0faffdff29c308f6b8bab6da4058b04a9321adc0e192878cac9b6153b92f715d5339e457abae8a507f73c16af3abd9381f5b0b3ce6f643ffed8bb072e18cdd2c1d209b053dc93876acabd3e743c40cedf15b2a6bb138a7a11e71c0c00e6896e3c9a9f4ba6a7d8ac23ba733df53f67695abd4290c033e3a812e4294793a210436bc3ec808294efa9b859d9596c0dd478786bb9dd916f87a69d267ea3c1912529b709b9644594c6b9ee67fa7f9f99187af925475383cf4077f3d2815f8af68d58d24697a34a29bf89d353cde710d213871f2a37d5949a65a0d243a722b697778ebcea33d7684d58542bfbf49ac6da75d8a7131a5003e9f35d86f9c026c2d378a3e374267f7bc97e11d6f723bea368d34c7a3fb3021b96ab94ada189addbcbf23a5d33cc7e7026ca64722ed4a97ebaeeb7e8d9c3f20e2e553d847aa54c209f240d1c233f3b08c07403f1f88345c2a5eebcdac71dcda1ab0d926997a27ece3cf46c4e0f63a357c4876305bfb160866121cacec92f498454e5dd3ee0cb32042604b406a2ee82dfa45644eb0c6b317302a355afa0253d3f5bfb828010025dd16ff1c7ce2b0092d327993b1fdd079d10aa99ca8e2772153c7ac17cb2e5c288503d0a4d2eef17e44be6ff67e15cf92a49e13a24d9a2b035013a98c63e51b9aeb8a2dd2ad13d0fb1ce00f2f24f3f0ac08bda5ef32b69dcba8576a76d78852c3f48a3b687a94c3d5515e3846197423366e7ee6e486cfc40104b16360d66c7551bc86d78992dd66ac1e26038af9e4ae13c36c9f078e184cecfe5ed1117f67380ee61d7ef55daa6efb2451793e0cdfc77c90ced8ee27bc740a7d1e33003a38933a0d01c87d5ed13887770f34622d7375d9e332325af62057c956acf2cce43bdd47a1dc70696fb95cbc4febe6e38929deb565d095058facbbba5573b1fc275724196287dbc5aae9e5e8d3d3b5962e1644dd485aa437fc0582254ea70c6832551bdc8d72302df724446fba1c92ce42c3e9102d241445e9272438799223f7fae3819353544ed6e19e2f5bc8ef7ff8d2b92b13f04265612ae187c0ab1b21fe7847a16a49a3e74fe9bd584ac63abc641b9788dadce58dfa2c9aa1b7da552bc2f48c9bc4d8ea4c572f27402b6fa6aa572493cb1d64a7f67765709838d8840c53820d92b669305781d9984e03d6a453c924e07aa93296d68fba47c91734fab0071a287b247177844a56b752e71e18135ac1cf4c0d7f282442daf848c68ee93661c42bb36910608fb4f7f9d4ddc2bcf8fb1c6f6da6c7490f1bb58c6c8da58a127d4efc3598710d464066185ac02af569858218c5ddfc278574e30ddfd843ad9e0248b10cfa5d8dec9bfbbe9cb2511ff5b778131c46a15daeedef216dfbe3396b6e505e2a22e464833bc6d781c6205915436eaae71deeefd2f1d0465441c099a45953bd78e9b3412856313a1f4fad19c37007f9f41ed91fb15d6a444064bc0d8fa34c706baada701727e21ea58a8a1a5b0f1e156de1d51362a6bb0378ea78026f00fe9fb6254e131ba8bd6963f2a0436865740184ac4537ee74deb2469ac3e0d10a6f47d0efeed69f16cb1d4780fb468f7e0b7436f2ca481e76f533304fedb2bcd6e7df58de8f3b7ad9031c42b7724546361144a7883f4cd21b7a82c10eb27c067b6ca542e0a84f630b2e8ae65722e41dddda6f614d7a3d93652bb145ec4bc7aa6d9e13bef22a86dee78f36f5497cfba65443de49b2c572d9921f91505815563062ba2142db9eb94292c0a15d5b20d8b60fb01e4d3babc180d68993e316d9b456d21b9e06135b77b0427a8dd714ea58a4b03ab69e8a9010200299190d852cb598ccf22cdad6af4794710c2f882352e66034bbfff7f093990e0bf87bf40736950d47d10558d91c323efe12acb14b39be2eec2dbc75753aa93fb5859e49c8f8740b7895d630771a636992176e1cba9fb5ac12081fdfa614fad7d61152c5ba462f1e30406a5b99d74a3224c555eb9b770f36579c85376791be05090e25fff3ef8121854f2084596a5ced06a045fc149394c0ff82bf4a3e8fc0d95959bc643d47061dde51d34a365e185d5212b819648fafbdd0e9406a847333708786c12978ba6e0005a38c6e729e17c991b430e2edc7fd83e1e2a936abf3bac8026a38ccb758c30521c83e5c172ebf4fcbf02d8c8f911dde7b5670ff84847859577e95d0faef2f8fd04c8c5e3880a11ff707220fa69be2b945c124eaceffd4826d9a0ad859de2bcb455d5e74eea6090b372964b57c326b8a85319b25bcd658a174b8c83821b437b37576cfd53b4a313dc24a0f80024bd996c75a7acbaed794fd7efc3393e3a8400aee42f7e7db388b0c14ce6c7302b9118b856c40b0ca5b91a301754ebd8b615ad75359cd122b75c0ff30dd29588f4e71c9acc5e5cfee68d300e25870ad6280657f4548c9c579e54ec4eaedd32b4ad87799d69c6ea51fb6aa554e21a78c87f6f7b69f2b86901b0ab31afc955715be115c7e7979fcef8a318961e9da5a3f80190ff97712170ed7889d8150e6d051e792a41200f8d8f8bf2b7a28495514e483c78c7075b435d559961d6c1e3b9d6ec20ef421b46fe8b214b2e4cafbb74de9dcf7e24ca46a17153eef6a3d09d09340fdd7d70fd659f1e395813f0fe636939624371dbdb0495921334a96a8afc95ab471b53238a5bddff5c26719d2ef2d7784419b79d4f1035a87e8d80dc5cc6bee00bddab25cd3a7cb0cb763887e82e78db79e7d5b4933d321c5c641df14651a219101c3376dbda592b3d30b5d6b80f87187277e093eb6bce3afc87488522efd0e284e4e9f20b5361ccbec18b495310949a28e92e1a89d8bc67eb3fa9e458e89e595a873fa651e5d28de388c9cbbb13e101269c3a4c04738859e9ed1e0bfb208ff405aadc81d4bbfff047473a53bc95c8def6e6f1f98f58d1765ba61c1b0d658f061351167a61f4957f1409c7767d5376c963ee06f45cddb6764a5e41e8f104dd35d0ee7033e5e40b05091fa60d1b4f78549244805f849ca5468aebcaaf91f82df0b2e38464eecc162fd5312fbf2cd6bf09083591dfee393ef3adae35fcd1f5cf5de7547853e8307b38cb5a853c39c1d2fa93656a700f6777ce53db6fcc5a29514cf7d0e9a012c5b5b3e95a25e43aa2057396878c65faae7ded546fcbdc03860a971334264604e5037478e6b006aaf058dce1cee289b3adc99d726c8d27f615682102b0b18cbc03f0351ceb9e93e2a6afd60d02013f6e72d8e6aac66e24ec0ccaa1c48ae9f8ed30e8e99d7dc2573847ebd122125bfe94b9eddf79283651c9d5c9235cf91de93851f9deb67045f7954a8ddc874ebe2730fb2c9ab88a9ab98a2c249a1d3ae14d5c82f4396fd8e220a1f083fc85b2b80f608f6f02cc63a1bf33add983f68f964068b760c9711fc6fda522b5123c045dff7e8b1982bc546450e54fa2407d3aec9ce9e8973de39566cd25e8359f76afd1763c80b7e8b4e4f065fbbd45914978ac51426c74b32e01562fdd85c56bf1fa368fb8ea918efab398afaa703251e6ff20e63fa900ef3c312a05c13a419ecc1dc7b3c6d460b5ba428172ad4ee4decbb013a973754ab06e4ff396944b4e4c87dc04e0cb1af61fa8fadc8bd73bd49d98b8774960e2f62f65844b0f3556750c8845c810aa03d69b1fe90e5384abf6451311e56f66941bf4df00e9e231233b169569a214829f2775ef65787bdca74992981b872469c2cdc56a3788053ff8a8af56bf9bdcfa389433a516ae2c54b5841392f491dd63bd624bd4e61538d841a2db418fe09e7dc7c351790a0f54646155bb39ea58dadeb5b6f8586fcba911e6ce8c9377d4420a1731716ff4647c8ecb4e08c87940a1642fce2ce4604f76d1ac8fe370d2ad512f1da56e579e89d848314a4beeaedd24f755ed111ac59d448f8b503c2a26d4a02062c72142f55f4a3a343ee5cdf4840ba31f10d663bce34f1414e2661c27ab2831b841ca595abadd56492a201248f855a9baad360dbd52266bb8d07c6c755ac7e97b80cbbd310e85039a2b734669d56c0665fd1010f27eccf32a4b6bb9e58df640b354e09a4112eb7fc1a3432a9f10a0ff420d58bd7c14758e00139d96a5572e6212f9a57ce47ba20040419d4078ce033b8d94fdf2970f81430c93503e91b5847d05394f6074b39109ee7960c5612f122d704681f337075625745463fc60bcf7bec29cfee49b01a8a865acf0a8e92fba3672aa52fabcea0de45a9483d3ae35ee97af42aca7f5c53349eb430cc2cb3c2c3dbf7716e8747f848c309a304c0b18bd661e1c6bdfffbe67ebf959083f7e1b8dc5377eff5cdbac16a67731b5856bd131173a48948b9f2a294ad8b22921e68d5ee04bb6f157ee5a987d22426127843b463</script>
-</div>
-<script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
-      <tags>
-        <tag>Tools</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>移动端打包pipeline通识：从零开始</title>
     <url>/2020/01/03/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E6%89%93%E5%8C%85pipeline%E9%80%9A%E8%AF%86%EF%BC%9A%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B/</url>
     <content><![CDATA[<p>背景： 一台被格式化后的 MacBook Pro, 对某个移动端项目( xx类型 )做android pipeline、iOS pipeline</p>
@@ -3272,6 +3259,22 @@ pipeline {
       <categories>
         <category>CICD</category>
       </categories>
+  </entry>
+  <entry>
+    <title>给博客上个锁</title>
+    <url>/2020/04/02/%E7%BB%99%E5%8D%9A%E5%AE%A2%E4%B8%8A%E4%B8%AA%E9%94%81/</url>
+    <content><![CDATA[<div id="hexo-blog-encrypt" data-wpm="用心想想，ta可能用什么密码" data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <div class="hbe-input-container">
+  <input type="password" id="hbePass" placeholder="" />
+    <label for="hbePass">Hey, password is required here.</label>
+    <div class="bottom-line"></div>
+  </div>
+  <script id="hbeData" type="hbeData" data-hmacdigest="e3ba2a2745f8b54091e691830ca3c77c3a7af95ed890a95b99fb0973d65cc760">0636e496fac5754b4846b68700f647e94a4117673556fa334fa7165fc370f9069161e79c8834690f4047090bb3173fefae7b982705e2cc745c5e45d536789e6551e690f5c596272a2013f609b0de93ad65af9d04921726938b4901a59059d4c8bb78419fbe5dc1fa202a70e7231fe668ac5944687c627ca9167dc8955ac4d3816a2024df6da403018fe6a0153087f1a91540097d87ed1882dc676f4f365b53611eb5f005085562b3f360a58a1e5ce35e92f053d0b30408b17428d688a183e31bd291ad11e815cbb6abb4ca90557bbaff50ef98a4bd78ab961c7096e939d7db0743a633ffc32f0fbe11a7c3c1039e6e70031966007de4a3b607470a98a15ef60aed34b07f43327dd4a9ccc152b4aaa13b7856aa28d1e60e92acb51f9916c2c5d51ea06c0cd302ccc9690cea3e6e1da60263790ae70114dd45faf2e1fb83d78e2dc7aa081d5fb268e038ff8bac2b3403c03cbd2f052bd3462fd2fa2e1ca5c82ae28a13272a1f9fe56d912518e82ba051f6c64d3897c0551868e6b3bebbc045976cf26d68473581adbcf6f69424d8e68039ac161a16cf883c0bc7e384fe56480e426c140d50d831c8a654cf1a97445de55e9e053d6dd3848b6d2bd1492021d815abe38af0bc6a2ae6fac5a3ae80d7f102a298a56f3c64266584d84a073ee4b4abd303df5a0ba80c028c70c2cb7d172449e172bf2a7eeeeb0cb0ef88df43ec67de95606395746167a9b4317452fec4ea073eaf547eab815ce1933c90b8aa1dc35bb9273145d9a895989e5f3098ceaf4ecb9cbb994186b661969c7709daa9732e1801ff4ba5342d74e5792e340254d0e081305a11525448371d70322bf0aafa8bc2d52309a680a731256e00a7818fd4bfc17029d459e50f4b5896e52cc439ff7028974a5ca97a936ec583c5e1d9c5c604f8da5dc387303e0de9bbc4120300fde0a18c2afea9b7d40e0ef8cdfb3e7870525cd689d0787a2a3ca31a61049d90ec16ddd843f43e13744f4a8e37f10a471d26a129b3e645f4b21e383e66784724eeddf21b806f256217a7be51e7102306a862d166fd1cb967fccfb8219cb57c29f16368f0ab23e77b850adc66607292d28f8154fed37c000fbd9333d32b88547283729f90ca51e63bbfd684a112eea3f9736687abc05aea61198c3533c71e6c7df189c69c7b3b209b8b32d42af2afd584fed6d3c7984b2aec8791bf241b5ec30ca0fea825d3c1a1243d5e2a1d53e4c78bb5abdb0e339fc320bf3d522aa63ccc042b9f858a5f64f55f229d72e1d6e9384988b05e4ff1e03a2f9fb9fdfa37a8511f1af99e4694e8eda3c452e2aaac2984de46f699bce3a0ceb5b95b0a5d41f341b362761673ebba9b3eb301a7eaf7ed72b2020207fc3fa7574477dc4cfee4871b9da9f656204acd171d878193508ac551906c13915ad6b33d0d927dd3270903581464d795b74cb8e61737fe85585fbf37f2784a01db379547937322b6140b1947eafd91520a0dbdcb110ad55b0cd26fac9774f414c150d3f67cd8b4a656df5b7e0ce0f2b6bda2eca1b4ad596a044fb291f07e945e0ea98166fb2221f200887b61243eeb464b3a04c785e006288e1afe659eb19e1f63b92666df0a704352ab77223ff73bac3cd80bc9899fd110ee9f43757a40fc6b19f13be03d943a3a1fa62e5e8bf277e4f789de8b6e7ffe4a603852545819f0fbc00ce819e54ca5c10ca8fbdbac007651bc16b6538031362f4c3f07cc916ead54971893a949e21f798f2473a28852cff7c2472218d62a629f0ad4cf5cafc25531f4320771910fdea49cf4bda06aa3e1bac8d8c475b422b8acdee48ff144125e5d8644df73014f5e24e8b0f7e205e3ff9173e1e26f52fd268119d07bb13aa725bc6a67a00eec25a01ad74166d99e7effc9aeb8198b9cda6c7907a901b72042cebde47a3dd6b17f9018011f9f3f0e3bd4661945f28375e0c96eb539d287eb83e196cbb4ccd63962abd1850fa6ce63ad65d4ad95554c28e3592cd4d0e1908870d9e5177d8c1c03ebff26d66469c79f46d74c7979ab4fae8e4a5f741db7a8e3350ecc9bf12d8ca6dc94a34e9adf82e61d6c969b5a1b1dbddf7f81755c4c8eeda3abdf508c48a09f6f3622dfce218a80a60bbb6b805c54d1b8211e05fd4f1d1f1c68381314244455d446cbcbaee11190afdee551dd058e2deb59aa4714ec9f6da8c714d1b8169b1fdfee28e6d04231d9be218df18122227861e534d092e6ff724da72ea640972bd7bad5dfb751e2f12753518b5290ef07b38b375c74685faef31a7449c1914e2b0edee0d2c1dc2cd1b7d3d07d143068b79f2484c580718325e6911a5297a63e3e7bc2c23e685c1550c8ad921747a8e963382e960763fa6fe9bac9c7cec88ba9e00b96694757e3b96911fd0e765c793a9ced17280ebcdf65eaba3c12005b2bb569625b00880829b6b11d0342ab7b0b7109e7d7bb5bd22db27b71fdcee206a2fdccf7b4361c43ebfb835ee67c3481aad90fb009d49dd3b07b0df300241c3ae9543fc03a62984ca24712b81fb568efaa4f1b380cd864ad056ddff46e04e8616c59cb6283f216b2a5123abdf19d38fe54abb75d316ce5006a7052a26fb6ca99b7a8530f247d0e85ae716c250071fbd6df6221ace515e0d59e8b85dbf5c46479cee097dcd92e9bd0448ca2891a6f3c0ff5dcd79230dc0d32914395ea1a8c0c4a9c7b101d7a0866ce8e7e5a11319512259d3e618ef3749c697a14963a938a1e411a773146b888a1f50a048be99083503765ab48f70d51527c2a42ed23f5c61023cc608b88cc8f0f30c882c1dfab61d5b67ebf8d8505339d580c47d0d00509c682a27b9666d344b8fb3f1f3539f6debd283ed116141d8e75d68157f5ff23af46bf0f9dc07090caff5df45fffd03de379bae518b55182995f0b285083ba3d8edb851932bed9c4b929efdeaa6889c8cb12887dcf20c474d348abd93be04158b667d5fac3a9ea53d376ea9c1b3bb1d949a3237473fad8c0ca511fc5b39b0f900dfec3416f2608999a24bda115b0837275e4f757b07c38ff594e942f805c1ddf17c43e9df5886b28377313ee0cc17ea827687b98a0a923155c23480c3f4dc44bb1c7ffe0ab7bf2d4aebaf5855cf76ce2461c7d35e79d3be683f471d8c8628f96e4fa349fa7c19046e06b79915e2f28062f4dd43204293ec54ae500f84c601a8ab21a0dc5eed8dd4ee2bdd0c31319354aafe7349ee4352bfb3640dbf5f42b52f4d05a64d6488edeb96b57174ab86257bf5c2cfca1f2d7fcf686011bb509e21a91737cf7de793b159809e1933a205f674a404786eb577fd5ce508ff03a19c542751c889730045c1cb1ec83de23dbd655fdb928883144270281a38c4ed6d8305eee05e3f3740327dd75237835ea277f27303c17d2a87c4182775bc2cfde962f379579fecc580efe012b0b090fee8e0ea5d4c8344c9a08ca38aa672063bb2e56e1ec9ebf46bee7144131be3e825dea763ddaddad93d480cfa863f7b43efcba03c208788bacb63e67af3fd707ba5dad19dfa11207af91c9e44cbcba1027c38127b999d053ded27b9f100cff3d5e6c48ea7f6d9d6630df5aa91f22e5190c6d905c9d9a06194a9cafc9c3a031835ef665f8d14b82ab653b3a6858bc7248827a217fd61befe9dc3eec7aefd980dba84f54952a5aca1fa659166a520a1d44eb334e5c00e6195e4eca08b25caeb6dadc7042ae60cd30bf76d9f65680e570c5fb12eb28c32fb9eaf6f0ce60f96a948f96f8d2d8343b964ac51fcaa55c19d333c0da82a3f929cafe3582e2eea5f9eff69809270767d64514fa718a37ef5ef87f85d583e09f604033a4bc310c9453d74568eb506f63da59000fca36daa0c286cc174cc6b0ef87cc8640c7cbf464064361c12dfce261c73b78252fa5239df24b5a96a5771cf055acab5686dea5225e49afafd5b9370967db170b3512afa6de695fa8057907d237a812d12908f9ab933a48ad838cbf1b8e2d60ce9d58d9d7867bf840b446f98775aa7ea9107fc5f58158be1faf941b067c1ce2b5699321f4e9ef45928e4b8cb2bb02fa76ba7a039f03b80bc0f5158507f6fe69e971d78224b5f36950fa4c040b0d00b0cb7cff60e0d5a9ef4bfd10af83c3dd7bea328ba93a7fa849cc14d11f444c79dd3a1f012a6ddae38178db8b61941b3009ce1a61294710f5a0381483e93bbc387be684fef0c0b454deaed33f30d37ce6441db3d0e46ebcd61609d3b8fd7de6ecf45c584153094800969de7021d5856b14a46f380e4fc511b9d3cd442a017d054edec712620a13299e5f905c1308f8f14941bbca6b4d756695b26d885a072e13df3fd128d31357c0b682b140f2b6ffa6f1686b9a326cb180400df1ab4053e683b4a560580fd962c06f4813db0a535e25091fe1cc1bd8874abfb4c5ad23aa67bafa7e625023bec42a1fb83f895663e2e751ea91ac79612767daf6c8995a7caedff3fd1e9fd32718f8bd4a177d6f900f424acf7d00706f4c057635b7f0b984e32a48cc15c3a94a2740287e8c46816c945b714756b6188268e0566ba342df9bfcbfb741cd193e09bc6eee3f1b900260e255f7c74c107c3edc0b16546488bd4fd8012e6a042561f829e521d2738c3afde18b031681a4a85cb4143780dfa66bdfc1540981b1a4a116cb0ae1833995ed8f239c948b42a4e7f7f79796f272859e3452b5fa562c2f457bec41c6e35b8233cf73606b4c652e75f045866186f9c52a942d40f1c048359ba5520ab120cecbf8e881abfd26c74f271164974003249d75c93ceaf9207a917c4d1e3b779dd4f4e3bb487d5ed8e9984fa09699af683c6542e8bc7761b444cfdb20e7ab5cbb7b5d3afbf517d8b49a1f9436a9e206e48a9bdb814432d90b812c1393cb04446bb0b106ebfe5184569ca8b7089be6a32bde910dfb6179621dec5a11115b95e3bbb3011b359fdee22aa564b6800d7b0f65fd50e3bfb76767799d2f5557a9c06740b12776447302703ace3e2a2e35d772ffaa02334d4655f67ce590b46a8430a9ad7c664ef35ff8405c1b74a928b98d3f184a365ecad096e87991a915cbfde596e5641889db797d8c5e266a582dcb4006442d1967d7b13f9f3faaaa7bb0346afc8bc25cb837a810f825c33221faa632da499ce9aaa449570330c16967fa13a24692c43096d2d2f66ff5b334caff452a9f539b9a60f1be63e5b913aba65fd2b4f768664b9c787b80b847cd35ecc4cbb2989a911742fd28fb09e45dbb44e756b82b57b3755eebc4674f3ae76dd32a99a03d0af33941dd568bf7a9be6d47ff0dff28034b05ab6f10261bdab31fd58daf7e869b2011762d0a400a54ca0b58225a1e29dd50ac6fb0a2cbcbff3223ff1c1193e06b9738baa4bac27820649d2afc2f5cf39453cee7117a50de708ab8d89da49c8def7e3eec5565290a2143c77b44eb581543122c5604db379a904c6715150e54bc42fae1e31f316bb302c342e56a906d4d923bbaf0faffdff29c308f6b8bab6da4058b04a9321adc0e192878cac9b6153b92f715d5339e457abae8a507f73c16af3abd9381f5b0b3ce6f643ffed8bb072e18cdd2c1d209b053dc93876acabd3e743c40cedf15b2a6bb138a7a11e71c0c00e6896e3c9a9f4ba6a7d8ac23ba733df53f67695abd4290c033e3a812e4294793a210436bc3ec808294efa9b859d9596c0dd478786bb9dd916f87a69d267ea3c1912529b709b9644594c6b9ee67fa7f9f99187af925475383cf4077f3d2815f8af68d58d24697a34a29bf89d353cde710d213871f2a37d5949a65a0d243a722b697778ebcea33d7684d58542bfbf49ac6da75d8a7131a5003e9f35d86f9c026c2d378a3e374267f7bc97e11d6f723bea368d34c7a3fb3021b96ab94ada189addbcbf23a5d33cc7e7026ca64722ed4a97ebaeeb7e8d9c3f20e2e553d847aa54c209f240d1c233f3b08c07403f1f88345c2a5eebcdac71dcda1ab0d926997a27ece3cf46c4e0f63a357c4876305bfb160866121cacec92f498454e5dd3ee0cb32042604b406a2ee82dfa45644eb0c6b317302a355afa0253d3f5bfb828010025dd16ff1c7ce2b0092d327993b1fdd079d10aa99ca8e2772153c7ac17cb2e5c288503d0a4d2eef17e44be6ff67e15cf92a49e13a24d9a2b035013a98c63e51b9aeb8a2dd2ad13d0fb1ce00f2f24f3f0ac08bda5ef32b69dcba8576a76d78852c3f48a3b687a94c3d5515e3846197423366e7ee6e486cfc40104b16360d66c7551bc86d78992dd66ac1e26038af9e4ae13c36c9f078e184cecfe5ed1117f67380ee61d7ef55daa6efb2451793e0cdfc77c90ced8ee27bc740a7d1e33003a38933a0d01c87d5ed13887770f34622d7375d9e332325af62057c956acf2cce43bdd47a1dc70696fb95cbc4febe6e38929deb565d095058facbbba5573b1fc275724196287dbc5aae9e5e8d3d3b5962e1644dd485aa437fc0582254ea70c6832551bdc8d72302df724446fba1c92ce42c3e9102d241445e9272438799223f7fae3819353544ed6e19e2f5bc8ef7ff8d2b92b13f04265612ae187c0ab1b21fe7847a16a49a3e74fe9bd584ac63abc641b9788dadce58dfa2c9aa1b7da552bc2f48c9bc4d8ea4c572f27402b6fa6aa572493cb1d64a7f67765709838d8840c53820d92b669305781d9984e03d6a453c924e07aa93296d68fba47c91734fab0071a287b247177844a56b752e71e18135ac1cf4c0d7f282442daf848c68ee93661c42bb36910608fb4f7f9d4ddc2bcf8fb1c6f6da6c7490f1bb58c6c8da58a127d4efc3598710d464066185ac02af569858218c5ddfc278574e30ddfd843ad9e0248b10cfa5d8dec9bfbbe9cb2511ff5b778131c46a15daeedef216dfbe3396b6e505e2a22e464833bc6d781c6205915436eaae71deeefd2f1d0465441c099a45953bd78e9b3412856313a1f4fad19c37007f9f41ed91fb15d6a444064bc0d8fa34c706baada701727e21ea58a8a1a5b0f1e156de1d51362a6bb0378ea78026f00fe9fb6254e131ba8bd6963f2a0436865740184ac4537ee74deb2469ac3e0d10a6f47d0efeed69f16cb1d4780fb468f7e0b7436f2ca481e76f533304fedb2bcd6e7df58de8f3b7ad9031c42b7724546361144a7883f4cd21b7a82c10eb27c067b6ca542e0a84f630b2e8ae65722e41dddda6f614d7a3d93652bb145ec4bc7aa6d9e13bef22a86dee78f36f5497cfba65443de49b2c572d9921f91505815563062ba2142db9eb94292c0a15d5b20d8b60fb01e4d3babc180d68993e316d9b456d21b9e06135b77b0427a8dd714ea58a4b03ab69e8a9010200299190d852cb598ccf22cdad6af4794710c2f882352e66034bbfff7f093990e0bf87bf40736950d47d10558d91c323efe12acb14b39be2eec2dbc75753aa93fb5859e49c8f8740b7895d630771a636992176e1cba9fb5ac12081fdfa614fad7d61152c5ba462f1e30406a5b99d74a3224c555eb9b770f36579c85376791be05090e25fff3ef8121854f2084596a5ced06a045fc149394c0ff82bf4a3e8fc0d95959bc643d47061dde51d34a365e185d5212b819648fafbdd0e9406a847333708786c12978ba6e0005a38c6e729e17c991b430e2edc7fd83e1e2a936abf3bac8026a38ccb758c30521c83e5c172ebf4fcbf02d8c8f911dde7b5670ff84847859577e95d0faef2f8fd04c8c5e3880a11ff707220fa69be2b945c124eaceffd4826d9a0ad859de2bcb455d5e74eea6090b372964b57c326b8a85319b25bcd658a174b8c83821b437b37576cfd53b4a313dc24a0f80024bd996c75a7acbaed794fd7efc3393e3a8400aee42f7e7db388b0c14ce6c7302b9118b856c40b0ca5b91a301754ebd8b615ad75359cd122b75c0ff30dd29588f4e71c9acc5e5cfee68d300e25870ad6280657f4548c9c579e54ec4eaedd32b4ad87799d69c6ea51fb6aa554e21a78c87f6f7b69f2b86901b0ab31afc955715be115c7e7979fcef8a318961e9da5a3f80190ff97712170ed7889d8150e6d051e792a41200f8d8f8bf2b7a28495514e483c78c7075b435d559961d6c1e3b9d6ec20ef421b46fe8b214b2e4cafbb74de9dcf7e24ca46a17153eef6a3d09d09340fdd7d70fd659f1e395813f0fe636939624371dbdb0495921334a96a8afc95ab471b53238a5bddff5c26719d2ef2d7784419b79d4f1035a87e8d80dc5cc6bee00bddab25cd3a7cb0cb763887e82e78db79e7d5b4933d321c5c641df14651a219101c3376dbda592b3d30b5d6b80f87187277e093eb6bce3afc87488522efd0e284e4e9f20b5361ccbec18b495310949a28e92e1a89d8bc67eb3fa9e458e89e595a873fa651e5d28de388c9cbbb13e101269c3a4c04738859e9ed1e0bfb208ff405aadc81d4bbfff047473a53bc95c8def6e6f1f98f58d1765ba61c1b0d658f061351167a61f4957f1409c7767d5376c963ee06f45cddb6764a5e41e8f104dd35d0ee7033e5e40b05091fa60d1b4f78549244805f849ca5468aebcaaf91f82df0b2e38464eecc162fd5312fbf2cd6bf09083591dfee393ef3adae35fcd1f5cf5de7547853e8307b38cb5a853c39c1d2fa93656a700f6777ce53db6fcc5a29514cf7d0e9a012c5b5b3e95a25e43aa2057396878c65faae7ded546fcbdc03860a971334264604e5037478e6b006aaf058dce1cee289b3adc99d726c8d27f615682102b0b18cbc03f0351ceb9e93e2a6afd60d02013f6e72d8e6aac66e24ec0ccaa1c48ae9f8ed30e8e99d7dc2573847ebd122125bfe94b9eddf79283651c9d5c9235cf91de93851f9deb67045f7954a8ddc874ebe2730fb2c9ab88a9ab98a2c249a1d3ae14d5c82f4396fd8e220a1f083fc85b2b80f608f6f02cc63a1bf33add983f68f964068b760c9711fc6fda522b5123c045dff7e8b1982bc546450e54fa2407d3aec9ce9e8973de39566cd25e8359f76afd1763c80b7e8b4e4f065fbbd45914978ac51426c74b32e01562fdd85c56bf1fa368fb8ea918efab398afaa703251e6ff20e63fa900ef3c312a05c13a419ecc1dc7b3c6d460b5ba428172ad4ee4decbb013a973754ab06e4ff396944b4e4c87dc04e0cb1af61fa8fadc8bd73bd49d98b8774960e2f62f65844b0f3556750c8845c810aa03d69b1fe90e5384abf6451311e56f66941bf4df00e9e231233b169569a214829f2775ef65787bdca74992981b872469c2cdc56a3788053ff8a8af56bf9bdcfa389433a516ae2c54b5841392f491dd63bd624bd4e61538d841a2db418fe09e7dc7c351790a0f54646155bb39ea58dadeb5b6f8586fcba911e6ce8c9377d4420a1731716ff4647c8ecb4e08c87940a1642fce2ce4604f76d1ac8fe370d2ad512f1da56e579e89d848314a4beeaedd24f755ed111ac59d448f8b503c2a26d4a02062c72142f55f4a3a343ee5cdf4840ba31f10d663bce34f1414e2661c27ab2831b841ca595abadd56492a201248f855a9baad360dbd52266bb8d07c6c755ac7e97b80cbbd310e85039a2b734669d56c0665fd1010f27eccf32a4b6bb9e58df640b354e09a4112eb7fc1a3432a9f10a0ff420d58bd7c14758e00139d96a5572e6212f9a57ce47ba20040419d4078ce033b8d94fdf2970f81430c93503e91b5847d05394f6074b39109ee7960c5612f122d704681f337075625745463fc60bcf7bec29cfee49b01a8a865acf0a8e92fba3672aa52fabcea0de45a9483d3ae35ee97af42aca7f5c53349eb430cc2cb3c2c3dbf7716e8747f848c309a304c0b18bd661e1c6bdfffbe67ebf959083f7e1b8dc5377eff5cdbac16a67731b5856bd131173a48948b9f2a294ad8b22921e68d5ee04bb6f157ee5a987d22426127843b463</script>
+</div>
+<script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
+      <tags>
+        <tag>Tools</tag>
+      </tags>
   </entry>
   <entry>
     <title>获取fir中的ios ipa安装包</title>
