@@ -64,6 +64,106 @@
     
     
     
+    <article id="post-youtube-推荐频道-Tech" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/12/10/youtube-推荐频道-Tech/"
+    >youtube 推荐频道(Tech)</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/12/10/youtube-推荐频道-Tech/" class="article-date">
+  <time datetime="2019-12-10T01:47:35.000Z" itemprop="datePublished">2019-12-10</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <ul>
+<li>Valentin Despa postman、 测试</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">频道</th>
+<th style="text-align:left">关键字</th>
+<th style="text-align:left">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Valentin Despa</td>
+<td style="text-align:left">postman,测试</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">Nebulaworks</td>
+<td style="text-align:left">devops,terraform</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">tutoriaLinux</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://www.devops-tech.cn/2019/05/22/Small-Tools-1-youtube-dl/" target="_blank" rel="noopener">如何下载</a>youtube视频、音频</p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Q-List/">Q List</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-Terraform-terraform-console" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -1022,90 +1122,6 @@
 <li><p>首先使用不带 -i选项的sed命令，查看结果是否符合预期；再加入 -i选项将更改写入文件。</p>
 </li>
 <li><p><code>sed -i.bak &#39;s/abc/def&#39; file</code> 这时的sed不仅替换文件内容，还会创建一个名为file.bak的文件，其中包含着原始文件内容的副本;如果对一个文件多次执行，则xx.bak文件只会是上一个文件的副本</p>
-</li>
-</ol>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shell/">Shell</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-shell-没有vim-vi-命令怎么办" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/10/23/shell-没有vim-vi-命令怎么办/"
-    >shell 没有vim/vi 命令怎么办</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/10/23/shell-没有vim-vi-命令怎么办/" class="article-date">
-  <time datetime="2019-10-23T02:20:47.000Z" itemprop="datePublished">2019-10-23</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Shell/">Shell</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>  由于经常在容器中有一些debug的操作，想要编辑文件，却又发现 <strong>一无所有</strong>（没有 vim/vi 编辑命令）。解决办法可能是去安装，但下载需要时间等待，且下载的工具使用也不是很频繁。所以换个思路，用其他基础的命令替代下。</p>
-<h3 id="cat-EOF-常用方法"><a href="#cat-EOF-常用方法" class="headerlink" title="cat EOF 常用方法"></a>cat EOF 常用方法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat &lt;&lt;EOF &gt; cat_test.sh</span></span><br><span class="line">&gt; <span class="comment">#!/bin/bash</span></span><br><span class="line">&gt; <span class="built_in">echo</span> <span class="string">"no vim/vi"</span></span><br><span class="line">&gt; <span class="built_in">echo</span> <span class="string">"But ... cat"</span></span><br><span class="line">&gt; EOF</span><br></pre></td></tr></table></figure>
-<p>可以用 <code>cat cat_test.sh</code> 核验下内容和格式是否正确；如果原文件存在且有内容，会直接 <strong>覆盖</strong> ☝</p>
-<p><strong>追加</strong> 内容<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat &lt;&lt;EOF &gt;&gt; cat_test.sh</span></span><br><span class="line">&gt; <span class="comment">#!/bin/bash</span></span><br><span class="line">&gt; <span class="built_in">echo</span> <span class="string">"new add context"</span></span><br><span class="line">&gt; EOF</span><br></pre></td></tr></table></figure></p>
-<h3 id="cat交互模式下的使用"><a href="#cat交互模式下的使用" class="headerlink" title="cat交互模式下的使用"></a>cat交互模式下的使用</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat &gt; cat_in.sh</span></span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"by cat."</span></span><br></pre></td></tr></table></figure>
-<p>ctrl + d 结束输入</p>
-<hr>
-<p><strong>✍TIP</strong></p>
-<ol>
-<li><p>直接清空文件: <code>&gt;cat_test.sh</code></p>
-</li>
-<li><p>其实可以用其他字符来代替EOF，它也只是个标识符而已！</p>
 </li>
 </ol>
 

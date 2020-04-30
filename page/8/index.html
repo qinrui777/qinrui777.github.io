@@ -64,6 +64,83 @@
     
     
     
+    <article id="post-Bash-function-skill" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/06/18/Bash-function-skill/"
+    >Bash function skill</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/06/18/Bash-function-skill/" class="article-date">
+  <time datetime="2019-06-18T06:47:30.000Z" itemprop="datePublished">2019-06-18</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Shell/">Shell</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>bash 函数技巧</p>
+<h4 id="1-递归函数"><a href="#1-递归函数" class="headerlink" title="1. 递归函数"></a>1. 递归函数</h4><h4 id="2-导出函数"><a href="#2-导出函数" class="headerlink" title="2.导出函数"></a>2.导出函数</h4><p>函数也可以像环境变量一样用 export 导出<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">➜   <span class="function"><span class="title">foo</span></span>() &#123;<span class="built_in">echo</span> <span class="string">"This is foo function"</span>&#125;</span><br><span class="line">➜   <span class="built_in">export</span> -f foo</span><br><span class="line"><span class="function"><span class="title">foo</span></span> () &#123;</span><br><span class="line">	<span class="built_in">echo</span> <span class="string">"This is foo function"</span></span><br><span class="line">&#125;</span><br><span class="line">➜   foo</span><br><span class="line">This is foo <span class="keyword">function</span></span><br><span class="line">➜</span><br></pre></td></tr></table></figure></p>
+<h4 id="3-读取命令返回值"><a href="#3-读取命令返回值" class="headerlink" title="3. 读取命令返回值"></a>3. 读取命令返回值</h4><p>命令的返回值被保存在变量 <code>$?</code> 中<br>返回值被称为 <strong>退出状态</strong> 。它可用于确定命令执行成功与否。如果命令成功退出，那么退出状态为0，否则为非0.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">➜   cat success_test.sh </span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#file name: success_test.sh</span></span><br><span class="line"><span class="comment">#对命令行参数求值，比如 success_test.sh `ls | grep txt`</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"parameter is :"</span><span class="variable">$@</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">eval</span> <span class="variable">$@</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ $? -eq 0 ];</span><br><span class="line"><span class="keyword">then</span> </span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"<span class="variable">$CMD</span> executed successfully."</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"<span class="variable">$CMD</span> terminated unsuccessfully."</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+<p>执行：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">➜   success_test.sh <span class="string">'ls'</span></span><br><span class="line">parameter is :ls</span><br><span class="line">certbot-auto	t1		t3		test.sh</span><br><span class="line">success_test.sh	t2		test.jsonnet</span><br><span class="line"> executed successfully.</span><br></pre></td></tr></table></figure></p>
+<h4 id="4-向命令传递参数"><a href="#4-向命令传递参数" class="headerlink" title="4. 向命令传递参数"></a>4. 向命令传递参数</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">➜   cat showArgs.sh</span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> `seq 1 <span class="variable">$#</span>`</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$i</span> is <span class="variable">$1</span></span><br><span class="line"><span class="built_in">shift</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<p>执行：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">➜   showArgs.sh a b cc</span><br><span class="line">1 is a</span><br><span class="line">2 is b</span><br><span class="line">3 is cc</span><br></pre></td></tr></table></figure></p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shell/">Shell</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-Shell-count-time" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -821,89 +898,6 @@
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Q-List/">Q List</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-mktemp-command" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/05/07/mktemp-command/"
-    >mktemp command</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/05/07/mktemp-command/" class="article-date">
-  <time datetime="2019-05-07T14:51:09.000Z" itemprop="datePublished">2019-05-07</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Linux/">Linux</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>最适合存储临时数据的位置是/tmp, <strong>mktemp</strong> 命令可以为临时文件或目录创建唯一的名字</p>
-<p>Create a temporary file or directory.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">mktemp</span><br><span class="line"></span><br><span class="line">Create a temporary file or directory.</span><br><span class="line"></span><br><span class="line">- Create an empty temporary file and return the absolute path to it:</span><br><span class="line">    mktemp</span><br><span class="line"></span><br><span class="line">- Create a temporary directory and return the absolute path to it:</span><br><span class="line">    mktemp -d</span><br><span class="line"></span><br><span class="line">- Create a temporary file with a specified suffix:</span><br><span class="line">    mktemp --suffix &quot;.txt&quot;</span><br></pre></td></tr></table></figure>
-<h4 id="1-create-temporary-file-创建临时目录"><a href="#1-create-temporary-file-创建临时目录" class="headerlink" title="1.create temporary file (创建临时目录)"></a>1.create temporary file (创建临时目录)</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$filename</span>=`mktemp`</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$filename</span></span><br><span class="line">/tmp/tmp.8xefliegnD9</span><br></pre></td></tr></table></figure>
-<h4 id="2-create-temporary-directory-创建临时目录"><a href="#2-create-temporary-directory-创建临时目录" class="headerlink" title="2. create temporary directory (创建临时目录)"></a>2. create temporary directory (创建临时目录)</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dirname=`mktemp -d`</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$dirname</span></span><br><span class="line">tmp.NJ8dhf6wk</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>If you just want to generate a filename and don’t want to create the actual file or directory, you can(如果仅仅是想生成文件名，不希望创建实际的文件或目录，可以):<br><code>mktemp -u</code></p>
-</li>
-<li><p>Create a temporary filename based on the tempplate(基于模板创建临时文件名)</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">➜  qr_blog mktemp study.XXX</span><br><span class="line">study.UWT</span><br><span class="line">➜  qr_blog mktemp study.XXX</span><br><span class="line">study.Usm</span><br><span class="line">➜  qr_blog mktemp study.XXX</span><br><span class="line">study.M6a</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>Mac OS 与linux用法略有区别，请视情况使用</p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shell/">Shell</a></li></ul>
 
 
     </footer>
