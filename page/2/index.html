@@ -64,6 +64,75 @@
     
     
     
+    <article id="post-给博客上个锁" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/04/02/给博客上个锁/"
+    >给博客上个锁</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/04/02/给博客上个锁/" class="article-date">
+  <time datetime="2020-04-02T01:57:48.000Z" itemprop="datePublished">2020-04-02</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      Here's something encrypted, password is required to continue reading.
+      
+      <a class="article-more-link" href="/2020/04/02/给博客上个锁/">阅读更多...</a>
+      
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools/">Tools</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-Github-Actions-E07上下文和表达式语法" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -868,7 +937,8 @@
 </blockquote>
 <h3 id="2-Preventing-duplicate-cron-job-executions"><a href="#2-Preventing-duplicate-cron-job-executions" class="headerlink" title="2. Preventing duplicate cron job executions"></a>2. Preventing duplicate cron job executions</h3><p><a href="http://bencane.com/2015/09/22/preventing-duplicate-cron-job-executions/" target="_blank" rel="noopener">原文链接</a>,关于 <code>Preventing duplicate cron job executions</code> 提到了多种方法和工具。另外，中文搜索的话 <code>flock</code> 命令较多，比如<a href="https://blog.csdn.net/fdipzone/article/details/38284009" target="_blank" rel="noopener">这个</a>。</p>
 <p><a href="https://coolshell.cn/articles/19219.html" target="_blank" rel="noopener">打造高效的工作环境 – SHELL 篇</a></p>
-<h3 id="3-For-循环"><a href="#3-For-循环" class="headerlink" title="3. For 循环"></a>3. For 循环</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> &#123;1..5&#125;</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">   <span class="built_in">echo</span> <span class="string">"Welcome <span class="variable">$i</span> times"</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-For-循环"><a href="#3-For-循环" class="headerlink" title="3. For 循环"></a>3. For 循环</h3><p>参考<br><a href="https://linuxize.com/post/bash-for-loop/" target="_blank" rel="noopener">https://linuxize.com/post/bash-for-loop/</a><br><a href="https://www.cyberciti.biz/faq/bash-for-loop/" target="_blank" rel="noopener">https://www.cyberciti.biz/faq/bash-for-loop/</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> &#123;1..5&#125;</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">   <span class="built_in">echo</span> <span class="string">"Welcome <span class="variable">$i</span> times"</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
 <p>或者写在一行里 <code>for i in {1..5};do echo &quot;Welcome $i times&quot;;done</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> $(ls ./* ); </span><br><span class="line"><span class="keyword">do</span> </span><br><span class="line">  <span class="built_in">echo</span> <span class="variable">$i</span>; </span><br><span class="line">  date; </span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> s <span class="keyword">in</span> server1 server2 server3</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    ssh vivek@<span class="variable">$&#123;s&#125;</span> <span class="string">"uptime"</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
@@ -878,7 +948,12 @@
 <ul>
 <li><a href="https://linuxize.com/post/bash-for-loop/" target="_blank" rel="noopener">1</a></li>
 </ul>
-<p>H<sub>2</sub>O  CO<sub>2</sub><br>爆米<sup>TM</sup></p>
+<h3 id="4-xargs"><a href="#4-xargs" class="headerlink" title="4. xargs"></a>4. xargs</h3><p>先看🌰，快速 scale down k8s deployment.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">kubectl get deploy -n &lt;YOUR_NAMESPACE&gt; -o name | xargs -I % kubectl scale % --replicas=0 -n &lt;YOUR_NAMESPACE&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 分解 </span></span><br><span class="line">kubectl get deploy -n &lt;YOUR_NAMESPACE&gt; -o name</span><br><span class="line"></span><br><span class="line"><span class="comment"># output:</span></span><br><span class="line">deployment.extensions/backend-filebeat</span><br><span class="line">deployment.extensions/daemon-filebeat</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果一条一条的执行，如下</span></span><br><span class="line">kubectl scale deploy/daemon-filebeat --replicas=10 -n &lt;YOUR_NAMESPACE&gt;</span><br></pre></td></tr></table></figure>
+<p>实际使用的是 <strong>xargs 实现参数传递</strong> 这一方法：<br><code>ls *.log | xargs -I {} mv {} log_backup_dir/</code><br>这里的 <code>{}</code> 也可以用 <code>%</code> 代替，毕竟可以少敲一下键盘。另外可以看看 <em>xargs与管道的区别</em></p>
+<p>更多实际用法可以参考： <a href="https://blog.csdn.net/zhangmingxingwei/article/details/8996627" target="_blank" rel="noopener">https://blog.csdn.net/zhangmingxingwei/article/details/8996627</a> , 其中的<code>git log --format=&quot;%H %P&quot; | xargs -L 1 git diff</code> 用法也很不错。 另外，有一个原理篇也建议看看，<a href="https://www.cnblogs.com/f-ck-need-u/p/5925923.html" target="_blank" rel="noopener">戳这儿</a></p>
+<hr>
+<p><a href="https://www.cnblogs.com/f-ck-need-u/p/7048359.html#blogshell" target="_blank" rel="noopener">shell系列1-来源cnblogs</a></p>
 
       
       <!-- reward -->
@@ -1299,136 +1374,6 @@
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GA/">GA</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-hexo-sytnax" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/03/02/hexo-sytnax/"
-    >hexo sytnax</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/03/02/hexo-sytnax/" class="article-date">
-  <time datetime="2020-03-02T06:19:13.000Z" itemprop="datePublished">2020-03-02</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-<hr>
-<p><img src="/images/hexo_sytnax.png" alt="hexo sytnax"></p>
-<center> 常用的偏门小技巧 </center>
-
-<h3 id="书写风格"><a href="#书写风格" class="headerlink" title="书写风格"></a>书写风格</h3><p><a href="https://einverne.github.io/markdown-style-guide/zh.html" target="_blank" rel="noopener">Markdown书写风格指南</a></p>
-<p><a href="https://gerrit.googlesource.com/gitiles/+/master/Documentation/markdown.md" target="_blank" rel="noopener">https://gerrit.googlesource.com/gitiles/+/master/Documentation/markdown.md</a></p>
-<h3 id="文章框架"><a href="#文章框架" class="headerlink" title="文章框架"></a>文章框架</h3><p>同一类型的文章，比如技术类的，最好有一个框架用来提醒自己，把事情尽量写清楚；推荐看看<br><a href="https://github.com/do-community/do-article-templates" target="_blank" rel="noopener">文章框架</a></p>
-<p>目录categories和标签tags的说明:</p>
-<blockquote>
-<p>也不知道合不合适，目录包含标签，是一个大的范围，标签是具体的东西，属于其中，一个目录可包含多个标签。</p>
-</blockquote>
-<h3 id="画图UML"><a href="#画图UML" class="headerlink" title="画图UML"></a>画图UML</h3><p>@startuml<br>Bob -&gt; Alice : hello<br>@enduml</p>
-<h3 id="加密"><a href="#加密" class="headerlink" title="加密"></a>加密</h3><p><a href="https://github.com/MikeCoder/hexo-blog-encrypt" target="_blank" rel="noopener">hexo-blog-encrypt</a> ，具体过程也是参考链接完成安装、使用的。</p>
-<h3 id="图床"><a href="#图床" class="headerlink" title="图床"></a>图床</h3><p>选用 <a href="https://imgchr.com/" target="_blank" rel="noopener">路过图床</a></p>
-<ul>
-<li>不用注册账号</li>
-<li>未注册最大5M,注册后最大10M。大小都够了，不行的话可以提前用 <a href="https://tinypng.com/" target="_blank" rel="noopener">https://tinypng.com/</a> 压缩一些</li>
-<li>上传后提供多种格式供嵌入代码</li>
-</ul>
-<h3 id="评论"><a href="#评论" class="headerlink" title="评论"></a>评论</h3><p>使用<a href="https://disqus.com/" target="_blank" rel="noopener">disqus</a>,其账号保持和github的账号一致，毕竟blog内容也在github上。用github用的邮箱注册一把，</p>
-<blockquote>
-<p>然后我当前的主题好像不支持</p>
-</blockquote>
-<p>该用Valine </p>
-<blockquote>
-<p>Valine是基于 LeanCloud 作为数据存储的</p>
-</blockquote>
-<ul>
-<li><p>登录 <a href="https://console.leancloud.app/" target="_blank" rel="noopener">https://console.leancloud.app/</a> 注册 （用国际版，国内的版本似乎还要实名认证）</p>
-</li>
-<li><p>邮箱验证，手机验证</p>
-</li>
-<li><p>创建应用：<code>控制台 -&gt; 创建应用（开发版）</code></p>
-</li>
-<li><p>创建 Class: <strong>Counter</strong>，<strong>Comment</strong> (默认权限配置即可)</p>
-</li>
-<li><code>Settings-&gt; App keys</code> 获取<strong>AppID</strong>，<strong>AppKey</strong>。放到对应主题的 <code>_config.yml</code>中</li>
-</ul>
-<h3 id="链接中的括号"><a href="#链接中的括号" class="headerlink" title="链接中的括号"></a>链接中的括号</h3><p><strong>解决方法1:</strong><br>%28 代替(, %29代替) 主要是后者会歧义链接部分的结束.，这是使用url符号码去代替ascii的符号，能够解决这个问题。可参考 <a href="https://www.w3schools.com/tags/ref_urlencode.asp" target="_blank" rel="noopener">https://www.w3schools.com/tags/ref_urlencode.asp</a> The default character-set in HTML5 is UTF-8.</p>
-<p><strong>例如：</strong><br>更多关于 Telegram 的介绍可以查看 <a href="https://en.wikipedia.org/wiki/Telegram_%28software%29" target="_blank" rel="noopener">Wikipedia</a></p>
-<p><strong>解决方法2:</strong><br>直接使用特殊字符的编码</p>
-<p><strong>例如：</strong><br>更多关于 Telegram 的介绍可以查看 <a href="https://en.wikipedia.org/wiki/Telegram_&#40;software&#41;" target="_blank" rel="noopener">Wikipedia</a></p>
-<h3 id="提示块"><a href="#提示块" class="headerlink" title="提示块"></a>提示块</h3><blockquote>
-<p>目前主题貌似暂时不支持<br>[note]<br><strong>Note:</strong> This is a note.</p>
-</blockquote>
-<p>[warning]<br><strong>Warning:</strong> This is a warning.</p>
-<blockquote>
-<p>[warning] 我是warning类型引用</p>
-</blockquote>
-<hr>
-<h3 id="删除线"><a href="#删除线" class="headerlink" title="删除线"></a>删除线</h3><p><del>跑路指南哇</del></p>
-<h3 id="锚点"><a href="#锚点" class="headerlink" title="锚点"></a>锚点</h3><p><a href="#jump">说明文字,点击这里会跳到下面的位置</a></p>
-<p><span id="jump">跳转到的位置</span></p>
-<h3 id="上标、下标"><a href="#上标、下标" class="headerlink" title="上标、下标"></a>上标、下标</h3><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">H&lt;sub&gt;2&lt;/sub&gt;O  CO&lt;sub&gt;2&lt;/sub&gt;</span><br><span class="line">爆米&lt;sup&gt;TM&lt;/sup&gt;</span><br></pre></td></tr></table></figure>
-<p>效果：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">H2O CO2</span><br><span class="line">爆米TM</span><br></pre></td></tr></table></figure></p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools/">Tools</a></li></ul>
 
 
     </footer>
