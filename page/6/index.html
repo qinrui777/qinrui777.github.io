@@ -64,6 +64,100 @@
     
     
     
+    <article id="post-Terraform-100-Introduction-Install" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/08/27/Terraform-100-Introduction-Install/"
+    >Terraform 100: Introduction &amp; Install</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/08/27/Terraform-100-Introduction-Install/" class="article-date">
+  <time datetime="2019-08-27T06:03:32.000Z" itemprop="datePublished">2019-08-27</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Terraform/">Terraform</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h3 id="What-is-Terraform"><a href="#What-is-Terraform" class="headerlink" title="What is Terraform?"></a>What is Terraform?</h3><p>Terraform is a tool for building, changing, and versioning infrastructure safely and efficiently. Terraform can manage existing and popular service providers as well as custom in-house solutions.</p>
+<p>The key features of Terraform are:</p>
+<ul>
+<li>Infrastructure as Code</li>
+<li>Execution Plans</li>
+<li>Resource Graph</li>
+<li>Change Automation</li>
+</ul>
+<h3 id="tfenv"><a href="#tfenv" class="headerlink" title="tfenv"></a>tfenv</h3><p><strong>tfenv</strong>: Terraform version manager</p>
+<p><a href="https://github.com/tfutils/tfenv" target="_blank" rel="noopener">tfenv github</a></p>
+<ul>
+<li><h5 id="install-tfenv"><a href="#install-tfenv" class="headerlink" title="install tfenv"></a>install tfenv</h5><p>Install via Homebrew<br><code>$ brew install tfenv</code></p>
+</li>
+<li><h5 id="usage"><a href="#usage" class="headerlink" title="usage"></a>usage</h5><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ tfenv install 0.7.0</span><br><span class="line">$ tfenv install latest</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># use a specific version</span></span><br><span class="line">$ tfenv use 0.7.0</span><br><span class="line">$ tfenv use latest</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#uninstall</span></span><br><span class="line">$ tfenv uninstall 0.7.0</span><br><span class="line">$ tfenv uninstall latest</span><br></pre></td></tr></table></figure>
+<h5 id="terraform-version"><a href="#terraform-version" class="headerlink" title=".terraform-version"></a>.terraform-version</h5><p>If you put .terraform-version file on your project root, or in your home directory, tfenv detects it and use the version written in it. </p>
+<blockquote>
+<p>I have installed two different version on my mac.</p>
+</blockquote>
+<p>Ihen I set version to <code>v0.12.4</code> in <code>.terraform-version</code> file<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">➜   terraform --version</span><br><span class="line">Terraform v0.12.4</span><br><span class="line">+ provider.aws v2.25.0</span><br><span class="line">+ provider.random v2.2.0</span><br><span class="line">+ provider.template v2.1.2</span><br></pre></td></tr></table></figure></p>
+<p>Then I change the verson to <strong><code>v0.12.5</code></strong> in <code>.terraform-version</code> file<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">➜   terraform --version</span><br><span class="line">Terraform v0.12.5</span><br><span class="line">+ provider.aws v2.25.0</span><br><span class="line">+ provider.random v2.2.0</span><br><span class="line">+ provider.template v2.1.2</span><br><span class="line"></span><br><span class="line">Your version of Terraform is out of date! The latest version</span><br><span class="line">is 0.12.7. You can update by downloading from www.terraform.io/downloads.html</span><br></pre></td></tr></table></figure></p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Terraform/">Terraform</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-PPT-Tools" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -131,7 +225,10 @@
 <li>炫酷的几何图形  <a href="http://weavesilk.com/" target="_blank" rel="noopener">http://weavesilk.com/</a></li>
 <li><p>炫酷图形工具集合 <a href="https://wangyasai.github.io/designtools.html" target="_blank" rel="noopener">https://wangyasai.github.io/designtools.html</a> （包含黑客背景、speed line等）</p>
 <ul>
-<li><a href="https://github.com/vkarampinis/awesome-icons" target="_blank" rel="noopener">https://github.com/vkarampinis/awesome-icons</a> 各种 + 在线编辑svg格式，拖动、改变颜色等 <a href="https://svg.wxeditor.com/" target="_blank" rel="noopener">https://svg.wxeditor.com/</a></li>
+<li><p><a href="https://github.com/vkarampinis/awesome-icons" target="_blank" rel="noopener">https://github.com/vkarampinis/awesome-icons</a> 各种 + 在线编辑svg格式，拖动、改变颜色等 <a href="https://svg.wxeditor.com/" target="_blank" rel="noopener">https://svg.wxeditor.com/</a></p>
+</li>
+<li><p>有矢量、有动画效果、可以调节组件颜色的素材王章 <a href="https://stories.freepik.com/，教程可见[这里](https://www.youtube.com/watch?v=HbGhZR-tiJA)" target="_blank" rel="noopener">https://stories.freepik.com/，教程可见[这里](https://www.youtube.com/watch?v=HbGhZR-tiJA)</a></p>
+</li>
 </ul>
 </li>
 </ul>
@@ -811,79 +908,6 @@
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools/">Tools</a></li></ul>
 
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-adminMongo-a-cross-platform-user-interface-GUI-to-connect-MongoDB" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/07/15/adminMongo-a-cross-platform-user-interface-GUI-to-connect-MongoDB/"
-    >adminMongo: a cross platform user interface (GUI) to connect MongoDB</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/07/15/adminMongo-a-cross-platform-user-interface-GUI-to-connect-MongoDB/" class="article-date">
-  <time datetime="2019-07-15T08:03:00.000Z" itemprop="datePublished">2019-07-15</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Linux/">Linux</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p><strong>Github address</strong>:<br><a href="https://github.com/mrvautin/adminMongo" target="_blank" rel="noopener">https://github.com/mrvautin/adminMongo</a></p>
-<p><strong>dockerhub</strong>:<br><a href="https://hub.docker.com/r/mrvautin/adminmongo" target="_blank" rel="noopener">https://hub.docker.com/r/mrvautin/adminmongo</a></p>
-<p>example:</p>
-<p><img src="/images/adminMongo_image_01.png" alt="adminMongo_image_01"></p>
-<p>Give a name to the connection and use the following connection string: ‘mongodb://root:example@mongo’.</p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
 
     </footer>
 
