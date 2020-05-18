@@ -62,7 +62,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">757字</span>
+            <span class="post-count">801字</span>
         </span>
     </span>
 
@@ -139,6 +139,18 @@
 </ul>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">%  垂直分割</span><br><span class="line"><span class="string">"  水平分割</span></span><br><span class="line"><span class="string">上下左右 方向按键调整光标位置</span></span><br><span class="line"><span class="string">o  选择下一面板</span></span><br><span class="line"><span class="string">x  关闭窗格</span></span><br><span class="line"><span class="string">q 显示每个窗格是第几个，当数字出现的时候按数字几就选中第几个窗格</span></span><br><span class="line"><span class="string">&#123; 与上一个窗格交换位置</span></span><br><span class="line"><span class="string">&#125; 与下一个窗格交换位置</span></span><br><span class="line"><span class="string">z 切换窗格最大化/最小化</span></span><br></pre></td></tr></table></figure>
 <p>其他：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">t  窗口中央显示一个数字时钟</span><br><span class="line">?  列出所有快捷键</span><br><span class="line">:  命令提示符</span><br></pre></td></tr></table></figure></p>
+<p><strong>场景：将打的命令同步发送到所有的pane</strong></p>
+<ul>
+<li><ol>
+<li>先按下 Tmux 前缀</li>
+</ol>
+</li>
+<li><ol start="2">
+<li><code>:setw synchronize-panes</code></li>
+</ol>
+</li>
+</ul>
+<p>同样的命令（synchronize-panes）再输入一次就解除这种模式。</p>
 <p>基本配置：</p>
 <ul>
 <li><p>配置文件 <code>～/.tmux.conf</code> ,如修改 <em>默认的前缀快捷键</em></p>

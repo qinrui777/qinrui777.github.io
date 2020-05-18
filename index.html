@@ -141,6 +141,23 @@
 </tr>
 </tbody>
 </table>
+<h3 id="PROMPT-COMMAND"><a href="#PROMPT-COMMAND" class="headerlink" title="PROMPT_COMMAND"></a>PROMPT_COMMAND</h3><p>Bash shell executes the content of the PROMPT_COMMAND just before displaying the PS1 variable. (即添加显示在PS1前面的内容)</p>
+<p><code>export PROMPT_COMMAND=&quot;echo -n \(dev\)&quot;</code><br><code>export PROMPT_COMMAND=&quot;date +%k:%m:%S&quot;</code></p>
+<p>If you want to display the value of PROMPT_COMMAND in the same line as the PS1, use the echo -n as shown below.<br><code>export PROMPT_COMMAND=&quot;echo -n [$(date +%k:%m:%S)]&quot;</code></p>
+<p>效果如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vagrant@minion1:~$ <span class="built_in">export</span> PROMPT_COMMAND=<span class="string">"echo -n \(dev\)"</span></span><br><span class="line">(dev)vagrant@minion1:~$</span><br></pre></td></tr></table></figure></p>
+<h3 id="awk内建变量"><a href="#awk内建变量" class="headerlink" title="awk内建变量"></a>awk内建变量</h3><p>使用awk时，有时第一行是列名，需要过滤掉，从第二行开始显示。</p>
+<p><code>kubectl get node | awk &#39;NR!=1&#39;</code></p>
+<blockquote>
+<p>NR(Number of Record) 表示的是已经处理过的总记录数目，或者说行号, 上面的 <code>NR!=1</code> 表示不打印第一行，相应地，<code>NR!=2</code> 表示不打印第二行.</p>
+</blockquote>
+<p>只打印最后一列<br><code>kubectl get node | awk &#39;{print $NF}&#39;</code></p>
+<p>参考；</p>
+<ul>
+<li><p><a href="https://www.runoob.com/w3cnote/8-awesome-awk-built-in-variables.html" target="_blank" rel="noopener">https://www.runoob.com/w3cnote/8-awesome-awk-built-in-variables.html</a></p>
+</li>
+<li><p><a href="https://wiki.jikexueyuan.com/project/awk/built-in-variables.html" target="_blank" rel="noopener">https://wiki.jikexueyuan.com/project/awk/built-in-variables.html</a></p>
+</li>
+</ul>
 
       
       <!-- reward -->
@@ -842,6 +859,9 @@
 <p><em>注：来自豆瓣某处，身处交易频繁的生活中，不管你在城市，还是乡镇，我们经常交易着。这就意味着，你要购买某一个东西或者服务，而常说买的“买的没有卖的精”便是由于信息不对称。而很多时候，人们对一笔交易在事后气氛、扯皮，也都是因为它。花很多时间收集信息，必定耗费精力，或者你也可以选择承受信息不对称的后果，但关键是信息壁垒有很多时候很严重，你都没有机会去选择，或者说你连后果的程度都无法得知。在最近几年的<a href="https://www.devops-tech.cn/2020/04/30/%E6%88%91%E7%9A%84%E7%A7%9F%E6%88%BF%E7%BB%8F%E5%8E%86/" target="_blank" rel="noopener">租房经历</a>中感受颇深，相比于，程序的世界，开源的世界，那里似乎是一个理想国。</em></p>
 <blockquote>
 <p>坐在钢筋水泥的办公室里，终日和文件、盖章、领导打交道的办公室职员，需要消费额外的心里，来不断确认自己在这个世界中的存在价值。除了薪酬，我们很难直观感受到自己的劳动成果，也不知道有谁在意自己所做的一切。有时候，在内心深处，我们甚至为自己的工作感到沮丧和心虚…<br><em>注：据说来自 李松蔚老师，我又孤陋寡闻了。有些时刻，我也会怀疑工作的意义，怀疑每天上下班的意义，也可能因此消沉数日。但上述的也不是每个人经常的感受，毕竟有时候工作的内容还是有意思的。</em></p>
+</blockquote>
+<blockquote>
+<p>心怀质疑，胸有主见</p>
 </blockquote>
 
       

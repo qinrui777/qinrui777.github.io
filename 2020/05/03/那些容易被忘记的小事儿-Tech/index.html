@@ -62,7 +62,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">278字</span>
+            <span class="post-count">492字</span>
         </span>
     </span>
 
@@ -71,7 +71,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">1分钟</span>
+            <span class="post-count">2分钟</span>
         </span>
     </span>
 </div>
@@ -132,6 +132,23 @@
 </tr>
 </tbody>
 </table>
+<h3 id="PROMPT-COMMAND"><a href="#PROMPT-COMMAND" class="headerlink" title="PROMPT_COMMAND"></a>PROMPT_COMMAND</h3><p>Bash shell executes the content of the PROMPT_COMMAND just before displaying the PS1 variable. (即添加显示在PS1前面的内容)</p>
+<p><code>export PROMPT_COMMAND=&quot;echo -n \(dev\)&quot;</code><br><code>export PROMPT_COMMAND=&quot;date +%k:%m:%S&quot;</code></p>
+<p>If you want to display the value of PROMPT_COMMAND in the same line as the PS1, use the echo -n as shown below.<br><code>export PROMPT_COMMAND=&quot;echo -n [$(date +%k:%m:%S)]&quot;</code></p>
+<p>效果如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vagrant@minion1:~$ <span class="built_in">export</span> PROMPT_COMMAND=<span class="string">"echo -n \(dev\)"</span></span><br><span class="line">(dev)vagrant@minion1:~$</span><br></pre></td></tr></table></figure></p>
+<h3 id="awk内建变量"><a href="#awk内建变量" class="headerlink" title="awk内建变量"></a>awk内建变量</h3><p>使用awk时，有时第一行是列名，需要过滤掉，从第二行开始显示。</p>
+<p><code>kubectl get node | awk &#39;NR!=1&#39;</code></p>
+<blockquote>
+<p>NR(Number of Record) 表示的是已经处理过的总记录数目，或者说行号, 上面的 <code>NR!=1</code> 表示不打印第一行，相应地，<code>NR!=2</code> 表示不打印第二行.</p>
+</blockquote>
+<p>只打印最后一列<br><code>kubectl get node | awk &#39;{print $NF}&#39;</code></p>
+<p>参考；</p>
+<ul>
+<li><p><a href="https://www.runoob.com/w3cnote/8-awesome-awk-built-in-variables.html" target="_blank" rel="noopener">https://www.runoob.com/w3cnote/8-awesome-awk-built-in-variables.html</a></p>
+</li>
+<li><p><a href="https://wiki.jikexueyuan.com/project/awk/built-in-variables.html" target="_blank" rel="noopener">https://wiki.jikexueyuan.com/project/awk/built-in-variables.html</a></p>
+</li>
+</ul>
 
       
       <!-- reward -->
