@@ -251,24 +251,6 @@
       </categories>
   </entry>
   <entry>
-    <title>Bash function skill</title>
-    <url>/2019/06/18/Bash-function-skill/</url>
-    <content><![CDATA[<p>bash 函数技巧</p>
-<h4 id="1-递归函数"><a href="#1-递归函数" class="headerlink" title="1. 递归函数"></a>1. 递归函数</h4><h4 id="2-导出函数"><a href="#2-导出函数" class="headerlink" title="2.导出函数"></a>2.导出函数</h4><p>函数也可以像环境变量一样用 export 导出<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   <span class="function"><span class="title">foo</span></span>() &#123;<span class="built_in">echo</span> <span class="string">"This is foo function"</span>&#125;</span><br><span class="line">➜   <span class="built_in">export</span> -f foo</span><br><span class="line"><span class="function"><span class="title">foo</span></span> () &#123;</span><br><span class="line">	<span class="built_in">echo</span> <span class="string">"This is foo function"</span></span><br><span class="line">&#125;</span><br><span class="line">➜   foo</span><br><span class="line">This is foo <span class="keyword">function</span></span><br><span class="line">➜</span><br></pre></td></tr></table></figure></p>
-<h4 id="3-读取命令返回值"><a href="#3-读取命令返回值" class="headerlink" title="3. 读取命令返回值"></a>3. 读取命令返回值</h4><p>命令的返回值被保存在变量 <code>$?</code> 中<br>返回值被称为 <strong>退出状态</strong> 。它可用于确定命令执行成功与否。如果命令成功退出，那么退出状态为0，否则为非0.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   cat success_test.sh </span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#file name: success_test.sh</span></span><br><span class="line"><span class="comment">#对命令行参数求值，比如 success_test.sh `ls | grep txt`</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"parameter is :"</span><span class="variable">$@</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">eval</span> <span class="variable">$@</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ $? -eq 0 ];</span><br><span class="line"><span class="keyword">then</span> </span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"<span class="variable">$CMD</span> executed successfully."</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"<span class="variable">$CMD</span> terminated unsuccessfully."</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
-<p>执行：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   success_test.sh <span class="string">'ls'</span></span><br><span class="line">parameter is :ls</span><br><span class="line">certbot-auto	t1		t3		test.sh</span><br><span class="line">success_test.sh	t2		test.jsonnet</span><br><span class="line"> executed successfully.</span><br></pre></td></tr></table></figure></p>
-<h4 id="4-向命令传递参数"><a href="#4-向命令传递参数" class="headerlink" title="4. 向命令传递参数"></a>4. 向命令传递参数</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   cat showArgs.sh</span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> `seq 1 <span class="variable">$#</span>`</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$i</span> is <span class="variable">$1</span></span><br><span class="line"><span class="built_in">shift</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-<p>执行：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   showArgs.sh a b cc</span><br><span class="line">1 is a</span><br><span class="line">2 is b</span><br><span class="line">3 is cc</span><br></pre></td></tr></table></figure></p>
-]]></content>
-      <categories>
-        <category>Shell</category>
-      </categories>
-      <tags>
-        <tag>Shell</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Azure tutorial 02: Storage</title>
     <url>/2019/12/11/Azure-tutorial-02-Storage/</url>
     <content><![CDATA[<p>storage account type<br><a href="https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview</a></p>
@@ -326,6 +308,24 @@
       <categories>
         <category>Cloud</category>
       </categories>
+  </entry>
+  <entry>
+    <title>Bash function skill</title>
+    <url>/2019/06/18/Bash-function-skill/</url>
+    <content><![CDATA[<p>bash 函数技巧</p>
+<h4 id="1-递归函数"><a href="#1-递归函数" class="headerlink" title="1. 递归函数"></a>1. 递归函数</h4><h4 id="2-导出函数"><a href="#2-导出函数" class="headerlink" title="2.导出函数"></a>2.导出函数</h4><p>函数也可以像环境变量一样用 export 导出<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   <span class="function"><span class="title">foo</span></span>() &#123;<span class="built_in">echo</span> <span class="string">"This is foo function"</span>&#125;</span><br><span class="line">➜   <span class="built_in">export</span> -f foo</span><br><span class="line"><span class="function"><span class="title">foo</span></span> () &#123;</span><br><span class="line">	<span class="built_in">echo</span> <span class="string">"This is foo function"</span></span><br><span class="line">&#125;</span><br><span class="line">➜   foo</span><br><span class="line">This is foo <span class="keyword">function</span></span><br><span class="line">➜</span><br></pre></td></tr></table></figure></p>
+<h4 id="3-读取命令返回值"><a href="#3-读取命令返回值" class="headerlink" title="3. 读取命令返回值"></a>3. 读取命令返回值</h4><p>命令的返回值被保存在变量 <code>$?</code> 中<br>返回值被称为 <strong>退出状态</strong> 。它可用于确定命令执行成功与否。如果命令成功退出，那么退出状态为0，否则为非0.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   cat success_test.sh </span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#file name: success_test.sh</span></span><br><span class="line"><span class="comment">#对命令行参数求值，比如 success_test.sh `ls | grep txt`</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"parameter is :"</span><span class="variable">$@</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">eval</span> <span class="variable">$@</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ $? -eq 0 ];</span><br><span class="line"><span class="keyword">then</span> </span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"<span class="variable">$CMD</span> executed successfully."</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"<span class="variable">$CMD</span> terminated unsuccessfully."</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+<p>执行：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   success_test.sh <span class="string">'ls'</span></span><br><span class="line">parameter is :ls</span><br><span class="line">certbot-auto	t1		t3		test.sh</span><br><span class="line">success_test.sh	t2		test.jsonnet</span><br><span class="line"> executed successfully.</span><br></pre></td></tr></table></figure></p>
+<h4 id="4-向命令传递参数"><a href="#4-向命令传递参数" class="headerlink" title="4. 向命令传递参数"></a>4. 向命令传递参数</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   cat showArgs.sh</span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> `seq 1 <span class="variable">$#</span>`</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$i</span> is <span class="variable">$1</span></span><br><span class="line"><span class="built_in">shift</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<p>执行：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   showArgs.sh a b cc</span><br><span class="line">1 is a</span><br><span class="line">2 is b</span><br><span class="line">3 is cc</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>Shell</category>
+      </categories>
+      <tags>
+        <tag>Shell</tag>
+      </tags>
   </entry>
   <entry>
     <title>Crontab on Liunx or Jenkins</title>
@@ -412,30 +412,6 @@
 <ul>
 <li><a href="https://www.jianshu.com/p/470e29801be2" target="_blank" rel="noopener">https://www.jianshu.com/p/470e29801be2</a></li>
 </ul>
-]]></content>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Docker image export and import</title>
-    <url>/2019/04/07/Docker-image%E5%AF%BC%E5%87%BA%E5%AF%BC%E5%85%A5/</url>
-    <content><![CDATA[<p>A: “为什么要导镜像，直接从网上下载不就行了？”<br>B: “too young too naive，你以为哪里都能上网的，谁家的机房没事都能上个youtube,google的吗”</p>
-<blockquote>
-<p>一般的公司内网环境是无法访问Internet的，自然也无从下载基础 docker 基础镜像。但这个时候领导交给你的任务–比如用容器运行一个 Java 程序，你在本地程序都调试好了，也在docker container形式运行良好，但是怎么搬到服务器上，这个时候最原始的U盘就大有用处了（虽然现在都是云盘，但是服务器所在网络就好比你小时候玩的小霸王学习机，只能自己和自己玩儿）。</p>
-</blockquote>
-<h2 id="your-PC-–-gt-U-Disk-–-gt-Server"><a href="#your-PC-–-gt-U-Disk-–-gt-Server" class="headerlink" title="your PC –&gt; U Disk –&gt; Server"></a>your PC –&gt; U Disk –&gt; Server</h2><h3 id="Steps"><a href="#Steps" class="headerlink" title="Steps:"></a>Steps:</h3><h5 id="1-Export-image-导出镜像-在你自己的电脑上执行）"><a href="#1-Export-image-导出镜像-在你自己的电脑上执行）" class="headerlink" title="1.Export image (导出镜像,在你自己的电脑上执行）"></a>1.Export image (导出镜像,在你自己的电脑上执行）</h5><p><code></code> docker save Image</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">➜  docker images  | grep python</span><br><span class="line">python          3-alpine            c02a3409ee5b        6 weeks ago         86.7MB</span><br><span class="line">➜  docker save c02a3409ee5b &gt; my_python.tar</span><br><span class="line">➜  ls -l</span><br><span class="line">-rw-r--r--    1 xxx  staff  90526208  4  7 21:33 my_python.tar</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>更建议用<em>镜像</em>名称去处理，如 docker save python:3-alpine &gt; my_python.tar ；好处是在load后镜像名称保持一致，而不是没有tag的</p>
-</blockquote>
-<h5 id="2-乾坤大挪移"><a href="#2-乾坤大挪移" class="headerlink" title="2.乾坤大挪移"></a>2.乾坤大挪移</h5><p>拷贝这个tar包到U 盘，然后插到（或者是挂载）Server上</p>
-<h5 id="3-Import-image-导入镜像"><a href="#3-Import-image-导入镜像" class="headerlink" title="3.Import image (导入镜像)"></a>3.Import image (导入镜像)</h5><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">docker load &lt; my_python.tar</span><br><span class="line">docker tag 9045 my_python:1.0   //通常还需要重新命名一下，以便可读</span><br></pre></td></tr></table></figure>
-<p><strong>More Ref:</strong></p>
-<ol>
-<li><a href="https://jingsam.github.io/2017/08/26/docker-save-and-docker-export.html" target="_blank" rel="noopener">https://jingsam.github.io/2017/08/26/docker-save-and-docker-export.html</a></li>
-<li><a href="https://www.jianshu.com/p/8408e06b7273" target="_blank" rel="noopener">https://www.jianshu.com/p/8408e06b7273</a></li>
-</ol>
 ]]></content>
       <tags>
         <tag>Docker</tag>
@@ -594,6 +570,86 @@
 <li><a href="https://help.github.com/en/actions/reference/events-that-trigger-workflows" target="_blank" rel="noopener">https://help.github.com/en/actions/reference/events-that-trigger-workflows</a></li>
 <li><a href="https://developer.github.com/webhooks/" target="_blank" rel="noopener">https://developer.github.com/webhooks/</a></li>
 <li><a href="https://help.github.com/cn/actions/reference/workflow-syntax-for-github-actions#patterns-to-match-branches-and-tags" target="_blank" rel="noopener">Patterns to match branches and tags</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>CICD</category>
+      </categories>
+      <tags>
+        <tag>GA</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Docker image export and import</title>
+    <url>/2019/04/07/Docker-image%E5%AF%BC%E5%87%BA%E5%AF%BC%E5%85%A5/</url>
+    <content><![CDATA[<p>A: “为什么要导镜像，直接从网上下载不就行了？”<br>B: “too young too naive，你以为哪里都能上网的，谁家的机房没事都能上个youtube,google的吗”</p>
+<blockquote>
+<p>一般的公司内网环境是无法访问Internet的，自然也无从下载基础 docker 基础镜像。但这个时候领导交给你的任务–比如用容器运行一个 Java 程序，你在本地程序都调试好了，也在docker container形式运行良好，但是怎么搬到服务器上，这个时候最原始的U盘就大有用处了（虽然现在都是云盘，但是服务器所在网络就好比你小时候玩的小霸王学习机，只能自己和自己玩儿）。</p>
+</blockquote>
+<h2 id="your-PC-–-gt-U-Disk-–-gt-Server"><a href="#your-PC-–-gt-U-Disk-–-gt-Server" class="headerlink" title="your PC –&gt; U Disk –&gt; Server"></a>your PC –&gt; U Disk –&gt; Server</h2><h3 id="Steps"><a href="#Steps" class="headerlink" title="Steps:"></a>Steps:</h3><h5 id="1-Export-image-导出镜像-在你自己的电脑上执行）"><a href="#1-Export-image-导出镜像-在你自己的电脑上执行）" class="headerlink" title="1.Export image (导出镜像,在你自己的电脑上执行）"></a>1.Export image (导出镜像,在你自己的电脑上执行）</h5><p><code></code> docker save Image</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">➜  docker images  | grep python</span><br><span class="line">python          3-alpine            c02a3409ee5b        6 weeks ago         86.7MB</span><br><span class="line">➜  docker save c02a3409ee5b &gt; my_python.tar</span><br><span class="line">➜  ls -l</span><br><span class="line">-rw-r--r--    1 xxx  staff  90526208  4  7 21:33 my_python.tar</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>更建议用<em>镜像</em>名称去处理，如 docker save python:3-alpine &gt; my_python.tar ；好处是在load后镜像名称保持一致，而不是没有tag的</p>
+</blockquote>
+<h5 id="2-乾坤大挪移"><a href="#2-乾坤大挪移" class="headerlink" title="2.乾坤大挪移"></a>2.乾坤大挪移</h5><p>拷贝这个tar包到U 盘，然后插到（或者是挂载）Server上</p>
+<h5 id="3-Import-image-导入镜像"><a href="#3-Import-image-导入镜像" class="headerlink" title="3.Import image (导入镜像)"></a>3.Import image (导入镜像)</h5><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">docker load &lt; my_python.tar</span><br><span class="line">docker tag 9045 my_python:1.0   //通常还需要重新命名一下，以便可读</span><br></pre></td></tr></table></figure>
+<p><strong>More Ref:</strong></p>
+<ol>
+<li><a href="https://jingsam.github.io/2017/08/26/docker-save-and-docker-export.html" target="_blank" rel="noopener">https://jingsam.github.io/2017/08/26/docker-save-and-docker-export.html</a></li>
+<li><a href="https://www.jianshu.com/p/8408e06b7273" target="_blank" rel="noopener">https://www.jianshu.com/p/8408e06b7273</a></li>
+</ol>
+]]></content>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Github Actions E06产出物</title>
+    <url>/2020/03/30/Github-Actions-E06%E4%BA%A7%E5%87%BA%E7%89%A9/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
+<p>大多数时候，workflow的产出物都会直接传到对应的某些仓库，比如docker image会送到docker hub这种仓库存储。这种时候是不需要在workflow再额外的管理产出物，但也不能全盘否定；有时候我们没有一个方便的地方去存储某些形式的文件等，就需要我们有类似jenkins <code>archiveArtifacts</code> 功能。但github actions能做的会更多，请期待。</p>
+</blockquote>
+<h3 id="1-关于artifacts"><a href="#1-关于artifacts" class="headerlink" title="1. 关于artifacts"></a>1. 关于artifacts</h3><p>构件是指在工作流程运行过程中产生的文件或文件集。<br>GitHub 提供两项可用于上传和下载构建构件的操作。 上传到工作流程运行的文件将使用 .zip 格式存档。 更多信息请参阅 <code>action/upload-artifact</code> 和 <code>download-artifact</code> 操作。</p>
+<p>这些是您可能想要上传的一些常见构建和测试输出构件：</p>
+<ul>
+<li>日志文件和核心转储文件</li>
+<li>测试结果、失败和屏幕截图</li>
+<li>二进制或存档文件</li>
+<li>压力测试性能输出和代码覆盖结果</li>
+</ul>
+<p>当作业完成时，运行程序将终止并删除虚拟环境的实例。</p>
+<h3 id="2-上传"><a href="#2-上传" class="headerlink" title="2. 上传"></a>2. 上传</h3><p>常见的场景: 一个java程序的产出物是一个jar包，在构建之后需要得到这个jar用于其他环境部署。</p>
+<p>依旧用 <a href="https://github.com/cicd-draft/api-test-demo" target="_blank" rel="noopener">api-test-demo</a> 这个仓库做演示，主要分为以下个步骤：</p>
+<ul>
+<li>1.下载代码；</li>
+<li>2.构建jar包(存放于指定到路径<code>build/libs/api-demo-0.0.1-SNAPSHOT.jar</code>)；</li>
+<li>3.上传jar包</li>
+</ul>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">my</span> <span class="string">workflow</span> <span class="string">demo</span> </span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span> </span><br><span class="line"><span class="attr">  push:</span></span><br><span class="line"><span class="attr">    branches:</span> </span><br><span class="line"><span class="bullet">      -</span> <span class="string">master</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  artifacts_demo_job:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">job1</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">Checkout</span> <span class="string">code</span></span><br><span class="line"><span class="attr">      uses:</span> <span class="string">actions/checkout@v1</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">Build</span> <span class="string">jar</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        pwd  &amp;&amp; ls -l</span></span><br><span class="line"><span class="string">        ./gradlew -x jar build</span></span><br><span class="line"><span class="string">        ls -l build/libs/api-demo-0.0.1-SNAPSHOT.jar</span></span><br><span class="line"><span class="string"></span><span class="attr">    - name:</span> <span class="string">Archive</span> <span class="string">SNAPSHOT.jar</span></span><br><span class="line"><span class="attr">      uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">      with:</span></span><br><span class="line"><span class="attr">        name:</span> <span class="string">api_snapshot_jar</span></span><br><span class="line"><span class="attr">        path:</span> <span class="string">build/libs/api-demo-0.0.1-SNAPSHOT.jar</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>github actions 工作流的产出物都放在哪里的，保留多久</p>
+</blockquote>
+<h3 id="3-下载"><a href="#3-下载" class="headerlink" title="3. 下载"></a>3. 下载</h3><p>步骤官方说明如下：</p>
+<ul>
+<li>1.On GitHub, navigate to the main page of the repository.</li>
+<li>2.Under your repository name, click Actions.</li>
+<li>3.In the left sidebar, click the workflow you want to see.</li>
+<li>4.Under “Workflow runs”, click the name of the run you want to see.</li>
+<li>5.To download artifacts, use the Artifacts drop-down menu, and select the artifact you want to download.</li>
+<li>6.To delete artifacts, use the Artifacts drop-down menu, and click .</li>
+</ul>
+<p>注意事项：</p>
+<ul>
+<li>保留90天</li>
+<li>一旦删除某一个构件，无法恢复</li>
+</ul>
+<h3 id="4-在工作流程中作业之间传递数据"><a href="#4-在工作流程中作业之间传递数据" class="headerlink" title="4. 在工作流程中作业之间传递数据"></a>4. 在工作流程中作业之间传递数据</h3><p><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts#passing-data-between-jobs-in-a-workflow" target="_blank" rel="noopener">https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts#passing-data-between-jobs-in-a-workflow</a></p>
+<p>由于同一个workflow的多个job分别运行在不同的虚拟主机上，下面示例工作流程说明如何在相同工作流程中的任务之间传递数据。关键词 <strong>need</strong> 用来确保job按顺序运行.</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Share</span> <span class="string">data</span> <span class="string">between</span> <span class="string">jobs</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span> <span class="string">[push]</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  job_1:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Add</span> <span class="number">3</span> <span class="string">and</span> <span class="number">7</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          expr 3 + 7 &gt; math-homework.txt</span></span><br><span class="line"><span class="string"></span><span class="attr">      - name:</span> <span class="string">Upload</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">1</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">          path:</span> <span class="string">math-homework.txt</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  job_2:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Multiply</span> <span class="string">by</span> <span class="number">9</span></span><br><span class="line"><span class="attr">    needs:</span> <span class="string">job_1</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">windows-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Download</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">1</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/download-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">      - shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          value=`cat homework/math-homework.txt`</span></span><br><span class="line"><span class="string">          expr $value \* 9 &gt; homework/math-homework.txt</span></span><br><span class="line"><span class="string"></span><span class="attr">      - name:</span> <span class="string">Upload</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">2</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">          path:</span> <span class="string">homework/math-homework.txt</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  job_3:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Display</span> <span class="string">results</span></span><br><span class="line"><span class="attr">    needs:</span> <span class="string">job_2</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">macOS-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Download</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">2</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/download-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Print</span> <span class="string">the</span> <span class="string">final</span> <span class="string">result</span></span><br><span class="line"><span class="attr">        shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          value=`cat homework/math-homework.txt`</span></span><br><span class="line"><span class="string">          echo The result is $value</span></span><br></pre></td></tr></table></figure>
+<hr>
+<p><strong>More Ref:</strong></p>
+<ul>
+<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts" target="_blank" rel="noopener">关于该篇的原文</a></li>
 </ul>
 ]]></content>
       <categories>
@@ -787,62 +843,6 @@
 <p><strong>More Ref:</strong></p>
 <ul>
 <li><a href="https://help.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context" target="_blank" rel="noopener">GA Context</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>CICD</category>
-      </categories>
-      <tags>
-        <tag>GA</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Github Actions E06产出物</title>
-    <url>/2020/03/30/Github-Actions-E06%E4%BA%A7%E5%87%BA%E7%89%A9/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
-<p>大多数时候，workflow的产出物都会直接传到对应的某些仓库，比如docker image会送到docker hub这种仓库存储。这种时候是不需要在workflow再额外的管理产出物，但也不能全盘否定；有时候我们没有一个方便的地方去存储某些形式的文件等，就需要我们有类似jenkins <code>archiveArtifacts</code> 功能。但github actions能做的会更多，请期待。</p>
-</blockquote>
-<h3 id="1-关于artifacts"><a href="#1-关于artifacts" class="headerlink" title="1. 关于artifacts"></a>1. 关于artifacts</h3><p>构件是指在工作流程运行过程中产生的文件或文件集。<br>GitHub 提供两项可用于上传和下载构建构件的操作。 上传到工作流程运行的文件将使用 .zip 格式存档。 更多信息请参阅 <code>action/upload-artifact</code> 和 <code>download-artifact</code> 操作。</p>
-<p>这些是您可能想要上传的一些常见构建和测试输出构件：</p>
-<ul>
-<li>日志文件和核心转储文件</li>
-<li>测试结果、失败和屏幕截图</li>
-<li>二进制或存档文件</li>
-<li>压力测试性能输出和代码覆盖结果</li>
-</ul>
-<p>当作业完成时，运行程序将终止并删除虚拟环境的实例。</p>
-<h3 id="2-上传"><a href="#2-上传" class="headerlink" title="2. 上传"></a>2. 上传</h3><p>常见的场景: 一个java程序的产出物是一个jar包，在构建之后需要得到这个jar用于其他环境部署。</p>
-<p>依旧用 <a href="https://github.com/cicd-draft/api-test-demo" target="_blank" rel="noopener">api-test-demo</a> 这个仓库做演示，主要分为以下个步骤：</p>
-<ul>
-<li>1.下载代码；</li>
-<li>2.构建jar包(存放于指定到路径<code>build/libs/api-demo-0.0.1-SNAPSHOT.jar</code>)；</li>
-<li>3.上传jar包</li>
-</ul>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">my</span> <span class="string">workflow</span> <span class="string">demo</span> </span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span> </span><br><span class="line"><span class="attr">  push:</span></span><br><span class="line"><span class="attr">    branches:</span> </span><br><span class="line"><span class="bullet">      -</span> <span class="string">master</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  artifacts_demo_job:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">job1</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">Checkout</span> <span class="string">code</span></span><br><span class="line"><span class="attr">      uses:</span> <span class="string">actions/checkout@v1</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">Build</span> <span class="string">jar</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        pwd  &amp;&amp; ls -l</span></span><br><span class="line"><span class="string">        ./gradlew -x jar build</span></span><br><span class="line"><span class="string">        ls -l build/libs/api-demo-0.0.1-SNAPSHOT.jar</span></span><br><span class="line"><span class="string"></span><span class="attr">    - name:</span> <span class="string">Archive</span> <span class="string">SNAPSHOT.jar</span></span><br><span class="line"><span class="attr">      uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">      with:</span></span><br><span class="line"><span class="attr">        name:</span> <span class="string">api_snapshot_jar</span></span><br><span class="line"><span class="attr">        path:</span> <span class="string">build/libs/api-demo-0.0.1-SNAPSHOT.jar</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>github actions 工作流的产出物都放在哪里的，保留多久</p>
-</blockquote>
-<h3 id="3-下载"><a href="#3-下载" class="headerlink" title="3. 下载"></a>3. 下载</h3><p>步骤官方说明如下：</p>
-<ul>
-<li>1.On GitHub, navigate to the main page of the repository.</li>
-<li>2.Under your repository name, click Actions.</li>
-<li>3.In the left sidebar, click the workflow you want to see.</li>
-<li>4.Under “Workflow runs”, click the name of the run you want to see.</li>
-<li>5.To download artifacts, use the Artifacts drop-down menu, and select the artifact you want to download.</li>
-<li>6.To delete artifacts, use the Artifacts drop-down menu, and click .</li>
-</ul>
-<p>注意事项：</p>
-<ul>
-<li>保留90天</li>
-<li>一旦删除某一个构件，无法恢复</li>
-</ul>
-<h3 id="4-在工作流程中作业之间传递数据"><a href="#4-在工作流程中作业之间传递数据" class="headerlink" title="4. 在工作流程中作业之间传递数据"></a>4. 在工作流程中作业之间传递数据</h3><p><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts#passing-data-between-jobs-in-a-workflow" target="_blank" rel="noopener">https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts#passing-data-between-jobs-in-a-workflow</a></p>
-<p>由于同一个workflow的多个job分别运行在不同的虚拟主机上，下面示例工作流程说明如何在相同工作流程中的任务之间传递数据。关键词 <strong>need</strong> 用来确保job按顺序运行.</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Share</span> <span class="string">data</span> <span class="string">between</span> <span class="string">jobs</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span> <span class="string">[push]</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  job_1:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Add</span> <span class="number">3</span> <span class="string">and</span> <span class="number">7</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          expr 3 + 7 &gt; math-homework.txt</span></span><br><span class="line"><span class="string"></span><span class="attr">      - name:</span> <span class="string">Upload</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">1</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">          path:</span> <span class="string">math-homework.txt</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  job_2:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Multiply</span> <span class="string">by</span> <span class="number">9</span></span><br><span class="line"><span class="attr">    needs:</span> <span class="string">job_1</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">windows-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Download</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">1</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/download-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">      - shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          value=`cat homework/math-homework.txt`</span></span><br><span class="line"><span class="string">          expr $value \* 9 &gt; homework/math-homework.txt</span></span><br><span class="line"><span class="string"></span><span class="attr">      - name:</span> <span class="string">Upload</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">2</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">          path:</span> <span class="string">homework/math-homework.txt</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  job_3:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Display</span> <span class="string">results</span></span><br><span class="line"><span class="attr">    needs:</span> <span class="string">job_2</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">macOS-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Download</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">2</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/download-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Print</span> <span class="string">the</span> <span class="string">final</span> <span class="string">result</span></span><br><span class="line"><span class="attr">        shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          value=`cat homework/math-homework.txt`</span></span><br><span class="line"><span class="string">          echo The result is $value</span></span><br></pre></td></tr></table></figure>
-<hr>
-<p><strong>More Ref:</strong></p>
-<ul>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts" target="_blank" rel="noopener">关于该篇的原文</a></li>
 </ul>
 ]]></content>
       <categories>
@@ -1117,24 +1117,6 @@
       </tags>
   </entry>
   <entry>
-    <title>How to Create Custom iTerm2 Window</title>
-    <url>/2019/04/18/How-to-Create-Custom-iTerm2-Window/</url>
-    <content><![CDATA[<h4 id="1-Open-iTerm-preferences-setting-打开偏好设置"><a href="#1-Open-iTerm-preferences-setting-打开偏好设置" class="headerlink" title="1.Open iTerm preferences setting (打开偏好设置)"></a>1.Open iTerm preferences setting (打开偏好设置)</h4><p><img src="/images/iterm_image_01.png" alt="iterm_image_01"></p>
-<h4 id="2-New-add-a-profile-新加一个配置"><a href="#2-New-add-a-profile-新加一个配置" class="headerlink" title="2.New add a profile (新加一个配置)"></a>2.New add a profile (新加一个配置)</h4><p><img src="/images/iterm_image_02.png" alt="iterm_image_02"></p>
-<h4 id="3-Setting-windows-name-etc-（定义名称，窗口高度，宽度等）"><a href="#3-Setting-windows-name-etc-（定义名称，窗口高度，宽度等）" class="headerlink" title="3.Setting windows name etc （定义名称，窗口高度，宽度等）"></a>3.Setting windows name etc （定义名称，窗口高度，宽度等）</h4><p><img src="/images/iterm_image_03.png" alt="iterm_image_03"></p>
-<p><img src="/images/iterm_image_04.png" alt="iterm_image_04"></p>
-<h4 id="4-define-hotkey-定义快捷键"><a href="#4-define-hotkey-定义快捷键" class="headerlink" title="4.define hotkey (定义快捷键)"></a>4.define hotkey (定义快捷键)</h4><p><img src="/images/iterm_image_05.png" alt="iterm_image_05"></p>
-<p><img src="/images/iterm_image_06.png" alt="iterm_image_06"></p>
-<h4 id="Finally-使用快捷键"><a href="#Finally-使用快捷键" class="headerlink" title="Finally 使用快捷键"></a>Finally 使用快捷键</h4><p>按 <strong>一次</strong> 出现窗口，<strong>再按一次</strong> 窗口消失。如果是多屏，可以在不同屏幕下调用出来，会话内容仍保持着。</p>
-]]></content>
-      <categories>
-        <category>Tools</category>
-      </categories>
-      <tags>
-        <tag>Tools</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Github Actions E08插播一条消息</title>
     <url>/2020/04/19/Github-Actions-E08%E6%8F%92%E6%92%AD%E4%B8%80%E6%9D%A1%E6%B6%88%E6%81%AF/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
@@ -1184,6 +1166,24 @@
       </categories>
       <tags>
         <tag>GA</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>How to Create Custom iTerm2 Window</title>
+    <url>/2019/04/18/How-to-Create-Custom-iTerm2-Window/</url>
+    <content><![CDATA[<h4 id="1-Open-iTerm-preferences-setting-打开偏好设置"><a href="#1-Open-iTerm-preferences-setting-打开偏好设置" class="headerlink" title="1.Open iTerm preferences setting (打开偏好设置)"></a>1.Open iTerm preferences setting (打开偏好设置)</h4><p><img src="/images/iterm_image_01.png" alt="iterm_image_01"></p>
+<h4 id="2-New-add-a-profile-新加一个配置"><a href="#2-New-add-a-profile-新加一个配置" class="headerlink" title="2.New add a profile (新加一个配置)"></a>2.New add a profile (新加一个配置)</h4><p><img src="/images/iterm_image_02.png" alt="iterm_image_02"></p>
+<h4 id="3-Setting-windows-name-etc-（定义名称，窗口高度，宽度等）"><a href="#3-Setting-windows-name-etc-（定义名称，窗口高度，宽度等）" class="headerlink" title="3.Setting windows name etc （定义名称，窗口高度，宽度等）"></a>3.Setting windows name etc （定义名称，窗口高度，宽度等）</h4><p><img src="/images/iterm_image_03.png" alt="iterm_image_03"></p>
+<p><img src="/images/iterm_image_04.png" alt="iterm_image_04"></p>
+<h4 id="4-define-hotkey-定义快捷键"><a href="#4-define-hotkey-定义快捷键" class="headerlink" title="4.define hotkey (定义快捷键)"></a>4.define hotkey (定义快捷键)</h4><p><img src="/images/iterm_image_05.png" alt="iterm_image_05"></p>
+<p><img src="/images/iterm_image_06.png" alt="iterm_image_06"></p>
+<h4 id="Finally-使用快捷键"><a href="#Finally-使用快捷键" class="headerlink" title="Finally 使用快捷键"></a>Finally 使用快捷键</h4><p>按 <strong>一次</strong> 出现窗口，<strong>再按一次</strong> 窗口消失。如果是多屏，可以在不同屏幕下调用出来，会话内容仍保持着。</p>
+]]></content>
+      <categories>
+        <category>Tools</category>
+      </categories>
+      <tags>
+        <tag>Tools</tag>
       </tags>
   </entry>
   <entry>
@@ -1324,21 +1324,6 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>backup specially with shell script or python</title>
-    <url>/2019/05/21/Linux-backup-specially/</url>
-    <content><![CDATA[<h3 id="需求：-备份目录，只备份新加的文件，不备份减少的文件"><a href="#需求：-备份目录，只备份新加的文件，不备份减少的文件" class="headerlink" title="需求： 备份目录，只备份新加的文件，不备份减少的文件"></a>需求： 备份目录，只备份新加的文件，不备份减少的文件</h3><p>分析： 通常备份目录用 <code>rsync</code> 就可以达到目的，但开发同学怕误操作，删除文件，于是提出这个 <em>只增不减</em> 的需求</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="function"><span class="title">backUp</span></span>()&#123;</span><br><span class="line"><span class="built_in">local</span> sourceDir=<span class="variable">$1</span> <span class="comment">#需要备份的文件/目录</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">local</span> destDir=<span class="variable">$2</span> <span class="comment">#备份目的地</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -d <span class="string">"<span class="variable">$sourceDir</span>"</span> ] <span class="comment">#备份目录</span></span><br><span class="line"><span class="keyword">then</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">#如果目录尚未备份，则创建此目录</span></span><br><span class="line">  <span class="keyword">if</span> [ ! -d <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span> ]</span><br><span class="line">  <span class="keyword">then</span></span><br><span class="line">  <span class="built_in">echo</span> -e <span class="string">"创建目录\t<span class="variable">$sourceDir</span>"</span></span><br><span class="line">  mkdir -p <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span></span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#对目录中对每一个文件,递归调用此函数进行备份</span></span><br><span class="line"><span class="keyword">for</span> var <span class="keyword">in</span> $(ls <span class="string">"<span class="variable">$sourceDir</span>"</span>)</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">backUp <span class="string">"<span class="variable">$sourceDir</span>/<span class="variable">$var</span>"</span> <span class="string">"<span class="variable">$destDir</span>"</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"><span class="keyword">else</span> <span class="comment">#备份文件</span></span><br><span class="line">  <span class="comment">#如果文件在尚未备份，则直接复制</span></span><br><span class="line">  <span class="keyword">if</span> [ ! -f <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span> ]</span><br><span class="line">  <span class="keyword">then</span></span><br><span class="line">  <span class="built_in">echo</span> -e <span class="string">"备份文件\t<span class="variable">$sourceDir</span>"</span></span><br><span class="line">  cp <span class="string">"<span class="variable">$sourceDir</span>"</span> <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span></span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">#如果文件已存在，则比较两个文件对最后修改时间，如果文件已修改，则更新文件</span></span><br><span class="line">  lastModifi_backup=$(date -r <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span> +%s)</span><br><span class="line">  lastModifi_current=$(date -r <span class="string">"<span class="variable">$sourceDir</span>"</span> +%s)</span><br><span class="line">    <span class="keyword">if</span> [ <span class="string">"<span class="variable">$lastModifi_current</span>"</span> -gt <span class="string">"<span class="variable">$lastModifi_backup</span>"</span> ]</span><br><span class="line">    <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> -e <span class="string">"更新文件\t<span class="variable">$sourceDir</span>"</span> </span><br><span class="line">    cp <span class="string">"<span class="variable">$sourceDir</span>"</span> <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line">backUp <span class="string">"<span class="variable">$1</span>"</span> <span class="string">"<span class="variable">$2</span>"</span></span><br></pre></td></tr></table></figure>
-<p>运行脚本： <code>./backupSpecially.sh &quot;/date/originData&quot; &quot;/date/backup_dir&quot;</code></p>
-<p>发现运行shell脚本有问题，于是大神帮我写了个python</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python2.7</span></span><br><span class="line"><span class="comment"># -*- encoding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> os,time,filecmp</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">differentFileCopy</span><span class="params">(sourcePath, targetPath)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(sourcePath):</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(targetPath):</span><br><span class="line">        os.makedirs(targetPath)</span><br><span class="line">    <span class="keyword">for</span> fileName <span class="keyword">in</span> os.listdir(sourcePath):</span><br><span class="line">        absourcePath = os.path.join(sourcePath, fileName)</span><br><span class="line">        abstargetPath = os.path.join(targetPath, fileName)</span><br><span class="line">        <span class="keyword">if</span> os.path.isdir(absourcePath):</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(abstargetPath):</span><br><span class="line">                os.makedirs(abstargetPath)</span><br><span class="line">                differentFileCopy(absourcePath, abstargetPath)</span><br><span class="line">        <span class="keyword">if</span> os.path.isfile(absourcePath):</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(abstargetPath):</span><br><span class="line">                <span class="keyword">print</span> <span class="string">'copy %s to %s'</span> %(fileName,abstargetPath)</span><br><span class="line">                os.system(<span class="string">'cp'</span>+<span class="string">' '</span>+absourcePath+<span class="string">' '</span>+targetPath)</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> filecmp.cmp(absourcePath,abstargetPath):</span><br><span class="line">                <span class="keyword">print</span> <span class="string">'copy %s to %s'</span> %(fileName,abstargetPath)</span><br><span class="line">                os.system(<span class="string">'cp'</span>+<span class="string">' '</span>+absourcePath+<span class="string">' '</span>+targetPath)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    startTime = time.clock()</span><br><span class="line">    sourcePath = <span class="string">r"/date/originData"</span></span><br><span class="line">    targetPath = <span class="string">r"/date/Data_backupDir"</span></span><br><span class="line">    differentFileCopy(sourcePath, targetPath)</span><br><span class="line">    endTime = time.clock()</span><br><span class="line">    time_mi = endTime // <span class="number">60</span></span><br><span class="line">    time_s = endTime // <span class="number">1</span> % <span class="number">60</span></span><br><span class="line">    time_ms = ((endTime * <span class="number">100</span>) // <span class="number">1</span>) % <span class="number">100</span></span><br><span class="line">    print(<span class="string">"总用时:%02.0f:%02.0f:%2.0f"</span> % (time_mi, time_s, time_ms))</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Shell</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Makefile 101 :Intro</title>
     <url>/2019/07/04/Makefile-101-Intro/</url>
     <content><![CDATA[<p>新建文件 ，文件名 makefile 或 Makefile</p>
@@ -1378,6 +1363,21 @@ pipeline {
       </categories>
       <tags>
         <tag>makefile</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>backup specially with shell script or python</title>
+    <url>/2019/05/21/Linux-backup-specially/</url>
+    <content><![CDATA[<h3 id="需求：-备份目录，只备份新加的文件，不备份减少的文件"><a href="#需求：-备份目录，只备份新加的文件，不备份减少的文件" class="headerlink" title="需求： 备份目录，只备份新加的文件，不备份减少的文件"></a>需求： 备份目录，只备份新加的文件，不备份减少的文件</h3><p>分析： 通常备份目录用 <code>rsync</code> 就可以达到目的，但开发同学怕误操作，删除文件，于是提出这个 <em>只增不减</em> 的需求</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="function"><span class="title">backUp</span></span>()&#123;</span><br><span class="line"><span class="built_in">local</span> sourceDir=<span class="variable">$1</span> <span class="comment">#需要备份的文件/目录</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">local</span> destDir=<span class="variable">$2</span> <span class="comment">#备份目的地</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -d <span class="string">"<span class="variable">$sourceDir</span>"</span> ] <span class="comment">#备份目录</span></span><br><span class="line"><span class="keyword">then</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">#如果目录尚未备份，则创建此目录</span></span><br><span class="line">  <span class="keyword">if</span> [ ! -d <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span> ]</span><br><span class="line">  <span class="keyword">then</span></span><br><span class="line">  <span class="built_in">echo</span> -e <span class="string">"创建目录\t<span class="variable">$sourceDir</span>"</span></span><br><span class="line">  mkdir -p <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span></span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#对目录中对每一个文件,递归调用此函数进行备份</span></span><br><span class="line"><span class="keyword">for</span> var <span class="keyword">in</span> $(ls <span class="string">"<span class="variable">$sourceDir</span>"</span>)</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">backUp <span class="string">"<span class="variable">$sourceDir</span>/<span class="variable">$var</span>"</span> <span class="string">"<span class="variable">$destDir</span>"</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"><span class="keyword">else</span> <span class="comment">#备份文件</span></span><br><span class="line">  <span class="comment">#如果文件在尚未备份，则直接复制</span></span><br><span class="line">  <span class="keyword">if</span> [ ! -f <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span> ]</span><br><span class="line">  <span class="keyword">then</span></span><br><span class="line">  <span class="built_in">echo</span> -e <span class="string">"备份文件\t<span class="variable">$sourceDir</span>"</span></span><br><span class="line">  cp <span class="string">"<span class="variable">$sourceDir</span>"</span> <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span></span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">#如果文件已存在，则比较两个文件对最后修改时间，如果文件已修改，则更新文件</span></span><br><span class="line">  lastModifi_backup=$(date -r <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span> +%s)</span><br><span class="line">  lastModifi_current=$(date -r <span class="string">"<span class="variable">$sourceDir</span>"</span> +%s)</span><br><span class="line">    <span class="keyword">if</span> [ <span class="string">"<span class="variable">$lastModifi_current</span>"</span> -gt <span class="string">"<span class="variable">$lastModifi_backup</span>"</span> ]</span><br><span class="line">    <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> -e <span class="string">"更新文件\t<span class="variable">$sourceDir</span>"</span> </span><br><span class="line">    cp <span class="string">"<span class="variable">$sourceDir</span>"</span> <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line">backUp <span class="string">"<span class="variable">$1</span>"</span> <span class="string">"<span class="variable">$2</span>"</span></span><br></pre></td></tr></table></figure>
+<p>运行脚本： <code>./backupSpecially.sh &quot;/date/originData&quot; &quot;/date/backup_dir&quot;</code></p>
+<p>发现运行shell脚本有问题，于是大神帮我写了个python</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python2.7</span></span><br><span class="line"><span class="comment"># -*- encoding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> os,time,filecmp</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">differentFileCopy</span><span class="params">(sourcePath, targetPath)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(sourcePath):</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(targetPath):</span><br><span class="line">        os.makedirs(targetPath)</span><br><span class="line">    <span class="keyword">for</span> fileName <span class="keyword">in</span> os.listdir(sourcePath):</span><br><span class="line">        absourcePath = os.path.join(sourcePath, fileName)</span><br><span class="line">        abstargetPath = os.path.join(targetPath, fileName)</span><br><span class="line">        <span class="keyword">if</span> os.path.isdir(absourcePath):</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(abstargetPath):</span><br><span class="line">                os.makedirs(abstargetPath)</span><br><span class="line">                differentFileCopy(absourcePath, abstargetPath)</span><br><span class="line">        <span class="keyword">if</span> os.path.isfile(absourcePath):</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(abstargetPath):</span><br><span class="line">                <span class="keyword">print</span> <span class="string">'copy %s to %s'</span> %(fileName,abstargetPath)</span><br><span class="line">                os.system(<span class="string">'cp'</span>+<span class="string">' '</span>+absourcePath+<span class="string">' '</span>+targetPath)</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> filecmp.cmp(absourcePath,abstargetPath):</span><br><span class="line">                <span class="keyword">print</span> <span class="string">'copy %s to %s'</span> %(fileName,abstargetPath)</span><br><span class="line">                os.system(<span class="string">'cp'</span>+<span class="string">' '</span>+absourcePath+<span class="string">' '</span>+targetPath)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    startTime = time.clock()</span><br><span class="line">    sourcePath = <span class="string">r"/date/originData"</span></span><br><span class="line">    targetPath = <span class="string">r"/date/Data_backupDir"</span></span><br><span class="line">    differentFileCopy(sourcePath, targetPath)</span><br><span class="line">    endTime = time.clock()</span><br><span class="line">    time_mi = endTime // <span class="number">60</span></span><br><span class="line">    time_s = endTime // <span class="number">1</span> % <span class="number">60</span></span><br><span class="line">    time_ms = ((endTime * <span class="number">100</span>) // <span class="number">1</span>) % <span class="number">100</span></span><br><span class="line">    print(<span class="string">"总用时:%02.0f:%02.0f:%2.0f"</span> % (time_mi, time_s, time_ms))</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Shell</tag>
       </tags>
   </entry>
   <entry>
@@ -1426,43 +1426,6 @@ pipeline {
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  example_stages cat Makefile</span><br><span class="line">.DEFAULT_GOAL := <span class="built_in">help</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">help</span>:	<span class="comment">## show this help</span></span><br><span class="line">	@fgrep -h <span class="string">"##"</span> $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e <span class="string">'s/\\$$//'</span> | sed -e <span class="string">'s/##//'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">stage1:  <span class="comment">## This message will show up when typing 'make help'</span></span><br><span class="line">	@<span class="built_in">echo</span> I am stage1</span><br><span class="line"></span><br><span class="line">stage2:</span><br><span class="line">	<span class="built_in">echo</span> <span class="string">"I am stage2"</span></span><br><span class="line">➜  example_stages make <span class="built_in">help</span></span><br><span class="line"><span class="built_in">help</span>:	 show this <span class="built_in">help</span></span><br><span class="line">stage1:   This message will show up when typing <span class="string">'make help'</span></span><br></pre></td></tr></table></figure>
 <p>output:</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   make <span class="built_in">help</span></span><br><span class="line"><span class="built_in">help</span>:	 show this <span class="built_in">help</span></span><br><span class="line">stage1:   This message will show up when typing <span class="string">'make help'</span></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>makefile</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Makefile 105: syntax</title>
-    <url>/2019/07/05/Makefile-105-syntax/</url>
-    <content><![CDATA[<h5 id="5-1-注释"><a href="#5-1-注释" class="headerlink" title="5.1 注释"></a>5.1 注释</h5><p>井号（#）在Makefile中表示注释。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 这是注释</span></span><br><span class="line">result.txt: source.txt</span><br><span class="line">    <span class="comment"># 这是注释</span></span><br><span class="line">    cp source.txt result.txt <span class="comment"># 这也是注释</span></span><br></pre></td></tr></table></figure>
-<h5 id="5-2-回声（echoing）"><a href="#5-2-回声（echoing）" class="headerlink" title="5.2 回声（echoing）"></a>5.2 回声（echoing）</h5><p><code>@</code> suppress the normal ‘echo’ of the command that is executed.<br>正常情况下，make会打印每条命令，然后再执行，这就叫做回声（echoing）。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">test</span>:</span><br><span class="line">    <span class="comment"># 这是测试</span></span><br><span class="line">执行上面的规则，会得到下面的结果。</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ make <span class="built_in">test</span></span><br><span class="line"><span class="comment"># 这是测试</span></span><br></pre></td></tr></table></figure>
-<p>在命令的前面加上@，就可以关闭回声。<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">test</span>:</span><br><span class="line">    @<span class="comment"># 这是测试</span></span><br></pre></td></tr></table></figure></p>
-<h5 id="5-3-减号"><a href="#5-3-减号" class="headerlink" title="5.3 减号-"></a>5.3 减号-</h5><p><code>-</code> means ignore the exit status of the command that is executed (normally, a non-zero exit status would stop that part of htat build) </p>
-<p>通常情况下，Makefile在执行到某一条命令时，如果返回值不正常，就会推出当前make进程，通常结合 rm ,mkdir 命令使用，（空文件或者文件不存在都会返回错误）</p>
-<p>这个符号的目的就是如果这条命令执行失败了继续执行，不影响后续命令的执行。<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   cat Makefile</span><br><span class="line">all: stage1 stage2</span><br><span class="line"></span><br><span class="line">stage1: ;@<span class="built_in">echo</span> <span class="string">"run stage1....."</span>;</span><br><span class="line">	@<span class="built_in">echo</span> <span class="string">"I am stage1"</span></span><br><span class="line"></span><br><span class="line">stage2:</span><br><span class="line">	<span class="built_in">echo</span> <span class="string">"I am stage2"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#执行</span></span><br><span class="line">➜   make</span><br><span class="line">run stage1.....</span><br><span class="line">I am stage1</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"I am stage2"</span></span><br><span class="line">I am stage2</span><br></pre></td></tr></table></figure></p>
-<h5 id="5-4-加号"><a href="#5-4-加号" class="headerlink" title="5.4 加号+"></a>5.4 加号+</h5><p><code>+</code> means execute this comand under make -n (when commands are not normally executed)<br>对于命令行前面加上加号+的含义，表明在使用 make -n 命令的时候，其他行都只是显示命令而不执行，只有+ 行的才会被执行。</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>makefile</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Makefile 106: Functions</title>
-    <url>/2019/07/05/Makefile-106-Functions/</url>
-    <content><![CDATA[<p>（1）shell 函数</p>
-<p>（2）wildcard 函数</p>
-<p>（3）subst 函数</p>
-<p>（4）patsubst函数</p>
-<p>（5）替换后缀名</p>
 ]]></content>
       <categories>
         <category>Linux</category>
@@ -1552,6 +1515,22 @@ pipeline {
       </categories>
       <tags>
         <tag>Shell</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Makefile 106: Functions</title>
+    <url>/2019/07/05/Makefile-106-Functions/</url>
+    <content><![CDATA[<p>（1）shell 函数</p>
+<p>（2）wildcard 函数</p>
+<p>（3）subst 函数</p>
+<p>（4）patsubst函数</p>
+<p>（5）替换后缀名</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>makefile</tag>
       </tags>
   </entry>
   <entry>
@@ -1726,6 +1705,41 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>Shell count time</title>
+    <url>/2019/06/17/Shell-count-time/</url>
+    <content><![CDATA[<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">start=$(date +%s)</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> ---------</span><br><span class="line"><span class="comment">#type your command, like: sleep 50</span></span><br><span class="line">sleep 50</span><br><span class="line"></span><br><span class="line">end=$(date +%s)</span><br><span class="line"></span><br><span class="line">diff=$((end - start))</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">"\e[1;32m take time is: <span class="variable">$diff</span> \e[m"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> Count:</span><br><span class="line">tput sc</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> count <span class="keyword">in</span> `seq 0 40`</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  tput rc</span><br><span class="line">  tput ed</span><br><span class="line">  <span class="built_in">echo</span> -n <span class="variable">$count</span></span><br><span class="line">  sleep 1</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<p>用 tput sc 存储光标位置。在每次循环中，通过 tput rc 恢复之前的存储的光标位置，在终端中打印出新的 count 值，然后使用 tputs ed 清除从当前位置到行尾之间的所有内容。行被清空之后，脚本就可以显示出新的值。sleep  可以使脚本在每次循环迭代之间延迟1秒钟。</p>
+]]></content>
+      <categories>
+        <category>Shell</category>
+      </categories>
+      <tags>
+        <tag>Shell</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Makefile 105: syntax</title>
+    <url>/2019/07/05/Makefile-105-syntax/</url>
+    <content><![CDATA[<h5 id="5-1-注释"><a href="#5-1-注释" class="headerlink" title="5.1 注释"></a>5.1 注释</h5><p>井号（#）在Makefile中表示注释。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 这是注释</span></span><br><span class="line">result.txt: source.txt</span><br><span class="line">    <span class="comment"># 这是注释</span></span><br><span class="line">    cp source.txt result.txt <span class="comment"># 这也是注释</span></span><br></pre></td></tr></table></figure>
+<h5 id="5-2-回声（echoing）"><a href="#5-2-回声（echoing）" class="headerlink" title="5.2 回声（echoing）"></a>5.2 回声（echoing）</h5><p><code>@</code> suppress the normal ‘echo’ of the command that is executed.<br>正常情况下，make会打印每条命令，然后再执行，这就叫做回声（echoing）。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">test</span>:</span><br><span class="line">    <span class="comment"># 这是测试</span></span><br><span class="line">执行上面的规则，会得到下面的结果。</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ make <span class="built_in">test</span></span><br><span class="line"><span class="comment"># 这是测试</span></span><br></pre></td></tr></table></figure>
+<p>在命令的前面加上@，就可以关闭回声。<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">test</span>:</span><br><span class="line">    @<span class="comment"># 这是测试</span></span><br></pre></td></tr></table></figure></p>
+<h5 id="5-3-减号"><a href="#5-3-减号" class="headerlink" title="5.3 减号-"></a>5.3 减号-</h5><p><code>-</code> means ignore the exit status of the command that is executed (normally, a non-zero exit status would stop that part of htat build) </p>
+<p>通常情况下，Makefile在执行到某一条命令时，如果返回值不正常，就会推出当前make进程，通常结合 rm ,mkdir 命令使用，（空文件或者文件不存在都会返回错误）</p>
+<p>这个符号的目的就是如果这条命令执行失败了继续执行，不影响后续命令的执行。<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   cat Makefile</span><br><span class="line">all: stage1 stage2</span><br><span class="line"></span><br><span class="line">stage1: ;@<span class="built_in">echo</span> <span class="string">"run stage1....."</span>;</span><br><span class="line">	@<span class="built_in">echo</span> <span class="string">"I am stage1"</span></span><br><span class="line"></span><br><span class="line">stage2:</span><br><span class="line">	<span class="built_in">echo</span> <span class="string">"I am stage2"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#执行</span></span><br><span class="line">➜   make</span><br><span class="line">run stage1.....</span><br><span class="line">I am stage1</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"I am stage2"</span></span><br><span class="line">I am stage2</span><br></pre></td></tr></table></figure></p>
+<h5 id="5-4-加号"><a href="#5-4-加号" class="headerlink" title="5.4 加号+"></a>5.4 加号+</h5><p><code>+</code> means execute this comand under make -n (when commands are not normally executed)<br>对于命令行前面加上加号+的含义，表明在使用 make -n 命令的时候，其他行都只是显示命令而不执行，只有+ 行的才会被执行。</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>makefile</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Shell Script Standards</title>
     <url>/2019/05/29/Shell-Script-Standards/</url>
     <content><![CDATA[<p>推荐看看 <a href="https://google.github.io/styleguide/shellguide.html" target="_blank" rel="noopener">https://google.github.io/styleguide/shellguide.html</a></p>
@@ -1765,20 +1779,6 @@ pipeline {
 <li><a href="https://blog.csdn.net/wirelessqa/article/details/18863403" target="_blank" rel="noopener">https://blog.csdn.net/wirelessqa/article/details/18863403</a></li>
 </ul>
 </blockquote>
-]]></content>
-      <categories>
-        <category>Shell</category>
-      </categories>
-      <tags>
-        <tag>Shell</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Shell count time</title>
-    <url>/2019/06/17/Shell-count-time/</url>
-    <content><![CDATA[<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">start=$(date +%s)</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> ---------</span><br><span class="line"><span class="comment">#type your command, like: sleep 50</span></span><br><span class="line">sleep 50</span><br><span class="line"></span><br><span class="line">end=$(date +%s)</span><br><span class="line"></span><br><span class="line">diff=$((end - start))</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">"\e[1;32m take time is: <span class="variable">$diff</span> \e[m"</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> Count:</span><br><span class="line">tput sc</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> count <span class="keyword">in</span> `seq 0 40`</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  tput rc</span><br><span class="line">  tput ed</span><br><span class="line">  <span class="built_in">echo</span> -n <span class="variable">$count</span></span><br><span class="line">  sleep 1</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-<p>用 tput sc 存储光标位置。在每次循环中，通过 tput rc 恢复之前的存储的光标位置，在终端中打印出新的 count 值，然后使用 tputs ed 清除从当前位置到行尾之间的所有内容。行被清空之后，脚本就可以显示出新的值。sleep  可以使脚本在每次循环迭代之间延迟1秒钟。</p>
 ]]></content>
       <categories>
         <category>Shell</category>
@@ -1830,35 +1830,6 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>Shell output/Terminal  color</title>
-    <url>/2019/04/28/Shell-output-Terminal-color/</url>
-    <content><![CDATA[<h2 id="change-dispaly-color-on-the-terminal"><a href="#change-dispaly-color-on-the-terminal" class="headerlink" title="change dispaly color on the terminal"></a>change dispaly color on the terminal</h2><p>The  tput  utility uses the terminfo database to make the values of terminal-depen-dent capabilities and information available to the shell (see sh(1)), to initialize or reset the terminal, or return the long name of the requested terminal type.</p>
-<h4 id="tput-Color-Capabilities"><a href="#tput-Color-Capabilities" class="headerlink" title="tput Color Capabilities:"></a>tput Color Capabilities:</h4><ul>
-<li><code>tput setab [0-7]</code> – Set a background color using ANSI escape</li>
-<li><code>tput setb [0-7]</code> – Set a background color</li>
-<li><code>tput setaf [0-7]</code> – Set a foreground color using ANSI escape</li>
-<li><code>tput setf [0-7]</code> – Set a foreground color</li>
-</ul>
-<h4 id="Color-Code-for-tput"><a href="#Color-Code-for-tput" class="headerlink" title="Color Code for tput:"></a>Color Code for tput:</h4><ul>
-<li>0 – Black</li>
-<li>1 – Red</li>
-<li>2 – Green</li>
-<li>3 – Yellow</li>
-<li>4 – Blue</li>
-<li>5 – Magenta</li>
-<li>6 – Cyan</li>
-<li>7 – White</li>
-</ul>
-<p>bash script example:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> -e</span><br><span class="line"></span><br><span class="line">reset=$(tput sgr0)</span><br><span class="line"></span><br><span class="line">green=$(tput setaf 2 )</span><br><span class="line">blue=$(tput setaf 25)</span><br><span class="line">red=$(tput setaf 1;tput bold)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">info</span></span>() &#123;</span><br><span class="line">    <span class="built_in">printf</span> <span class="string">"<span class="variable">$&#123;blue&#125;</span>➜ %s<span class="variable">$&#123;reset&#125;</span>\n"</span> <span class="string">"<span class="variable">$@</span>"</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="title">error</span></span>() &#123;</span><br><span class="line">    <span class="built_in">printf</span> <span class="string">"<span class="variable">$&#123;red&#125;</span>× %s<span class="variable">$&#123;reset&#125;</span>\n"</span> <span class="string">"<span class="variable">$@</span>"</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="title">success</span></span>() &#123;</span><br><span class="line">    <span class="built_in">printf</span> <span class="string">"<span class="variable">$&#123;green&#125;</span>✔ %s<span class="variable">$&#123;reset&#125;</span>\n"</span> <span class="string">"<span class="variable">$@</span>"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">infoWithTime</span></span>()&#123;</span><br><span class="line">    <span class="built_in">printf</span> <span class="string">"<span class="variable">$&#123;blue&#125;</span>➜ %s<span class="variable">$&#123;reset&#125;</span>\n"</span> <span class="string">"<span class="variable">$@</span> | now: `date +'%F %T'`"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">info <span class="string">"setup ,,info......"</span></span><br><span class="line"></span><br><span class="line">error <span class="string">"haha,error..."</span></span><br><span class="line"></span><br><span class="line">success <span class="string">"old color"</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span> $(tput setaf 2;tput bold)<span class="string">'color show\n'</span> $(tput sgr0)</span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span> $(tput setf 2;tput bold)<span class="string">'color show\n'</span> $(tput sgr0)</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Shell</category>
-      </categories>
-      <tags>
-        <tag>Shell</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Small Tools [1]: youtube-dl</title>
     <url>/2019/05/22/Small-Tools-1-youtube-dl/</url>
     <content><![CDATA[<h2 id="youtube-dl"><a href="#youtube-dl" class="headerlink" title="youtube-dl"></a>youtube-dl</h2><p><strong>youtube-dl</strong> 是一个命令行视频下载利器，不仅仅可以下载YouTube的内容，也可以下载其他的视频网站内容</p>
@@ -1892,27 +1863,32 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>Small Tools [2]: ffmpeg -- Video conversion tool.</title>
-    <url>/2019/05/23/Small-Tools-2-ffmpeg-Video-conversion-tool/</url>
-    <content><![CDATA[<h2 id="yffmpeg"><a href="#yffmpeg" class="headerlink" title="yffmpeg"></a>yffmpeg</h2><h5 id="1-Install-（安装）"><a href="#1-Install-（安装）" class="headerlink" title="1.Install （安装）"></a>1.Install （安装）</h5><ul>
-<li>macOS (wait a min)<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">brew install ffmpeg</span><br></pre></td></tr></table></figure>
-</li>
+    <title>Shell output/Terminal  color</title>
+    <url>/2019/04/28/Shell-output-Terminal-color/</url>
+    <content><![CDATA[<h2 id="change-dispaly-color-on-the-terminal"><a href="#change-dispaly-color-on-the-terminal" class="headerlink" title="change dispaly color on the terminal"></a>change dispaly color on the terminal</h2><p>The  tput  utility uses the terminfo database to make the values of terminal-depen-dent capabilities and information available to the shell (see sh(1)), to initialize or reset the terminal, or return the long name of the requested terminal type.</p>
+<h4 id="tput-Color-Capabilities"><a href="#tput-Color-Capabilities" class="headerlink" title="tput Color Capabilities:"></a>tput Color Capabilities:</h4><ul>
+<li><code>tput setab [0-7]</code> – Set a background color using ANSI escape</li>
+<li><code>tput setb [0-7]</code> – Set a background color</li>
+<li><code>tput setaf [0-7]</code> – Set a foreground color using ANSI escape</li>
+<li><code>tput setf [0-7]</code> – Set a foreground color</li>
 </ul>
-<h5 id="2-Usage-（用法）"><a href="#2-Usage-（用法）" class="headerlink" title="2.Usage （用法）"></a>2.Usage （用法）</h5><ul>
-<li>General usage</li>
+<h4 id="Color-Code-for-tput"><a href="#Color-Code-for-tput" class="headerlink" title="Color Code for tput:"></a>Color Code for tput:</h4><ul>
+<li>0 – Black</li>
+<li>1 – Red</li>
+<li>2 – Green</li>
+<li>3 – Yellow</li>
+<li>4 – Blue</li>
+<li>5 – Magenta</li>
+<li>6 – Cyan</li>
+<li>7 – White</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ffmpeg -i video.mp4 -vn sound.mp3</span><br></pre></td></tr></table></figure>
-<ul>
-<li>More usage<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ffmpeg</span><br><span class="line"></span><br><span class="line">Video conversion tool.</span><br><span class="line"></span><br><span class="line">- Extract the sound from a video and save it as MP3:</span><br><span class="line">    ffmpeg -i video.mp4 -vn sound.mp3</span><br><span class="line"></span><br><span class="line">- Convert frames from a video or GIF into individual numbered images:</span><br><span class="line">    ffmpeg -i video.mpg|video.gif frame_%d.png</span><br><span class="line"></span><br><span class="line">- Combine numbered images (frame_1.jpg, frame_2.jpg, etc) into a video or GIF:</span><br><span class="line">    ffmpeg -i frame_%d.jpg -f image2 video.mpg|video.gif</span><br><span class="line"></span><br><span class="line">- Quickly extract a single frame from a video at time mm:ss and save it as a 128x128 resolution image:</span><br><span class="line">    ffmpeg -ss mm:ss -i video.mp4 -frames 1 -s 128x128 -f image2 image.png</span><br><span class="line"></span><br><span class="line">- Trim a video from a given start time mm:ss to an end time mm2:ss2 (omit the -to flag to trim till the end):</span><br><span class="line">    ffmpeg -ss mm:ss -to mm2:ss2 -i video.mp4 -codec copy output.mp4</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p><strong>More Ref:</strong>- <a href="https://ffmpeg.org" target="_blank" rel="noopener">https://ffmpeg.org</a> (官网)</p>
-]]></content>
+<p>bash script example:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> -e</span><br><span class="line"></span><br><span class="line">reset=$(tput sgr0)</span><br><span class="line"></span><br><span class="line">green=$(tput setaf 2 )</span><br><span class="line">blue=$(tput setaf 25)</span><br><span class="line">red=$(tput setaf 1;tput bold)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">info</span></span>() &#123;</span><br><span class="line">    <span class="built_in">printf</span> <span class="string">"<span class="variable">$&#123;blue&#125;</span>➜ %s<span class="variable">$&#123;reset&#125;</span>\n"</span> <span class="string">"<span class="variable">$@</span>"</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="title">error</span></span>() &#123;</span><br><span class="line">    <span class="built_in">printf</span> <span class="string">"<span class="variable">$&#123;red&#125;</span>× %s<span class="variable">$&#123;reset&#125;</span>\n"</span> <span class="string">"<span class="variable">$@</span>"</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="title">success</span></span>() &#123;</span><br><span class="line">    <span class="built_in">printf</span> <span class="string">"<span class="variable">$&#123;green&#125;</span>✔ %s<span class="variable">$&#123;reset&#125;</span>\n"</span> <span class="string">"<span class="variable">$@</span>"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">infoWithTime</span></span>()&#123;</span><br><span class="line">    <span class="built_in">printf</span> <span class="string">"<span class="variable">$&#123;blue&#125;</span>➜ %s<span class="variable">$&#123;reset&#125;</span>\n"</span> <span class="string">"<span class="variable">$@</span> | now: `date +'%F %T'`"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">info <span class="string">"setup ,,info......"</span></span><br><span class="line"></span><br><span class="line">error <span class="string">"haha,error..."</span></span><br><span class="line"></span><br><span class="line">success <span class="string">"old color"</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span> $(tput setaf 2;tput bold)<span class="string">'color show\n'</span> $(tput sgr0)</span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span> $(tput setf 2;tput bold)<span class="string">'color show\n'</span> $(tput sgr0)</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
-        <category>Tools</category>
+        <category>Shell</category>
       </categories>
       <tags>
-        <tag>Tools</tag>
+        <tag>Shell</tag>
       </tags>
   </entry>
   <entry>
@@ -1951,21 +1927,27 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>Terraform : terraform console</title>
-    <url>/2019/12/05/Terraform-terraform-console/</url>
-    <content><![CDATA[<h5 id="1-evaluating-expressions"><a href="#1-evaluating-expressions" class="headerlink" title="1.evaluating expressions"></a>1.evaluating expressions</h5><p>The terraform console command provides an interactive console for evaluating expressions.</p>
-<p>For example:<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># interactive console</span></span><br><span class="line">➜ terraform console</span><br><span class="line">&gt; element(list(<span class="string">"one"</span>,<span class="string">"two"</span>,<span class="string">"three"</span>),1)</span><br><span class="line">two</span><br><span class="line"></span><br><span class="line"><span class="comment"># non-interactive scripts</span></span><br><span class="line">➜ <span class="built_in">echo</span> <span class="string">"list("</span>1<span class="string">","</span>2<span class="string">")"</span> | terraform console</span><br><span class="line">[</span><br><span class="line">  1,</span><br><span class="line">  2,</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
-<p>or</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜ terraform console</span><br><span class="line">&gt; aws_instance_demo.public_ip</span><br><span class="line">54.152.62.34</span><br></pre></td></tr></table></figure>
-<h5 id="2-test-Terraform-built-in-functions-locally"><a href="#2-test-Terraform-built-in-functions-locally" class="headerlink" title="2.test Terraform built-in functions locally"></a>2.test Terraform built-in functions locally</h5><p>  <a href="http://artemstar.com/2018/03/03/terraform-test-functions/" target="_blank" rel="noopener">test Terraform built-in functions locally</a></p>
-<hr>
-<p>More ref:<br><a href="https://www.terraform.io/docs/commands/console.html" target="_blank" rel="noopener">https://www.terraform.io/docs/commands/console.html</a><br><a href="http://artemstar.com/2018/03/03/terraform-test-functions/" target="_blank" rel="noopener">http://artemstar.com/2018/03/03/terraform-test-functions/</a></p>
+    <title>Small Tools [2]: ffmpeg -- Video conversion tool.</title>
+    <url>/2019/05/23/Small-Tools-2-ffmpeg-Video-conversion-tool/</url>
+    <content><![CDATA[<h2 id="yffmpeg"><a href="#yffmpeg" class="headerlink" title="yffmpeg"></a>yffmpeg</h2><h5 id="1-Install-（安装）"><a href="#1-Install-（安装）" class="headerlink" title="1.Install （安装）"></a>1.Install （安装）</h5><ul>
+<li>macOS (wait a min)<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">brew install ffmpeg</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="2-Usage-（用法）"><a href="#2-Usage-（用法）" class="headerlink" title="2.Usage （用法）"></a>2.Usage （用法）</h5><ul>
+<li>General usage</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ffmpeg -i video.mp4 -vn sound.mp3</span><br></pre></td></tr></table></figure>
+<ul>
+<li>More usage<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ffmpeg</span><br><span class="line"></span><br><span class="line">Video conversion tool.</span><br><span class="line"></span><br><span class="line">- Extract the sound from a video and save it as MP3:</span><br><span class="line">    ffmpeg -i video.mp4 -vn sound.mp3</span><br><span class="line"></span><br><span class="line">- Convert frames from a video or GIF into individual numbered images:</span><br><span class="line">    ffmpeg -i video.mpg|video.gif frame_%d.png</span><br><span class="line"></span><br><span class="line">- Combine numbered images (frame_1.jpg, frame_2.jpg, etc) into a video or GIF:</span><br><span class="line">    ffmpeg -i frame_%d.jpg -f image2 video.mpg|video.gif</span><br><span class="line"></span><br><span class="line">- Quickly extract a single frame from a video at time mm:ss and save it as a 128x128 resolution image:</span><br><span class="line">    ffmpeg -ss mm:ss -i video.mp4 -frames 1 -s 128x128 -f image2 image.png</span><br><span class="line"></span><br><span class="line">- Trim a video from a given start time mm:ss to an end time mm2:ss2 (omit the -to flag to trim till the end):</span><br><span class="line">    ffmpeg -ss mm:ss -to mm2:ss2 -i video.mp4 -codec copy output.mp4</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>More Ref:</strong>- <a href="https://ffmpeg.org" target="_blank" rel="noopener">https://ffmpeg.org</a> (官网)</p>
 ]]></content>
       <categories>
-        <category>Terraform</category>
+        <category>Tools</category>
       </categories>
       <tags>
-        <tag>Terraform</tag>
+        <tag>Tools</tag>
       </tags>
   </entry>
   <entry>
@@ -2026,6 +2008,24 @@ pipeline {
       </categories>
       <tags>
         <tag>Test</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Terraform : terraform console</title>
+    <url>/2019/12/05/Terraform-terraform-console/</url>
+    <content><![CDATA[<h5 id="1-evaluating-expressions"><a href="#1-evaluating-expressions" class="headerlink" title="1.evaluating expressions"></a>1.evaluating expressions</h5><p>The terraform console command provides an interactive console for evaluating expressions.</p>
+<p>For example:<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># interactive console</span></span><br><span class="line">➜ terraform console</span><br><span class="line">&gt; element(list(<span class="string">"one"</span>,<span class="string">"two"</span>,<span class="string">"three"</span>),1)</span><br><span class="line">two</span><br><span class="line"></span><br><span class="line"><span class="comment"># non-interactive scripts</span></span><br><span class="line">➜ <span class="built_in">echo</span> <span class="string">"list("</span>1<span class="string">","</span>2<span class="string">")"</span> | terraform console</span><br><span class="line">[</span><br><span class="line">  1,</span><br><span class="line">  2,</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
+<p>or</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜ terraform console</span><br><span class="line">&gt; aws_instance_demo.public_ip</span><br><span class="line">54.152.62.34</span><br></pre></td></tr></table></figure>
+<h5 id="2-test-Terraform-built-in-functions-locally"><a href="#2-test-Terraform-built-in-functions-locally" class="headerlink" title="2.test Terraform built-in functions locally"></a>2.test Terraform built-in functions locally</h5><p>  <a href="http://artemstar.com/2018/03/03/terraform-test-functions/" target="_blank" rel="noopener">test Terraform built-in functions locally</a></p>
+<hr>
+<p>More ref:<br><a href="https://www.terraform.io/docs/commands/console.html" target="_blank" rel="noopener">https://www.terraform.io/docs/commands/console.html</a><br><a href="http://artemstar.com/2018/03/03/terraform-test-functions/" target="_blank" rel="noopener">http://artemstar.com/2018/03/03/terraform-test-functions/</a></p>
+]]></content>
+      <categories>
+        <category>Terraform</category>
+      </categories>
+      <tags>
+        <tag>Terraform</tag>
       </tags>
   </entry>
   <entry>
@@ -2118,15 +2118,6 @@ pipeline {
       </categories>
   </entry>
   <entry>
-    <title>about</title>
-    <url>/2020/03/16/about/</url>
-    <content><![CDATA[<blockquote>
-<p>Ops, China Wuhan.</p>
-</blockquote>
-<p>现居: 武汉<br>GitHub: ～<br>QQ: 771963601<br>微信: ～</p>
-]]></content>
-  </entry>
-  <entry>
     <title>adminMongo: a cross platform user interface (GUI) to connect MongoDB</title>
     <url>/2019/07/15/adminMongo-a-cross-platform-user-interface-GUI-to-connect-MongoDB/</url>
     <content><![CDATA[<p><strong>Github address</strong>:<br><a href="https://github.com/mrvautin/adminMongo" target="_blank" rel="noopener">https://github.com/mrvautin/adminMongo</a></p>
@@ -2138,6 +2129,15 @@ pipeline {
       <categories>
         <category>Linux</category>
       </categories>
+  </entry>
+  <entry>
+    <title>about</title>
+    <url>/2020/03/16/about/</url>
+    <content><![CDATA[<blockquote>
+<p>Ops, China Wuhan.</p>
+</blockquote>
+<p>现居: 武汉<br>GitHub: ～<br>QQ: 771963601<br>微信: ～</p>
+]]></content>
   </entry>
   <entry>
     <title>bash : set command</title>
@@ -2166,24 +2166,6 @@ pipeline {
       </categories>
       <tags>
         <tag>Shell</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>&#39;devops&#39; 还是 &#39;DevOps&#39;?</title>
-    <url>/2019/10/08/devops-%E8%BF%98%E6%98%AF-DevOps/</url>
-    <content><![CDATA[<h3 id="1-什么是-devops-还是-DevOps"><a href="#1-什么是-devops-还是-DevOps" class="headerlink" title="1. 什么是 devops,还是 DevOps"></a>1. 什么是 devops,还是 DevOps</h3><p>  最近在阅读 《Effective DevOps》（中文版） 时看到一些有趣的内容，如标题所问到的 – <u>devops 还是 DevOps?</u> (P6)。<br>  接触这个概念已经2年左右，自身的职位名称也是这个单词，但从来也没有思考过这个问题，而该书的作者在前言中提出来了，不得不说思维之严谨。不妨读者自身也想一想，到底那个更合适，为什么？</p>
-<blockquote>
-<p>摘自《Effective DevOps》（中文版）P6</p>
-</blockquote>
-<p>  对于 “devops”这个词的字母是否大写我们还有很多讨论。一个简单的在线调查显示，大多数人都支持“DevOps”。我们还发现组织比较关注“Dev”和“Ops”,以至于出现了 “DevSecOps”和“DevQAOps”,因为“DevOps”隐含地只包括 “Dev” 和 “Ops”。<br>  所以最后我们选择了“devops”,这对应原来的推特上的标签，用来联系希望改善协作的人，他们希望谈话时不再区分“你们”和“我们”，而应该更多地讨论如何利用可持续的工作实践来支持企业发展。<br>  成功的项目需要有适当的输入、努力、见解以及整个组织中人们之间的协作，你的组织中存在的问题可能不只限于开发人员和运维团队。我们在这本书中有意选择使用小写的 “devops” 来反映我们的观点，这只是有一种包容，并没有其他的意思。</p>
-<h3 id="2-常见的devops误区-（P56）-devops不是什么"><a href="#2-常见的devops误区-（P56）-devops不是什么" class="headerlink" title="2.常见的devops误区 （P56）/devops不是什么"></a>2.常见的devops误区 （P56）/devops不是什么</h3><p>devops只与开发人员和系统管理员有关<br>devops是一个团队<br>devops是一个职位<br>devops表示由一半的人完成全部工作<br>devops只是关于工具<br>devops只是关于自动化<br>实现devops有一种“正确方法”（或“错误方法”）<br>…</p>
-<h3 id="3-总结"><a href="#3-总结" class="headerlink" title="3.总结"></a>3.总结</h3><p>devops 更多的是一种文化，哲学上的概念，说白了就是<strong>无法言传，只可意会</strong></p>
-]]></content>
-      <categories>
-        <category>读书笔记</category>
-      </categories>
-      <tags>
-        <tag>Devops</tag>
       </tags>
   </entry>
   <entry>
@@ -2217,6 +2199,24 @@ pipeline {
       <categories>
         <category>读书笔记</category>
       </categories>
+  </entry>
+  <entry>
+    <title>&#39;devops&#39; 还是 &#39;DevOps&#39;?</title>
+    <url>/2019/10/08/devops-%E8%BF%98%E6%98%AF-DevOps/</url>
+    <content><![CDATA[<h3 id="1-什么是-devops-还是-DevOps"><a href="#1-什么是-devops-还是-DevOps" class="headerlink" title="1. 什么是 devops,还是 DevOps"></a>1. 什么是 devops,还是 DevOps</h3><p>  最近在阅读 《Effective DevOps》（中文版） 时看到一些有趣的内容，如标题所问到的 – <u>devops 还是 DevOps?</u> (P6)。<br>  接触这个概念已经2年左右，自身的职位名称也是这个单词，但从来也没有思考过这个问题，而该书的作者在前言中提出来了，不得不说思维之严谨。不妨读者自身也想一想，到底那个更合适，为什么？</p>
+<blockquote>
+<p>摘自《Effective DevOps》（中文版）P6</p>
+</blockquote>
+<p>  对于 “devops”这个词的字母是否大写我们还有很多讨论。一个简单的在线调查显示，大多数人都支持“DevOps”。我们还发现组织比较关注“Dev”和“Ops”,以至于出现了 “DevSecOps”和“DevQAOps”,因为“DevOps”隐含地只包括 “Dev” 和 “Ops”。<br>  所以最后我们选择了“devops”,这对应原来的推特上的标签，用来联系希望改善协作的人，他们希望谈话时不再区分“你们”和“我们”，而应该更多地讨论如何利用可持续的工作实践来支持企业发展。<br>  成功的项目需要有适当的输入、努力、见解以及整个组织中人们之间的协作，你的组织中存在的问题可能不只限于开发人员和运维团队。我们在这本书中有意选择使用小写的 “devops” 来反映我们的观点，这只是有一种包容，并没有其他的意思。</p>
+<h3 id="2-常见的devops误区-（P56）-devops不是什么"><a href="#2-常见的devops误区-（P56）-devops不是什么" class="headerlink" title="2.常见的devops误区 （P56）/devops不是什么"></a>2.常见的devops误区 （P56）/devops不是什么</h3><p>devops只与开发人员和系统管理员有关<br>devops是一个团队<br>devops是一个职位<br>devops表示由一半的人完成全部工作<br>devops只是关于工具<br>devops只是关于自动化<br>实现devops有一种“正确方法”（或“错误方法”）<br>…</p>
+<h3 id="3-总结"><a href="#3-总结" class="headerlink" title="3.总结"></a>3.总结</h3><p>devops 更多的是一种文化，哲学上的概念，说白了就是<strong>无法言传，只可意会</strong></p>
+]]></content>
+      <categories>
+        <category>读书笔记</category>
+      </categories>
+      <tags>
+        <tag>Devops</tag>
+      </tags>
   </entry>
   <entry>
     <title>docker build ignore .dockerignore</title>
@@ -2418,19 +2418,6 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>jenkins date timezone update</title>
-    <url>/2019/04/25/jenkins-date-timezone-update/</url>
-    <content><![CDATA[<h4 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h4><p>打开 【系统管理】-&gt;【脚本命令行】运行下面的命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">System.setProperty(<span class="string">'org.apache.commons.jelly.tags.fmt.timeZone'</span>, <span class="string">'Asia/Shanghai'</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="/images/jenkins_run_image_01.png" alt="jenkins_run_image_01"></p>
-<h4 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h4><pre><code class="java">JAVA_ARGS=<span class="string">"-Dorg.apache.commons.jelly.tags.fmt.timeZone=Asia/Shanghai -Dfile.encoding=UTF-8 -Djava.awt.headless=true"</span>
-</code></pre>
-]]></content>
-      <tags>
-        <tag>jenkins</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>kubectl 常用命令</title>
     <url>/2019/10/21/kubectl-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<h3 id="label操作"><a href="#label操作" class="headerlink" title="label操作"></a>label操作</h3><p>删除 label version=xx</p>
@@ -2481,6 +2468,19 @@ pipeline {
       </categories>
       <tags>
         <tag>Shell</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>jenkins date timezone update</title>
+    <url>/2019/04/25/jenkins-date-timezone-update/</url>
+    <content><![CDATA[<h4 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h4><p>打开 【系统管理】-&gt;【脚本命令行】运行下面的命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">System.setProperty(<span class="string">'org.apache.commons.jelly.tags.fmt.timeZone'</span>, <span class="string">'Asia/Shanghai'</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="/images/jenkins_run_image_01.png" alt="jenkins_run_image_01"></p>
+<h4 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h4><pre><code class="java">JAVA_ARGS=<span class="string">"-Dorg.apache.commons.jelly.tags.fmt.timeZone=Asia/Shanghai -Dfile.encoding=UTF-8 -Djava.awt.headless=true"</span>
+</code></pre>
+]]></content>
+      <tags>
+        <tag>jenkins</tag>
       </tags>
   </entry>
   <entry>
@@ -2592,6 +2592,31 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>shell 没有vim/vi 命令怎么办</title>
+    <url>/2019/10/23/shell-%E6%B2%A1%E6%9C%89vim-vi-%E5%91%BD%E4%BB%A4%E6%80%8E%E4%B9%88%E5%8A%9E/</url>
+    <content><![CDATA[<p>  由于经常在容器中有一些debug的操作，想要编辑文件，却又发现 <strong>一无所有</strong>（没有 vim/vi 编辑命令）。解决办法可能是去安装，但下载需要时间等待，且下载的工具使用也不是很频繁。所以换个思路，用其他基础的命令替代下。</p>
+<h3 id="cat-EOF-常用方法"><a href="#cat-EOF-常用方法" class="headerlink" title="cat EOF 常用方法"></a>cat EOF 常用方法</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># cat &lt;&lt;EOF &gt; cat_test.sh</span></span><br><span class="line">&gt; <span class="comment">#!/bin/bash</span></span><br><span class="line">&gt; <span class="built_in">echo</span> <span class="string">"no vim/vi"</span></span><br><span class="line">&gt; <span class="built_in">echo</span> <span class="string">"But ... cat"</span></span><br><span class="line">&gt; EOF</span><br></pre></td></tr></table></figure>
+<p>可以用 <code>cat cat_test.sh</code> 核验下内容和格式是否正确；如果原文件存在且有内容，会直接 <strong>覆盖</strong> ☝</p>
+<p><strong>追加</strong> 内容<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># cat &lt;&lt;EOF &gt;&gt; cat_test.sh</span></span><br><span class="line">&gt; <span class="comment">#!/bin/bash</span></span><br><span class="line">&gt; <span class="built_in">echo</span> <span class="string">"new add context"</span></span><br><span class="line">&gt; EOF</span><br></pre></td></tr></table></figure></p>
+<h3 id="cat交互模式下的使用"><a href="#cat交互模式下的使用" class="headerlink" title="cat交互模式下的使用"></a>cat交互模式下的使用</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># cat &gt; cat_in.sh</span></span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"by cat."</span></span><br></pre></td></tr></table></figure>
+<p>ctrl + d 结束输入</p>
+<hr>
+<p><strong>✍TIP</strong></p>
+<ol>
+<li><p>直接清空文件: <code>&gt;cat_test.sh</code></p>
+</li>
+<li><p>其实可以用其他字符来代替EOF，它也只是个标识符而已！</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Shell</category>
+      </categories>
+      <tags>
+        <tag>Shell</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>shell 玩转sed，你不知道的用法</title>
     <url>/2019/10/23/shell-%E7%8E%A9%E8%BD%ACsed%EF%BC%8C%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84%E7%94%A8%E6%B3%95/</url>
     <content><![CDATA[<p>sed 是 stream editor（流编辑器）的缩写</p>
@@ -2651,31 +2676,6 @@ pipeline {
 <li><p>首先使用不带 -i选项的sed命令，查看结果是否符合预期；再加入 -i选项将更改写入文件。</p>
 </li>
 <li><p><code>sed -i.bak &#39;s/abc/def&#39; file</code> 这时的sed不仅替换文件内容，还会创建一个名为file.bak的文件，其中包含着原始文件内容的副本;如果对一个文件多次执行，则xx.bak文件只会是上一个文件的副本</p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Shell</category>
-      </categories>
-      <tags>
-        <tag>Shell</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>shell 没有vim/vi 命令怎么办</title>
-    <url>/2019/10/23/shell-%E6%B2%A1%E6%9C%89vim-vi-%E5%91%BD%E4%BB%A4%E6%80%8E%E4%B9%88%E5%8A%9E/</url>
-    <content><![CDATA[<p>  由于经常在容器中有一些debug的操作，想要编辑文件，却又发现 <strong>一无所有</strong>（没有 vim/vi 编辑命令）。解决办法可能是去安装，但下载需要时间等待，且下载的工具使用也不是很频繁。所以换个思路，用其他基础的命令替代下。</p>
-<h3 id="cat-EOF-常用方法"><a href="#cat-EOF-常用方法" class="headerlink" title="cat EOF 常用方法"></a>cat EOF 常用方法</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># cat &lt;&lt;EOF &gt; cat_test.sh</span></span><br><span class="line">&gt; <span class="comment">#!/bin/bash</span></span><br><span class="line">&gt; <span class="built_in">echo</span> <span class="string">"no vim/vi"</span></span><br><span class="line">&gt; <span class="built_in">echo</span> <span class="string">"But ... cat"</span></span><br><span class="line">&gt; EOF</span><br></pre></td></tr></table></figure>
-<p>可以用 <code>cat cat_test.sh</code> 核验下内容和格式是否正确；如果原文件存在且有内容，会直接 <strong>覆盖</strong> ☝</p>
-<p><strong>追加</strong> 内容<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># cat &lt;&lt;EOF &gt;&gt; cat_test.sh</span></span><br><span class="line">&gt; <span class="comment">#!/bin/bash</span></span><br><span class="line">&gt; <span class="built_in">echo</span> <span class="string">"new add context"</span></span><br><span class="line">&gt; EOF</span><br></pre></td></tr></table></figure></p>
-<h3 id="cat交互模式下的使用"><a href="#cat交互模式下的使用" class="headerlink" title="cat交互模式下的使用"></a>cat交互模式下的使用</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># cat &gt; cat_in.sh</span></span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"by cat."</span></span><br></pre></td></tr></table></figure>
-<p>ctrl + d 结束输入</p>
-<hr>
-<p><strong>✍TIP</strong></p>
-<ol>
-<li><p>直接清空文件: <code>&gt;cat_test.sh</code></p>
-</li>
-<li><p>其实可以用其他字符来代替EOF，它也只是个标识符而已！</p>
 </li>
 </ol>
 ]]></content>
@@ -2973,6 +2973,22 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>入门gpg</title>
+    <url>/2020/04/23/%E5%85%A5%E9%97%A8gpg/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>GPG 的全称是 GNU Privacy Guard ，可以看作是一个软件，可以用来进行密钥的管理。其实和我们用的一些图形化的密码管理类似，不过GPG 好像更多是命令行交互的，所以一般人不太习惯。另外，中间包含的概念也较多。</p>
+<p>用过enpass, 1password的可以将一些概念类比起来，比如 master password ， 子密码</p>
+<blockquote>
+<p>我们应该使用且只使用子密钥，主密钥应该放在一个绝对安全的地方。</p>
+</blockquote>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>在 Mac 上可以使用 Homebrew 安装 gopass</p>
+<p><code>brew install gopass</code></p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>生成主密钥<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gpg --full-generate-key</span><br></pre></td></tr></table></figure></p>
+<p>交互</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜ gpg --edit-key 771963601@qq.com</span><br><span class="line">gpg (GnuPG) 2.2.20; Copyright (C) 2020 Free Software Foundation, Inc.</span><br><span class="line">This is free software: you are free to change and redistribute it.</span><br><span class="line">There is NO WARRANTY, to the extent permitted by law.</span><br><span class="line"></span><br><span class="line">Secret key is available.</span><br><span class="line"></span><br><span class="line">sec  rsa2048/00C21CE66A8AE9E0</span><br><span class="line">     created: 2020-04-23  expires: 2022-04-23  usage: SC</span><br><span class="line">     trust: ultimate      validity: ultimate</span><br><span class="line">ssb  rsa2048/9DCC33D2FECB246F</span><br><span class="line">     created: 2020-04-23  expires: never       usage: E</span><br><span class="line">[ultimate] (1). qinrui &lt;771963601@qq.com&gt;</span><br><span class="line"></span><br><span class="line">gpg&gt;</span><br></pre></td></tr></table></figure>
+<p>请注意上面的字符串”sec  rsa2048/xxxxx”，斜杆后面就是”用户ID”的Hash字符串，可以用来替代”用户ID”。</p>
+]]></content>
+  </entry>
+  <entry>
     <title>Vivaldi入手</title>
     <url>/2020/04/09/%E5%85%A5%E6%89%8BVivaldi/</url>
     <content><![CDATA[<h3 id="0-前言"><a href="#0-前言" class="headerlink" title="0.前言"></a>0.前言</h3><p>最近才在一些论坛上听说 <strong>Vivaldi</strong> 浏览器的大名（我孤陋寡闻了😅）。毕竟入手一个浏览器工具又不花钱，那Chrome挺好用的，为什么要换？</p>
@@ -3027,22 +3043,6 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>入门gpg</title>
-    <url>/2020/04/23/%E5%85%A5%E9%97%A8gpg/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>GPG 的全称是 GNU Privacy Guard ，可以看作是一个软件，可以用来进行密钥的管理。其实和我们用的一些图形化的密码管理类似，不过GPG 好像更多是命令行交互的，所以一般人不太习惯。另外，中间包含的概念也较多。</p>
-<p>用过enpass, 1password的可以将一些概念类比起来，比如 master password ， 子密码</p>
-<blockquote>
-<p>我们应该使用且只使用子密钥，主密钥应该放在一个绝对安全的地方。</p>
-</blockquote>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>在 Mac 上可以使用 Homebrew 安装 gopass</p>
-<p><code>brew install gopass</code></p>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>生成主密钥<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gpg --full-generate-key</span><br></pre></td></tr></table></figure></p>
-<p>交互</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜ gpg --edit-key 771963601@qq.com</span><br><span class="line">gpg (GnuPG) 2.2.20; Copyright (C) 2020 Free Software Foundation, Inc.</span><br><span class="line">This is free software: you are free to change and redistribute it.</span><br><span class="line">There is NO WARRANTY, to the extent permitted by law.</span><br><span class="line"></span><br><span class="line">Secret key is available.</span><br><span class="line"></span><br><span class="line">sec  rsa2048/00C21CE66A8AE9E0</span><br><span class="line">     created: 2020-04-23  expires: 2022-04-23  usage: SC</span><br><span class="line">     trust: ultimate      validity: ultimate</span><br><span class="line">ssb  rsa2048/9DCC33D2FECB246F</span><br><span class="line">     created: 2020-04-23  expires: never       usage: E</span><br><span class="line">[ultimate] (1). qinrui &lt;771963601@qq.com&gt;</span><br><span class="line"></span><br><span class="line">gpg&gt;</span><br></pre></td></tr></table></figure>
-<p>请注意上面的字符串”sec  rsa2048/xxxxx”，斜杆后面就是”用户ID”的Hash字符串，可以用来替代”用户ID”。</p>
-]]></content>
-  </entry>
-  <entry>
     <title>反摩尔定理 = 学如逆水行舟</title>
     <url>/2019/04/10/%E5%8F%8D%E6%91%A9%E5%B0%94%E5%AE%9A%E7%90%86-%E5%AD%A6%E5%A6%82%E9%80%86%E6%B0%B4%E8%A1%8C%E8%88%9F/</url>
     <content><![CDATA[<h3 id="1-什么是反摩尔定理？"><a href="#1-什么是反摩尔定理？" class="headerlink" title="1.什么是反摩尔定理？"></a>1.什么是反摩尔定理？</h3><p>Google(谷歌)的 CEO 埃里克•施密特在一次采访中指出，如果你反过来看摩尔定理， 一个 IT 公司如果今天和十八个月前卖掉同样多的、同样的产品，它的营业额就要降一半。IT 界把它称为 <strong>反摩尔定理</strong>。</p>
@@ -3082,6 +3082,22 @@ pipeline {
       </categories>
       <tags>
         <tag>浪潮之巅</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>我的租房经历</title>
+    <url>/2020/04/30/%E6%88%91%E7%9A%84%E7%A7%9F%E6%88%BF%E7%BB%8F%E5%8E%86/</url>
+    <content><![CDATA[<div id="hexo-blog-encrypt" data-wpm="用心想想，ta可能用什么密码" data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <div class="hbe-input-container">
+  <input type="password" id="hbePass" placeholder="" />
+    <label for="hbePass">Hey, password is required here.</label>
+    <div class="bottom-line"></div>
+  </div>
+  <script id="hbeData" type="hbeData" data-hmacdigest="9b5e46d19f56be4e6cb5d81147c5965461bfdb441c6b946341e875a5300627b5">4fb1f2c760bda11a923794521e7b287b49c0661e6db6c895d51f3d5e5f2fb196644721d47456352489cfdd78ec142a0cc8ce1c6ccb3c2ff7575c3b30ea94381ac27018e0fbbb7fdc0daf12e5538e49b33d836810499dc55e72a6b23198d9d1c2dd0baa5c10884785a9a840d711d8bfc0ca23cc8e48c63b4519add57c03f823e1e34349f40096a22c968a67ba65ed6c3d4ce2215b835e681a082a0354e82c7779a0cc77c7ef9c0aec0f2cebab1fc8af7249590e6f8627379694bd00539bda2a4b595571af4f91ad78e92cc3c36a92a4bf5163ded5ac1fece16a7c5e25de7e7481fa366023cf61b45be1364d0475f15adac32838c74d37884a0934cc0bdfb0ec32df6d4599acef084ba17385270c4d1196d96440af2a42351cc94babe3ad5822d7dbc5d70b338284810a5ed4b38583b0afcf8e8f1995026d8096e7415ca33f2f6fae4bbba7ae1f814aeb625c155a2ac300af00bf899432bf18aabe39848e79cf327d9448328cebccfe919346f803aad4daf1300528faf0908c18f59afc074760a4f14656e59c14eb8c04a282ad399905c1c2b6dcd815f8a15f0e78708dcd72d06522c033adcc8d51043979cf648a7a829690601add110b0a7833e69aba604998058472425fe9174c4df0e6ec690bbc01a165326eca0c0329d966e2ed913b88f6290c3d8941d12e0ef3cb5db626696970fde7c091b0480b9e85591e3f67769abd2affcd9cc3a0163667e8b7e3a8ebdca74ec7540f6c293daefba6a78fa10e5d59d526513c5f5b08ad8a47ba3072d6713d19139a7e569262626d765549691e344a371659c7ac1c198f4986c56fa33959c307fdf48615540b98606dc5dfbf235c340fd45f1361bb4fc37e58172f2dbc2724dd1630065786821e8321ef5c6668888c9f6b1275c7a48f76b8c0dbad34c3baca8a69ec97238c978fab0e4e89cddb521f30875d658b1dd0b799c361cc947b8b7a890a0f6917114153c655ebfb0e2395c8ada6468cf1da4739a1feca3b51cfaa08921614db0c99b164098fbc2d8d32f092e533cc215836faae384a3ec4f06b186bef9432316e297ad892b2a0e2a6feee389151aab780533210418dcb2d26e0dd72651e15f3d2a7367d544c8608419cad7294f287273fbe7466497c6451cb6d21b08359591f23614ac64313a61ead1999d431dd42b6f5f20531a76f15ca8fd8e19dfe9bc9c10abac05f457aa44f4ba16c7e873600fe009d9870f3ecbf8be5e715125c6ae338aaed6c9b8e257f3e30a8af74c4fcac3e2a4366f681f74256ebc11aa7c6b288023da3dec5addfbc4ae0f3c6500c33f662caa932645b1f6945778b3f4a4edbf51d580b448cbce4c90fc95a80cc3d2d0bca5f03c5e226754aafdf07003dafb765326206e9de6a7e41a60893077182faf65423cfe840d276dbcb7112f3301f6760c812c6de0cec0bd88814acf7fe9120acf1e8a91aa1a7fae3c312a5631c17ae23b1c529cae89bb2f74ee61b136b1791136d209ed98edef7be65aed30ff311fe164df70f7219a53e91429e27060d2a4052beb864d9af407af9250767b8f7af1c7c61bc89d6ac9ae966e3bec324d84dd8b951029276fe69cfa1fb4968303df9fb771f4ecd5654371e11ee7eb3cea89aaff81f1f82b0da742949398ba63d912e08a86e4916fc89d28950de89bad8e71279d1bfaace3010de26acd5fdc79e649faad7dcc34ea250a336f58af4bb908bca4dfa14cf228a3cf8fe33651e71b51c5d57657c880150a416ad1f25cbc1fc898c63954ac58d2699497874321d4d03798751321de20c24503e8e1686a0c6410fd4a0b367e81909681e983ec99333d2b8217f306e7840a0afded8534bd2bba108cdd9af51213d2c357c82e92459ba401a1718d76f725207affc332d83c8bf769234bd350353e827fe510cbd76dc9a837f07d297a6acdb27a3cb4118e62485d78666af2c4b681ea3f96147b8460d1650b7719e73fe09ed5cbe1c0a9177ef0f7ce0a81764bdc0ff9909aa0b8674fc2511b64712e44046e1f0b36d028cdb2125fd0dd8fcaca51c46e662e4ba7e83b82b8949c95d9bf8f05fba68504cb01197610099df908fdc61b89b736c08c099d1cecc252bfb1928571f0b3ee9b2b7915f50032a113f15f305fad37226ad1e8801bf9caa6c506b89e86e8ca843ed77f7cc07c42b8f560e7466d73e15f02733c1225ae836742b15b787b3150ec2ad97f2e79adbddf7d48e47c031f59b06bf8f9643a33e09b2dc505d5ab5742d2e8484022dcffd1b9704b65bac4ba7a06b99bb9f6278e3015bcefa2cf2086bb652c12e70ca05a3c1dad02bac22094ab13a634ec83361f7b42773ae5a312a47f53234df40e3ad406edbf1e740fb7bc3d4e78654c388305c88c09c13a627e6ce15891066069a8d378d5cde528d0bad852e4dc61145566b98f3584cb0771c2b270fc30159704dd29513673ee3699b18feec54a8a8d3085e89f703df18b5a6ee1e84fa44acaececcc506c07f9ae4bf35bf4ae37217caa91f43cc63eddb7581b508b7ea5d7d2f2e7c15fe8887b69598b22ce1f4ed68f079657e26183ba1ef244290bbef73e42f157b87170121f62eef7345ab90565db5fb47114a6a5f245232b9b03fb701a44152e3749f8020be040ecb77cd791161bc869fdf539f3ff57e7f1f6b2c13bbcb77db2037af8d496d713e0a085655e7649ab64e2f1020a7d5d7d4218ce0a4030383a0a47d68d14433bf7081111b569a03b8b188962718e3a878e0e05b74f5c62ee276ad2191c80ecd92ccc96960ace399056d8a2045602e38aa9facf25e71acaca4bc18d1aa154fff04b380c4226a310fc5853a63a3243ee0fbe989f7bdd8fcb68e224df040225fc2a217eaa04f165009fe4c8450117a8fa51f01c1fc0284f51e2d6ebeb1ff7a6306bf0b91efaba3437be00191f6b20b139961fc4c23d69e48c9ce98f6561f2c0ab77668e87eb9b29fbe2d2087241e8ee300823d7b304c5cbe619577de210d34e82d7d45fc4cd9700decec54954e6db5897f04930a072515003c33b0919ce6b8105e4089e2a053c187465d853f2ed282ae2a801c82482eb29d7b5221db8706b97da95ad6cdd5689844b285a78cf6127c145e925085adac6b4cf00ca7a75fdb8911555cc88a2d3007d4c8ca1b06ce3bae88aa5dc47feb33a9d7395b777aa6015d42192d8b3eb3eb115b9a427c5ca0640b629193eddb064a5d5a8ac51abb2d8eed65b16e8c1054653d5d22d374937e93c4f08112159edecbb6ad472d3fc42feef35d2491a8d4a22b0bc29ca4cad42b5c62ae3fd3fdae630aad724aacd7e9cd3f6c143abb5c71e827de71425a31924557b83f2646932181d8caa7455714c26d48e54cf098a4f589925bfd5eb357108b7de2fd7c6a74835631502e2607d0482897fd20b1a9e55d31222b8850e7cab0d69d59dc903ee588795919dbd577e21ec837a6bde3f98010d797643cb2f4db7bc34d0b4d23fe1b6772a381829ab8ce469a78f49247a13eb3c9836611f60a524f176a265607d6dd4ec5d76ddcff1b921eb902a64ff396fd9b57c03c71a8a0814152a850152e0e03a0f2e1e78ae850a951e8a9cc3d3c7b2923805f7c778fd643938a93ac08c86f02f00c12b207663a50ec1783567140697d6c68e8d99105e9e3f6cc9414918b1c070dc804d5629674e141784569bbb3f2f910b31bac2f5ac68d65c391bcbee2299c190bb6dc48210ced18e542ae04856d6819fa5a5e4f4639b0f48f931067812f72382dd85594584f21fd7b9facbc1e95f1585b776a7aaaee858cff1d8f8064ad535d117c02a25a879ba5fedb3ec19cd95718f8d06a49a4ed0e35444e56cadda3ea5cbcfba08baaa3c3c70ea7de193c3aa2deefffa4c8f53b12a0e23703402919a97a125633599e588e9f6a794176f5e0d4ba3fcddeb327dd7cd39f47635b43513b7d35eb86576e2e2639524e37e0b1cd1d52cbd2258a904b51763836f28fef5dc751c9c2243c652c5bf547b874f8c708f429ea07dc894a5e1985c772a94c6b148b5fc8238e7b468db56094c589fcd07f29a338cb29f071fd0fa4cc656c15adfab86cd58ec7307eac5bf2e58ac2401a98605858457e65717c32f9bfe8efa4f189dd6018df5296505ed384a0eb52572526053a5757e170108b4fd05bbcf59a96284769d0659d68cee9181cf08ee217e5ae0b82937821f5698debb83b54ff48b41e310812382a70c0585e9c1bb89bd299ec9b28c4eb01337ed3e5ab5adc1b8f09799d076c702a90ed2ed11ab064eeecfa009b943678c6c4d57c660d808cdde255ddcff9fdc73b2edf10256702faaa0ccb5ef7eba6a789b41c6e9ab23bf4473525889425bb4ec59324c436004ee151f8801c1ce9ff0049b792029467ca6ad261087f20984cb387fa7203710718b7cd56248d15be8bd2f4c0efd9c3f053ac742100a226fbf9432164cc98d58e5e22e2c73b014dc0efe365698e8f16de8b6a6e86224920a404966ab5a40ecae6160da0b7257ec3bfceff06a83268a188a061ce618e96e752623e9333f5f6fd270812ec530722807a7c4ec543bfe5fcbdbd1c0cd2eaaa9c78c5840e9f52048a41d8cf256418ce271d7e99f361112030ca43d6f59a33dd267eeab83053f350b0c1612e2f588500b4db27dd1b3f20a75307e4c9bb823ccb2e4bb56b1089b7354ec4a3f175c41f9574a8baf2a140e3d4b632b14a8d1c3a4eb1915ac6403307d186bac58165684bd408a46269b613bdc8820883d5f2b66004078d53465882d5c5b4f301f669c2c01e0b039532f941e302eecbd37f845b753382aac475b1beafb463a2b8f1bec389da074b5a29d1bfac3fcf32e0aef7e94cd6984ef3eea5424ea4d90c7c763b1084af4413c56f1ababfdeef0867e1397e603c3524ca384df6ea209242439101d470ca305a5e74ea9ae32de276d2c1704c53bd3654719418ae13a228a633d8d70ffa64588243cc9a6369170bcfccea42ec2f2ad8bcb468659931798a65713eb9dc6ab98b37523fb4a38d5ced4b87c5149a8c2950ab455465594b8357fc3e3413</script>
+</div>
+<script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
+      <tags>
+        <tag>Q List</tag>
       </tags>
   </entry>
   <entry>
@@ -3143,32 +3159,16 @@ pipeline {
       </categories>
   </entry>
   <entry>
-    <title>我的租房经历</title>
-    <url>/2020/04/30/%E6%88%91%E7%9A%84%E7%A7%9F%E6%88%BF%E7%BB%8F%E5%8E%86/</url>
-    <content><![CDATA[<div id="hexo-blog-encrypt" data-wpm="用心想想，ta可能用什么密码" data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
-  <div class="hbe-input-container">
-  <input type="password" id="hbePass" placeholder="" />
-    <label for="hbePass">Hey, password is required here.</label>
-    <div class="bottom-line"></div>
-  </div>
-  <script id="hbeData" type="hbeData" data-hmacdigest="9b5e46d19f56be4e6cb5d81147c5965461bfdb441c6b946341e875a5300627b5">4fb1f2c760bda11a923794521e7b287b49c0661e6db6c895d51f3d5e5f2fb196644721d47456352489cfdd78ec142a0cc8ce1c6ccb3c2ff7575c3b30ea94381ac27018e0fbbb7fdc0daf12e5538e49b33d836810499dc55e72a6b23198d9d1c2dd0baa5c10884785a9a840d711d8bfc0ca23cc8e48c63b4519add57c03f823e1e34349f40096a22c968a67ba65ed6c3d4ce2215b835e681a082a0354e82c7779a0cc77c7ef9c0aec0f2cebab1fc8af7249590e6f8627379694bd00539bda2a4b595571af4f91ad78e92cc3c36a92a4bf5163ded5ac1fece16a7c5e25de7e7481fa366023cf61b45be1364d0475f15adac32838c74d37884a0934cc0bdfb0ec32df6d4599acef084ba17385270c4d1196d96440af2a42351cc94babe3ad5822d7dbc5d70b338284810a5ed4b38583b0afcf8e8f1995026d8096e7415ca33f2f6fae4bbba7ae1f814aeb625c155a2ac300af00bf899432bf18aabe39848e79cf327d9448328cebccfe919346f803aad4daf1300528faf0908c18f59afc074760a4f14656e59c14eb8c04a282ad399905c1c2b6dcd815f8a15f0e78708dcd72d06522c033adcc8d51043979cf648a7a829690601add110b0a7833e69aba604998058472425fe9174c4df0e6ec690bbc01a165326eca0c0329d966e2ed913b88f6290c3d8941d12e0ef3cb5db626696970fde7c091b0480b9e85591e3f67769abd2affcd9cc3a0163667e8b7e3a8ebdca74ec7540f6c293daefba6a78fa10e5d59d526513c5f5b08ad8a47ba3072d6713d19139a7e569262626d765549691e344a371659c7ac1c198f4986c56fa33959c307fdf48615540b98606dc5dfbf235c340fd45f1361bb4fc37e58172f2dbc2724dd1630065786821e8321ef5c6668888c9f6b1275c7a48f76b8c0dbad34c3baca8a69ec97238c978fab0e4e89cddb521f30875d658b1dd0b799c361cc947b8b7a890a0f6917114153c655ebfb0e2395c8ada6468cf1da4739a1feca3b51cfaa08921614db0c99b164098fbc2d8d32f092e533cc215836faae384a3ec4f06b186bef9432316e297ad892b2a0e2a6feee389151aab780533210418dcb2d26e0dd72651e15f3d2a7367d544c8608419cad7294f287273fbe7466497c6451cb6d21b08359591f23614ac64313a61ead1999d431dd42b6f5f20531a76f15ca8fd8e19dfe9bc9c10abac05f457aa44f4ba16c7e873600fe009d9870f3ecbf8be5e715125c6ae338aaed6c9b8e257f3e30a8af74c4fcac3e2a4366f681f74256ebc11aa7c6b288023da3dec5addfbc4ae0f3c6500c33f662caa932645b1f6945778b3f4a4edbf51d580b448cbce4c90fc95a80cc3d2d0bca5f03c5e226754aafdf07003dafb765326206e9de6a7e41a60893077182faf65423cfe840d276dbcb7112f3301f6760c812c6de0cec0bd88814acf7fe9120acf1e8a91aa1a7fae3c312a5631c17ae23b1c529cae89bb2f74ee61b136b1791136d209ed98edef7be65aed30ff311fe164df70f7219a53e91429e27060d2a4052beb864d9af407af9250767b8f7af1c7c61bc89d6ac9ae966e3bec324d84dd8b951029276fe69cfa1fb4968303df9fb771f4ecd5654371e11ee7eb3cea89aaff81f1f82b0da742949398ba63d912e08a86e4916fc89d28950de89bad8e71279d1bfaace3010de26acd5fdc79e649faad7dcc34ea250a336f58af4bb908bca4dfa14cf228a3cf8fe33651e71b51c5d57657c880150a416ad1f25cbc1fc898c63954ac58d2699497874321d4d03798751321de20c24503e8e1686a0c6410fd4a0b367e81909681e983ec99333d2b8217f306e7840a0afded8534bd2bba108cdd9af51213d2c357c82e92459ba401a1718d76f725207affc332d83c8bf769234bd350353e827fe510cbd76dc9a837f07d297a6acdb27a3cb4118e62485d78666af2c4b681ea3f96147b8460d1650b7719e73fe09ed5cbe1c0a9177ef0f7ce0a81764bdc0ff9909aa0b8674fc2511b64712e44046e1f0b36d028cdb2125fd0dd8fcaca51c46e662e4ba7e83b82b8949c95d9bf8f05fba68504cb01197610099df908fdc61b89b736c08c099d1cecc252bfb1928571f0b3ee9b2b7915f50032a113f15f305fad37226ad1e8801bf9caa6c506b89e86e8ca843ed77f7cc07c42b8f560e7466d73e15f02733c1225ae836742b15b787b3150ec2ad97f2e79adbddf7d48e47c031f59b06bf8f9643a33e09b2dc505d5ab5742d2e8484022dcffd1b9704b65bac4ba7a06b99bb9f6278e3015bcefa2cf2086bb652c12e70ca05a3c1dad02bac22094ab13a634ec83361f7b42773ae5a312a47f53234df40e3ad406edbf1e740fb7bc3d4e78654c388305c88c09c13a627e6ce15891066069a8d378d5cde528d0bad852e4dc61145566b98f3584cb0771c2b270fc30159704dd29513673ee3699b18feec54a8a8d3085e89f703df18b5a6ee1e84fa44acaececcc506c07f9ae4bf35bf4ae37217caa91f43cc63eddb7581b508b7ea5d7d2f2e7c15fe8887b69598b22ce1f4ed68f079657e26183ba1ef244290bbef73e42f157b87170121f62eef7345ab90565db5fb47114a6a5f245232b9b03fb701a44152e3749f8020be040ecb77cd791161bc869fdf539f3ff57e7f1f6b2c13bbcb77db2037af8d496d713e0a085655e7649ab64e2f1020a7d5d7d4218ce0a4030383a0a47d68d14433bf7081111b569a03b8b188962718e3a878e0e05b74f5c62ee276ad2191c80ecd92ccc96960ace399056d8a2045602e38aa9facf25e71acaca4bc18d1aa154fff04b380c4226a310fc5853a63a3243ee0fbe989f7bdd8fcb68e224df040225fc2a217eaa04f165009fe4c8450117a8fa51f01c1fc0284f51e2d6ebeb1ff7a6306bf0b91efaba3437be00191f6b20b139961fc4c23d69e48c9ce98f6561f2c0ab77668e87eb9b29fbe2d2087241e8ee300823d7b304c5cbe619577de210d34e82d7d45fc4cd9700decec54954e6db5897f04930a072515003c33b0919ce6b8105e4089e2a053c187465d853f2ed282ae2a801c82482eb29d7b5221db8706b97da95ad6cdd5689844b285a78cf6127c145e925085adac6b4cf00ca7a75fdb8911555cc88a2d3007d4c8ca1b06ce3bae88aa5dc47feb33a9d7395b777aa6015d42192d8b3eb3eb115b9a427c5ca0640b629193eddb064a5d5a8ac51abb2d8eed65b16e8c1054653d5d22d374937e93c4f08112159edecbb6ad472d3fc42feef35d2491a8d4a22b0bc29ca4cad42b5c62ae3fd3fdae630aad724aacd7e9cd3f6c143abb5c71e827de71425a31924557b83f2646932181d8caa7455714c26d48e54cf098a4f589925bfd5eb357108b7de2fd7c6a74835631502e2607d0482897fd20b1a9e55d31222b8850e7cab0d69d59dc903ee588795919dbd577e21ec837a6bde3f98010d797643cb2f4db7bc34d0b4d23fe1b6772a381829ab8ce469a78f49247a13eb3c9836611f60a524f176a265607d6dd4ec5d76ddcff1b921eb902a64ff396fd9b57c03c71a8a0814152a850152e0e03a0f2e1e78ae850a951e8a9cc3d3c7b2923805f7c778fd643938a93ac08c86f02f00c12b207663a50ec1783567140697d6c68e8d99105e9e3f6cc9414918b1c070dc804d5629674e141784569bbb3f2f910b31bac2f5ac68d65c391bcbee2299c190bb6dc48210ced18e542ae04856d6819fa5a5e4f4639b0f48f931067812f72382dd85594584f21fd7b9facbc1e95f1585b776a7aaaee858cff1d8f8064ad535d117c02a25a879ba5fedb3ec19cd95718f8d06a49a4ed0e35444e56cadda3ea5cbcfba08baaa3c3c70ea7de193c3aa2deefffa4c8f53b12a0e23703402919a97a125633599e588e9f6a794176f5e0d4ba3fcddeb327dd7cd39f47635b43513b7d35eb86576e2e2639524e37e0b1cd1d52cbd2258a904b51763836f28fef5dc751c9c2243c652c5bf547b874f8c708f429ea07dc894a5e1985c772a94c6b148b5fc8238e7b468db56094c589fcd07f29a338cb29f071fd0fa4cc656c15adfab86cd58ec7307eac5bf2e58ac2401a98605858457e65717c32f9bfe8efa4f189dd6018df5296505ed384a0eb52572526053a5757e170108b4fd05bbcf59a96284769d0659d68cee9181cf08ee217e5ae0b82937821f5698debb83b54ff48b41e310812382a70c0585e9c1bb89bd299ec9b28c4eb01337ed3e5ab5adc1b8f09799d076c702a90ed2ed11ab064eeecfa009b943678c6c4d57c660d808cdde255ddcff9fdc73b2edf10256702faaa0ccb5ef7eba6a789b41c6e9ab23bf4473525889425bb4ec59324c436004ee151f8801c1ce9ff0049b792029467ca6ad261087f20984cb387fa7203710718b7cd56248d15be8bd2f4c0efd9c3f053ac742100a226fbf9432164cc98d58e5e22e2c73b014dc0efe365698e8f16de8b6a6e86224920a404966ab5a40ecae6160da0b7257ec3bfceff06a83268a188a061ce618e96e752623e9333f5f6fd270812ec530722807a7c4ec543bfe5fcbdbd1c0cd2eaaa9c78c5840e9f52048a41d8cf256418ce271d7e99f361112030ca43d6f59a33dd267eeab83053f350b0c1612e2f588500b4db27dd1b3f20a75307e4c9bb823ccb2e4bb56b1089b7354ec4a3f175c41f9574a8baf2a140e3d4b632b14a8d1c3a4eb1915ac6403307d186bac58165684bd408a46269b613bdc8820883d5f2b66004078d53465882d5c5b4f301f669c2c01e0b039532f941e302eecbd37f845b753382aac475b1beafb463a2b8f1bec389da074b5a29d1bfac3fcf32e0aef7e94cd6984ef3eea5424ea4d90c7c763b1084af4413c56f1ababfdeef0867e1397e603c3524ca384df6ea209242439101d470ca305a5e74ea9ae32de276d2c1704c53bd3654719418ae13a228a633d8d70ffa64588243cc9a6369170bcfccea42ec2f2ad8bcb468659931798a65713eb9dc6ab98b37523fb4a38d5ced4b87c5149a8c2950ab455465594b8357fc3e3413</script>
-</div>
-<script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
-      <tags>
-        <tag>Q List</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>断简残篇</title>
     <url>/2020/04/15/%E6%96%AD%E7%AE%80%E6%AE%8B%E7%AF%87/</url>
     <content><![CDATA[<h3 id="自言自语"><a href="#自言自语" class="headerlink" title="自言自语"></a>自言自语</h3><p>不随意在论坛上发布言论，容易被不知上下文的人乱七八说。</p>
 <p><em>注：相比较，在技术论坛上，将自己的问题描述清楚，很多人乐意、有兴趣来帮你解决；最好把上下文给全一点，即使没有给全，一般技术人员会耐心的询问。但很多日常生活的论坛，缺乏谨慎、客观、耐心，弄不好就是一场大战。</em></p>
 <p>————————–分割线—————————<br>由于内容不多，下面的就一并放在一个链接里，日后再new一个</p>
 <h3 id="ta说的"><a href="#ta说的" class="headerlink" title="ta说的"></a>ta说的</h3><blockquote>
-<p>自由有各种不同的类型，而最宝贵那一种，在这个以胜利、成就和炫耀为基准的花花世界中，很少被人提及。真正重要的那种自由，意味着专注、自觉、自律、不懈努。</p>
+<p><strong>自由有各种不同的类型，而最宝贵那一种，在这个以胜利、成就和炫耀为基准的花花世界中，很少被人提及。真正重要的那种自由，意味着专注、自觉、自律、不懈努。</strong></p>
 </blockquote>
 <blockquote>
-<p>关乎于真正教育的真正价值，与成绩无关，与学位无关，而在于一种自觉——意识到什么是真实的，什么是必要的；这种自觉就隐藏在我们身边平淡无奇的生活之中，我们必须时时刻刻一遍又一遍地提醒自己。</p>
+<p><strong>关乎于真正教育的真正价值，与成绩无关，与学位无关，而在于一种自觉——意识到什么是真实的，什么是必要的；这种自觉就隐藏在我们身边平淡无奇的生活之中，我们必须时时刻刻一遍又一遍地提醒自己。</strong></p>
 </blockquote>
 <p><em>注：来自 <strong>大卫·福斯特·华莱士</strong>《生命中最简单又最困难的事》。最近才知道这么一个人，他是特别爱哲思的一个人，对于生活中最显而易见的平常之事，却用不同于常人的角度思考者，提及的也是最容易被我们忽视的东西。看他的文字比较费脑子，但能感受到其真诚、朴实。  有人说哲学就是抬杠，就是钻牛角尖，就是较真儿…也没有错吧。</em></p>
 <blockquote>
@@ -3179,11 +3179,11 @@ pipeline {
 <p>真正的体贴是让人察觉不到的，穷得开朗<br><em>注：来自《佐贺的超级阿嬷》某部分，还在看中</em></p>
 </blockquote>
 <blockquote>
-<p>今天我们遇到的所有问题，都可以用一句话概括：信息不对称。如果你知道了行业信息，就不会迷茫，如果你知道了市场信息，你的产品会卖爆。如何消除信息不对称，其实你消不了。这就是二八定律。你能做的，就是多和不同的人交流沟通，取长补短，在可控范围那多去尝试，扩展视野。这么做的目的不是为了让自己爬的更高，，而是为了别让自己跌得很惨。</p>
+<p><strong>今天我们遇到的所有问题，都可以用一句话概括：信息不对称。如果你知道了行业信息，就不会迷茫，如果你知道了市场信息，你的产品会卖爆。如何消除信息不对称，其实你消不了。这就是二八定律。你能做的，就是多和不同的人交流沟通，取长补短，在可控范围那多去尝试，扩展视野。这么做的目的不是为了让自己爬的更高，，而是为了别让自己跌得很惨。</strong></p>
 </blockquote>
 <p><em>注：来自豆瓣某处，身处交易频繁的生活中，不管你在城市，还是乡镇，我们经常交易着。这就意味着，你要购买某一个东西或者服务，而常说买的“买的没有卖的精”便是由于信息不对称。而很多时候，人们对一笔交易在事后气氛、扯皮，也都是因为它。花很多时间收集信息，必定耗费精力，或者你也可以选择承受信息不对称的后果，但关键是信息壁垒有很多时候很严重，你都没有机会去选择，或者说你连后果的程度都无法得知。在最近几年的<a href="https://www.devops-tech.cn/2020/04/30/%E6%88%91%E7%9A%84%E7%A7%9F%E6%88%BF%E7%BB%8F%E5%8E%86/" target="_blank" rel="noopener">租房经历</a>中感受颇深，相比于，程序的世界，开源的世界，那里似乎是一个理想国。</em></p>
 <blockquote>
-<p>坐在钢筋水泥的办公室里，终日和文件、盖章、领导打交道的办公室职员，需要消费额外的心里，来不断确认自己在这个世界中的存在价值。除了薪酬，我们很难直观感受到自己的劳动成果，也不知道有谁在意自己所做的一切。有时候，在内心深处，我们甚至为自己的工作感到沮丧和心虚…<br><em>注：据说来自 李松蔚老师，我又孤陋寡闻了。有些时刻，我也会怀疑工作的意义，怀疑每天上下班的意义，也可能因此消沉数日。但上述的也不是每个人经常的感受，毕竟有时候工作的内容还是有意思的。</em></p>
+<p><strong>坐在钢筋水泥的办公室里，终日和文件、盖章、领导打交道的办公室职员，需要消费额外的心里，来不断确认自己在这个世界中的存在价值。除了薪酬，我们很难直观感受到自己的劳动成果，也不知道有谁在意自己所做的一切。有时候，在内心深处，我们甚至为自己的工作感到沮丧和心虚…</strong><br><em>注：据说来自 李松蔚老师，我又孤陋寡闻了。有些时刻，我也会怀疑工作的意义，怀疑每天上下班的意义，也可能因此消沉数日。但上述的也不是每个人经常的感受，毕竟有时候工作的内容还是有意思的。</em></p>
 </blockquote>
 <blockquote>
 <p>心怀质疑，胸有主见</p>
@@ -3199,6 +3199,22 @@ pipeline {
 </ul>
 </blockquote>
 ]]></content>
+      <tags>
+        <tag>Q List</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>流水账之生活费</title>
+    <url>/2020/04/30/%E6%B5%81%E6%B0%B4%E8%B4%A6%E4%B9%8B%E7%94%9F%E6%B4%BB%E8%B4%B9/</url>
+    <content><![CDATA[<div id="hexo-blog-encrypt" data-wpm="用心想想，ta可能用什么密码" data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <div class="hbe-input-container">
+  <input type="password" id="hbePass" placeholder="" />
+    <label for="hbePass">Hey, password is required here.</label>
+    <div class="bottom-line"></div>
+  </div>
+  <script id="hbeData" type="hbeData" data-hmacdigest="528009a4dd62084f37d9094b76e2721c9836bb1c99cfe96f57aaccf1449940e6">3a097b604bbf14d9b76b9265c3d0c09579bda9bf687bce91cef0c81e834a2615da0e0623ba386badc9e400af5903f66ec4ba0c767eb191a1183e0dd27e0510e75536ac261624382da9b31f50f5f56f8a1ea2c802782178b6cfe859149982693f304b5a606089e9e7e1ca790854e08cccf32372585fc22fb13338521c4ce2b870a9ede916c565262f61168e0e07989c1ec21d883b2ad237a8ec230c97b1a91ab1e7c20629ceb7a853254c93a031b62dbeda38509496a35fa841e4dacfd115e3db72f5cf1647026212b2851c096e8b58cae012d3972cc0eefa59066bf2fcf9f684ce41a66c4685c52622a621100344236b217d67dc7c2b65731f559b7b74e91a0f59063cd9e5969063bdb8535741e97906254f53bbe2176a46e960d35ff59002e154f22ae60c22f20bd970c169ad4c0243bf85a6ed9a7d0e6911d6f24dfbdb33848b0636d983e4309c5f52ce779fbc2f6a2fa97c7f69c97fd467c7181507a8006746aedfbe49fb90f00be290c2ffac626b02dc9e7ceffa590e27542fc83e01e458c28d4ce8e75ed94574b04d67bd5fbead28a8fd358a672ab821837b2dcff5b9d09d290672097f5e0fbcb84500bed5d5368ddfafa99455581f2f505886324f0d2fc77c01962e28e3eeb00a87c6002600041e2b2ce7f2a4f0146265303b4bfa5fff08bd63ddce8e0c35deca35bd9e523fdfdb117ca47baaf8f1c5423825a0d725d9e18fee293c1ce1fb00f3ac33238e94cb614a5507ea988d4cdc6ee11e6df4f44bb03c7353ca65cb719bd357ef20fc4b3f0a458485fa111823bb4c86fa263f4b830bb46e4a89caeb096d41968bbc639986be13e7fa616a9074c9afef052677c6d20d06535f6b0cf19183fd93644dff176011318d6a8be9ebcfd2df374e3af9c7b11582f5eae7d5658e974f1e1e07c3afb17a3c80e4e4219ed60dd7dd45c76144999d9be47e15adb7935abb867b76ec6871cae19124f07b320f78a03092bd6a6e1d9a34f3b7c6a10f7cfdce5c1d8f3be3aa7b54762363d67b7c4ce517e96e55e07adf8549e729c911743e63f89474def5cc8fa16993ff81af907d6f54d84c60c91fab638c5963fe63fb2422cece9b3c7f7acd65b14bc81b330ca16d1c31a5dfe4c78836fd75cf8b1097683ef5f4ece2d068073249cf98ab52f1d9b2d779ffb8728b82ad72b69596c4d7a78d8198230a5b8d6c6c5d24b24423977d0fb79c488864ff67fc5ffb1ee07c705f7cca092fc8ef748aa12d292623f27e64e72750ce4bc5ad6242b0abfd4e74f718a89cdbbc8bd43f79b9491668a0a2158604d4bb5bb33af6587665517eee882d287043325f22e6849045a1b2c283b735128771de8ce2c11daa63df4fb636c4e874558fba69b06f6e9147f5f7170e883aad4e9de628914d2fad0d65eabc85e0b5d8d7c16ecf71676c51b415c7e3183aaa3ca0da999fc7df288e319c12d416a320b37597ed85900d6e18de5f4ad4510583c604e2a8b060423d23a91d68f1cb8963981c61cec4d8683b3f6618eccc486c79d8656efc3f7e01c863eb35e7754e5ab2ec1405ee2fd9f5079d3d45bb237cc6a67f0f679aac7a3c616e007c3c53ab4dcbe3aa6311dfdf543e4dc189d9b317d7212dafe0ba7f5d493b620dc8f642984bca2ff79887dac74e41bce6dd9a1085e1591d181a29b83f60ed5a896c5ba8f9d5ba502313cf724eda4c48887e1aad90d486b44806abb5e6779f9c4b47d158cf34d2a28928c9afe3a4496bb755774379fd37f5d257200b3edf0745a3872f5969d1df8278bdd854f540d3ebc435415154b83cac4db947d98369712d362d2b3f6468e9a71a15e03759d1bd7ee3eb06c18c5b627ebb761e1264284798040a20c433c5b73a6737bc6f860e7df4d1fc2cafc82d43e89d7163a68098f1890e12d687d0093ae73d23099ccea57466e87524fc53bb3c71e2a3eecc75ff0906aa354d10496169f656ec564d2094bb0cdc53251f34de370d676e3a3059a2cb14d474969144507cff9f1823f92cad3a0c68e077b4dcb1a2d51952087643d24445a3f656d8fd2abb456bc38266b5911378a75b952e9b6f3577c1e2b5042c39520206a0cc14692235c56760b673dcc9cd41637f4d4cf787e15fc57508ca9ecb61d99a694f0a4f6b72255dfa1d56535be3d67c2d1ae11f762b1437a9a577a53dbaaf1264c7028706cd62df5074388dbbac42eaa1b9ed1e2b547585165138d13b6f9211e98af6c65764edf9d7b85efd0991143ff2ae95793df1513fc29263ace7b246c8e46d5e1550a75475f80dbc6482f92f6dd07a641f6f4d90ae20914e7af1c374a73e57e7bb0420db90fcbd08825b000b89ef9c10eaaff67693412c924cba635a7e430d20735129e32b4d4cca67d23beca3f6cdfe7d2b94a913087fe3429196a398119a9d67327b50594c62ce943346b29e0707724e7169ac9483bf0a00b6224aeadbecaa5dee9e03d93cfa6d8aab110014e0d9e41c70ebc44398e9099e1b24796ff6e20b5beb4389b0e5660832f0a0c54c1289f811edf3c32c7b9962d22082fe49387d2b41a5ece8e5efa670b4dce2735470d0627e09fbdc67624da65644a6bc3acd23469dccde206693ec25332d387001f17d396bc915932e900cabb1d16a9e2835cf91983ad25d59376bc129c643705de3392ec18b1b83f68976e783d81ad022af52764ce311a06b129a643f87561f4219b50bacd9468558e13f774567162323eaabf05f44e1d1d21c70570ec2b75dc09682ea7298d6d3c8422a6be26b16173f1e4eb62dde3ec1e006fb738cd41b40922eadf4b2478881f1b3c7aab812d2db84b9b3cb1e9a153459485400844924ec0dcd19b17b790db73a19cd393c39d593987cfe9c6d0c78568bafc17f26f362e6330db43b98e9efe04a5ffcaff4551bd27f82ce5ecd5b52a0316c05a23d39c8a722c4bada71ab31f2ac362e136e49640445d38e1f06c58a717fe8988c1ea2cf67c73eb0725546873ba546dab828cc10018bebe91dbc5d14c0a7cd50013de544cdd3c88c6f495e2f4bfe35c3636f2b02ec49a032574c0cabc266a9d93ad35949e7aa75cca6c807bd2f112840dfe687a9d9571317fc629f64eb3d7833ac970872359a94180435158944c6279be379b53d899df3f14f892041d8e1c7d727be6905d9682f929f5a53872a5dbf31130f0fbf774feee8b1208f72773de1928474b37d6386500bf1182d20280cfd8db9b319b692ea190eb4dc916df18bc29cbd731d027a72989d1a733b03b11a0119229a67d5245c604e7483f20927fd49a9403297adb39721ac1a91d142801352d3b3ac79fe36ef04427fb339bed299fdb1e42308f4e4a155a8f114651d4f3a4767002620ab6709be62e583a882bd74ddd7b33d35108aa4146ed0541faed276fc24fa5ac1fc2baf55b27c993d5bc4dd307519064b6ce8da7aaff4bdfdfd4577b7f8771985217ace00f9bebdbace93e798aa921ef6fa5219d97a0b89179d18953f4e62fdfd881f75dd0f807d8cc8123a5eae529bdc51f15d8eeccce51fed5a51ea41f23b24e96762091b1cfb21270149362e8b2d45fa82698dbfc3bbc16d1646845c07253982bc15351dfd708a8ed67fe2fe4112740e6c51400ccf20dec54da4ec5fcc72f0c8728aac6e9a0ee0d60d8ee41ea99c8eddc01309ac6f574c0198a00c570ae240da3257abfc9a4e9053cf492b35e5cc081108b3057523294cb338de5a87a850779e24eb9aa5b1ca76282b65a8f5cf95cb9f1b9f1b7081ced3db8d0f9a4d0e96a0ea42b7e8c2be946e9af633f3786ee89ca57808ab8c5ddc6e6f85a80fc11609bbdd0f4362927ce4561bd9e76a8848938a2e3cb7e359daa4af84b8aa5d8d998d8a3db7d7a4dd38d3c8b46f8a595ba2c432004761cb5fb0da3fe8d6f1539479c4f1af615b142b18050f7f15d636cdba33d10a3dd397b84004d51b2a561be5e80dc10e31cea6bd1e61b2e5aa98ea72cb79ca82edb2f2d8990447d883133e4bf88d4b81587a1063214805f0a3a19899cb7a48cba5346502664563506eb7f064df9303588512390c139786d13a94ab3e18ceee330608711f4622030a27f3713614cc64034bdf2ddbf3cbd63e3424440a6b2d949f660399c1331b9a5f72c5f2451dbdf9ece7719ea477c965d4be607ba0813adc2dc93d2863153cd9ed865a53f2a800b8baf099b621f76f58a7673799fc7749cef55bcbbd89103ec68bbbb0a91ec2c3bcd9f7c3045100d3014dfa85273ba0e4a6165cc7fccca6fa580151732a4a12c9af6e5d4d5052b292eeb94bc78ec52c6f13dfe2019c81df33920e3348017af280041f3d414947f76991bdc092ac46b3c9178a8d4ef3328e70f33de20d863b33608d10d33d896e25d9bb73ff55edc6d53eef85adb4cb88a0b77e1537fdc00392a84609d81ea717e9e1df14f3f7c67439cc5bc6ce1e9469c4f1d8672bbf494d59cff21fe97317289b4aedc6905b2deb85ad6e6a5dd249bfb2ef1ab82b67f50fc9f84235efde67317d376def815c94dea12c8890c6ca07b6b7e989a6285886f7e5cd549d7833e4b9bc4e7fbba86f5ab9034aafad6ec5ce69edcdde39c8619658f86f283b0ac6867944cb3543bc164e22d5424df3c05b0e05869a0e81e8c046a419952d4e0262b1b1e2ba756265404b2d48b3853e5bc23d51fd4b3192023176758b2a6ec5d75eae4e0366e0ae70c484683aec6ad15ae6fed89899537e787a1c7675820f23403a6a32cfcd60302857d5602c5dda44f9981134507ac79e1b3e8537b7b16296d5e30f72992ece7312cb6881b68d04e0f546812a818108d06be076615250471f84f994ef2428d0426dfbf7c1144f9666e230dfa77673d8929f6f1b59a0c594177cbb182db14a5d3022c39e21d18e8bdce9ebb202f0d3f3500f3501d3af9ca09932ed5241a8e5115b74e71c9d8532aec590c3eb9c8f1b19938a6faa2448b363138f45fed72f0c91929ff42b70256358eac87f9ff53e510ec7fc2927a26bb2bbfe823e37194366e555c66b893f76a2c7ecb483de3c7561f836c976072a52d9f8403de583bc31b337ee1eb19ac9be8b039a56b09d2b12a106efcb853d1ec1e7335b46a85421cafacc90cd79468b7834619fba94b8e535241359a94b351501b8e325c87723274de5173c711b62a4b8a7555f32e35289486bde5693dd802789280979a235bf7619a8c8b4a46709713275dc066e4c9731593202ce662621791cf3c2bbed856f915f71539ee4d8486d53497bd40dbb008e0c42dc77b8a2b2e3f614d3ac8f4c2465564c37d5baca35ec7ff3ee3ad8e00bb33ff5b38d3d0d47a54ab611cad9bb7725bbc7521aada7a7191286d90eb249e9076a57d8e01de69bd0738309226618c7e3435d144f41bfa304c1d4bfced4908a6f43c2635accdda9f01a42fedb43d7ec162ad1051b395e23d5bfe0720d0ad55758ca6d7bdde98dba0a6e0bfc872e6106726ebc30949e4a36cf993f61c36b4af6c8aa66df4012406a8efadb7120462a6340aa78a77a949c215931b3792d73d873c748d784a015594416627dd3a9b34cb85bd4a95e93a53fa586f77447d3a77f1fe455833f1ba53256e7905339d2ad4a6a22b5c901b77002f2b5b613471e28dd5dfa32283247854436cbe1b0346969dbe584bf3a13881580d7efc9e73a62fa2c146e024e15e92be853336c991de6dedc78c0ff1f9c6ebe67a16b14a5a30ecc3f7dcb5c5412bb4c6c157d677cf960bc2a69fe3a1b64f1c6924c611ec07088b3ca7afeb5bd9596ba4267c6857c1bfdb6816851e6cbe6bcf1d5b3bc096b2ee74d791610b8f35170b8df89a9a11ceef16f9779f0fa57482545ab19c1785593c5fa5392bf23606cf49920ef145d3f06924b908d93e1d2de33fd1fcddeaff00c80bfa4c5865ee070aaad2926a841446c807bec427d8e45bdeaca66099c81babfd2cfd3ade4e096dd1ac5d9daf1bb8d8509d36f9e8792f7142a7265786231b0f668a0b6ab248fe77c010980c1a4796d74c2f51e64fd8cf388d9006fef28207e9863f3881cb74c38a121e53a9acb11d68c54f479d405c1f8f957784a8317f6ed7518ec5bc3bbc007ca6355dcb3b6446c941d7c6a71a787e4fd5ed90c8539d3bd340f40d0310ceefc08c4d1fe69ff848b2b088a539313806773cce3168c1cde9fd1edee49e3af2ae94581283bb9e2554f53940641d743f77f9b69447b9f6b7fc672054c4c16cc3e28c64604e821cd3f44ef7ad631ad4f5726cc9e3a944e2a82fc72fc5a81ca94f3d92e39331a1c2bb9e8827516e15566e0ce05ec7a3ff25843fd1dc3ca9f6a9cdfdf221bb5731a9bcd04f328593e0eb499f5ae8522c78ef6f021a139d0c2b2f8ce940d9bb64c5b93fd9c2a153682ebc534b8e9022c56b273724d45fa0973cd4f0279527bbe416cc529511b400a1a9980e2f2892244eefd4e605c5e82199ffc8b8163a2f756fc496e264d8b41ca1ab710ba43ba71cec14ffe7b641919f9c0e41c593d8ffd2a3c8493d61a42c67e0f4130d0e2deb97eaf12d4f2be5785ba70a86eaa6a95f7df5d8afc4c2651b23c2abd67a42fa18d87d15f417ff89b510a2a91dee4e57440d205465699ab45870102029c871bfee1864e5bfdf8445104105bd53f3d30c6d334ffca3a8fa7bd517aad5a033cab1f25f7b216e8c8a10c391ea465d6e01f0499f38b1d7f7bb51fb8247af2257d33e3405292484f87289afe10c3796547c59e7ccc8752174a01e220fd929efd47690fff81a59cadca6ccf7de433c88e6882c06d32da05e2e0f08b424a890733164b11696e607782a8c462a983679719696d5e921f2f75469605d7d32895a08e280927ea5fd7af0348bf2a0fa61b4cb901fef1cfc3331293c2cbff75a42da898b2fbfb1071319c692a6f867099f35306398035de561d93c312ddb10078a0ea5861acc78a8f29c947d984553491b9e4e24c4d2ce7915aa7d0c472dd7adcd2e1a5ba8a266b857fe98f73f7c334937ceae396855affbfd09e87b4ffb7fb28bf089cfce3d983c57e622804964108e7b0c1b1f12920befe29feaf715eb7eee5cd3121ff894af5759a89f22f8e8c9403e48c37b58fde6a353451798fa94785d54ae6e74ab44971570c24626e0cfbbb9222b7e0b23d1024037f71c22955420691ff0e2f7a65b8bca7ad30690bcbf5f3cedb8aa4ac3654278ef5120c1358c36febee16204145ecc7032ce27a809a663c93e4edcb9ec2fc39b4fd2ddf15be5c57a6cdcd1e44fe4bb5316e7ff0c682b06630753eca373b7b76a56b90a78d478b7aaacb3174ff44c386b046ce75b1cc74e9509dd5ba76044f86fc7ecb040c2e44011fc0182f34c584b819e5862bb4bc145d59c52306af5ae5d3704256505de43465c159da081aa98fef0c4004b3069562117612c3d5a0ed76b51d3d6a9ffade45294309987054c715ba303ecc2af00e5ef2e5b80d3b88a95c4e4c611b67ec5fc6762efd23f9dacb9a112a2f06fe15972959d61b443708beb6db6decf619af38c40650c144118c774838268e36f8f9a81a1af6e31bcc411bf2456ee49bec322c3509e644b743e66d460b3ee647e392fb1c5f06d63f58cbce706f47d4509ddb2e1851d13cf49ae6de59d9ba3580b6ffb981f6b2206b6ab1daa0636f23069fa1319203bc5219765c1e6f7462d27b41552d3d7b3860515e7f42a0826a0465e7347ed8ae866db9820b4b3deca14ef94d58042f62f8057aceb342dbef06cbc5404e37004d47122ad28d4032ebe2cb2f6f9d570989a40cfa670e75077d1efb690829fe84fb2e278572cdf6acac6af8bf6ff26be5d4136943d6c01046c58d5dfbc6b29dc82daefdd0040e20ab6aa783325efa0282846b6bd07b9b571f0839f1a106fa4b610c12a0549515ff68c683d113799a2ccc672d43f20c4f4519e6248ecd90d6c6c6c113de6252a9fdfb1681f98f4cccb098ede7bb63aee67e11d9b96403f2aa0261c8d7e20b78cb3e090cf09c5925c8b4f0f2f52a4888a0e3dc0ae7fbd0918e2714d9a88579341ae06764a17cf6c937cf44eef9a516cfc7a743360cb671d14b19e05eac837f58e575f454e509fc58192c978397d10cd3a9adecab0bc3b335fb43b5e23bdb981b82b947dbf180eec2aeb9539f3afd041a72f8c26cc97016a4bdeb5bb0</script>
+</div>
+<script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
       <tags>
         <tag>Q List</tag>
       </tags>
@@ -3261,22 +3277,6 @@ pipeline {
     <title>疫情的启示[伪上帝之眼]</title>
     <url>/2020/04/10/%E7%96%AB%E6%83%85%E7%9A%84%E5%90%AF%E7%A4%BA-%E4%BC%AA%E4%B8%8A%E5%B8%9D%E4%B9%8B%E7%9C%BC/</url>
     <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title>流水账之生活费</title>
-    <url>/2020/04/30/%E6%B5%81%E6%B0%B4%E8%B4%A6%E4%B9%8B%E7%94%9F%E6%B4%BB%E8%B4%B9/</url>
-    <content><![CDATA[<div id="hexo-blog-encrypt" data-wpm="用心想想，ta可能用什么密码" data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
-  <div class="hbe-input-container">
-  <input type="password" id="hbePass" placeholder="" />
-    <label for="hbePass">Hey, password is required here.</label>
-    <div class="bottom-line"></div>
-  </div>
-  <script id="hbeData" type="hbeData" data-hmacdigest="528009a4dd62084f37d9094b76e2721c9836bb1c99cfe96f57aaccf1449940e6">3a097b604bbf14d9b76b9265c3d0c09579bda9bf687bce91cef0c81e834a2615da0e0623ba386badc9e400af5903f66ec4ba0c767eb191a1183e0dd27e0510e75536ac261624382da9b31f50f5f56f8a1ea2c802782178b6cfe859149982693f304b5a606089e9e7e1ca790854e08cccf32372585fc22fb13338521c4ce2b870a9ede916c565262f61168e0e07989c1ec21d883b2ad237a8ec230c97b1a91ab1e7c20629ceb7a853254c93a031b62dbeda38509496a35fa841e4dacfd115e3db72f5cf1647026212b2851c096e8b58cae012d3972cc0eefa59066bf2fcf9f684ce41a66c4685c52622a621100344236b217d67dc7c2b65731f559b7b74e91a0f59063cd9e5969063bdb8535741e97906254f53bbe2176a46e960d35ff59002e154f22ae60c22f20bd970c169ad4c0243bf85a6ed9a7d0e6911d6f24dfbdb33848b0636d983e4309c5f52ce779fbc2f6a2fa97c7f69c97fd467c7181507a8006746aedfbe49fb90f00be290c2ffac626b02dc9e7ceffa590e27542fc83e01e458c28d4ce8e75ed94574b04d67bd5fbead28a8fd358a672ab821837b2dcff5b9d09d290672097f5e0fbcb84500bed5d5368ddfafa99455581f2f505886324f0d2fc77c01962e28e3eeb00a87c6002600041e2b2ce7f2a4f0146265303b4bfa5fff08bd63ddce8e0c35deca35bd9e523fdfdb117ca47baaf8f1c5423825a0d725d9e18fee293c1ce1fb00f3ac33238e94cb614a5507ea988d4cdc6ee11e6df4f44bb03c7353ca65cb719bd357ef20fc4b3f0a458485fa111823bb4c86fa263f4b830bb46e4a89caeb096d41968bbc639986be13e7fa616a9074c9afef052677c6d20d06535f6b0cf19183fd93644dff176011318d6a8be9ebcfd2df374e3af9c7b11582f5eae7d5658e974f1e1e07c3afb17a3c80e4e4219ed60dd7dd45c76144999d9be47e15adb7935abb867b76ec6871cae19124f07b320f78a03092bd6a6e1d9a34f3b7c6a10f7cfdce5c1d8f3be3aa7b54762363d67b7c4ce517e96e55e07adf8549e729c911743e63f89474def5cc8fa16993ff81af907d6f54d84c60c91fab638c5963fe63fb2422cece9b3c7f7acd65b14bc81b330ca16d1c31a5dfe4c78836fd75cf8b1097683ef5f4ece2d068073249cf98ab52f1d9b2d779ffb8728b82ad72b69596c4d7a78d8198230a5b8d6c6c5d24b24423977d0fb79c488864ff67fc5ffb1ee07c705f7cca092fc8ef748aa12d292623f27e64e72750ce4bc5ad6242b0abfd4e74f718a89cdbbc8bd43f79b9491668a0a2158604d4bb5bb33af6587665517eee882d287043325f22e6849045a1b2c283b735128771de8ce2c11daa63df4fb636c4e874558fba69b06f6e9147f5f7170e883aad4e9de628914d2fad0d65eabc85e0b5d8d7c16ecf71676c51b415c7e3183aaa3ca0da999fc7df288e319c12d416a320b37597ed85900d6e18de5f4ad4510583c604e2a8b060423d23a91d68f1cb8963981c61cec4d8683b3f6618eccc486c79d8656efc3f7e01c863eb35e7754e5ab2ec1405ee2fd9f5079d3d45bb237cc6a67f0f679aac7a3c616e007c3c53ab4dcbe3aa6311dfdf543e4dc189d9b317d7212dafe0ba7f5d493b620dc8f642984bca2ff79887dac74e41bce6dd9a1085e1591d181a29b83f60ed5a896c5ba8f9d5ba502313cf724eda4c48887e1aad90d486b44806abb5e6779f9c4b47d158cf34d2a28928c9afe3a4496bb755774379fd37f5d257200b3edf0745a3872f5969d1df8278bdd854f540d3ebc435415154b83cac4db947d98369712d362d2b3f6468e9a71a15e03759d1bd7ee3eb06c18c5b627ebb761e1264284798040a20c433c5b73a6737bc6f860e7df4d1fc2cafc82d43e89d7163a68098f1890e12d687d0093ae73d23099ccea57466e87524fc53bb3c71e2a3eecc75ff0906aa354d10496169f656ec564d2094bb0cdc53251f34de370d676e3a3059a2cb14d474969144507cff9f1823f92cad3a0c68e077b4dcb1a2d51952087643d24445a3f656d8fd2abb456bc38266b5911378a75b952e9b6f3577c1e2b5042c39520206a0cc14692235c56760b673dcc9cd41637f4d4cf787e15fc57508ca9ecb61d99a694f0a4f6b72255dfa1d56535be3d67c2d1ae11f762b1437a9a577a53dbaaf1264c7028706cd62df5074388dbbac42eaa1b9ed1e2b547585165138d13b6f9211e98af6c65764edf9d7b85efd0991143ff2ae95793df1513fc29263ace7b246c8e46d5e1550a75475f80dbc6482f92f6dd07a641f6f4d90ae20914e7af1c374a73e57e7bb0420db90fcbd08825b000b89ef9c10eaaff67693412c924cba635a7e430d20735129e32b4d4cca67d23beca3f6cdfe7d2b94a913087fe3429196a398119a9d67327b50594c62ce943346b29e0707724e7169ac9483bf0a00b6224aeadbecaa5dee9e03d93cfa6d8aab110014e0d9e41c70ebc44398e9099e1b24796ff6e20b5beb4389b0e5660832f0a0c54c1289f811edf3c32c7b9962d22082fe49387d2b41a5ece8e5efa670b4dce2735470d0627e09fbdc67624da65644a6bc3acd23469dccde206693ec25332d387001f17d396bc915932e900cabb1d16a9e2835cf91983ad25d59376bc129c643705de3392ec18b1b83f68976e783d81ad022af52764ce311a06b129a643f87561f4219b50bacd9468558e13f774567162323eaabf05f44e1d1d21c70570ec2b75dc09682ea7298d6d3c8422a6be26b16173f1e4eb62dde3ec1e006fb738cd41b40922eadf4b2478881f1b3c7aab812d2db84b9b3cb1e9a153459485400844924ec0dcd19b17b790db73a19cd393c39d593987cfe9c6d0c78568bafc17f26f362e6330db43b98e9efe04a5ffcaff4551bd27f82ce5ecd5b52a0316c05a23d39c8a722c4bada71ab31f2ac362e136e49640445d38e1f06c58a717fe8988c1ea2cf67c73eb0725546873ba546dab828cc10018bebe91dbc5d14c0a7cd50013de544cdd3c88c6f495e2f4bfe35c3636f2b02ec49a032574c0cabc266a9d93ad35949e7aa75cca6c807bd2f112840dfe687a9d9571317fc629f64eb3d7833ac970872359a94180435158944c6279be379b53d899df3f14f892041d8e1c7d727be6905d9682f929f5a53872a5dbf31130f0fbf774feee8b1208f72773de1928474b37d6386500bf1182d20280cfd8db9b319b692ea190eb4dc916df18bc29cbd731d027a72989d1a733b03b11a0119229a67d5245c604e7483f20927fd49a9403297adb39721ac1a91d142801352d3b3ac79fe36ef04427fb339bed299fdb1e42308f4e4a155a8f114651d4f3a4767002620ab6709be62e583a882bd74ddd7b33d35108aa4146ed0541faed276fc24fa5ac1fc2baf55b27c993d5bc4dd307519064b6ce8da7aaff4bdfdfd4577b7f8771985217ace00f9bebdbace93e798aa921ef6fa5219d97a0b89179d18953f4e62fdfd881f75dd0f807d8cc8123a5eae529bdc51f15d8eeccce51fed5a51ea41f23b24e96762091b1cfb21270149362e8b2d45fa82698dbfc3bbc16d1646845c07253982bc15351dfd708a8ed67fe2fe4112740e6c51400ccf20dec54da4ec5fcc72f0c8728aac6e9a0ee0d60d8ee41ea99c8eddc01309ac6f574c0198a00c570ae240da3257abfc9a4e9053cf492b35e5cc081108b3057523294cb338de5a87a850779e24eb9aa5b1ca76282b65a8f5cf95cb9f1b9f1b7081ced3db8d0f9a4d0e96a0ea42b7e8c2be946e9af633f3786ee89ca57808ab8c5ddc6e6f85a80fc11609bbdd0f4362927ce4561bd9e76a8848938a2e3cb7e359daa4af84b8aa5d8d998d8a3db7d7a4dd38d3c8b46f8a595ba2c432004761cb5fb0da3fe8d6f1539479c4f1af615b142b18050f7f15d636cdba33d10a3dd397b84004d51b2a561be5e80dc10e31cea6bd1e61b2e5aa98ea72cb79ca82edb2f2d8990447d883133e4bf88d4b81587a1063214805f0a3a19899cb7a48cba5346502664563506eb7f064df9303588512390c139786d13a94ab3e18ceee330608711f4622030a27f3713614cc64034bdf2ddbf3cbd63e3424440a6b2d949f660399c1331b9a5f72c5f2451dbdf9ece7719ea477c965d4be607ba0813adc2dc93d2863153cd9ed865a53f2a800b8baf099b621f76f58a7673799fc7749cef55bcbbd89103ec68bbbb0a91ec2c3bcd9f7c3045100d3014dfa85273ba0e4a6165cc7fccca6fa580151732a4a12c9af6e5d4d5052b292eeb94bc78ec52c6f13dfe2019c81df33920e3348017af280041f3d414947f76991bdc092ac46b3c9178a8d4ef3328e70f33de20d863b33608d10d33d896e25d9bb73ff55edc6d53eef85adb4cb88a0b77e1537fdc00392a84609d81ea717e9e1df14f3f7c67439cc5bc6ce1e9469c4f1d8672bbf494d59cff21fe97317289b4aedc6905b2deb85ad6e6a5dd249bfb2ef1ab82b67f50fc9f84235efde67317d376def815c94dea12c8890c6ca07b6b7e989a6285886f7e5cd549d7833e4b9bc4e7fbba86f5ab9034aafad6ec5ce69edcdde39c8619658f86f283b0ac6867944cb3543bc164e22d5424df3c05b0e05869a0e81e8c046a419952d4e0262b1b1e2ba756265404b2d48b3853e5bc23d51fd4b3192023176758b2a6ec5d75eae4e0366e0ae70c484683aec6ad15ae6fed89899537e787a1c7675820f23403a6a32cfcd60302857d5602c5dda44f9981134507ac79e1b3e8537b7b16296d5e30f72992ece7312cb6881b68d04e0f546812a818108d06be076615250471f84f994ef2428d0426dfbf7c1144f9666e230dfa77673d8929f6f1b59a0c594177cbb182db14a5d3022c39e21d18e8bdce9ebb202f0d3f3500f3501d3af9ca09932ed5241a8e5115b74e71c9d8532aec590c3eb9c8f1b19938a6faa2448b363138f45fed72f0c91929ff42b70256358eac87f9ff53e510ec7fc2927a26bb2bbfe823e37194366e555c66b893f76a2c7ecb483de3c7561f836c976072a52d9f8403de583bc31b337ee1eb19ac9be8b039a56b09d2b12a106efcb853d1ec1e7335b46a85421cafacc90cd79468b7834619fba94b8e535241359a94b351501b8e325c87723274de5173c711b62a4b8a7555f32e35289486bde5693dd802789280979a235bf7619a8c8b4a46709713275dc066e4c9731593202ce662621791cf3c2bbed856f915f71539ee4d8486d53497bd40dbb008e0c42dc77b8a2b2e3f614d3ac8f4c2465564c37d5baca35ec7ff3ee3ad8e00bb33ff5b38d3d0d47a54ab611cad9bb7725bbc7521aada7a7191286d90eb249e9076a57d8e01de69bd0738309226618c7e3435d144f41bfa304c1d4bfced4908a6f43c2635accdda9f01a42fedb43d7ec162ad1051b395e23d5bfe0720d0ad55758ca6d7bdde98dba0a6e0bfc872e6106726ebc30949e4a36cf993f61c36b4af6c8aa66df4012406a8efadb7120462a6340aa78a77a949c215931b3792d73d873c748d784a015594416627dd3a9b34cb85bd4a95e93a53fa586f77447d3a77f1fe455833f1ba53256e7905339d2ad4a6a22b5c901b77002f2b5b613471e28dd5dfa32283247854436cbe1b0346969dbe584bf3a13881580d7efc9e73a62fa2c146e024e15e92be853336c991de6dedc78c0ff1f9c6ebe67a16b14a5a30ecc3f7dcb5c5412bb4c6c157d677cf960bc2a69fe3a1b64f1c6924c611ec07088b3ca7afeb5bd9596ba4267c6857c1bfdb6816851e6cbe6bcf1d5b3bc096b2ee74d791610b8f35170b8df89a9a11ceef16f9779f0fa57482545ab19c1785593c5fa5392bf23606cf49920ef145d3f06924b908d93e1d2de33fd1fcddeaff00c80bfa4c5865ee070aaad2926a841446c807bec427d8e45bdeaca66099c81babfd2cfd3ade4e096dd1ac5d9daf1bb8d8509d36f9e8792f7142a7265786231b0f668a0b6ab248fe77c010980c1a4796d74c2f51e64fd8cf388d9006fef28207e9863f3881cb74c38a121e53a9acb11d68c54f479d405c1f8f957784a8317f6ed7518ec5bc3bbc007ca6355dcb3b6446c941d7c6a71a787e4fd5ed90c8539d3bd340f40d0310ceefc08c4d1fe69ff848b2b088a539313806773cce3168c1cde9fd1edee49e3af2ae94581283bb9e2554f53940641d743f77f9b69447b9f6b7fc672054c4c16cc3e28c64604e821cd3f44ef7ad631ad4f5726cc9e3a944e2a82fc72fc5a81ca94f3d92e39331a1c2bb9e8827516e15566e0ce05ec7a3ff25843fd1dc3ca9f6a9cdfdf221bb5731a9bcd04f328593e0eb499f5ae8522c78ef6f021a139d0c2b2f8ce940d9bb64c5b93fd9c2a153682ebc534b8e9022c56b273724d45fa0973cd4f0279527bbe416cc529511b400a1a9980e2f2892244eefd4e605c5e82199ffc8b8163a2f756fc496e264d8b41ca1ab710ba43ba71cec14ffe7b641919f9c0e41c593d8ffd2a3c8493d61a42c67e0f4130d0e2deb97eaf12d4f2be5785ba70a86eaa6a95f7df5d8afc4c2651b23c2abd67a42fa18d87d15f417ff89b510a2a91dee4e57440d205465699ab45870102029c871bfee1864e5bfdf8445104105bd53f3d30c6d334ffca3a8fa7bd517aad5a033cab1f25f7b216e8c8a10c391ea465d6e01f0499f38b1d7f7bb51fb8247af2257d33e3405292484f87289afe10c3796547c59e7ccc8752174a01e220fd929efd47690fff81a59cadca6ccf7de433c88e6882c06d32da05e2e0f08b424a890733164b11696e607782a8c462a983679719696d5e921f2f75469605d7d32895a08e280927ea5fd7af0348bf2a0fa61b4cb901fef1cfc3331293c2cbff75a42da898b2fbfb1071319c692a6f867099f35306398035de561d93c312ddb10078a0ea5861acc78a8f29c947d984553491b9e4e24c4d2ce7915aa7d0c472dd7adcd2e1a5ba8a266b857fe98f73f7c334937ceae396855affbfd09e87b4ffb7fb28bf089cfce3d983c57e622804964108e7b0c1b1f12920befe29feaf715eb7eee5cd3121ff894af5759a89f22f8e8c9403e48c37b58fde6a353451798fa94785d54ae6e74ab44971570c24626e0cfbbb9222b7e0b23d1024037f71c22955420691ff0e2f7a65b8bca7ad30690bcbf5f3cedb8aa4ac3654278ef5120c1358c36febee16204145ecc7032ce27a809a663c93e4edcb9ec2fc39b4fd2ddf15be5c57a6cdcd1e44fe4bb5316e7ff0c682b06630753eca373b7b76a56b90a78d478b7aaacb3174ff44c386b046ce75b1cc74e9509dd5ba76044f86fc7ecb040c2e44011fc0182f34c584b819e5862bb4bc145d59c52306af5ae5d3704256505de43465c159da081aa98fef0c4004b3069562117612c3d5a0ed76b51d3d6a9ffade45294309987054c715ba303ecc2af00e5ef2e5b80d3b88a95c4e4c611b67ec5fc6762efd23f9dacb9a112a2f06fe15972959d61b443708beb6db6decf619af38c40650c144118c774838268e36f8f9a81a1af6e31bcc411bf2456ee49bec322c3509e644b743e66d460b3ee647e392fb1c5f06d63f58cbce706f47d4509ddb2e1851d13cf49ae6de59d9ba3580b6ffb981f6b2206b6ab1daa0636f23069fa1319203bc5219765c1e6f7462d27b41552d3d7b3860515e7f42a0826a0465e7347ed8ae866db9820b4b3deca14ef94d58042f62f8057aceb342dbef06cbc5404e37004d47122ad28d4032ebe2cb2f6f9d570989a40cfa670e75077d1efb690829fe84fb2e278572cdf6acac6af8bf6ff26be5d4136943d6c01046c58d5dfbc6b29dc82daefdd0040e20ab6aa783325efa0282846b6bd07b9b571f0839f1a106fa4b610c12a0549515ff68c683d113799a2ccc672d43f20c4f4519e6248ecd90d6c6c6c113de6252a9fdfb1681f98f4cccb098ede7bb63aee67e11d9b96403f2aa0261c8d7e20b78cb3e090cf09c5925c8b4f0f2f52a4888a0e3dc0ae7fbd0918e2714d9a88579341ae06764a17cf6c937cf44eef9a516cfc7a743360cb671d14b19e05eac837f58e575f454e509fc58192c978397d10cd3a9adecab0bc3b335fb43b5e23bdb981b82b947dbf180eec2aeb9539f3afd041a72f8c26cc97016a4bdeb5bb0</script>
-</div>
-<script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
-      <tags>
-        <tag>Q List</tag>
-      </tags>
   </entry>
   <entry>
     <title>移动端打包pipeline通识：从零开始</title>
