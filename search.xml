@@ -41,22 +41,6 @@
       </categories>
   </entry>
   <entry>
-    <title>Anka tutorial 03: jenkins</title>
-    <url>/2019/11/28/Anka-tutorial-03-jenkins/</url>
-    <content><![CDATA[<h3 id="anka-集成-Jenkins-link"><a href="#anka-集成-Jenkins-link" class="headerlink" title="anka 集成 Jenkins (link)"></a>anka 集成 Jenkins <a href="https://ankadoc.bitbucket.io/anka-build/#integrate-jenkins-with-controller" target="_blank" rel="noopener">(link)</a></h3><p>未完待续…</p>
-<p>安装插件<br><code>Manage Jenkins &gt; Manage Plugins</code></p>
-<p>搜索anka</p>
-<p>新建 ssh 用的登陆凭证</p>
-<p>新建VM的时候 默认用户名和密码分别是 <code>anka/admin</code></p>
-<p>配置jenkins<br><code>Manage Jenkins &gt; Configure System</code></p>
-<p><img src="/images/anka_jenkins_01.png" width="80%" height="80%"></p>
-<p><a href="http://localhost/#/dashboard" target="_blank" rel="noopener">http://localhost/#/dashboard</a></p>
-]]></content>
-      <categories>
-        <category>CICD</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Anka tutorial 02</title>
     <url>/2019/11/19/Anka-tutorial-02/</url>
     <content><![CDATA[<h5 id="1-Joining-Nodes"><a href="#1-Joining-Nodes" class="headerlink" title="1.Joining Nodes"></a>1.Joining Nodes</h5><p>在mac上（anka build 节点）执行  <code>sudo ankacluster join http://localhost:80/</code></p>
@@ -76,6 +60,40 @@
 <h5 id="4-Manage-VM-Templates-in-Registry-link"><a href="#4-Manage-VM-Templates-in-Registry-link" class="headerlink" title="4. Manage VM Templates in Registry(link)"></a>4. Manage VM Templates in Registry<a href="https://ankadoc.bitbucket.io/anka-build/#manage-vm-templates-in-registry" target="_blank" rel="noopener">(link)</a></h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#罗列仓库</span></span><br><span class="line">➜   anka registry list-repos</span><br><span class="line">++</span><br><span class="line">++</span><br><span class="line"><span class="comment">#添加一个新仓库</span></span><br><span class="line">➜   anka registry add demo-repo http://localhost:8089</span><br><span class="line">➜   anka registry list-repos</span><br><span class="line">++</span><br><span class="line">++</span><br><span class="line">demo-repo (default)</span><br><span class="line">+--------+-----------+</span><br><span class="line">| host   | localhost |</span><br><span class="line">+--------+-----------+</span><br><span class="line">| scheme | http      |</span><br><span class="line">+--------+-----------+</span><br><span class="line">| port   | 8089      |</span><br><span class="line">+--------+-----------+</span><br><span class="line"><span class="comment">#推送VM Templates 到新仓库，</span></span><br><span class="line">➜   anka registry push CatalinaVm -d <span class="string">"first push"</span> -t v1</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>CICD</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Anka tutorial 03: jenkins</title>
+    <url>/2019/11/28/Anka-tutorial-03-jenkins/</url>
+    <content><![CDATA[<h3 id="anka-集成-Jenkins-link"><a href="#anka-集成-Jenkins-link" class="headerlink" title="anka 集成 Jenkins (link)"></a>anka 集成 Jenkins <a href="https://ankadoc.bitbucket.io/anka-build/#integrate-jenkins-with-controller" target="_blank" rel="noopener">(link)</a></h3><p>未完待续…</p>
+<p>安装插件<br><code>Manage Jenkins &gt; Manage Plugins</code></p>
+<p>搜索anka</p>
+<p>新建 ssh 用的登陆凭证</p>
+<p>新建VM的时候 默认用户名和密码分别是 <code>anka/admin</code></p>
+<p>配置jenkins<br><code>Manage Jenkins &gt; Configure System</code></p>
+<p><img src="/images/anka_jenkins_01.png" width="80%" height="80%"></p>
+<p><a href="http://localhost/#/dashboard" target="_blank" rel="noopener">http://localhost/#/dashboard</a></p>
+]]></content>
+      <categories>
+        <category>CICD</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Azure FAQs</title>
+    <url>/2019/12/11/Azure-FAQs/</url>
+    <content><![CDATA[<h3 id="1-asm-arm"><a href="#1-asm-arm" class="headerlink" title="1. asm, arm"></a>1. asm, arm</h3><ul>
+<li>asm: Azure Service Manager</li>
+<li>arm: Azure Resource Manager</li>
+</ul>
+<p>最开始一直都是classic模型，它的模型中有service的概念，所以它也叫 asm（Azure Service Manager）。2014年开始提出arm（Azure Resource Manager），其管理平台叫portal。2015年底arm发布。</p>
+<p>当前情况是微软正在将azure的所有功能往arm上迁移。以后都推荐使用arm。但 是当前状况是arm不完全向后兼容asm，有些功能只有asm上才有，所以还有很多 用户还是在使用classic。</p>
+<blockquote>
+<p>ref: <a href="https://pengpengxp.github.io/archive/before-2018-11-10/2017-06-28-Azure%E7%BB%8F%E5%85%B8%E6%A8%A1%E5%BC%8F%E5%92%8C%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB.html#orgbb66971" target="_blank" rel="noopener">https://pengpengxp.github.io/archive/before-2018-11-10/2017-06-28-Azure%E7%BB%8F%E5%85%B8%E6%A8%A1%E5%BC%8F%E5%92%8C%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB.html#orgbb66971</a></p>
+</blockquote>
+<h3 id="2-AWS-to-Azure-services-comparison"><a href="#2-AWS-to-Azure-services-comparison" class="headerlink" title="2. AWS to Azure services comparison"></a>2. AWS to Azure services comparison</h3><p>详见链接 <a href="https://docs.microsoft.com/en-us/azure/architecture/aws-professional/services" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/azure/architecture/aws-professional/services</a></p>
+]]></content>
+      <categories>
+        <category>Cloud</category>
       </categories>
   </entry>
   <entry>
@@ -225,19 +243,9 @@
       </categories>
   </entry>
   <entry>
-    <title>Azure FAQs</title>
-    <url>/2019/12/11/Azure-FAQs/</url>
-    <content><![CDATA[<h3 id="1-asm-arm"><a href="#1-asm-arm" class="headerlink" title="1. asm, arm"></a>1. asm, arm</h3><ul>
-<li>asm: Azure Service Manager</li>
-<li>arm: Azure Resource Manager</li>
-</ul>
-<p>最开始一直都是classic模型，它的模型中有service的概念，所以它也叫 asm（Azure Service Manager）。2014年开始提出arm（Azure Resource Manager），其管理平台叫portal。2015年底arm发布。</p>
-<p>当前情况是微软正在将azure的所有功能往arm上迁移。以后都推荐使用arm。但 是当前状况是arm不完全向后兼容asm，有些功能只有asm上才有，所以还有很多 用户还是在使用classic。</p>
-<blockquote>
-<p>ref: <a href="https://pengpengxp.github.io/archive/before-2018-11-10/2017-06-28-Azure%E7%BB%8F%E5%85%B8%E6%A8%A1%E5%BC%8F%E5%92%8C%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB.html#orgbb66971" target="_blank" rel="noopener">https://pengpengxp.github.io/archive/before-2018-11-10/2017-06-28-Azure%E7%BB%8F%E5%85%B8%E6%A8%A1%E5%BC%8F%E5%92%8C%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB.html#orgbb66971</a></p>
-</blockquote>
-<h3 id="2-AWS-to-Azure-services-comparison"><a href="#2-AWS-to-Azure-services-comparison" class="headerlink" title="2. AWS to Azure services comparison"></a>2. AWS to Azure services comparison</h3><p>详见链接 <a href="https://docs.microsoft.com/en-us/azure/architecture/aws-professional/services" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/azure/architecture/aws-professional/services</a></p>
-]]></content>
+    <title>Azure tutorial 01: overview</title>
+    <url>/2019/12/11/Azure-tutorial-01-overview/</url>
+    <content><![CDATA[]]></content>
       <categories>
         <category>Cloud</category>
       </categories>
@@ -297,14 +305,6 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#mac os terminal</span></span><br><span class="line">azcopy cp <span class="string">"/Users/xxx/Desktop/testdir/hello_azure.txt"</span>  <span class="string">"https://storage873375.blob.core.windows.net/container1/newdir/?sv=2019-02-02&amp;ss=bfqt&amp;srt=sco&amp;sp=rwdlacup&amp;se=2019-12-11T11:40:09Z&amp;st=2019-12-11T03:40:09Z&amp;spr=https&amp;sig=5%2FFHo4%2BBwxDB6wLftyB7%2FSF7gqnhaEmpFa4nheBOXQg%3D"</span></span><br></pre></td></tr></table></figure>
 <p><a href="https://docs.microsoft.com/en-us/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs</a></p>
 ]]></content>
-      <categories>
-        <category>Cloud</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Azure tutorial 01: overview</title>
-    <url>/2019/12/11/Azure-tutorial-01-overview/</url>
-    <content><![CDATA[]]></content>
       <categories>
         <category>Cloud</category>
       </categories>
@@ -418,30 +418,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Docker image export and import</title>
-    <url>/2019/04/07/Docker-image%E5%AF%BC%E5%87%BA%E5%AF%BC%E5%85%A5/</url>
-    <content><![CDATA[<p>A: “为什么要导镜像，直接从网上下载不就行了？”<br>B: “too young too naive，你以为哪里都能上网的，谁家的机房没事都能上个youtube,google的吗”</p>
-<blockquote>
-<p>一般的公司内网环境是无法访问Internet的，自然也无从下载基础 docker 基础镜像。但这个时候领导交给你的任务–比如用容器运行一个 Java 程序，你在本地程序都调试好了，也在docker container形式运行良好，但是怎么搬到服务器上，这个时候最原始的U盘就大有用处了（虽然现在都是云盘，但是服务器所在网络就好比你小时候玩的小霸王学习机，只能自己和自己玩儿）。</p>
-</blockquote>
-<h2 id="your-PC-–-gt-U-Disk-–-gt-Server"><a href="#your-PC-–-gt-U-Disk-–-gt-Server" class="headerlink" title="your PC –&gt; U Disk –&gt; Server"></a>your PC –&gt; U Disk –&gt; Server</h2><h3 id="Steps"><a href="#Steps" class="headerlink" title="Steps:"></a>Steps:</h3><h5 id="1-Export-image-导出镜像-在你自己的电脑上执行）"><a href="#1-Export-image-导出镜像-在你自己的电脑上执行）" class="headerlink" title="1.Export image (导出镜像,在你自己的电脑上执行）"></a>1.Export image (导出镜像,在你自己的电脑上执行）</h5><p><code></code> docker save Image</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">➜  docker images  | grep python</span><br><span class="line">python          3-alpine            c02a3409ee5b        6 weeks ago         86.7MB</span><br><span class="line">➜  docker save c02a3409ee5b &gt; my_python.tar</span><br><span class="line">➜  ls -l</span><br><span class="line">-rw-r--r--    1 xxx  staff  90526208  4  7 21:33 my_python.tar</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>更建议用<em>镜像</em>名称去处理，如 docker save python:3-alpine &gt; my_python.tar ；好处是在load后镜像名称保持一致，而不是没有tag的</p>
-</blockquote>
-<h5 id="2-乾坤大挪移"><a href="#2-乾坤大挪移" class="headerlink" title="2.乾坤大挪移"></a>2.乾坤大挪移</h5><p>拷贝这个tar包到U 盘，然后插到（或者是挂载）Server上</p>
-<h5 id="3-Import-image-导入镜像"><a href="#3-Import-image-导入镜像" class="headerlink" title="3.Import image (导入镜像)"></a>3.Import image (导入镜像)</h5><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">docker load &lt; my_python.tar</span><br><span class="line">docker tag 9045 my_python:1.0   //通常还需要重新命名一下，以便可读</span><br></pre></td></tr></table></figure>
-<p><strong>More Ref:</strong></p>
-<ol>
-<li><a href="https://jingsam.github.io/2017/08/26/docker-save-and-docker-export.html" target="_blank" rel="noopener">https://jingsam.github.io/2017/08/26/docker-save-and-docker-export.html</a></li>
-<li><a href="https://www.jianshu.com/p/8408e06b7273" target="_blank" rel="noopener">https://www.jianshu.com/p/8408e06b7273</a></li>
-</ol>
-]]></content>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Github Actions E01初识</title>
     <url>/2020/03/16/Github-Actions-E01%E5%88%9D%E8%AF%86/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
@@ -512,6 +488,30 @@
       </tags>
   </entry>
   <entry>
+    <title>Docker image export and import</title>
+    <url>/2019/04/07/Docker-image%E5%AF%BC%E5%87%BA%E5%AF%BC%E5%85%A5/</url>
+    <content><![CDATA[<p>A: “为什么要导镜像，直接从网上下载不就行了？”<br>B: “too young too naive，你以为哪里都能上网的，谁家的机房没事都能上个youtube,google的吗”</p>
+<blockquote>
+<p>一般的公司内网环境是无法访问Internet的，自然也无从下载基础 docker 基础镜像。但这个时候领导交给你的任务–比如用容器运行一个 Java 程序，你在本地程序都调试好了，也在docker container形式运行良好，但是怎么搬到服务器上，这个时候最原始的U盘就大有用处了（虽然现在都是云盘，但是服务器所在网络就好比你小时候玩的小霸王学习机，只能自己和自己玩儿）。</p>
+</blockquote>
+<h2 id="your-PC-–-gt-U-Disk-–-gt-Server"><a href="#your-PC-–-gt-U-Disk-–-gt-Server" class="headerlink" title="your PC –&gt; U Disk –&gt; Server"></a>your PC –&gt; U Disk –&gt; Server</h2><h3 id="Steps"><a href="#Steps" class="headerlink" title="Steps:"></a>Steps:</h3><h5 id="1-Export-image-导出镜像-在你自己的电脑上执行）"><a href="#1-Export-image-导出镜像-在你自己的电脑上执行）" class="headerlink" title="1.Export image (导出镜像,在你自己的电脑上执行）"></a>1.Export image (导出镜像,在你自己的电脑上执行）</h5><p><code></code> docker save Image</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">➜  docker images  | grep python</span><br><span class="line">python          3-alpine            c02a3409ee5b        6 weeks ago         86.7MB</span><br><span class="line">➜  docker save c02a3409ee5b &gt; my_python.tar</span><br><span class="line">➜  ls -l</span><br><span class="line">-rw-r--r--    1 xxx  staff  90526208  4  7 21:33 my_python.tar</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>更建议用<em>镜像</em>名称去处理，如 docker save python:3-alpine &gt; my_python.tar ；好处是在load后镜像名称保持一致，而不是没有tag的</p>
+</blockquote>
+<h5 id="2-乾坤大挪移"><a href="#2-乾坤大挪移" class="headerlink" title="2.乾坤大挪移"></a>2.乾坤大挪移</h5><p>拷贝这个tar包到U 盘，然后插到（或者是挂载）Server上</p>
+<h5 id="3-Import-image-导入镜像"><a href="#3-Import-image-导入镜像" class="headerlink" title="3.Import image (导入镜像)"></a>3.Import image (导入镜像)</h5><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">docker load &lt; my_python.tar</span><br><span class="line">docker tag 9045 my_python:1.0   //通常还需要重新命名一下，以便可读</span><br></pre></td></tr></table></figure>
+<p><strong>More Ref:</strong></p>
+<ol>
+<li><a href="https://jingsam.github.io/2017/08/26/docker-save-and-docker-export.html" target="_blank" rel="noopener">https://jingsam.github.io/2017/08/26/docker-save-and-docker-export.html</a></li>
+<li><a href="https://www.jianshu.com/p/8408e06b7273" target="_blank" rel="noopener">https://www.jianshu.com/p/8408e06b7273</a></li>
+</ol>
+]]></content>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Github Actions E03触发</title>
     <url>/2020/03/18/Github-Actions-E03%E8%A7%A6%E5%8F%91/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
@@ -560,6 +560,40 @@
 <li><a href="https://help.github.com/en/actions/reference/events-that-trigger-workflows" target="_blank" rel="noopener">https://help.github.com/en/actions/reference/events-that-trigger-workflows</a></li>
 <li><a href="https://developer.github.com/webhooks/" target="_blank" rel="noopener">https://developer.github.com/webhooks/</a></li>
 <li><a href="https://help.github.com/cn/actions/reference/workflow-syntax-for-github-actions#patterns-to-match-branches-and-tags" target="_blank" rel="noopener">Patterns to match branches and tags</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>CICD</category>
+      </categories>
+      <tags>
+        <tag>GA</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Github Actions E02最小Demo</title>
+    <url>/2020/03/17/Github-Actions-E02%E6%9C%80%E5%B0%8FDemo/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
+<p><a href="https://www.devops-tech.cn/2020/03/16/Github-Actions-E01/" target="_blank" rel="noopener">前面一篇</a>已经说明一些概念，于是为了更好的理解，直接用一个简单的demo帮助进一步理解概念。</p>
+</blockquote>
+<p>示例仓库： <a href="https://github.com/cicd-draft/api-test-demo" target="_blank" rel="noopener">https://github.com/cicd-draft/api-test-demo</a></p>
+<h3 id="1-配置工作流"><a href="#1-配置工作流" class="headerlink" title="1.配置工作流"></a>1.配置工作流</h3><h4 id="1-1-步骤一"><a href="#1-1-步骤一" class="headerlink" title="1.1 步骤一"></a>1.1 步骤一</h4><p>在仓库的根目录，创建名为 .github/workflows 的目录以存储工作流程文件。</p>
+<h4 id="1-2-步骤二"><a href="#1-2-步骤二" class="headerlink" title="1.2 步骤二"></a>1.2 步骤二</h4><p>在 <code>.github/workflows</code> 中，为工作流程添加 .yml 或 .yaml 文件。 例如 .github/workflows/demo.yml。</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">my</span> <span class="string">workflow</span> <span class="string">demo</span> </span><br><span class="line"></span><br><span class="line"><span class="comment"># 此处使用最常见的触发方法，还有其他的很多方法可满足不同需求</span></span><br><span class="line"><span class="attr">on:</span> </span><br><span class="line"><span class="attr">  push:</span></span><br><span class="line"><span class="attr">    branches:</span> </span><br><span class="line"><span class="bullet">      -</span> <span class="string">master</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">#工作流程运行包括一项或多项作业。 作业默认是并行运行。 要按顺序运行作业，needs 关键词在其他作业上定义依赖项。</span></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="comment">#每项作业必须关联一个 ID。&lt;job_id&gt; 必须以字母或 _ 开头</span></span><br><span class="line"><span class="attr">  my_first_job:</span></span><br><span class="line">    <span class="comment"># 作业1名称为 Demo First job,也是作业显示在 GitHub 上的名称。</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Demo</span> <span class="string">First</span> <span class="string">job</span></span><br><span class="line">    <span class="comment"># 此作业在 Linux 上运行</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">My</span> <span class="string">step</span> <span class="string">one</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">echo</span> <span class="string">"Hello ,Github actions, I'm &gt;&gt;My step one&lt;&lt;"</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">My</span> <span class="string">step</span> <span class="string">two</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        echo "My step one begin..."</span></span><br><span class="line"><span class="string">        echo "doing..."</span></span><br><span class="line"><span class="string">        echo "Finished!!!"</span></span><br><span class="line"><span class="string"></span><span class="attr">  my_second_job:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Demo</span> <span class="string">Second</span> <span class="string">job</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">macos-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">check</span> <span class="string">OS</span> <span class="string">info</span></span><br><span class="line">        <span class="string">run</span> <span class="string">:</span> <span class="string">system_profiler</span> <span class="string">SPSoftwareDataType</span></span><br></pre></td></tr></table></figure>
+<h4 id="1-3-步骤三"><a href="#1-3-步骤三" class="headerlink" title="1.3 步骤三"></a>1.3 步骤三</h4><p>将工作流程文件中的更改提交到您希望其中运行工作流程的分支。</p>
+<p>到这里一个简单的demo就算完成了，可以去 <strong>Actions</strong> 按钮下查看运行情况。</p>
+<h3 id="2-管理工作流"><a href="#2-管理工作流" class="headerlink" title="2.管理工作流"></a>2.管理工作流</h3><p><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run" target="_blank" rel="noopener">官网链接</a>有详细说明以下每个操作中的细节</p>
+<blockquote>
+<p>由于图片太多,就不做搬运工了</p>
+</blockquote>
+<ul>
+<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#about-workflow-permissions" target="_blank" rel="noopener">关于工作流程权限</a></li>
+<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#about-workflow-management" target="_blank" rel="noopener">关于工作流程管理</a></li>
+<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#viewing-your-workflow-history" target="_blank" rel="noopener">查看工作流程历史记录</a></li>
+<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#canceling-a-workflow-run" target="_blank" rel="noopener">取消工作流程运行</a></li>
+<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#viewing-logs-to-diagnose-failures" target="_blank" rel="noopener">查看日志以诊断故障</a></li>
+<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#searching-logs" target="_blank" rel="noopener">搜索日志</a></li>
+<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#downloading-logs" target="_blank" rel="noopener">下载日志</a></li>
+<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#enabling-debug-logging" target="_blank" rel="noopener">启用调试日志</a></li>
 </ul>
 ]]></content>
       <categories>
@@ -809,40 +843,6 @@
 <p><strong>More Ref:</strong></p>
 <ul>
 <li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts" target="_blank" rel="noopener">关于该篇的原文</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>CICD</category>
-      </categories>
-      <tags>
-        <tag>GA</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Github Actions E02最小Demo</title>
-    <url>/2020/03/17/Github-Actions-E02%E6%9C%80%E5%B0%8FDemo/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
-<p><a href="https://www.devops-tech.cn/2020/03/16/Github-Actions-E01/" target="_blank" rel="noopener">前面一篇</a>已经说明一些概念，于是为了更好的理解，直接用一个简单的demo帮助进一步理解概念。</p>
-</blockquote>
-<p>示例仓库： <a href="https://github.com/cicd-draft/api-test-demo" target="_blank" rel="noopener">https://github.com/cicd-draft/api-test-demo</a></p>
-<h3 id="1-配置工作流"><a href="#1-配置工作流" class="headerlink" title="1.配置工作流"></a>1.配置工作流</h3><h4 id="1-1-步骤一"><a href="#1-1-步骤一" class="headerlink" title="1.1 步骤一"></a>1.1 步骤一</h4><p>在仓库的根目录，创建名为 .github/workflows 的目录以存储工作流程文件。</p>
-<h4 id="1-2-步骤二"><a href="#1-2-步骤二" class="headerlink" title="1.2 步骤二"></a>1.2 步骤二</h4><p>在 <code>.github/workflows</code> 中，为工作流程添加 .yml 或 .yaml 文件。 例如 .github/workflows/demo.yml。</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">my</span> <span class="string">workflow</span> <span class="string">demo</span> </span><br><span class="line"></span><br><span class="line"><span class="comment"># 此处使用最常见的触发方法，还有其他的很多方法可满足不同需求</span></span><br><span class="line"><span class="attr">on:</span> </span><br><span class="line"><span class="attr">  push:</span></span><br><span class="line"><span class="attr">    branches:</span> </span><br><span class="line"><span class="bullet">      -</span> <span class="string">master</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">#工作流程运行包括一项或多项作业。 作业默认是并行运行。 要按顺序运行作业，needs 关键词在其他作业上定义依赖项。</span></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="comment">#每项作业必须关联一个 ID。&lt;job_id&gt; 必须以字母或 _ 开头</span></span><br><span class="line"><span class="attr">  my_first_job:</span></span><br><span class="line">    <span class="comment"># 作业1名称为 Demo First job,也是作业显示在 GitHub 上的名称。</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Demo</span> <span class="string">First</span> <span class="string">job</span></span><br><span class="line">    <span class="comment"># 此作业在 Linux 上运行</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">My</span> <span class="string">step</span> <span class="string">one</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">echo</span> <span class="string">"Hello ,Github actions, I'm &gt;&gt;My step one&lt;&lt;"</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">My</span> <span class="string">step</span> <span class="string">two</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        echo "My step one begin..."</span></span><br><span class="line"><span class="string">        echo "doing..."</span></span><br><span class="line"><span class="string">        echo "Finished!!!"</span></span><br><span class="line"><span class="string"></span><span class="attr">  my_second_job:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Demo</span> <span class="string">Second</span> <span class="string">job</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">macos-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">check</span> <span class="string">OS</span> <span class="string">info</span></span><br><span class="line">        <span class="string">run</span> <span class="string">:</span> <span class="string">system_profiler</span> <span class="string">SPSoftwareDataType</span></span><br></pre></td></tr></table></figure>
-<h4 id="1-3-步骤三"><a href="#1-3-步骤三" class="headerlink" title="1.3 步骤三"></a>1.3 步骤三</h4><p>将工作流程文件中的更改提交到您希望其中运行工作流程的分支。</p>
-<p>到这里一个简单的demo就算完成了，可以去 <strong>Actions</strong> 按钮下查看运行情况。</p>
-<h3 id="2-管理工作流"><a href="#2-管理工作流" class="headerlink" title="2.管理工作流"></a>2.管理工作流</h3><p><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run" target="_blank" rel="noopener">官网链接</a>有详细说明以下每个操作中的细节</p>
-<blockquote>
-<p>由于图片太多,就不做搬运工了</p>
-</blockquote>
-<ul>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#about-workflow-permissions" target="_blank" rel="noopener">关于工作流程权限</a></li>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#about-workflow-management" target="_blank" rel="noopener">关于工作流程管理</a></li>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#viewing-your-workflow-history" target="_blank" rel="noopener">查看工作流程历史记录</a></li>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#canceling-a-workflow-run" target="_blank" rel="noopener">取消工作流程运行</a></li>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#viewing-logs-to-diagnose-failures" target="_blank" rel="noopener">查看日志以诊断故障</a></li>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#searching-logs" target="_blank" rel="noopener">搜索日志</a></li>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#downloading-logs" target="_blank" rel="noopener">下载日志</a></li>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#enabling-debug-logging" target="_blank" rel="noopener">启用调试日志</a></li>
 </ul>
 ]]></content>
       <categories>
@@ -1117,24 +1117,6 @@
       </tags>
   </entry>
   <entry>
-    <title>How to Create Custom iTerm2 Window</title>
-    <url>/2019/04/18/How-to-Create-Custom-iTerm2-Window/</url>
-    <content><![CDATA[<h4 id="1-Open-iTerm-preferences-setting-打开偏好设置"><a href="#1-Open-iTerm-preferences-setting-打开偏好设置" class="headerlink" title="1.Open iTerm preferences setting (打开偏好设置)"></a>1.Open iTerm preferences setting (打开偏好设置)</h4><p><img src="/images/iterm_image_01.png" alt="iterm_image_01"></p>
-<h4 id="2-New-add-a-profile-新加一个配置"><a href="#2-New-add-a-profile-新加一个配置" class="headerlink" title="2.New add a profile (新加一个配置)"></a>2.New add a profile (新加一个配置)</h4><p><img src="/images/iterm_image_02.png" alt="iterm_image_02"></p>
-<h4 id="3-Setting-windows-name-etc-（定义名称，窗口高度，宽度等）"><a href="#3-Setting-windows-name-etc-（定义名称，窗口高度，宽度等）" class="headerlink" title="3.Setting windows name etc （定义名称，窗口高度，宽度等）"></a>3.Setting windows name etc （定义名称，窗口高度，宽度等）</h4><p><img src="/images/iterm_image_03.png" alt="iterm_image_03"></p>
-<p><img src="/images/iterm_image_04.png" alt="iterm_image_04"></p>
-<h4 id="4-define-hotkey-定义快捷键"><a href="#4-define-hotkey-定义快捷键" class="headerlink" title="4.define hotkey (定义快捷键)"></a>4.define hotkey (定义快捷键)</h4><p><img src="/images/iterm_image_05.png" alt="iterm_image_05"></p>
-<p><img src="/images/iterm_image_06.png" alt="iterm_image_06"></p>
-<h4 id="Finally-使用快捷键"><a href="#Finally-使用快捷键" class="headerlink" title="Finally 使用快捷键"></a>Finally 使用快捷键</h4><p>按 <strong>一次</strong> 出现窗口，<strong>再按一次</strong> 窗口消失。如果是多屏，可以在不同屏幕下调用出来，会话内容仍保持着。</p>
-]]></content>
-      <categories>
-        <category>Tools</category>
-      </categories>
-      <tags>
-        <tag>Tools</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Github Actions E08插播一条消息</title>
     <url>/2020/04/19/Github-Actions-E08%E6%8F%92%E6%92%AD%E4%B8%80%E6%9D%A1%E6%B6%88%E6%81%AF/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
@@ -1184,6 +1166,24 @@
       </categories>
       <tags>
         <tag>GA</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>How to Create Custom iTerm2 Window</title>
+    <url>/2019/04/18/How-to-Create-Custom-iTerm2-Window/</url>
+    <content><![CDATA[<h4 id="1-Open-iTerm-preferences-setting-打开偏好设置"><a href="#1-Open-iTerm-preferences-setting-打开偏好设置" class="headerlink" title="1.Open iTerm preferences setting (打开偏好设置)"></a>1.Open iTerm preferences setting (打开偏好设置)</h4><p><img src="/images/iterm_image_01.png" alt="iterm_image_01"></p>
+<h4 id="2-New-add-a-profile-新加一个配置"><a href="#2-New-add-a-profile-新加一个配置" class="headerlink" title="2.New add a profile (新加一个配置)"></a>2.New add a profile (新加一个配置)</h4><p><img src="/images/iterm_image_02.png" alt="iterm_image_02"></p>
+<h4 id="3-Setting-windows-name-etc-（定义名称，窗口高度，宽度等）"><a href="#3-Setting-windows-name-etc-（定义名称，窗口高度，宽度等）" class="headerlink" title="3.Setting windows name etc （定义名称，窗口高度，宽度等）"></a>3.Setting windows name etc （定义名称，窗口高度，宽度等）</h4><p><img src="/images/iterm_image_03.png" alt="iterm_image_03"></p>
+<p><img src="/images/iterm_image_04.png" alt="iterm_image_04"></p>
+<h4 id="4-define-hotkey-定义快捷键"><a href="#4-define-hotkey-定义快捷键" class="headerlink" title="4.define hotkey (定义快捷键)"></a>4.define hotkey (定义快捷键)</h4><p><img src="/images/iterm_image_05.png" alt="iterm_image_05"></p>
+<p><img src="/images/iterm_image_06.png" alt="iterm_image_06"></p>
+<h4 id="Finally-使用快捷键"><a href="#Finally-使用快捷键" class="headerlink" title="Finally 使用快捷键"></a>Finally 使用快捷键</h4><p>按 <strong>一次</strong> 出现窗口，<strong>再按一次</strong> 窗口消失。如果是多屏，可以在不同屏幕下调用出来，会话内容仍保持着。</p>
+]]></content>
+      <categories>
+        <category>Tools</category>
+      </categories>
+      <tags>
+        <tag>Tools</tag>
       </tags>
   </entry>
   <entry>
@@ -1381,31 +1381,6 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>Makefile 102:Variable</title>
-    <url>/2019/07/05/Makefile-102-Variable/</url>
-    <content><![CDATA[<h5 id="Variables-common-use"><a href="#Variables-common-use" class="headerlink" title="Variables (common use)"></a>Variables (common use)</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">origin_file = hello.c</span><br><span class="line"></span><br><span class="line">hellofrommakefile: $(origin_file)</span><br><span class="line">	gcc hello.c -o hellofrommakefile</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">env := <span class="string">"local"</span></span><br><span class="line"></span><br><span class="line">task1:</span><br><span class="line">	@<span class="built_in">echo</span> <span class="string">"hello ,task1"</span></span><br><span class="line">	@<span class="built_in">echo</span> <span class="string">"This is environment: <span class="variable">$(env)</span></span></span><br></pre></td></tr></table></figure>
-<p>设置变量 env，如果在执行make时不传值，则使用默认值 local, 输出如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 不给env值</span></span><br><span class="line">make</span><br><span class="line">hello ,task1</span><br><span class="line">This is env: <span class="built_in">local</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 给env=uat</span></span><br><span class="line">make  env=uat</span><br><span class="line">hello ,task1</span><br><span class="line">This is env: uat</span><br></pre></td></tr></table></figure>
-<h5 id="Automatic-Variables-自动变量"><a href="#Automatic-Variables-自动变量" class="headerlink" title="Automatic Variables(自动变量)"></a>Automatic Variables(自动变量)</h5><p>makefile 中有一些预定义的变量，你可以理解它像是 C 语言中的一些关键字，分别有不同的意义，我们列举几个常用的自动变量，<a href="https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html#Automatic-Variables" target="_blank" rel="noopener">其他还有很多</a></p>
-<p>$@：在命令中使用，表示规则中的目标<br>$&lt;：在命令中使用，表示规则中的第一个条件<br>$^：在命令中使用，表示规则中的所有条件，组成一个列表，以空格隔开，如果这个列表中有重复的项则消除重复项。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hellofrommakefile: hello.c</span><br><span class="line">	gcc hello.c -o hellofrommakefile</span><br></pre></td></tr></table></figure>
-<p>等价于<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hellofrommakefile: hello.c</span><br><span class="line">	gcc hello.c -o <span class="variable">$@</span></span><br></pre></td></tr></table></figure></p>
-<h5 id="mplicit-Variables-内置变量"><a href="#mplicit-Variables-内置变量" class="headerlink" title="mplicit Variables(内置变量)"></a>mplicit Variables(内置变量)</h5><p>Make命令提供一系列内置变量，比如，$(CC) 指向当前使用的编译器，$(MAKE) 指向当前使用的Make工具。这主要是为了跨平台的兼容性，详细的内置变量清单见<a href="https://www.gnu.org/software/make/manual/html_node/Implicit-Variables.html" target="_blank" rel="noopener">ta</a>。</p>
-<p><strong>More Ref:</strong></p>
-<ul>
-<li><a href="http://www.chiark.greenend.org.uk/doc/make-doc/make.html/Using-Variables.html" target="_blank" rel="noopener">http://www.chiark.greenend.org.uk/doc/make-doc/make.html/Using-Variables.html</a></li>
-<li><a href="https://www.gnu.org/software/make/manual/html_node/Implicit-Variables.html" target="_blank" rel="noopener">https://www.gnu.org/software/make/manual/html_node/Implicit-Variables.html</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>makefile</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Makefile 103: all &amp; clean</title>
     <url>/2019/07/05/Makefile-103-all-clean/</url>
     <content><![CDATA[<h5 id="makefile-中的all"><a href="#makefile-中的all" class="headerlink" title="makefile 中的all"></a>makefile 中的all</h5><p>因为 makefile 的执行流程是找到第一个目标作为最终生成的目标，如果顺序错乱了，makefile 就可能报错，all 方法就是解决这个问题而存在的，并且，all 方法可以让一个 makefile 生成多个目标。示例如下：</p>
@@ -1519,6 +1494,31 @@ pipeline {
       <tags>
         <tag>Tools</tag>
         <tag>PPT</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Makefile 102:Variable</title>
+    <url>/2019/07/05/Makefile-102-Variable/</url>
+    <content><![CDATA[<h5 id="Variables-common-use"><a href="#Variables-common-use" class="headerlink" title="Variables (common use)"></a>Variables (common use)</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">origin_file = hello.c</span><br><span class="line"></span><br><span class="line">hellofrommakefile: $(origin_file)</span><br><span class="line">	gcc hello.c -o hellofrommakefile</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">env := <span class="string">"local"</span></span><br><span class="line"></span><br><span class="line">task1:</span><br><span class="line">	@<span class="built_in">echo</span> <span class="string">"hello ,task1"</span></span><br><span class="line">	@<span class="built_in">echo</span> <span class="string">"This is environment: <span class="variable">$(env)</span></span></span><br></pre></td></tr></table></figure>
+<p>设置变量 env，如果在执行make时不传值，则使用默认值 local, 输出如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 不给env值</span></span><br><span class="line">make</span><br><span class="line">hello ,task1</span><br><span class="line">This is env: <span class="built_in">local</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 给env=uat</span></span><br><span class="line">make  env=uat</span><br><span class="line">hello ,task1</span><br><span class="line">This is env: uat</span><br></pre></td></tr></table></figure>
+<h5 id="Automatic-Variables-自动变量"><a href="#Automatic-Variables-自动变量" class="headerlink" title="Automatic Variables(自动变量)"></a>Automatic Variables(自动变量)</h5><p>makefile 中有一些预定义的变量，你可以理解它像是 C 语言中的一些关键字，分别有不同的意义，我们列举几个常用的自动变量，<a href="https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html#Automatic-Variables" target="_blank" rel="noopener">其他还有很多</a></p>
+<p>$@：在命令中使用，表示规则中的目标<br>$&lt;：在命令中使用，表示规则中的第一个条件<br>$^：在命令中使用，表示规则中的所有条件，组成一个列表，以空格隔开，如果这个列表中有重复的项则消除重复项。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hellofrommakefile: hello.c</span><br><span class="line">	gcc hello.c -o hellofrommakefile</span><br></pre></td></tr></table></figure>
+<p>等价于<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hellofrommakefile: hello.c</span><br><span class="line">	gcc hello.c -o <span class="variable">$@</span></span><br></pre></td></tr></table></figure></p>
+<h5 id="mplicit-Variables-内置变量"><a href="#mplicit-Variables-内置变量" class="headerlink" title="mplicit Variables(内置变量)"></a>mplicit Variables(内置变量)</h5><p>Make命令提供一系列内置变量，比如，$(CC) 指向当前使用的编译器，$(MAKE) 指向当前使用的Make工具。这主要是为了跨平台的兼容性，详细的内置变量清单见<a href="https://www.gnu.org/software/make/manual/html_node/Implicit-Variables.html" target="_blank" rel="noopener">ta</a>。</p>
+<p><strong>More Ref:</strong></p>
+<ul>
+<li><a href="http://www.chiark.greenend.org.uk/doc/make-doc/make.html/Using-Variables.html" target="_blank" rel="noopener">http://www.chiark.greenend.org.uk/doc/make-doc/make.html/Using-Variables.html</a></li>
+<li><a href="https://www.gnu.org/software/make/manual/html_node/Implicit-Variables.html" target="_blank" rel="noopener">https://www.gnu.org/software/make/manual/html_node/Implicit-Variables.html</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>makefile</tag>
       </tags>
   </entry>
   <entry>
@@ -2169,38 +2169,6 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>devops 4大支柱</title>
-    <url>/2019/10/17/devops-4%E5%A4%A7%E6%94%AF%E6%9F%B1/</url>
-    <content><![CDATA[<h3 id="一、个人感想"><a href="#一、个人感想" class="headerlink" title="一、个人感想"></a>一、个人感想</h3><p>  书中的标题看起来总是“高大上”的，但说出来的都是一些无形的东西，要理解这类理念需要时间的积累。这里先摘抄几句，一起“品味”一下。其中许多文化、方法论与现在的外企公司比较吻合，相对理解起来容易些; 书中涉及到了很多细节，比如 <em>招聘和面试（p250）</em>, <em>当责文化(p269)</em>、<em>显性文化(p270)</em> 、<em>报酬（p241）</em>等，都值得去了解和追寻。</p>
-<ul>
-<li><p>“Patrick Debois说过，devops是一个 <strong>人类问题</strong> ，这说明每个组织都有该组织中的人特有的一种devops文化。”（p67）</p>
-</li>
-<li><p>“要实现成功的devops变革，有效的工具使用当然是必要的，但这些还不够…..实际上，解决组织中出现的人际冲突和团队之间的冲突对于培养持久的关系并最终形成一个 <strong>devops环境</strong> 至关重要。”（p67）</p>
-</li>
-<li><p>“基于有效实现devops的4大支柱，可以解决影响软件开发的 <strong>文化</strong> 和 <strong>技术问题</strong>。”（p69）</p>
-</li>
-<li><p>“工具的价值和成本是不一样的。… 即使是几乎所有人都认为很重要的工具（如配置管理或源码控制工具）也有不同，有些可能对某个特定的环境更为使用。<br>根据经验、知识和流程的不同，工具也有变化。  工具必须适应环境的上下文。如果没有上下文，最好的工具就无从谈起，而上下文是不断变化的。” （p189）</p>
-</li>
-<li><p>“工具不能与有效实现devops的另外3各支柱完全分离。最终工具还是要由人来使用…工具不仅影响我们如何工作和交互，也会受其影响…”（p220）</p>
-</li>
-</ul>
-<h3 id="二、基本套路"><a href="#二、基本套路" class="headerlink" title="二、基本套路"></a>二、基本套路</h3><p>4个章节基本套路如下</p>
-<ol>
-<li><p>解释 XX,定义 XX，附带研究一个案例</p>
-</li>
-<li><p>说明<strong>误区</strong> 告诉我们什么样的情形我们理解错误</p>
-</li>
-<li><p>说明<strong>错误排查</strong> 告诉我们如何处理困境，并根据情况解决问题</p>
-</li>
-</ol>
-<h3 id="三、脑图"><a href="#三、脑图" class="headerlink" title="三、脑图"></a>三、脑图</h3><p>见下方<br><img src="/images/devops_4pillars.png" alt="devops 4 pillars"></p>
-<p>原始地址：<a href="https://mubu.com/docfgrtOS4mn0" target="_blank" rel="noopener">https://mubu.com/docfgrtOS4mn0</a></p>
-]]></content>
-      <categories>
-        <category>读书笔记</category>
-      </categories>
-  </entry>
-  <entry>
     <title>&#39;devops&#39; 还是 &#39;DevOps&#39;?</title>
     <url>/2019/10/08/devops-%E8%BF%98%E6%98%AF-DevOps/</url>
     <content><![CDATA[<h3 id="1-什么是-devops-还是-DevOps"><a href="#1-什么是-devops-还是-DevOps" class="headerlink" title="1. 什么是 devops,还是 DevOps"></a>1. 什么是 devops,还是 DevOps</h3><p>  最近在阅读 《Effective DevOps》（中文版） 时看到一些有趣的内容，如标题所问到的 – <u>devops 还是 DevOps?</u> (P6)。<br>  接触这个概念已经2年左右，自身的职位名称也是这个单词，但从来也没有思考过这个问题，而该书的作者在前言中提出来了，不得不说思维之严谨。不妨读者自身也想一想，到底那个更合适，为什么？</p>
@@ -2239,6 +2207,38 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>devops 4大支柱</title>
+    <url>/2019/10/17/devops-4%E5%A4%A7%E6%94%AF%E6%9F%B1/</url>
+    <content><![CDATA[<h3 id="一、个人感想"><a href="#一、个人感想" class="headerlink" title="一、个人感想"></a>一、个人感想</h3><p>  书中的标题看起来总是“高大上”的，但说出来的都是一些无形的东西，要理解这类理念需要时间的积累。这里先摘抄几句，一起“品味”一下。其中许多文化、方法论与现在的外企公司比较吻合，相对理解起来容易些; 书中涉及到了很多细节，比如 <em>招聘和面试（p250）</em>, <em>当责文化(p269)</em>、<em>显性文化(p270)</em> 、<em>报酬（p241）</em>等，都值得去了解和追寻。</p>
+<ul>
+<li><p>“Patrick Debois说过，devops是一个 <strong>人类问题</strong> ，这说明每个组织都有该组织中的人特有的一种devops文化。”（p67）</p>
+</li>
+<li><p>“要实现成功的devops变革，有效的工具使用当然是必要的，但这些还不够…..实际上，解决组织中出现的人际冲突和团队之间的冲突对于培养持久的关系并最终形成一个 <strong>devops环境</strong> 至关重要。”（p67）</p>
+</li>
+<li><p>“基于有效实现devops的4大支柱，可以解决影响软件开发的 <strong>文化</strong> 和 <strong>技术问题</strong>。”（p69）</p>
+</li>
+<li><p>“工具的价值和成本是不一样的。… 即使是几乎所有人都认为很重要的工具（如配置管理或源码控制工具）也有不同，有些可能对某个特定的环境更为使用。<br>根据经验、知识和流程的不同，工具也有变化。  工具必须适应环境的上下文。如果没有上下文，最好的工具就无从谈起，而上下文是不断变化的。” （p189）</p>
+</li>
+<li><p>“工具不能与有效实现devops的另外3各支柱完全分离。最终工具还是要由人来使用…工具不仅影响我们如何工作和交互，也会受其影响…”（p220）</p>
+</li>
+</ul>
+<h3 id="二、基本套路"><a href="#二、基本套路" class="headerlink" title="二、基本套路"></a>二、基本套路</h3><p>4个章节基本套路如下</p>
+<ol>
+<li><p>解释 XX,定义 XX，附带研究一个案例</p>
+</li>
+<li><p>说明<strong>误区</strong> 告诉我们什么样的情形我们理解错误</p>
+</li>
+<li><p>说明<strong>错误排查</strong> 告诉我们如何处理困境，并根据情况解决问题</p>
+</li>
+</ol>
+<h3 id="三、脑图"><a href="#三、脑图" class="headerlink" title="三、脑图"></a>三、脑图</h3><p>见下方<br><img src="/images/devops_4pillars.png" alt="devops 4 pillars"></p>
+<p>原始地址：<a href="https://mubu.com/docfgrtOS4mn0" target="_blank" rel="noopener">https://mubu.com/docfgrtOS4mn0</a></p>
+]]></content>
+      <categories>
+        <category>读书笔记</category>
+      </categories>
+  </entry>
+  <entry>
     <title>docker 镜像的扁平化</title>
     <url>/2019/07/25/docker-%E9%95%9C%E5%83%8F%E7%9A%84%E6%89%81%E5%B9%B3%E5%8C%96/</url>
     <content><![CDATA[<blockquote>
@@ -2254,57 +2254,6 @@ pipeline {
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   docker run -d mysecret /bin/<span class="literal">true</span></span><br><span class="line">02cbd0f59623472acc4571c1b654cdca40730d036d7a96a7dbaacaaf264177aa</span><br><span class="line">➜   docker <span class="built_in">export</span> 02cbd0f5962 | docker import - mysecret</span><br><span class="line">sha256:080b122e43cb5d46efec5aa0b6abd0570e1abc52b3293f77b091bf22722c1168</span><br><span class="line">➜   docker <span class="built_in">history</span> mysecret</span><br><span class="line">IMAGE               CREATED             CREATED BY          SIZE                COMMENT</span><br><span class="line">080b122e43cb        9 seconds ago                           1.15MB              Imported from -</span><br></pre></td></tr></table></figure>]]></content>
       <tags>
         <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>docker 镜像逆向工程得到Dockerfile</title>
-    <url>/2019/07/25/docker-%E9%95%9C%E5%83%8F%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E5%BE%97%E5%88%B0Dockerfile/</url>
-    <content><![CDATA[<p>可能有时候你得到了一个从Dockerfile创建的镜像文件，但是原始的Dockerfile丢失了。你想从这个镜像文件的构建历史记录中，逆向分析出原始的Dockerfile而省去寻找此文件的漫长过程。</p>
-<p>虽然不可能在所有的情况下将一个Docker镜像完全得进行逆向工程，但如果此镜像是通过Dockerfile构建的，很有可能分析出此镜像是通过了什么命令得到的。我们以下面的Dockerfile为例，构建一个镜像，然后运行一个简单的shell脚本来演示如何分析镜像的构建历史记录，最后来看一个简洁的容器化的解决方案，来得出原始的Dockerfile。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">FROM busybox</span><br><span class="line">MAINTAINER ian.miell@gmail.com</span><br><span class="line">ENV myenvname myenvvalue</span><br><span class="line">LABEL mylabelname mylabelvalue</span><br><span class="line">WORKDIR /opt</span><br><span class="line">RUN mkdir -p copied</span><br><span class="line">COPY Dockerfile copied/Dockerfile</span><br><span class="line">RUN mkdir -p added</span><br><span class="line">ADD Dockerfile added/Dockerfile</span><br><span class="line">RUN touch /tmp/afile</span><br><span class="line">ADD Dockerfile /</span><br><span class="line">EXPOSE 80</span><br><span class="line">VOLUME /data</span><br><span class="line">ONBUILD touch /tmp/built</span><br><span class="line">ENTRYPOINT /bin/bash</span><br><span class="line">CMD -r</span><br></pre></td></tr></table></figure>
-<p>首先要构建这个示例镜像，镜像命名为reverseme：</p>
-<p><code>$ docker build -t reverseme .</code></p>
-<h5 id="SHELL解决方案"><a href="#SHELL解决方案" class="headerlink" title="SHELL解决方案"></a>SHELL解决方案</h5><p>这个基于shell的实现主要在这里用来演示逆向工程的思路与方法，它与下面的容器化解决方案相比还不是十分完整。此方案使用了docker inspect命令来提取出镜像的metadata。</p>
-<p>此shell脚本中使用了jq程序，一个可以查询和操作JSON数据的工具。为了运行此脚本，需要安装jq程序</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">history</span> reverseme | \</span><br><span class="line">awk <span class="string">'&#123;print $1&#125;'</span> | \</span><br><span class="line">grep -v IMAGE | grep -v missing | \</span><br><span class="line">tac | \</span><br><span class="line">sed <span class="string">"s/\(.*\)/docker inspect \1 | \</span></span><br><span class="line"><span class="string">jq -r \'.[0].ContainerConfig.Cmd[2] | tostring\'/"</span> | \</span><br><span class="line">sh | \</span><br><span class="line">sed <span class="string">'s/^#(nop) //'</span></span><br></pre></td></tr></table></figure>
-<p>上述代码第1行得到了组成指定镜像的层；第2行从docker history输出得到了各层的image ID；第3行排除标题行（带有“IMAGE”的那一行）及IMAGE的 ID为missing的那一行；第4行将镜像ID倒序输出，使其符合Dockerfile的顺序（“tac”是“cat”的倒序）；第5、6行使用前面命令输出的image ID构建一个docker inspect命令，它输出Docker layer metadata。而此metadata通过管道输入到jq命令中，jq命令过滤metadata，获取当时构建此镜像时Dockerfile中使用的命令。第7行运行前面通过sed构建的整个docker inspect管道链。第8行剥离不能更改文件系统的指令——那些以“#(nop)”作为前缀的指令。<br>最后得到的输出结果类似于如下这样：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">.....</span><br><span class="line">CMD [<span class="string">"sh"</span>]</span><br><span class="line">MAINTAINER ian.miell@gmail.com</span><br><span class="line">ENV myenvname=myenvvalue</span><br><span class="line">LABEL mylabelname=mylabelvalue</span><br><span class="line">WORKDIR /opt</span><br><span class="line">mkdir -p copied</span><br><span class="line">COPY file:4d91fcee48e4591e5fdc4b8963892b7d9582524f85f84b33eac5af164f928213 <span class="keyword">in</span> copied/Dockerfile</span><br><span class="line">mkdir -p added</span><br><span class="line">ADD file:4d91fcee48e4591e5fdc4b8963892b7d9582524f85f84b33eac5af164f928213 <span class="keyword">in</span> added/Dockerfile</span><br><span class="line">touch /tmp/afile</span><br><span class="line">ADD file:4d91fcee48e4591e5fdc4b8963892b7d9582524f85f84b33eac5af164f928213 <span class="keyword">in</span> /</span><br><span class="line">EXPOSE 80/tcp</span><br><span class="line">VOLUME [/data]</span><br><span class="line">ONBUILD touch /tmp/built</span><br><span class="line">ENTRYPOINT [<span class="string">"/bin/sh"</span> <span class="string">"-c"</span> <span class="string">"/bin/bash"</span>]</span><br><span class="line">CMD [<span class="string">"/bin/sh"</span> <span class="string">"-c"</span> <span class="string">"-r"</span>]</span><br></pre></td></tr></table></figure></p>
-<p>上面的输出与初始的Dockerfile有些类似了，但还有些区别。FROM指令被替换成了上述CMD指令，丢失了使用的基础镜像BusyBox的信息。ADD和COPY命令没有使用原本的文件名而是使用的校验和（checksum），文件被拷贝到的位置保存了下来。最后，CMD和ENTRYPOINT命令变成了方括号的数组形式。<br>由于缺少构建上下文，使得ADD和COPY命令不能使用，上面逆向工程恢复的Dockerfile并不能不加修改就运行。你需要找出什么文件被添加到构建上下文中。对于前面那个例子来说，你可以启动镜像，进入容器的/opt/copied目录和/opt/added目录，将文件提取出来加入到你的新的构建上下文中。</p>
-<h5 id="容器解决方案"><a href="#容器解决方案" class="headerlink" title="容器解决方案"></a>容器解决方案</h5><p>使用前面的方案得到你感兴趣镜像的信息，是一个有用并且具有指导意义的方法，然而有更加干净的方法来得到同样的结果——使用centurylink/dockerfile-from-image镜像，同时这种方法更容易维护。而且，此方案提供了与原始Dockerfile类似的FROM命令的信息（如果它可以提供的话）：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker run -v /var/run/docker.sock:/var/run/docker.sock \</span><br><span class="line">&gt;   dockerinpractice/dockerfile-from-image reverseme</span><br><span class="line">FROM busybox:latest</span><br><span class="line">MAINTAINER ian.miell@gmail.com</span><br><span class="line">ENV myenvname=myenvvalue</span><br><span class="line">LABEL mylabelname=mylabelvalue</span><br><span class="line">WORKDIR /opt</span><br><span class="line">RUN mkdir -p copied</span><br><span class="line">COPY file:4d91fcee48e4591e5fdc4b8963892b7d9582524f85f84b33eac5af164f928213 <span class="keyword">in</span> copied/Dockerfile</span><br><span class="line">RUN mkdir -p added</span><br><span class="line">ADD file:4d91fcee48e4591e5fdc4b8963892b7d9582524f85f84b33eac5af164f928213 <span class="keyword">in</span> added/Dockerfile</span><br><span class="line">RUN touch /tmp/afile</span><br><span class="line">ADD file:4d91fcee48e4591e5fdc4b8963892b7d9582524f85f84b33eac5af164f928213 <span class="keyword">in</span> /</span><br><span class="line">EXPOSE 80/tcp</span><br><span class="line">VOLUME [/data]</span><br><span class="line">ONBUILD touch /tmp/built</span><br><span class="line">ENTRYPOINT [<span class="string">"/bin/sh"</span> <span class="string">"-c"</span> <span class="string">"/bin/bash"</span>]</span><br><span class="line">CMD [<span class="string">"/bin/sh"</span> <span class="string">"-c"</span> <span class="string">"-r"</span>]</span><br></pre></td></tr></table></figure>
-<p>此技术只适用于基于Dockerfile创建的镜像——如果镜像是通过手工创建然后commit的，镜像间的区别不能体现在镜像的metadata里。</p>
-<p><strong>然而发现有bug</strong>,可参考 <a href="https://github.com/lukapeschke/dockerfile-from-image" target="_blank" rel="noopener">https://github.com/lukapeschke/dockerfile-from-image</a>, 只支持用 image_id ，不能用 image name<br>主要使用方法如下：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">## build the image</span></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/lukapeschke/dockerfile-from-image.git</span><br><span class="line"><span class="built_in">cd</span> dockerfile-from-image</span><br><span class="line">docker build -t lukapeschke/dfa .</span><br><span class="line"></span><br><span class="line"><span class="comment">## To get a Dockerfile from an existing image:</span></span><br><span class="line">docker run --rm -v <span class="string">'/var/run/docker.sock:/var/run/docker.sock'</span> lukapeschke/dfa &lt;IMAGE_ID&gt;</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>出自 《Docker IN PRACTICE》一书</p>
-</blockquote>
-<p><strong>More Ref:</strong><br><a href="https://andyyoung01.github.io/2016/08/23/%E4%BB%8E%E9%95%9C%E5%83%8F%E5%8E%86%E5%8F%B2%E8%AE%B0%E5%BD%95%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E5%87%BADockerfile/" target="_blank" rel="noopener">https://andyyoung01.github.io/2016/08/23/%E4%BB%8E%E9%95%9C%E5%83%8F%E5%8E%86%E5%8F%B2%E8%AE%B0%E5%BD%95%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E5%87%BADockerfile/</a></p>
-]]></content>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>highlight code on slide/ppt</title>
-    <url>/2019/08/22/highlight-code-on-slide-ppt/</url>
-    <content><![CDATA[<p><strong>only for mac</strong></p>
-<p><strong>问题</strong><br>写ppt的时候代码如何呈现，能够看起来比较明显，更好是根据不同语言高亮</p>
-<p><strong>解决方案</strong><br>highlight</p>
-<ol>
-<li><p>Install<br><code>brew install highlight</code></p>
-</li>
-<li><p>Use<br><code>hightlight -l -O rtf your_code.sh | pbcopy</code></p>
-</li>
-</ol>
-<ul>
-<li>hightlight –help 可以查看文档，</li>
-<li>-l 显示行号，-O rtf为格式化输出 rtf 格式文本</li>
-<li>pbcopy 是内置剪贴板</li>
-</ul>
-<p>到PPT里粘贴就行了，Keynote 和 PowerPoint 都可以使用.<br>example:<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  ~ cat output.sh</span><br><span class="line">docker <span class="built_in">exec</span> -it -u root tw-jenkins bash</span><br><span class="line"></span><br><span class="line">chmod 777 /var/run/docker.sock</span><br><span class="line">apt-get update &amp;&amp; \</span><br><span class="line">apt-get -y install apt-transport-https \</span><br><span class="line">     ca-certificates \</span><br><span class="line">     curl \</span><br><span class="line">     gnupg2 \</span><br><span class="line">     software-properties-common &amp;&amp; \</span><br><span class="line">curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; <span class="built_in">echo</span> <span class="string">"<span class="variable">$ID</span>"</span>)/gpg &gt; /tmp/dkey; apt-key add /tmp/dkey &amp;&amp; \</span><br><span class="line">add-apt-repository \</span><br><span class="line">    <span class="string">"deb [arch=amd64] https://download.docker.com/linux/<span class="variable">$(. /etc/os-release; echo     "$ID")</span> \</span></span><br><span class="line"><span class="string">    <span class="variable">$(lsb_release -cs)</span> \</span></span><br><span class="line"><span class="string">stable"</span> &amp;&amp; \</span><br><span class="line">apt-get update &amp;&amp; \</span><br><span class="line">apt-get -y install docker-ce</span><br></pre></td></tr></table></figure></p>
-<p><code>➜  ~ highlight -l -O rtf output.sh | pbcopy</code></p>
-<p><img src="/images/highlight_demo01.png" alt="highlight_demo01.png"></p>
-]]></content>
-      <tags>
-        <tag>PPT</tag>
       </tags>
   </entry>
   <entry>
@@ -2380,41 +2329,54 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>http vs curl</title>
-    <url>/2019/06/19/http-vs-curl/</url>
-    <content><![CDATA[<blockquote>
-<p>http不仅是个协议，还是一个命令。</p>
+    <title>docker 镜像逆向工程得到Dockerfile</title>
+    <url>/2019/07/25/docker-%E9%95%9C%E5%83%8F%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E5%BE%97%E5%88%B0Dockerfile/</url>
+    <content><![CDATA[<p>可能有时候你得到了一个从Dockerfile创建的镜像文件，但是原始的Dockerfile丢失了。你想从这个镜像文件的构建历史记录中，逆向分析出原始的Dockerfile而省去寻找此文件的漫长过程。</p>
+<p>虽然不可能在所有的情况下将一个Docker镜像完全得进行逆向工程，但如果此镜像是通过Dockerfile构建的，很有可能分析出此镜像是通过了什么命令得到的。我们以下面的Dockerfile为例，构建一个镜像，然后运行一个简单的shell脚本来演示如何分析镜像的构建历史记录，最后来看一个简洁的容器化的解决方案，来得出原始的Dockerfile。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">FROM busybox</span><br><span class="line">MAINTAINER ian.miell@gmail.com</span><br><span class="line">ENV myenvname myenvvalue</span><br><span class="line">LABEL mylabelname mylabelvalue</span><br><span class="line">WORKDIR /opt</span><br><span class="line">RUN mkdir -p copied</span><br><span class="line">COPY Dockerfile copied/Dockerfile</span><br><span class="line">RUN mkdir -p added</span><br><span class="line">ADD Dockerfile added/Dockerfile</span><br><span class="line">RUN touch /tmp/afile</span><br><span class="line">ADD Dockerfile /</span><br><span class="line">EXPOSE 80</span><br><span class="line">VOLUME /data</span><br><span class="line">ONBUILD touch /tmp/built</span><br><span class="line">ENTRYPOINT /bin/bash</span><br><span class="line">CMD -r</span><br></pre></td></tr></table></figure>
+<p>首先要构建这个示例镜像，镜像命名为reverseme：</p>
+<p><code>$ docker build -t reverseme .</code></p>
+<h5 id="SHELL解决方案"><a href="#SHELL解决方案" class="headerlink" title="SHELL解决方案"></a>SHELL解决方案</h5><p>这个基于shell的实现主要在这里用来演示逆向工程的思路与方法，它与下面的容器化解决方案相比还不是十分完整。此方案使用了docker inspect命令来提取出镜像的metadata。</p>
+<p>此shell脚本中使用了jq程序，一个可以查询和操作JSON数据的工具。为了运行此脚本，需要安装jq程序</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">history</span> reverseme | \</span><br><span class="line">awk <span class="string">'&#123;print $1&#125;'</span> | \</span><br><span class="line">grep -v IMAGE | grep -v missing | \</span><br><span class="line">tac | \</span><br><span class="line">sed <span class="string">"s/\(.*\)/docker inspect \1 | \</span></span><br><span class="line"><span class="string">jq -r \'.[0].ContainerConfig.Cmd[2] | tostring\'/"</span> | \</span><br><span class="line">sh | \</span><br><span class="line">sed <span class="string">'s/^#(nop) //'</span></span><br></pre></td></tr></table></figure>
+<p>上述代码第1行得到了组成指定镜像的层；第2行从docker history输出得到了各层的image ID；第3行排除标题行（带有“IMAGE”的那一行）及IMAGE的 ID为missing的那一行；第4行将镜像ID倒序输出，使其符合Dockerfile的顺序（“tac”是“cat”的倒序）；第5、6行使用前面命令输出的image ID构建一个docker inspect命令，它输出Docker layer metadata。而此metadata通过管道输入到jq命令中，jq命令过滤metadata，获取当时构建此镜像时Dockerfile中使用的命令。第7行运行前面通过sed构建的整个docker inspect管道链。第8行剥离不能更改文件系统的指令——那些以“#(nop)”作为前缀的指令。<br>最后得到的输出结果类似于如下这样：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">.....</span><br><span class="line">CMD [<span class="string">"sh"</span>]</span><br><span class="line">MAINTAINER ian.miell@gmail.com</span><br><span class="line">ENV myenvname=myenvvalue</span><br><span class="line">LABEL mylabelname=mylabelvalue</span><br><span class="line">WORKDIR /opt</span><br><span class="line">mkdir -p copied</span><br><span class="line">COPY file:4d91fcee48e4591e5fdc4b8963892b7d9582524f85f84b33eac5af164f928213 <span class="keyword">in</span> copied/Dockerfile</span><br><span class="line">mkdir -p added</span><br><span class="line">ADD file:4d91fcee48e4591e5fdc4b8963892b7d9582524f85f84b33eac5af164f928213 <span class="keyword">in</span> added/Dockerfile</span><br><span class="line">touch /tmp/afile</span><br><span class="line">ADD file:4d91fcee48e4591e5fdc4b8963892b7d9582524f85f84b33eac5af164f928213 <span class="keyword">in</span> /</span><br><span class="line">EXPOSE 80/tcp</span><br><span class="line">VOLUME [/data]</span><br><span class="line">ONBUILD touch /tmp/built</span><br><span class="line">ENTRYPOINT [<span class="string">"/bin/sh"</span> <span class="string">"-c"</span> <span class="string">"/bin/bash"</span>]</span><br><span class="line">CMD [<span class="string">"/bin/sh"</span> <span class="string">"-c"</span> <span class="string">"-r"</span>]</span><br></pre></td></tr></table></figure></p>
+<p>上面的输出与初始的Dockerfile有些类似了，但还有些区别。FROM指令被替换成了上述CMD指令，丢失了使用的基础镜像BusyBox的信息。ADD和COPY命令没有使用原本的文件名而是使用的校验和（checksum），文件被拷贝到的位置保存了下来。最后，CMD和ENTRYPOINT命令变成了方括号的数组形式。<br>由于缺少构建上下文，使得ADD和COPY命令不能使用，上面逆向工程恢复的Dockerfile并不能不加修改就运行。你需要找出什么文件被添加到构建上下文中。对于前面那个例子来说，你可以启动镜像，进入容器的/opt/copied目录和/opt/added目录，将文件提取出来加入到你的新的构建上下文中。</p>
+<h5 id="容器解决方案"><a href="#容器解决方案" class="headerlink" title="容器解决方案"></a>容器解决方案</h5><p>使用前面的方案得到你感兴趣镜像的信息，是一个有用并且具有指导意义的方法，然而有更加干净的方法来得到同样的结果——使用centurylink/dockerfile-from-image镜像，同时这种方法更容易维护。而且，此方案提供了与原始Dockerfile类似的FROM命令的信息（如果它可以提供的话）：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker run -v /var/run/docker.sock:/var/run/docker.sock \</span><br><span class="line">&gt;   dockerinpractice/dockerfile-from-image reverseme</span><br><span class="line">FROM busybox:latest</span><br><span class="line">MAINTAINER ian.miell@gmail.com</span><br><span class="line">ENV myenvname=myenvvalue</span><br><span class="line">LABEL mylabelname=mylabelvalue</span><br><span class="line">WORKDIR /opt</span><br><span class="line">RUN mkdir -p copied</span><br><span class="line">COPY file:4d91fcee48e4591e5fdc4b8963892b7d9582524f85f84b33eac5af164f928213 <span class="keyword">in</span> copied/Dockerfile</span><br><span class="line">RUN mkdir -p added</span><br><span class="line">ADD file:4d91fcee48e4591e5fdc4b8963892b7d9582524f85f84b33eac5af164f928213 <span class="keyword">in</span> added/Dockerfile</span><br><span class="line">RUN touch /tmp/afile</span><br><span class="line">ADD file:4d91fcee48e4591e5fdc4b8963892b7d9582524f85f84b33eac5af164f928213 <span class="keyword">in</span> /</span><br><span class="line">EXPOSE 80/tcp</span><br><span class="line">VOLUME [/data]</span><br><span class="line">ONBUILD touch /tmp/built</span><br><span class="line">ENTRYPOINT [<span class="string">"/bin/sh"</span> <span class="string">"-c"</span> <span class="string">"/bin/bash"</span>]</span><br><span class="line">CMD [<span class="string">"/bin/sh"</span> <span class="string">"-c"</span> <span class="string">"-r"</span>]</span><br></pre></td></tr></table></figure>
+<p>此技术只适用于基于Dockerfile创建的镜像——如果镜像是通过手工创建然后commit的，镜像间的区别不能体现在镜像的metadata里。</p>
+<p><strong>然而发现有bug</strong>,可参考 <a href="https://github.com/lukapeschke/dockerfile-from-image" target="_blank" rel="noopener">https://github.com/lukapeschke/dockerfile-from-image</a>, 只支持用 image_id ，不能用 image name<br>主要使用方法如下：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">## build the image</span></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/lukapeschke/dockerfile-from-image.git</span><br><span class="line"><span class="built_in">cd</span> dockerfile-from-image</span><br><span class="line">docker build -t lukapeschke/dfa .</span><br><span class="line"></span><br><span class="line"><span class="comment">## To get a Dockerfile from an existing image:</span></span><br><span class="line">docker run --rm -v <span class="string">'/var/run/docker.sock:/var/run/docker.sock'</span> lukapeschke/dfa &lt;IMAGE_ID&gt;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>出自 《Docker IN PRACTICE》一书</p>
 </blockquote>
-<p>Httpie 是个 HTTP 的命令行客户端，http就是它的命令。</p>
-<h4 id="1-Httpie-是什么"><a href="#1-Httpie-是什么" class="headerlink" title="1. Httpie 是什么"></a>1. Httpie 是什么</h4><p>Httpie （aych-tee-tee-pie）是一个 HTTP 的命令行客户端。其目标是让 CLI 和 web 服务之间的交互尽可能的人性化。你可以用它很方便的用 http 的命令调试接口，最常用的应该就是 GET 和 POST 了。</p>
-<h4 id="2-安装"><a href="#2-安装" class="headerlink" title="2. 安装"></a>2. 安装</h4><p>Linux上安装</p>
-<ul>
-<li><p>Debian, Ubuntu或Linux Mint<br><code>sudo apt-get install httpie</code></p>
-</li>
-<li><p>Fedora，CentOS/RHEL<br><code>sudo yum install httpie</code></p>
-</li>
-</ul>
-<p>或者使用python的方式来安装<br><code>sudo  pip install --upgrade httpie</code></p>
-<ul>
-<li>Mac OSX<br><code>brew install httpie</code></li>
-</ul>
-<h4 id="3-http-command-能做什么"><a href="#3-http-command-能做什么" class="headerlink" title="3. http command 能做什么"></a>3. http command 能做什么</h4><blockquote>
-<p>curl能做的，大部分都能做。</p>
-</blockquote>
-<p>HTTPie 基于 python 编写，内部使用了 Requests 和 Pygments 库。</p>
-<p>HTTPie 的用法要比 cURL 直观很多，没有那么多选项，基本上心里怎么想就怎么写，默认输入和输出都是 json 格式 (而 cURL 必须要指定 -H “Content-Type: application/json”)。我们同样实现上面获取 token 的功能，效果如下:</p>
-<ul>
-<li>example 1:<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  tmp http https://www.devops-tech.cn/</span><br><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Accept-Ranges: bytes</span><br><span class="line">Access-Control-Allow-Origin: *</span><br><span class="line">Age: 7</span><br><span class="line">Cache-Control: max-age=600</span><br><span class="line">Connection: keep-alive</span><br><span class="line">Content-Encoding: gzip</span><br><span class="line">Content-Length: 2510</span><br><span class="line">Content-Type: text/html; charset=utf-8</span><br><span class="line">Date: Wed, 19 Jun 2019 08:28:44 GMT</span><br><span class="line">ETag: W/<span class="string">"5d0848b1-2d66"</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>others<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">http</span><br><span class="line"></span><br><span class="line">HTTPie: HTTP client, a user-friendly cURL replacement.</span><br><span class="line"></span><br><span class="line">- Download a URL to a file:</span><br><span class="line">    http -d example.org</span><br><span class="line"></span><br><span class="line">- Send form-encoded data:</span><br><span class="line">    http -f example.org name=<span class="string">'bob'</span> profile_picture@<span class="string">'bob.png'</span></span><br><span class="line"></span><br><span class="line">- Send JSON object:</span><br><span class="line">    http example.org name=<span class="string">'bob'</span></span><br><span class="line"></span><br><span class="line">- Specify an HTTP method:</span><br><span class="line">    http HEAD example.org</span><br><span class="line"></span><br><span class="line">- Include an extra header:</span><br><span class="line">    http example.org X-MyHeader:123</span><br><span class="line"></span><br><span class="line">- Pass a user name and password <span class="keyword">for</span> server authentication:</span><br><span class="line">    http -a username:password example.org</span><br><span class="line"></span><br><span class="line">- Specify raw request body via stdin:</span><br><span class="line">    cat data.txt | http PUT example.org</span><br></pre></td></tr></table></figure></p>
-<h4 id="4-特点："><a href="#4-特点：" class="headerlink" title="4. 特点："></a>4. 特点：</h4><p>1、直观的语法<br>2、格式化和色彩化的终端输出<br>3、内置 JSON 支持<br>4、支持上传表单和文件<br>5、HTTPS、代理和认证支持<br>6、支持任意请求数据<br>7、自定义标题<br>8、持久性会话<br>9、类 Wget 下载<br>10、支持 Python 2.6, 2.7 和 3.x<br>11、支持 Linux, Mac OS X 和 Windows<br>12、插件<br>13、文档<br>14、测试覆盖率</p>
+<p><strong>More Ref:</strong><br><a href="https://andyyoung01.github.io/2016/08/23/%E4%BB%8E%E9%95%9C%E5%83%8F%E5%8E%86%E5%8F%B2%E8%AE%B0%E5%BD%95%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E5%87%BADockerfile/" target="_blank" rel="noopener">https://andyyoung01.github.io/2016/08/23/%E4%BB%8E%E9%95%9C%E5%83%8F%E5%8E%86%E5%8F%B2%E8%AE%B0%E5%BD%95%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E5%87%BADockerfile/</a></p>
 ]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
       <tags>
-        <tag>Shell</tag>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>highlight code on slide/ppt</title>
+    <url>/2019/08/22/highlight-code-on-slide-ppt/</url>
+    <content><![CDATA[<p><strong>only for mac</strong></p>
+<p><strong>问题</strong><br>写ppt的时候代码如何呈现，能够看起来比较明显，更好是根据不同语言高亮</p>
+<p><strong>解决方案</strong><br>highlight</p>
+<ol>
+<li><p>Install<br><code>brew install highlight</code></p>
+</li>
+<li><p>Use<br><code>hightlight -l -O rtf your_code.sh | pbcopy</code></p>
+</li>
+</ol>
+<ul>
+<li>hightlight –help 可以查看文档，</li>
+<li>-l 显示行号，-O rtf为格式化输出 rtf 格式文本</li>
+<li>pbcopy 是内置剪贴板</li>
+</ul>
+<p>到PPT里粘贴就行了，Keynote 和 PowerPoint 都可以使用.<br>example:<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  ~ cat output.sh</span><br><span class="line">docker <span class="built_in">exec</span> -it -u root tw-jenkins bash</span><br><span class="line"></span><br><span class="line">chmod 777 /var/run/docker.sock</span><br><span class="line">apt-get update &amp;&amp; \</span><br><span class="line">apt-get -y install apt-transport-https \</span><br><span class="line">     ca-certificates \</span><br><span class="line">     curl \</span><br><span class="line">     gnupg2 \</span><br><span class="line">     software-properties-common &amp;&amp; \</span><br><span class="line">curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; <span class="built_in">echo</span> <span class="string">"<span class="variable">$ID</span>"</span>)/gpg &gt; /tmp/dkey; apt-key add /tmp/dkey &amp;&amp; \</span><br><span class="line">add-apt-repository \</span><br><span class="line">    <span class="string">"deb [arch=amd64] https://download.docker.com/linux/<span class="variable">$(. /etc/os-release; echo     "$ID")</span> \</span></span><br><span class="line"><span class="string">    <span class="variable">$(lsb_release -cs)</span> \</span></span><br><span class="line"><span class="string">stable"</span> &amp;&amp; \</span><br><span class="line">apt-get update &amp;&amp; \</span><br><span class="line">apt-get -y install docker-ce</span><br></pre></td></tr></table></figure></p>
+<p><code>➜  ~ highlight -l -O rtf output.sh | pbcopy</code></p>
+<p><img src="/images/highlight_demo01.png" alt="highlight_demo01.png"></p>
+]]></content>
+      <tags>
+        <tag>PPT</tag>
       </tags>
   </entry>
   <entry>
@@ -2484,6 +2446,44 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>http vs curl</title>
+    <url>/2019/06/19/http-vs-curl/</url>
+    <content><![CDATA[<blockquote>
+<p>http不仅是个协议，还是一个命令。</p>
+</blockquote>
+<p>Httpie 是个 HTTP 的命令行客户端，http就是它的命令。</p>
+<h4 id="1-Httpie-是什么"><a href="#1-Httpie-是什么" class="headerlink" title="1. Httpie 是什么"></a>1. Httpie 是什么</h4><p>Httpie （aych-tee-tee-pie）是一个 HTTP 的命令行客户端。其目标是让 CLI 和 web 服务之间的交互尽可能的人性化。你可以用它很方便的用 http 的命令调试接口，最常用的应该就是 GET 和 POST 了。</p>
+<h4 id="2-安装"><a href="#2-安装" class="headerlink" title="2. 安装"></a>2. 安装</h4><p>Linux上安装</p>
+<ul>
+<li><p>Debian, Ubuntu或Linux Mint<br><code>sudo apt-get install httpie</code></p>
+</li>
+<li><p>Fedora，CentOS/RHEL<br><code>sudo yum install httpie</code></p>
+</li>
+</ul>
+<p>或者使用python的方式来安装<br><code>sudo  pip install --upgrade httpie</code></p>
+<ul>
+<li>Mac OSX<br><code>brew install httpie</code></li>
+</ul>
+<h4 id="3-http-command-能做什么"><a href="#3-http-command-能做什么" class="headerlink" title="3. http command 能做什么"></a>3. http command 能做什么</h4><blockquote>
+<p>curl能做的，大部分都能做。</p>
+</blockquote>
+<p>HTTPie 基于 python 编写，内部使用了 Requests 和 Pygments 库。</p>
+<p>HTTPie 的用法要比 cURL 直观很多，没有那么多选项，基本上心里怎么想就怎么写，默认输入和输出都是 json 格式 (而 cURL 必须要指定 -H “Content-Type: application/json”)。我们同样实现上面获取 token 的功能，效果如下:</p>
+<ul>
+<li>example 1:<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  tmp http https://www.devops-tech.cn/</span><br><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Accept-Ranges: bytes</span><br><span class="line">Access-Control-Allow-Origin: *</span><br><span class="line">Age: 7</span><br><span class="line">Cache-Control: max-age=600</span><br><span class="line">Connection: keep-alive</span><br><span class="line">Content-Encoding: gzip</span><br><span class="line">Content-Length: 2510</span><br><span class="line">Content-Type: text/html; charset=utf-8</span><br><span class="line">Date: Wed, 19 Jun 2019 08:28:44 GMT</span><br><span class="line">ETag: W/<span class="string">"5d0848b1-2d66"</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>others<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">http</span><br><span class="line"></span><br><span class="line">HTTPie: HTTP client, a user-friendly cURL replacement.</span><br><span class="line"></span><br><span class="line">- Download a URL to a file:</span><br><span class="line">    http -d example.org</span><br><span class="line"></span><br><span class="line">- Send form-encoded data:</span><br><span class="line">    http -f example.org name=<span class="string">'bob'</span> profile_picture@<span class="string">'bob.png'</span></span><br><span class="line"></span><br><span class="line">- Send JSON object:</span><br><span class="line">    http example.org name=<span class="string">'bob'</span></span><br><span class="line"></span><br><span class="line">- Specify an HTTP method:</span><br><span class="line">    http HEAD example.org</span><br><span class="line"></span><br><span class="line">- Include an extra header:</span><br><span class="line">    http example.org X-MyHeader:123</span><br><span class="line"></span><br><span class="line">- Pass a user name and password <span class="keyword">for</span> server authentication:</span><br><span class="line">    http -a username:password example.org</span><br><span class="line"></span><br><span class="line">- Specify raw request body via stdin:</span><br><span class="line">    cat data.txt | http PUT example.org</span><br></pre></td></tr></table></figure></p>
+<h4 id="4-特点："><a href="#4-特点：" class="headerlink" title="4. 特点："></a>4. 特点：</h4><p>1、直观的语法<br>2、格式化和色彩化的终端输出<br>3、内置 JSON 支持<br>4、支持上传表单和文件<br>5、HTTPS、代理和认证支持<br>6、支持任意请求数据<br>7、自定义标题<br>8、持久性会话<br>9、类 Wget 下载<br>10、支持 Python 2.6, 2.7 和 3.x<br>11、支持 Linux, Mac OS X 和 Windows<br>12、插件<br>13、文档<br>14、测试覆盖率</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Shell</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ngrok demo</title>
     <url>/2019/07/22/ngrok-demo/</url>
     <content><![CDATA[<h3 id="怎么用"><a href="#怎么用" class="headerlink" title="怎么用"></a>怎么用</h3><p><a href="https://dashboard.ngrok.com/get-started" target="_blank" rel="noopener">https://dashboard.ngrok.com/get-started</a><br><img src="/images/ngrok_demo_01.png" alt="ngrok_demo_01"></p>
@@ -2510,6 +2510,17 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>packer intro</title>
+    <url>/2019/08/30/packer-intro/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>packer</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>python module SimpleHTTPServer</title>
     <url>/2019/08/18/python-module-SimpleHTTPServer/</url>
     <content><![CDATA[<h3 id="what-is"><a href="#what-is" class="headerlink" title="what is"></a>what is</h3><p>The <strong>SimpleHTTPServer</strong> module can be used in the following manner in order to set up a very basic web server serving files <strong>relative</strong> to the current directory.</p>
@@ -2531,17 +2542,6 @@ pipeline {
       <tags>
         <tag>Tools</tag>
         <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>packer intro</title>
-    <url>/2019/08/30/packer-intro/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>packer</tag>
       </tags>
   </entry>
   <entry>
@@ -2687,29 +2687,6 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>xargs command</title>
-    <url>/2019/06/21/xargs-command/</url>
-    <content><![CDATA[<p>xargs 命令应该紧跟在管道操作符之后。它使用标准输入作为主要的数据源，将从 stdin 中读取的数据作为指定命令的参数并执行该命令。</p>
-<p>例如：<br>在一组 C 语言源码文件中搜索自负串main:<br><code>ls *.c | sargs grep main</code></p>
-<h4 id="Example-1-将多行输入-–-gt-单行输出"><a href="#Example-1-将多行输入-–-gt-单行输出" class="headerlink" title="Example 1: 将多行输入  –&gt; 单行输出"></a>Example 1: 将多行输入  –&gt; 单行输出</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   cat example.txt</span><br><span class="line">1 2 3 4</span><br><span class="line">5 6</span><br><span class="line">7 8 9</span><br><span class="line">10 11</span><br><span class="line">➜   cat example.txt | xargs</span><br><span class="line">1 2 3 4 5 6 7 8 9 10 11</span><br></pre></td></tr></table></figure>
-<h4 id="Example-2-将单行输入-–-gt-多行输出"><a href="#Example-2-将单行输入-–-gt-多行输出" class="headerlink" title="Example 2: 将单行输入  –&gt; 多行输出"></a>Example 2: 将单行输入  –&gt; 多行输出</h4><p>xargs 的 -n 选项可以限制每次调用命令时用到的参数个数。<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   cat example.txt | xargs -n  3</span><br><span class="line">1 2 3</span><br><span class="line">4 5 6</span><br><span class="line">7 8 9</span><br><span class="line">10 11</span><br></pre></td></tr></table></figure></p>
-<p>工作原理：<br>xargs 命令接收来自stdin的输入，将数据解析成单个元素，然后调用指定命令讲这些元素作为该命令的参数。xargs 默认使用 <strong>空白字符</strong> 分割输入并执行 <code>/bin/echo</code></p>
-<h4 id="Example-3-自定义分隔符-d-选项"><a href="#Example-3-自定义分隔符-d-选项" class="headerlink" title="Example 3: 自定义分隔符 -d 选项"></a>Example 3: 自定义分隔符 -d 选项</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"splitXsplit1Xsplit2Xsplit3"</span> | xargs -d X</span><br><span class="line">split split1 split2 split3</span><br></pre></td></tr></table></figure>
-<h4 id="Example-4-结合find使用xargs"><a href="#Example-4-结合find使用xargs" class="headerlink" title="Example 4: 结合find使用xargs"></a>Example 4: 结合find使用xargs</h4><p><code>find . -type f -name &quot;*.txt&quot; -print0 | xargs -o grep -L image</code></p>
-<p> 如果文件系统的有些文件名中包含忠哥，find 命令的 -print0 选项可以使用0（NUL）来分割查找到的元素，然后再用xargs对应的-0选项进行解析</p>
-<p> 反例：<br> <code>$find . -type f -name &quot;*.txt&quot; -print | xargs rm -f</code><br>这样做很危险，由可能会误删除文件。我们无法预测 find命令输出的分隔符究竟是什么（究竟是‘\n’还是 ‘’）。如果由文件名中包含空格符（‘ ’ ），xargs会将其误认为是分隔符。例如， <code>bashrc text.txt</code> 会被是为 bashrc 和 text.txt 。因此上面的命令不会删除 <code>bashrc text.txt</code> ,而是会把 bashrc删除</p>
-<p>正确的姿势：<br> <code>$find . -type f -name &quot;*.txt&quot; -print0 | xargs -0 rm -f</code></p>
-<h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><p> <code>docker ps -a -q | xargs --no-run-if-empty docker rm -f</code></p>
-<p> 参数 <code>--no-run-if-empty</code> 可以避免在前面的命令完全没有输出的情况下执行该命令</p>
-]]></content>
-      <categories>
-        <category>Shell</category>
-      </categories>
-      <tags>
-        <tag>Shell</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>tmux tutorial</title>
     <url>/2019/09/07/tmux-tutorial/</url>
     <content><![CDATA[<h3 id="1-tmux是什么"><a href="#1-tmux是什么" class="headerlink" title="1.tmux是什么"></a>1.tmux是什么</h3><p>tmux (terminal multiplexer),是一个 BSD 协议发布的终端复用软件，用来在服务器端托管同时运行的 Shell.</p>
@@ -2789,6 +2766,29 @@ pipeline {
       </categories>
       <tags>
         <tag>tmux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>xargs command</title>
+    <url>/2019/06/21/xargs-command/</url>
+    <content><![CDATA[<p>xargs 命令应该紧跟在管道操作符之后。它使用标准输入作为主要的数据源，将从 stdin 中读取的数据作为指定命令的参数并执行该命令。</p>
+<p>例如：<br>在一组 C 语言源码文件中搜索自负串main:<br><code>ls *.c | sargs grep main</code></p>
+<h4 id="Example-1-将多行输入-–-gt-单行输出"><a href="#Example-1-将多行输入-–-gt-单行输出" class="headerlink" title="Example 1: 将多行输入  –&gt; 单行输出"></a>Example 1: 将多行输入  –&gt; 单行输出</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   cat example.txt</span><br><span class="line">1 2 3 4</span><br><span class="line">5 6</span><br><span class="line">7 8 9</span><br><span class="line">10 11</span><br><span class="line">➜   cat example.txt | xargs</span><br><span class="line">1 2 3 4 5 6 7 8 9 10 11</span><br></pre></td></tr></table></figure>
+<h4 id="Example-2-将单行输入-–-gt-多行输出"><a href="#Example-2-将单行输入-–-gt-多行输出" class="headerlink" title="Example 2: 将单行输入  –&gt; 多行输出"></a>Example 2: 将单行输入  –&gt; 多行输出</h4><p>xargs 的 -n 选项可以限制每次调用命令时用到的参数个数。<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   cat example.txt | xargs -n  3</span><br><span class="line">1 2 3</span><br><span class="line">4 5 6</span><br><span class="line">7 8 9</span><br><span class="line">10 11</span><br></pre></td></tr></table></figure></p>
+<p>工作原理：<br>xargs 命令接收来自stdin的输入，将数据解析成单个元素，然后调用指定命令讲这些元素作为该命令的参数。xargs 默认使用 <strong>空白字符</strong> 分割输入并执行 <code>/bin/echo</code></p>
+<h4 id="Example-3-自定义分隔符-d-选项"><a href="#Example-3-自定义分隔符-d-选项" class="headerlink" title="Example 3: 自定义分隔符 -d 选项"></a>Example 3: 自定义分隔符 -d 选项</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"splitXsplit1Xsplit2Xsplit3"</span> | xargs -d X</span><br><span class="line">split split1 split2 split3</span><br></pre></td></tr></table></figure>
+<h4 id="Example-4-结合find使用xargs"><a href="#Example-4-结合find使用xargs" class="headerlink" title="Example 4: 结合find使用xargs"></a>Example 4: 结合find使用xargs</h4><p><code>find . -type f -name &quot;*.txt&quot; -print0 | xargs -o grep -L image</code></p>
+<p> 如果文件系统的有些文件名中包含忠哥，find 命令的 -print0 选项可以使用0（NUL）来分割查找到的元素，然后再用xargs对应的-0选项进行解析</p>
+<p> 反例：<br> <code>$find . -type f -name &quot;*.txt&quot; -print | xargs rm -f</code><br>这样做很危险，由可能会误删除文件。我们无法预测 find命令输出的分隔符究竟是什么（究竟是‘\n’还是 ‘’）。如果由文件名中包含空格符（‘ ’ ），xargs会将其误认为是分隔符。例如， <code>bashrc text.txt</code> 会被是为 bashrc 和 text.txt 。因此上面的命令不会删除 <code>bashrc text.txt</code> ,而是会把 bashrc删除</p>
+<p>正确的姿势：<br> <code>$find . -type f -name &quot;*.txt&quot; -print0 | xargs -0 rm -f</code></p>
+<h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><p> <code>docker ps -a -q | xargs --no-run-if-empty docker rm -f</code></p>
+<p> 参数 <code>--no-run-if-empty</code> 可以避免在前面的命令完全没有输出的情况下执行该命令</p>
+]]></content>
+      <categories>
+        <category>Shell</category>
+      </categories>
+      <tags>
+        <tag>Shell</tag>
       </tags>
   </entry>
   <entry>
@@ -2914,65 +2914,6 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>入手Telegram</title>
-    <url>/2020/04/17/%E5%85%A5%E6%89%8BTelegram/</url>
-    <content><![CDATA[<p>听说有很多有趣的组织、个人都有电报，于是想看看。</p>
-<h3 id="1-是什么？"><a href="#1-是什么？" class="headerlink" title="1. 是什么？"></a>1. 是什么？</h3><p><a href="https://telegram.org/" target="_blank" rel="noopener">Telegram</a> —— 中文名又称”电报”，或简称”TG”。Telegram 是跨平台的即时通信软件。</p>
-<p>作用和特色有点太多，还是直接上图吧👇</p>
-<p><img src="https://s1.ax1x.com/2020/04/19/Juq1FU.png" alt="Juq1FU.png"></p>
-<p>更多关于 Telegram 的介绍可以查看 <a href="https://en.wikipedia.org/wiki/Telegram_%28software%29" target="_blank" rel="noopener">Wikipedia</a></p>
-<h3 id="2-怎么用"><a href="#2-怎么用" class="headerlink" title="2. 怎么用"></a>2. 怎么用</h3><p>在中国大陆境内无法直接连接，注册和使用都需要科学上网。</p>
-<p>自己注册过程如下：</p>
-<ul>
-<li><ol>
-<li>为了不下载东西，在网页直接注册 <a href="https://web.telegram.org/" target="_blank" rel="noopener">https://web.telegram.org/</a><br>多次尝试无法注册，提示如下：<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">Too fast</span><br><span class="line">You are performing too many actions. Please try again later.</span><br><span class="line">Click for technical details</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-</ul>
-<blockquote>
-<p>其实尝试的次数并不多，1-2次后就有以上提示了。+ 86的中国大陆号码似乎收不到验证码</p>
-</blockquote>
-<ul>
-<li><ol start="2">
-<li>找一个临时的美国号码<blockquote>
-<p>不太好使</p>
-</blockquote>
-</li>
-</ol>
-</li>
-<li><p>[ ] 尚未注册成功</p>
-</li>
-</ul>
-<h3 id="3-推荐内容"><a href="#3-推荐内容" class="headerlink" title="3. 推荐内容"></a>3. 推荐内容</h3><ul>
-<li style="list-style: none"><input type="checkbox"> todo </li>
-</ul>
-<hr>
-<p><strong>More Ref:</strong><br><a href="https://www.notion.so/Telegram-95a6c23f0bb1466892b55f9ec8c755fd" target="_blank" rel="noopener">Telegram 教程全指南</a><br><a href="https://telegram.org/faq" target="_blank" rel="noopener">官网faq</a></p>
-]]></content>
-      <tags>
-        <tag>Tools</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>值得收藏的技术类站点</title>
-    <url>/2019/10/04/%E5%80%BC%E5%BE%97%E6%94%B6%E8%97%8F%E7%9A%84%E6%8A%80%E6%9C%AF%E7%B1%BB%E7%AB%99%E7%82%B9/</url>
-    <content><![CDATA[<p>一些技术公司，及其站点网站的列表，有很多高质量的文章和最佳实践。</p>
-<p><a href="https://www.praqma.com/" target="_blank" rel="noopener">https://www.praqma.com/</a></p>
-<p><a href="https://www.cloudbees.com/" target="_blank" rel="noopener">https://www.cloudbees.com/</a></p>
-<p><a href="https://www.freecodecamp.org/" target="_blank" rel="noopener">https://www.freecodecamp.org/</a></p>
-<p><a href="https://devopscube.com/" target="_blank" rel="noopener">https://devopscube.com/</a></p>
-<p><a href="https://www.endpoint.com/blog" target="_blank" rel="noopener">https://www.endpoint.com/blog</a></p>
-<p>技术归类：<a href="http://www.devopsbookmarks.com" target="_blank" rel="noopener">http://www.devopsbookmarks.com</a></p>
-]]></content>
-      <categories>
-        <category>Tools</category>
-      </categories>
-      <tags>
-        <tag>Tools</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Vivaldi入手</title>
     <url>/2020/04/09/%E5%85%A5%E6%89%8BVivaldi/</url>
     <content><![CDATA[<h3 id="0-前言"><a href="#0-前言" class="headerlink" title="0.前言"></a>0.前言</h3><p>最近才在一些论坛上听说 <strong>Vivaldi</strong> 浏览器的大名（我孤陋寡闻了😅）。毕竟入手一个浏览器工具又不花钱，那Chrome挺好用的，为什么要换？</p>
@@ -3027,6 +2968,65 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>值得收藏的技术类站点</title>
+    <url>/2019/10/04/%E5%80%BC%E5%BE%97%E6%94%B6%E8%97%8F%E7%9A%84%E6%8A%80%E6%9C%AF%E7%B1%BB%E7%AB%99%E7%82%B9/</url>
+    <content><![CDATA[<p>一些技术公司，及其站点网站的列表，有很多高质量的文章和最佳实践。</p>
+<p><a href="https://www.praqma.com/" target="_blank" rel="noopener">https://www.praqma.com/</a></p>
+<p><a href="https://www.cloudbees.com/" target="_blank" rel="noopener">https://www.cloudbees.com/</a></p>
+<p><a href="https://www.freecodecamp.org/" target="_blank" rel="noopener">https://www.freecodecamp.org/</a></p>
+<p><a href="https://devopscube.com/" target="_blank" rel="noopener">https://devopscube.com/</a></p>
+<p><a href="https://www.endpoint.com/blog" target="_blank" rel="noopener">https://www.endpoint.com/blog</a></p>
+<p>技术归类：<a href="http://www.devopsbookmarks.com" target="_blank" rel="noopener">http://www.devopsbookmarks.com</a></p>
+]]></content>
+      <categories>
+        <category>Tools</category>
+      </categories>
+      <tags>
+        <tag>Tools</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>入手Telegram</title>
+    <url>/2020/04/17/%E5%85%A5%E6%89%8BTelegram/</url>
+    <content><![CDATA[<p>听说有很多有趣的组织、个人都有电报，于是想看看。</p>
+<h3 id="1-是什么？"><a href="#1-是什么？" class="headerlink" title="1. 是什么？"></a>1. 是什么？</h3><p><a href="https://telegram.org/" target="_blank" rel="noopener">Telegram</a> —— 中文名又称”电报”，或简称”TG”。Telegram 是跨平台的即时通信软件。</p>
+<p>作用和特色有点太多，还是直接上图吧👇</p>
+<p><img src="https://s1.ax1x.com/2020/04/19/Juq1FU.png" alt="Juq1FU.png"></p>
+<p>更多关于 Telegram 的介绍可以查看 <a href="https://en.wikipedia.org/wiki/Telegram_%28software%29" target="_blank" rel="noopener">Wikipedia</a></p>
+<h3 id="2-怎么用"><a href="#2-怎么用" class="headerlink" title="2. 怎么用"></a>2. 怎么用</h3><p>在中国大陆境内无法直接连接，注册和使用都需要科学上网。</p>
+<p>自己注册过程如下：</p>
+<ul>
+<li><ol>
+<li>为了不下载东西，在网页直接注册 <a href="https://web.telegram.org/" target="_blank" rel="noopener">https://web.telegram.org/</a><br>多次尝试无法注册，提示如下：<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">Too fast</span><br><span class="line">You are performing too many actions. Please try again later.</span><br><span class="line">Click for technical details</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
+<blockquote>
+<p>其实尝试的次数并不多，1-2次后就有以上提示了。+ 86的中国大陆号码似乎收不到验证码</p>
+</blockquote>
+<ul>
+<li><ol start="2">
+<li>找一个临时的美国号码<blockquote>
+<p>不太好使</p>
+</blockquote>
+</li>
+</ol>
+</li>
+<li><p>[ ] 尚未注册成功</p>
+</li>
+</ul>
+<h3 id="3-推荐内容"><a href="#3-推荐内容" class="headerlink" title="3. 推荐内容"></a>3. 推荐内容</h3><ul>
+<li style="list-style: none"><input type="checkbox"> todo </li>
+</ul>
+<hr>
+<p><strong>More Ref:</strong><br><a href="https://www.notion.so/Telegram-95a6c23f0bb1466892b55f9ec8c755fd" target="_blank" rel="noopener">Telegram 教程全指南</a><br><a href="https://telegram.org/faq" target="_blank" rel="noopener">官网faq</a></p>
+]]></content>
+      <tags>
+        <tag>Tools</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>入门gpg</title>
     <url>/2020/04/23/%E5%85%A5%E9%97%A8gpg/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>GPG 的全称是 GNU Privacy Guard ，可以看作是一个软件，可以用来进行密钥的管理。其实和我们用的一些图形化的密码管理类似，不过GPG 好像更多是命令行交互的，所以一般人不太习惯。另外，中间包含的概念也较多。</p>
@@ -3041,25 +3041,6 @@ pipeline {
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜ gpg --edit-key 771963601@qq.com</span><br><span class="line">gpg (GnuPG) 2.2.20; Copyright (C) 2020 Free Software Foundation, Inc.</span><br><span class="line">This is free software: you are free to change and redistribute it.</span><br><span class="line">There is NO WARRANTY, to the extent permitted by law.</span><br><span class="line"></span><br><span class="line">Secret key is available.</span><br><span class="line"></span><br><span class="line">sec  rsa2048/00C21CE66A8AE9E0</span><br><span class="line">     created: 2020-04-23  expires: 2022-04-23  usage: SC</span><br><span class="line">     trust: ultimate      validity: ultimate</span><br><span class="line">ssb  rsa2048/9DCC33D2FECB246F</span><br><span class="line">     created: 2020-04-23  expires: never       usage: E</span><br><span class="line">[ultimate] (1). qinrui &lt;771963601@qq.com&gt;</span><br><span class="line"></span><br><span class="line">gpg&gt;</span><br></pre></td></tr></table></figure>
 <p>请注意上面的字符串”sec  rsa2048/xxxxx”，斜杆后面就是”用户ID”的Hash字符串，可以用来替代”用户ID”。</p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>安迪-比尔定律(Andy and Bill’s Law)</title>
-    <url>/2019/03/27/%E5%AE%89%E8%BF%AA-%E6%AF%94%E5%B0%94%E5%AE%9A%E5%BE%8B-Andy-and-Bill%E2%80%99s-Law/</url>
-    <content><![CDATA[<h3 id="这句话出处是哪里？"><a href="#这句话出处是哪里？" class="headerlink" title="这句话出处是哪里？"></a>这句话出处是哪里？</h3><pre><code>“Andy gives,Bill takes away.(安迪提供什么，比尔拿走什么)&quot;
-</code></pre><h3 id="什么是安迪-比尔定律？"><a href="#什么是安迪-比尔定律？" class="headerlink" title="什么是安迪-比尔定律？"></a>什么是安迪-比尔定律？</h3><p>Andy指的是原英特尔公司CEO 安迪•格鲁<a href="https://zh.wikipedia.org/wiki/%E5%AE%89%E8%BF%AA%C2%B7%E8%91%9B%E6%B4%9B%E5%A4%AB" target="_blank" rel="noopener">Andy Grove</a>；Bill就是微软的比尔•盖茨.</p>
-<p>这句话的意思是，英特尔公司总裁安迪·格罗夫一旦向市场推广了一种新型芯片产品，微软CEO比尔盖茨就会及时的升级自己的软件产品，吸收新型芯片的高性能。硬件提高的性能，很快被软件消耗掉了。似乎两方是一对黄金搭档，心照不宣。</p>
-<blockquote>
-<p>简而言之，安迪-比尔定律揭示了硬件和软件相互促进彼此，不断更新换代的现象。</p>
-</blockquote>
-<h3 id="为什么要“更新”？"><a href="#为什么要“更新”？" class="headerlink" title="为什么要“更新”？"></a>为什么要“更新”？</h3><h6 id="1-从买卖双方分析："><a href="#1-从买卖双方分析：" class="headerlink" title="1.从买卖双方分析："></a>1.从买卖双方分析：</h6><p>对于厂商、公司而言，只有不断的推出新产品，才能有营收，才能获得更大的市场，最终通常是为了赚更多的钱。对于个人而言，个人的欲望在不断的增长，大哥比方：以前村里的张三有个mp3听听歌就可能满足的不行了，但是看着县里的李四拿着最新的mp4不仅能听歌，还能下载电影看，于是就渴望也有一个新玩意。过了一年半载出了一个新的手机，不仅有上述功能，还可以在线打游戏，只有拥有它才可以和别的小伙伴一起“冲锋陷阵”…</p>
-<h6 id="2-从硬件、软件公司分析："><a href="#2-从硬件、软件公司分析：" class="headerlink" title="2.从硬件、软件公司分析："></a>2.从硬件、软件公司分析：</h6><p>还是拿上面的例子，硬件公司老是生产mp3，等到大家差不多人手一个的时候，就赚不到更多的钱了。而这个时候有软件公司开发的新的软件，需要用新的设备才能运行，硬件公司还能又卖一波新硬件，而且又是新的市场，单价一般而言更贵，于是乎这样赚钱的机会怎么能放过。同业的竞争公司看到这样的趋势，也加紧研发去抢新的蛋糕（旧的蛋糕都快被人吃的差不多了，新的蛋糕就看谁做的快做的好了）。软件公司这时也纷纷用新的思路去做更多的软件，吸引新用户，也想着做一些更牛逼的软件（虽然现在硬件水平跟不上，但是总有一天那些硬件会有的，加紧研发自己的软件就准没错）。</p>
-]]></content>
-      <categories>
-        <category>读书笔记</category>
-      </categories>
-      <tags>
-        <tag>浪潮之巅</tag>
-      </tags>
   </entry>
   <entry>
     <title>反摩尔定理 = 学如逆水行舟</title>
@@ -3082,6 +3063,41 @@ pipeline {
       </categories>
       <tags>
         <tag>浪潮之巅</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>安迪-比尔定律(Andy and Bill’s Law)</title>
+    <url>/2019/03/27/%E5%AE%89%E8%BF%AA-%E6%AF%94%E5%B0%94%E5%AE%9A%E5%BE%8B-Andy-and-Bill%E2%80%99s-Law/</url>
+    <content><![CDATA[<h3 id="这句话出处是哪里？"><a href="#这句话出处是哪里？" class="headerlink" title="这句话出处是哪里？"></a>这句话出处是哪里？</h3><pre><code>“Andy gives,Bill takes away.(安迪提供什么，比尔拿走什么)&quot;
+</code></pre><h3 id="什么是安迪-比尔定律？"><a href="#什么是安迪-比尔定律？" class="headerlink" title="什么是安迪-比尔定律？"></a>什么是安迪-比尔定律？</h3><p>Andy指的是原英特尔公司CEO 安迪•格鲁<a href="https://zh.wikipedia.org/wiki/%E5%AE%89%E8%BF%AA%C2%B7%E8%91%9B%E6%B4%9B%E5%A4%AB" target="_blank" rel="noopener">Andy Grove</a>；Bill就是微软的比尔•盖茨.</p>
+<p>这句话的意思是，英特尔公司总裁安迪·格罗夫一旦向市场推广了一种新型芯片产品，微软CEO比尔盖茨就会及时的升级自己的软件产品，吸收新型芯片的高性能。硬件提高的性能，很快被软件消耗掉了。似乎两方是一对黄金搭档，心照不宣。</p>
+<blockquote>
+<p>简而言之，安迪-比尔定律揭示了硬件和软件相互促进彼此，不断更新换代的现象。</p>
+</blockquote>
+<h3 id="为什么要“更新”？"><a href="#为什么要“更新”？" class="headerlink" title="为什么要“更新”？"></a>为什么要“更新”？</h3><h6 id="1-从买卖双方分析："><a href="#1-从买卖双方分析：" class="headerlink" title="1.从买卖双方分析："></a>1.从买卖双方分析：</h6><p>对于厂商、公司而言，只有不断的推出新产品，才能有营收，才能获得更大的市场，最终通常是为了赚更多的钱。对于个人而言，个人的欲望在不断的增长，大哥比方：以前村里的张三有个mp3听听歌就可能满足的不行了，但是看着县里的李四拿着最新的mp4不仅能听歌，还能下载电影看，于是就渴望也有一个新玩意。过了一年半载出了一个新的手机，不仅有上述功能，还可以在线打游戏，只有拥有它才可以和别的小伙伴一起“冲锋陷阵”…</p>
+<h6 id="2-从硬件、软件公司分析："><a href="#2-从硬件、软件公司分析：" class="headerlink" title="2.从硬件、软件公司分析："></a>2.从硬件、软件公司分析：</h6><p>还是拿上面的例子，硬件公司老是生产mp3，等到大家差不多人手一个的时候，就赚不到更多的钱了。而这个时候有软件公司开发的新的软件，需要用新的设备才能运行，硬件公司还能又卖一波新硬件，而且又是新的市场，单价一般而言更贵，于是乎这样赚钱的机会怎么能放过。同业的竞争公司看到这样的趋势，也加紧研发去抢新的蛋糕（旧的蛋糕都快被人吃的差不多了，新的蛋糕就看谁做的快做的好了）。软件公司这时也纷纷用新的思路去做更多的软件，吸引新用户，也想着做一些更牛逼的软件（虽然现在硬件水平跟不上，但是总有一天那些硬件会有的，加紧研发自己的软件就准没错）。</p>
+]]></content>
+      <categories>
+        <category>读书笔记</category>
+      </categories>
+      <tags>
+        <tag>浪潮之巅</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>我的租房经历</title>
+    <url>/2020/04/30/%E6%88%91%E7%9A%84%E7%A7%9F%E6%88%BF%E7%BB%8F%E5%8E%86/</url>
+    <content><![CDATA[<div id="hexo-blog-encrypt" data-wpm="用心想想，ta可能用什么密码" data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <div class="hbe-input-container">
+  <input type="password" id="hbePass" placeholder="" />
+    <label for="hbePass">Hey, password is required here.</label>
+    <div class="bottom-line"></div>
+  </div>
+  <script id="hbeData" type="hbeData" data-hmacdigest="9b5e46d19f56be4e6cb5d81147c5965461bfdb441c6b946341e875a5300627b5">4fb1f2c760bda11a923794521e7b287b49c0661e6db6c895d51f3d5e5f2fb196644721d47456352489cfdd78ec142a0cc8ce1c6ccb3c2ff7575c3b30ea94381ac27018e0fbbb7fdc0daf12e5538e49b33d836810499dc55e72a6b23198d9d1c2dd0baa5c10884785a9a840d711d8bfc0ca23cc8e48c63b4519add57c03f823e1e34349f40096a22c968a67ba65ed6c3d4ce2215b835e681a082a0354e82c7779a0cc77c7ef9c0aec0f2cebab1fc8af7249590e6f8627379694bd00539bda2a4b595571af4f91ad78e92cc3c36a92a4bf5163ded5ac1fece16a7c5e25de7e7481fa366023cf61b45be1364d0475f15adac32838c74d37884a0934cc0bdfb0ec32df6d4599acef084ba17385270c4d1196d96440af2a42351cc94babe3ad5822d7dbc5d70b338284810a5ed4b38583b0afcf8e8f1995026d8096e7415ca33f2f6fae4bbba7ae1f814aeb625c155a2ac300af00bf899432bf18aabe39848e79cf327d9448328cebccfe919346f803aad4daf1300528faf0908c18f59afc074760a4f14656e59c14eb8c04a282ad399905c1c2b6dcd815f8a15f0e78708dcd72d06522c033adcc8d51043979cf648a7a829690601add110b0a7833e69aba604998058472425fe9174c4df0e6ec690bbc01a165326eca0c0329d966e2ed913b88f6290c3d8941d12e0ef3cb5db626696970fde7c091b0480b9e85591e3f67769abd2affcd9cc3a0163667e8b7e3a8ebdca74ec7540f6c293daefba6a78fa10e5d59d526513c5f5b08ad8a47ba3072d6713d19139a7e569262626d765549691e344a371659c7ac1c198f4986c56fa33959c307fdf48615540b98606dc5dfbf235c340fd45f1361bb4fc37e58172f2dbc2724dd1630065786821e8321ef5c6668888c9f6b1275c7a48f76b8c0dbad34c3baca8a69ec97238c978fab0e4e89cddb521f30875d658b1dd0b799c361cc947b8b7a890a0f6917114153c655ebfb0e2395c8ada6468cf1da4739a1feca3b51cfaa08921614db0c99b164098fbc2d8d32f092e533cc215836faae384a3ec4f06b186bef9432316e297ad892b2a0e2a6feee389151aab780533210418dcb2d26e0dd72651e15f3d2a7367d544c8608419cad7294f287273fbe7466497c6451cb6d21b08359591f23614ac64313a61ead1999d431dd42b6f5f20531a76f15ca8fd8e19dfe9bc9c10abac05f457aa44f4ba16c7e873600fe009d9870f3ecbf8be5e715125c6ae338aaed6c9b8e257f3e30a8af74c4fcac3e2a4366f681f74256ebc11aa7c6b288023da3dec5addfbc4ae0f3c6500c33f662caa932645b1f6945778b3f4a4edbf51d580b448cbce4c90fc95a80cc3d2d0bca5f03c5e226754aafdf07003dafb765326206e9de6a7e41a60893077182faf65423cfe840d276dbcb7112f3301f6760c812c6de0cec0bd88814acf7fe9120acf1e8a91aa1a7fae3c312a5631c17ae23b1c529cae89bb2f74ee61b136b1791136d209ed98edef7be65aed30ff311fe164df70f7219a53e91429e27060d2a4052beb864d9af407af9250767b8f7af1c7c61bc89d6ac9ae966e3bec324d84dd8b951029276fe69cfa1fb4968303df9fb771f4ecd5654371e11ee7eb3cea89aaff81f1f82b0da742949398ba63d912e08a86e4916fc89d28950de89bad8e71279d1bfaace3010de26acd5fdc79e649faad7dcc34ea250a336f58af4bb908bca4dfa14cf228a3cf8fe33651e71b51c5d57657c880150a416ad1f25cbc1fc898c63954ac58d2699497874321d4d03798751321de20c24503e8e1686a0c6410fd4a0b367e81909681e983ec99333d2b8217f306e7840a0afded8534bd2bba108cdd9af51213d2c357c82e92459ba401a1718d76f725207affc332d83c8bf769234bd350353e827fe510cbd76dc9a837f07d297a6acdb27a3cb4118e62485d78666af2c4b681ea3f96147b8460d1650b7719e73fe09ed5cbe1c0a9177ef0f7ce0a81764bdc0ff9909aa0b8674fc2511b64712e44046e1f0b36d028cdb2125fd0dd8fcaca51c46e662e4ba7e83b82b8949c95d9bf8f05fba68504cb01197610099df908fdc61b89b736c08c099d1cecc252bfb1928571f0b3ee9b2b7915f50032a113f15f305fad37226ad1e8801bf9caa6c506b89e86e8ca843ed77f7cc07c42b8f560e7466d73e15f02733c1225ae836742b15b787b3150ec2ad97f2e79adbddf7d48e47c031f59b06bf8f9643a33e09b2dc505d5ab5742d2e8484022dcffd1b9704b65bac4ba7a06b99bb9f6278e3015bcefa2cf2086bb652c12e70ca05a3c1dad02bac22094ab13a634ec83361f7b42773ae5a312a47f53234df40e3ad406edbf1e740fb7bc3d4e78654c388305c88c09c13a627e6ce15891066069a8d378d5cde528d0bad852e4dc61145566b98f3584cb0771c2b270fc30159704dd29513673ee3699b18feec54a8a8d3085e89f703df18b5a6ee1e84fa44acaececcc506c07f9ae4bf35bf4ae37217caa91f43cc63eddb7581b508b7ea5d7d2f2e7c15fe8887b69598b22ce1f4ed68f079657e26183ba1ef244290bbef73e42f157b87170121f62eef7345ab90565db5fb47114a6a5f245232b9b03fb701a44152e3749f8020be040ecb77cd791161bc869fdf539f3ff57e7f1f6b2c13bbcb77db2037af8d496d713e0a085655e7649ab64e2f1020a7d5d7d4218ce0a4030383a0a47d68d14433bf7081111b569a03b8b188962718e3a878e0e05b74f5c62ee276ad2191c80ecd92ccc96960ace399056d8a2045602e38aa9facf25e71acaca4bc18d1aa154fff04b380c4226a310fc5853a63a3243ee0fbe989f7bdd8fcb68e224df040225fc2a217eaa04f165009fe4c8450117a8fa51f01c1fc0284f51e2d6ebeb1ff7a6306bf0b91efaba3437be00191f6b20b139961fc4c23d69e48c9ce98f6561f2c0ab77668e87eb9b29fbe2d2087241e8ee300823d7b304c5cbe619577de210d34e82d7d45fc4cd9700decec54954e6db5897f04930a072515003c33b0919ce6b8105e4089e2a053c187465d853f2ed282ae2a801c82482eb29d7b5221db8706b97da95ad6cdd5689844b285a78cf6127c145e925085adac6b4cf00ca7a75fdb8911555cc88a2d3007d4c8ca1b06ce3bae88aa5dc47feb33a9d7395b777aa6015d42192d8b3eb3eb115b9a427c5ca0640b629193eddb064a5d5a8ac51abb2d8eed65b16e8c1054653d5d22d374937e93c4f08112159edecbb6ad472d3fc42feef35d2491a8d4a22b0bc29ca4cad42b5c62ae3fd3fdae630aad724aacd7e9cd3f6c143abb5c71e827de71425a31924557b83f2646932181d8caa7455714c26d48e54cf098a4f589925bfd5eb357108b7de2fd7c6a74835631502e2607d0482897fd20b1a9e55d31222b8850e7cab0d69d59dc903ee588795919dbd577e21ec837a6bde3f98010d797643cb2f4db7bc34d0b4d23fe1b6772a381829ab8ce469a78f49247a13eb3c9836611f60a524f176a265607d6dd4ec5d76ddcff1b921eb902a64ff396fd9b57c03c71a8a0814152a850152e0e03a0f2e1e78ae850a951e8a9cc3d3c7b2923805f7c778fd643938a93ac08c86f02f00c12b207663a50ec1783567140697d6c68e8d99105e9e3f6cc9414918b1c070dc804d5629674e141784569bbb3f2f910b31bac2f5ac68d65c391bcbee2299c190bb6dc48210ced18e542ae04856d6819fa5a5e4f4639b0f48f931067812f72382dd85594584f21fd7b9facbc1e95f1585b776a7aaaee858cff1d8f8064ad535d117c02a25a879ba5fedb3ec19cd95718f8d06a49a4ed0e35444e56cadda3ea5cbcfba08baaa3c3c70ea7de193c3aa2deefffa4c8f53b12a0e23703402919a97a125633599e588e9f6a794176f5e0d4ba3fcddeb327dd7cd39f47635b43513b7d35eb86576e2e2639524e37e0b1cd1d52cbd2258a904b51763836f28fef5dc751c9c2243c652c5bf547b874f8c708f429ea07dc894a5e1985c772a94c6b148b5fc8238e7b468db56094c589fcd07f29a338cb29f071fd0fa4cc656c15adfab86cd58ec7307eac5bf2e58ac2401a98605858457e65717c32f9bfe8efa4f189dd6018df5296505ed384a0eb52572526053a5757e170108b4fd05bbcf59a96284769d0659d68cee9181cf08ee217e5ae0b82937821f5698debb83b54ff48b41e310812382a70c0585e9c1bb89bd299ec9b28c4eb01337ed3e5ab5adc1b8f09799d076c702a90ed2ed11ab064eeecfa009b943678c6c4d57c660d808cdde255ddcff9fdc73b2edf10256702faaa0ccb5ef7eba6a789b41c6e9ab23bf4473525889425bb4ec59324c436004ee151f8801c1ce9ff0049b792029467ca6ad261087f20984cb387fa7203710718b7cd56248d15be8bd2f4c0efd9c3f053ac742100a226fbf9432164cc98d58e5e22e2c73b014dc0efe365698e8f16de8b6a6e86224920a404966ab5a40ecae6160da0b7257ec3bfceff06a83268a188a061ce618e96e752623e9333f5f6fd270812ec530722807a7c4ec543bfe5fcbdbd1c0cd2eaaa9c78c5840e9f52048a41d8cf256418ce271d7e99f361112030ca43d6f59a33dd267eeab83053f350b0c1612e2f588500b4db27dd1b3f20a75307e4c9bb823ccb2e4bb56b1089b7354ec4a3f175c41f9574a8baf2a140e3d4b632b14a8d1c3a4eb1915ac6403307d186bac58165684bd408a46269b613bdc8820883d5f2b66004078d53465882d5c5b4f301f669c2c01e0b039532f941e302eecbd37f845b753382aac475b1beafb463a2b8f1bec389da074b5a29d1bfac3fcf32e0aef7e94cd6984ef3eea5424ea4d90c7c763b1084af4413c56f1ababfdeef0867e1397e603c3524ca384df6ea209242439101d470ca305a5e74ea9ae32de276d2c1704c53bd3654719418ae13a228a633d8d70ffa64588243cc9a6369170bcfccea42ec2f2ad8bcb468659931798a65713eb9dc6ab98b37523fb4a38d5ced4b87c5149a8c2950ab455465594b8357fc3e3413</script>
+</div>
+<script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
+      <tags>
+        <tag>Q List</tag>
       </tags>
   </entry>
   <entry>
@@ -3143,15 +3159,15 @@ pipeline {
       </categories>
   </entry>
   <entry>
-    <title>我的租房经历</title>
-    <url>/2020/04/30/%E6%88%91%E7%9A%84%E7%A7%9F%E6%88%BF%E7%BB%8F%E5%8E%86/</url>
+    <title>枢纽1</title>
+    <url>/2020/04/02/%E6%9E%A2%E7%BA%BD1/</url>
     <content><![CDATA[<div id="hexo-blog-encrypt" data-wpm="用心想想，ta可能用什么密码" data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
   <div class="hbe-input-container">
   <input type="password" id="hbePass" placeholder="" />
     <label for="hbePass">Hey, password is required here.</label>
     <div class="bottom-line"></div>
   </div>
-  <script id="hbeData" type="hbeData" data-hmacdigest="9b5e46d19f56be4e6cb5d81147c5965461bfdb441c6b946341e875a5300627b5">4fb1f2c760bda11a923794521e7b287b49c0661e6db6c895d51f3d5e5f2fb196644721d47456352489cfdd78ec142a0cc8ce1c6ccb3c2ff7575c3b30ea94381ac27018e0fbbb7fdc0daf12e5538e49b33d836810499dc55e72a6b23198d9d1c2dd0baa5c10884785a9a840d711d8bfc0ca23cc8e48c63b4519add57c03f823e1e34349f40096a22c968a67ba65ed6c3d4ce2215b835e681a082a0354e82c7779a0cc77c7ef9c0aec0f2cebab1fc8af7249590e6f8627379694bd00539bda2a4b595571af4f91ad78e92cc3c36a92a4bf5163ded5ac1fece16a7c5e25de7e7481fa366023cf61b45be1364d0475f15adac32838c74d37884a0934cc0bdfb0ec32df6d4599acef084ba17385270c4d1196d96440af2a42351cc94babe3ad5822d7dbc5d70b338284810a5ed4b38583b0afcf8e8f1995026d8096e7415ca33f2f6fae4bbba7ae1f814aeb625c155a2ac300af00bf899432bf18aabe39848e79cf327d9448328cebccfe919346f803aad4daf1300528faf0908c18f59afc074760a4f14656e59c14eb8c04a282ad399905c1c2b6dcd815f8a15f0e78708dcd72d06522c033adcc8d51043979cf648a7a829690601add110b0a7833e69aba604998058472425fe9174c4df0e6ec690bbc01a165326eca0c0329d966e2ed913b88f6290c3d8941d12e0ef3cb5db626696970fde7c091b0480b9e85591e3f67769abd2affcd9cc3a0163667e8b7e3a8ebdca74ec7540f6c293daefba6a78fa10e5d59d526513c5f5b08ad8a47ba3072d6713d19139a7e569262626d765549691e344a371659c7ac1c198f4986c56fa33959c307fdf48615540b98606dc5dfbf235c340fd45f1361bb4fc37e58172f2dbc2724dd1630065786821e8321ef5c6668888c9f6b1275c7a48f76b8c0dbad34c3baca8a69ec97238c978fab0e4e89cddb521f30875d658b1dd0b799c361cc947b8b7a890a0f6917114153c655ebfb0e2395c8ada6468cf1da4739a1feca3b51cfaa08921614db0c99b164098fbc2d8d32f092e533cc215836faae384a3ec4f06b186bef9432316e297ad892b2a0e2a6feee389151aab780533210418dcb2d26e0dd72651e15f3d2a7367d544c8608419cad7294f287273fbe7466497c6451cb6d21b08359591f23614ac64313a61ead1999d431dd42b6f5f20531a76f15ca8fd8e19dfe9bc9c10abac05f457aa44f4ba16c7e873600fe009d9870f3ecbf8be5e715125c6ae338aaed6c9b8e257f3e30a8af74c4fcac3e2a4366f681f74256ebc11aa7c6b288023da3dec5addfbc4ae0f3c6500c33f662caa932645b1f6945778b3f4a4edbf51d580b448cbce4c90fc95a80cc3d2d0bca5f03c5e226754aafdf07003dafb765326206e9de6a7e41a60893077182faf65423cfe840d276dbcb7112f3301f6760c812c6de0cec0bd88814acf7fe9120acf1e8a91aa1a7fae3c312a5631c17ae23b1c529cae89bb2f74ee61b136b1791136d209ed98edef7be65aed30ff311fe164df70f7219a53e91429e27060d2a4052beb864d9af407af9250767b8f7af1c7c61bc89d6ac9ae966e3bec324d84dd8b951029276fe69cfa1fb4968303df9fb771f4ecd5654371e11ee7eb3cea89aaff81f1f82b0da742949398ba63d912e08a86e4916fc89d28950de89bad8e71279d1bfaace3010de26acd5fdc79e649faad7dcc34ea250a336f58af4bb908bca4dfa14cf228a3cf8fe33651e71b51c5d57657c880150a416ad1f25cbc1fc898c63954ac58d2699497874321d4d03798751321de20c24503e8e1686a0c6410fd4a0b367e81909681e983ec99333d2b8217f306e7840a0afded8534bd2bba108cdd9af51213d2c357c82e92459ba401a1718d76f725207affc332d83c8bf769234bd350353e827fe510cbd76dc9a837f07d297a6acdb27a3cb4118e62485d78666af2c4b681ea3f96147b8460d1650b7719e73fe09ed5cbe1c0a9177ef0f7ce0a81764bdc0ff9909aa0b8674fc2511b64712e44046e1f0b36d028cdb2125fd0dd8fcaca51c46e662e4ba7e83b82b8949c95d9bf8f05fba68504cb01197610099df908fdc61b89b736c08c099d1cecc252bfb1928571f0b3ee9b2b7915f50032a113f15f305fad37226ad1e8801bf9caa6c506b89e86e8ca843ed77f7cc07c42b8f560e7466d73e15f02733c1225ae836742b15b787b3150ec2ad97f2e79adbddf7d48e47c031f59b06bf8f9643a33e09b2dc505d5ab5742d2e8484022dcffd1b9704b65bac4ba7a06b99bb9f6278e3015bcefa2cf2086bb652c12e70ca05a3c1dad02bac22094ab13a634ec83361f7b42773ae5a312a47f53234df40e3ad406edbf1e740fb7bc3d4e78654c388305c88c09c13a627e6ce15891066069a8d378d5cde528d0bad852e4dc61145566b98f3584cb0771c2b270fc30159704dd29513673ee3699b18feec54a8a8d3085e89f703df18b5a6ee1e84fa44acaececcc506c07f9ae4bf35bf4ae37217caa91f43cc63eddb7581b508b7ea5d7d2f2e7c15fe8887b69598b22ce1f4ed68f079657e26183ba1ef244290bbef73e42f157b87170121f62eef7345ab90565db5fb47114a6a5f245232b9b03fb701a44152e3749f8020be040ecb77cd791161bc869fdf539f3ff57e7f1f6b2c13bbcb77db2037af8d496d713e0a085655e7649ab64e2f1020a7d5d7d4218ce0a4030383a0a47d68d14433bf7081111b569a03b8b188962718e3a878e0e05b74f5c62ee276ad2191c80ecd92ccc96960ace399056d8a2045602e38aa9facf25e71acaca4bc18d1aa154fff04b380c4226a310fc5853a63a3243ee0fbe989f7bdd8fcb68e224df040225fc2a217eaa04f165009fe4c8450117a8fa51f01c1fc0284f51e2d6ebeb1ff7a6306bf0b91efaba3437be00191f6b20b139961fc4c23d69e48c9ce98f6561f2c0ab77668e87eb9b29fbe2d2087241e8ee300823d7b304c5cbe619577de210d34e82d7d45fc4cd9700decec54954e6db5897f04930a072515003c33b0919ce6b8105e4089e2a053c187465d853f2ed282ae2a801c82482eb29d7b5221db8706b97da95ad6cdd5689844b285a78cf6127c145e925085adac6b4cf00ca7a75fdb8911555cc88a2d3007d4c8ca1b06ce3bae88aa5dc47feb33a9d7395b777aa6015d42192d8b3eb3eb115b9a427c5ca0640b629193eddb064a5d5a8ac51abb2d8eed65b16e8c1054653d5d22d374937e93c4f08112159edecbb6ad472d3fc42feef35d2491a8d4a22b0bc29ca4cad42b5c62ae3fd3fdae630aad724aacd7e9cd3f6c143abb5c71e827de71425a31924557b83f2646932181d8caa7455714c26d48e54cf098a4f589925bfd5eb357108b7de2fd7c6a74835631502e2607d0482897fd20b1a9e55d31222b8850e7cab0d69d59dc903ee588795919dbd577e21ec837a6bde3f98010d797643cb2f4db7bc34d0b4d23fe1b6772a381829ab8ce469a78f49247a13eb3c9836611f60a524f176a265607d6dd4ec5d76ddcff1b921eb902a64ff396fd9b57c03c71a8a0814152a850152e0e03a0f2e1e78ae850a951e8a9cc3d3c7b2923805f7c778fd643938a93ac08c86f02f00c12b207663a50ec1783567140697d6c68e8d99105e9e3f6cc9414918b1c070dc804d5629674e141784569bbb3f2f910b31bac2f5ac68d65c391bcbee2299c190bb6dc48210ced18e542ae04856d6819fa5a5e4f4639b0f48f931067812f72382dd85594584f21fd7b9facbc1e95f1585b776a7aaaee858cff1d8f8064ad535d117c02a25a879ba5fedb3ec19cd95718f8d06a49a4ed0e35444e56cadda3ea5cbcfba08baaa3c3c70ea7de193c3aa2deefffa4c8f53b12a0e23703402919a97a125633599e588e9f6a794176f5e0d4ba3fcddeb327dd7cd39f47635b43513b7d35eb86576e2e2639524e37e0b1cd1d52cbd2258a904b51763836f28fef5dc751c9c2243c652c5bf547b874f8c708f429ea07dc894a5e1985c772a94c6b148b5fc8238e7b468db56094c589fcd07f29a338cb29f071fd0fa4cc656c15adfab86cd58ec7307eac5bf2e58ac2401a98605858457e65717c32f9bfe8efa4f189dd6018df5296505ed384a0eb52572526053a5757e170108b4fd05bbcf59a96284769d0659d68cee9181cf08ee217e5ae0b82937821f5698debb83b54ff48b41e310812382a70c0585e9c1bb89bd299ec9b28c4eb01337ed3e5ab5adc1b8f09799d076c702a90ed2ed11ab064eeecfa009b943678c6c4d57c660d808cdde255ddcff9fdc73b2edf10256702faaa0ccb5ef7eba6a789b41c6e9ab23bf4473525889425bb4ec59324c436004ee151f8801c1ce9ff0049b792029467ca6ad261087f20984cb387fa7203710718b7cd56248d15be8bd2f4c0efd9c3f053ac742100a226fbf9432164cc98d58e5e22e2c73b014dc0efe365698e8f16de8b6a6e86224920a404966ab5a40ecae6160da0b7257ec3bfceff06a83268a188a061ce618e96e752623e9333f5f6fd270812ec530722807a7c4ec543bfe5fcbdbd1c0cd2eaaa9c78c5840e9f52048a41d8cf256418ce271d7e99f361112030ca43d6f59a33dd267eeab83053f350b0c1612e2f588500b4db27dd1b3f20a75307e4c9bb823ccb2e4bb56b1089b7354ec4a3f175c41f9574a8baf2a140e3d4b632b14a8d1c3a4eb1915ac6403307d186bac58165684bd408a46269b613bdc8820883d5f2b66004078d53465882d5c5b4f301f669c2c01e0b039532f941e302eecbd37f845b753382aac475b1beafb463a2b8f1bec389da074b5a29d1bfac3fcf32e0aef7e94cd6984ef3eea5424ea4d90c7c763b1084af4413c56f1ababfdeef0867e1397e603c3524ca384df6ea209242439101d470ca305a5e74ea9ae32de276d2c1704c53bd3654719418ae13a228a633d8d70ffa64588243cc9a6369170bcfccea42ec2f2ad8bcb468659931798a65713eb9dc6ab98b37523fb4a38d5ced4b87c5149a8c2950ab455465594b8357fc3e3413</script>
+  <script id="hbeData" type="hbeData" data-hmacdigest="c47e18f1b6f53d858e78bda78827132950495876d71922e41c4f877e813f7085">7faa57a996895b16c827c61fe8d27d9bd8c8ddb5aa724c94ed1934c807058b60ca0b478029088315ff2ed593d3d1012fdf288b8733e868409aac7e8920f59b64b553f2cec04ef0d3a7b623836aa4d7236b067b45852a1791b0f290ed55f5eccd8a69e0702a2ecac10ba4cbe4418317df084da7c68e3a97a0b0f10456d1c65c421f01d0dfad2a02f0ecc0d3701c076221cde05a91ae306bb07084273d51c9d8345195657471fa8e5515dff65bfbab989b13f31c70c25b17f634f5798920206bfd19de182e83e8783db001c468a6376e8af803f66d39f1df7832f4420b3257b040931ff9d9ed983fd997c8c5c82c8bd738357708cbd02eae1d833496a3e2b08eb1476bee9d641f2d7a0d8090a2d374d611483589e6048dbebcb46c6fb7f1ce1e3c20ec60707610a85a934c6364b5edf1f071cd0f342ab384070804743d4f9e976f0c68376d7e17b4ecab25fef28a1b8850d5582d6d24d9d6abcb0aacb1f95393f0572d13debdd427d077c1953d10800e400bb9fe8bbde9d3952788711c9bb284ef3e2284f2fe8e4dc6c76270f5e841fe86800e76ed7dec3b868c8fc8fb66f97e1787ee35a53fecddf6071da65725938a37149b7ddc67e52f3debfe8ebc22019f83a653eb0af49cc6546e360320093aa2eaf2e75ac551b0547134adde88ca7862a415a4274ad4b621b1ec52db9e88dce0759a8dd5e3298de093f98412358212630e0568b22cbddf770aceb55a8571334fd449ea59aa355e5cdfc97c6ab2894129c26e39aade65e6873a4cfe44de38be57a7612a822ab2742c6b09603b3b782a42f1820fb31cb63a993c732df11e768dd79ae5202eb180b76c41001c70c209208be79ac21608a51e530e3f3d8527a03b4758affe5dac1e75ba47b7c146a3fb6d3b4de1d4c7528e831a392e9c1a49ec987c1c5a2788e8963e75e819201d27e17e899355469a046524c8c6f3ccee82ffd227670209289a94ed3532158956d1f4725a658f734440b192100987bd19149aca83f2c97679a43fff34b8300c51f7ed88e3dad2dda0756bd3fd5b8ebe504fd738754c04f4cebf22d83921b067eebc7b12a93f2c9b2e08e9bdafe249d17142d2464233b44061076f864ad04af43598ec0ff14a9582382f5f94520cd1f787841f1dff3da910abf92442f9da20c539475a329c2de179ebe6981430e773a8566e8bcce894cd7dbc72efcfad8324721b6bed3d70aee3c4fd7326d5a2372e1607f3bfd2e037bb9e768b30ef28bf2b626775722ac713e9223e33d86960307e8957574ddbc92cbefcd99a31fefe16511357b8dfe451b7ae66981c93739ece5c15c01265d2faea9c94d275e115239b0de00b15482a94ba666ab3cb62869cd01d1023f87868b93a918083154e8cb4fa4e3e488b7f9634df17aae4b5cb73dca683a24cab338e38849e60e829582ad527c6a919651e5dc653742daa2d10af980fb4d632ff0f78c2c7cc0e3ab326ddcb756067f0eaf2a9c9d16cdbb84ff460fe4f8b4c997718fa830559727106b99ce6e33bbf22840d264874a1f6457c01276bbcf6f6bee3fe3a24d08d004294288e0a2eb58b2845f87166da0b0578730e039b418cd1e8004b7e6f1197fa26a5dc3d8fdb6e28c19f83fc19224b238d73a87f0564ba5b0e757aa1e85bcd981686ffe54db58c2b700bb4d87fbd56f7f8714a95444d90e4dced8f4a696f5ef8eaf84db2490457b6c8ea93a3cb5710dc718c7f35e6c72f4bd1c4b7731ef7d1c66d2204d3b27eab5423bd2d5732a5c26c1215061ec483c01620c3febb2b2e620870a80bc1a4541a55bfd7efe11d792edd13bb2e3344aeaa2ccf15dfff3c765cd0cde1968a651decbdb24b205986588ff4a6a5037748727f3a196807028a2be3377368924bbe13095e087d1005b7e8efedc98df83a653ee78f0d25850db8554e08b67ee280cb19eecf075c437eb22e04fb99ceb719834358686be45f9000999ff2d6c147bf189e579d7f327bef5dd3a600a9c06740446d856d899fd4c8f5c15b5c217600e7c233b597fe8f2c702ddd64adda900ee05fc4d65e5610eea815b286cd653420fcfd2a0bc1fbb189f817cef07e24b463d585102c4fff9877bb3db950a9cbf8beffb7cab2a8e69cbeddb3f6949f42cfc01f69d50b68970781163238ce89b073e06364615428341fe6a20598fc30566ae84a24b7e34005c595ae261377715de71d3432dc738b33b82bec777557d07b92f370a2ccfda4879c43aff70717d2bded412efb7e49bc0f5ae550fa3ad352c9c0aa0d58a251608cf6cb5b1938091c78b4dc20a7ae58c9ea942e9a34e0fa67cb03ec71209ebe3f90e7842e68408a065df3b8a3e6ce8d066119b20d98adf6b48ab27794dfb14af1b93513847f271c4d1604f25dd50da3215e8d4b3bb4f5c336b4993f7f49c8f449d2f65fd42892d986246f10af6faf9b771d34eb46c1bbea2803478aaa59037c2cead0276d6ade3a085d4c098d9ce7c762770bac16451cf79632fd6fc26daad3f86356347bf77d112f10b2db6e0b58bded0208ff42b50a338b51169d1fedab2edfcd3bc418dabb3fb7fcc7399dc597d6b3961d28a5d2a7b2b8e9feada37b0f81efd72398e0c15b963a63d39a1185e5f965654f9c846d3afc776e0a1f383412336cf0b1d2949cb8d92b754f5fe0c18255dc3155067c24b422abe7bdb750862cb3de270fbe3dcadb4b80a5dcbd1d3f78fb238b59f60f1a3123d84b816bd1fc58675be0412ec244a22f2817226f60a9a4ccd821d2498e1115c5bacfc9d6fbd541dc4211f551b2ea10037505e9cb5d5cd7df28ac29e80ed353baa1f55c4678a6f7951a57b76380f9c44427e6a5a2bd00a999029b4bbb5e48a72fc0cf8c23d47f998f72d4874fdd453ef1cb20763a771e9895ee48fdb698dca97ef789cc6139731707e279af6dd1f4fec101bc38f13dfb5a65c7b882ed721fc0329b3b4cb7b825cbaeff98fb57fef21d0624c819413366628da739dd5c593ef4454fa909804ca96381201834243884e435c08811bbfd8030050bca5e4df3af10f04524dc8672cc8ca12888a229d85be4e116f02af25965dd2955972aae36931d7426d47c97e89f4eeda9a4d7724ec7665cbc183b374f446efe971f103008ee55a8091d6776878948f9c0c6e40e403c13865fabf990a9f901555ee668470e37a00a4b709041e4fa65f04745760be87e06697a23332e4d5a4764361a3b3f9cfaec8f2a1d31de1273a957222a3460bb355fff8c76617999852cf2078e956e8091f486fff50e9e3ee4b04284a0360002e94ecfd24ea4864560f85bc7688ce3a4277337af903e671c08e7617e42219000986f03da753e2475086c50648a778feafd4a3f977cc26122bc80044b48be0daa66b39d00d8d21ed63fa2cacfcbec52964c6bef3b1d001eb83cd43359ea63c1ed7764b7f4f90fd90b54edc5c422a0bd0a8648d16a230450983a64eb0f17b8f2bd155940431881d1543e5fd9c74acc48f799e5c62937bce109165147af95d2a05b977378251a2acb8908aa99d6169e326a0d542819b11bf3ba7a0160f4fd809afc59f161fa7cde160beb4e27eb6bac94f7c62913e36b12f59ddedb9c56384340fb9705de082a43ff33b7e484b7ea2f943f68c73bec7e63e085ebd67d2e1c7227a9b519d493fd2a374335950c3bacafef803e6bbac2f808b537fdabe3998aff3a985a5db75321e1a32037fdae4835e556bbe963d7841db44b035e7e7714edf4092ac3435507b06c85fd234d2fd4b5ce804520f8137c7ec382458e57f2e76ccf9b301b8b0474dcdd722eb3c21525d0a3354742fbc71cc78eac08f0a78fd20ae2644715b750dbd4f12134375e40eedabdebc1d3eb772c2327df456eef8658736b9d0c973b4d9485df867ea7941dcd78370efef74e6631c9981cec381f11537c011510f2f34d2e482a776e6a93defb2f68945905b77bc5bbea73ebed4b63423d733f1801cf0f65a56cb25374f710ba967a210f6c1aecc8d8a0908c4fb274bf997fc326ca3705b3b62992295eaf71261d134c4bb5b4009e368ebab5bf5cedb25003b36912a52365848dbb009fb331434cf19679dccac10a609b13ac3cd26448039ca20d076fe31ee00d0ec85cfa829ba14f80014e28287b7a5d063fa51fa4a34d3dc243aeeae0787d59b85ca65de147a8e2d619b72de3237f8586af702b9b350a7830b2928597197d7e3ff294d12225143ccbf0f620722724024c62d7d840f1496308d67a87bfe07fe572f8f708d8ae04dda364ad0d5e54dfd8079906d41b78f5afe11c04e0ee16add48c198e3dff0043b7df63a3f7a4c746e550a5725a6fcf7e0d73d0f33b7b4eacfe143c5f06fa1e7d207f8110bf4551ea5c4d906be7e91b8bc9f6f6c8aa3bbcc10b96c94e75ed690a6df37319181d1dffca3d2c2eff7a765080fb63a3117c9257ea5d08e6d52b4c964c61e6adc63b4e13d15493fbe2e26c4064fb3415f989b953920cd7c946711a75be7888834cd79717ad6b17d0edfa8857fbb9521b9c50034ed855e2f2221e36cf7d1676efbc1bd89e9a9007498663504f13296fb7054c9add971f52e8d10b267176d27565fe301783864ce52c8cc2438c81097dc4e1a23e73721fcbe34d91aed94d01640a33f955581e1a36aad2feee359941b6cc784addca4bf577dd127d4a3743ae49da59eadc41aa1ec3282b8df61d80ae64568fe576a58d99d6aba691b764de236cdc7bf309a79e32badfadcb80c5968711abe88cd4cbcfcc31edcc46fae3566dd4034e5ecfaf173d4da4414677716cccbde68da8a29205364c05dbbb7612d08240cdd88865745ad9c52e005cbd969cb29919723b5037823c775cc236d5015ca0414db0d1381169ac7da6d2b8f865869b2c6282e978358424faf23502c8b6e8b1e45e92f84cf4029155507bf51f0ba31e87bb80d3bc3a251e1c4dc6bb65143548fe7b5a67b605ca22eb587960c84c46067e29370d86051f44f0905daf4f187c4b0d0915dc16e27caff32df42eb34360d70a63188c9c665d0e217074ece5e478a9c66439e67e73accf25d379f33a52220e24566dfe429e5a1bb3aee0965873872857bd8fb3061a4571a130e7ed200522c043689362baf186f11861515a2b2daaade313bffdff4506449e68ad27689d78b4d58812ea43a6eef014d9c91ef12a3b79ec9440d12b9c9e57836f82c7fef2b37a71b2445281db9c6d8fc45dd18f992eb7b27f134205207a6baf7cf23e1f083e36ccb025eb30132490b6759cb66b3ac99e9d663e9d3ac28c64b6568a8d86ca91a66588e6f9ea775be1cb77fc0032ac628ecb7024f25f8e75d4443b7009bedb8dd6de681a185fc2114b23b15dd6cace22c96ce19009f49efc68a0f972a6d0780db6c0565750e1a70d8f679c42c70d247ae2fb961a31a0c3a40939cee41f5297eea3814356dbd84af876a97863c7da4266dda2d8372d48c309a16696e58e5d1ff0010acecd39c206bb2909cb778384783eab93b7a587f26d9882f7e015040cb25e94a66ed54113a71783f117ee1362b882ae7297856706b38a1c6d77169da874634eb595cadbee5da0fcd00f887db478263096b5365cefc70aedd7663965992da2442083dde0d431e0074645cbc66391a5b0537e46658feffce6a8e5c4ed10038fce25c50c3893e0de6a9f97bee3b8f3e391acef3cbdf03c5501c5aa3f792c1ea9c1f0c36ac39f65ff3ef0795e8d134f91e6b30f1e204c06099693430aceba6ed1f753297645c0d949322d14ab35a3b813bb62a382fd7c9af54465f90d624d9072cc045217f62d62032e8f22fbd3e49a47ef2edc1f29465b2c32c3ad98d5955b309db5c16edffa8eb5d3e8b8868f519606c63d7ccafa8984f31fe36823fca6486a1a690f2929de1a15ed6047460dde8bd741fe666edfd20a59e4b072a9bb65d53bb8ce8cf1676008f69f769bea2ca77736db0a7812f43070abe03c841b90ecefa9c1b19f2f1a87dbaed87118fb5d859a1221f14331cc2eef37e09d831a6e00da593fe4e1368807546b588f8b47e702d0d0e994f4c9519efa53789dc50576d6a035b8efbebf2023100729ddb5beeec5a5aa0729db7077525cdbe36a964ed181b827ad565804158ce231ca9b6c68bf85f7181cc587ef4c9110ba6fe96e00c38efb83c0316f9580c4a069c1284f54c6b113f04bd8e9baaaa4c85da757b92096a97003f8cee37bd958432f856a79cee90eea69f0e3f2d4e665c7536d657f5bc9487d3d169f0ab69be233efbaeed68d005fe9a6811c7ed24c25920d3761121f719f220e164ce2d98a30c24dd363f5b7316354eb1f26091b794b608f37623283be0a2c8a4b8083bbb82969917b871fedbefc9bf2b3f666db17329c35151b730f0ebe98727fb4eb8fd3faef0bfe302a23f687e70677a2dfa403ea418aa9a1ed29d89ae4fe427a581f1f5849f0aeedcd5e09929cbd9bc98fd3a566bcef4536d2f58b40e7e9d770ebc40f12ae5aab11532883ef249c003698aeb4cbbd899bc4b4a0b0ee6a9b84900b4902ec7f35a869635d7ee855a556afc3c4a6aa035273bc866d8389783a0d83116e209e028262c9f7b1e261ad5ab7c2749e3ea5dac3a2fdc3e8169fa6e39b8ddf7fdee79bee3d9f02e8351e6efbf4ec056a49be654767d9cd6e4ddb4408e6b456dea9d3fc69d65b4e49939808614c6e238ff8aee8a7592ae674442ffaebd7f7cadc8e70254fb03d7e75ecb9a6e618ae51e81c162e7044b3c88c46bfa7d0143116b824361578b8b97543166b320ee2677d4620ee4bb1a3a057355ceccdeb152d838b3a01a094ae8c6d5ef2311787d93de5b64bc70fc00893fdd4d124cfb818eac9ec48e8f62d055b25290e1bb6dabb32b0937c579837f084bede0e7b7b7c0434ee561c6be5c434c5a7cd5f08ab8ed21c3d55b286011b5bfd890c225a8658cd57d97d5bc6dd3e355d342d03be3f4b950b869228fcc32c7e9d762077c0f30f9a6bff4fa22f50fbf3ff012cb3139698625c482c6732ce16f3873eb23ef849db41d8cc042b655965b26233215d9d1a61b44505d012f8f3fc1e58fd5b6714ae84ffaca99e3ef532551999326a33dc7f7419877dfbd5576247153f756c23ac034cd095525a91cd732b7a7ff10dd9abd456f065f0660993db30e782f83da3964faf4a586800c379312b4a48d56f4608ba0afc0e4ddd6d63ae41aa243a49a7d1cf3ce9c5e186126a43a29b1af4583da9dba44febe48f79d70e5396d3d3333debd846452b1d2ab857c3e9aa8937459097996b73214adb56b614d0974a2fbe93653ffbd86ed14b66c433689972e83068b0fc77a44b815b15effaebb6413d17476e6d12fed73b27b18ffc91dfb00127227e4ce2c11420659c610c15c9430edcc947f7ddfd8947f430ad5bd45f91c556658d190b6b1dee1a499339bf32a48fb4cfafd3faa7c7447a70d9225fc59508ab9031dfc802a6fbcb7af69af4103c59aa63224fdda3c8146bac503e9bef1b89691ad31bd033fe36aaae77059027d01fdcf1195d92c613fdaf67424118d5f2e6aade2910791ffc4b0fe818a7463dc8241b3f5193bcfb91e18fc46cc9136278a6d52b1637cc3b8213918b07fe0d65ebdae127593adca254c09f02299e63c65cbfab7dc1f0dd4420030160c59e7ea752cd9d7f468ae78702cda8</script>
 </div>
 <script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
       <tags>
@@ -3221,22 +3237,6 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>枢纽1</title>
-    <url>/2020/04/02/%E6%9E%A2%E7%BA%BD1/</url>
-    <content><![CDATA[<div id="hexo-blog-encrypt" data-wpm="用心想想，ta可能用什么密码" data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
-  <div class="hbe-input-container">
-  <input type="password" id="hbePass" placeholder="" />
-    <label for="hbePass">Hey, password is required here.</label>
-    <div class="bottom-line"></div>
-  </div>
-  <script id="hbeData" type="hbeData" data-hmacdigest="c47e18f1b6f53d858e78bda78827132950495876d71922e41c4f877e813f7085">7faa57a996895b16c827c61fe8d27d9bd8c8ddb5aa724c94ed1934c807058b60ca0b478029088315ff2ed593d3d1012fdf288b8733e868409aac7e8920f59b64b553f2cec04ef0d3a7b623836aa4d7236b067b45852a1791b0f290ed55f5eccd8a69e0702a2ecac10ba4cbe4418317df084da7c68e3a97a0b0f10456d1c65c421f01d0dfad2a02f0ecc0d3701c076221cde05a91ae306bb07084273d51c9d8345195657471fa8e5515dff65bfbab989b13f31c70c25b17f634f5798920206bfd19de182e83e8783db001c468a6376e8af803f66d39f1df7832f4420b3257b040931ff9d9ed983fd997c8c5c82c8bd738357708cbd02eae1d833496a3e2b08eb1476bee9d641f2d7a0d8090a2d374d611483589e6048dbebcb46c6fb7f1ce1e3c20ec60707610a85a934c6364b5edf1f071cd0f342ab384070804743d4f9e976f0c68376d7e17b4ecab25fef28a1b8850d5582d6d24d9d6abcb0aacb1f95393f0572d13debdd427d077c1953d10800e400bb9fe8bbde9d3952788711c9bb284ef3e2284f2fe8e4dc6c76270f5e841fe86800e76ed7dec3b868c8fc8fb66f97e1787ee35a53fecddf6071da65725938a37149b7ddc67e52f3debfe8ebc22019f83a653eb0af49cc6546e360320093aa2eaf2e75ac551b0547134adde88ca7862a415a4274ad4b621b1ec52db9e88dce0759a8dd5e3298de093f98412358212630e0568b22cbddf770aceb55a8571334fd449ea59aa355e5cdfc97c6ab2894129c26e39aade65e6873a4cfe44de38be57a7612a822ab2742c6b09603b3b782a42f1820fb31cb63a993c732df11e768dd79ae5202eb180b76c41001c70c209208be79ac21608a51e530e3f3d8527a03b4758affe5dac1e75ba47b7c146a3fb6d3b4de1d4c7528e831a392e9c1a49ec987c1c5a2788e8963e75e819201d27e17e899355469a046524c8c6f3ccee82ffd227670209289a94ed3532158956d1f4725a658f734440b192100987bd19149aca83f2c97679a43fff34b8300c51f7ed88e3dad2dda0756bd3fd5b8ebe504fd738754c04f4cebf22d83921b067eebc7b12a93f2c9b2e08e9bdafe249d17142d2464233b44061076f864ad04af43598ec0ff14a9582382f5f94520cd1f787841f1dff3da910abf92442f9da20c539475a329c2de179ebe6981430e773a8566e8bcce894cd7dbc72efcfad8324721b6bed3d70aee3c4fd7326d5a2372e1607f3bfd2e037bb9e768b30ef28bf2b626775722ac713e9223e33d86960307e8957574ddbc92cbefcd99a31fefe16511357b8dfe451b7ae66981c93739ece5c15c01265d2faea9c94d275e115239b0de00b15482a94ba666ab3cb62869cd01d1023f87868b93a918083154e8cb4fa4e3e488b7f9634df17aae4b5cb73dca683a24cab338e38849e60e829582ad527c6a919651e5dc653742daa2d10af980fb4d632ff0f78c2c7cc0e3ab326ddcb756067f0eaf2a9c9d16cdbb84ff460fe4f8b4c997718fa830559727106b99ce6e33bbf22840d264874a1f6457c01276bbcf6f6bee3fe3a24d08d004294288e0a2eb58b2845f87166da0b0578730e039b418cd1e8004b7e6f1197fa26a5dc3d8fdb6e28c19f83fc19224b238d73a87f0564ba5b0e757aa1e85bcd981686ffe54db58c2b700bb4d87fbd56f7f8714a95444d90e4dced8f4a696f5ef8eaf84db2490457b6c8ea93a3cb5710dc718c7f35e6c72f4bd1c4b7731ef7d1c66d2204d3b27eab5423bd2d5732a5c26c1215061ec483c01620c3febb2b2e620870a80bc1a4541a55bfd7efe11d792edd13bb2e3344aeaa2ccf15dfff3c765cd0cde1968a651decbdb24b205986588ff4a6a5037748727f3a196807028a2be3377368924bbe13095e087d1005b7e8efedc98df83a653ee78f0d25850db8554e08b67ee280cb19eecf075c437eb22e04fb99ceb719834358686be45f9000999ff2d6c147bf189e579d7f327bef5dd3a600a9c06740446d856d899fd4c8f5c15b5c217600e7c233b597fe8f2c702ddd64adda900ee05fc4d65e5610eea815b286cd653420fcfd2a0bc1fbb189f817cef07e24b463d585102c4fff9877bb3db950a9cbf8beffb7cab2a8e69cbeddb3f6949f42cfc01f69d50b68970781163238ce89b073e06364615428341fe6a20598fc30566ae84a24b7e34005c595ae261377715de71d3432dc738b33b82bec777557d07b92f370a2ccfda4879c43aff70717d2bded412efb7e49bc0f5ae550fa3ad352c9c0aa0d58a251608cf6cb5b1938091c78b4dc20a7ae58c9ea942e9a34e0fa67cb03ec71209ebe3f90e7842e68408a065df3b8a3e6ce8d066119b20d98adf6b48ab27794dfb14af1b93513847f271c4d1604f25dd50da3215e8d4b3bb4f5c336b4993f7f49c8f449d2f65fd42892d986246f10af6faf9b771d34eb46c1bbea2803478aaa59037c2cead0276d6ade3a085d4c098d9ce7c762770bac16451cf79632fd6fc26daad3f86356347bf77d112f10b2db6e0b58bded0208ff42b50a338b51169d1fedab2edfcd3bc418dabb3fb7fcc7399dc597d6b3961d28a5d2a7b2b8e9feada37b0f81efd72398e0c15b963a63d39a1185e5f965654f9c846d3afc776e0a1f383412336cf0b1d2949cb8d92b754f5fe0c18255dc3155067c24b422abe7bdb750862cb3de270fbe3dcadb4b80a5dcbd1d3f78fb238b59f60f1a3123d84b816bd1fc58675be0412ec244a22f2817226f60a9a4ccd821d2498e1115c5bacfc9d6fbd541dc4211f551b2ea10037505e9cb5d5cd7df28ac29e80ed353baa1f55c4678a6f7951a57b76380f9c44427e6a5a2bd00a999029b4bbb5e48a72fc0cf8c23d47f998f72d4874fdd453ef1cb20763a771e9895ee48fdb698dca97ef789cc6139731707e279af6dd1f4fec101bc38f13dfb5a65c7b882ed721fc0329b3b4cb7b825cbaeff98fb57fef21d0624c819413366628da739dd5c593ef4454fa909804ca96381201834243884e435c08811bbfd8030050bca5e4df3af10f04524dc8672cc8ca12888a229d85be4e116f02af25965dd2955972aae36931d7426d47c97e89f4eeda9a4d7724ec7665cbc183b374f446efe971f103008ee55a8091d6776878948f9c0c6e40e403c13865fabf990a9f901555ee668470e37a00a4b709041e4fa65f04745760be87e06697a23332e4d5a4764361a3b3f9cfaec8f2a1d31de1273a957222a3460bb355fff8c76617999852cf2078e956e8091f486fff50e9e3ee4b04284a0360002e94ecfd24ea4864560f85bc7688ce3a4277337af903e671c08e7617e42219000986f03da753e2475086c50648a778feafd4a3f977cc26122bc80044b48be0daa66b39d00d8d21ed63fa2cacfcbec52964c6bef3b1d001eb83cd43359ea63c1ed7764b7f4f90fd90b54edc5c422a0bd0a8648d16a230450983a64eb0f17b8f2bd155940431881d1543e5fd9c74acc48f799e5c62937bce109165147af95d2a05b977378251a2acb8908aa99d6169e326a0d542819b11bf3ba7a0160f4fd809afc59f161fa7cde160beb4e27eb6bac94f7c62913e36b12f59ddedb9c56384340fb9705de082a43ff33b7e484b7ea2f943f68c73bec7e63e085ebd67d2e1c7227a9b519d493fd2a374335950c3bacafef803e6bbac2f808b537fdabe3998aff3a985a5db75321e1a32037fdae4835e556bbe963d7841db44b035e7e7714edf4092ac3435507b06c85fd234d2fd4b5ce804520f8137c7ec382458e57f2e76ccf9b301b8b0474dcdd722eb3c21525d0a3354742fbc71cc78eac08f0a78fd20ae2644715b750dbd4f12134375e40eedabdebc1d3eb772c2327df456eef8658736b9d0c973b4d9485df867ea7941dcd78370efef74e6631c9981cec381f11537c011510f2f34d2e482a776e6a93defb2f68945905b77bc5bbea73ebed4b63423d733f1801cf0f65a56cb25374f710ba967a210f6c1aecc8d8a0908c4fb274bf997fc326ca3705b3b62992295eaf71261d134c4bb5b4009e368ebab5bf5cedb25003b36912a52365848dbb009fb331434cf19679dccac10a609b13ac3cd26448039ca20d076fe31ee00d0ec85cfa829ba14f80014e28287b7a5d063fa51fa4a34d3dc243aeeae0787d59b85ca65de147a8e2d619b72de3237f8586af702b9b350a7830b2928597197d7e3ff294d12225143ccbf0f620722724024c62d7d840f1496308d67a87bfe07fe572f8f708d8ae04dda364ad0d5e54dfd8079906d41b78f5afe11c04e0ee16add48c198e3dff0043b7df63a3f7a4c746e550a5725a6fcf7e0d73d0f33b7b4eacfe143c5f06fa1e7d207f8110bf4551ea5c4d906be7e91b8bc9f6f6c8aa3bbcc10b96c94e75ed690a6df37319181d1dffca3d2c2eff7a765080fb63a3117c9257ea5d08e6d52b4c964c61e6adc63b4e13d15493fbe2e26c4064fb3415f989b953920cd7c946711a75be7888834cd79717ad6b17d0edfa8857fbb9521b9c50034ed855e2f2221e36cf7d1676efbc1bd89e9a9007498663504f13296fb7054c9add971f52e8d10b267176d27565fe301783864ce52c8cc2438c81097dc4e1a23e73721fcbe34d91aed94d01640a33f955581e1a36aad2feee359941b6cc784addca4bf577dd127d4a3743ae49da59eadc41aa1ec3282b8df61d80ae64568fe576a58d99d6aba691b764de236cdc7bf309a79e32badfadcb80c5968711abe88cd4cbcfcc31edcc46fae3566dd4034e5ecfaf173d4da4414677716cccbde68da8a29205364c05dbbb7612d08240cdd88865745ad9c52e005cbd969cb29919723b5037823c775cc236d5015ca0414db0d1381169ac7da6d2b8f865869b2c6282e978358424faf23502c8b6e8b1e45e92f84cf4029155507bf51f0ba31e87bb80d3bc3a251e1c4dc6bb65143548fe7b5a67b605ca22eb587960c84c46067e29370d86051f44f0905daf4f187c4b0d0915dc16e27caff32df42eb34360d70a63188c9c665d0e217074ece5e478a9c66439e67e73accf25d379f33a52220e24566dfe429e5a1bb3aee0965873872857bd8fb3061a4571a130e7ed200522c043689362baf186f11861515a2b2daaade313bffdff4506449e68ad27689d78b4d58812ea43a6eef014d9c91ef12a3b79ec9440d12b9c9e57836f82c7fef2b37a71b2445281db9c6d8fc45dd18f992eb7b27f134205207a6baf7cf23e1f083e36ccb025eb30132490b6759cb66b3ac99e9d663e9d3ac28c64b6568a8d86ca91a66588e6f9ea775be1cb77fc0032ac628ecb7024f25f8e75d4443b7009bedb8dd6de681a185fc2114b23b15dd6cace22c96ce19009f49efc68a0f972a6d0780db6c0565750e1a70d8f679c42c70d247ae2fb961a31a0c3a40939cee41f5297eea3814356dbd84af876a97863c7da4266dda2d8372d48c309a16696e58e5d1ff0010acecd39c206bb2909cb778384783eab93b7a587f26d9882f7e015040cb25e94a66ed54113a71783f117ee1362b882ae7297856706b38a1c6d77169da874634eb595cadbee5da0fcd00f887db478263096b5365cefc70aedd7663965992da2442083dde0d431e0074645cbc66391a5b0537e46658feffce6a8e5c4ed10038fce25c50c3893e0de6a9f97bee3b8f3e391acef3cbdf03c5501c5aa3f792c1ea9c1f0c36ac39f65ff3ef0795e8d134f91e6b30f1e204c06099693430aceba6ed1f753297645c0d949322d14ab35a3b813bb62a382fd7c9af54465f90d624d9072cc045217f62d62032e8f22fbd3e49a47ef2edc1f29465b2c32c3ad98d5955b309db5c16edffa8eb5d3e8b8868f519606c63d7ccafa8984f31fe36823fca6486a1a690f2929de1a15ed6047460dde8bd741fe666edfd20a59e4b072a9bb65d53bb8ce8cf1676008f69f769bea2ca77736db0a7812f43070abe03c841b90ecefa9c1b19f2f1a87dbaed87118fb5d859a1221f14331cc2eef37e09d831a6e00da593fe4e1368807546b588f8b47e702d0d0e994f4c9519efa53789dc50576d6a035b8efbebf2023100729ddb5beeec5a5aa0729db7077525cdbe36a964ed181b827ad565804158ce231ca9b6c68bf85f7181cc587ef4c9110ba6fe96e00c38efb83c0316f9580c4a069c1284f54c6b113f04bd8e9baaaa4c85da757b92096a97003f8cee37bd958432f856a79cee90eea69f0e3f2d4e665c7536d657f5bc9487d3d169f0ab69be233efbaeed68d005fe9a6811c7ed24c25920d3761121f719f220e164ce2d98a30c24dd363f5b7316354eb1f26091b794b608f37623283be0a2c8a4b8083bbb82969917b871fedbefc9bf2b3f666db17329c35151b730f0ebe98727fb4eb8fd3faef0bfe302a23f687e70677a2dfa403ea418aa9a1ed29d89ae4fe427a581f1f5849f0aeedcd5e09929cbd9bc98fd3a566bcef4536d2f58b40e7e9d770ebc40f12ae5aab11532883ef249c003698aeb4cbbd899bc4b4a0b0ee6a9b84900b4902ec7f35a869635d7ee855a556afc3c4a6aa035273bc866d8389783a0d83116e209e028262c9f7b1e261ad5ab7c2749e3ea5dac3a2fdc3e8169fa6e39b8ddf7fdee79bee3d9f02e8351e6efbf4ec056a49be654767d9cd6e4ddb4408e6b456dea9d3fc69d65b4e49939808614c6e238ff8aee8a7592ae674442ffaebd7f7cadc8e70254fb03d7e75ecb9a6e618ae51e81c162e7044b3c88c46bfa7d0143116b824361578b8b97543166b320ee2677d4620ee4bb1a3a057355ceccdeb152d838b3a01a094ae8c6d5ef2311787d93de5b64bc70fc00893fdd4d124cfb818eac9ec48e8f62d055b25290e1bb6dabb32b0937c579837f084bede0e7b7b7c0434ee561c6be5c434c5a7cd5f08ab8ed21c3d55b286011b5bfd890c225a8658cd57d97d5bc6dd3e355d342d03be3f4b950b869228fcc32c7e9d762077c0f30f9a6bff4fa22f50fbf3ff012cb3139698625c482c6732ce16f3873eb23ef849db41d8cc042b655965b26233215d9d1a61b44505d012f8f3fc1e58fd5b6714ae84ffaca99e3ef532551999326a33dc7f7419877dfbd5576247153f756c23ac034cd095525a91cd732b7a7ff10dd9abd456f065f0660993db30e782f83da3964faf4a586800c379312b4a48d56f4608ba0afc0e4ddd6d63ae41aa243a49a7d1cf3ce9c5e186126a43a29b1af4583da9dba44febe48f79d70e5396d3d3333debd846452b1d2ab857c3e9aa8937459097996b73214adb56b614d0974a2fbe93653ffbd86ed14b66c433689972e83068b0fc77a44b815b15effaebb6413d17476e6d12fed73b27b18ffc91dfb00127227e4ce2c11420659c610c15c9430edcc947f7ddfd8947f430ad5bd45f91c556658d190b6b1dee1a499339bf32a48fb4cfafd3faa7c7447a70d9225fc59508ab9031dfc802a6fbcb7af69af4103c59aa63224fdda3c8146bac503e9bef1b89691ad31bd033fe36aaae77059027d01fdcf1195d92c613fdaf67424118d5f2e6aade2910791ffc4b0fe818a7463dc8241b3f5193bcfb91e18fc46cc9136278a6d52b1637cc3b8213918b07fe0d65ebdae127593adca254c09f02299e63c65cbfab7dc1f0dd4420030160c59e7ea752cd9d7f468ae78702cda8</script>
-</div>
-<script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
-      <tags>
-        <tag>Q List</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>画UML</title>
     <url>/2020/02/25/%E7%94%BBUML/</url>
     <content><![CDATA[<p>TL;DR<br>用 <strong>文字</strong> + <strong>工具</strong> ，画个好图</p>
@@ -3272,6 +3272,24 @@ pipeline {
       </categories>
       <tags>
         <tag>Tools</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>疫情的启示[伪上帝之眼]</title>
+    <url>/2020/04/10/%E7%96%AB%E6%83%85%E7%9A%84%E5%90%AF%E7%A4%BA-%E4%BC%AA%E4%B8%8A%E5%B8%9D%E4%B9%8B%E7%9C%BC/</url>
+    <content><![CDATA[<blockquote>
+<p>从武汉封城（2020.01.23）到今天（2020.05.23）,正好4个月时间。一年过去了1/3，度过去了2个季节，很多节日（春节、元宵、38、清明、劳动节、青年节…）还有很多我们自己创造出来的节日。但在武汉的氛围里，少些悲伤，就是幸运的，节日的快乐变小了很多，心中的畏惧变大了很多。时至今日，出门买菜、坐车也还能看到一些人手上带的一次性手套，还有面罩，至于口罩，是这里的每个人出门的必需品。5月，去过安徽，回过老家，一切大体如初了，武汉成了最不一样的地方，甚至在5月中旬回老家，有的人畏惧我这个从武汉回去的人。在懂事的年纪经历这样一场大事件，而且身处正中心，有些想法还是值得记录，不然哪天忘记了。</p>
+</blockquote>
+<p>以下一部分内容是早在3月份，疫情形势依旧严峻时的所想：</p>
+<h3 id="1-保持信息敏感"><a href="#1-保持信息敏感" class="headerlink" title="1.保持信息敏感"></a>1.保持信息敏感</h3><p>社会中大事件的发生，前夕必定有风声，有的人捕捉到了且重视，有的人置若罔闻。而来自专业领域的事情，非专业人士无从判断，但应该学习着去判断去思想前因后果，毕竟就像这次会生死攸关。对于信息来源，那一道看不见的墙在哪里，但也是不同看法的来源地，多听听未必是件坏事情，决定是在自己身心中的不是吗。需要多渠道的去获取关键信息，也需要辨别真伪，专业网站、官方网站的信息不可忽视，有些小道消息也很重要，而且中英文的都需要阅读。如果英文不好，尚可用一些翻译工具。</p>
+<h3 id="2-超预期的准备"><a href="#2-超预期的准备" class="headerlink" title="2.超预期的准备"></a>2.超预期的准备</h3><p>&#160;&#160; 疫情期间，我们很多人做的一件事情就是屯东西，因为商店关门了，各种社会交易停止了，包括耐以生存的食物交易也受到了管控。口罩难求，要屯一点；大米不够，要屯一点；卫生纸不足，要吞一点….还有很多很多东西，零食？汽油？酒精？消毒剂？猪肉？ 而另一件凑巧的事情就是，春节前期武汉有准备腊肉腊鱼的习惯，这个时候这些荤菜派上了用场，古老的食物做法让我们在特殊的时间里还能享受到肉的味道。但是屯多久的东西了，每个人对持续的时间都有自己的看法，但都是来自自信的第六感。最好还是寻求专业的建议，比如疫情期间的流行病“老师傅”，比如那些有野外生存能力的人。最好，<strong>给那第六感的结果来个加倍，或者三倍吧</strong>，比如很多人预期1-2个月疫情就会过去，那你就按照3-4个月去储备物品，当然这没什么根据，但有总比没有好，这里的多也比少好。很多我们不了解的事情上，也都这么准备吧。比如外出带几天的干粮，第六感的双倍吧。</p>
+<h3 id="3-公共卫生"><a href="#3-公共卫生" class="headerlink" title="3.公共卫生"></a>3.公共卫生</h3><p>&#160;&#160;口罩、公筷、勤洗手、消毒用品…这些在我们平日里不太注重的东西，一些就在这样的时候成了我们保护自身的唯一方法。口罩，我以为是属于明星的必需品，或是用来冬天御寒的，更别提医用口罩，每家每户都缺少。今后每年的流感季节，我们也应该多嘱咐我们自己和家人朋友，多注意在人多的地方戴口罩，勤洗手，家庭消毒等等。如果，是做餐饮的，最好常带口罩，至少飞沫传播会被大大的减少。也不要随意用手揉眼睛，可能会让手上的细菌病毒等从眼睛粘膜处进入体内。题外话：口罩也是有好处的，别人看不见你的生气或是喜悦，也看不见你的全部五官，神秘感倍增，勇气有时候也倍增。</p>
+<h3 id="4-心态心理"><a href="#4-心态心理" class="headerlink" title="4.心态心理"></a>4.心态心理</h3><p>&#160;&#160;在强大的病毒氛围下，每个人如兵临城下一般，害怕肉眼看不见的东西闯入自己体内。有人上门量体温时，觉得自己有点热，心想是不是发烧了，可能又有点儿胸闷，是不是呼吸有点问题。心理的压力大小直接影响免疫力的强弱，但这种模糊的关系也是看不见摸不着的。心理受到影响，做事情的态度也自然会被影响到。比如我就无心专心的完成一些事情，心中杂念挥之不去。最好的方法，还没每天给自己设定几个任务，完成了就打个勾，不让自己漫无目的在电脑前，或者门前。</p>
+<h3 id="5-随身携带随时准备着"><a href="#5-随身携带随时准备着" class="headerlink" title="5.随身携带随时准备着"></a>5.随身携带随时准备着</h3><p>&#160;&#160;听闻因为春节回家的缘故，很多人没有选择带电脑回家，可谁知这个春节有点儿太长了，于是无法在家办公。与电脑类似的东西，还有比如剃须刀，充电器，耳机，相机，每个人的职业不一样，总有些工具需要常用到，有条件的最好还是常带在身边，不然意外的就是很意外的。另一个方面讲，出差的我不喜欢携带太多东西，有些可有可无的不带，轻松上阵，上下车的步伐都轻盈一些。如何取舍，视情况而定了。</p>
+<h3 id="6-富贵险中求"><a href="#6-富贵险中求" class="headerlink" title="6.富贵险中求"></a>6.富贵险中求</h3><p>&#160;&#160;无，留点遐想的空间。</p>
+<blockquote>，还有比如剃须刀，充电器，耳机，相机，每个人的职业不一样，总有些工具需要常用到，有条件的最好还是常带在身边，不然意外的就是很意外的。另一个方面讲，出差的我不喜欢携带太多东西，有些可有可无的不带，轻松上阵，上下车的步伐都轻盈一些。如何取舍，视情况而定了。</blockquote>]]></content>
+      <tags>
+        <tag>Q List</tag>
       </tags>
   </entry>
   <entry>
@@ -3331,11 +3349,6 @@ pipeline {
       <categories>
         <category>CICD</category>
       </categories>
-  </entry>
-  <entry>
-    <title>疫情的启示[伪上帝之眼]</title>
-    <url>/2020/04/10/%E7%96%AB%E6%83%85%E7%9A%84%E5%90%AF%E7%A4%BA-%E4%BC%AA%E4%B8%8A%E5%B8%9D%E4%B9%8B%E7%9C%BC/</url>
-    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>给博客上个锁</title>
