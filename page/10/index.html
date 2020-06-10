@@ -64,6 +64,181 @@
     
     
     
+    <article id="post-How-to-Create-Custom-iTerm2-Window" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/04/18/How-to-Create-Custom-iTerm2-Window/"
+    >How to Create Custom iTerm2 Window</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/04/18/How-to-Create-Custom-iTerm2-Window/" class="article-date">
+  <time datetime="2019-04-18T09:08:34.000Z" itemprop="datePublished">2019-04-18</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Tools/">Tools</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h4 id="1-Open-iTerm-preferences-setting-打开偏好设置"><a href="#1-Open-iTerm-preferences-setting-打开偏好设置" class="headerlink" title="1.Open iTerm preferences setting (打开偏好设置)"></a>1.Open iTerm preferences setting (打开偏好设置)</h4><p><img src="/images/iterm_image_01.png" alt="iterm_image_01"></p>
+<h4 id="2-New-add-a-profile-新加一个配置"><a href="#2-New-add-a-profile-新加一个配置" class="headerlink" title="2.New add a profile (新加一个配置)"></a>2.New add a profile (新加一个配置)</h4><p><img src="/images/iterm_image_02.png" alt="iterm_image_02"></p>
+<h4 id="3-Setting-windows-name-etc-（定义名称，窗口高度，宽度等）"><a href="#3-Setting-windows-name-etc-（定义名称，窗口高度，宽度等）" class="headerlink" title="3.Setting windows name etc （定义名称，窗口高度，宽度等）"></a>3.Setting windows name etc （定义名称，窗口高度，宽度等）</h4><p><img src="/images/iterm_image_03.png" alt="iterm_image_03"></p>
+<p><img src="/images/iterm_image_04.png" alt="iterm_image_04"></p>
+<h4 id="4-define-hotkey-定义快捷键"><a href="#4-define-hotkey-定义快捷键" class="headerlink" title="4.define hotkey (定义快捷键)"></a>4.define hotkey (定义快捷键)</h4><p><img src="/images/iterm_image_05.png" alt="iterm_image_05"></p>
+<p><img src="/images/iterm_image_06.png" alt="iterm_image_06"></p>
+<h4 id="Finally-使用快捷键"><a href="#Finally-使用快捷键" class="headerlink" title="Finally 使用快捷键"></a>Finally 使用快捷键</h4><p>按 <strong>一次</strong> 出现窗口，<strong>再按一次</strong> 窗口消失。如果是多屏，可以在不同屏幕下调用出来，会话内容仍保持着。</p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools/">Tools</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-Jenkins-build-trigger、logRotator、options" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/04/11/Jenkins-build-trigger、logRotator、options/"
+    >Jenkins build trigger、logRotator、buildDiscarder etc</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/04/11/Jenkins-build-trigger、logRotator、options/" class="article-date">
+  <time datetime="2019-04-11T08:40:30.000Z" itemprop="datePublished">2019-04-11</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>Declarative Pipeline 与Job DSL的同一个功能的语法命令有些差异，不能直接套用，需要查对应的官方文档。 </p>
+<h4 id="1-Jenkins-Declarative-Pipeline"><a href="#1-Jenkins-Declarative-Pipeline" class="headerlink" title="1.Jenkins Declarative Pipeline"></a>1.Jenkins Declarative Pipeline</h4><p>语法如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">//Jenkinsfile (Declarative Pipeline)</span><br><span class="line">pipeline &#123;</span><br><span class="line">    agent &#123; label  <span class="string">'sbt'</span> &#125;</span><br><span class="line">    options&#123;</span><br><span class="line">        buildDiscarder(logRotator(numToKeepStr:<span class="string">'5'</span>))</span><br><span class="line">        disableConcurrentBuilds()</span><br><span class="line">    &#125;</span><br><span class="line">    triggers&#123;</span><br><span class="line">       pollSCM(<span class="string">'H/2 * * * 1-5'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    environment &#123;</span><br><span class="line">        MYBRANCH = <span class="string">"<span class="variable">$&#123;env.BRANCH_NAME&#125;</span>"</span></span><br><span class="line">        NEXUS_URL = <span class="string">'117.121.xxx.xx:443'</span></span><br><span class="line">        BASE_IMAGE_TAG = <span class="string">"<span class="variable">$&#123;NEXUS_URL&#125;</span>/<span class="variable">$&#123;GROUP_NAME&#125;</span>/<span class="variable">$&#123;SERVICE_NAME&#125;</span>"</span></span><br><span class="line">        BRANCH_IMAGE_TAG = <span class="string">"<span class="variable">$&#123;NEXUS_URL&#125;</span>/<span class="variable">$&#123;GROUP_NAME&#125;</span>/<span class="variable">$&#123;SERVICE_NAME&#125;</span>-<span class="variable">$&#123;MYBRANCH&#125;</span>"</span></span><br><span class="line">    &#125;</span><br><span class="line">...   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>1.1  triggers</strong></p>
+<p><strong>1.2  buildDiscarder</strong></p>
+<p><strong>1.3  disableConcurrentBuilds</strong></p>
+<ul>
+<li>daysToKeepStr: history is only kept up to this days.</li>
+<li>numToKeepStr: only this number of build logs are kept.</li>
+<li>artifactDaysToKeepStr: artifacts are only kept up to this days.</li>
+<li>artifactNumToKeepStr: only this number of builds have their artifacts kept.</li>
+</ul>
+<p><strong>1.4 environment</strong></p>
+<h4 id="2-Jenkins-Job-DSL"><a href="#2-Jenkins-Job-DSL" class="headerlink" title="2.Jenkins Job DSL"></a>2.Jenkins Job DSL</h4><p>语法如下<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">pipelineJob(<span class="string">"$&#123;AndroidFolder&#125;/nightly-build"</span>) &#123;</span><br><span class="line">  description <span class="string">"""</span></span><br><span class="line"><span class="string">&lt;h3&gt;</span></span><br><span class="line"><span class="string"> Android Build for nightly build</span></span><br><span class="line"><span class="string">&lt;/h3&gt;</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">  <span class="comment">//@midnight This will run at some point between 0:00 and 2:59</span></span><br><span class="line">  triggers&#123;</span><br><span class="line">    cron <span class="string">'''TZ=Asia/Shanghai</span></span><br><span class="line"><span class="string">    @midnight</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">  &#125;</span><br><span class="line">  logRotator &#123;</span><br><span class="line">    artifactNumToKeep(<span class="number">30</span>)</span><br><span class="line">    numToKeep(<span class="number">30</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  throttleConcurrentBuilds &#123;</span><br><span class="line">    maxTotal(<span class="number">1</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  environmentVariables &#123;</span><br><span class="line">    env(<span class="string">'GIT_URL'</span>, gitUrl)</span><br><span class="line">    env(<span class="string">'GIT_BRANCH'</span>, gitBranch)</span><br><span class="line">    env(<span class="string">'GIT_CREDENTIAL_ID'</span>, <span class="string">'xxxx-git-ssh-private'</span>)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>2.1 triggers</strong></p>
+<p><strong>2.2  logRotator</strong></p>
+<ul>
+<li>artifactDaysToKeep: If specified, artifacts from builds older than this number of days will be deleted, but the logs, history, reports, etc for the build will be kept.</li>
+<li>artifactNumToKeep: If specified, only up to this number of builds have their artifacts retained.</li>
+<li>daysToKeep: If specified, build records are only kept up to this number of days.</li>
+<li>numToKeep: If specified, only up to this number of build records are kept.</li>
+</ul>
+<p><strong>2.3 throttleConcurrentBuilds</strong><br>throttleConcurrentBuilds 需要单独给Jenkins安装插件 <strong>Throttle Concurrent Builds</strong> </p>
+<p><strong>2.4 environmentVariables</strong></p>
+<p><strong>More Ref:</strong></p>
+<blockquote>
+<ol>
+<li><a href="https://jenkins.io/doc/book/pipeline/syntax/#available-options" target="_blank" rel="noopener">https://jenkins.io/doc/book/pipeline/syntax/#available-options</a></li>
+<li><a href="https://jenkinsci.github.io/job-dsl-plugin/#path/pipelineJob-logRotator" target="_blank" rel="noopener">https://jenkinsci.github.io/job-dsl-plugin/#path/pipelineJob-logRotator</a></li>
+<li><a href="https://jenkinsci.github.io/job-dsl-plugin/#path/pipelineJob-triggers" target="_blank" rel="noopener">https://jenkinsci.github.io/job-dsl-plugin/#path/pipelineJob-triggers</a></li>
+</ol>
+</blockquote>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jenkins/">jenkins</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-反摩尔定理-学如逆水行舟" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
