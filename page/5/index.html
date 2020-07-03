@@ -64,133 +64,6 @@
     
     
     
-    <article id="post-Test-02-Tools" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/11/08/Test-02-Tools/"
-    >Test 02:Tools</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/11/08/Test-02-Tools/" class="article-date">
-  <time datetime="2019-11-08T07:38:23.000Z" itemprop="datePublished">2019-11-08</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Test/">Test</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p><mark>测试种类与测试工具没有一对一的关系。</mark></p>
-<p>项目原因最近在学习以下几个工具：</p>
-<h3 id="1-Postman"><a href="#1-Postman" class="headerlink" title="1.Postman"></a>1.Postman</h3><p>可做api测试，newman</p>
-<h3 id="2-Selenium"><a href="#2-Selenium" class="headerlink" title="2.Selenium"></a>2.Selenium</h3><p>Selenium is a suite of tools to automate web browsers across many platforms.</p>
-<h3 id="3-Cucumber"><a href="#3-Cucumber" class="headerlink" title="3.Cucumber"></a>3.Cucumber</h3><p>Cucumber 是 BDD（behaviour-driven development） 模式下实现可执行规范（Executable Specifications）的开源工具，但是它的使命并不局限于做自动化验收测试，更加重要的在于其能够在团队成员之间构建统一的交流基础（feature 文件）、规范交流用语（Domain Specific Language）、提高各个利益相关方（Business Stakeholders）沟通效率和效果，从而达到提升产品质量、做成客户期望得到的产品这一最终目标。<br><a href="https://www.ibm.com/developerworks/cn/java/j-lo-cucumber01/index.html" target="_blank" rel="noopener">参考</a></p>
-<ul>
-<li><p>Features介绍  </p>
-<p>feature(功能)，每一个feature文件都要开始于Feature(功能)，Feature之后的描述可以随便写，直到出现Scenario(场景)，一个feature中可以有多个 Scenario，每个Scenario包含（step）步骤列表，步骤使用Given、When、Then、But、And这些关键词，cucumber对这些关键词的处理是一样的，但是我们在使用的时候需要按照场景区分。</p>
-</li>
-<li><p>Step definitions介绍  </p>
-<p>Cucumber中定义的每一个step(步骤)都需要有一个step definition对应，默认的话是使用Ruby来编写定义的脚本，支持通过正则表达式从step中传递参数。</p>
-</li>
-<li><p>Given When then(假如 当 那么)  </p>
-<p>Cucumber的步骤中会包含Given、When、then这些词组，cucumber本身在技术实现上不区分这三个词组，但是在使用上推荐按照词组的意思来使用。</p>
-<ul>
-<li>Given-用例开始执行前的一个前置条件，类似与编写代码setup中的一些步骤</li>
-<li>When-用例开始执行的一些关键操作步骤，类似点击元素等</li>
-<li>Then-观察结果，就是平时用例中的验证步骤</li>
-<li>And-一个步骤中如果存在多个Given操作，后面的Given可以用And替代</li>
-<li>But-一个步骤中如果存在多个Then操作，第二个开始后面的Then可以用But替代</li>
-</ul>
-</li>
-</ul>
-<p><strong>工具情况统计</strong></p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Tool-Name</th>
-<th>CLI</th>
-<th>HTML-Report</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">Postman</td>
-<td><code>newman</code></td>
-<td>有</td>
-</tr>
-<tr>
-<td style="text-align:left">Selenium</td>
-<td>结合<code>java</code>、<code>python</code>环境运行</td>
-<td>有 <code>HTML TestRunner</code></td>
-</tr>
-<tr>
-<td style="text-align:left">Cucumber</td>
-<td><code>cucumber</code></td>
-<td>有</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<p><strong>More Ref:</strong></p>
-<ul>
-<li><a href="https://zhuanlan.zhihu.com/p/44470871" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/44470871</a></li>
-<li><a href="https://www.cnblogs.com/tynam" target="_blank" rel="noopener">某个博客</a></li>
-<li><a href="http://www.zhangyanc.club/blog/84" target="_blank" rel="noopener">http://www.zhangyanc.club/blog/84</a></li>
-</ul>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Test/">Test</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
     <article id="post-Test-01-Introduction" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -1083,6 +956,147 @@
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools/">Tools</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-tmux-tutorial" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/09/07/tmux-tutorial/"
+    >tmux tutorial</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/09/07/tmux-tutorial/" class="article-date">
+  <time datetime="2019-09-07T15:01:50.000Z" itemprop="datePublished">2019-09-07</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Tools/">Tools</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h3 id="1-tmux是什么"><a href="#1-tmux是什么" class="headerlink" title="1.tmux是什么"></a>1.tmux是什么</h3><p>tmux (terminal multiplexer),是一个 BSD 协议发布的终端复用软件，用来在服务器端托管同时运行的 Shell.</p>
+<p>效果如图：<br><img src="/images/image_tmux_01.png" alt="tmux_01"></p>
+<center> tmux </center>
+
+<p>几个重要概念：</p>
+<ul>
+<li>1.会话(session): 建立一个 tmux 工作区会话，会话可以长期驻留，重新连接服务器不会丢失，我们只需重新 tmux attach 到之前的工作区就可以恢复会话</li>
+<li>2.窗口(window): 容纳多个窗格</li>
+<li>3.窗格(pane): 可以在窗口中分成多个窗格</li>
+</ul>
+<p>主要解决以下问题：</p>
+<ul>
+<li>想同时打开多个目录不得不开很多终端标签来回切换</li>
+<li>开了一个 vim 窗口之后，想切到其他目录不得不重新打开个一个终端窗口 ssh 到服务器</li>
+<li>运行一个脚本，服务器断掉失联之后当前进程被服务器给无情地杀掉，不得不用 nohup 等方式让脚本在后台跑</li>
+<li>…</li>
+</ul>
+<h3 id="2-安装"><a href="#2-安装" class="headerlink" title="2.安装"></a>2.安装</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">brew install tmux       <span class="comment"># OSX</span></span><br><span class="line">pacman -S tmux          <span class="comment"># archlinux</span></span><br><span class="line">apt-get install tmux    <span class="comment"># Ubuntu</span></span><br><span class="line">yum install tmux        <span class="comment"># Centos</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#check tmux version</span></span><br><span class="line">➜  ~ tmux -V</span><br><span class="line">tmux 2.9a</span><br></pre></td></tr></table></figure>
+<h3 id="3-使用"><a href="#3-使用" class="headerlink" title="3.使用"></a>3.使用</h3><p>tmux的所有指令，都包含同一个前缀，默认为 <strong><code>Ctrl+b</code> </strong>，输入完前缀过后，<strong>控制台激活</strong>，命令按键才能生效。</p>
+<ul>
+<li>会话(session)<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#新建会话</span></span><br><span class="line">tmux new -s &lt;Session_Name&gt; <span class="comment"># tmux new-session -s &lt;Session_Name&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#列出所有会话</span></span><br><span class="line">tmux ls  <span class="comment"># tmux list-session</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#进入会话</span></span><br><span class="line">tmux a -t &lt;Session_Name&gt; <span class="comment"># tmux attach -t , -t mean 'to' </span></span><br><span class="line"></span><br><span class="line"><span class="comment">###当且只有一个session时，可以直接输入命令 tmux a 或 tmux attach 进入</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#关闭会话</span></span><br><span class="line">tmux <span class="built_in">kill</span>-session -s &lt;Session_Name&gt; <span class="comment"># kill命令有kill-pane、kill-server、kill-session 和 kill-window共四种</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>快捷指令<br>(先按下 Tmux 前缀 <strong>ctrl+b</strong>,然后松开，继续按下面的字母)</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">:new&lt;回车&gt;  启动新会话</span><br><span class="line">s           列出所有会话</span><br><span class="line">$           重命名当前会话</span><br><span class="line">d           暂时离开 deattach</span><br></pre></td></tr></table></figure>
+<ul>
+<li>窗口(window)<blockquote>
+<p>快捷指令</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">c  创建新窗口</span><br><span class="line">w  列出所有窗口</span><br><span class="line">n  后一个窗口 next</span><br><span class="line">p  前一个窗口 pervious</span><br><span class="line">f  查找窗口</span><br><span class="line">,  重命名当前窗口</span><br><span class="line">&amp;  关闭当前窗口</span><br><span class="line">数字0,1,2... 也可用来切换窗口</span><br></pre></td></tr></table></figure>
+<ul>
+<li>窗格(pane)<blockquote>
+<p>快捷指令</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">%  垂直分割</span><br><span class="line"><span class="string">"  水平分割</span></span><br><span class="line"><span class="string">上下左右 方向按键调整光标位置</span></span><br><span class="line"><span class="string">o  选择下一面板</span></span><br><span class="line"><span class="string">x  关闭窗格</span></span><br><span class="line"><span class="string">q 显示每个窗格是第几个，当数字出现的时候按数字几就选中第几个窗格</span></span><br><span class="line"><span class="string">&#123; 与上一个窗格交换位置</span></span><br><span class="line"><span class="string">&#125; 与下一个窗格交换位置</span></span><br><span class="line"><span class="string">z 切换窗格最大化/最小化</span></span><br></pre></td></tr></table></figure>
+<p>其他：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">t  窗口中央显示一个数字时钟</span><br><span class="line">?  列出所有快捷键</span><br><span class="line">:  命令提示符</span><br></pre></td></tr></table></figure></p>
+<p><strong>场景：将打的命令同步发送到所有的pane</strong></p>
+<ul>
+<li><ol>
+<li>先按下 Tmux 前缀</li>
+</ol>
+</li>
+<li><ol start="2">
+<li><code>:setw synchronize-panes</code></li>
+</ol>
+</li>
+</ul>
+<p>同样的命令（synchronize-panes）再输入一次就解除这种模式。</p>
+<p>基本配置：</p>
+<ul>
+<li><p>配置文件 <code>～/.tmux.conf</code> ,如修改 <em>默认的前缀快捷键</em></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ touch .tmux.conf</span><br><span class="line">$ cat .tmux.conf </span><br><span class="line"><span class="comment"># Change the prefix key to C-a</span></span><br><span class="line"><span class="built_in">set</span> -g prefix C<span class="_">-a</span>                          </span><br><span class="line">unbind C-b                                 </span><br><span class="line"><span class="built_in">bind</span> C<span class="_">-a</span> send-prefix</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>生效配置 <code>tmux source-file ~/.tmux.conf</code> 或用动态载入配置的方法</p>
+</li>
+</ul>
+<p>More ref:</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=norO25P7xHg&amp;list=PLtK75qxsQaMJ_DmXk9yZbCBJuG9HRwlGc&amp;index=2" target="_blank" rel="noopener">tmux:Shared Sessions</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/43687973" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/43687973</a></li>
+<li><a href="https://www.youtube.com/watch?v=BHhA_ZKjyxo&amp;list=PLtK75qxsQaMJ_DmXk9yZbCBJuG9HRwlGc" target="_blank" rel="noopener">https://www.youtube.com/watch?v=BHhA_ZKjyxo&amp;list=PLtK75qxsQaMJ_DmXk9yZbCBJuG9HRwlGc</a></li>
+<li><a href="https://gist.github.com/ryerh/14b7c24dfd623ef8edc7" target="_blank" rel="noopener">https://gist.github.com/ryerh/14b7c24dfd623ef8edc7</a></li>
+<li><a href="http://louiszhai.github.io/2017/09/30/tmux/" target="_blank" rel="noopener">http://louiszhai.github.io/2017/09/30/tmux/</a></li>
+</ul>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tmux/">tmux</a></li></ul>
 
 
     </footer>
