@@ -41,24 +41,6 @@
       </categories>
   </entry>
   <entry>
-    <title>Azure FAQs</title>
-    <url>/2019/12/11/Azure-FAQs/</url>
-    <content><![CDATA[<h3 id="1-asm-arm"><a href="#1-asm-arm" class="headerlink" title="1. asm, arm"></a>1. asm, arm</h3><ul>
-<li>asm: Azure Service Manager</li>
-<li>arm: Azure Resource Manager</li>
-</ul>
-<p>最开始一直都是classic模型，它的模型中有service的概念，所以它也叫 asm（Azure Service Manager）。2014年开始提出arm（Azure Resource Manager），其管理平台叫portal。2015年底arm发布。</p>
-<p>当前情况是微软正在将azure的所有功能往arm上迁移。以后都推荐使用arm。但 是当前状况是arm不完全向后兼容asm，有些功能只有asm上才有，所以还有很多 用户还是在使用classic。</p>
-<blockquote>
-<p>ref: <a href="https://pengpengxp.github.io/archive/before-2018-11-10/2017-06-28-Azure%E7%BB%8F%E5%85%B8%E6%A8%A1%E5%BC%8F%E5%92%8C%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB.html#orgbb66971" target="_blank" rel="noopener">https://pengpengxp.github.io/archive/before-2018-11-10/2017-06-28-Azure%E7%BB%8F%E5%85%B8%E6%A8%A1%E5%BC%8F%E5%92%8C%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB.html#orgbb66971</a></p>
-</blockquote>
-<h3 id="2-AWS-to-Azure-services-comparison"><a href="#2-AWS-to-Azure-services-comparison" class="headerlink" title="2. AWS to Azure services comparison"></a>2. AWS to Azure services comparison</h3><p>详见链接 <a href="https://docs.microsoft.com/en-us/azure/architecture/aws-professional/services" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/azure/architecture/aws-professional/services</a></p>
-]]></content>
-      <categories>
-        <category>Cloud</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Anka tutorial 02</title>
     <url>/2019/11/19/Anka-tutorial-02/</url>
     <content><![CDATA[<h5 id="1-Joining-Nodes"><a href="#1-Joining-Nodes" class="headerlink" title="1.Joining Nodes"></a>1.Joining Nodes</h5><p>在mac上（anka build 节点）执行  <code>sudo ankacluster join http://localhost:80/</code></p>
@@ -81,62 +63,19 @@
       </categories>
   </entry>
   <entry>
-    <title>Azure tutorial 02: Storage</title>
-    <url>/2019/12/11/Azure-tutorial-02-Storage/</url>
-    <content><![CDATA[<p>storage account type<br><a href="https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview</a></p>
-<p><strong>Blob</strong> - Binary Large Object<br><strong>Binary Object</strong> - Images,Documents,Media Files, Log Files, Backup data Virtual Disks</p>
-<p><strong>Blod types:</strong> </p>
-<ul>
-<li>Block Blob - Text and binary data Files</li>
-<li>Append Blobs - Optimized for append operations</li>
-<li>Page Blob - A collection of 512 byte pages optimized for random read and writes(virtual disk)</li>
-</ul>
-<p><strong>Locations and Redundancy:</strong> </p>
-<ul>
-<li>Locally-redundant storage (LRS): A simple, low-cost replication strategy. Data is replicated synchronously three times within the primary region.</li>
-<li>Zone-redundant storage (ZRS): Replication for scenarios requiring high availability. Data is replicated synchronously across three Azure availability zones in the primary region.</li>
-<li>Geo-redundant storage (GRS): Cross-regional replication to protect against regional outages. Data is replicated synchronously three times in the primary region, then replicated asynchronously to the secondary region. For read access to data in the secondary region, enable read-access geo-redundant storage (RA-GRS).</li>
-<li>Geo-zone-redundant storage (GZRS) (preview): Replication for scenarios requiring both high availability and maximum durability. Data is replicated synchronously across three Azure availability zones in the primary region, then replicated asynchronously to the secondary region. For read access to data in the secondary region, enable read-access geo-zone-redundant storage (RA-GZRS).</li>
-</ul>
-<p><strong>Access Tiers:</strong></p>
-<ul>
-<li>Hot </li>
-<li>Cool </li>
-<li>Archive</li>
-</ul>
-<p><strong>Azure Storage services:</strong></p>
-<ul>
-<li>Blob service</li>
-<li>File service</li>
-<li>Queue service</li>
-<li>Table Storage</li>
-</ul>
-<p><strong>Securing Storage Accounts:</strong></p>
-<ul>
-<li>Access Keys -Two per storage account,full access</li>
-<li>Share Access Signatures - Time based access keys that give granular control</li>
-</ul>
-<p><strong>作业：新建storage account ,并上传文件或文件夹到</strong></p>
-<p>create顺序:<br>a subscriptions -&gt;  a storage account -&gt; a SAS token   </p>
-<p>除了从azure portal页面操作之外，还提供以下两种方式</p>
-<ul>
-<li>Azure Storage Explorer - <a href="https://azure.microsoft.com/en-us/features/storage-explorer/" target="_blank" rel="noopener">install tutorial</a><blockquote>
-<p>或者浏览器中直接打开链接<a href="https://go.microsoft.com/fwlink/?LinkId=708342&amp;clcid=0x409，会自动下载" target="_blank" rel="noopener">https://go.microsoft.com/fwlink/?LinkId=708342&amp;clcid=0x409，会自动下载</a></p>
-</blockquote>
-</li>
-</ul>
-<p>打开 Azure Storage Explorer， 通过xx链接storage<br><img src="/images/azure_storage_01.png" width="80%" height="80%"></p>
-<p><img src="/images/azure_storage_02.png" width="80%" height="80%"></p>
-<ul>
-<li>azcopy - <a href="https://docs.microsoft.com/zh-cn/azure/storage/common/storage-use-azcopy-v10?WT.mc_id=thomasmaurer-blog-thmaure" target="_blank" rel="noopener">install tutorial</a></li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#mac os terminal</span></span><br><span class="line">azcopy cp <span class="string">"/Users/xxx/Desktop/testdir/hello_azure.txt"</span> <span class="string">"https://storage873375.blob.core.windows.net/container1/?[?sv=2019-02-02&amp;ss=bfqt&amp;srt=sco&amp;sp=rwdlacup&amp;se=2019-12-11T11:40:09Z&amp;st=2019-12-11T03:40:09Z&amp;spr=https&amp;sig=5%2FFHo4%2BBwxDB6wLftyB7%2FSF7gqnhaEmpFa4nheBOXQg%3D]"</span></span><br></pre></td></tr></table></figure>
-<p>报错,原始是 <code>？</code> 后边格式的问题</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#mac os terminal</span></span><br><span class="line">azcopy cp <span class="string">"/Users/xxx/Desktop/testdir/hello_azure.txt"</span>  <span class="string">"https://storage873375.blob.core.windows.net/container1/newdir/?sv=2019-02-02&amp;ss=bfqt&amp;srt=sco&amp;sp=rwdlacup&amp;se=2019-12-11T11:40:09Z&amp;st=2019-12-11T03:40:09Z&amp;spr=https&amp;sig=5%2FFHo4%2BBwxDB6wLftyB7%2FSF7gqnhaEmpFa4nheBOXQg%3D"</span></span><br></pre></td></tr></table></figure>
-<p><a href="https://docs.microsoft.com/en-us/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs</a></p>
+    <title>Anka tutorial 03: jenkins</title>
+    <url>/2019/11/28/Anka-tutorial-03-jenkins/</url>
+    <content><![CDATA[<h3 id="anka-集成-Jenkins-link"><a href="#anka-集成-Jenkins-link" class="headerlink" title="anka 集成 Jenkins (link)"></a>anka 集成 Jenkins <a href="https://ankadoc.bitbucket.io/anka-build/#integrate-jenkins-with-controller" target="_blank" rel="noopener">(link)</a></h3><p>未完待续…</p>
+<p>安装插件<br><code>Manage Jenkins &gt; Manage Plugins</code></p>
+<p>搜索anka</p>
+<p>新建 ssh 用的登陆凭证</p>
+<p>新建VM的时候 默认用户名和密码分别是 <code>anka/admin</code></p>
+<p>配置jenkins<br><code>Manage Jenkins &gt; Configure System</code></p>
+<p><img src="/images/anka_jenkins_01.png" width="80%" height="80%"></p>
+<p><a href="http://localhost/#/dashboard" target="_blank" rel="noopener">http://localhost/#/dashboard</a></p>
 ]]></content>
       <categories>
-        <category>Cloud</category>
+        <category>CICD</category>
       </categories>
   </entry>
   <entry>
@@ -286,27 +225,88 @@
       </categories>
   </entry>
   <entry>
-    <title>Azure tutorial 01: overview</title>
-    <url>/2019/12/11/Azure-tutorial-01-overview/</url>
-    <content><![CDATA[]]></content>
+    <title>Azure FAQs</title>
+    <url>/2019/12/11/Azure-FAQs/</url>
+    <content><![CDATA[<h3 id="1-asm-arm"><a href="#1-asm-arm" class="headerlink" title="1. asm, arm"></a>1. asm, arm</h3><ul>
+<li>asm: Azure Service Manager</li>
+<li>arm: Azure Resource Manager</li>
+</ul>
+<p>最开始一直都是classic模型，它的模型中有service的概念，所以它也叫 asm（Azure Service Manager）。2014年开始提出arm（Azure Resource Manager），其管理平台叫portal。2015年底arm发布。</p>
+<p>当前情况是微软正在将azure的所有功能往arm上迁移。以后都推荐使用arm。但 是当前状况是arm不完全向后兼容asm，有些功能只有asm上才有，所以还有很多 用户还是在使用classic。</p>
+<blockquote>
+<p>ref: <a href="https://pengpengxp.github.io/archive/before-2018-11-10/2017-06-28-Azure%E7%BB%8F%E5%85%B8%E6%A8%A1%E5%BC%8F%E5%92%8C%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB.html#orgbb66971" target="_blank" rel="noopener">https://pengpengxp.github.io/archive/before-2018-11-10/2017-06-28-Azure%E7%BB%8F%E5%85%B8%E6%A8%A1%E5%BC%8F%E5%92%8C%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB.html#orgbb66971</a></p>
+</blockquote>
+<h3 id="2-AWS-to-Azure-services-comparison"><a href="#2-AWS-to-Azure-services-comparison" class="headerlink" title="2. AWS to Azure services comparison"></a>2. AWS to Azure services comparison</h3><p>详见链接 <a href="https://docs.microsoft.com/en-us/azure/architecture/aws-professional/services" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/azure/architecture/aws-professional/services</a></p>
+]]></content>
       <categories>
         <category>Cloud</category>
       </categories>
   </entry>
   <entry>
-    <title>Anka tutorial 03: jenkins</title>
-    <url>/2019/11/28/Anka-tutorial-03-jenkins/</url>
-    <content><![CDATA[<h3 id="anka-集成-Jenkins-link"><a href="#anka-集成-Jenkins-link" class="headerlink" title="anka 集成 Jenkins (link)"></a>anka 集成 Jenkins <a href="https://ankadoc.bitbucket.io/anka-build/#integrate-jenkins-with-controller" target="_blank" rel="noopener">(link)</a></h3><p>未完待续…</p>
-<p>安装插件<br><code>Manage Jenkins &gt; Manage Plugins</code></p>
-<p>搜索anka</p>
-<p>新建 ssh 用的登陆凭证</p>
-<p>新建VM的时候 默认用户名和密码分别是 <code>anka/admin</code></p>
-<p>配置jenkins<br><code>Manage Jenkins &gt; Configure System</code></p>
-<p><img src="/images/anka_jenkins_01.png" width="80%" height="80%"></p>
-<p><a href="http://localhost/#/dashboard" target="_blank" rel="noopener">http://localhost/#/dashboard</a></p>
+    <title>Azure tutorial 02: Storage</title>
+    <url>/2019/12/11/Azure-tutorial-02-Storage/</url>
+    <content><![CDATA[<p>storage account type<br><a href="https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview</a></p>
+<p><strong>Blob</strong> - Binary Large Object<br><strong>Binary Object</strong> - Images,Documents,Media Files, Log Files, Backup data Virtual Disks</p>
+<p><strong>Blod types:</strong> </p>
+<ul>
+<li>Block Blob - Text and binary data Files</li>
+<li>Append Blobs - Optimized for append operations</li>
+<li>Page Blob - A collection of 512 byte pages optimized for random read and writes(virtual disk)</li>
+</ul>
+<p><strong>Locations and Redundancy:</strong> </p>
+<ul>
+<li>Locally-redundant storage (LRS): A simple, low-cost replication strategy. Data is replicated synchronously three times within the primary region.</li>
+<li>Zone-redundant storage (ZRS): Replication for scenarios requiring high availability. Data is replicated synchronously across three Azure availability zones in the primary region.</li>
+<li>Geo-redundant storage (GRS): Cross-regional replication to protect against regional outages. Data is replicated synchronously three times in the primary region, then replicated asynchronously to the secondary region. For read access to data in the secondary region, enable read-access geo-redundant storage (RA-GRS).</li>
+<li>Geo-zone-redundant storage (GZRS) (preview): Replication for scenarios requiring both high availability and maximum durability. Data is replicated synchronously across three Azure availability zones in the primary region, then replicated asynchronously to the secondary region. For read access to data in the secondary region, enable read-access geo-zone-redundant storage (RA-GZRS).</li>
+</ul>
+<p><strong>Access Tiers:</strong></p>
+<ul>
+<li>Hot </li>
+<li>Cool </li>
+<li>Archive</li>
+</ul>
+<p><strong>Azure Storage services:</strong></p>
+<ul>
+<li>Blob service</li>
+<li>File service</li>
+<li>Queue service</li>
+<li>Table Storage</li>
+</ul>
+<p><strong>Securing Storage Accounts:</strong></p>
+<ul>
+<li>Access Keys -Two per storage account,full access</li>
+<li>Share Access Signatures - Time based access keys that give granular control</li>
+</ul>
+<p><strong>作业：新建storage account ,并上传文件或文件夹到</strong></p>
+<p>create顺序:<br>a subscriptions -&gt;  a storage account -&gt; a SAS token   </p>
+<p>除了从azure portal页面操作之外，还提供以下两种方式</p>
+<ul>
+<li>Azure Storage Explorer - <a href="https://azure.microsoft.com/en-us/features/storage-explorer/" target="_blank" rel="noopener">install tutorial</a><blockquote>
+<p>或者浏览器中直接打开链接<a href="https://go.microsoft.com/fwlink/?LinkId=708342&amp;clcid=0x409，会自动下载" target="_blank" rel="noopener">https://go.microsoft.com/fwlink/?LinkId=708342&amp;clcid=0x409，会自动下载</a></p>
+</blockquote>
+</li>
+</ul>
+<p>打开 Azure Storage Explorer， 通过xx链接storage<br><img src="/images/azure_storage_01.png" width="80%" height="80%"></p>
+<p><img src="/images/azure_storage_02.png" width="80%" height="80%"></p>
+<ul>
+<li>azcopy - <a href="https://docs.microsoft.com/zh-cn/azure/storage/common/storage-use-azcopy-v10?WT.mc_id=thomasmaurer-blog-thmaure" target="_blank" rel="noopener">install tutorial</a></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#mac os terminal</span></span><br><span class="line">azcopy cp <span class="string">"/Users/xxx/Desktop/testdir/hello_azure.txt"</span> <span class="string">"https://storage873375.blob.core.windows.net/container1/?[?sv=2019-02-02&amp;ss=bfqt&amp;srt=sco&amp;sp=rwdlacup&amp;se=2019-12-11T11:40:09Z&amp;st=2019-12-11T03:40:09Z&amp;spr=https&amp;sig=5%2FFHo4%2BBwxDB6wLftyB7%2FSF7gqnhaEmpFa4nheBOXQg%3D]"</span></span><br></pre></td></tr></table></figure>
+<p>报错,原始是 <code>？</code> 后边格式的问题</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#mac os terminal</span></span><br><span class="line">azcopy cp <span class="string">"/Users/xxx/Desktop/testdir/hello_azure.txt"</span>  <span class="string">"https://storage873375.blob.core.windows.net/container1/newdir/?sv=2019-02-02&amp;ss=bfqt&amp;srt=sco&amp;sp=rwdlacup&amp;se=2019-12-11T11:40:09Z&amp;st=2019-12-11T03:40:09Z&amp;spr=https&amp;sig=5%2FFHo4%2BBwxDB6wLftyB7%2FSF7gqnhaEmpFa4nheBOXQg%3D"</span></span><br></pre></td></tr></table></figure>
+<p><a href="https://docs.microsoft.com/en-us/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs</a></p>
 ]]></content>
       <categories>
-        <category>CICD</category>
+        <category>Cloud</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Azure tutorial 01: overview</title>
+    <url>/2019/12/11/Azure-tutorial-01-overview/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Cloud</category>
       </categories>
   </entry>
   <entry>
@@ -412,6 +412,30 @@
 <ul>
 <li><a href="https://www.jianshu.com/p/470e29801be2" target="_blank" rel="noopener">https://www.jianshu.com/p/470e29801be2</a></li>
 </ul>
+]]></content>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Docker image export and import</title>
+    <url>/2019/04/07/Docker-image%E5%AF%BC%E5%87%BA%E5%AF%BC%E5%85%A5/</url>
+    <content><![CDATA[<p>A: “为什么要导镜像，直接从网上下载不就行了？”<br>B: “too young too naive，你以为哪里都能上网的，谁家的机房没事都能上个youtube,google的吗”</p>
+<blockquote>
+<p>一般的公司内网环境是无法访问Internet的，自然也无从下载基础 docker 基础镜像。但这个时候领导交给你的任务–比如用容器运行一个 Java 程序，你在本地程序都调试好了，也在docker container形式运行良好，但是怎么搬到服务器上，这个时候最原始的U盘就大有用处了（虽然现在都是云盘，但是服务器所在网络就好比你小时候玩的小霸王学习机，只能自己和自己玩儿）。</p>
+</blockquote>
+<h2 id="your-PC-–-gt-U-Disk-–-gt-Server"><a href="#your-PC-–-gt-U-Disk-–-gt-Server" class="headerlink" title="your PC –&gt; U Disk –&gt; Server"></a>your PC –&gt; U Disk –&gt; Server</h2><h3 id="Steps"><a href="#Steps" class="headerlink" title="Steps:"></a>Steps:</h3><h5 id="1-Export-image-导出镜像-在你自己的电脑上执行）"><a href="#1-Export-image-导出镜像-在你自己的电脑上执行）" class="headerlink" title="1.Export image (导出镜像,在你自己的电脑上执行）"></a>1.Export image (导出镜像,在你自己的电脑上执行）</h5><p><code></code> docker save Image</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">➜  docker images  | grep python</span><br><span class="line">python          3-alpine            c02a3409ee5b        6 weeks ago         86.7MB</span><br><span class="line">➜  docker save c02a3409ee5b &gt; my_python.tar</span><br><span class="line">➜  ls -l</span><br><span class="line">-rw-r--r--    1 xxx  staff  90526208  4  7 21:33 my_python.tar</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>更建议用<em>镜像</em>名称去处理，如 docker save python:3-alpine &gt; my_python.tar ；好处是在load后镜像名称保持一致，而不是没有tag的</p>
+</blockquote>
+<h5 id="2-乾坤大挪移"><a href="#2-乾坤大挪移" class="headerlink" title="2.乾坤大挪移"></a>2.乾坤大挪移</h5><p>拷贝这个tar包到U 盘，然后插到（或者是挂载）Server上</p>
+<h5 id="3-Import-image-导入镜像"><a href="#3-Import-image-导入镜像" class="headerlink" title="3.Import image (导入镜像)"></a>3.Import image (导入镜像)</h5><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">docker load &lt; my_python.tar</span><br><span class="line">docker tag 9045 my_python:1.0   //通常还需要重新命名一下，以便可读</span><br></pre></td></tr></table></figure>
+<p><strong>More Ref:</strong></p>
+<ol>
+<li><a href="https://jingsam.github.io/2017/08/26/docker-save-and-docker-export.html" target="_blank" rel="noopener">https://jingsam.github.io/2017/08/26/docker-save-and-docker-export.html</a></li>
+<li><a href="https://www.jianshu.com/p/8408e06b7273" target="_blank" rel="noopener">https://www.jianshu.com/p/8408e06b7273</a></li>
+</ol>
 ]]></content>
       <tags>
         <tag>Docker</tag>
@@ -664,30 +688,6 @@
       </categories>
       <tags>
         <tag>GA</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Docker image export and import</title>
-    <url>/2019/04/07/Docker-image%E5%AF%BC%E5%87%BA%E5%AF%BC%E5%85%A5/</url>
-    <content><![CDATA[<p>A: “为什么要导镜像，直接从网上下载不就行了？”<br>B: “too young too naive，你以为哪里都能上网的，谁家的机房没事都能上个youtube,google的吗”</p>
-<blockquote>
-<p>一般的公司内网环境是无法访问Internet的，自然也无从下载基础 docker 基础镜像。但这个时候领导交给你的任务–比如用容器运行一个 Java 程序，你在本地程序都调试好了，也在docker container形式运行良好，但是怎么搬到服务器上，这个时候最原始的U盘就大有用处了（虽然现在都是云盘，但是服务器所在网络就好比你小时候玩的小霸王学习机，只能自己和自己玩儿）。</p>
-</blockquote>
-<h2 id="your-PC-–-gt-U-Disk-–-gt-Server"><a href="#your-PC-–-gt-U-Disk-–-gt-Server" class="headerlink" title="your PC –&gt; U Disk –&gt; Server"></a>your PC –&gt; U Disk –&gt; Server</h2><h3 id="Steps"><a href="#Steps" class="headerlink" title="Steps:"></a>Steps:</h3><h5 id="1-Export-image-导出镜像-在你自己的电脑上执行）"><a href="#1-Export-image-导出镜像-在你自己的电脑上执行）" class="headerlink" title="1.Export image (导出镜像,在你自己的电脑上执行）"></a>1.Export image (导出镜像,在你自己的电脑上执行）</h5><p><code></code> docker save Image</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">➜  docker images  | grep python</span><br><span class="line">python          3-alpine            c02a3409ee5b        6 weeks ago         86.7MB</span><br><span class="line">➜  docker save c02a3409ee5b &gt; my_python.tar</span><br><span class="line">➜  ls -l</span><br><span class="line">-rw-r--r--    1 xxx  staff  90526208  4  7 21:33 my_python.tar</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>更建议用<em>镜像</em>名称去处理，如 docker save python:3-alpine &gt; my_python.tar ；好处是在load后镜像名称保持一致，而不是没有tag的</p>
-</blockquote>
-<h5 id="2-乾坤大挪移"><a href="#2-乾坤大挪移" class="headerlink" title="2.乾坤大挪移"></a>2.乾坤大挪移</h5><p>拷贝这个tar包到U 盘，然后插到（或者是挂载）Server上</p>
-<h5 id="3-Import-image-导入镜像"><a href="#3-Import-image-导入镜像" class="headerlink" title="3.Import image (导入镜像)"></a>3.Import image (导入镜像)</h5><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">docker load &lt; my_python.tar</span><br><span class="line">docker tag 9045 my_python:1.0   //通常还需要重新命名一下，以便可读</span><br></pre></td></tr></table></figure>
-<p><strong>More Ref:</strong></p>
-<ol>
-<li><a href="https://jingsam.github.io/2017/08/26/docker-save-and-docker-export.html" target="_blank" rel="noopener">https://jingsam.github.io/2017/08/26/docker-save-and-docker-export.html</a></li>
-<li><a href="https://www.jianshu.com/p/8408e06b7273" target="_blank" rel="noopener">https://www.jianshu.com/p/8408e06b7273</a></li>
-</ol>
-]]></content>
-      <tags>
-        <tag>Docker</tag>
       </tags>
   </entry>
   <entry>
@@ -1271,19 +1271,6 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>Jenkins trigger downstream job</title>
-    <url>/2019/05/30/Jenkins-trigger-downstream-job/</url>
-    <content><![CDATA[<p>origin_job 触发 second_job</p>
-<p>origin_job 如下：</p>
-<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line"><span class="comment">//declarative pipeline</span></span><br><span class="line">pipeline &#123;</span><br><span class="line">    agent any </span><br><span class="line">    </span><br><span class="line">    stages &#123;</span><br><span class="line">        stage(<span class="string">'Stage One'</span>)&#123;</span><br><span class="line">            steps&#123;</span><br><span class="line">                sh <span class="string">"echo *** This is Stage One ***"</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        stage(<span class="string">'Stage Two'</span>)&#123;</span><br><span class="line">            steps&#123;</span><br><span class="line">                sh <span class="string">"echo $&#123;env.BUILD_NUMBER&#125;"</span></span><br><span class="line">                sh <span class="string">"echo $&#123;env.NODE_NAME&#125; , $&#123;env.JOB_NAME&#125;"</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        stage(<span class="string">"Invoke second job without parameters"</span>)&#123;</span><br><span class="line">            steps&#123;</span><br><span class="line">                build <span class="string">job:</span> <span class="string">'second_job'</span></span><br><span class="line">                sleep <span class="number">30</span></span><br><span class="line">           &#125;</span><br><span class="line">        &#125;   </span><br><span class="line"></span><br><span class="line">        stage(<span class="string">"Invoke second job with parameters"</span>)&#123;</span><br><span class="line">            steps&#123;</span><br><span class="line">                build <span class="string">job:</span> <span class="string">'second_job'</span>,</span><br><span class="line"><span class="symbol">                parameters:</span>[</span><br><span class="line">                    string(<span class="string">name:</span><span class="string">'Para1'</span>,<span class="string">value:</span>String.valueOf(JOB_NAME)),</span><br><span class="line">                    string(<span class="string">name:</span><span class="string">'Para2'</span>,<span class="string">value:</span>String.valueOf(BUILD_NUMBER))</span><br><span class="line">                ]</span><br><span class="line">           &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">    &#125;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>second_job </p>
-<p>点击““参数化构建””手动添加 两个参数</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pipeline &#123;</span><br><span class="line">    agent any </span><br><span class="line">    </span><br><span class="line">    stages &#123;</span><br><span class="line">        stage(<span class="string">'Stage One'</span>)&#123;</span><br><span class="line">            steps&#123;</span><br><span class="line">                sh <span class="string">"echo *** This is <span class="variable">$&#123;env.JOB_NAME&#125;</span> ,and We are stage one ***"</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    stage(<span class="string">'Echo origin_job para'</span>)&#123;</span><br><span class="line">        steps&#123;</span><br><span class="line">                sh <span class="string">"echo <span class="variable">$&#123;env.Para1&#125;</span>"</span></span><br><span class="line">                sh <span class="string">"echo <span class="variable">$&#123;env.Para2&#125;</span>"</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <tags>
-        <tag>jenkins</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Jenkins build trigger、logRotator、buildDiscarder etc</title>
     <url>/2019/04/11/Jenkins-build-trigger%E3%80%81logRotator%E3%80%81options/</url>
     <content><![CDATA[<p>Declarative Pipeline 与Job DSL的同一个功能的语法命令有些差异，不能直接套用，需要查对应的官方文档。 </p>
@@ -1321,6 +1308,34 @@ pipeline {
 ]]></content>
       <tags>
         <tag>jenkins</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Jenkins trigger downstream job</title>
+    <url>/2019/05/30/Jenkins-trigger-downstream-job/</url>
+    <content><![CDATA[<p>origin_job 触发 second_job</p>
+<p>origin_job 如下：</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line"><span class="comment">//declarative pipeline</span></span><br><span class="line">pipeline &#123;</span><br><span class="line">    agent any </span><br><span class="line">    </span><br><span class="line">    stages &#123;</span><br><span class="line">        stage(<span class="string">'Stage One'</span>)&#123;</span><br><span class="line">            steps&#123;</span><br><span class="line">                sh <span class="string">"echo *** This is Stage One ***"</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        stage(<span class="string">'Stage Two'</span>)&#123;</span><br><span class="line">            steps&#123;</span><br><span class="line">                sh <span class="string">"echo $&#123;env.BUILD_NUMBER&#125;"</span></span><br><span class="line">                sh <span class="string">"echo $&#123;env.NODE_NAME&#125; , $&#123;env.JOB_NAME&#125;"</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        stage(<span class="string">"Invoke second job without parameters"</span>)&#123;</span><br><span class="line">            steps&#123;</span><br><span class="line">                build <span class="string">job:</span> <span class="string">'second_job'</span></span><br><span class="line">                sleep <span class="number">30</span></span><br><span class="line">           &#125;</span><br><span class="line">        &#125;   </span><br><span class="line"></span><br><span class="line">        stage(<span class="string">"Invoke second job with parameters"</span>)&#123;</span><br><span class="line">            steps&#123;</span><br><span class="line">                build <span class="string">job:</span> <span class="string">'second_job'</span>,</span><br><span class="line"><span class="symbol">                parameters:</span>[</span><br><span class="line">                    string(<span class="string">name:</span><span class="string">'Para1'</span>,<span class="string">value:</span>String.valueOf(JOB_NAME)),</span><br><span class="line">                    string(<span class="string">name:</span><span class="string">'Para2'</span>,<span class="string">value:</span>String.valueOf(BUILD_NUMBER))</span><br><span class="line">                ]</span><br><span class="line">           &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">    &#125;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>second_job </p>
+<p>点击““参数化构建””手动添加 两个参数</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pipeline &#123;</span><br><span class="line">    agent any </span><br><span class="line">    </span><br><span class="line">    stages &#123;</span><br><span class="line">        stage(<span class="string">'Stage One'</span>)&#123;</span><br><span class="line">            steps&#123;</span><br><span class="line">                sh <span class="string">"echo *** This is <span class="variable">$&#123;env.JOB_NAME&#125;</span> ,and We are stage one ***"</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    stage(<span class="string">'Echo origin_job para'</span>)&#123;</span><br><span class="line">        steps&#123;</span><br><span class="line">                sh <span class="string">"echo <span class="variable">$&#123;env.Para1&#125;</span>"</span></span><br><span class="line">                sh <span class="string">"echo <span class="variable">$&#123;env.Para2&#125;</span>"</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>jenkins</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>backup specially with shell script or python</title>
+    <url>/2019/05/21/Linux-backup-specially/</url>
+    <content><![CDATA[<h3 id="需求：-备份目录，只备份新加的文件，不备份减少的文件"><a href="#需求：-备份目录，只备份新加的文件，不备份减少的文件" class="headerlink" title="需求： 备份目录，只备份新加的文件，不备份减少的文件"></a>需求： 备份目录，只备份新加的文件，不备份减少的文件</h3><p>分析： 通常备份目录用 <code>rsync</code> 就可以达到目的，但开发同学怕误操作，删除文件，于是提出这个 <em>只增不减</em> 的需求</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="function"><span class="title">backUp</span></span>()&#123;</span><br><span class="line"><span class="built_in">local</span> sourceDir=<span class="variable">$1</span> <span class="comment">#需要备份的文件/目录</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">local</span> destDir=<span class="variable">$2</span> <span class="comment">#备份目的地</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -d <span class="string">"<span class="variable">$sourceDir</span>"</span> ] <span class="comment">#备份目录</span></span><br><span class="line"><span class="keyword">then</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">#如果目录尚未备份，则创建此目录</span></span><br><span class="line">  <span class="keyword">if</span> [ ! -d <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span> ]</span><br><span class="line">  <span class="keyword">then</span></span><br><span class="line">  <span class="built_in">echo</span> -e <span class="string">"创建目录\t<span class="variable">$sourceDir</span>"</span></span><br><span class="line">  mkdir -p <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span></span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#对目录中对每一个文件,递归调用此函数进行备份</span></span><br><span class="line"><span class="keyword">for</span> var <span class="keyword">in</span> $(ls <span class="string">"<span class="variable">$sourceDir</span>"</span>)</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">backUp <span class="string">"<span class="variable">$sourceDir</span>/<span class="variable">$var</span>"</span> <span class="string">"<span class="variable">$destDir</span>"</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"><span class="keyword">else</span> <span class="comment">#备份文件</span></span><br><span class="line">  <span class="comment">#如果文件在尚未备份，则直接复制</span></span><br><span class="line">  <span class="keyword">if</span> [ ! -f <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span> ]</span><br><span class="line">  <span class="keyword">then</span></span><br><span class="line">  <span class="built_in">echo</span> -e <span class="string">"备份文件\t<span class="variable">$sourceDir</span>"</span></span><br><span class="line">  cp <span class="string">"<span class="variable">$sourceDir</span>"</span> <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span></span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">#如果文件已存在，则比较两个文件对最后修改时间，如果文件已修改，则更新文件</span></span><br><span class="line">  lastModifi_backup=$(date -r <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span> +%s)</span><br><span class="line">  lastModifi_current=$(date -r <span class="string">"<span class="variable">$sourceDir</span>"</span> +%s)</span><br><span class="line">    <span class="keyword">if</span> [ <span class="string">"<span class="variable">$lastModifi_current</span>"</span> -gt <span class="string">"<span class="variable">$lastModifi_backup</span>"</span> ]</span><br><span class="line">    <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> -e <span class="string">"更新文件\t<span class="variable">$sourceDir</span>"</span> </span><br><span class="line">    cp <span class="string">"<span class="variable">$sourceDir</span>"</span> <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line">backUp <span class="string">"<span class="variable">$1</span>"</span> <span class="string">"<span class="variable">$2</span>"</span></span><br></pre></td></tr></table></figure>
+<p>运行脚本： <code>./backupSpecially.sh &quot;/date/originData&quot; &quot;/date/backup_dir&quot;</code></p>
+<p>发现运行shell脚本有问题，于是大神帮我写了个python</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python2.7</span></span><br><span class="line"><span class="comment"># -*- encoding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> os,time,filecmp</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">differentFileCopy</span><span class="params">(sourcePath, targetPath)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(sourcePath):</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(targetPath):</span><br><span class="line">        os.makedirs(targetPath)</span><br><span class="line">    <span class="keyword">for</span> fileName <span class="keyword">in</span> os.listdir(sourcePath):</span><br><span class="line">        absourcePath = os.path.join(sourcePath, fileName)</span><br><span class="line">        abstargetPath = os.path.join(targetPath, fileName)</span><br><span class="line">        <span class="keyword">if</span> os.path.isdir(absourcePath):</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(abstargetPath):</span><br><span class="line">                os.makedirs(abstargetPath)</span><br><span class="line">                differentFileCopy(absourcePath, abstargetPath)</span><br><span class="line">        <span class="keyword">if</span> os.path.isfile(absourcePath):</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(abstargetPath):</span><br><span class="line">                <span class="keyword">print</span> <span class="string">'copy %s to %s'</span> %(fileName,abstargetPath)</span><br><span class="line">                os.system(<span class="string">'cp'</span>+<span class="string">' '</span>+absourcePath+<span class="string">' '</span>+targetPath)</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> filecmp.cmp(absourcePath,abstargetPath):</span><br><span class="line">                <span class="keyword">print</span> <span class="string">'copy %s to %s'</span> %(fileName,abstargetPath)</span><br><span class="line">                os.system(<span class="string">'cp'</span>+<span class="string">' '</span>+absourcePath+<span class="string">' '</span>+targetPath)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    startTime = time.clock()</span><br><span class="line">    sourcePath = <span class="string">r"/date/originData"</span></span><br><span class="line">    targetPath = <span class="string">r"/date/Data_backupDir"</span></span><br><span class="line">    differentFileCopy(sourcePath, targetPath)</span><br><span class="line">    endTime = time.clock()</span><br><span class="line">    time_mi = endTime // <span class="number">60</span></span><br><span class="line">    time_s = endTime // <span class="number">1</span> % <span class="number">60</span></span><br><span class="line">    time_ms = ((endTime * <span class="number">100</span>) // <span class="number">1</span>) % <span class="number">100</span></span><br><span class="line">    print(<span class="string">"总用时:%02.0f:%02.0f:%2.0f"</span> % (time_mi, time_s, time_ms))</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Shell</tag>
       </tags>
   </entry>
   <entry>
@@ -1363,21 +1378,6 @@ pipeline {
       </categories>
       <tags>
         <tag>makefile</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>backup specially with shell script or python</title>
-    <url>/2019/05/21/Linux-backup-specially/</url>
-    <content><![CDATA[<h3 id="需求：-备份目录，只备份新加的文件，不备份减少的文件"><a href="#需求：-备份目录，只备份新加的文件，不备份减少的文件" class="headerlink" title="需求： 备份目录，只备份新加的文件，不备份减少的文件"></a>需求： 备份目录，只备份新加的文件，不备份减少的文件</h3><p>分析： 通常备份目录用 <code>rsync</code> 就可以达到目的，但开发同学怕误操作，删除文件，于是提出这个 <em>只增不减</em> 的需求</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="function"><span class="title">backUp</span></span>()&#123;</span><br><span class="line"><span class="built_in">local</span> sourceDir=<span class="variable">$1</span> <span class="comment">#需要备份的文件/目录</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">local</span> destDir=<span class="variable">$2</span> <span class="comment">#备份目的地</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -d <span class="string">"<span class="variable">$sourceDir</span>"</span> ] <span class="comment">#备份目录</span></span><br><span class="line"><span class="keyword">then</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">#如果目录尚未备份，则创建此目录</span></span><br><span class="line">  <span class="keyword">if</span> [ ! -d <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span> ]</span><br><span class="line">  <span class="keyword">then</span></span><br><span class="line">  <span class="built_in">echo</span> -e <span class="string">"创建目录\t<span class="variable">$sourceDir</span>"</span></span><br><span class="line">  mkdir -p <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span></span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#对目录中对每一个文件,递归调用此函数进行备份</span></span><br><span class="line"><span class="keyword">for</span> var <span class="keyword">in</span> $(ls <span class="string">"<span class="variable">$sourceDir</span>"</span>)</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">backUp <span class="string">"<span class="variable">$sourceDir</span>/<span class="variable">$var</span>"</span> <span class="string">"<span class="variable">$destDir</span>"</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"><span class="keyword">else</span> <span class="comment">#备份文件</span></span><br><span class="line">  <span class="comment">#如果文件在尚未备份，则直接复制</span></span><br><span class="line">  <span class="keyword">if</span> [ ! -f <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span> ]</span><br><span class="line">  <span class="keyword">then</span></span><br><span class="line">  <span class="built_in">echo</span> -e <span class="string">"备份文件\t<span class="variable">$sourceDir</span>"</span></span><br><span class="line">  cp <span class="string">"<span class="variable">$sourceDir</span>"</span> <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span></span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">#如果文件已存在，则比较两个文件对最后修改时间，如果文件已修改，则更新文件</span></span><br><span class="line">  lastModifi_backup=$(date -r <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span> +%s)</span><br><span class="line">  lastModifi_current=$(date -r <span class="string">"<span class="variable">$sourceDir</span>"</span> +%s)</span><br><span class="line">    <span class="keyword">if</span> [ <span class="string">"<span class="variable">$lastModifi_current</span>"</span> -gt <span class="string">"<span class="variable">$lastModifi_backup</span>"</span> ]</span><br><span class="line">    <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> -e <span class="string">"更新文件\t<span class="variable">$sourceDir</span>"</span> </span><br><span class="line">    cp <span class="string">"<span class="variable">$sourceDir</span>"</span> <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line">backUp <span class="string">"<span class="variable">$1</span>"</span> <span class="string">"<span class="variable">$2</span>"</span></span><br></pre></td></tr></table></figure>
-<p>运行脚本： <code>./backupSpecially.sh &quot;/date/originData&quot; &quot;/date/backup_dir&quot;</code></p>
-<p>发现运行shell脚本有问题，于是大神帮我写了个python</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python2.7</span></span><br><span class="line"><span class="comment"># -*- encoding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> os,time,filecmp</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">differentFileCopy</span><span class="params">(sourcePath, targetPath)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(sourcePath):</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(targetPath):</span><br><span class="line">        os.makedirs(targetPath)</span><br><span class="line">    <span class="keyword">for</span> fileName <span class="keyword">in</span> os.listdir(sourcePath):</span><br><span class="line">        absourcePath = os.path.join(sourcePath, fileName)</span><br><span class="line">        abstargetPath = os.path.join(targetPath, fileName)</span><br><span class="line">        <span class="keyword">if</span> os.path.isdir(absourcePath):</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(abstargetPath):</span><br><span class="line">                os.makedirs(abstargetPath)</span><br><span class="line">                differentFileCopy(absourcePath, abstargetPath)</span><br><span class="line">        <span class="keyword">if</span> os.path.isfile(absourcePath):</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(abstargetPath):</span><br><span class="line">                <span class="keyword">print</span> <span class="string">'copy %s to %s'</span> %(fileName,abstargetPath)</span><br><span class="line">                os.system(<span class="string">'cp'</span>+<span class="string">' '</span>+absourcePath+<span class="string">' '</span>+targetPath)</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> filecmp.cmp(absourcePath,abstargetPath):</span><br><span class="line">                <span class="keyword">print</span> <span class="string">'copy %s to %s'</span> %(fileName,abstargetPath)</span><br><span class="line">                os.system(<span class="string">'cp'</span>+<span class="string">' '</span>+absourcePath+<span class="string">' '</span>+targetPath)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    startTime = time.clock()</span><br><span class="line">    sourcePath = <span class="string">r"/date/originData"</span></span><br><span class="line">    targetPath = <span class="string">r"/date/Data_backupDir"</span></span><br><span class="line">    differentFileCopy(sourcePath, targetPath)</span><br><span class="line">    endTime = time.clock()</span><br><span class="line">    time_mi = endTime // <span class="number">60</span></span><br><span class="line">    time_s = endTime // <span class="number">1</span> % <span class="number">60</span></span><br><span class="line">    time_ms = ((endTime * <span class="number">100</span>) // <span class="number">1</span>) % <span class="number">100</span></span><br><span class="line">    print(<span class="string">"总用时:%02.0f:%02.0f:%2.0f"</span> % (time_mi, time_s, time_ms))</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Shell</tag>
       </tags>
   </entry>
   <entry>
@@ -1555,6 +1555,54 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>Q Movie List</title>
+    <url>/2019/05/12/Q-Movie-List/</url>
+    <content><![CDATA[<p>Q Movie List </p>
+<h3 id="1-《夜以继日》-2018"><a href="#1-《夜以继日》-2018" class="headerlink" title="1.《夜以继日》(2018)"></a>1.《夜以继日》(2018)</h3><p>原名：Asako I &amp; II<br>导演：滨口龙介<br>主演: 东出昌大 / 唐田英里佳</p>
+<p><img src="/images/movie_Asako_I_II_01.png" alt="Asako_I_II"></p>
+<center> 夜以继日 男女主 </center>
+
+<p>两个相貌相同的男人，一个拥有着迷人的魅力，随性的坏男孩；一个是朴实无华，处处为别人考虑的体贴男孩。恋爱中的理想和现实的选择被表现淋漓尽致，深入人心。没有对错，明白什么是生活，什么是可贵的。</p>
+<blockquote>
+<p>日本电影总把三观不太正的想法表现得很有道理的样子 😓</p>
+</blockquote>
+<h3 id="2-《骡子》-2018"><a href="#2-《骡子》-2018" class="headerlink" title="2. 《骡子》(2018)"></a>2. 《骡子》(2018)</h3><p>原名：The Mule‎<br>导演：克林特·伊斯特伍德<br>主演： 克林特·伊斯特伍德</p>
+<p><img src="/images/movie_mule_01.png" alt="Mule"></p>
+<center> 男主在公路上 </center><br>男主与妻子去世前的对话：<br><br>&gt; Mary: You were the love of my life, and the pain of my life. I need you to know, it’s all the world to me that you’re here.<br>&gt; <strong>Earl</strong>: I love you, Mary.<br>&gt; Mary: More today than yesterday?<br>&gt; <strong>Earl</strong>: But not as much as tomorrow.<br><br>自己的生活还是家庭？男主一生大部分时间都用在自己的黄花菜上，或者自己的老兵俱乐部等，家人对他无不责备。但是最后男主在妻子的最后一次请求中放下手中的活儿（运送毒品），选择回到妻子身边，也得到了女儿的原谅。<br><br>### 3. 《来的都是客》(1990)<br>导演：马绍惠<br>主演： 赵本山、巩汉林<br><br><img src="/images/movie_guest.png" alt="Whoever Comes Is a Guest"><br><center> 90年代，年轻的两位男主</center>
+
+<p>上世纪90年代的一部<strong>喜剧</strong>、剧情片，反讽当时的吃喝风。故事情节流畅、很贴近生活。我最早知道<strong>赵本山</strong>是春晚的小品上，但没有想到过他出演了很多电影，而且是他年轻力壮的时候，当年的赵本山脸上还没有褶子，演技也在线。</p>
+<blockquote>
+<p>适合长辈观看，放人开怀大笑、精神放松，把我妈逗乐了。</p>
+</blockquote>
+<h3 id="4-《回到被爱的每一天》-2015"><a href="#4-《回到被爱的每一天》-2015" class="headerlink" title="4. 《回到被爱的每一天》 (2015)"></a>4. 《回到被爱的每一天》 (2015)</h3><p>导演、编剧: 何平<br>主演: 王佳佳、张译 </p>
+<p><img src="/images/movie_The_Promised_Land.png?30" alt="The Promised Land"></p>
+<center> 海报 </center>
+
+<p>一部较文艺、朴素的电影，没有大起大落，只是慢慢的讲述一个故事，看的时候要有耐心。电影的色调，搭配拍摄地的风景，使画面看起来有一种平静的美。大城市、小家乡，都是年轻人的选择，但什么样的选择更好只有自己的内心才能感觉得到。在商业电影盛行的前几年，这样纯粹的电影算是难得一见的吧。</p>
+<h3 id="5-《只有芸知道》（2019）"><a href="#5-《只有芸知道》（2019）" class="headerlink" title="5. 《只有芸知道》（2019）"></a>5. 《只有芸知道》（2019）</h3><p>导演: 冯小刚<br>主演: 黄轩,杨采钰,徐帆</p>
+<p><img src="/images/movie_only_cloud_knows.png?30" alt="only cloud knows "></p>
+<center> 简单的新婚 </center>
+
+<p>爱情片，人物不多，风景很美，一件件往事慢慢回忆给我们，两个人在异国他乡找到彼此，又相伴十几年，都愿意为对方付出。记录一句台词，“有了房子，有了生意，就是给她最大的安全感。”<br>“其实房子和生意都不能给我安全感，只有你可以。” “我想和Simon换个活法”</p>
+<p>林太的武汉话地道有味，也是在少见的异国他乡爱情片中(印象中北京话、四川话更多)。而此次的疫情恐怕让全中国都熟悉了一下武汉话，也让全世界都了解了武汉这个地名。</p>
+<p>才发现这是2019年的电影，但似乎市场上影响不大，可能是影院排片较少，也幸好影片中商业化较少。另外，黄轩的演技值得肯定，以前一直觉得他眼神有问题，但是这部电影挺好的。</p>
+<h3 id="6-《丈夫得了抑郁症》（2011）"><a href="#6-《丈夫得了抑郁症》（2011）" class="headerlink" title="6. 《丈夫得了抑郁症》（2011）"></a>6. 《丈夫得了抑郁症》（2011）</h3><p>导演: 佐佐部清<br>主演: 宫崎葵,堺雅人</p>
+<p><img src="https://s1.ax1x.com/2020/04/04/G0uDJA.png" alt="G0uDJA.png"></p>
+<center> 因为抑郁症，男主感到很自责 </center>
+
+<p>一场抑郁症，伴随是中长期的，身陷其中的男主处于一中特殊的痛苦、无力的生活中。随着时间的推移，作为妻子的女主也终于认识到生活的巨大改变。同时，自身也承担了更多事情：做饭、打扫、买菜、努力工作等等。男主从最开始为了妻子而治病，改变为为了自己而治病。</p>
+<p>女主厚着脸皮请求编辑给予工作机会，也同时说出了丈夫得了抑郁症的事情。而变得释怀，不介意他人的想法。</p>
+<p>最后两人在“同窗会”上的一段发言算是一年的总结，也让两人对婚姻有了更深的认识和理解。</p>
+<p><strong>生活甜蜜幸福的时候、职场得意的时候，不妨也踩一下刹车，或者停车，看一下反面类型的电影，给予自己冷静下来的机会，审时度势，未雨绸缪。</strong></p>
+<p>当然，电影中有很多地方并不值得严谨地推敲，现实中这样美好的结局恐怕凤毛菱角。但个人觉得不影响电影想表达的内容，以及给人以正能量的暗示。</p>
+<p>有很多台词还是值得回味的，有点儿生活哲学、人生哲学的样子，比如<br>“能一直完好无所便是价值所在”<br>“如果努力很痛苦，那就别努力了”<br>“人不努力也是可以的”<br>“不去想忧郁症的原因，而是想它的意义。”</p>
+<p>其他话题：<strong>婚礼同学会</strong>，这个同学会挺有意思的，就是在同一个教堂结婚的夫妇组成的同学；<strong>失业保险</strong></p>
+]]></content>
+      <tags>
+        <tag>Q List</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>RCA(根本原因分析)</title>
     <url>/2019/10/08/RCA-%E6%A0%B9%E6%9C%AC%E5%8E%9F%E5%9B%A0%E5%88%86%E6%9E%90/</url>
     <content><![CDATA[<p>  根本原因分析（Root cause analysis,RCA）方法是明确事件或几近错失的决定性“根本”原因，并采取适当的措施避免问题再次发生。这是一个迭代的过程，会一直持续，直到找出所有组织要素，或者知道已经处理完所有数据。</p>
@@ -1633,6 +1681,35 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>Scan Docker Images for Vulnerabilities</title>
+    <url>/2019/12/11/Scan-Docker-Images-for-Vulnerabilities/</url>
+    <content><![CDATA[<ul>
+<li><p>可以扫描哪些方面，哪些方面检查不出来</p>
+</li>
+<li><p>有哪些工具，各自特点</p>
+</li>
+<li><p>工具开源/收费</p>
+</li>
+<li><p>是否方便与pipeline集成</p>
+</li>
+<li><p>报告形式</p>
+</li>
+<li><p>是否需要单独的服务端、数据库</p>
+</li>
+</ul>
+<h3 id="Tool-1-trivy"><a href="#Tool-1-trivy" class="headerlink" title="Tool 1: trivy"></a>Tool 1: <a href="https://github.com/aquasecurity/trivy" target="_blank" rel="noopener">trivy</a></h3><p>output:<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   trivy python:alpine</span><br><span class="line">2019-12-12T09:40:48.656+0800	INFO	Detecting Alpine vulnerabilities...</span><br><span class="line"></span><br><span class="line">python:alpine (alpine 3.10.2)</span><br><span class="line">=============================</span><br><span class="line">Total: 9 (UNKNOWN: 0, LOW: 2, MEDIUM: 7, HIGH: 0, CRITICAL: 0)</span><br><span class="line"></span><br><span class="line">+-----------+------------------+----------+-------------------+--------------------------------+</span><br><span class="line">|  LIBRARY  | VULNERABILITY ID | SEVERITY | INSTALLED VERSION | FIXED VERSION |      TITLE    |</span><br><span class="line">+-----------+------------------+----------+-------------------+---------   +-------------------+</span><br><span class="line">| e2fsprogs | CVE-2019-5094    | MEDIUM   | 1.45.2-r0| 1.45.2-r1 | e2fsprogs: crafted             |</span><br><span class="line">|           |                  |          |                   |               | ext4 partition leads to        |</span><br><span class="line">|           |                  |          |                   |               | out-of-bounds write            |</span><br><span class="line">+-----------+------------------+          +-------------------+---------------+--------------------------------+</span><br><span class="line">| expat     | CVE-2019-15903   |          | 2.2.7-r0| 2.2.7-r1  | expat: heap-based buffer       |</span><br><span class="line">|           |                  |          |                   |               | over-read via crafted XML      |</span><br><span class="line">|           |                  |          |                   |               | input                          |</span><br><span class="line">+-----------+------------------+          +-------------------+---------------+--------------------------------+</span><br><span class="line">| libgcrypt | CVE-2019-13627   |          | 1.8.4-r2| 1.8.5-r0  | libgcrypt: ECDSA timing        |</span><br><span class="line">|           |                  |          |                   |               | attack <span class="keyword">in</span> the libgcrypt20      |</span><br><span class="line">|           |                  |          |                   |               | cryptographic library          |</span><br><span class="line">+-----------+------------------+          +-------------------+--------------</span><br><span class="line">省略100行</span><br></pre></td></tr></table></figure></p>
+<h3 id="Tool-2-Anchore"><a href="#Tool-2-Anchore" class="headerlink" title="Tool 2: Anchore"></a>Tool 2: <a href="https://github.com/anchore/anchore-engine" target="_blank" rel="noopener">Anchore</a></h3><p>Anchore consists of a commercial edition (Anchore Enterprise) and an open-source edition (Anchor Engine).</p>
+<h3 id="Tool-3-open-scap"><a href="#Tool-3-open-scap" class="headerlink" title="Tool 3: open-scap"></a>Tool 3: open-scap</h3><h3 id="Tool-4-Dagda"><a href="#Tool-4-Dagda" class="headerlink" title="Tool 4: Dagda"></a>Tool 4: <a href="https://github.com/eliasgranderubio/dagda" target="_blank" rel="noopener">Dagda</a></h3><h3 id="Tool-5-Clair"><a href="#Tool-5-Clair" class="headerlink" title="Tool 5: Clair"></a>Tool 5: <a href="https://github.com/quay/clair" target="_blank" rel="noopener">Clair</a></h3><p>ref:</p>
+<ul>
+<li><a href="https://www.scality.com/solved/5-free-tools-to-navigate-through-docker-containers-security/" target="_blank" rel="noopener">https://www.scality.com/solved/5-free-tools-to-navigate-through-docker-containers-security/</a></li>
+<li><a href="https://resources.whitesourcesoftware.com/blog-whitesource/docker-image-security-scanning" target="_blank" rel="noopener">https://resources.whitesourcesoftware.com/blog-whitesource/docker-image-security-scanning</a></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Server:我是谁,我在哪里...</title>
     <url>/2020/05/25/Server-%E6%88%91%E6%98%AF%E8%B0%81-%E6%88%91%E5%9C%A8%E5%93%AA%E9%87%8C/</url>
     <content><![CDATA[<p>给你一台现成的服务器，你该如何了解它？(可以是linux的，也可以是Windows,也可能是mac os),但这里更多的假设是linux吧，因为更加常见，假如你ssh到了一台新服务器，除此之外，别人什么都没告诉你，你该怎么办？</p>
@@ -1656,51 +1733,19 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>Q Movie List</title>
-    <url>/2019/05/12/Q-Movie-List/</url>
-    <content><![CDATA[<p>Q Movie List </p>
-<h3 id="1-《夜以继日》-2018"><a href="#1-《夜以继日》-2018" class="headerlink" title="1.《夜以继日》(2018)"></a>1.《夜以继日》(2018)</h3><p>原名：Asako I &amp; II<br>导演：滨口龙介<br>主演: 东出昌大 / 唐田英里佳</p>
-<p><img src="/images/movie_Asako_I_II_01.png" alt="Asako_I_II"></p>
-<center> 夜以继日 男女主 </center>
-
-<p>两个相貌相同的男人，一个拥有着迷人的魅力，随性的坏男孩；一个是朴实无华，处处为别人考虑的体贴男孩。恋爱中的理想和现实的选择被表现淋漓尽致，深入人心。没有对错，明白什么是生活，什么是可贵的。</p>
-<blockquote>
-<p>日本电影总把三观不太正的想法表现得很有道理的样子 😓</p>
-</blockquote>
-<h3 id="2-《骡子》-2018"><a href="#2-《骡子》-2018" class="headerlink" title="2. 《骡子》(2018)"></a>2. 《骡子》(2018)</h3><p>原名：The Mule‎<br>导演：克林特·伊斯特伍德<br>主演： 克林特·伊斯特伍德</p>
-<p><img src="/images/movie_mule_01.png" alt="Mule"></p>
-<center> 男主在公路上 </center><br>男主与妻子去世前的对话：<br><br>&gt; Mary: You were the love of my life, and the pain of my life. I need you to know, it’s all the world to me that you’re here.<br>&gt; <strong>Earl</strong>: I love you, Mary.<br>&gt; Mary: More today than yesterday?<br>&gt; <strong>Earl</strong>: But not as much as tomorrow.<br><br>自己的生活还是家庭？男主一生大部分时间都用在自己的黄花菜上，或者自己的老兵俱乐部等，家人对他无不责备。但是最后男主在妻子的最后一次请求中放下手中的活儿（运送毒品），选择回到妻子身边，也得到了女儿的原谅。<br><br>### 3. 《来的都是客》(1990)<br>导演：马绍惠<br>主演： 赵本山、巩汉林<br><br><img src="/images/movie_guest.png" alt="Whoever Comes Is a Guest"><br><center> 90年代，年轻的两位男主</center>
-
-<p>上世纪90年代的一部<strong>喜剧</strong>、剧情片，反讽当时的吃喝风。故事情节流畅、很贴近生活。我最早知道<strong>赵本山</strong>是春晚的小品上，但没有想到过他出演了很多电影，而且是他年轻力壮的时候，当年的赵本山脸上还没有褶子，演技也在线。</p>
-<blockquote>
-<p>适合长辈观看，放人开怀大笑、精神放松，把我妈逗乐了。</p>
-</blockquote>
-<h3 id="4-《回到被爱的每一天》-2015"><a href="#4-《回到被爱的每一天》-2015" class="headerlink" title="4. 《回到被爱的每一天》 (2015)"></a>4. 《回到被爱的每一天》 (2015)</h3><p>导演、编剧: 何平<br>主演: 王佳佳、张译 </p>
-<p><img src="/images/movie_The_Promised_Land.png?30" alt="The Promised Land"></p>
-<center> 海报 </center>
-
-<p>一部较文艺、朴素的电影，没有大起大落，只是慢慢的讲述一个故事，看的时候要有耐心。电影的色调，搭配拍摄地的风景，使画面看起来有一种平静的美。大城市、小家乡，都是年轻人的选择，但什么样的选择更好只有自己的内心才能感觉得到。在商业电影盛行的前几年，这样纯粹的电影算是难得一见的吧。</p>
-<h3 id="5-《只有芸知道》（2019）"><a href="#5-《只有芸知道》（2019）" class="headerlink" title="5. 《只有芸知道》（2019）"></a>5. 《只有芸知道》（2019）</h3><p>导演: 冯小刚<br>主演: 黄轩,杨采钰,徐帆</p>
-<p><img src="/images/movie_only_cloud_knows.png?30" alt="only cloud knows "></p>
-<center> 简单的新婚 </center>
-
-<p>爱情片，人物不多，风景很美，一件件往事慢慢回忆给我们，两个人在异国他乡找到彼此，又相伴十几年，都愿意为对方付出。记录一句台词，“有了房子，有了生意，就是给她最大的安全感。”<br>“其实房子和生意都不能给我安全感，只有你可以。” “我想和Simon换个活法”</p>
-<p>林太的武汉话地道有味，也是在少见的异国他乡爱情片中(印象中北京话、四川话更多)。而此次的疫情恐怕让全中国都熟悉了一下武汉话，也让全世界都了解了武汉这个地名。</p>
-<p>才发现这是2019年的电影，但似乎市场上影响不大，可能是影院排片较少，也幸好影片中商业化较少。另外，黄轩的演技值得肯定，以前一直觉得他眼神有问题，但是这部电影挺好的。</p>
-<h3 id="6-《丈夫得了抑郁症》（2011）"><a href="#6-《丈夫得了抑郁症》（2011）" class="headerlink" title="6. 《丈夫得了抑郁症》（2011）"></a>6. 《丈夫得了抑郁症》（2011）</h3><p>导演: 佐佐部清<br>主演: 宫崎葵,堺雅人</p>
-<p><img src="https://s1.ax1x.com/2020/04/04/G0uDJA.png" alt="G0uDJA.png"></p>
-<center> 因为抑郁症，男主感到很自责 </center>
-
-<p>一场抑郁症，伴随是中长期的，身陷其中的男主处于一中特殊的痛苦、无力的生活中。随着时间的推移，作为妻子的女主也终于认识到生活的巨大改变。同时，自身也承担了更多事情：做饭、打扫、买菜、努力工作等等。男主从最开始为了妻子而治病，改变为为了自己而治病。</p>
-<p>女主厚着脸皮请求编辑给予工作机会，也同时说出了丈夫得了抑郁症的事情。而变得释怀，不介意他人的想法。</p>
-<p>最后两人在“同窗会”上的一段发言算是一年的总结，也让两人对婚姻有了更深的认识和理解。</p>
-<p><strong>生活甜蜜幸福的时候、职场得意的时候，不妨也踩一下刹车，或者停车，看一下反面类型的电影，给予自己冷静下来的机会，审时度势，未雨绸缪。</strong></p>
-<p>当然，电影中有很多地方并不值得严谨地推敲，现实中这样美好的结局恐怕凤毛菱角。但个人觉得不影响电影想表达的内容，以及给人以正能量的暗示。</p>
-<p>有很多台词还是值得回味的，有点儿生活哲学、人生哲学的样子，比如<br>“能一直完好无所便是价值所在”<br>“如果努力很痛苦，那就别努力了”<br>“人不努力也是可以的”<br>“不去想忧郁症的原因，而是想它的意义。”</p>
-<p>其他话题：<strong>婚礼同学会</strong>，这个同学会挺有意思的，就是在同一个教堂结婚的夫妇组成的同学；<strong>失业保险</strong></p>
+    <title>Shell Print text between specified lines or patterns</title>
+    <url>/2019/06/14/Shell-Print-text-between-specified-lines-or-patterns/</url>
+    <content><![CDATA[<p>awk,grep,sed,head,tail 都可以根据条件打印部分行。最简单的方法是使用 grep 打印匹配模式的行。不过，最全能的工具还是 awk.</p>
+<h4 id="Example-1-打印从-M-行到-N-行之间的文本"><a href="#Example-1-打印从-M-行到-N-行之间的文本" class="headerlink" title="Example 1: 打印从 M 行到 N 行之间的文本"></a>Example 1: 打印从 M 行到 N 行之间的文本</h4><p><code>$ awk &#39;NR==M,NR==N&#39; filename</code></p>
+<p>也可以从stdin读取输入：<br><code>cat filename | awk &#39;NR==M, NR==N&#39;</code></p>
+<h4 id="Example-2-打印位于模式-start-pattern-与-end-pattern-之间的文本"><a href="#Example-2-打印位于模式-start-pattern-与-end-pattern-之间的文本" class="headerlink" title="Example 2: 打印位于模式 start_pattern 与 end_pattern 之间的文本"></a>Example 2: 打印位于模式 start_pattern 与 end_pattern 之间的文本</h4><p><code>awk &#39;/start_pattern/,/end_pattern/&#39; filename</code></p>
+<p>awk中使用的模式为正则表达式</p>
 ]]></content>
+      <categories>
+        <category>Shell</category>
+      </categories>
       <tags>
-        <tag>Q List</tag>
+        <tag>Shell</tag>
       </tags>
   </entry>
   <entry>
@@ -1749,51 +1794,6 @@ pipeline {
       </categories>
       <tags>
         <tag>Shell</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Shell Print text between specified lines or patterns</title>
-    <url>/2019/06/14/Shell-Print-text-between-specified-lines-or-patterns/</url>
-    <content><![CDATA[<p>awk,grep,sed,head,tail 都可以根据条件打印部分行。最简单的方法是使用 grep 打印匹配模式的行。不过，最全能的工具还是 awk.</p>
-<h4 id="Example-1-打印从-M-行到-N-行之间的文本"><a href="#Example-1-打印从-M-行到-N-行之间的文本" class="headerlink" title="Example 1: 打印从 M 行到 N 行之间的文本"></a>Example 1: 打印从 M 行到 N 行之间的文本</h4><p><code>$ awk &#39;NR==M,NR==N&#39; filename</code></p>
-<p>也可以从stdin读取输入：<br><code>cat filename | awk &#39;NR==M, NR==N&#39;</code></p>
-<h4 id="Example-2-打印位于模式-start-pattern-与-end-pattern-之间的文本"><a href="#Example-2-打印位于模式-start-pattern-与-end-pattern-之间的文本" class="headerlink" title="Example 2: 打印位于模式 start_pattern 与 end_pattern 之间的文本"></a>Example 2: 打印位于模式 start_pattern 与 end_pattern 之间的文本</h4><p><code>awk &#39;/start_pattern/,/end_pattern/&#39; filename</code></p>
-<p>awk中使用的模式为正则表达式</p>
-]]></content>
-      <categories>
-        <category>Shell</category>
-      </categories>
-      <tags>
-        <tag>Shell</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Scan Docker Images for Vulnerabilities</title>
-    <url>/2019/12/11/Scan-Docker-Images-for-Vulnerabilities/</url>
-    <content><![CDATA[<ul>
-<li><p>可以扫描哪些方面，哪些方面检查不出来</p>
-</li>
-<li><p>有哪些工具，各自特点</p>
-</li>
-<li><p>工具开源/收费</p>
-</li>
-<li><p>是否方便与pipeline集成</p>
-</li>
-<li><p>报告形式</p>
-</li>
-<li><p>是否需要单独的服务端、数据库</p>
-</li>
-</ul>
-<h3 id="Tool-1-trivy"><a href="#Tool-1-trivy" class="headerlink" title="Tool 1: trivy"></a>Tool 1: <a href="https://github.com/aquasecurity/trivy" target="_blank" rel="noopener">trivy</a></h3><p>output:<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   trivy python:alpine</span><br><span class="line">2019-12-12T09:40:48.656+0800	INFO	Detecting Alpine vulnerabilities...</span><br><span class="line"></span><br><span class="line">python:alpine (alpine 3.10.2)</span><br><span class="line">=============================</span><br><span class="line">Total: 9 (UNKNOWN: 0, LOW: 2, MEDIUM: 7, HIGH: 0, CRITICAL: 0)</span><br><span class="line"></span><br><span class="line">+-----------+------------------+----------+-------------------+--------------------------------+</span><br><span class="line">|  LIBRARY  | VULNERABILITY ID | SEVERITY | INSTALLED VERSION | FIXED VERSION |      TITLE    |</span><br><span class="line">+-----------+------------------+----------+-------------------+---------   +-------------------+</span><br><span class="line">| e2fsprogs | CVE-2019-5094    | MEDIUM   | 1.45.2-r0| 1.45.2-r1 | e2fsprogs: crafted             |</span><br><span class="line">|           |                  |          |                   |               | ext4 partition leads to        |</span><br><span class="line">|           |                  |          |                   |               | out-of-bounds write            |</span><br><span class="line">+-----------+------------------+          +-------------------+---------------+--------------------------------+</span><br><span class="line">| expat     | CVE-2019-15903   |          | 2.2.7-r0| 2.2.7-r1  | expat: heap-based buffer       |</span><br><span class="line">|           |                  |          |                   |               | over-read via crafted XML      |</span><br><span class="line">|           |                  |          |                   |               | input                          |</span><br><span class="line">+-----------+------------------+          +-------------------+---------------+--------------------------------+</span><br><span class="line">| libgcrypt | CVE-2019-13627   |          | 1.8.4-r2| 1.8.5-r0  | libgcrypt: ECDSA timing        |</span><br><span class="line">|           |                  |          |                   |               | attack <span class="keyword">in</span> the libgcrypt20      |</span><br><span class="line">|           |                  |          |                   |               | cryptographic library          |</span><br><span class="line">+-----------+------------------+          +-------------------+--------------</span><br><span class="line">省略100行</span><br></pre></td></tr></table></figure></p>
-<h3 id="Tool-2-Anchore"><a href="#Tool-2-Anchore" class="headerlink" title="Tool 2: Anchore"></a>Tool 2: <a href="https://github.com/anchore/anchore-engine" target="_blank" rel="noopener">Anchore</a></h3><p>Anchore consists of a commercial edition (Anchore Enterprise) and an open-source edition (Anchor Engine).</p>
-<h3 id="Tool-3-open-scap"><a href="#Tool-3-open-scap" class="headerlink" title="Tool 3: open-scap"></a>Tool 3: open-scap</h3><h3 id="Tool-4-Dagda"><a href="#Tool-4-Dagda" class="headerlink" title="Tool 4: Dagda"></a>Tool 4: <a href="https://github.com/eliasgranderubio/dagda" target="_blank" rel="noopener">Dagda</a></h3><h3 id="Tool-5-Clair"><a href="#Tool-5-Clair" class="headerlink" title="Tool 5: Clair"></a>Tool 5: <a href="https://github.com/quay/clair" target="_blank" rel="noopener">Clair</a></h3><p>ref:</p>
-<ul>
-<li><a href="https://www.scality.com/solved/5-free-tools-to-navigate-through-docker-containers-security/" target="_blank" rel="noopener">https://www.scality.com/solved/5-free-tools-to-navigate-through-docker-containers-security/</a></li>
-<li><a href="https://resources.whitesourcesoftware.com/blog-whitesource/docker-image-security-scanning" target="_blank" rel="noopener">https://resources.whitesourcesoftware.com/blog-whitesource/docker-image-security-scanning</a></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>Docker</tag>
       </tags>
   </entry>
   <entry>
@@ -1872,7 +1872,7 @@ pipeline {
 <p>实际使用的是 <strong>xargs 实现参数传递</strong> 这一方法：<br><code>ls *.log | xargs -I {} mv {} log_backup_dir/</code><br>这里的 <code>{}</code> 也可以用 <code>%</code> 代替，毕竟可以少敲一下键盘。另外可以看看 <em>xargs与管道的区别</em></p>
 <p>更多实际用法可以参考： <a href="https://blog.csdn.net/zhangmingxingwei/article/details/8996627" target="_blank" rel="noopener">https://blog.csdn.net/zhangmingxingwei/article/details/8996627</a> , 其中的<code>git log --format=&quot;%H %P&quot; | xargs -L 1 git diff</code> 用法也很不错。 另外，有一个原理篇也建议看看，<a href="https://www.cnblogs.com/f-ck-need-u/p/5925923.html" target="_blank" rel="noopener">戳这儿</a></p>
 <h3 id="5-pssh-pscp"><a href="#5-pssh-pscp" class="headerlink" title="5. pssh pscp"></a>5. pssh pscp</h3><p>pssh: Execute Commands on Multiple Remote Linux Servers Using Single Terminal</p>
-<p>使用 <a href="https://www.tecmint.com/execute-commands-on-multiple-linux-servers-using-pssh/], [链接2](https://www.golinuxcloud.com/pssh-commands-parallel-ssh-linux-examples/" target="_blank" rel="noopener">链接1</a></p>
+<p>使用 <a href="https://www.tecmint.com/execute-commands-on-multiple-linux-servers-using-pssh/" target="_blank" rel="noopener">链接1</a>, <a href="https://www.golinuxcloud.com/pssh-commands-parallel-ssh-linux-examples/" target="_blank" rel="noopener">链接2</a></p>
 <p>pscp 类似pssh，可以帮助你从一台主机上将文件发送到多台主机</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">                            +--------------+</span><br><span class="line">                  +--------&gt;|  server 1    |</span><br><span class="line">                  |         +--------------+</span><br><span class="line">                  |</span><br><span class="line">                  |</span><br><span class="line">                  |         </span><br><span class="line">+-------------|---          +--------------+</span><br><span class="line">| pssh /pscp  |------------&gt;|  server 2    | </span><br><span class="line">+-------------+---          +--------------+</span><br><span class="line">                  |</span><br><span class="line">                  |</span><br><span class="line">                  |         +--------------+</span><br><span class="line">                  +--------&gt;|  server 3    |</span><br><span class="line">                            +--------------+</span><br></pre></td></tr></table></figure>
 <hr>
@@ -2038,6 +2038,24 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>Terraform : terraform console</title>
+    <url>/2019/12/05/Terraform-terraform-console/</url>
+    <content><![CDATA[<h5 id="1-evaluating-expressions"><a href="#1-evaluating-expressions" class="headerlink" title="1.evaluating expressions"></a>1.evaluating expressions</h5><p>The terraform console command provides an interactive console for evaluating expressions.</p>
+<p>For example:<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># interactive console</span></span><br><span class="line">➜ terraform console</span><br><span class="line">&gt; element(list(<span class="string">"one"</span>,<span class="string">"two"</span>,<span class="string">"three"</span>),1)</span><br><span class="line">two</span><br><span class="line"></span><br><span class="line"><span class="comment"># non-interactive scripts</span></span><br><span class="line">➜ <span class="built_in">echo</span> <span class="string">"list("</span>1<span class="string">","</span>2<span class="string">")"</span> | terraform console</span><br><span class="line">[</span><br><span class="line">  1,</span><br><span class="line">  2,</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
+<p>or</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜ terraform console</span><br><span class="line">&gt; aws_instance_demo.public_ip</span><br><span class="line">54.152.62.34</span><br></pre></td></tr></table></figure>
+<h5 id="2-test-Terraform-built-in-functions-locally"><a href="#2-test-Terraform-built-in-functions-locally" class="headerlink" title="2.test Terraform built-in functions locally"></a>2.test Terraform built-in functions locally</h5><p>  <a href="http://artemstar.com/2018/03/03/terraform-test-functions/" target="_blank" rel="noopener">test Terraform built-in functions locally</a></p>
+<hr>
+<p>More ref:<br><a href="https://www.terraform.io/docs/commands/console.html" target="_blank" rel="noopener">https://www.terraform.io/docs/commands/console.html</a><br><a href="http://artemstar.com/2018/03/03/terraform-test-functions/" target="_blank" rel="noopener">http://artemstar.com/2018/03/03/terraform-test-functions/</a></p>
+]]></content>
+      <categories>
+        <category>Terraform</category>
+      </categories>
+      <tags>
+        <tag>Terraform</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Test 02:Tools</title>
     <url>/2019/11/08/Test-02-Tools/</url>
     <content><![CDATA[<p><mark>测试种类与测试工具没有一对一的关系。</mark></p>
@@ -2106,22 +2124,25 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>Terraform : terraform console</title>
-    <url>/2019/12/05/Terraform-terraform-console/</url>
-    <content><![CDATA[<h5 id="1-evaluating-expressions"><a href="#1-evaluating-expressions" class="headerlink" title="1.evaluating expressions"></a>1.evaluating expressions</h5><p>The terraform console command provides an interactive console for evaluating expressions.</p>
-<p>For example:<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># interactive console</span></span><br><span class="line">➜ terraform console</span><br><span class="line">&gt; element(list(<span class="string">"one"</span>,<span class="string">"two"</span>,<span class="string">"three"</span>),1)</span><br><span class="line">two</span><br><span class="line"></span><br><span class="line"><span class="comment"># non-interactive scripts</span></span><br><span class="line">➜ <span class="built_in">echo</span> <span class="string">"list("</span>1<span class="string">","</span>2<span class="string">")"</span> | terraform console</span><br><span class="line">[</span><br><span class="line">  1,</span><br><span class="line">  2,</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
-<p>or</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜ terraform console</span><br><span class="line">&gt; aws_instance_demo.public_ip</span><br><span class="line">54.152.62.34</span><br></pre></td></tr></table></figure>
-<h5 id="2-test-Terraform-built-in-functions-locally"><a href="#2-test-Terraform-built-in-functions-locally" class="headerlink" title="2.test Terraform built-in functions locally"></a>2.test Terraform built-in functions locally</h5><p>  <a href="http://artemstar.com/2018/03/03/terraform-test-functions/" target="_blank" rel="noopener">test Terraform built-in functions locally</a></p>
-<hr>
-<p>More ref:<br><a href="https://www.terraform.io/docs/commands/console.html" target="_blank" rel="noopener">https://www.terraform.io/docs/commands/console.html</a><br><a href="http://artemstar.com/2018/03/03/terraform-test-functions/" target="_blank" rel="noopener">http://artemstar.com/2018/03/03/terraform-test-functions/</a></p>
+    <title>The Gig Economy Note</title>
+    <url>/2019/12/24/The-Gig-Economy-Note/</url>
+    <content><![CDATA[<p>零工经济是指一种经济价值，它来源于一种不断增长的趋势，即人们开始从事工作时间不定的工作，而这有别于以工作时间固定不变为特征的传统工作</p>
+<p>共享经济和零工经济的主要区别在于，前者包括了涉及实体资产的服务或体验购买，而后者则是有时限的、由个人交付的服务</p>
+<p>按需经济是零工经济的一个子集，它是指在需求触发下提供产品或服务的数字市场的经济活动</p>
+<p>按需经济和零工经济的关键区别在于需求的即时性，而即时性取决于零工所需的技能水平和持续时间 </p>
+<p><img src="/images/gig_economy_1.png" height="36%" width="36%"></p>
+<p>有时，新鲜的视角是必需的，因为内部团队已经围绕一个问题工作太久了，他们无法再分辨出问题中微妙的部分。</p>
+<p>在一些公司，由于没有人愿意打开“潘多拉的魔盒”，因此，困难的问题常常被忽略了。而一名中立的旁观者往往是打开魔盒的最佳选择。咨询师可以被视为不结盟者，因此他们的观点会更为客观。</p>
+<ul>
+<li><a href="https://www.fiverr.com/" target="_blank" rel="noopener">https://www.fiverr.com/</a></li>
+<li><a href="https://www.upwork.com/" target="_blank" rel="noopener">https://www.upwork.com/</a></li>
+</ul>
+<h4 id="收费结构"><a href="#收费结构" class="headerlink" title="收费结构"></a>收费结构</h4><p>  设定收费的方式很多，通常分为四个大类：按<strong>小时收费</strong>、<strong>按项目收费</strong>、<strong>成交费</strong>、<strong>股权</strong>。</p>
+<p>  按时收费是最常见的，提一下定价的 1%原则，即每个人的每日费用应该是他等效年收入的1%。</p>
 ]]></content>
       <categories>
-        <category>Terraform</category>
+        <category>读书笔记</category>
       </categories>
-      <tags>
-        <tag>Terraform</tag>
-      </tags>
   </entry>
   <entry>
     <title>about</title>
@@ -2175,27 +2196,6 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>The Gig Economy Note</title>
-    <url>/2019/12/24/The-Gig-Economy-Note/</url>
-    <content><![CDATA[<p>零工经济是指一种经济价值，它来源于一种不断增长的趋势，即人们开始从事工作时间不定的工作，而这有别于以工作时间固定不变为特征的传统工作</p>
-<p>共享经济和零工经济的主要区别在于，前者包括了涉及实体资产的服务或体验购买，而后者则是有时限的、由个人交付的服务</p>
-<p>按需经济是零工经济的一个子集，它是指在需求触发下提供产品或服务的数字市场的经济活动</p>
-<p>按需经济和零工经济的关键区别在于需求的即时性，而即时性取决于零工所需的技能水平和持续时间 </p>
-<p><img src="/images/gig_economy_1.png" height="36%" width="36%"></p>
-<p>有时，新鲜的视角是必需的，因为内部团队已经围绕一个问题工作太久了，他们无法再分辨出问题中微妙的部分。</p>
-<p>在一些公司，由于没有人愿意打开“潘多拉的魔盒”，因此，困难的问题常常被忽略了。而一名中立的旁观者往往是打开魔盒的最佳选择。咨询师可以被视为不结盟者，因此他们的观点会更为客观。</p>
-<ul>
-<li><a href="https://www.fiverr.com/" target="_blank" rel="noopener">https://www.fiverr.com/</a></li>
-<li><a href="https://www.upwork.com/" target="_blank" rel="noopener">https://www.upwork.com/</a></li>
-</ul>
-<h4 id="收费结构"><a href="#收费结构" class="headerlink" title="收费结构"></a>收费结构</h4><p>  设定收费的方式很多，通常分为四个大类：按<strong>小时收费</strong>、<strong>按项目收费</strong>、<strong>成交费</strong>、<strong>股权</strong>。</p>
-<p>  按时收费是最常见的，提一下定价的 1%原则，即每个人的每日费用应该是他等效年收入的1%。</p>
-]]></content>
-      <categories>
-        <category>读书笔记</category>
-      </categories>
-  </entry>
-  <entry>
     <title>devops 4大支柱</title>
     <url>/2019/10/17/devops-4%E5%A4%A7%E6%94%AF%E6%9F%B1/</url>
     <content><![CDATA[<h3 id="一、个人感想"><a href="#一、个人感想" class="headerlink" title="一、个人感想"></a>一、个人感想</h3><p>  书中的标题看起来总是“高大上”的，但说出来的都是一些无形的东西，要理解这类理念需要时间的积累。这里先摘抄几句，一起“品味”一下。其中许多文化、方法论与现在的外企公司比较吻合，相对理解起来容易些; 书中涉及到了很多细节，比如 <em>招聘和面试（p250）</em>, <em>当责文化(p269)</em>、<em>显性文化(p270)</em> 、<em>报酬（p241）</em>等，都值得去了解和追寻。</p>
@@ -2246,26 +2246,6 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>docker build ignore .dockerignore</title>
-    <url>/2019/08/22/docker-build-ignore-dockerignore/</url>
-    <content><![CDATA[<p>Demo project:<br><a href="https://github.com/qinrui777/api-test-demo" target="_blank" rel="noopener">https://github.com/qinrui777/api-test-demo</a></p>
-<p>please run command to get a jar : <code>./gradlew -x jar build</code></p>
-<ul>
-<li><p>before (加.dockerignore 之前)</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  api-test-demo git:(master) ✗ docker  build -t api-demo:no-ignore .</span><br><span class="line">Sending build context to Docker daemon  109.7MB</span><br><span class="line">Step 1/3 : FROM openjdk:8-jdk-alpine</span><br><span class="line"> ---&gt; 97bc1352afde</span><br><span class="line">Step 2/3 : ADD build/libs/api-demo-0.0.1-SNAPSHOT.jar /app.jar</span><br><span class="line"> ---&gt; 7f709f7b4381</span><br><span class="line">Step 3/3 : ENTRYPOINT [<span class="string">"java"</span>,<span class="string">"-jar"</span>,<span class="string">"/app.jar"</span>]</span><br><span class="line"> ---&gt; Running <span class="keyword">in</span> e43285b4802f</span><br><span class="line">Removing intermediate container e43285b4802f</span><br><span class="line"> ---&gt; 62d9f7b72b38</span><br><span class="line">Successfully built 62d9f7b72b38</span><br><span class="line">Successfully tagged api-demo:no-ignore</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>add <code>.dockerignore</code></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  api-test-demo git:(master) ✗ cat .dockerignore</span><br><span class="line">.git</span><br><span class="line">.DS_Store</span><br><span class="line">.gitignore</span><br><span class="line">README.md</span><br><span class="line">Jenkinsfile</span><br><span class="line">Dockerfile</span><br><span class="line">/images/*</span><br><span class="line">/src/*</span><br><span class="line">/jenkins/*</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>after  (加.dockerignore 之后)</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  api-test-demo git:(master) ✗ docker  build -t api-demo:have-ignore .</span><br><span class="line">Sending build context to Docker daemon  17.33MB</span><br><span class="line">Step 1/3 : FROM openjdk:8-jdk-alpine</span><br><span class="line"> ---&gt; 97bc1352afde</span><br><span class="line">Step 2/3 : ADD build/libs/api-demo-0.0.1-SNAPSHOT.jar /app.jar</span><br><span class="line"> ---&gt; Using cache</span><br><span class="line"> ---&gt; 7f709f7b4381</span><br><span class="line">Step 3/3 : ENTRYPOINT [<span class="string">"java"</span>,<span class="string">"-jar"</span>,<span class="string">"/app.jar"</span>]</span><br><span class="line"> ---&gt; Using cache</span><br><span class="line"> ---&gt; 62d9f7b72b38</span><br><span class="line">Successfully built 62d9f7b72b38</span><br><span class="line">Successfully tagged api-demo:have-ignore</span><br></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>docker 镜像的扁平化</title>
     <url>/2019/07/25/docker-%E9%95%9C%E5%83%8F%E7%9A%84%E6%89%81%E5%B9%B3%E5%8C%96/</url>
     <content><![CDATA[<blockquote>
@@ -2284,28 +2264,23 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>highlight code on slide/ppt</title>
-    <url>/2019/08/22/highlight-code-on-slide-ppt/</url>
-    <content><![CDATA[<p><strong>only for mac</strong></p>
-<p><strong>问题</strong><br>写ppt的时候代码如何呈现，能够看起来比较明显，更好是根据不同语言高亮</p>
-<p><strong>解决方案</strong><br>highlight</p>
-<ol>
-<li><p>Install<br><code>brew install highlight</code></p>
-</li>
-<li><p>Use<br><code>hightlight -l -O rtf your_code.sh | pbcopy</code></p>
-</li>
-</ol>
+    <title>docker build ignore .dockerignore</title>
+    <url>/2019/08/22/docker-build-ignore-dockerignore/</url>
+    <content><![CDATA[<p>Demo project:<br><a href="https://github.com/qinrui777/api-test-demo" target="_blank" rel="noopener">https://github.com/qinrui777/api-test-demo</a></p>
+<p>please run command to get a jar : <code>./gradlew -x jar build</code></p>
 <ul>
-<li>hightlight –help 可以查看文档，</li>
-<li>-l 显示行号，-O rtf为格式化输出 rtf 格式文本</li>
-<li>pbcopy 是内置剪贴板</li>
+<li><p>before (加.dockerignore 之前)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  api-test-demo git:(master) ✗ docker  build -t api-demo:no-ignore .</span><br><span class="line">Sending build context to Docker daemon  109.7MB</span><br><span class="line">Step 1/3 : FROM openjdk:8-jdk-alpine</span><br><span class="line"> ---&gt; 97bc1352afde</span><br><span class="line">Step 2/3 : ADD build/libs/api-demo-0.0.1-SNAPSHOT.jar /app.jar</span><br><span class="line"> ---&gt; 7f709f7b4381</span><br><span class="line">Step 3/3 : ENTRYPOINT [<span class="string">"java"</span>,<span class="string">"-jar"</span>,<span class="string">"/app.jar"</span>]</span><br><span class="line"> ---&gt; Running <span class="keyword">in</span> e43285b4802f</span><br><span class="line">Removing intermediate container e43285b4802f</span><br><span class="line"> ---&gt; 62d9f7b72b38</span><br><span class="line">Successfully built 62d9f7b72b38</span><br><span class="line">Successfully tagged api-demo:no-ignore</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>add <code>.dockerignore</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  api-test-demo git:(master) ✗ cat .dockerignore</span><br><span class="line">.git</span><br><span class="line">.DS_Store</span><br><span class="line">.gitignore</span><br><span class="line">README.md</span><br><span class="line">Jenkinsfile</span><br><span class="line">Dockerfile</span><br><span class="line">/images/*</span><br><span class="line">/src/*</span><br><span class="line">/jenkins/*</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>after  (加.dockerignore 之后)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  api-test-demo git:(master) ✗ docker  build -t api-demo:have-ignore .</span><br><span class="line">Sending build context to Docker daemon  17.33MB</span><br><span class="line">Step 1/3 : FROM openjdk:8-jdk-alpine</span><br><span class="line"> ---&gt; 97bc1352afde</span><br><span class="line">Step 2/3 : ADD build/libs/api-demo-0.0.1-SNAPSHOT.jar /app.jar</span><br><span class="line"> ---&gt; Using cache</span><br><span class="line"> ---&gt; 7f709f7b4381</span><br><span class="line">Step 3/3 : ENTRYPOINT [<span class="string">"java"</span>,<span class="string">"-jar"</span>,<span class="string">"/app.jar"</span>]</span><br><span class="line"> ---&gt; Using cache</span><br><span class="line"> ---&gt; 62d9f7b72b38</span><br><span class="line">Successfully built 62d9f7b72b38</span><br><span class="line">Successfully tagged api-demo:have-ignore</span><br></pre></td></tr></table></figure></li>
 </ul>
-<p>到PPT里粘贴就行了，Keynote 和 PowerPoint 都可以使用.<br>example:<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  ~ cat output.sh</span><br><span class="line">docker <span class="built_in">exec</span> -it -u root tw-jenkins bash</span><br><span class="line"></span><br><span class="line">chmod 777 /var/run/docker.sock</span><br><span class="line">apt-get update &amp;&amp; \</span><br><span class="line">apt-get -y install apt-transport-https \</span><br><span class="line">     ca-certificates \</span><br><span class="line">     curl \</span><br><span class="line">     gnupg2 \</span><br><span class="line">     software-properties-common &amp;&amp; \</span><br><span class="line">curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; <span class="built_in">echo</span> <span class="string">"<span class="variable">$ID</span>"</span>)/gpg &gt; /tmp/dkey; apt-key add /tmp/dkey &amp;&amp; \</span><br><span class="line">add-apt-repository \</span><br><span class="line">    <span class="string">"deb [arch=amd64] https://download.docker.com/linux/<span class="variable">$(. /etc/os-release; echo     "$ID")</span> \</span></span><br><span class="line"><span class="string">    <span class="variable">$(lsb_release -cs)</span> \</span></span><br><span class="line"><span class="string">stable"</span> &amp;&amp; \</span><br><span class="line">apt-get update &amp;&amp; \</span><br><span class="line">apt-get -y install docker-ce</span><br></pre></td></tr></table></figure></p>
-<p><code>➜  ~ highlight -l -O rtf output.sh | pbcopy</code></p>
-<p><img src="/images/highlight_demo01.png" alt="highlight_demo01.png"></p>
 ]]></content>
       <tags>
-        <tag>PPT</tag>
+        <tag>Docker</tag>
       </tags>
   </entry>
   <entry>
@@ -2407,21 +2382,60 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>mktemp command</title>
-    <url>/2019/05/07/mktemp-command/</url>
-    <content><![CDATA[<p>最适合存储临时数据的位置是/tmp, <strong>mktemp</strong> 命令可以为临时文件或目录创建唯一的名字</p>
-<p>Create a temporary file or directory.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mktemp</span><br><span class="line"></span><br><span class="line">Create a temporary file or directory.</span><br><span class="line"></span><br><span class="line">- Create an empty temporary file and return the absolute path to it:</span><br><span class="line">    mktemp</span><br><span class="line"></span><br><span class="line">- Create a temporary directory and return the absolute path to it:</span><br><span class="line">    mktemp -d</span><br><span class="line"></span><br><span class="line">- Create a temporary file with a specified suffix:</span><br><span class="line">    mktemp --suffix &quot;.txt&quot;</span><br></pre></td></tr></table></figure>
-<h4 id="1-create-temporary-file-创建临时目录"><a href="#1-create-temporary-file-创建临时目录" class="headerlink" title="1.create temporary file (创建临时目录)"></a>1.create temporary file (创建临时目录)</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$filename</span>=`mktemp`</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$filename</span></span><br><span class="line">/tmp/tmp.8xefliegnD9</span><br></pre></td></tr></table></figure>
-<h4 id="2-create-temporary-directory-创建临时目录"><a href="#2-create-temporary-directory-创建临时目录" class="headerlink" title="2. create temporary directory (创建临时目录)"></a>2. create temporary directory (创建临时目录)</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dirname=`mktemp -d`</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$dirname</span></span><br><span class="line">tmp.NJ8dhf6wk</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>If you just want to generate a filename and don’t want to create the actual file or directory, you can(如果仅仅是想生成文件名，不希望创建实际的文件或目录，可以):<br><code>mktemp -u</code></p>
+    <title>highlight code on slide/ppt</title>
+    <url>/2019/08/22/highlight-code-on-slide-ppt/</url>
+    <content><![CDATA[<p><strong>only for mac</strong></p>
+<p><strong>问题</strong><br>写ppt的时候代码如何呈现，能够看起来比较明显，更好是根据不同语言高亮</p>
+<p><strong>解决方案</strong><br>highlight</p>
+<ol>
+<li><p>Install<br><code>brew install highlight</code></p>
 </li>
-<li><p>Create a temporary filename based on the tempplate(基于模板创建临时文件名)</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  qr_blog mktemp study.XXX</span><br><span class="line">study.UWT</span><br><span class="line">➜  qr_blog mktemp study.XXX</span><br><span class="line">study.Usm</span><br><span class="line">➜  qr_blog mktemp study.XXX</span><br><span class="line">study.M6a</span><br></pre></td></tr></table></figure>
+<li><p>Use<br><code>hightlight -l -O rtf your_code.sh | pbcopy</code></p>
+</li>
+</ol>
+<ul>
+<li>hightlight –help 可以查看文档，</li>
+<li>-l 显示行号，-O rtf为格式化输出 rtf 格式文本</li>
+<li>pbcopy 是内置剪贴板</li>
+</ul>
+<p>到PPT里粘贴就行了，Keynote 和 PowerPoint 都可以使用.<br>example:<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  ~ cat output.sh</span><br><span class="line">docker <span class="built_in">exec</span> -it -u root tw-jenkins bash</span><br><span class="line"></span><br><span class="line">chmod 777 /var/run/docker.sock</span><br><span class="line">apt-get update &amp;&amp; \</span><br><span class="line">apt-get -y install apt-transport-https \</span><br><span class="line">     ca-certificates \</span><br><span class="line">     curl \</span><br><span class="line">     gnupg2 \</span><br><span class="line">     software-properties-common &amp;&amp; \</span><br><span class="line">curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; <span class="built_in">echo</span> <span class="string">"<span class="variable">$ID</span>"</span>)/gpg &gt; /tmp/dkey; apt-key add /tmp/dkey &amp;&amp; \</span><br><span class="line">add-apt-repository \</span><br><span class="line">    <span class="string">"deb [arch=amd64] https://download.docker.com/linux/<span class="variable">$(. /etc/os-release; echo     "$ID")</span> \</span></span><br><span class="line"><span class="string">    <span class="variable">$(lsb_release -cs)</span> \</span></span><br><span class="line"><span class="string">stable"</span> &amp;&amp; \</span><br><span class="line">apt-get update &amp;&amp; \</span><br><span class="line">apt-get -y install docker-ce</span><br></pre></td></tr></table></figure></p>
+<p><code>➜  ~ highlight -l -O rtf output.sh | pbcopy</code></p>
+<p><img src="/images/highlight_demo01.png" alt="highlight_demo01.png"></p>
+]]></content>
+      <tags>
+        <tag>PPT</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>http vs curl</title>
+    <url>/2019/06/19/http-vs-curl/</url>
+    <content><![CDATA[<blockquote>
+<p>http不仅是个协议，还是一个命令。</p>
+</blockquote>
+<p>Httpie 是个 HTTP 的命令行客户端，http就是它的命令。</p>
+<h4 id="1-Httpie-是什么"><a href="#1-Httpie-是什么" class="headerlink" title="1. Httpie 是什么"></a>1. Httpie 是什么</h4><p>Httpie （aych-tee-tee-pie）是一个 HTTP 的命令行客户端。其目标是让 CLI 和 web 服务之间的交互尽可能的人性化。你可以用它很方便的用 http 的命令调试接口，最常用的应该就是 GET 和 POST 了。</p>
+<h4 id="2-安装"><a href="#2-安装" class="headerlink" title="2. 安装"></a>2. 安装</h4><p>Linux上安装</p>
+<ul>
+<li><p>Debian, Ubuntu或Linux Mint<br><code>sudo apt-get install httpie</code></p>
+</li>
+<li><p>Fedora，CentOS/RHEL<br><code>sudo yum install httpie</code></p>
 </li>
 </ul>
-<p>Mac OS 与linux用法略有区别，请视情况使用</p>
+<p>或者使用python的方式来安装<br><code>sudo  pip install --upgrade httpie</code></p>
+<ul>
+<li>Mac OSX<br><code>brew install httpie</code></li>
+</ul>
+<h4 id="3-http-command-能做什么"><a href="#3-http-command-能做什么" class="headerlink" title="3. http command 能做什么"></a>3. http command 能做什么</h4><blockquote>
+<p>curl能做的，大部分都能做。</p>
+</blockquote>
+<p>HTTPie 基于 python 编写，内部使用了 Requests 和 Pygments 库。</p>
+<p>HTTPie 的用法要比 cURL 直观很多，没有那么多选项，基本上心里怎么想就怎么写，默认输入和输出都是 json 格式 (而 cURL 必须要指定 -H “Content-Type: application/json”)。我们同样实现上面获取 token 的功能，效果如下:</p>
+<ul>
+<li>example 1:<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  tmp http https://www.devops-tech.cn/</span><br><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Accept-Ranges: bytes</span><br><span class="line">Access-Control-Allow-Origin: *</span><br><span class="line">Age: 7</span><br><span class="line">Cache-Control: max-age=600</span><br><span class="line">Connection: keep-alive</span><br><span class="line">Content-Encoding: gzip</span><br><span class="line">Content-Length: 2510</span><br><span class="line">Content-Type: text/html; charset=utf-8</span><br><span class="line">Date: Wed, 19 Jun 2019 08:28:44 GMT</span><br><span class="line">ETag: W/<span class="string">"5d0848b1-2d66"</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>others<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">http</span><br><span class="line"></span><br><span class="line">HTTPie: HTTP client, a user-friendly cURL replacement.</span><br><span class="line"></span><br><span class="line">- Download a URL to a file:</span><br><span class="line">    http -d example.org</span><br><span class="line"></span><br><span class="line">- Send form-encoded data:</span><br><span class="line">    http -f example.org name=<span class="string">'bob'</span> profile_picture@<span class="string">'bob.png'</span></span><br><span class="line"></span><br><span class="line">- Send JSON object:</span><br><span class="line">    http example.org name=<span class="string">'bob'</span></span><br><span class="line"></span><br><span class="line">- Specify an HTTP method:</span><br><span class="line">    http HEAD example.org</span><br><span class="line"></span><br><span class="line">- Include an extra header:</span><br><span class="line">    http example.org X-MyHeader:123</span><br><span class="line"></span><br><span class="line">- Pass a user name and password <span class="keyword">for</span> server authentication:</span><br><span class="line">    http -a username:password example.org</span><br><span class="line"></span><br><span class="line">- Specify raw request body via stdin:</span><br><span class="line">    cat data.txt | http PUT example.org</span><br></pre></td></tr></table></figure></p>
+<h4 id="4-特点："><a href="#4-特点：" class="headerlink" title="4. 特点："></a>4. 特点：</h4><p>1、直观的语法<br>2、格式化和色彩化的终端输出<br>3、内置 JSON 支持<br>4、支持上传表单和文件<br>5、HTTPS、代理和认证支持<br>6、支持任意请求数据<br>7、自定义标题<br>8、持久性会话<br>9、类 Wget 下载<br>10、支持 Python 2.6, 2.7 和 3.x<br>11、支持 Linux, Mac OS X 和 Windows<br>12、插件<br>13、文档<br>14、测试覆盖率</p>
 ]]></content>
       <categories>
         <category>Linux</category>
@@ -2470,6 +2484,30 @@ pipeline {
 ]]></content>
       <tags>
         <tag>k8s</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>mktemp command</title>
+    <url>/2019/05/07/mktemp-command/</url>
+    <content><![CDATA[<p>最适合存储临时数据的位置是/tmp, <strong>mktemp</strong> 命令可以为临时文件或目录创建唯一的名字</p>
+<p>Create a temporary file or directory.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mktemp</span><br><span class="line"></span><br><span class="line">Create a temporary file or directory.</span><br><span class="line"></span><br><span class="line">- Create an empty temporary file and return the absolute path to it:</span><br><span class="line">    mktemp</span><br><span class="line"></span><br><span class="line">- Create a temporary directory and return the absolute path to it:</span><br><span class="line">    mktemp -d</span><br><span class="line"></span><br><span class="line">- Create a temporary file with a specified suffix:</span><br><span class="line">    mktemp --suffix &quot;.txt&quot;</span><br></pre></td></tr></table></figure>
+<h4 id="1-create-temporary-file-创建临时目录"><a href="#1-create-temporary-file-创建临时目录" class="headerlink" title="1.create temporary file (创建临时目录)"></a>1.create temporary file (创建临时目录)</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$filename</span>=`mktemp`</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$filename</span></span><br><span class="line">/tmp/tmp.8xefliegnD9</span><br></pre></td></tr></table></figure>
+<h4 id="2-create-temporary-directory-创建临时目录"><a href="#2-create-temporary-directory-创建临时目录" class="headerlink" title="2. create temporary directory (创建临时目录)"></a>2. create temporary directory (创建临时目录)</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dirname=`mktemp -d`</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$dirname</span></span><br><span class="line">tmp.NJ8dhf6wk</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>If you just want to generate a filename and don’t want to create the actual file or directory, you can(如果仅仅是想生成文件名，不希望创建实际的文件或目录，可以):<br><code>mktemp -u</code></p>
+</li>
+<li><p>Create a temporary filename based on the tempplate(基于模板创建临时文件名)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  qr_blog mktemp study.XXX</span><br><span class="line">study.UWT</span><br><span class="line">➜  qr_blog mktemp study.XXX</span><br><span class="line">study.Usm</span><br><span class="line">➜  qr_blog mktemp study.XXX</span><br><span class="line">study.M6a</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>Mac OS 与linux用法略有区别，请视情况使用</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Shell</tag>
       </tags>
   </entry>
   <entry>
@@ -2534,44 +2572,6 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>http vs curl</title>
-    <url>/2019/06/19/http-vs-curl/</url>
-    <content><![CDATA[<blockquote>
-<p>http不仅是个协议，还是一个命令。</p>
-</blockquote>
-<p>Httpie 是个 HTTP 的命令行客户端，http就是它的命令。</p>
-<h4 id="1-Httpie-是什么"><a href="#1-Httpie-是什么" class="headerlink" title="1. Httpie 是什么"></a>1. Httpie 是什么</h4><p>Httpie （aych-tee-tee-pie）是一个 HTTP 的命令行客户端。其目标是让 CLI 和 web 服务之间的交互尽可能的人性化。你可以用它很方便的用 http 的命令调试接口，最常用的应该就是 GET 和 POST 了。</p>
-<h4 id="2-安装"><a href="#2-安装" class="headerlink" title="2. 安装"></a>2. 安装</h4><p>Linux上安装</p>
-<ul>
-<li><p>Debian, Ubuntu或Linux Mint<br><code>sudo apt-get install httpie</code></p>
-</li>
-<li><p>Fedora，CentOS/RHEL<br><code>sudo yum install httpie</code></p>
-</li>
-</ul>
-<p>或者使用python的方式来安装<br><code>sudo  pip install --upgrade httpie</code></p>
-<ul>
-<li>Mac OSX<br><code>brew install httpie</code></li>
-</ul>
-<h4 id="3-http-command-能做什么"><a href="#3-http-command-能做什么" class="headerlink" title="3. http command 能做什么"></a>3. http command 能做什么</h4><blockquote>
-<p>curl能做的，大部分都能做。</p>
-</blockquote>
-<p>HTTPie 基于 python 编写，内部使用了 Requests 和 Pygments 库。</p>
-<p>HTTPie 的用法要比 cURL 直观很多，没有那么多选项，基本上心里怎么想就怎么写，默认输入和输出都是 json 格式 (而 cURL 必须要指定 -H “Content-Type: application/json”)。我们同样实现上面获取 token 的功能，效果如下:</p>
-<ul>
-<li>example 1:<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  tmp http https://www.devops-tech.cn/</span><br><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Accept-Ranges: bytes</span><br><span class="line">Access-Control-Allow-Origin: *</span><br><span class="line">Age: 7</span><br><span class="line">Cache-Control: max-age=600</span><br><span class="line">Connection: keep-alive</span><br><span class="line">Content-Encoding: gzip</span><br><span class="line">Content-Length: 2510</span><br><span class="line">Content-Type: text/html; charset=utf-8</span><br><span class="line">Date: Wed, 19 Jun 2019 08:28:44 GMT</span><br><span class="line">ETag: W/<span class="string">"5d0848b1-2d66"</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>others<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">http</span><br><span class="line"></span><br><span class="line">HTTPie: HTTP client, a user-friendly cURL replacement.</span><br><span class="line"></span><br><span class="line">- Download a URL to a file:</span><br><span class="line">    http -d example.org</span><br><span class="line"></span><br><span class="line">- Send form-encoded data:</span><br><span class="line">    http -f example.org name=<span class="string">'bob'</span> profile_picture@<span class="string">'bob.png'</span></span><br><span class="line"></span><br><span class="line">- Send JSON object:</span><br><span class="line">    http example.org name=<span class="string">'bob'</span></span><br><span class="line"></span><br><span class="line">- Specify an HTTP method:</span><br><span class="line">    http HEAD example.org</span><br><span class="line"></span><br><span class="line">- Include an extra header:</span><br><span class="line">    http example.org X-MyHeader:123</span><br><span class="line"></span><br><span class="line">- Pass a user name and password <span class="keyword">for</span> server authentication:</span><br><span class="line">    http -a username:password example.org</span><br><span class="line"></span><br><span class="line">- Specify raw request body via stdin:</span><br><span class="line">    cat data.txt | http PUT example.org</span><br></pre></td></tr></table></figure></p>
-<h4 id="4-特点："><a href="#4-特点：" class="headerlink" title="4. 特点："></a>4. 特点：</h4><p>1、直观的语法<br>2、格式化和色彩化的终端输出<br>3、内置 JSON 支持<br>4、支持上传表单和文件<br>5、HTTPS、代理和认证支持<br>6、支持任意请求数据<br>7、自定义标题<br>8、持久性会话<br>9、类 Wget 下载<br>10、支持 Python 2.6, 2.7 和 3.x<br>11、支持 Linux, Mac OS X 和 Windows<br>12、插件<br>13、文档<br>14、测试覆盖率</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Shell</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>shell shift用法</title>
     <url>/2019/10/22/shell-shift%E7%94%A8%E6%B3%95/</url>
     <content><![CDATA[<table>
@@ -2610,6 +2610,101 @@ pipeline {
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"> <span class="comment"># cat img_downloader.sh</span></span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$#</span> -ne 3 ];</span><br><span class="line">  <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"Usage: <span class="variable">$0</span> URL -d DIRECTORY"</span></span><br><span class="line">    <span class="built_in">exit</span> 1</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> [ <span class="variable">$#</span> -gt 0 ]</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  <span class="keyword">case</span> <span class="variable">$1</span> <span class="keyword">in</span></span><br><span class="line">  -d) <span class="built_in">shift</span>; directory=<span class="variable">$1</span>; <span class="built_in">shift</span> ;;</span><br><span class="line">  *) url=<span class="variable">$1</span>; <span class="built_in">shift</span>;;</span><br><span class="line">  <span class="keyword">esac</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"directory is :<span class="variable">$directory</span>"</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"url is :<span class="variable">$url</span>"</span></span><br></pre></td></tr></table></figure>
 <p>运行结果如下：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"> <span class="comment"># ./img_downloader.sh -d images baidu.com</span></span><br><span class="line">directory is :images</span><br><span class="line">url is :baidu.com</span><br><span class="line"> <span class="comment"># ./img_downloader.sh baidu.com -d images</span></span><br><span class="line">directory is :images</span><br><span class="line">url is :baidu.com</span><br></pre></td></tr></table></figure></p>
 <p>采用这种方法解析命令行参数的好处在于可以将 <em>-d</em> 置于命令行中的任意位置</p>
+]]></content>
+      <categories>
+        <category>Shell</category>
+      </categories>
+      <tags>
+        <tag>Shell</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>shell 没有vim/vi 命令怎么办</title>
+    <url>/2019/10/23/shell-%E6%B2%A1%E6%9C%89vim-vi-%E5%91%BD%E4%BB%A4%E6%80%8E%E4%B9%88%E5%8A%9E/</url>
+    <content><![CDATA[<p>  由于经常在容器中有一些debug的操作，想要编辑文件，却又发现 <strong>一无所有</strong>（没有 vim/vi 编辑命令）。解决办法可能是去安装，但下载需要时间等待，且下载的工具使用也不是很频繁。所以换个思路，用其他基础的命令替代下。</p>
+<h3 id="cat-EOF-常用方法"><a href="#cat-EOF-常用方法" class="headerlink" title="cat EOF 常用方法"></a>cat EOF 常用方法</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># cat &lt;&lt;EOF &gt; cat_test.sh</span></span><br><span class="line">&gt; <span class="comment">#!/bin/bash</span></span><br><span class="line">&gt; <span class="built_in">echo</span> <span class="string">"no vim/vi"</span></span><br><span class="line">&gt; <span class="built_in">echo</span> <span class="string">"But ... cat"</span></span><br><span class="line">&gt; EOF</span><br></pre></td></tr></table></figure>
+<p>可以用 <code>cat cat_test.sh</code> 核验下内容和格式是否正确；如果原文件存在且有内容，会直接 <strong>覆盖</strong> ☝</p>
+<p><strong>追加</strong> 内容<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># cat &lt;&lt;EOF &gt;&gt; cat_test.sh</span></span><br><span class="line">&gt; <span class="comment">#!/bin/bash</span></span><br><span class="line">&gt; <span class="built_in">echo</span> <span class="string">"new add context"</span></span><br><span class="line">&gt; EOF</span><br></pre></td></tr></table></figure></p>
+<h3 id="cat交互模式下的使用"><a href="#cat交互模式下的使用" class="headerlink" title="cat交互模式下的使用"></a>cat交互模式下的使用</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># cat &gt; cat_in.sh</span></span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"by cat."</span></span><br></pre></td></tr></table></figure>
+<p>ctrl + d 结束输入</p>
+<hr>
+<p><strong>✍TIP</strong></p>
+<ol>
+<li><p>直接清空文件: <code>&gt;cat_test.sh</code></p>
+</li>
+<li><p>其实可以用其他字符来代替EOF，它也只是个标识符而已！</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Shell</category>
+      </categories>
+      <tags>
+        <tag>Shell</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>shell 玩转sed，你不知道的用法</title>
+    <url>/2019/10/23/shell-%E7%8E%A9%E8%BD%ACsed%EF%BC%8C%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84%E7%94%A8%E6%B3%95/</url>
+    <content><![CDATA[<p>sed 是 stream editor（流编辑器）的缩写</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">操作</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">p</td>
+<td>打印文本行(print)</td>
+</tr>
+<tr>
+<td style="text-align:left">n</td>
+<td>取消默认输出</td>
+</tr>
+<tr>
+<td style="text-align:left">d</td>
+<td>删除(delete)</td>
+</tr>
+<tr>
+<td style="text-align:left">s</td>
+<td>字符串替换(substitude)</td>
+</tr>
+<tr>
+<td style="text-align:left">a</td>
+<td>追加新的文本(append)</td>
+</tr>
+</tbody>
+</table>
+<p>示例文件</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># cat example.conf</span></span><br><span class="line">username=this  username_2=this</span><br><span class="line">password=that</span><br><span class="line"></span><br><span class="line">url=this</span><br><span class="line"></span><br><span class="line">path=this</span><br></pre></td></tr></table></figure>
+<h3 id="1-替换"><a href="#1-替换" class="headerlink" title="1.替换"></a>1.替换</h3><p>sed 命令会将 <code>s</code> 之后的字符视为命令分隔符，这允许我们更改默认的分隔符，如:<br><code>sed &#39;s:this:new:g&#39; example.conf</code><br><code>sed &#39;s|this|new|g&#39; example.conf</code><br>如果作为分隔符的字符出现在模式中，必须使用 <code>\</code>对其进行转义</p>
+<p><code>sed &#39;s/this/new/&#39; example.conf</code>  替换 <strong>每行</strong>中 <strong>首次</strong> 匹配的内容</p>
+<p>ouput:<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">username=new  username_2=this</span><br><span class="line">password=that</span><br><span class="line"></span><br><span class="line">url=new</span><br><span class="line"></span><br><span class="line">path=new</span><br></pre></td></tr></table></figure></p>
+<p><code>sed &#39;s/this/new/g&#39; example.conf</code> g标记可以使sed执行全局替换</p>
+<p><code>sed &#39;s/this/new/2g&#39; example.conf</code> #g可以使sed替换第N次出现的匹配</p>
+<p>将1-4行的url换成address, s代表替换<br><code>sed &#39;1,4s/url/address/g&#39; example.conf</code></p>
+<h3 id="2-删除"><a href="#2-删除" class="headerlink" title="2.删除"></a>2.删除</h3><p><code>sed &#39;2,4d&#39; example.conf</code>  删除第2到4行  </p>
+<p><code>sed -e &#39;/url/d&#39;  example.conf</code> 删除含”url”的行,输出到终端，实际没有替换文件</p>
+<p><code>sed &#39;/appleapple/d;$d&#39; example.conf</code> 删除包含appleapple的行和最后一行($)  </p>
+<p>移除空行<br><code>sed &#39;/^$/d&#39; file</code> 空行可以用 ^$ 进行匹配，最后的 /d 告诉sed不执行替换操作，而是直接删除匹配到的空行</p>
+<p>检查替换内容<br><code>sed -n &#39;s/mysql_host_key/mysql_host_key_new/g&#39;p  test-application.yml</code></p>
+<p>-n停止修改后的文本的输出。然后使用p打印修改后的行</p>
+<h3 id="macOS-不一样的-sed"><a href="#macOS-不一样的-sed" class="headerlink" title="macOS 不一样的 sed"></a>macOS 不一样的 sed</h3><p><strong>报错如下</strong>：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sed -i <span class="string">'s/mysql_host_key/mysql_host_key_new/g'</span>  <span class="built_in">test</span>-application.yml</span><br><span class="line">sed: 1: <span class="string">"test-application.yml"</span>: undefined label <span class="string">'est-application.yml'</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>原因</strong>： The sed command is a bit different in Mac OS X, the ‘-i’ option required a parameter to tell what extension to add for the backup file.</p>
+<p>解决办法：<br><code>sed -i &#39;.bak&#39; &#39;s/mysql_host_key/mysql_host_key_new/g&#39;  test-application.yml</code></p>
+<blockquote>
+<p> 参见 <a href="https://mkyong.com/mac/sed-command-hits-undefined-label-error-on-mac-os-x/" target="_blank" rel="noopener">https://mkyong.com/mac/sed-command-hits-undefined-label-error-on-mac-os-x/</a></p>
+</blockquote>
+<hr>
+<p><strong>✍TIP</strong></p>
+<ol>
+<li><p>首先使用不带 -i选项的sed命令，查看结果是否符合预期；再加入 -i选项将更改写入文件。</p>
+</li>
+<li><p><code>sed -i.bak &#39;s/abc/def&#39; file</code> 这时的sed不仅替换文件内容，还会创建一个名为file.bak的文件，其中包含着原始文件内容的副本;如果对一个文件多次执行，则xx.bak文件只会是上一个文件的副本</p>
+</li>
+</ol>
 ]]></content>
       <categories>
         <category>Shell</category>
@@ -2698,101 +2793,6 @@ pipeline {
       </categories>
       <tags>
         <tag>tmux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>shell 玩转sed，你不知道的用法</title>
-    <url>/2019/10/23/shell-%E7%8E%A9%E8%BD%ACsed%EF%BC%8C%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84%E7%94%A8%E6%B3%95/</url>
-    <content><![CDATA[<p>sed 是 stream editor（流编辑器）的缩写</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">操作</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">p</td>
-<td>打印文本行(print)</td>
-</tr>
-<tr>
-<td style="text-align:left">n</td>
-<td>取消默认输出</td>
-</tr>
-<tr>
-<td style="text-align:left">d</td>
-<td>删除(delete)</td>
-</tr>
-<tr>
-<td style="text-align:left">s</td>
-<td>字符串替换(substitude)</td>
-</tr>
-<tr>
-<td style="text-align:left">a</td>
-<td>追加新的文本(append)</td>
-</tr>
-</tbody>
-</table>
-<p>示例文件</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># cat example.conf</span></span><br><span class="line">username=this  username_2=this</span><br><span class="line">password=that</span><br><span class="line"></span><br><span class="line">url=this</span><br><span class="line"></span><br><span class="line">path=this</span><br></pre></td></tr></table></figure>
-<h3 id="1-替换"><a href="#1-替换" class="headerlink" title="1.替换"></a>1.替换</h3><p>sed 命令会将 <code>s</code> 之后的字符视为命令分隔符，这允许我们更改默认的分隔符，如:<br><code>sed &#39;s:this:new:g&#39; example.conf</code><br><code>sed &#39;s|this|new|g&#39; example.conf</code><br>如果作为分隔符的字符出现在模式中，必须使用 <code>\</code>对其进行转义</p>
-<p><code>sed &#39;s/this/new/&#39; example.conf</code>  替换 <strong>每行</strong>中 <strong>首次</strong> 匹配的内容</p>
-<p>ouput:<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">username=new  username_2=this</span><br><span class="line">password=that</span><br><span class="line"></span><br><span class="line">url=new</span><br><span class="line"></span><br><span class="line">path=new</span><br></pre></td></tr></table></figure></p>
-<p><code>sed &#39;s/this/new/g&#39; example.conf</code> g标记可以使sed执行全局替换</p>
-<p><code>sed &#39;s/this/new/2g&#39; example.conf</code> #g可以使sed替换第N次出现的匹配</p>
-<p>将1-4行的url换成address, s代表替换<br><code>sed &#39;1,4s/url/address/g&#39; example.conf</code></p>
-<h3 id="2-删除"><a href="#2-删除" class="headerlink" title="2.删除"></a>2.删除</h3><p><code>sed &#39;2,4d&#39; example.conf</code>  删除第2到4行  </p>
-<p><code>sed -e &#39;/url/d&#39;  example.conf</code> 删除含”url”的行,输出到终端，实际没有替换文件</p>
-<p><code>sed &#39;/appleapple/d;$d&#39; example.conf</code> 删除包含appleapple的行和最后一行($)  </p>
-<p>移除空行<br><code>sed &#39;/^$/d&#39; file</code> 空行可以用 ^$ 进行匹配，最后的 /d 告诉sed不执行替换操作，而是直接删除匹配到的空行</p>
-<p>检查替换内容<br><code>sed -n &#39;s/mysql_host_key/mysql_host_key_new/g&#39;p  test-application.yml</code></p>
-<p>-n停止修改后的文本的输出。然后使用p打印修改后的行</p>
-<h3 id="macOS-不一样的-sed"><a href="#macOS-不一样的-sed" class="headerlink" title="macOS 不一样的 sed"></a>macOS 不一样的 sed</h3><p><strong>报错如下</strong>：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sed -i <span class="string">'s/mysql_host_key/mysql_host_key_new/g'</span>  <span class="built_in">test</span>-application.yml</span><br><span class="line">sed: 1: <span class="string">"test-application.yml"</span>: undefined label <span class="string">'est-application.yml'</span></span><br></pre></td></tr></table></figure></p>
-<p><strong>原因</strong>： The sed command is a bit different in Mac OS X, the ‘-i’ option required a parameter to tell what extension to add for the backup file.</p>
-<p>解决办法：<br><code>sed -i &#39;.bak&#39; &#39;s/mysql_host_key/mysql_host_key_new/g&#39;  test-application.yml</code></p>
-<blockquote>
-<p> 参见 <a href="https://mkyong.com/mac/sed-command-hits-undefined-label-error-on-mac-os-x/" target="_blank" rel="noopener">https://mkyong.com/mac/sed-command-hits-undefined-label-error-on-mac-os-x/</a></p>
-</blockquote>
-<hr>
-<p><strong>✍TIP</strong></p>
-<ol>
-<li><p>首先使用不带 -i选项的sed命令，查看结果是否符合预期；再加入 -i选项将更改写入文件。</p>
-</li>
-<li><p><code>sed -i.bak &#39;s/abc/def&#39; file</code> 这时的sed不仅替换文件内容，还会创建一个名为file.bak的文件，其中包含着原始文件内容的副本;如果对一个文件多次执行，则xx.bak文件只会是上一个文件的副本</p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Shell</category>
-      </categories>
-      <tags>
-        <tag>Shell</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>shell 没有vim/vi 命令怎么办</title>
-    <url>/2019/10/23/shell-%E6%B2%A1%E6%9C%89vim-vi-%E5%91%BD%E4%BB%A4%E6%80%8E%E4%B9%88%E5%8A%9E/</url>
-    <content><![CDATA[<p>  由于经常在容器中有一些debug的操作，想要编辑文件，却又发现 <strong>一无所有</strong>（没有 vim/vi 编辑命令）。解决办法可能是去安装，但下载需要时间等待，且下载的工具使用也不是很频繁。所以换个思路，用其他基础的命令替代下。</p>
-<h3 id="cat-EOF-常用方法"><a href="#cat-EOF-常用方法" class="headerlink" title="cat EOF 常用方法"></a>cat EOF 常用方法</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># cat &lt;&lt;EOF &gt; cat_test.sh</span></span><br><span class="line">&gt; <span class="comment">#!/bin/bash</span></span><br><span class="line">&gt; <span class="built_in">echo</span> <span class="string">"no vim/vi"</span></span><br><span class="line">&gt; <span class="built_in">echo</span> <span class="string">"But ... cat"</span></span><br><span class="line">&gt; EOF</span><br></pre></td></tr></table></figure>
-<p>可以用 <code>cat cat_test.sh</code> 核验下内容和格式是否正确；如果原文件存在且有内容，会直接 <strong>覆盖</strong> ☝</p>
-<p><strong>追加</strong> 内容<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># cat &lt;&lt;EOF &gt;&gt; cat_test.sh</span></span><br><span class="line">&gt; <span class="comment">#!/bin/bash</span></span><br><span class="line">&gt; <span class="built_in">echo</span> <span class="string">"new add context"</span></span><br><span class="line">&gt; EOF</span><br></pre></td></tr></table></figure></p>
-<h3 id="cat交互模式下的使用"><a href="#cat交互模式下的使用" class="headerlink" title="cat交互模式下的使用"></a>cat交互模式下的使用</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># cat &gt; cat_in.sh</span></span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"by cat."</span></span><br></pre></td></tr></table></figure>
-<p>ctrl + d 结束输入</p>
-<hr>
-<p><strong>✍TIP</strong></p>
-<ol>
-<li><p>直接清空文件: <code>&gt;cat_test.sh</code></p>
-</li>
-<li><p>其实可以用其他字符来代替EOF，它也只是个标识符而已！</p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Shell</category>
-      </categories>
-      <tags>
-        <tag>Shell</tag>
       </tags>
   </entry>
   <entry>
@@ -2889,6 +2889,48 @@ pipeline {
 <tr>
 <td style="text-align:left">PAPAYA 電腦教室</td>
 <td style="text-align:left">office三件套</td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://www.devops-tech.cn/2019/05/22/Small-Tools-1-youtube-dl/" target="_blank" rel="noopener">如何下载</a>youtube视频、音频</p>
+]]></content>
+      <tags>
+        <tag>Q List</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>youtube 推荐频道(Tech)</title>
+    <url>/2019/12/10/youtube-%E6%8E%A8%E8%8D%90%E9%A2%91%E9%81%93-Tech/</url>
+    <content><![CDATA[<ul>
+<li>Valentin Despa postman、 测试</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">频道</th>
+<th style="text-align:left">关键字</th>
+<th style="text-align:left">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Valentin Despa</td>
+<td style="text-align:left">postman,测试</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">Nebulaworks</td>
+<td style="text-align:left">devops,terraform</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">tutoriaLinux</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
 </tr>
 </tbody>
 </table>
@@ -3123,48 +3165,6 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>youtube 推荐频道(Tech)</title>
-    <url>/2019/12/10/youtube-%E6%8E%A8%E8%8D%90%E9%A2%91%E9%81%93-Tech/</url>
-    <content><![CDATA[<ul>
-<li>Valentin Despa postman、 测试</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">频道</th>
-<th style="text-align:left">关键字</th>
-<th style="text-align:left">备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">Valentin Despa</td>
-<td style="text-align:left">postman,测试</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">Nebulaworks</td>
-<td style="text-align:left">devops,terraform</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">tutoriaLinux</td>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-</tr>
-</tbody>
-</table>
-<p><a href="https://www.devops-tech.cn/2019/05/22/Small-Tools-1-youtube-dl/" target="_blank" rel="noopener">如何下载</a>youtube视频、音频</p>
-]]></content>
-      <tags>
-        <tag>Q List</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>入门gpg</title>
     <url>/2020/04/23/%E5%85%A5%E9%97%A8gpg/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>GPG 的全称是 GNU Privacy Guard ，可以看作是一个软件，可以用来进行密钥的管理。其实和我们用的一些图形化的密码管理类似，不过GPG 好像更多是命令行交互的，所以一般人不太习惯。另外，中间包含的概念也较多。</p>
@@ -3179,22 +3179,6 @@ pipeline {
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜ gpg --edit-key 771963601@qq.com</span><br><span class="line">gpg (GnuPG) 2.2.20; Copyright (C) 2020 Free Software Foundation, Inc.</span><br><span class="line">This is free software: you are free to change and redistribute it.</span><br><span class="line">There is NO WARRANTY, to the extent permitted by law.</span><br><span class="line"></span><br><span class="line">Secret key is available.</span><br><span class="line"></span><br><span class="line">sec  rsa2048/00C21CE66A8AE9E0</span><br><span class="line">     created: 2020-04-23  expires: 2022-04-23  usage: SC</span><br><span class="line">     trust: ultimate      validity: ultimate</span><br><span class="line">ssb  rsa2048/9DCC33D2FECB246F</span><br><span class="line">     created: 2020-04-23  expires: never       usage: E</span><br><span class="line">[ultimate] (1). qinrui &lt;771963601@qq.com&gt;</span><br><span class="line"></span><br><span class="line">gpg&gt;</span><br></pre></td></tr></table></figure>
 <p>请注意上面的字符串”sec  rsa2048/xxxxx”，斜杆后面就是”用户ID”的Hash字符串，可以用来替代”用户ID”。</p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>我的租房经历</title>
-    <url>/2020/04/30/%E6%88%91%E7%9A%84%E7%A7%9F%E6%88%BF%E7%BB%8F%E5%8E%86/</url>
-    <content><![CDATA[<div id="hexo-blog-encrypt" data-wpm="用心想想，ta可能用什么密码" data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
-  <div class="hbe-input-container">
-  <input type="password" id="hbePass" placeholder="" />
-    <label for="hbePass">Hey, password is required here.</label>
-    <div class="bottom-line"></div>
-  </div>
-  <script id="hbeData" type="hbeData" data-hmacdigest="9b5e46d19f56be4e6cb5d81147c5965461bfdb441c6b946341e875a5300627b5">4fb1f2c760bda11a923794521e7b287b49c0661e6db6c895d51f3d5e5f2fb196644721d47456352489cfdd78ec142a0cc8ce1c6ccb3c2ff7575c3b30ea94381ac27018e0fbbb7fdc0daf12e5538e49b33d836810499dc55e72a6b23198d9d1c2dd0baa5c10884785a9a840d711d8bfc0ca23cc8e48c63b4519add57c03f823e1e34349f40096a22c968a67ba65ed6c3d4ce2215b835e681a082a0354e82c7779a0cc77c7ef9c0aec0f2cebab1fc8af7249590e6f8627379694bd00539bda2a4b595571af4f91ad78e92cc3c36a92a4bf5163ded5ac1fece16a7c5e25de7e7481fa366023cf61b45be1364d0475f15adac32838c74d37884a0934cc0bdfb0ec32df6d4599acef084ba17385270c4d1196d96440af2a42351cc94babe3ad5822d7dbc5d70b338284810a5ed4b38583b0afcf8e8f1995026d8096e7415ca33f2f6fae4bbba7ae1f814aeb625c155a2ac300af00bf899432bf18aabe39848e79cf327d9448328cebccfe919346f803aad4daf1300528faf0908c18f59afc074760a4f14656e59c14eb8c04a282ad399905c1c2b6dcd815f8a15f0e78708dcd72d06522c033adcc8d51043979cf648a7a829690601add110b0a7833e69aba604998058472425fe9174c4df0e6ec690bbc01a165326eca0c0329d966e2ed913b88f6290c3d8941d12e0ef3cb5db626696970fde7c091b0480b9e85591e3f67769abd2affcd9cc3a0163667e8b7e3a8ebdca74ec7540f6c293daefba6a78fa10e5d59d526513c5f5b08ad8a47ba3072d6713d19139a7e569262626d765549691e344a371659c7ac1c198f4986c56fa33959c307fdf48615540b98606dc5dfbf235c340fd45f1361bb4fc37e58172f2dbc2724dd1630065786821e8321ef5c6668888c9f6b1275c7a48f76b8c0dbad34c3baca8a69ec97238c978fab0e4e89cddb521f30875d658b1dd0b799c361cc947b8b7a890a0f6917114153c655ebfb0e2395c8ada6468cf1da4739a1feca3b51cfaa08921614db0c99b164098fbc2d8d32f092e533cc215836faae384a3ec4f06b186bef9432316e297ad892b2a0e2a6feee389151aab780533210418dcb2d26e0dd72651e15f3d2a7367d544c8608419cad7294f287273fbe7466497c6451cb6d21b08359591f23614ac64313a61ead1999d431dd42b6f5f20531a76f15ca8fd8e19dfe9bc9c10abac05f457aa44f4ba16c7e873600fe009d9870f3ecbf8be5e715125c6ae338aaed6c9b8e257f3e30a8af74c4fcac3e2a4366f681f74256ebc11aa7c6b288023da3dec5addfbc4ae0f3c6500c33f662caa932645b1f6945778b3f4a4edbf51d580b448cbce4c90fc95a80cc3d2d0bca5f03c5e226754aafdf07003dafb765326206e9de6a7e41a60893077182faf65423cfe840d276dbcb7112f3301f6760c812c6de0cec0bd88814acf7fe9120acf1e8a91aa1a7fae3c312a5631c17ae23b1c529cae89bb2f74ee61b136b1791136d209ed98edef7be65aed30ff311fe164df70f7219a53e91429e27060d2a4052beb864d9af407af9250767b8f7af1c7c61bc89d6ac9ae966e3bec324d84dd8b951029276fe69cfa1fb4968303df9fb771f4ecd5654371e11ee7eb3cea89aaff81f1f82b0da742949398ba63d912e08a86e4916fc89d28950de89bad8e71279d1bfaace3010de26acd5fdc79e649faad7dcc34ea250a336f58af4bb908bca4dfa14cf228a3cf8fe33651e71b51c5d57657c880150a416ad1f25cbc1fc898c63954ac58d2699497874321d4d03798751321de20c24503e8e1686a0c6410fd4a0b367e81909681e983ec99333d2b8217f306e7840a0afded8534bd2bba108cdd9af51213d2c357c82e92459ba401a1718d76f725207affc332d83c8bf769234bd350353e827fe510cbd76dc9a837f07d297a6acdb27a3cb4118e62485d78666af2c4b681ea3f96147b8460d1650b7719e73fe09ed5cbe1c0a9177ef0f7ce0a81764bdc0ff9909aa0b8674fc2511b64712e44046e1f0b36d028cdb2125fd0dd8fcaca51c46e662e4ba7e83b82b8949c95d9bf8f05fba68504cb01197610099df908fdc61b89b736c08c099d1cecc252bfb1928571f0b3ee9b2b7915f50032a113f15f305fad37226ad1e8801bf9caa6c506b89e86e8ca843ed77f7cc07c42b8f560e7466d73e15f02733c1225ae836742b15b787b3150ec2ad97f2e79adbddf7d48e47c031f59b06bf8f9643a33e09b2dc505d5ab5742d2e8484022dcffd1b9704b65bac4ba7a06b99bb9f6278e3015bcefa2cf2086bb652c12e70ca05a3c1dad02bac22094ab13a634ec83361f7b42773ae5a312a47f53234df40e3ad406edbf1e740fb7bc3d4e78654c388305c88c09c13a627e6ce15891066069a8d378d5cde528d0bad852e4dc61145566b98f3584cb0771c2b270fc30159704dd29513673ee3699b18feec54a8a8d3085e89f703df18b5a6ee1e84fa44acaececcc506c07f9ae4bf35bf4ae37217caa91f43cc63eddb7581b508b7ea5d7d2f2e7c15fe8887b69598b22ce1f4ed68f079657e26183ba1ef244290bbef73e42f157b87170121f62eef7345ab90565db5fb47114a6a5f245232b9b03fb701a44152e3749f8020be040ecb77cd791161bc869fdf539f3ff57e7f1f6b2c13bbcb77db2037af8d496d713e0a085655e7649ab64e2f1020a7d5d7d4218ce0a4030383a0a47d68d14433bf7081111b569a03b8b188962718e3a878e0e05b74f5c62ee276ad2191c80ecd92ccc96960ace399056d8a2045602e38aa9facf25e71acaca4bc18d1aa154fff04b380c4226a310fc5853a63a3243ee0fbe989f7bdd8fcb68e224df040225fc2a217eaa04f165009fe4c8450117a8fa51f01c1fc0284f51e2d6ebeb1ff7a6306bf0b91efaba3437be00191f6b20b139961fc4c23d69e48c9ce98f6561f2c0ab77668e87eb9b29fbe2d2087241e8ee300823d7b304c5cbe619577de210d34e82d7d45fc4cd9700decec54954e6db5897f04930a072515003c33b0919ce6b8105e4089e2a053c187465d853f2ed282ae2a801c82482eb29d7b5221db8706b97da95ad6cdd5689844b285a78cf6127c145e925085adac6b4cf00ca7a75fdb8911555cc88a2d3007d4c8ca1b06ce3bae88aa5dc47feb33a9d7395b777aa6015d42192d8b3eb3eb115b9a427c5ca0640b629193eddb064a5d5a8ac51abb2d8eed65b16e8c1054653d5d22d374937e93c4f08112159edecbb6ad472d3fc42feef35d2491a8d4a22b0bc29ca4cad42b5c62ae3fd3fdae630aad724aacd7e9cd3f6c143abb5c71e827de71425a31924557b83f2646932181d8caa7455714c26d48e54cf098a4f589925bfd5eb357108b7de2fd7c6a74835631502e2607d0482897fd20b1a9e55d31222b8850e7cab0d69d59dc903ee588795919dbd577e21ec837a6bde3f98010d797643cb2f4db7bc34d0b4d23fe1b6772a381829ab8ce469a78f49247a13eb3c9836611f60a524f176a265607d6dd4ec5d76ddcff1b921eb902a64ff396fd9b57c03c71a8a0814152a850152e0e03a0f2e1e78ae850a951e8a9cc3d3c7b2923805f7c778fd643938a93ac08c86f02f00c12b207663a50ec1783567140697d6c68e8d99105e9e3f6cc9414918b1c070dc804d5629674e141784569bbb3f2f910b31bac2f5ac68d65c391bcbee2299c190bb6dc48210ced18e542ae04856d6819fa5a5e4f4639b0f48f931067812f72382dd85594584f21fd7b9facbc1e95f1585b776a7aaaee858cff1d8f8064ad535d117c02a25a879ba5fedb3ec19cd95718f8d06a49a4ed0e35444e56cadda3ea5cbcfba08baaa3c3c70ea7de193c3aa2deefffa4c8f53b12a0e23703402919a97a125633599e588e9f6a794176f5e0d4ba3fcddeb327dd7cd39f47635b43513b7d35eb86576e2e2639524e37e0b1cd1d52cbd2258a904b51763836f28fef5dc751c9c2243c652c5bf547b874f8c708f429ea07dc894a5e1985c772a94c6b148b5fc8238e7b468db56094c589fcd07f29a338cb29f071fd0fa4cc656c15adfab86cd58ec7307eac5bf2e58ac2401a98605858457e65717c32f9bfe8efa4f189dd6018df5296505ed384a0eb52572526053a5757e170108b4fd05bbcf59a96284769d0659d68cee9181cf08ee217e5ae0b82937821f5698debb83b54ff48b41e310812382a70c0585e9c1bb89bd299ec9b28c4eb01337ed3e5ab5adc1b8f09799d076c702a90ed2ed11ab064eeecfa009b943678c6c4d57c660d808cdde255ddcff9fdc73b2edf10256702faaa0ccb5ef7eba6a789b41c6e9ab23bf4473525889425bb4ec59324c436004ee151f8801c1ce9ff0049b792029467ca6ad261087f20984cb387fa7203710718b7cd56248d15be8bd2f4c0efd9c3f053ac742100a226fbf9432164cc98d58e5e22e2c73b014dc0efe365698e8f16de8b6a6e86224920a404966ab5a40ecae6160da0b7257ec3bfceff06a83268a188a061ce618e96e752623e9333f5f6fd270812ec530722807a7c4ec543bfe5fcbdbd1c0cd2eaaa9c78c5840e9f52048a41d8cf256418ce271d7e99f361112030ca43d6f59a33dd267eeab83053f350b0c1612e2f588500b4db27dd1b3f20a75307e4c9bb823ccb2e4bb56b1089b7354ec4a3f175c41f9574a8baf2a140e3d4b632b14a8d1c3a4eb1915ac6403307d186bac58165684bd408a46269b613bdc8820883d5f2b66004078d53465882d5c5b4f301f669c2c01e0b039532f941e302eecbd37f845b753382aac475b1beafb463a2b8f1bec389da074b5a29d1bfac3fcf32e0aef7e94cd6984ef3eea5424ea4d90c7c763b1084af4413c56f1ababfdeef0867e1397e603c3524ca384df6ea209242439101d470ca305a5e74ea9ae32de276d2c1704c53bd3654719418ae13a228a633d8d70ffa64588243cc9a6369170bcfccea42ec2f2ad8bcb468659931798a65713eb9dc6ab98b37523fb4a38d5ced4b87c5149a8c2950ab455465594b8357fc3e3413</script>
-</div>
-<script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
-      <tags>
-        <tag>Q List</tag>
-      </tags>
   </entry>
   <entry>
     <title>安迪-比尔定律(Andy and Bill’s Law)</title>
@@ -3236,6 +3220,22 @@ pipeline {
       </categories>
       <tags>
         <tag>浪潮之巅</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>我的租房经历</title>
+    <url>/2020/04/30/%E6%88%91%E7%9A%84%E7%A7%9F%E6%88%BF%E7%BB%8F%E5%8E%86/</url>
+    <content><![CDATA[<div id="hexo-blog-encrypt" data-wpm="用心想想，ta可能用什么密码" data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <div class="hbe-input-container">
+  <input type="password" id="hbePass" placeholder="" />
+    <label for="hbePass">Hey, password is required here.</label>
+    <div class="bottom-line"></div>
+  </div>
+  <script id="hbeData" type="hbeData" data-hmacdigest="9b5e46d19f56be4e6cb5d81147c5965461bfdb441c6b946341e875a5300627b5">4fb1f2c760bda11a923794521e7b287b49c0661e6db6c895d51f3d5e5f2fb196644721d47456352489cfdd78ec142a0cc8ce1c6ccb3c2ff7575c3b30ea94381ac27018e0fbbb7fdc0daf12e5538e49b33d836810499dc55e72a6b23198d9d1c2dd0baa5c10884785a9a840d711d8bfc0ca23cc8e48c63b4519add57c03f823e1e34349f40096a22c968a67ba65ed6c3d4ce2215b835e681a082a0354e82c7779a0cc77c7ef9c0aec0f2cebab1fc8af7249590e6f8627379694bd00539bda2a4b595571af4f91ad78e92cc3c36a92a4bf5163ded5ac1fece16a7c5e25de7e7481fa366023cf61b45be1364d0475f15adac32838c74d37884a0934cc0bdfb0ec32df6d4599acef084ba17385270c4d1196d96440af2a42351cc94babe3ad5822d7dbc5d70b338284810a5ed4b38583b0afcf8e8f1995026d8096e7415ca33f2f6fae4bbba7ae1f814aeb625c155a2ac300af00bf899432bf18aabe39848e79cf327d9448328cebccfe919346f803aad4daf1300528faf0908c18f59afc074760a4f14656e59c14eb8c04a282ad399905c1c2b6dcd815f8a15f0e78708dcd72d06522c033adcc8d51043979cf648a7a829690601add110b0a7833e69aba604998058472425fe9174c4df0e6ec690bbc01a165326eca0c0329d966e2ed913b88f6290c3d8941d12e0ef3cb5db626696970fde7c091b0480b9e85591e3f67769abd2affcd9cc3a0163667e8b7e3a8ebdca74ec7540f6c293daefba6a78fa10e5d59d526513c5f5b08ad8a47ba3072d6713d19139a7e569262626d765549691e344a371659c7ac1c198f4986c56fa33959c307fdf48615540b98606dc5dfbf235c340fd45f1361bb4fc37e58172f2dbc2724dd1630065786821e8321ef5c6668888c9f6b1275c7a48f76b8c0dbad34c3baca8a69ec97238c978fab0e4e89cddb521f30875d658b1dd0b799c361cc947b8b7a890a0f6917114153c655ebfb0e2395c8ada6468cf1da4739a1feca3b51cfaa08921614db0c99b164098fbc2d8d32f092e533cc215836faae384a3ec4f06b186bef9432316e297ad892b2a0e2a6feee389151aab780533210418dcb2d26e0dd72651e15f3d2a7367d544c8608419cad7294f287273fbe7466497c6451cb6d21b08359591f23614ac64313a61ead1999d431dd42b6f5f20531a76f15ca8fd8e19dfe9bc9c10abac05f457aa44f4ba16c7e873600fe009d9870f3ecbf8be5e715125c6ae338aaed6c9b8e257f3e30a8af74c4fcac3e2a4366f681f74256ebc11aa7c6b288023da3dec5addfbc4ae0f3c6500c33f662caa932645b1f6945778b3f4a4edbf51d580b448cbce4c90fc95a80cc3d2d0bca5f03c5e226754aafdf07003dafb765326206e9de6a7e41a60893077182faf65423cfe840d276dbcb7112f3301f6760c812c6de0cec0bd88814acf7fe9120acf1e8a91aa1a7fae3c312a5631c17ae23b1c529cae89bb2f74ee61b136b1791136d209ed98edef7be65aed30ff311fe164df70f7219a53e91429e27060d2a4052beb864d9af407af9250767b8f7af1c7c61bc89d6ac9ae966e3bec324d84dd8b951029276fe69cfa1fb4968303df9fb771f4ecd5654371e11ee7eb3cea89aaff81f1f82b0da742949398ba63d912e08a86e4916fc89d28950de89bad8e71279d1bfaace3010de26acd5fdc79e649faad7dcc34ea250a336f58af4bb908bca4dfa14cf228a3cf8fe33651e71b51c5d57657c880150a416ad1f25cbc1fc898c63954ac58d2699497874321d4d03798751321de20c24503e8e1686a0c6410fd4a0b367e81909681e983ec99333d2b8217f306e7840a0afded8534bd2bba108cdd9af51213d2c357c82e92459ba401a1718d76f725207affc332d83c8bf769234bd350353e827fe510cbd76dc9a837f07d297a6acdb27a3cb4118e62485d78666af2c4b681ea3f96147b8460d1650b7719e73fe09ed5cbe1c0a9177ef0f7ce0a81764bdc0ff9909aa0b8674fc2511b64712e44046e1f0b36d028cdb2125fd0dd8fcaca51c46e662e4ba7e83b82b8949c95d9bf8f05fba68504cb01197610099df908fdc61b89b736c08c099d1cecc252bfb1928571f0b3ee9b2b7915f50032a113f15f305fad37226ad1e8801bf9caa6c506b89e86e8ca843ed77f7cc07c42b8f560e7466d73e15f02733c1225ae836742b15b787b3150ec2ad97f2e79adbddf7d48e47c031f59b06bf8f9643a33e09b2dc505d5ab5742d2e8484022dcffd1b9704b65bac4ba7a06b99bb9f6278e3015bcefa2cf2086bb652c12e70ca05a3c1dad02bac22094ab13a634ec83361f7b42773ae5a312a47f53234df40e3ad406edbf1e740fb7bc3d4e78654c388305c88c09c13a627e6ce15891066069a8d378d5cde528d0bad852e4dc61145566b98f3584cb0771c2b270fc30159704dd29513673ee3699b18feec54a8a8d3085e89f703df18b5a6ee1e84fa44acaececcc506c07f9ae4bf35bf4ae37217caa91f43cc63eddb7581b508b7ea5d7d2f2e7c15fe8887b69598b22ce1f4ed68f079657e26183ba1ef244290bbef73e42f157b87170121f62eef7345ab90565db5fb47114a6a5f245232b9b03fb701a44152e3749f8020be040ecb77cd791161bc869fdf539f3ff57e7f1f6b2c13bbcb77db2037af8d496d713e0a085655e7649ab64e2f1020a7d5d7d4218ce0a4030383a0a47d68d14433bf7081111b569a03b8b188962718e3a878e0e05b74f5c62ee276ad2191c80ecd92ccc96960ace399056d8a2045602e38aa9facf25e71acaca4bc18d1aa154fff04b380c4226a310fc5853a63a3243ee0fbe989f7bdd8fcb68e224df040225fc2a217eaa04f165009fe4c8450117a8fa51f01c1fc0284f51e2d6ebeb1ff7a6306bf0b91efaba3437be00191f6b20b139961fc4c23d69e48c9ce98f6561f2c0ab77668e87eb9b29fbe2d2087241e8ee300823d7b304c5cbe619577de210d34e82d7d45fc4cd9700decec54954e6db5897f04930a072515003c33b0919ce6b8105e4089e2a053c187465d853f2ed282ae2a801c82482eb29d7b5221db8706b97da95ad6cdd5689844b285a78cf6127c145e925085adac6b4cf00ca7a75fdb8911555cc88a2d3007d4c8ca1b06ce3bae88aa5dc47feb33a9d7395b777aa6015d42192d8b3eb3eb115b9a427c5ca0640b629193eddb064a5d5a8ac51abb2d8eed65b16e8c1054653d5d22d374937e93c4f08112159edecbb6ad472d3fc42feef35d2491a8d4a22b0bc29ca4cad42b5c62ae3fd3fdae630aad724aacd7e9cd3f6c143abb5c71e827de71425a31924557b83f2646932181d8caa7455714c26d48e54cf098a4f589925bfd5eb357108b7de2fd7c6a74835631502e2607d0482897fd20b1a9e55d31222b8850e7cab0d69d59dc903ee588795919dbd577e21ec837a6bde3f98010d797643cb2f4db7bc34d0b4d23fe1b6772a381829ab8ce469a78f49247a13eb3c9836611f60a524f176a265607d6dd4ec5d76ddcff1b921eb902a64ff396fd9b57c03c71a8a0814152a850152e0e03a0f2e1e78ae850a951e8a9cc3d3c7b2923805f7c778fd643938a93ac08c86f02f00c12b207663a50ec1783567140697d6c68e8d99105e9e3f6cc9414918b1c070dc804d5629674e141784569bbb3f2f910b31bac2f5ac68d65c391bcbee2299c190bb6dc48210ced18e542ae04856d6819fa5a5e4f4639b0f48f931067812f72382dd85594584f21fd7b9facbc1e95f1585b776a7aaaee858cff1d8f8064ad535d117c02a25a879ba5fedb3ec19cd95718f8d06a49a4ed0e35444e56cadda3ea5cbcfba08baaa3c3c70ea7de193c3aa2deefffa4c8f53b12a0e23703402919a97a125633599e588e9f6a794176f5e0d4ba3fcddeb327dd7cd39f47635b43513b7d35eb86576e2e2639524e37e0b1cd1d52cbd2258a904b51763836f28fef5dc751c9c2243c652c5bf547b874f8c708f429ea07dc894a5e1985c772a94c6b148b5fc8238e7b468db56094c589fcd07f29a338cb29f071fd0fa4cc656c15adfab86cd58ec7307eac5bf2e58ac2401a98605858457e65717c32f9bfe8efa4f189dd6018df5296505ed384a0eb52572526053a5757e170108b4fd05bbcf59a96284769d0659d68cee9181cf08ee217e5ae0b82937821f5698debb83b54ff48b41e310812382a70c0585e9c1bb89bd299ec9b28c4eb01337ed3e5ab5adc1b8f09799d076c702a90ed2ed11ab064eeecfa009b943678c6c4d57c660d808cdde255ddcff9fdc73b2edf10256702faaa0ccb5ef7eba6a789b41c6e9ab23bf4473525889425bb4ec59324c436004ee151f8801c1ce9ff0049b792029467ca6ad261087f20984cb387fa7203710718b7cd56248d15be8bd2f4c0efd9c3f053ac742100a226fbf9432164cc98d58e5e22e2c73b014dc0efe365698e8f16de8b6a6e86224920a404966ab5a40ecae6160da0b7257ec3bfceff06a83268a188a061ce618e96e752623e9333f5f6fd270812ec530722807a7c4ec543bfe5fcbdbd1c0cd2eaaa9c78c5840e9f52048a41d8cf256418ce271d7e99f361112030ca43d6f59a33dd267eeab83053f350b0c1612e2f588500b4db27dd1b3f20a75307e4c9bb823ccb2e4bb56b1089b7354ec4a3f175c41f9574a8baf2a140e3d4b632b14a8d1c3a4eb1915ac6403307d186bac58165684bd408a46269b613bdc8820883d5f2b66004078d53465882d5c5b4f301f669c2c01e0b039532f941e302eecbd37f845b753382aac475b1beafb463a2b8f1bec389da074b5a29d1bfac3fcf32e0aef7e94cd6984ef3eea5424ea4d90c7c763b1084af4413c56f1ababfdeef0867e1397e603c3524ca384df6ea209242439101d470ca305a5e74ea9ae32de276d2c1704c53bd3654719418ae13a228a633d8d70ffa64588243cc9a6369170bcfccea42ec2f2ad8bcb468659931798a65713eb9dc6ab98b37523fb4a38d5ced4b87c5149a8c2950ab455465594b8357fc3e3413</script>
+</div>
+<script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
+      <tags>
+        <tag>Q List</tag>
       </tags>
   </entry>
   <entry>
@@ -3317,6 +3317,28 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>疫情的启示[伪上帝之眼]</title>
+    <url>/2020/05/23/%E7%96%AB%E6%83%85%E7%9A%84%E5%90%AF%E7%A4%BA-%E4%BC%AA%E4%B8%8A%E5%B8%9D%E4%B9%8B%E7%9C%BC/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
+<p>从武汉封城（2020.01.23）到今天（2020.05.23）,正好4个月时间。一年过去了1/3，度过去了2个季节，很多节日（春节、元宵、38、清明、劳动节、青年节…）还有很多我们自己创造出来的节日。但在武汉的氛围里，少些悲伤就是幸运的，节日的快乐变小了很多，心中的畏惧变大了很多。时至今日，出门买菜、坐车也还能看到一些人手上带的一次性手套，还有面罩，至于口罩，是这里的每个人出门的必需品。5月，去过安徽，回过老家，一切大体如初了，武汉成了最不一样的地方，甚至在5月中旬回老家，有的人畏惧我这个从武汉回去的人。在懂事的年纪经历这样一场大事件，而且身处正中心，有些想法还是值得记录，不然哪天忘记了。</p>
+</blockquote>
+<p>以下一部分内容是早在3月份，疫情形势依旧严峻时的所想：</p>
+<h3 id="1-保持信息敏感"><a href="#1-保持信息敏感" class="headerlink" title="1.保持信息敏感"></a>1.保持信息敏感</h3><p>&ensp;&ensp;&ensp;&ensp;社会中大事件的发生，前夕必定有风声，有的人捕捉到了且重视，有的人置若罔闻。而来自专业领域的事情，非专业人士无从判断，但应该学习着去判断去思想前因后果，毕竟就像这次会生死攸关。对于信息来源，那一道看不见的墙在哪里，但也是不同看法的来源地，多听听未必是件坏事情，决定是在自己身心中的不是吗。需要多渠道的去获取关键信息，也需要辨别真伪，专业网站、官方网站的信息不可忽视，有些小道消息也很重要，而且中英文的都需要阅读。如果英文不好，尚可用一些翻译工具。</p>
+<h3 id="2-超预期的准备"><a href="#2-超预期的准备" class="headerlink" title="2.超预期的准备"></a>2.超预期的准备</h3><p>&ensp;&ensp;&ensp;&ensp;疫情期间，我们很多人做的一件事情就是屯东西，因为商店关门了，各种社会交易停止了，包括耐以生存的食物交易也受到了管控。口罩难求，要屯一点；大米不够，要屯一点；卫生纸不足，要吞一点….还有很多很多东西，零食？汽油？酒精？消毒剂？猪肉？ 而另一件凑巧的事情就是，春节前期武汉有准备腊肉腊鱼的习惯，这个时候这些荤菜派上了用场，古老的食物做法让我们在特殊的时间里还能享受到肉的味道。但是屯多久的东西了，每个人对持续的时间都有自己的看法，但都是来自自信的第六感。最好还是寻求专业的建议，比如疫情期间的流行病“老师傅”，比如那些有野外生存能力的人。最好，<strong>给那第六感的结果来个加倍，或者三倍吧</strong>，比如很多人预期1-2个月疫情就会过去，那你就按照3-4个月去储备物品，当然这没什么根据，但有总比没有好，这里的多也比少好。很多我们不了解的事情上，也都这么准备吧。比如外出带几天的干粮，第六感的双倍吧。</p>
+<h3 id="3-公共卫生"><a href="#3-公共卫生" class="headerlink" title="3.公共卫生"></a>3.公共卫生</h3><p>&ensp;&ensp;&ensp;&ensp;口罩、公筷、勤洗手、消毒用品…这些在我们平日里不太注重的东西，一些就在这样的时候成了我们保护自身的唯一方法。口罩，我以为是属于明星的必需品，或是用来冬天御寒的，更别提医用口罩，每家每户都缺少。今后每年的流感季节，我们也应该多嘱咐我们自己和家人朋友，多注意在人多的地方戴口罩，勤洗手，家庭消毒等等。如果，是做餐饮的，最好常带口罩，至少飞沫传播会被大大的减少。也不要随意用手揉眼睛，可能会让手上的细菌病毒等从眼睛粘膜处进入体内。题外话：口罩也是有好处的，别人看不见你的生气或是喜悦，也看不见你的全部五官，神秘感倍增，勇气有时候也倍增。</p>
+<blockquote>
+<p>对了，口罩遮面，眼睛就成了“窗口”，原来每个人的“窗口”还挺好看，也留下了想象的空间。</p>
+</blockquote>
+<h3 id="4-心态心理"><a href="#4-心态心理" class="headerlink" title="4.心态心理"></a>4.心态心理</h3><p>&ensp;&ensp;&ensp;&ensp;在强大的病毒氛围下，每个人如兵临城下一般，害怕肉眼看不见的东西闯入自己体内。有人上门量体温时，觉得自己有点热，心想是不是发烧了，可能又有点儿胸闷，是不是呼吸有点问题。心理的压力大小直接影响免疫力的强弱，但这种模糊的关系也是看不见摸不着的。心理受到影响，做事情的态度也自然会被影响到。比如我就无心专心的完成一些事情，心中杂念挥之不去。最好的方法，还没每天给自己设定几个任务，完成了就打个勾，不让自己漫无目的在电脑前，或者门前。</p>
+<h3 id="5-随身携带随时准备着"><a href="#5-随身携带随时准备着" class="headerlink" title="5.随身携带随时准备着"></a>5.随身携带随时准备着</h3><p>&ensp;&ensp;&ensp;&ensp;听闻因为春节回家的缘故，很多人没有选择带电脑回家，可谁知这个春节有点儿太长了，于是无法在家办公。与电脑类似的东西，还有比如剃须刀，充电器，耳机，相机，每个人的职业不一样，总有些工具需要常用到，有条件的最好还是常带在身边，不然意外的就是很意外的。另一个方面讲，出差的我不喜欢携带太多东西，有些可有可无的不带，轻松上阵，上下车的步伐都轻盈一些。如何取舍，视情况而定了。</p>
+<h3 id="6-富贵险中求"><a href="#6-富贵险中求" class="headerlink" title="6.富贵险中求"></a>6.富贵险中求</h3><p>&#160;&#160;无，留点遐想的空间。</p>
+<p><hr><br><strong>后记:</strong> 2020.05.20在小区楼下做的核酸检测，今天终于可以查到结果了，正常。</p>
+]]></content>
+      <tags>
+        <tag>Q List</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>画UML</title>
     <url>/2020/02/25/%E7%94%BBUML/</url>
     <content><![CDATA[<p>TL;DR<br>用 <strong>文字</strong> + <strong>工具</strong> ，画个好图</p>
@@ -3352,28 +3374,6 @@ pipeline {
       </categories>
       <tags>
         <tag>Tools</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>疫情的启示[伪上帝之眼]</title>
-    <url>/2020/05/23/%E7%96%AB%E6%83%85%E7%9A%84%E5%90%AF%E7%A4%BA-%E4%BC%AA%E4%B8%8A%E5%B8%9D%E4%B9%8B%E7%9C%BC/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
-<p>从武汉封城（2020.01.23）到今天（2020.05.23）,正好4个月时间。一年过去了1/3，度过去了2个季节，很多节日（春节、元宵、38、清明、劳动节、青年节…）还有很多我们自己创造出来的节日。但在武汉的氛围里，少些悲伤就是幸运的，节日的快乐变小了很多，心中的畏惧变大了很多。时至今日，出门买菜、坐车也还能看到一些人手上带的一次性手套，还有面罩，至于口罩，是这里的每个人出门的必需品。5月，去过安徽，回过老家，一切大体如初了，武汉成了最不一样的地方，甚至在5月中旬回老家，有的人畏惧我这个从武汉回去的人。在懂事的年纪经历这样一场大事件，而且身处正中心，有些想法还是值得记录，不然哪天忘记了。</p>
-</blockquote>
-<p>以下一部分内容是早在3月份，疫情形势依旧严峻时的所想：</p>
-<h3 id="1-保持信息敏感"><a href="#1-保持信息敏感" class="headerlink" title="1.保持信息敏感"></a>1.保持信息敏感</h3><p>&ensp;&ensp;&ensp;&ensp;社会中大事件的发生，前夕必定有风声，有的人捕捉到了且重视，有的人置若罔闻。而来自专业领域的事情，非专业人士无从判断，但应该学习着去判断去思想前因后果，毕竟就像这次会生死攸关。对于信息来源，那一道看不见的墙在哪里，但也是不同看法的来源地，多听听未必是件坏事情，决定是在自己身心中的不是吗。需要多渠道的去获取关键信息，也需要辨别真伪，专业网站、官方网站的信息不可忽视，有些小道消息也很重要，而且中英文的都需要阅读。如果英文不好，尚可用一些翻译工具。</p>
-<h3 id="2-超预期的准备"><a href="#2-超预期的准备" class="headerlink" title="2.超预期的准备"></a>2.超预期的准备</h3><p>&ensp;&ensp;&ensp;&ensp;疫情期间，我们很多人做的一件事情就是屯东西，因为商店关门了，各种社会交易停止了，包括耐以生存的食物交易也受到了管控。口罩难求，要屯一点；大米不够，要屯一点；卫生纸不足，要吞一点….还有很多很多东西，零食？汽油？酒精？消毒剂？猪肉？ 而另一件凑巧的事情就是，春节前期武汉有准备腊肉腊鱼的习惯，这个时候这些荤菜派上了用场，古老的食物做法让我们在特殊的时间里还能享受到肉的味道。但是屯多久的东西了，每个人对持续的时间都有自己的看法，但都是来自自信的第六感。最好还是寻求专业的建议，比如疫情期间的流行病“老师傅”，比如那些有野外生存能力的人。最好，<strong>给那第六感的结果来个加倍，或者三倍吧</strong>，比如很多人预期1-2个月疫情就会过去，那你就按照3-4个月去储备物品，当然这没什么根据，但有总比没有好，这里的多也比少好。很多我们不了解的事情上，也都这么准备吧。比如外出带几天的干粮，第六感的双倍吧。</p>
-<h3 id="3-公共卫生"><a href="#3-公共卫生" class="headerlink" title="3.公共卫生"></a>3.公共卫生</h3><p>&ensp;&ensp;&ensp;&ensp;口罩、公筷、勤洗手、消毒用品…这些在我们平日里不太注重的东西，一些就在这样的时候成了我们保护自身的唯一方法。口罩，我以为是属于明星的必需品，或是用来冬天御寒的，更别提医用口罩，每家每户都缺少。今后每年的流感季节，我们也应该多嘱咐我们自己和家人朋友，多注意在人多的地方戴口罩，勤洗手，家庭消毒等等。如果，是做餐饮的，最好常带口罩，至少飞沫传播会被大大的减少。也不要随意用手揉眼睛，可能会让手上的细菌病毒等从眼睛粘膜处进入体内。题外话：口罩也是有好处的，别人看不见你的生气或是喜悦，也看不见你的全部五官，神秘感倍增，勇气有时候也倍增。</p>
-<blockquote>
-<p>对了，口罩遮面，眼睛就成了“窗口”，原来每个人的“窗口”还挺好看，也留下了想象的空间。</p>
-</blockquote>
-<h3 id="4-心态心理"><a href="#4-心态心理" class="headerlink" title="4.心态心理"></a>4.心态心理</h3><p>&ensp;&ensp;&ensp;&ensp;在强大的病毒氛围下，每个人如兵临城下一般，害怕肉眼看不见的东西闯入自己体内。有人上门量体温时，觉得自己有点热，心想是不是发烧了，可能又有点儿胸闷，是不是呼吸有点问题。心理的压力大小直接影响免疫力的强弱，但这种模糊的关系也是看不见摸不着的。心理受到影响，做事情的态度也自然会被影响到。比如我就无心专心的完成一些事情，心中杂念挥之不去。最好的方法，还没每天给自己设定几个任务，完成了就打个勾，不让自己漫无目的在电脑前，或者门前。</p>
-<h3 id="5-随身携带随时准备着"><a href="#5-随身携带随时准备着" class="headerlink" title="5.随身携带随时准备着"></a>5.随身携带随时准备着</h3><p>&ensp;&ensp;&ensp;&ensp;听闻因为春节回家的缘故，很多人没有选择带电脑回家，可谁知这个春节有点儿太长了，于是无法在家办公。与电脑类似的东西，还有比如剃须刀，充电器，耳机，相机，每个人的职业不一样，总有些工具需要常用到，有条件的最好还是常带在身边，不然意外的就是很意外的。另一个方面讲，出差的我不喜欢携带太多东西，有些可有可无的不带，轻松上阵，上下车的步伐都轻盈一些。如何取舍，视情况而定了。</p>
-<h3 id="6-富贵险中求"><a href="#6-富贵险中求" class="headerlink" title="6.富贵险中求"></a>6.富贵险中求</h3><p>&#160;&#160;无，留点遐想的空间。</p>
-<p><hr><br><strong>后记:</strong> 2020.05.20在小区楼下做的核酸检测，今天终于可以查到结果了，正常。</p>
-]]></content>
-      <tags>
-        <tag>Q List</tag>
       </tags>
   </entry>
   <entry>

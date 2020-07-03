@@ -62,7 +62,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">540字</span>
+            <span class="post-count">543字</span>
         </span>
     </span>
 
@@ -126,7 +126,7 @@
 <p>实际使用的是 <strong>xargs 实现参数传递</strong> 这一方法：<br><code>ls *.log | xargs -I {} mv {} log_backup_dir/</code><br>这里的 <code>{}</code> 也可以用 <code>%</code> 代替，毕竟可以少敲一下键盘。另外可以看看 <em>xargs与管道的区别</em></p>
 <p>更多实际用法可以参考： <a href="https://blog.csdn.net/zhangmingxingwei/article/details/8996627" target="_blank" rel="noopener">https://blog.csdn.net/zhangmingxingwei/article/details/8996627</a> , 其中的<code>git log --format=&quot;%H %P&quot; | xargs -L 1 git diff</code> 用法也很不错。 另外，有一个原理篇也建议看看，<a href="https://www.cnblogs.com/f-ck-need-u/p/5925923.html" target="_blank" rel="noopener">戳这儿</a></p>
 <h3 id="5-pssh-pscp"><a href="#5-pssh-pscp" class="headerlink" title="5. pssh pscp"></a>5. pssh pscp</h3><p>pssh: Execute Commands on Multiple Remote Linux Servers Using Single Terminal</p>
-<p>使用 <a href="https://www.tecmint.com/execute-commands-on-multiple-linux-servers-using-pssh/], [链接2](https://www.golinuxcloud.com/pssh-commands-parallel-ssh-linux-examples/" target="_blank" rel="noopener">链接1</a></p>
+<p>使用 <a href="https://www.tecmint.com/execute-commands-on-multiple-linux-servers-using-pssh/" target="_blank" rel="noopener">链接1</a>, <a href="https://www.golinuxcloud.com/pssh-commands-parallel-ssh-linux-examples/" target="_blank" rel="noopener">链接2</a></p>
 <p>pscp 类似pssh，可以帮助你从一台主机上将文件发送到多台主机</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">                            +--------------+</span><br><span class="line">                  +--------&gt;|  server 1    |</span><br><span class="line">                  |         +--------------+</span><br><span class="line">                  |</span><br><span class="line">                  |</span><br><span class="line">                  |         </span><br><span class="line">+-------------|---          +--------------+</span><br><span class="line">| pssh /pscp  |------------&gt;|  server 2    | </span><br><span class="line">+-------------+---          +--------------+</span><br><span class="line">                  |</span><br><span class="line">                  |</span><br><span class="line">                  |         +--------------+</span><br><span class="line">                  +--------&gt;|  server 3    |</span><br><span class="line">                            +--------------+</span><br></pre></td></tr></table></figure>
 <hr>
