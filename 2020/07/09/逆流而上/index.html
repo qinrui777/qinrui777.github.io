@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    一份几年前的linux命令小手册 |  一笑皆春
+    逆流而上 |  一笑皆春
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -30,7 +30,7 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="post-一份几年前的linux命令小手册" class="article article-type-post" itemscope
+  <article id="post-逆流而上" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -38,7 +38,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  一份几年前的linux命令小手册
+  逆流而上
 </h1>
   
 
@@ -47,12 +47,12 @@
 
     
     <div class="article-meta">
-      <a href="/2020/06/10/一份几年前的linux命令小手册/" class="article-date">
-  <time datetime="2020-06-10T06:03:07.000Z" itemprop="datePublished">2020-06-10</time>
+      <a href="/2020/07/09/逆流而上/" class="article-date">
+  <time datetime="2020-07-09T01:36:38.000Z" itemprop="datePublished">2020-07-09</time>
 </a>
       
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+    <a class="article-category-link" href="/categories/读书笔记/">读书笔记</a>
   </div>
 
       
@@ -62,7 +62,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">405字</span>
+            <span class="post-count">538字</span>
         </span>
     </span>
 
@@ -96,106 +96,15 @@
       
 
       
-      <h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p>大学里可没有运维这门专业，但一部分人阴差阳错的走上了这条道路。如期初的我，像无头苍蝇一般。没有人指点迷津，对职场也懵懵懂懂的。这几天在简单收拾时，找到了一份几年前打印的10多页纸，记录了一些命令。然后这些命令中的一部分我现在也不知道用法，可能是用的太少，但以前那会儿它也是一份传递，带我领略神奇的命令。仅此记录一下，然后丢弃这几页纸张，化为乌有，轻便前行。</p>
-<p><strong>再简单的命令，也可能有我们不知道的用法，因为没有细心研究、探索、追问。再说，温故而知新。</strong></p>
-<h3 id="1-系统信息检查"><a href="#1-系统信息检查" class="headerlink" title="1.系统信息检查"></a>1.系统信息检查</h3><p>几板斧： <code>uname -a</code>,<code>hostname</code>, <code>ifconfig -a</code> ,<code>date</code>, <code>pwd</code> ,<code>whoami</code></p>
-<h3 id="2-性能检查"><a href="#2-性能检查" class="headerlink" title="2.性能检查"></a>2.性能检查</h3><table>
-<thead>
-<tr>
-<th style="text-align:left">检查项</th>
-<th>命令</th>
-<th style="text-align:center">备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">CPU占用率 <br> 内存使用率 <br>内存交换区使用率</td>
-<td><code>top</code></td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:left">文件系统占用率</td>
-<td><code>df -h</code></td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:left">CPU负载</td>
-<td><code>uptime</code></td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:left">系统i/o</td>
-<td><code>iostat 1 3</code></td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:left">系统资源使用情况</td>
-<td><code>vmstat 1 10</code></td>
-<td style="text-align:center">每隔一秒刷新一次，刷新10次</td>
-</tr>
-</tbody>
-</table>
-<h3 id="3-安全检查"><a href="#3-安全检查" class="headerlink" title="3.安全检查"></a>3.安全检查</h3><table>
-<thead>
-<tr>
-<th style="text-align:left">检查项</th>
-<th>命令</th>
-<th style="text-align:center">备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">当前登录用户</td>
-<td><code>who</code></td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:left">系统重启情况</td>
-<td><code>less /var/log/boot.log</code></td>
-<td style="text-align:center">部分linux发行版不适用</td>
-</tr>
-<tr>
-<td style="text-align:left">系统日志</td>
-<td><code>less /var/log/messages</code></td>
-<td style="text-align:center">部分linux发行版不适用</td>
-</tr>
-<tr>
-<td style="text-align:left">系统账户检查</td>
-<td><code>more /etc/password</code> <br> <code>more /etc/password</code></td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:left">系统登录情况检查</td>
-<td><code>less /var/log/lastlog</code> 或 <code>lastlog</code></td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:left">系统运行时间</td>
-<td><code>uptime</code></td>
-</tr>
-</tbody>
-</table>
-<h3 id="4-硬件信息"><a href="#4-硬件信息" class="headerlink" title="4.硬件信息"></a>4.硬件信息</h3><table>
-<thead>
-<tr>
-<th style="text-align:left">检查项</th>
-<th>命令</th>
-<th style="text-align:center">备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">查看硬件信息</td>
-<td><code>dmidecode</code></td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:left">硬件启动信息</td>
-<td><code>dmesg</code></td>
-<td style="text-align:center"></td>
-</tr>
-</tbody>
-</table>
+      <p>2020.7.9 又一年的高考结束了，往年都是在6月。青春，逆流而上，听起来都是这么的文艺。而这里讲到的这本书全名是《逆流而上 阿里巴巴技术成长之路》，哈哈 o(╯□╰)o。估计我是被这文艺的书名给吸引过去的。</p>
+<p>虽然没有细读，但也看到一些很好的总结，于是想记录一下。</p>
+<h3 id="关于书的信息"><a href="#关于书的信息" class="headerlink" title="关于书的信息"></a>关于书的信息</h3><p>时间： 2018年1月第一版</p>
+<p>一句话概括： “本书是阿里巴巴集团荣耀背后的技术血泪史。”</p>
+<p>适合谁看： “本书主要面向互联网技术从业人员和在校师生，使读者能够通过此书基本了解阿里在各技术领域的能力，学习在如此规模下可能出现的问题以及解决方案的探讨和沉淀分享。”</p>
+<h3 id="摘抄"><a href="#摘抄" class="headerlink" title="摘抄"></a>摘抄</h3><p>下面的图给了我们定位问题的一些思路，遇到棘手的问题时，要全面考量，逐一排查。不能想当然的去认为“服务器怎么会有问题”，”硬盘不可能会坏“，“网络应该不会有问题吧”</p>
+<p><img src="https://s1.ax1x.com/2020/07/09/UeDKSK.png" alt="UeDKSK.png"></p>
+<p>为了找出CPU飚高的原因，开发在重启过程中通过执行一下命令找出CPU利用率比较高的线程。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -eL -o pid,%cpu,lwp | grep -i pid | sort -nr k2 | awk <span class="string">'&#123;print("%s %s %x\n",1,1,2,$3)&#125;'</span> | head</span><br></pre></td></tr></table></figure></p>
+<h3 id="读后"><a href="#读后" class="headerlink" title="读后"></a>读后</h3><p>没有细读的原因，应该是鄙人才疏学浅，孤陋寡闻，很多书中的事情我也没遇上过。如果是当事人，读起来应该有一种破解一桩悬案的快感。但处理问题的思路，以及开发人员、运维人员之间的配合经验十分重要，还有复盘（类比于SRE中的验尸报告）等等都是很棒的，书中对于技术细节也有很深的研究，毕竟是要解决一些棘手的问题，代码片段、逻辑图、架构图丰富，涉及基础设施架构、mysql、中间件服务、负载均衡等等很常见的技术，确实不常见的业务量。</p>
 
       
       <!-- reward -->
@@ -265,15 +174,13 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/06/10/一份几年前的linux命令小手册/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/07/09/逆流而上/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shell/">Shell</a></li></ul>
-
 
     </footer>
 
@@ -283,19 +190,10 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/07/09/逆流而上/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            逆流而上
-          
-        </div>
-      </a>
     
-    
-      <a href="/2020/05/25/Server-我是谁-我在哪里/" class="article-nav-link">
+      <a href="/2020/06/10/一份几年前的linux命令小手册/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">Server:我是谁,我在哪里...</div>
+        <div class="article-nav-title">一份几年前的linux命令小手册</div>
       </a>
     
   </nav>

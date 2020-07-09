@@ -64,6 +64,98 @@
     
     
     
+    <article id="post-Jenkins-add-timestamps" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/07/04/Jenkins-add-timestamps/"
+    >Jenkins  add timestamps</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/07/04/Jenkins-add-timestamps/" class="article-date">
+  <time datetime="2019-07-04T07:44:16.000Z" itemprop="datePublished">2019-07-04</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p><strong>Timestamper plugin</strong>: Adds timestamps to the Console Output</p>
+<h4 id="Method-One-use-options"><a href="#Method-One-use-options" class="headerlink" title="Method One: use options"></a>Method One: use options</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//declarative pipeline</span><br><span class="line">pipeline &#123;</span><br><span class="line">    agent any     </span><br><span class="line">    options &#123; </span><br><span class="line">        timestamps () </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Example output:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">16:21:40 + <span class="built_in">echo</span> 23</span><br><span class="line">16:21:40 23</span><br><span class="line">[Pipeline] sh</span><br><span class="line">16:21:41 + <span class="built_in">echo</span> master , test.BuiltInFunction/Devops_Tools/demo-from-git</span><br><span class="line">16:21:41 master , test.BuiltInFunction/Devops_Tools/demo-from-git</span><br><span class="line">[Pipeline] <span class="built_in">echo</span></span><br><span class="line">16:21:41 haha</span><br></pre></td></tr></table></figure>
+<h4 id="Method-Two-use-wrap"><a href="#Method-Two-use-wrap" class="headerlink" title="Method Two: use wrap"></a>Method Two: use wrap</h4><pre><code class="bash">//declarative pipeline
+pipeline {
+    agent any   
+    stages {
+        stage(<span class="string">'Stage with timestamp'</span>){
+            steps{
+                sh <span class="string">"echo <span class="variable">${env.BUILD_NUMBER}</span>"</span>
+                wrap([<span class="variable">$class</span>: <span class="string">'TimestamperBuildWrapper'</span>]) {
+                  <span class="built_in">echo</span> <span class="string">"Done"</span>
+                }
+            }
+        }
+    }    
+}
+</code></pre>
+<blockquote>
+<p>默认是到分钟级别，到秒级别的需要自己定义格式,或者在菜单左侧，选择“Elapsed time”</p>
+</blockquote>
+<p><strong>More Ref:</strong></p>
+<ul>
+<li><a href="https://plugins.jenkins.io/timestamper" target="_blank" rel="noopener">Timestamper</a></li>
+</ul>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jenkins/">jenkins</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-xargs-command" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -792,98 +884,6 @@
 </li>
 </ul>
 <p><strong>More Ref:</strong>- <a href="https://ffmpeg.org" target="_blank" rel="noopener">https://ffmpeg.org</a> (官网)</p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools/">Tools</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-Small-Tools-1-youtube-dl" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/05/22/Small-Tools-1-youtube-dl/"
-    >Small Tools [1]: youtube-dl</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/05/22/Small-Tools-1-youtube-dl/" class="article-date">
-  <time datetime="2019-05-22T09:15:31.000Z" itemprop="datePublished">2019-05-22</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Tools/">Tools</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h2 id="youtube-dl"><a href="#youtube-dl" class="headerlink" title="youtube-dl"></a>youtube-dl</h2><p><strong>youtube-dl</strong> 是一个命令行视频下载利器，不仅仅可以下载YouTube的内容，也可以下载其他的视频网站内容</p>
-<h5 id="1-Install-（安装）"><a href="#1-Install-（安装）" class="headerlink" title="1.Install （安装）"></a>1.Install （安装）</h5><p>mac 或 linux 上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl</span><br><span class="line">sudo chmod a+rx /usr/local/bin/youtube-dl</span><br></pre></td></tr></table></figure></p>
-<h5 id="2-Usage-（用法）"><a href="#2-Usage-（用法）" class="headerlink" title="2.Usage （用法）"></a>2.Usage （用法）</h5><ul>
-<li><p>General usage</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ youtube-dl https://www.youtube.com/watch\?v\=rNh_e6ZA8CI</span><br><span class="line">[youtube] rNh_e6ZA8CI: Downloading webpage</span><br><span class="line">[youtube] rNh_e6ZA8CI: Downloading video info webpage</span><br><span class="line">[download] Destination: 采用最慢起跑方式! 中国飞人起跑不好只排第四, 但后程爆发以0.03秒险胜夺冠-rNh_e6ZA8CI.mp4</span><br><span class="line">[download] 100% of 13.00MiB <span class="keyword">in</span> 00:43</span><br><span class="line"></span><br><span class="line"><span class="comment">### 下载到指定目录，并重命名</span></span><br><span class="line">youtube-dl https://www.youtube.com/watch\?v\=rNh_e6ZA8CI -o ./youtube-download/running_vedio.mp4</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Only Download Audio (下载youtube的音频)  </p>
-</li>
-</ul>
-<blockquote>
-<p>（最近发现youtube有些节目，只用听得，比如 读书类、英语类）,用<code>-f</code> 参数指定格式</p>
-</blockquote>
-<p><code>youtube-dl -f 140 https://www.youtube.com/watch\?v\=9rRrsx1jgYc</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">youtube-dl -F &lt;your_link&gt;</span><br><span class="line"><span class="comment">### -F, --list-formats    List all available formats of requested videos</span></span><br></pre></td></tr></table></figure></p>
-<hr>  
-
-<h3 id="新增一个类似工具"><a href="#新增一个类似工具" class="headerlink" title="新增一个类似工具"></a>新增一个类似工具</h3><p>最近发现新的工具 <code>you-get</code><br>对国内支持比较好，国内视频下载速度极快（比youtube-dl快很多倍），使用方便，语法简单。</p>
-<p>比如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下载网易云音乐的mv</span></span><br><span class="line">you-get https://music.163.com/\<span class="comment">#/mv\?id\=5307835</span></span><br><span class="line"><span class="comment"># 然后提取音频</span></span><br><span class="line">ffmpeg -i 祝你一路顺风\ -\ 吴奇隆.mp4 -vn 祝你一路顺风\ -\ 吴奇隆.mp3</span><br></pre></td></tr></table></figure></p>
-<p><strong>More Ref:</strong></p>
-<ul>
-<li><a href="http://ytdl-org" target="_blank" rel="noopener">http://ytdl-org</a> (官网)</li>
-<li><a href="https://github.com/ytdl-org/youtube-dl/blob/master/README.md#readme" target="_blank" rel="noopener">https://github.com/ytdl-org/youtube-dl/blob/master/README.md#readme</a> （github）</li>
-</ul>
 
       
       <!-- reward -->
