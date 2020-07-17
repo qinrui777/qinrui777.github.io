@@ -64,6 +64,82 @@
     
     
     
+    <article id="post-Jenkins-Unicode-icons" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/07/04/Jenkins-Unicode-icons/"
+    >Jenkins Unicode icons</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/07/04/Jenkins-Unicode-icons/" class="article-date">
+  <time datetime="2019-07-04T07:59:28.000Z" itemprop="datePublished">2019-07-04</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h5 id="Unicode-icons-list"><a href="#Unicode-icons-list" class="headerlink" title="Unicode icons list:"></a>Unicode icons list:</h5><p>“\u2776” = ❶<br>“\u27A1” = ➡<br>“\u2756” = ❖<br>“\u273F” = ✿<br>“\u2795” = ➕</p>
+<p>“\u2713” = ✓<br>“\u2705” = ✅<br>“\u274E” = ❎<br>“\u2717” = ✗<br>“\u274C” = ❌</p>
+<p>“\u2600” = ☀<br>“\u2601” = ☁<br>“\u2622” = ☢<br>“\u2623” = ☣<br>“\u2639” = ☹<br>“\u263A” = ☺</p>
+<p>Example :<br>make stage name to a icon, or command message<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//declarative pipeline</span><br><span class="line">...</span><br><span class="line">    stages &#123;</span><br><span class="line">        stage(<span class="string">'\u270A RAISED FIST'</span>)&#123;</span><br><span class="line">            steps&#123;</span><br><span class="line">                script&#123;</span><br><span class="line">                    <span class="built_in">echo</span> <span class="string">"This is Stage One"</span></span><br><span class="line">                    currentBuild.displayName = <span class="string">"<span class="variable">$&#123;env.BUILD_NUMBER&#125;</span> -&gt; <span class="variable">$&#123;env.GIT_BRANCH&#125;</span>"</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">'\u273F Verify'</span> //u2700</span><br><span class="line"><span class="built_in">echo</span> <span class="string">'\u2620 kulou'</span> //u2600</span><br></pre></td></tr></table></figure>
+<p><strong>More Ref:</strong></p>
+<ul>
+<li><a href="http://www.fileformat.info/info/unicode/block/dingbats/list.htm" target="_blank" rel="noopener">More icons in the \u2700 Unicode Digbats block.</a></li>
+<li><a href="https://www.w3schools.com/charsets/ref_utf_symbols.asp" target="_blank" rel="noopener">More icons in the \u2600 range</a></li>
+</ul>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jenkins/">jenkins</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-Jenkins-add-timestamps" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -814,89 +890,6 @@ pipeline {
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shell/">Shell</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-Small-Tools-2-ffmpeg-Video-conversion-tool" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/05/23/Small-Tools-2-ffmpeg-Video-conversion-tool/"
-    >Small Tools [2]: ffmpeg -- Video conversion tool.</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/05/23/Small-Tools-2-ffmpeg-Video-conversion-tool/" class="article-date">
-  <time datetime="2019-05-23T13:12:08.000Z" itemprop="datePublished">2019-05-23</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Tools/">Tools</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h2 id="yffmpeg"><a href="#yffmpeg" class="headerlink" title="yffmpeg"></a>yffmpeg</h2><h5 id="1-Install-（安装）"><a href="#1-Install-（安装）" class="headerlink" title="1.Install （安装）"></a>1.Install （安装）</h5><ul>
-<li>macOS (wait a min)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install ffmpeg</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h5 id="2-Usage-（用法）"><a href="#2-Usage-（用法）" class="headerlink" title="2.Usage （用法）"></a>2.Usage （用法）</h5><ul>
-<li>General usage</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i video.mp4 -vn sound.mp3</span><br></pre></td></tr></table></figure>
-<ul>
-<li>More usage<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg</span><br><span class="line"></span><br><span class="line">Video conversion tool.</span><br><span class="line"></span><br><span class="line">- Extract the sound from a video and save it as MP3:</span><br><span class="line">    ffmpeg -i video.mp4 -vn sound.mp3</span><br><span class="line"></span><br><span class="line">- Convert frames from a video or GIF into individual numbered images:</span><br><span class="line">    ffmpeg -i video.mpg|video.gif frame_%d.png</span><br><span class="line"></span><br><span class="line">- Combine numbered images (frame_1.jpg, frame_2.jpg, etc) into a video or GIF:</span><br><span class="line">    ffmpeg -i frame_%d.jpg -f image2 video.mpg|video.gif</span><br><span class="line"></span><br><span class="line">- Quickly extract a single frame from a video at time mm:ss and save it as a 128x128 resolution image:</span><br><span class="line">    ffmpeg -ss mm:ss -i video.mp4 -frames 1 -s 128x128 -f image2 image.png</span><br><span class="line"></span><br><span class="line">- Trim a video from a given start time mm:ss to an end time mm2:ss2 (omit the -to flag to trim till the end):</span><br><span class="line">    ffmpeg -ss mm:ss -to mm2:ss2 -i video.mp4 -codec copy output.mp4</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p><strong>More Ref:</strong>- <a href="https://ffmpeg.org" target="_blank" rel="noopener">https://ffmpeg.org</a> (官网)</p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools/">Tools</a></li></ul>
 
 
     </footer>

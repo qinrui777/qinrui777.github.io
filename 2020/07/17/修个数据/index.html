@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    逆流而上 |  一笑皆春
+    修个数据 |  一笑皆春
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -30,7 +30,7 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="post-逆流而上" class="article article-type-post" itemscope
+  <article id="post-修个数据" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -38,7 +38,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  逆流而上
+  修个数据
 </h1>
   
 
@@ -47,12 +47,12 @@
 
     
     <div class="article-meta">
-      <a href="/2020/07/09/逆流而上/" class="article-date">
-  <time datetime="2020-07-09T01:36:38.000Z" itemprop="datePublished">2020-07-09</time>
+      <a href="/2020/07/17/修个数据/" class="article-date">
+  <time datetime="2020-07-17T02:19:16.000Z" itemprop="datePublished">2020-07-17</time>
 </a>
       
   <div class="article-category">
-    <a class="article-category-link" href="/categories/读书笔记/">读书笔记</a>
+    <a class="article-category-link" href="/categories/Tools/">Tools</a>
   </div>
 
       
@@ -62,7 +62,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">766字</span>
+            <span class="post-count">776字</span>
         </span>
     </span>
 
@@ -96,25 +96,42 @@
       
 
       
-      <h3 id="0-前言"><a href="#0-前言" class="headerlink" title="0.前言"></a>0.前言</h3><p>2020.7.9 又一年的高考结束了，往年都是在6月。青春，逆流而上，听起来都是这么的文艺。而这里讲到的这本书全名是<strong>《逆流而上 阿里巴巴技术成长之路》</strong>，哈哈 o(╯□╰)o。估计我是被这文艺的书名给吸引过去的。</p>
-<p>虽然没有细读，但也看到一些很好的总结，于是想记录一下。</p>
-<h3 id="1-关于书的信息"><a href="#1-关于书的信息" class="headerlink" title="1.关于书的信息"></a>1.关于书的信息</h3><p>时间： 2018年1月第一版</p>
-<p>一句话概括： “本书是阿里巴巴集团荣耀背后的技术血泪史。”</p>
-<p>适合谁看： “本书主要面向互联网技术从业人员和在校师生，使读者能够通过此书基本了解阿里在各技术领域的能力，学习在如此规模下可能出现的问题以及解决方案的探讨和沉淀分享。”</p>
-<h3 id="2-摘抄"><a href="#2-摘抄" class="headerlink" title="2.摘抄"></a>2.摘抄</h3><ul>
-<li><p>“问题处理环节，需要以最快的时间协同不同团队之间的响应处理，避免措施问题排查的最佳时间窗口。“</p>
-</li>
-<li><p>“稳定性要做好几点：研发与运维要靠近、故障标准要统一并强化处理流程、建设统一的基础设施并完善团队融合做到“书同文车同轨行同伦”</p>
-</li>
-<li><p>“阿里巴巴集团开发规约中对于ORM规范，有明确一条强制规约：在表查询中，一律不要使用*作为查询的字段列表，需要哪些字段必须明确写明。”</p>
-</li>
-<li><p>“数据库中的参数配置对SQL执行速度快慢也有非常大的影响，常见的三个参数包括 innodb_buffer_pool_size ,tmp_table_size, query_cache_size,table_cache”<br>（应该是笔误，明明后面也讲到了4个参数，具体参数讲解也自行搜索）</p>
-</li>
-<li><p>下面的图给了我们定位问题的一些思路，遇到棘手的问题时，要全面考量，逐一排查。不能想当然的去认为“服务器怎么会有问题”，”硬盘不可能会坏“，“网络应该不会有问题吧”<br><img src="https://s1.ax1x.com/2020/07/09/UeDKSK.png" alt="UeDKSK.png"></p>
-</li>
+      <blockquote>
+<p>一件事，即使看似平凡，但只要你做深、做久，很快就能變成你的專業，平凡的事情，做久了，也能不平凡。</p>
+</blockquote>
+<p>最近项目中的每天都有很多sql需要执行，以便修复客户的数据，大概持续了近2个月的时间。鉴于开发人员对生产环境的隔离，一般这种修改生产环境数据的活儿就由专职的DBA，或Ops完成。但说到底，开发人员对于sql更熟悉，但这只是通常情况，所以“打铁还需自身硬”。</p>
+<p>在没有任何数据管理系统的前提下，如何规范、准确的修复数据，便有很多细节需要我们思考，并找到合适的实践路径，不至于让某些角色花费大量的时间在这个事情上面。</p>
+<h3 id="1-审批流程，反馈流程"><a href="#1-审批流程，反馈流程" class="headerlink" title="1. 审批流程，反馈流程"></a>1. 审批流程，反馈流程</h3><p>修改数据通常涉及多方，为了保证流程规范（其实是后期甩锅），有关人员需要掌管好自己手中的小权利，通常涉及 PO, Dev, Ops/DBA, Manager等角色。</p>
+<p>如果sql有问题，该如何找人，如何反馈，</p>
+<h3 id="2-先备份"><a href="#2-先备份" class="headerlink" title="2. 先备份"></a>2. 先备份</h3><p>对于ops人员而言，数据无小事，但在dev眼里，有些表中的数据无足轻重，有些确实很重要，但ops/DBA是不那么了解业务的，也是或许是一些Dev没有经历过丢数据后的无奈和严重后果。</p>
+<p>备份规则（即什么情况下需要备份，什么情况可以不备份）：</p>
+<ul>
+<li>数据量变更大于500条时，必须备份数据</li>
+<li>无需备份的需要备注原因，以便其余人了解不备份的上下文</li>
 </ul>
-<p>”为了找出CPU飚高的原因，开发在重启过程中通过执行一下命令找出CPU利用率比较高的线程。“<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -eL -o pid,%cpu,lwp | grep -i pid | sort -nr k2 | awk <span class="string">'&#123;print("%s %s %x\n",1,1,2,$3)&#125;'</span> | head</span><br></pre></td></tr></table></figure></p>
-<h3 id="3-读后"><a href="#3-读后" class="headerlink" title="3.读后"></a>3.读后</h3><p>没有细读的原因，应该是鄙人才疏学浅，孤陋寡闻，很多书中的事情我也没遇上过。如果是当事人，读起来应该有一种破解一桩悬案的快感。但处理问题的思路，以及开发人员、运维人员之间的配合经验十分重要，还有复盘（类比于SRE中的验尸报告）等等都是很棒的，书中对于技术细节也有很深的研究，毕竟是要解决一些棘手的问题，代码片段、逻辑图、架构图丰富，涉及基础设施架构、mysql、中间件服务、负载均衡等等很常见的技术，确实不常见的业务量。</p>
+<p>备份方式：</p>
+<ul>
+<li>在数据库里备份,例如  <code>create table &lt;table_a_copy_date&gt; select * from users;</code></li>
+<li>少量数据，本地备份，上传到jira中，数据安全问题，</li>
+<li>备份到某个云☁️上，有需要的时候开放权限获取备份文件</li>
+</ul>
+<h3 id="3-执行，用技术去规范"><a href="#3-执行，用技术去规范" class="headerlink" title="3.执行，用技术去规范"></a>3.执行，用技术去规范</h3><p>对于不同的数据库引擎，sql语法有部分差异，使用不同的sql客户端工具，也有不同的差异</p>
+<p>吐槽遇到的问题：</p>
+<ul>
+<li>sql中的中英文符号不区分，导致的语法问题</li>
+<li>单引号’和间隔号`</li>
+<li>看着正常，<a href="https://tool.lu/sql/" target="_blank" rel="noopener">https://tool.lu/sql/</a> 也检查不出来的，但其实很有问题的语法 （<a href="https://blog.csdn.net/whatday/article/details/103308922）" target="_blank" rel="noopener">https://blog.csdn.net/whatday/article/details/103308922）</a></li>
+<li>多条语句的，不用<code>;</code>分割</li>
+<li>自增id，不要随便插入新的id</li>
+<li>一个sql需要执行1个小时，而且不能重复执行的，确保不能断网，最好不用本地的sql客户端，而使用tmux 后台执行</li>
+</ul>
+<p>pipeline化、脚本化, 需包含语法检查、备份、执行、执行后核对等功能，解放ops的双手</p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ul>
+<li><a href="https://tool.lu/sql/" target="_blank" rel="noopener">检查sql语法的在线工具</a></li>
+<li>SOAR(SQL Optimizer And Rewriter)   是一个对 SQL 进行优化和改写的自动化工具。 由小米人工智能与云平台的数据库团队开发与维护。<a href="https://github.com/XiaoMi/soar" target="_blank" rel="noopener">github地址</a></li>
+<li><a href="https://help.aliyun.com/product/26437.html?spm=5176.cndms.0.0.4a755063X2vQ5l" target="_blank" rel="noopener">数据管理 DMS</a></li>
+<li><a href="http://yearning.io/" target="_blank" rel="noopener">Yearning Mysql SQL审核平台</a></li>
+</ul>
 
       
       <!-- reward -->
@@ -184,13 +201,15 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/07/09/逆流而上/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/07/17/修个数据/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools/">Tools</a></li></ul>
+
 
     </footer>
 
@@ -200,19 +219,10 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/07/17/修个数据/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            修个数据
-          
-        </div>
-      </a>
     
-    
-      <a href="/2020/06/10/一份几年前的linux命令小手册/" class="article-nav-link">
+      <a href="/2020/07/09/逆流而上/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">一份几年前的linux命令小手册</div>
+        <div class="article-nav-title">逆流而上</div>
       </a>
     
   </nav>
