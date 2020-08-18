@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    修个数据 |  一笑皆春
+    让人身心劳累的驾考 |  一笑皆春
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -30,7 +30,7 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="post-修个数据" class="article article-type-post" itemscope
+  <article id="post-让人身心劳累的驾考" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -38,7 +38,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  修个数据
+  让人身心劳累的驾考
 </h1>
   
 
@@ -47,14 +47,10 @@
 
     
     <div class="article-meta">
-      <a href="/2020/07/17/修个数据/" class="article-date">
-  <time datetime="2020-07-17T02:19:16.000Z" itemprop="datePublished">2020-07-17</time>
+      <a href="/2020/08/17/让人身心劳累的驾考/" class="article-date">
+  <time datetime="2020-08-17T06:19:43.000Z" itemprop="datePublished">2020-08-17</time>
 </a>
       
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Tools/">Tools</a>
-  </div>
-
       
       
 <div class="word_count">
@@ -62,7 +58,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">803字</span>
+            <span class="post-count">6字</span>
         </span>
     </span>
 
@@ -71,7 +67,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">2分钟</span>
+            <span class="post-count">1分钟</span>
         </span>
     </span>
 </div>
@@ -82,8 +78,6 @@
 
     
     
-    <div class="tocbot"></div>
-
 
 
 
@@ -96,43 +90,15 @@
       
 
       
-      <blockquote>
-<p>一件事，即使看似平凡，但只要你做深、做久，很快就能变成你的专业，平凡的事情做久了，也能不平凡。</p>
-</blockquote>
-<p>最近项目中的每天都有很多sql需要执行，以便修复客户的数据，大概持续了近2个月的时间。鉴于开发人员对生产环境的隔离，一般这种修改生产环境数据的活儿就由专职的DBA，或Ops完成。但说到底，开发人员对于sql更熟悉，但这只是通常情况，所以“打铁还需自身硬”。</p>
-<p>在没有任何数据管理系统的前提下，如何规范、准确的修复数据，便有很多细节需要我们思考，并找到合适的实践路径，不至于让某些角色花费大量的时间在这个事情上面。</p>
-<h3 id="1-审批流程，反馈流程"><a href="#1-审批流程，反馈流程" class="headerlink" title="1. 审批流程，反馈流程"></a>1. 审批流程，反馈流程</h3><p>修改数据通常涉及多方，为了保证流程规范（其实是后期甩锅），有关人员需要掌管好自己手中的小权利，通常涉及 PO, Dev, Ops/DBA, Manager等角色。其他问题：三级审批、四级审批、人多、传话丢失、语义产生歧义等；如果sql有问题，该如何找人，如何反馈，</p>
-<h3 id="2-先备份"><a href="#2-先备份" class="headerlink" title="2. 先备份"></a>2. 先备份</h3><p>对于ops人员而言，数据无小事，但在dev眼里，有些表中的数据无足轻重，有些确实很重要，但ops/DBA是不那么了解业务的，也是或许是一些Dev没有经历过丢数据后的无奈和严重后果。</p>
-<p>备份规则（即什么情况下需要备份，什么情况可以不备份）：</p>
-<ul>
-<li>数据量变更大于500条时，必须备份数据</li>
-<li>无需备份的需要备注原因，以便其余人了解不备份的上下文</li>
-</ul>
-<p>备份方式：</p>
-<ul>
-<li>在数据库里备份,例如  <code>create table &lt;table_a_copy_date&gt; select * from users;</code></li>
-<li>少量数据，本地备份，上传到jira中，数据安全问题，</li>
-<li>备份到某个云☁️上，有需要的时候开放权限获取备份文件</li>
-</ul>
-<h3 id="3-执行，用技术去规范"><a href="#3-执行，用技术去规范" class="headerlink" title="3.执行，用技术去规范"></a>3.执行，用技术去规范</h3><p>对于不同的数据库引擎，sql语法有部分差异，使用不同的sql客户端工具，也有不同的差异。</p>
-<p>吐槽遇到的问题：</p>
-<ul>
-<li>sql中的中英文符号不区分，导致的语法问题</li>
-<li>单引号’和间隔号`</li>
-<li>看着正常，<a href="https://tool.lu/sql/" target="_blank" rel="noopener">https://tool.lu/sql/</a> 也检查不出来的，但其实很有问题的语法 （<a href="https://blog.csdn.net/whatday/article/details/103308922）" target="_blank" rel="noopener">https://blog.csdn.net/whatday/article/details/103308922）</a></li>
-<li>多条语句的，不用<code>;</code>分割</li>
-<li>自增id，不要随便插入新的id</li>
-<li>一个sql需要执行1个小时，而且不能重复执行的，确保不能断网，最好不用本地的sql客户端，而使用tmux 后台执行</li>
-</ul>
-<p>pipeline化、脚本化, 需包含语法检查、备份、执行、执行后核对等功能，解放ops的双手</p>
-<p>dbname.tablename</p>
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ul>
-<li><a href="https://tool.lu/sql/" target="_blank" rel="noopener">检查sql语法的在线工具</a></li>
-<li>SOAR(SQL Optimizer And Rewriter)   是一个对 SQL 进行优化和改写的自动化工具。 由小米人工智能与云平台的数据库团队开发与维护。<a href="https://github.com/XiaoMi/soar" target="_blank" rel="noopener">github地址</a></li>
-<li><a href="https://help.aliyun.com/product/26437.html?spm=5176.cndms.0.0.4a755063X2vQ5l" target="_blank" rel="noopener">数据管理 DMS</a></li>
-<li><a href="http://yearning.io/" target="_blank" rel="noopener">Yearning Mysql SQL审核平台</a></li>
-</ul>
-
+      <div id="hexo-blog-encrypt" data-wpm="用心想想，ta可能用什么密码,一条路的名字" data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <div class="hbe-input-container">
+  <input type="password" id="hbePass" placeholder="" />
+    <label for="hbePass">Hey, password is required here.</label>
+    <div class="bottom-line"></div>
+  </div>
+  <script id="hbeData" type="hbeData" data-hmacdigest="0a30a624f58190e1172996d2ae02ed229a9a92cca24245ff42c417a944e10f8c">d4108bff4ddd6841258870118b30384876e316d59eced811d20e450654dd6e2af91fb855ceb9bd1c8a8bd97d82a49d1ca767d6cdd6feffb6993b28c8ded89ff71a527f2157d1319c8428e0a587aab8698e0ebd74b8621162c2288115e03cde75970610d89a820eaa26e89e30e7cf9de4536032d586fd73d11253c1c06b81f6c69313d729433964629b871be4dbc55c61b6cdbf40dc7a0057ccbf92d097765e1b561c37bef3918f316e938f3fc077b963479f183f63a9854a1ec9521a7f7367f05863411a674c7c4b779da7c2b66424f61b5253c00da3304182eb05bbdd3bf784c54d4f53387d4835c4b9506d3e9bf976771603fe2f0f4a995d64f86a156cec029a452c4134040c52ae3a919ed20fe7b164dca221d2e7f275601da345ab3375f9ede71064eeb67356300d8ce64c89a560f004a153b9d17a03bb1c198d4da26fbb4fc7660d69abf784ee02239f951af6584f321517592841b1e5fe74c61883406589ca901176ecde771d7e3305c66ab39cf871a11213a03e68383d233a81835115cc5ecae44516bea9309d1ada60cf1265bdeeb30ec431c9305392cca5e9d9476e59f6b4b609a21ef80fd85a5232b0ec75006efca898bf6661a3ebdb308bb7dfd3b6d4b7d1ebbe4f03144f323c490babd25d621c75b8c52b32a7ce7cf78c153d813867732e963c9dbfc201db3ce7ee6a8a41ef2bc01d62ff931d99cc14b3fd128ac819a8c73a2c414adb23292a1e8fab7d61151794b8415674c883206207d9a71d7ee2481e056818f33cbe74278061f36847a4bf689e25e01739635a72f9f15ac2281914682a8cca68ef04df62a670a616b98f3e959b3d7ca2a1ec04202180e8814643897dc5664de561b5a9c8ecf9e7a188d93e5414bfab416eba2443fd591442a1b18a335eeac306e7cf2c80343bf8ef414a40e62c36db08b41c63a117869e66642bee071371f5d18f39d045d58a7b666fe08cec7801d63e34aed7085ef9f1ca924ede0d1cb7d97d24e14e2316401d0ff1c06228dac454cadb58ed1b6e8daa780c9c09c09b3bc60d8eefb8df93e82739d39f29fc6a91840a5c94833ab0994cdd54233d3f270c62a98945eb4456edbda636a5650ad941aa9b4f09dd27db7c755d53a1473148904d60fd38facf8021027f1fcdfa2aa75c355ac2212fc7e7847e009a209e8bf9ba1762daa046d4e4b1f24f035dd8f1b5662e96e61ea330b31a76e5a50317cb692133ad3e47e82050d853568650439e6d9b649ffbeeb097b4f7a81ac391c5575823421dcb3f92553ee4fd3a82396b2c17e109e3a46c0f9c3304c85e127e40b5a99b26f41d4d7bc47de2d3f4df7b97b3b96f50c989bfc0b43b86cd9e2a4a1ab1fd443be41368d96b7a606831a61c05aa962a3192bb73bb3e4a88e5075a79c83f6eef60e0cfd470cf19cbebb71c1c8f06d7e0b6354a77e9442a062088f3f89da26f82fc15ac03b25b499c8aae4a10c8eee722a20dbe1821eee7e9f7a3d835428c521b0b08a8067b93b11f86545e47c63841b45dde1b5c833c4d76b3dc7491dcff1c90ae580b561db0b103a8a840269d39b808fef368023f6c801d7bc3ece0d6d8d29ebc09c7326fd91246b19dda04145ec4c44340d69c00082ee51fd3a512c1ff4050e3ba03c2cf144d373fb17d1247624e0b5b30faf63bbf5d92c98de05f2871b342cca4bf917d55d67c27c87d057cf93e8199985d02195b2908f2e0f12da14e589b4ca93e0604b609868b2b7e9ba52800c2bbfc9e133be3b7aa7926892e27fda237114db9a1fd91f6c621168833e3895fb1a4596786e6bebf84f4227c1fbd961d586465dd7c6787a3154d97078f332371e5d6facc735b4e4bc0887b249572a94f939b99d0ca5f2f3333fec8eb008e28b792d650e2324d5e601d04875698552edc2bdda6afa356476662d4c57702930e31bc6ac1fed062e60bef9128feba4dcc27d5688b0995d9ca347f7623463ff8698602556d12f8a161a199448f956ff5a317546e2656b548c0280292150e51c1177e5e8d7eaefd93559333ef4e5dd5e30811528882d0d290865eed23cf3ed4393b29c04d095c325c3c801155c9602148c2154b9d9cca94fe2e30bc7f8511f3464b97f41ef76a78e662f528c73bf3d4d152a1f0f24d23a5f30c81a73f14abfdacfac9b035e99759e28665532a88cd6db14da0025cd8a3d48d3646e35ff4f899a30edbddba5cf10197f549bfffb3dd1d24208b24be0d66b7aedbb8147b337fab891a72b34deda087ec590f6392fa5205df11a2956ee334fcc59f53dee3b6a7ecaa466541f3ae889897a6ed966bbed9e3e492bfd8a919f29b37462001dee8801cfb0dbc511dc62ba887bb206b6fadb624063c39722126b6463d0ffafe22ad17780168ec455237d2c8370cbcaaeaa01c2f08d0fda4388e833068e39af49a97f38c78b361f3d6c22cdd37072b21afd7aae9c5f9ff79ae9b801316f5fb61f631ec05e01a9e3b3632177a97fe4b175cdb46749e2fa55d30ac1a47141dc58c58ac41347a8d5d87610418cbcc266f90c4a41b2bbc08dda395f1c71646cdb8c0c714ffbce8bd0eb63c46d2fca1f3ee66a40f793d48ff919a78d3bc5d81a062d5812158b2a81b2062bb29b8c0c1e658a968d20b0f72a5240d235f5d4f22b3c4cdd6d016d5b28e39401646fbc668f1ea9c1e9bcf70884ec1a3ebdf1cf5a1258eb710a756e793e9a36b81e201c126170ecafbac3ddbda4ef0c4a363742f0899b1400e42d1d2b42494d1e5ab2081bd89e132468814eb901e6f440a92aa13a09afc2b5229a78c8cc7d2868a407c9c79bd1cb8c68a8890419913b37fb75dab293d55444c0ac3555f0cf4be1c746702878e41f143174f21c8ef680e25d52d058f1280481971453f9c4e0221743b4a536b07396c651fa569c989fd402a57840c674b7ca0c7cbbf782b9b31593ea04ba27b8200a13faaf7fd72296cb84cc86e7c9522747f9342effcc71c77f4a43d916f386a6982f5cac2d656e5bbe879a734725ac6063188b32a93efc68d39358e0ca60fd8ffce92a929a04596494de2f278deefb252db9829383f6ff6a99549cf123773c7a711893087c75294b2eb2a5b736afcbd6451b194ba5b573eab00e1b7ec2ad5e39c2fdb3ddd816dfc0a7775e1a5c5b76e1c72d068400882f73d352958a004e73c525a6ea750a7abfe0dbc70d1df43f977a20a4d796dbdafcfa30bf3e2b4a506c00383d5b8189fb27af9874315d077f8989f2ca33d50c1ca4705dcc4abe0fe7bdcb153f1887fc7d41684d14fba42a1509a92cd7df666c0af721ef8d7c07f4d970fa4182317fce00d1feb923bdc0523c832d31bfa7ddbfeb311ea36ffbad4968d79d17195f0f454503ea72e8eed15060dffdd41e0e75f0e8e735a0985301393425e1f0e5b413cc57f6aaa3a5cf625408a0b0f23e07801dba3afb021fad9a9a5db59b8277225ddcc65d6fcb02b3a7d61fec9412138b2fb4fbd9e93a731fa5e984c397c416112ac4f2c76fb6c97bc8db67d92d2b7cd5350ae3018c8e6934444d3a862233bc1b09754a42f6585f114af9d9427a488e593984a5737c0e61ccaf95c6c577c31d9098efc6c0fd68be7789108807a1bf43e6278adc7d7f254d310aa57e3bb3112961cb3f0f5adec0f9b05997718ed8e9ede3acad4d5761d24860975a9ad4cc1fb296a1127295bab90b653a187739bc4627cb9ff66b39591c937fd3282707c8684ca4a97efb9e33dba593ce99ce11fd1f3eacd004ee426374ae685a1337ad1ae0e5cdffe7adbcc773c95126144dd9d8045132b8db70a974f2be33754f9f974181cedb4fab941016d9184dfc113a063d133ca007104eb17744168d6bbc423647dc02c8d2eb6c7458fc3f2eb4fc584e21b1fcad7688545309b46c0af715390cb704f603ec25ac6959d672925a046ec9f88ee9d22e1f8271dd5bdd2749e7df09f05f31f2c0a2d71aebe680ecb6235e67e9bc32e01812c6b6e9f1539ffb8d6271ed650832e194bb5218ac34036148d47cda9a8d01620c3a6e0b9f0e40841039d2dd45d6bb00d95766f25d9d5b067cea1cb5ebf117d556d0ad8232662fe22e4d6eec16393fc5e880827399187192966a9ea8af7c8810f376fa59885b891b07bb025acbd3bcd9d936335d723179456fc74e932fcb7b1ca289ce35dfaf218638a764891e73bde8c72216f2dcad5901d2a705f71b14d7020dbd3a0be3eda6075d20b5227bfab207a1e47e2f5998df5b5a7a7c1651ca89a4bf09c18117444a85f13b5ddf9253b36e25f61228cfe6d02c895e49e4527165e45ecf50765416a6d49bc9ad4440c7d8b1f6db8954956138a2a12a59b68cc7c4ce6feb75ac0bad00ccd5701a2f6ca83f2030a94f6cd190f3231054e34b86ede6e7d38798a4bba2c0d7dd6ecaa953cc2c740b7037c5999be4f6178f6c3e1b71b8c4167c2e63d56ebbbb3ce7feea87f5680aba29251e7e529a66cb20880c493c70d0d7c139d7b131192e42ef814bb8dc5ef53c6c73533a8bfbd687bb6032e025138880836e40f995cefe6de471a38f0fa9858020c8f10a1c53a06f704007c74d0e95af6852a4b31a9730bb61c330856c480d1ff17920505293a01612540e5abdf75f4106b523132c1cb13f84145688453ac8dc2fab0cf215b134f382f025853f4d679477b723fdf8a7d1e0d3717e7ce2ffd9d60d696edd8870dfb4759aa7e95fb245472bc08f0c03dc9ae8130ba1c12fcbc5d9d528010786b4c52d8f7cf752e47fac6da399bc3c2aa3d974e160401182cffad129fc28494f9b75dd4e245073ae3ba24350acf848b371d29a84634e1bcce0398f985fc294cbc09733fc375cdb06e8537158610af13e08d454ac1e432efa4891e546821984973a534fa6c0a34ac8e91f897f3ad0fbf80aa7b55507018d4e9cd7eec6f4985648f9fbc4a92fb9e5f30955bd5c239d0f2ddaa97ef41bb1059382a0f43b6438d739a82e256103b615c947cbf98b1dc19df9c2cab397d836d92ba3daf18a9db7a8b725409d7c4631f325ae0332e732158bf55e856b77f4b041ee10c96afa00fe574a5200df76049a7f857d3a7e5457fe0a8afefadc012a68df6847c7aa7e048db356a0378965f519f80bbde826cde5cedb152828e7e14d758f017bdbb714d9a4ab3086993c0af0b2644414c6d3745a17c90e4ef6e9f2b13862347f93f167c504216a3713f6014c325e8dc360b19502eaf6df91ac352734429307d1153e3c894c0852164a8eae062d7ba5b4655e717f0b7105f1394aad6949839a3e9b1149acb0d8b21e97744ac6d85fe435b27d9a185875307a9bb76b81bbc133912b57bd7de796515077984c1ea42e44c93c79da869ad93acbcb49efbf91562219742444e3dbf61c265af93ef01da724795410ae247e5cf5546eb57ef2cd9c3655403043f6b6d340244a46361c739628232f78587a3f2f7cd446606bb6642449eb773ed8165307f6a3219e68d980cd77074664a34d588220bf22e6aba8ae4dd53c65ccd899857073b8da0bbb785ae99c9c2e579d00eb3538766aec57f5d6233b901c71f1bb25ffecc4c143b391cc67dacd734690e76178829a49c33a4fd8c204fe72b82e39fb9b34aa766e368bd40ac3c73e70b6bcf70c3d708e21a0f4009791c81ba93c1a95bf134b4632357a9448e42332cb7bed10163b1342d4096c34cace7f530f80e021e19c61f340e3e3c93c3424486f34fc09a9b25ac4e69de99c655b2ebb8974fb2bed5250e86eb66b04475b43c2906c37c121f38ae5b824d6770a61dd66c6e24d6a949eb1c3307bf521db5764cd635ef3f5ef9cb30cd3acc145d4d244f5660e0a0e95900eb83be51f48d05eb8156595d08e66bcad97bf1a06459b5f31cce3b8d6d9a8f1d2dc908228d9b782c441af57141bd606a4ade620b672591a09c5c0c32daead42f4af8d8371d9ace0427bf69e57df101aa583b0267ab34d7cbb8fd799c59320560759ba2027697fd33a49a70cc7579b21c1c4e2d61bc1b23444584d4b60394201606b17ce4482a2397e210d5b9d4d488bf4029769223cd159efde537b00f2db3251a5dd596e0831ca3a7fef055e510b963906353774bc5893de8b631f767b2247d27445f197b39fd18b54295220da095fff925eb8fe8bf368f1d2bfa9bcad0b2900e6fcbb23bbecd44aa93be5ac9e15f854826b286441a4f783e6b426398d2f07379b25b9ea299e2239d1adb34edf3a0525b119c727506b98b03c8547f83e7f7824ddd0052a636ee5a42489fd48186918e711a9e5b0f88b35535</script>
+</div>
+<script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">
       
       <!-- reward -->
       
@@ -201,14 +167,14 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/07/17/修个数据/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/08/17/让人身心劳累的驾考/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools/">Tools</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Q-List/">Q List</a></li></ul>
 
 
     </footer>
@@ -219,19 +185,10 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/08/17/让人身心劳累的驾考/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            让人身心劳累的驾考
-          
-        </div>
-      </a>
     
-    
-      <a href="/2020/07/09/逆流而上/" class="article-nav-link">
+      <a href="/2020/07/17/修个数据/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">逆流而上</div>
+        <div class="article-nav-title">修个数据</div>
       </a>
     
   </nav>
