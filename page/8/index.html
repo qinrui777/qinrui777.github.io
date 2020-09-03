@@ -64,6 +64,90 @@
     
     
     
+    <article id="post-Makefile-102-Variable" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/07/05/Makefile-102-Variable/"
+    >Makefile 102:Variable</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/07/05/Makefile-102-Variable/" class="article-date">
+  <time datetime="2019-07-05T06:02:53.000Z" itemprop="datePublished">2019-07-05</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h5 id="Variables-common-use"><a href="#Variables-common-use" class="headerlink" title="Variables (common use)"></a>Variables (common use)</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">origin_file = hello.c</span><br><span class="line"></span><br><span class="line">hellofrommakefile: $(origin_file)</span><br><span class="line">	gcc hello.c -o hellofrommakefile</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">env := <span class="string">"local"</span></span><br><span class="line"></span><br><span class="line">task1:</span><br><span class="line">	@<span class="built_in">echo</span> <span class="string">"hello ,task1"</span></span><br><span class="line">	@<span class="built_in">echo</span> <span class="string">"This is environment: <span class="variable">$(env)</span></span></span><br></pre></td></tr></table></figure>
+<p>设置变量 env，如果在执行make时不传值，则使用默认值 local, 输出如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 不给env值</span></span><br><span class="line">make</span><br><span class="line">hello ,task1</span><br><span class="line">This is env: <span class="built_in">local</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 给env=uat</span></span><br><span class="line">make  env=uat</span><br><span class="line">hello ,task1</span><br><span class="line">This is env: uat</span><br></pre></td></tr></table></figure>
+<h5 id="Automatic-Variables-自动变量"><a href="#Automatic-Variables-自动变量" class="headerlink" title="Automatic Variables(自动变量)"></a>Automatic Variables(自动变量)</h5><p>makefile 中有一些预定义的变量，你可以理解它像是 C 语言中的一些关键字，分别有不同的意义，我们列举几个常用的自动变量，<a href="https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html#Automatic-Variables" target="_blank" rel="noopener">其他还有很多</a></p>
+<p>$@：在命令中使用，表示规则中的目标<br>$&lt;：在命令中使用，表示规则中的第一个条件<br>$^：在命令中使用，表示规则中的所有条件，组成一个列表，以空格隔开，如果这个列表中有重复的项则消除重复项。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hellofrommakefile: hello.c</span><br><span class="line">	gcc hello.c -o hellofrommakefile</span><br></pre></td></tr></table></figure>
+<p>等价于<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hellofrommakefile: hello.c</span><br><span class="line">	gcc hello.c -o <span class="variable">$@</span></span><br></pre></td></tr></table></figure></p>
+<h5 id="mplicit-Variables-内置变量"><a href="#mplicit-Variables-内置变量" class="headerlink" title="mplicit Variables(内置变量)"></a>mplicit Variables(内置变量)</h5><p>Make命令提供一系列内置变量，比如，$(CC) 指向当前使用的编译器，$(MAKE) 指向当前使用的Make工具。这主要是为了跨平台的兼容性，详细的内置变量清单见<a href="https://www.gnu.org/software/make/manual/html_node/Implicit-Variables.html" target="_blank" rel="noopener">ta</a>。</p>
+<p><strong>More Ref:</strong></p>
+<ul>
+<li><a href="http://www.chiark.greenend.org.uk/doc/make-doc/make.html/Using-Variables.html" target="_blank" rel="noopener">http://www.chiark.greenend.org.uk/doc/make-doc/make.html/Using-Variables.html</a></li>
+<li><a href="https://www.gnu.org/software/make/manual/html_node/Implicit-Variables.html" target="_blank" rel="noopener">https://www.gnu.org/software/make/manual/html_node/Implicit-Variables.html</a></li>
+</ul>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/makefile/">makefile</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-Makefile-101-Intro" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -792,113 +876,6 @@ pipeline {
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jenkins/">jenkins</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-Shell-Script-Standards" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/05/29/Shell-Script-Standards/"
-    >Shell Script Standards</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/05/29/Shell-Script-Standards/" class="article-date">
-  <time datetime="2019-05-29T01:48:15.000Z" itemprop="datePublished">2019-05-29</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Shell/">Shell</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>推荐看看 <a href="https://google.github.io/styleguide/shellguide.html" target="_blank" rel="noopener">https://google.github.io/styleguide/shellguide.html</a></p>
-<h5 id="Part1-命名约定"><a href="#Part1-命名约定" class="headerlink" title="Part1: 命名约定"></a>Part1: 命名约定</h5><ul>
-<li>本文档的命名约定是系统配置文件、脚本文件；</li>
-<li>文件名、变量名、函数名不超过20个字符；</li>
-<li>命名只能使用英文字母，数字和下划线，只有一个英文单词时使用全拼，有多个单词时，使用下划线分隔，长度较长时，可以取单词前3～4个字母。</li>
-<li>文件名全部以小写命名，不能大小写混用（通过U盘交换文件时，大小写可能会丢失，即：大写文件名可能会全部变成小写文件名）；</li>
-<li>避免使用Linux的保留字如true、关键字如PWD等（见附表）；</li>
-<li>从配置文件导出配置时，要注意过滤空行和注释</li>
-</ul>
-<h5 id="Part2-代码开头约定"><a href="#Part2-代码开头约定" class="headerlink" title="Part2: 代码开头约定"></a>Part2: 代码开头约定</h5><ul>
-<li>第一行一般为调用使用的语言 </li>
-<li>下面要有这个程序名，避免更改文件名为无法找到正确的文件</li>
-<li>版本号</li>
-<li>更改后的时间</li>
-<li>作者相关信息</li>
-<li>该程序的作用，及注意事项</li>
-<li>版权与是否开放共享GNU说明</li>
-<li>最后是各版本的更新简要说明</li>
-</ul>
-<p>e.g.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment"># -------------------------------------------------------------------------------</span></span><br><span class="line"><span class="comment"># Filename:    check_mem.sh</span></span><br><span class="line"><span class="comment"># Revision:    1.1</span></span><br><span class="line"><span class="comment"># Date:        2019/02/10</span></span><br><span class="line"><span class="comment"># Author:      xiaoming</span></span><br><span class="line"><span class="comment"># Email:       xiaoming#gmail.com</span></span><br><span class="line"><span class="comment"># Description: Plugin to monitor the memory of the system</span></span><br><span class="line"><span class="comment"># Notes:       This plugin uses the "" command</span></span><br><span class="line"><span class="comment"># -------------------------------------------------------------------------------</span></span><br><span class="line"><span class="comment"># Copyright:   2009 (c) xiaoming</span></span><br><span class="line"><span class="comment"># License:     GPL</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># This program is free software; you can redistribute it and/or</span></span><br><span class="line"><span class="comment"># modify it under the terms of the GNU General Public License</span></span><br><span class="line"><span class="comment"># as published by the Free Software Foundation; either version 2</span></span><br><span class="line"><span class="comment"># of the License, or (at your option) any later version.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># This program is distributed in the hope that it will be useful,</span></span><br><span class="line"><span class="comment"># but WITHOUT ANY WARRANTY; without even the implied warranty</span></span><br><span class="line"><span class="comment"># of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the</span></span><br><span class="line"><span class="comment"># GNU General Public License for more details.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># you should have received a copy of the GNU General Public License</span></span><br><span class="line"><span class="comment"># along with this program (or with Nagios);</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Credits go to Ethan Galstad for coding Nagios</span></span><br><span class="line"><span class="comment"># If any changes are made to this script, please mail me a copy of the changes</span></span><br><span class="line"><span class="comment"># -------------------------------------------------------------------------------</span></span><br><span class="line"><span class="comment">#Version 1.0</span></span><br><span class="line"><span class="comment">#The first one , can monitor the system memory</span></span><br><span class="line"><span class="comment">#Version 1.1</span></span><br><span class="line"><span class="comment">#Modify the method of the script ,more fast</span></span><br></pre></td></tr></table></figure></p>
-<h5 id="Part3-环境变量"><a href="#Part3-环境变量" class="headerlink" title="Part3: 环境变量"></a>Part3: 环境变量</h5><ul>
-<li>变量：全部是大写字母</li>
-<li>变量引用：全部以变量名加双引号引用，如”$TERMTYPE”，或“${TERMTYPE}”，如果变量类型是数值型不引用，如:</li>
-<li>如果需要从配置文件导出变量，则在变量前加一大写字母，以识别导出变量与自定义环境变量的区别，如：</li>
-<li>变量值的引用尽量以$开头，如$(ls inst_.sh)，避免使用<code>ls inst_。sh</code></li>
-<li>循环控制变量可以命名为单个字母， 比如 i、j等。 也可以是更有意义的名称， 比如 UserIndex。</li>
-<li>环境变量和全局变量 在脚本开头定义。</li>
-<li>函数中使用较多的文件，以环境变量的形式在文件开头定义，仅函数中使用的变量在函数开头定义</li>
-</ul>
-<h5 id="Part4-脚本的基本结构"><a href="#Part4-脚本的基本结构" class="headerlink" title="Part4: 脚本的基本结构"></a>Part4: 脚本的基本结构</h5><p>一个脚本的基本结构是这样的：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!SHEBANG</span></span><br><span class="line"> </span><br><span class="line">CONFIGURATION_VARIABLES</span><br><span class="line"> </span><br><span class="line">FUNCTION_DEFINITIONS</span><br><span class="line"> </span><br><span class="line">MAIN_CODE</span><br><span class="line">Shebang</span><br></pre></td></tr></table></figure>
-<p><strong>More Ref:</strong></p>
-<blockquote>
-<ul>
-<li><a href="https://blog.csdn.net/wirelessqa/article/details/18863403" target="_blank" rel="noopener">https://blog.csdn.net/wirelessqa/article/details/18863403</a></li>
-</ul>
-</blockquote>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shell/">Shell</a></li></ul>
 
 
     </footer>

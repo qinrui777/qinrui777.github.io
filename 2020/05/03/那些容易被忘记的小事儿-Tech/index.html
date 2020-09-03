@@ -62,7 +62,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">492字</span>
+            <span class="post-count">804字</span>
         </span>
     </span>
 
@@ -71,7 +71,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">2分钟</span>
+            <span class="post-count">3分钟</span>
         </span>
     </span>
 </div>
@@ -142,6 +142,61 @@
 <p>NR(Number of Record) 表示的是已经处理过的总记录数目，或者说行号, 上面的 <code>NR!=1</code> 表示不打印第一行，相应地，<code>NR!=2</code> 表示不打印第二行.</p>
 </blockquote>
 <p>只打印最后一列<br><code>kubectl get node | awk &#39;{print $NF}&#39;</code></p>
+<h3 id="TCP连接的状态详解以及故障排查"><a href="#TCP连接的状态详解以及故障排查" class="headerlink" title="TCP连接的状态详解以及故障排查"></a>TCP连接的状态详解以及故障排查</h3><blockquote>
+<p><a href="https://blog.csdn.net/hguisu/article/details/38700899" target="_blank" rel="noopener">https://blog.csdn.net/hguisu/article/details/38700899</a></p>
+</blockquote>
+<p><img src="https://s1.ax1x.com/2020/09/03/wPC8yQ.png" alt="wPC8yQ.png"></p>
+<p>TCP状态及其描述如下表。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">状态</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">LISTEN</td>
+<td style="text-align:left">等待来自远程TCP应用程序的请求</td>
+</tr>
+<tr>
+<td style="text-align:left">SYN_SENT</td>
+<td style="text-align:left">发送连接请求后等待来自远程端点的确认。TCP第一次握手后客户端所处的状态</td>
+</tr>
+<tr>
+<td style="text-align:left">SYN-RECEIVED</td>
+<td style="text-align:left">该端点已经接收到连接请求并发送确认。\n 该端点正在等待最终确认。TCP第二次握手后服务端所处的状态</td>
+</tr>
+<tr>
+<td style="text-align:left">ESTABLISHED</td>
+<td style="text-align:left">代表连接已经建立起来了。这是连接数据传输阶段的正常状态</td>
+</tr>
+<tr>
+<td style="text-align:left">FIN_WAIT_1</td>
+<td style="text-align:left">等待来自远程TCP的终止连接请求或终止请求的确认</td>
+</tr>
+<tr>
+<td style="text-align:left">FIN_WAIT_2</td>
+<td style="text-align:left">在此端点发送终止连接请求后，等待来自远程TCP的连接终止请求</td>
+</tr>
+<tr>
+<td style="text-align:left">CLOSE_WAIT</td>
+<td style="text-align:left">该端点已经收到来自远程端点的关闭请求，此TCP正在等待本地应用程序的连接终止请求</td>
+</tr>
+<tr>
+<td style="text-align:left">CLOSING</td>
+<td style="text-align:left">等待来自远程TCP的连接终止请求确认</td>
+</tr>
+<tr>
+<td style="text-align:left">LAST_ACK</td>
+<td style="text-align:left">等待先前发送到远程TCP的连接终止请求的确认</td>
+</tr>
+<tr>
+<td style="text-align:left">TIME_WAIT</td>
+<td style="text-align:left">等待足够的时间来确保远程TCP接收到其连接终止请求的确认</td>
+</tr>
+</tbody>
+</table>
 <p>参考；</p>
 <ul>
 <li><p><a href="https://www.runoob.com/w3cnote/8-awesome-awk-built-in-variables.html" target="_blank" rel="noopener">https://www.runoob.com/w3cnote/8-awesome-awk-built-in-variables.html</a></p>

@@ -58,7 +58,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">145字</span>
+            <span class="post-count">197字</span>
         </span>
     </span>
 
@@ -106,6 +106,9 @@
 <h3 id="service操作"><a href="#service操作" class="headerlink" title="service操作"></a>service操作</h3><p>为webui创建service<br><code>kubectl expose deploy/webui --type=NodePort --port=80</code></p>
 <h3 id="log操作"><a href="#log操作" class="headerlink" title="log操作"></a>log操作</h3><p>查看deploy日志<br><code>kubectl logs deploy/pingpong</code></p>
 <p>查看pod日志<br><code>kubect logs [ pod_name]</code></p>
+<p>或者脚本</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env bash</span></span><br><span class="line">DEPLOYMENT=<span class="variable">$1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> p <span class="keyword">in</span> $(kubectl get pods | grep ^<span class="variable">$&#123;DEPLOYMENT&#125;</span>- | cut -f 1 -d <span class="string">' '</span>); <span class="keyword">do</span> </span><br><span class="line">    <span class="built_in">echo</span> --------------------------- </span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$p</span> </span><br><span class="line">    <span class="built_in">echo</span> --------------------------- </span><br><span class="line">    kubectl logs <span class="variable">$p</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<h3 id="批量sacle"><a href="#批量sacle" class="headerlink" title="批量sacle"></a>批量sacle</h3><p><code>kubectl get deploy -n &lt;YOUR_NAMESPACE&gt; -o name | xargs -I % kubectl scale % --replicas=0 -n &lt;YOUR_NAMESPACE&gt;</code></p>
 <hr>
 <p>More Ref:</p>
 <ul>
