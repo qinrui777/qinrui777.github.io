@@ -64,6 +64,444 @@
     
     
     
+    <article id="post-Github-Actions-E07上下文和表达式语法" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/04/01/Github-Actions-E07上下文和表达式语法/"
+    >Github Actions E07上下文和表达式语法</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/04/01/Github-Actions-E07上下文和表达式语法/" class="article-date">
+  <time datetime="2020-04-01T02:28:06.000Z" itemprop="datePublished">2020-04-01</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/CICD/">CICD</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
+<p>如果没有这些内容，workflow照样可以运行起来；但利用上下文获取的信息和内置的表达式功能可以大大帮助我们轻松地完成更多的事情。另外，上下文和环境变量中的部分内容的目的是一样的，在选择时，用自己习惯的之一就好。</p>
+</blockquote>
+<h3 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1. 介绍"></a>1. 介绍</h3><p>可以使用表达式程序化设置工作流程文件中的变量和访问上下文。表达式可以是文字值、上下文引用或函数的任意组合。可以使用运算符组合文字、上下文引用和函数</p>
+<p>在if条件条件下使用表达式时，不需要使用表达式语法，因为GitHub会自动将if条件条件计算为表达式。</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># if 条件的示例表达式</span></span><br><span class="line"><span class="attr">steps:</span></span><br><span class="line"><span class="attr">  - uses:</span> <span class="string">actions/hello-world-javascript-action@master</span></span><br><span class="line"><span class="attr">    if:</span> <span class="string">&lt;expression&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-上下文"><a href="#2-上下文" class="headerlink" title="2. 上下文"></a>2. 上下文</h3><p>Contexts are a way to access information about workflow runs, runner environments, jobs, and steps. 上下文使用表达式语法。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">上下文名称</th>
+<th>类型</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">github</td>
+<td>对象</td>
+<td style="text-align:left">工作流程运行的相关信息。 更多信息请参阅 github 上下文。</td>
+</tr>
+<tr>
+<td style="text-align:left">env</td>
+<td>对象</td>
+<td style="text-align:left">Contains environment variables set in a workflow, job, or step. For more information, see env context .</td>
+</tr>
+<tr>
+<td style="text-align:left">job</td>
+<td>对象</td>
+<td style="text-align:left">当前执行的作业相关信息。 更多信息请参阅 job 上下文。</td>
+</tr>
+<tr>
+<td style="text-align:left">steps</td>
+<td>对象</td>
+<td style="text-align:left">此作业中已经运行的步骤的相关信息。 更多信息请参阅 steps 上下文。</td>
+</tr>
+<tr>
+<td style="text-align:left">runner</td>
+<td>对象</td>
+<td style="text-align:left">运行当前作业的运行程序相关信息。 For more information, see runner context.</td>
+</tr>
+<tr>
+<td style="text-align:left">secrets</td>
+<td>对象</td>
+<td style="text-align:left">用于访问仓库中设置的密码。 For more information about secrets, see “Creating and using encrypted secrets.”</td>
+</tr>
+<tr>
+<td style="text-align:left">strategy</td>
+<td>对象</td>
+<td style="text-align:left">用于访问配置的策略参数及当前作业的相关信息。 策略参数包括 fail-fast、job-index、job-total 和 max-parallel。</td>
+</tr>
+<tr>
+<td style="text-align:left">matrix</td>
+<td>对象</td>
+<td style="text-align:left">用于访问为当前作业配置的矩阵参数。 例如，如果使用 os 和 node 版本配置矩阵构建，matrix 上下文对象将包含当前作业的 os 和 node 版本。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="2-1-github-context"><a href="#2-1-github-context" class="headerlink" title="2.1 github context"></a>2.1 github context</h4><p>官网中也提到 <strong>你可以在环境变量中读取到大多数的 github 上下文</strong></p>
+<p>作为表达式的一部分，您可以使用以下两种语法之一访问上下文信息。</p>
+<p>索引语法：github[‘sha’]<br>属性解除参考语法：github.sha </p>
+<blockquote>
+<p>注意: 在使用敏感信息时，需要更加小心。在控制台日志输出时，Github 会遮掩sercrets。但是当导出或打印上下文时应谨慎行事。</p>
+</blockquote>
+<h4 id="2-2-env-context"><a href="#2-2-env-context" class="headerlink" title="2.2 env context"></a>2.2 env context</h4><p>env上下文包含在工作流，作业或步骤中设置的环境变量。 有关在工作流中设置环境变量的更多信息，可参见之前的文章–<a href="https://www.devops-tech.cn/2020/03/24/Github-Actions-E05%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" target="_blank" rel="noopener">Github Actions E05环境变量</a></p>
+<p>env上下文语法允许您在工作流文件中使用环境变量的值。 如果要在runner中使用环境变量的值，请使用runner操作系统的常规方法读取环境变量。</p>
+<h4 id="2-3-job-context"><a href="#2-3-job-context" class="headerlink" title="2.3 job context"></a>2.3 job context</h4><p>job 上下文包含当前正在运行的作业相关信息。</p>
+<h4 id="2-4-steps-context"><a href="#2-4-steps-context" class="headerlink" title="2.4 steps context"></a>2.4 steps context</h4><p>steps 上下文包含当前作业中已经运行的步骤相关信息。</p>
+<h4 id="2-5-runner-context"><a href="#2-5-runner-context" class="headerlink" title="2.5 runner context"></a>2.5 runner context</h4><h4 id="2-6-secrets-context"><a href="#2-6-secrets-context" class="headerlink" title="2.6 secrets context"></a>2.6 secrets context</h4><h4 id="2-7-strategy-context"><a href="#2-7-strategy-context" class="headerlink" title="2.7 strategy context"></a>2.7 strategy context</h4><h4 id="2-8-matrix-context"><a href="#2-8-matrix-context" class="headerlink" title="2.8 matrix context"></a>2.8 matrix context</h4><p>各种上下文列表(还没看得到 strategy、matrix的使用)</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性名称</th>
+<th>类型</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">github</td>
+<td>object</td>
+<td style="text-align:left">工作流程中任何作业或步骤期间可用的顶层上下文。</td>
+</tr>
+<tr>
+<td style="text-align:left">github.event</td>
+<td>object</td>
+<td style="text-align:left">完整事件 web 挂钩有效负载。 更多信息请参阅“触发工作流程的事件”。</td>
+</tr>
+<tr>
+<td style="text-align:left">github.event_path</td>
+<td>string</td>
+<td style="text-align:left">The path to the full event webhook payload on the runner.</td>
+</tr>
+<tr>
+<td style="text-align:left">github.workflow</td>
+<td>string</td>
+<td style="text-align:left">工作流程的名称。 如果工作流程文件未指定 name，此属性的值将是仓库中工作流程文件的完整路径。</td>
+</tr>
+<tr>
+<td style="text-align:left">github…</td>
+<td></td>
+<td style="text-align:left">github上下文还有很多，详情请见xx</td>
+</tr>
+<tr>
+<td style="text-align:left">env</td>
+<td>object</td>
+<td style="text-align:left">此上下文针对作业中的每个步骤而改变。 您可以从作业中的任何步骤访问此上下文。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>env.&lt;env name&gt;</code></td>
+<td>string</td>
+<td style="text-align:left">某一个具体环境变量的值。  (完)</td>
+</tr>
+<tr>
+<td style="text-align:left">job</td>
+<td>object</td>
+<td style="text-align:left">此上下文针对工作流程运行中的每项作业而改变。 您可以从作业中的任何步骤访问此上下文。</td>
+</tr>
+<tr>
+<td style="text-align:left">job.status</td>
+<td>string</td>
+<td style="text-align:left">作业的当前状态。 可能的值包括 success、failure 或 cancelled。</td>
+</tr>
+<tr>
+<td style="text-align:left">job.container</td>
+<td>object</td>
+<td style="text-align:left">作业的容器相关信息。 有关容器的更多信息，请参阅“GitHub 操作 的工作流程语法”。</td>
+</tr>
+<tr>
+<td style="text-align:left">job.container.id</td>
+<td>string</td>
+<td style="text-align:left">容器的 id。</td>
+</tr>
+<tr>
+<td style="text-align:left">job…</td>
+<td></td>
+<td style="text-align:left">job 上下文还有很多，详情请见xx</td>
+</tr>
+<tr>
+<td style="text-align:left">steps</td>
+<td>object</td>
+<td style="text-align:left">此上下文针对作业中的每个步骤而改变。 您可以从作业中的任何步骤访问此上下文。</td>
+</tr>
+<tr>
+<td style="text-align:left">steps.<step id>.outputs</step></td>
+<td>object</td>
+<td style="text-align:left">为步骤定义的输出集。 更多信息请参阅“GitHub 操作 的元数据语法”。</td>
+</tr>
+<tr>
+<td style="text-align:left">steps.<step id>.outputs.<output name></output></step></td>
+<td>string</td>
+<td style="text-align:left">特定输出的值。（完）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-文字"><a href="#3-文字" class="headerlink" title="3. 文字"></a>3. 文字</h3><p>作为表达式的一部分，您可以使用 boolean、null、number 或 string 数据类型。 Boolean 文字不区分大小写，因此可以使用 true 或 True。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">数据类型</th>
+<th>文字值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">boolean</td>
+<td>true 或 false</td>
+</tr>
+<tr>
+<td style="text-align:left">null</td>
+<td>null</td>
+</tr>
+<tr>
+<td style="text-align:left">number</td>
+<td>JSON 支持的任何数字格式。</td>
+</tr>
+<tr>
+<td style="text-align:left">string</td>
+<td>必须使用单引号。 使用单引号逸出文字单引号。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="4-运算符"><a href="#4-运算符" class="headerlink" title="4. 运算符"></a>4. 运算符</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">运算符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>( )</code></td>
+<td>逻辑分组</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>[ ]</code></td>
+<td>索引</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>.</code></td>
+<td>属性解除参考</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>!</code></td>
+<td>非</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;</code></td>
+<td>小于</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;=</code></td>
+<td>小于或等于</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&gt;</code></td>
+<td>大于</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&gt;=</code></td>
+<td>大于或等于</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>==</code></td>
+<td>等于</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>!=</code></td>
+<td>不等于</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&amp;&amp;</code></td>
+<td>和</td>
+</tr>
+<tr>
+<td style="text-align:left">&#124; &#124;</td>
+<td>或</td>
+</tr>
+</tbody>
+</table>
+<p>GitHub 进行宽松的等式比较。</p>
+<ul>
+<li>如果类型不匹配，GitHub 强制转换类型为数字。 GitHub 使用这些转换将数据类型转换为数字：</li>
+<li>一个 NaN 与另一个 NaN 的比较不会产生 true。</li>
+<li>GitHub 在比较字符串时忽略大小写。</li>
+<li>对象和数组仅在为同一实例时才视为相等。</li>
+</ul>
+<h3 id="5-函数"><a href="#5-函数" class="headerlink" title="5. 函数"></a>5. 函数</h3><p>GitHub 提供一组内置的函数，可用于表达式。 有些函数抛出值到字符串以进行比较。 GitHub 使用这些转换将数据类型转换为字符串。 函数有 contains、startsWith、 endsWith、 format、 join、 toJson、 hashFiles，还有一类作业状态检查函数，有 success、always、 cancelled、 failure。有些类似Jenkins中的post使用的一些判断条件，但github actions是使用于step中的。具体使用详情可见<a href="https://help.github.com/cn/actions/reference/context-and-expression-syntax-for-github-actions#functions" target="_blank" rel="noopener">官网</a></p>
+<h3 id="6-对象过滤器"><a href="#6-对象过滤器" class="headerlink" title="6. 对象过滤器"></a>6. 对象过滤器</h3><p>可以使用 * 语法应用过滤条件并从集合中选择匹配的项目。</p>
+<p>例如，考虑名为 fruits 的对象数组。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  &#123; <span class="string">"name"</span>: <span class="string">"apple"</span>, <span class="string">"quantity"</span>: 1 &#125;,</span><br><span class="line">  &#123; <span class="string">"name"</span>: <span class="string">"orange"</span>, <span class="string">"quantity"</span>: 2 &#125;,</span><br><span class="line">  &#123; <span class="string">"name"</span>: <span class="string">"pear"</span>, <span class="string">"quantity"</span>: 1 &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
+<p>过滤条件 fruits.*.name 返回数组 [ “apple”, “orange”, “pear” ]</p>
+<hr>
+<p><strong>由于项目实践还不多，等我哪天需要用到这些功能，以完成一些特殊情况的需求时，再来一一举例。</strong></p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GA/">GA</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-Github-Actions-E06产出物" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/03/30/Github-Actions-E06产出物/"
+    >Github Actions E06产出物</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/03/30/Github-Actions-E06产出物/" class="article-date">
+  <time datetime="2020-03-30T07:29:31.000Z" itemprop="datePublished">2020-03-30</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/CICD/">CICD</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
+<p>大多数时候，workflow的产出物都会直接传到对应的某些仓库，比如docker image会送到docker hub这种仓库存储。这种时候是不需要在workflow再额外的管理产出物，但也不能全盘否定；有时候我们没有一个方便的地方去存储某些形式的文件等，就需要我们有类似jenkins <code>archiveArtifacts</code> 功能。但github actions能做的会更多，请期待。</p>
+</blockquote>
+<h3 id="1-关于artifacts"><a href="#1-关于artifacts" class="headerlink" title="1. 关于artifacts"></a>1. 关于artifacts</h3><p>构件是指在工作流程运行过程中产生的文件或文件集。<br>GitHub 提供两项可用于上传和下载构建构件的操作。 上传到工作流程运行的文件将使用 .zip 格式存档。 更多信息请参阅 <code>action/upload-artifact</code> 和 <code>download-artifact</code> 操作。</p>
+<p>这些是您可能想要上传的一些常见构建和测试输出构件：</p>
+<ul>
+<li>日志文件和核心转储文件</li>
+<li>测试结果、失败和屏幕截图</li>
+<li>二进制或存档文件</li>
+<li>压力测试性能输出和代码覆盖结果</li>
+</ul>
+<p>当作业完成时，运行程序将终止并删除虚拟环境的实例。</p>
+<h3 id="2-上传"><a href="#2-上传" class="headerlink" title="2. 上传"></a>2. 上传</h3><p>常见的场景: 一个java程序的产出物是一个jar包，在构建之后需要得到这个jar用于其他环境部署。</p>
+<p>依旧用 <a href="https://github.com/cicd-draft/api-test-demo" target="_blank" rel="noopener">api-test-demo</a> 这个仓库做演示，主要分为以下个步骤：</p>
+<ul>
+<li>1.下载代码；</li>
+<li>2.构建jar包(存放于指定到路径<code>build/libs/api-demo-0.0.1-SNAPSHOT.jar</code>)；</li>
+<li>3.上传jar包</li>
+</ul>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">my</span> <span class="string">workflow</span> <span class="string">demo</span> </span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span> </span><br><span class="line"><span class="attr">  push:</span></span><br><span class="line"><span class="attr">    branches:</span> </span><br><span class="line"><span class="bullet">      -</span> <span class="string">master</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  artifacts_demo_job:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">job1</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">Checkout</span> <span class="string">code</span></span><br><span class="line"><span class="attr">      uses:</span> <span class="string">actions/checkout@v1</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">Build</span> <span class="string">jar</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        pwd  &amp;&amp; ls -l</span></span><br><span class="line"><span class="string">        ./gradlew -x jar build</span></span><br><span class="line"><span class="string">        ls -l build/libs/api-demo-0.0.1-SNAPSHOT.jar</span></span><br><span class="line"><span class="string"></span><span class="attr">    - name:</span> <span class="string">Archive</span> <span class="string">SNAPSHOT.jar</span></span><br><span class="line"><span class="attr">      uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">      with:</span></span><br><span class="line"><span class="attr">        name:</span> <span class="string">api_snapshot_jar</span></span><br><span class="line"><span class="attr">        path:</span> <span class="string">build/libs/api-demo-0.0.1-SNAPSHOT.jar</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>github actions 工作流的产出物都放在哪里的，保留多久</p>
+</blockquote>
+<h3 id="3-下载"><a href="#3-下载" class="headerlink" title="3. 下载"></a>3. 下载</h3><p>步骤官方说明如下：</p>
+<ul>
+<li>1.On GitHub, navigate to the main page of the repository.</li>
+<li>2.Under your repository name, click Actions.</li>
+<li>3.In the left sidebar, click the workflow you want to see.</li>
+<li>4.Under “Workflow runs”, click the name of the run you want to see.</li>
+<li>5.To download artifacts, use the Artifacts drop-down menu, and select the artifact you want to download.</li>
+<li>6.To delete artifacts, use the Artifacts drop-down menu, and click .</li>
+</ul>
+<p>注意事项：</p>
+<ul>
+<li>保留90天</li>
+<li>一旦删除某一个构件，无法恢复</li>
+</ul>
+<h3 id="4-在工作流程中作业之间传递数据"><a href="#4-在工作流程中作业之间传递数据" class="headerlink" title="4. 在工作流程中作业之间传递数据"></a>4. 在工作流程中作业之间传递数据</h3><p><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts#passing-data-between-jobs-in-a-workflow" target="_blank" rel="noopener">https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts#passing-data-between-jobs-in-a-workflow</a></p>
+<p>由于同一个workflow的多个job分别运行在不同的虚拟主机上，下面示例工作流程说明如何在相同工作流程中的任务之间传递数据。关键词 <strong>need</strong> 用来确保job按顺序运行.</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Share</span> <span class="string">data</span> <span class="string">between</span> <span class="string">jobs</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span> <span class="string">[push]</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  job_1:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Add</span> <span class="number">3</span> <span class="string">and</span> <span class="number">7</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          expr 3 + 7 &gt; math-homework.txt</span></span><br><span class="line"><span class="string"></span><span class="attr">      - name:</span> <span class="string">Upload</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">1</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">          path:</span> <span class="string">math-homework.txt</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  job_2:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Multiply</span> <span class="string">by</span> <span class="number">9</span></span><br><span class="line"><span class="attr">    needs:</span> <span class="string">job_1</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">windows-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Download</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">1</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/download-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">      - shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          value=`cat homework/math-homework.txt`</span></span><br><span class="line"><span class="string">          expr $value \* 9 &gt; homework/math-homework.txt</span></span><br><span class="line"><span class="string"></span><span class="attr">      - name:</span> <span class="string">Upload</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">2</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">          path:</span> <span class="string">homework/math-homework.txt</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  job_3:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Display</span> <span class="string">results</span></span><br><span class="line"><span class="attr">    needs:</span> <span class="string">job_2</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">macOS-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Download</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">2</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/download-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Print</span> <span class="string">the</span> <span class="string">final</span> <span class="string">result</span></span><br><span class="line"><span class="attr">        shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          value=`cat homework/math-homework.txt`</span></span><br><span class="line"><span class="string">          echo The result is $value</span></span><br></pre></td></tr></table></figure>
+<hr>
+<p><strong>More Ref:</strong></p>
+<ul>
+<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts" target="_blank" rel="noopener">关于该篇的原文</a></li>
+</ul>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GA/">GA</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-Github-Actions-E05环境变量" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -1017,228 +1455,13 @@
 
 </article>
     
-    <article id="post-画UML" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/02/25/画UML/"
-    >画UML</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/02/25/画UML/" class="article-date">
-  <time datetime="2020-02-25T08:54:48.000Z" itemprop="datePublished">2020-02-25</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Tools/">Tools</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>TL;DR<br>用 <strong>文字</strong> + <strong>工具</strong> ，画个好图</p>
-<h3 id="什么是-UML"><a href="#什么是-UML" class="headerlink" title="什么是 UML"></a>什么是 UML</h3><p>全称 Unified Modelling Language,<a href="https://zh.wikipedia.org/wiki/%E7%BB%9F%E4%B8%80%E5%BB%BA%E6%A8%A1%E8%AF%AD%E8%A8%80" target="_blank" rel="noopener">UML维基百科</a></p>
-<h3 id="什么是-PlantUML"><a href="#什么是-PlantUML" class="headerlink" title="什么是 PlantUML"></a>什么是 PlantUML</h3><p>是一个开源项目，支持快速绘制各种图，包括 时序图、用例图、类图、活动图、组件图、状态图、对象图、部署图、定时图；同时还支持以下非UML图:线框、图形界面、架构图、规范和描述语言 (SDL)、Dita diagram、甘特图 、思维导图 </p>
-<p>官网：<a href="https://plantuml.com/zh/" target="_blank" rel="noopener">https://plantuml.com/zh/</a>, 包含了各种具体用法，比如更改字的颜色，图片背景颜色等</p>
-<h3 id="举几个🌰🌰"><a href="#举几个🌰🌰" class="headerlink" title="举几个🌰🌰"></a>举几个🌰🌰</h3><p><strong>示例1: 画一个UML</strong><br>工具: VSCode +  插件 plantuml<br>步骤：</p>
-<ul>
-<li>1.打开VSCode,安装插件 plantuml <blockquote>
-<p>似乎要提前安装JDK,由于我本机已经安装，暂没验证这一步</p>
-</blockquote>
-</li>
-<li>2.新建文件 <code>example1.wsd</code></li>
-<li><p>3.添加内容如下：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@startmindmap</span><br><span class="line">skinparam  true</span><br><span class="line">* 数据库运维</span><br><span class="line">** 安装</span><br><span class="line">*** 如何安装</span><br><span class="line">*** 如何设置高可用</span><br><span class="line">** 备份</span><br><span class="line">** 恢复</span><br><span class="line">@endmindmap</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>4.按 <code>alt + d</code>,立马会生成UML图</p>
-</li>
-</ul>
-<p><strong>示例2: 给md文档添加 UML 图</strong><br>好处：不用单独保留一张图片，然后再插入到 <code>readme.md</code> 文档中<br>工具: markdown<br>新建md文件，比如 <code>example2.md</code>,成果如下：</p>
-<p><img src="/images/uml_example2.png" width="80%" height="80%"></p>
-<p>只能利用vscode 打开时，才能看到图形，如用浏览器，打开一个readme.md文档，是无法看到图形的</p>
-<hr>
-<p><strong>More Ref:</strong>  </p>
-<ol>
-<li><a href="https://zh.wikipedia.org/wiki/%E7%BB%9F%E4%B8%80%E5%BB%BA%E6%A8%A1%E8%AF%AD%E8%A8%80" target="_blank" rel="noopener">UML维基百科</a></li>
-<li><a href="https://www.freecodecamp.org/news/inserting-uml-in-markdown-using-vscode/" target="_blank" rel="noopener">参考例子</a></li>
-<li><a href="https://youtu.be/0MEs4WrOZmk" target="_blank" rel="noopener">youtube视频</a></li>
-</ol>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools/">Tools</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-移动端打包pipeline通识：从零开始" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/01/03/移动端打包pipeline通识：从零开始/"
-    >移动端打包pipeline通识：从零开始</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/01/03/移动端打包pipeline通识：从零开始/" class="article-date">
-  <time datetime="2020-01-03T04:50:40.000Z" itemprop="datePublished">2020-01-03</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/CICD/">CICD</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>背景： 一台被格式化后的 MacBook Pro, 对某个移动端项目( xx类型 )做android pipeline、iOS pipeline</p>
-<p>网络：公司网络（可翻墙）</p>
-<blockquote>
-<p>makefile</p>
-</blockquote>
-<p>记得验证/确认</p>
-<h3 id="1-安装-Set-up"><a href="#1-安装-Set-up" class="headerlink" title="1-安装/Set up"></a>1-安装/Set up</h3><h5 id="1-1-install-brew"><a href="#1-1-install-brew" class="headerlink" title="1.1 install brew"></a>1.1 install brew</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/ruby -e <span class="string">"<span class="variable">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)</span>"</span></span><br><span class="line"></span><br><span class="line">brew -v</span><br></pre></td></tr></table></figure>
-<p>brew cask 是在brew 的基础上一个增强的工具，用来安装Mac上的Gui程序应用包（.dmg/.pkg）, 比如qq、chrome等。它先下载解压到统一的目录中（/opt/homebrew-cask/Caskroom），省掉了自己去下载、解压、拖拽（安装）等步骤，同样，卸载相当容易与干净。然后再软链到~/Applications/目录下, 非常方便，而且还包含很多在 AppStore 里没有的常用软件。</p>
-<h5 id="1-2-install-brew-cask"><a href="#1-2-install-brew-cask" class="headerlink" title="1.2 install brew cask"></a>1.2 install brew cask</h5><p><code>brew install brew-cask-completion</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">➜  Desktop brew cask</span><br><span class="line">Homebrew Cask provides a friendly CLI workflow <span class="keyword">for</span> the administration</span><br><span class="line">of macOS applications distributed as binaries.</span><br><span class="line"></span><br><span class="line">Commands:</span><br><span class="line"></span><br><span class="line">    --cache    display the file used to cache the Cask</span><br><span class="line">    audit      verifies installability of Casks</span><br><span class="line">    cat        dump raw <span class="built_in">source</span> of the given Cask to the standard output</span><br><span class="line">    create     creates the given Cask and opens it <span class="keyword">in</span> an editor</span><br><span class="line">    doctor     checks <span class="keyword">for</span> configuration issues</span><br><span class="line">    edit       edits the given Cask</span><br><span class="line">    fetch      downloads remote application files to <span class="built_in">local</span> cache</span><br><span class="line">    home       opens the homepage of the given Cask</span><br><span class="line">    info       displays information about the given Cask</span><br><span class="line">    install    installs the given Cask</span><br><span class="line">    list       with no args, lists installed Casks; given installed Casks, lists staged files</span><br><span class="line">    outdated   list the outdated installed Casks</span><br><span class="line">    reinstall  reinstalls the given Cask</span><br><span class="line">    style      checks Cask style using RuboCop</span><br><span class="line">    uninstall  uninstalls the given Cask</span><br><span class="line">    upgrade    upgrades all outdated casks</span><br><span class="line">    zap        zaps all files associated with the given Cask</span><br><span class="line"></span><br><span class="line">See also <span class="string">"man brew-cask"</span></span><br></pre></td></tr></table></figure>
-<h5 id="1-3-install-java"><a href="#1-3-install-java" class="headerlink" title="1.3 install java"></a>1.3 install java</h5><h3 id="方法一-官网下载"><a href="#方法一-官网下载" class="headerlink" title="方法一: 官网下载"></a>方法一: 官网下载</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget --no-cookies --no-check-certificate --header <span class="string">"Cookie: gpw_e24=http%3a%2F%2Fwww.oracle.com%2Ftechnetwork%2Fjava%2Fjavase%2Fdownloads%2Fjdk8-downloads-2133151.html; oraclelicense=accept-securebackup-cookie;"</span> <span class="string">"https://download.oracle.com/otn/java/jdk/8u231-b11/5b13a193868b4bf28bcb45c792fce896/jdk-8u231-macosx-x64.dmg"</span></span><br></pre></td></tr></table></figure>
-<p>方法二： brew cask下载</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew tap homebrew/cask-versions</span><br><span class="line">brew cask install adoptopenjdk8</span><br></pre></td></tr></table></figure>
-<p>检查版本：<code>java -version</code></p>
-<h5 id="1-4-install-jenkins"><a href="#1-4-install-jenkins" class="headerlink" title="1.4 install jenkins"></a>1.4 install jenkins</h5><p>在Mac OS上安装jenkins的N(4)种方法</p>
-<ul>
-<li>方法一： 下载war包，java命令启动<br><code>curl -L -O http://mirrors.jenkins-ci.org/war/2.211/jenkins.war</code></li>
-</ul>
-<p><code>java -jar /xx/xx/jenkins.war --httpPort=8080</code></p>
-<ul>
-<li><p>方法二： 将下载的war包文件部署到 tomcat servlet 容器，用脚本 startup.sh 启动</p>
-<blockquote>
-<p>暂不介绍</p>
-</blockquote>
-</li>
-<li><p>方法三： brew 安装&amp;启动</p>
-</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#install jenkins, Requires Java 1.8, [issus](https://github.com/Homebrew/homebrew-core/issues/39037)</span></span><br><span class="line">brew install jenkins-lts</span><br><span class="line"><span class="comment"># start jenkins, default port: 8080</span></span><br><span class="line">brew services start jenkins-lts</span><br><span class="line"><span class="comment"># stop jenkins</span></span><br><span class="line">brew services stop jenkins-lts</span><br></pre></td></tr></table></figure>
-<blockquote>
-<ul>
-<li>修改默认端口 <a href="https://medium.com/@vishnuteja/install-jenkins-as-a-service-on-macos-and-change-port-number-9aa097e5cfbf" target="_blank" rel="noopener">link</a></li>
-<li>假设希望jenkins能够开机自启动以及异常自己主动重新启动 <a href="https://yq.aliyun.com/articles/349494?spm=a2c4e.11153940.0.0.2a706e73I8msiV" target="_blank" rel="noopener">link</a></li>
-</ul>
-</blockquote>
-<p><code>sudo touch /Library/LaunchDaemons/org.jenkins-ci.plist</code></p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">plist</span> <span class="attr">version</span>=<span class="string">"1.0"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">dict</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>Label<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">string</span>&gt;</span>Jenkins<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>KeepAlive<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">true</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>ProgramArguments<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">array</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">string</span>&gt;</span>/usr/bin/java<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">string</span>&gt;</span>-Dmail.smtp.starttls.enable=true<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">string</span>&gt;</span>-jar<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">string</span>&gt;</span>/usr/local/opt/jenkins/libexec/jenkins.war<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">string</span>&gt;</span>--httpListenAddress=127.0.0.1<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">string</span>&gt;</span>--httpPort=8080<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">array</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>RunAtLoad<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">true</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>UserName<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">string</span>&gt;</span>jenkins<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">dict</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plist</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>方法四： docker container 启动，添加宿主机作为一个slave node，并使用</li>
-</ul>
-<p>TODO:<br>[] jenkins加入到开机自启动<br>[X] 定制化配置等</p>
-<p>我是谁 -&gt; <code>whoami</code><br>我在哪里 -&gt; <code>pwd &amp;&amp; ls -al</code><br>我要到哪里去 -&gt;  <em>New item</em></p>
-<h3 id="配置项目pipeline"><a href="#配置项目pipeline" class="headerlink" title="配置项目pipeline"></a>配置项目pipeline</h3><p>安装项目所需工具 cocoapods </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># install cocoapods</span></span><br><span class="line">sudo gem install cocoapods</span><br></pre></td></tr></table></figure>
-<p>检查所有工具的版本<br>xcodebuild -version<br>react-native</p>
-<p>添加jenkins 凭证</p>
-<p>ref:</p>
-<ul>
-<li><a href="https://juejin.im/post/5cd2a50e518825356d54b847" target="_blank" rel="noopener">brew &amp; brew cask</a></li>
-</ul>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
   </article>
   
 
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/2/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/4/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/2/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/4/">下一页</a>
   </nav>
   
 </section>
