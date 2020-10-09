@@ -64,96 +64,6 @@
     
     
     
-    <article id="post-kubectl-常用命令" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/10/21/kubectl-常用命令/"
-    >kubectl 常用命令</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/10/21/kubectl-常用命令/" class="article-date">
-  <time datetime="2019-10-21T07:35:21.000Z" itemprop="datePublished">2019-10-21</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h3 id="label操作"><a href="#label操作" class="headerlink" title="label操作"></a>label操作</h3><p>删除 label version=xx</p>
-<p><code>kubectl label pod webui-746df859ff-z5fwt version-</code></p>
-<p>添加 label<br><code>kubectl label pods labelex owner=michael</code></p>
-<h3 id="deploy操作"><a href="#deploy操作" class="headerlink" title="deploy操作"></a>deploy操作</h3><p><code>kubectl create delpoy [deploy_name] --image=nginx</code></p>
-<p><code>kubectl create deployment httpenv --image=iasonliu/httpenv</code></p>
-<p>kubectl run [pod_name] –image=busybox</p>
-<p>example:<br><code>kubectl run pingpong --image=alpine ping 1.1.1.1</code> or <code>kubectl run pingpong2 --image alpine ping 1.1.1.1</code></p>
-<blockquote>
-<p>当我们使用 kubectl run something启动deplyment的时候，label会是 run=something</p>
-</blockquote>
-<p><code>kubectl set image deployment/nginx busybox=busybox nginx=nginx:1.9.1</code></p>
-<h3 id="service操作"><a href="#service操作" class="headerlink" title="service操作"></a>service操作</h3><p>为webui创建service<br><code>kubectl expose deploy/webui --type=NodePort --port=80</code></p>
-<h3 id="log操作"><a href="#log操作" class="headerlink" title="log操作"></a>log操作</h3><p>查看deploy日志<br><code>kubectl logs deploy/pingpong</code></p>
-<p>查看pod日志<br><code>kubect logs [ pod_name]</code></p>
-<p>或者脚本</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env bash</span></span><br><span class="line">DEPLOYMENT=<span class="variable">$1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> p <span class="keyword">in</span> $(kubectl get pods | grep ^<span class="variable">$&#123;DEPLOYMENT&#125;</span>- | cut -f 1 -d <span class="string">' '</span>); <span class="keyword">do</span> </span><br><span class="line">    <span class="built_in">echo</span> --------------------------- </span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$p</span> </span><br><span class="line">    <span class="built_in">echo</span> --------------------------- </span><br><span class="line">    kubectl logs <span class="variable">$p</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-<h3 id="批量sacle"><a href="#批量sacle" class="headerlink" title="批量sacle"></a>批量sacle</h3><p><code>kubectl get deploy -n &lt;YOUR_NAMESPACE&gt; -o name | xargs -I % kubectl scale % --replicas=0 -n &lt;YOUR_NAMESPACE&gt;</code></p>
-<hr>
-<p>More Ref:</p>
-<ul>
-<li><a href="http://kubernetesbyexample.com/" target="_blank" rel="noopener">http://kubernetesbyexample.com/</a></li>
-<li><a href="https://linuxacademy.com/blog/containers/kubernetes-cheat-sheet/" target="_blank" rel="noopener">https://linuxacademy.com/blog/containers/kubernetes-cheat-sheet/</a></li>
-<li><a href="http://docs.kubernetes.org.cn/683.html" target="_blank" rel="noopener">http://docs.kubernetes.org.cn/683.html</a></li>
-</ul>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/k8s/">k8s</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
     <article id="post-devops-4大支柱" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -1027,13 +937,96 @@
 
 </article>
     
+    <article id="post-highlight-code-on-slide-ppt" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/08/22/highlight-code-on-slide-ppt/"
+    >highlight code on slide/ppt</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/08/22/highlight-code-on-slide-ppt/" class="article-date">
+  <time datetime="2019-08-22T03:34:41.000Z" itemprop="datePublished">2019-08-22</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p><strong>only for mac</strong></p>
+<p><strong>问题</strong><br>写ppt的时候代码如何呈现，能够看起来比较明显，更好是根据不同语言高亮</p>
+<p><strong>解决方案</strong><br>highlight</p>
+<ol>
+<li><p>Install<br><code>brew install highlight</code></p>
+</li>
+<li><p>Use<br><code>hightlight -l -O rtf your_code.sh | pbcopy</code></p>
+</li>
+</ol>
+<ul>
+<li>hightlight –help 可以查看文档，</li>
+<li>-l 显示行号，-O rtf为格式化输出 rtf 格式文本</li>
+<li>pbcopy 是内置剪贴板</li>
+</ul>
+<p>到PPT里粘贴就行了，Keynote 和 PowerPoint 都可以使用.<br>example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ cat output.sh</span><br><span class="line">docker <span class="built_in">exec</span> -it -u root tw-jenkins bash</span><br><span class="line"></span><br><span class="line">chmod 777 /var/run/docker.sock</span><br><span class="line">apt-get update &amp;&amp; \</span><br><span class="line">apt-get -y install apt-transport-https \</span><br><span class="line">     ca-certificates \</span><br><span class="line">     curl \</span><br><span class="line">     gnupg2 \</span><br><span class="line">     software-properties-common &amp;&amp; \</span><br><span class="line">curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; <span class="built_in">echo</span> <span class="string">"<span class="variable">$ID</span>"</span>)/gpg &gt; /tmp/dkey; apt-key add /tmp/dkey &amp;&amp; \</span><br><span class="line">add-apt-repository \</span><br><span class="line">    <span class="string">"deb [arch=amd64] https://download.docker.com/linux/<span class="variable">$(. /etc/os-release; echo     "$ID")</span> \</span></span><br><span class="line"><span class="string">    <span class="variable">$(lsb_release -cs)</span> \</span></span><br><span class="line"><span class="string">stable"</span> &amp;&amp; \</span><br><span class="line">apt-get update &amp;&amp; \</span><br><span class="line">apt-get -y install docker-ce</span><br></pre></td></tr></table></figure></p>
+<p><code>➜  ~ highlight -l -O rtf output.sh | pbcopy</code></p>
+<p><img src="/images/highlight_demo01.png" alt="highlight_demo01.png"></p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PPT/">PPT</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
   </article>
   
 
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/5/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/7/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/5/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/7/">下一页</a>
   </nav>
   
 </section>

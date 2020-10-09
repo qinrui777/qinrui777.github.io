@@ -64,329 +64,6 @@
     
     
     
-    <article id="post-Github-Actions-E07上下文和表达式语法" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/04/01/Github-Actions-E07上下文和表达式语法/"
-    >Github Actions E07上下文和表达式语法</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/04/01/Github-Actions-E07上下文和表达式语法/" class="article-date">
-  <time datetime="2020-04-01T02:28:06.000Z" itemprop="datePublished">2020-04-01</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/CICD/">CICD</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
-<p>如果没有这些内容，workflow照样可以运行起来；但利用上下文获取的信息和内置的表达式功能可以大大帮助我们轻松地完成更多的事情。另外，上下文和环境变量中的部分内容的目的是一样的，在选择时，用自己习惯的之一就好。</p>
-</blockquote>
-<h3 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1. 介绍"></a>1. 介绍</h3><p>可以使用表达式程序化设置工作流程文件中的变量和访问上下文。表达式可以是文字值、上下文引用或函数的任意组合。可以使用运算符组合文字、上下文引用和函数</p>
-<p>在if条件条件下使用表达式时，不需要使用表达式语法，因为GitHub会自动将if条件条件计算为表达式。</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># if 条件的示例表达式</span></span><br><span class="line"><span class="attr">steps:</span></span><br><span class="line"><span class="attr">  - uses:</span> <span class="string">actions/hello-world-javascript-action@master</span></span><br><span class="line"><span class="attr">    if:</span> <span class="string">&lt;expression&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="2-上下文"><a href="#2-上下文" class="headerlink" title="2. 上下文"></a>2. 上下文</h3><p>Contexts are a way to access information about workflow runs, runner environments, jobs, and steps. 上下文使用表达式语法。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">上下文名称</th>
-<th>类型</th>
-<th style="text-align:left">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">github</td>
-<td>对象</td>
-<td style="text-align:left">工作流程运行的相关信息。 更多信息请参阅 github 上下文。</td>
-</tr>
-<tr>
-<td style="text-align:left">env</td>
-<td>对象</td>
-<td style="text-align:left">Contains environment variables set in a workflow, job, or step. For more information, see env context .</td>
-</tr>
-<tr>
-<td style="text-align:left">job</td>
-<td>对象</td>
-<td style="text-align:left">当前执行的作业相关信息。 更多信息请参阅 job 上下文。</td>
-</tr>
-<tr>
-<td style="text-align:left">steps</td>
-<td>对象</td>
-<td style="text-align:left">此作业中已经运行的步骤的相关信息。 更多信息请参阅 steps 上下文。</td>
-</tr>
-<tr>
-<td style="text-align:left">runner</td>
-<td>对象</td>
-<td style="text-align:left">运行当前作业的运行程序相关信息。 For more information, see runner context.</td>
-</tr>
-<tr>
-<td style="text-align:left">secrets</td>
-<td>对象</td>
-<td style="text-align:left">用于访问仓库中设置的密码。 For more information about secrets, see “Creating and using encrypted secrets.”</td>
-</tr>
-<tr>
-<td style="text-align:left">strategy</td>
-<td>对象</td>
-<td style="text-align:left">用于访问配置的策略参数及当前作业的相关信息。 策略参数包括 fail-fast、job-index、job-total 和 max-parallel。</td>
-</tr>
-<tr>
-<td style="text-align:left">matrix</td>
-<td>对象</td>
-<td style="text-align:left">用于访问为当前作业配置的矩阵参数。 例如，如果使用 os 和 node 版本配置矩阵构建，matrix 上下文对象将包含当前作业的 os 和 node 版本。</td>
-</tr>
-</tbody>
-</table>
-<h4 id="2-1-github-context"><a href="#2-1-github-context" class="headerlink" title="2.1 github context"></a>2.1 github context</h4><p>官网中也提到 <strong>你可以在环境变量中读取到大多数的 github 上下文</strong></p>
-<p>作为表达式的一部分，您可以使用以下两种语法之一访问上下文信息。</p>
-<p>索引语法：github[‘sha’]<br>属性解除参考语法：github.sha </p>
-<blockquote>
-<p>注意: 在使用敏感信息时，需要更加小心。在控制台日志输出时，Github 会遮掩sercrets。但是当导出或打印上下文时应谨慎行事。</p>
-</blockquote>
-<h4 id="2-2-env-context"><a href="#2-2-env-context" class="headerlink" title="2.2 env context"></a>2.2 env context</h4><p>env上下文包含在工作流，作业或步骤中设置的环境变量。 有关在工作流中设置环境变量的更多信息，可参见之前的文章–<a href="https://www.devops-tech.cn/2020/03/24/Github-Actions-E05%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" target="_blank" rel="noopener">Github Actions E05环境变量</a></p>
-<p>env上下文语法允许您在工作流文件中使用环境变量的值。 如果要在runner中使用环境变量的值，请使用runner操作系统的常规方法读取环境变量。</p>
-<h4 id="2-3-job-context"><a href="#2-3-job-context" class="headerlink" title="2.3 job context"></a>2.3 job context</h4><p>job 上下文包含当前正在运行的作业相关信息。</p>
-<h4 id="2-4-steps-context"><a href="#2-4-steps-context" class="headerlink" title="2.4 steps context"></a>2.4 steps context</h4><p>steps 上下文包含当前作业中已经运行的步骤相关信息。</p>
-<h4 id="2-5-runner-context"><a href="#2-5-runner-context" class="headerlink" title="2.5 runner context"></a>2.5 runner context</h4><h4 id="2-6-secrets-context"><a href="#2-6-secrets-context" class="headerlink" title="2.6 secrets context"></a>2.6 secrets context</h4><h4 id="2-7-strategy-context"><a href="#2-7-strategy-context" class="headerlink" title="2.7 strategy context"></a>2.7 strategy context</h4><h4 id="2-8-matrix-context"><a href="#2-8-matrix-context" class="headerlink" title="2.8 matrix context"></a>2.8 matrix context</h4><p>各种上下文列表(还没看得到 strategy、matrix的使用)</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">属性名称</th>
-<th>类型</th>
-<th style="text-align:left">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">github</td>
-<td>object</td>
-<td style="text-align:left">工作流程中任何作业或步骤期间可用的顶层上下文。</td>
-</tr>
-<tr>
-<td style="text-align:left">github.event</td>
-<td>object</td>
-<td style="text-align:left">完整事件 web 挂钩有效负载。 更多信息请参阅“触发工作流程的事件”。</td>
-</tr>
-<tr>
-<td style="text-align:left">github.event_path</td>
-<td>string</td>
-<td style="text-align:left">The path to the full event webhook payload on the runner.</td>
-</tr>
-<tr>
-<td style="text-align:left">github.workflow</td>
-<td>string</td>
-<td style="text-align:left">工作流程的名称。 如果工作流程文件未指定 name，此属性的值将是仓库中工作流程文件的完整路径。</td>
-</tr>
-<tr>
-<td style="text-align:left">github…</td>
-<td></td>
-<td style="text-align:left">github上下文还有很多，详情请见xx</td>
-</tr>
-<tr>
-<td style="text-align:left">env</td>
-<td>object</td>
-<td style="text-align:left">此上下文针对作业中的每个步骤而改变。 您可以从作业中的任何步骤访问此上下文。</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>env.&lt;env name&gt;</code></td>
-<td>string</td>
-<td style="text-align:left">某一个具体环境变量的值。  (完)</td>
-</tr>
-<tr>
-<td style="text-align:left">job</td>
-<td>object</td>
-<td style="text-align:left">此上下文针对工作流程运行中的每项作业而改变。 您可以从作业中的任何步骤访问此上下文。</td>
-</tr>
-<tr>
-<td style="text-align:left">job.status</td>
-<td>string</td>
-<td style="text-align:left">作业的当前状态。 可能的值包括 success、failure 或 cancelled。</td>
-</tr>
-<tr>
-<td style="text-align:left">job.container</td>
-<td>object</td>
-<td style="text-align:left">作业的容器相关信息。 有关容器的更多信息，请参阅“GitHub 操作 的工作流程语法”。</td>
-</tr>
-<tr>
-<td style="text-align:left">job.container.id</td>
-<td>string</td>
-<td style="text-align:left">容器的 id。</td>
-</tr>
-<tr>
-<td style="text-align:left">job…</td>
-<td></td>
-<td style="text-align:left">job 上下文还有很多，详情请见xx</td>
-</tr>
-<tr>
-<td style="text-align:left">steps</td>
-<td>object</td>
-<td style="text-align:left">此上下文针对作业中的每个步骤而改变。 您可以从作业中的任何步骤访问此上下文。</td>
-</tr>
-<tr>
-<td style="text-align:left">steps.<step id>.outputs</step></td>
-<td>object</td>
-<td style="text-align:left">为步骤定义的输出集。 更多信息请参阅“GitHub 操作 的元数据语法”。</td>
-</tr>
-<tr>
-<td style="text-align:left">steps.<step id>.outputs.<output name></output></step></td>
-<td>string</td>
-<td style="text-align:left">特定输出的值。（完）</td>
-</tr>
-</tbody>
-</table>
-<h3 id="3-文字"><a href="#3-文字" class="headerlink" title="3. 文字"></a>3. 文字</h3><p>作为表达式的一部分，您可以使用 boolean、null、number 或 string 数据类型。 Boolean 文字不区分大小写，因此可以使用 true 或 True。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">数据类型</th>
-<th>文字值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">boolean</td>
-<td>true 或 false</td>
-</tr>
-<tr>
-<td style="text-align:left">null</td>
-<td>null</td>
-</tr>
-<tr>
-<td style="text-align:left">number</td>
-<td>JSON 支持的任何数字格式。</td>
-</tr>
-<tr>
-<td style="text-align:left">string</td>
-<td>必须使用单引号。 使用单引号逸出文字单引号。</td>
-</tr>
-</tbody>
-</table>
-<h3 id="4-运算符"><a href="#4-运算符" class="headerlink" title="4. 运算符"></a>4. 运算符</h3><table>
-<thead>
-<tr>
-<th style="text-align:left">运算符</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><code>( )</code></td>
-<td>逻辑分组</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>[ ]</code></td>
-<td>索引</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>.</code></td>
-<td>属性解除参考</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>!</code></td>
-<td>非</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&lt;</code></td>
-<td>小于</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&lt;=</code></td>
-<td>小于或等于</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&gt;</code></td>
-<td>大于</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&gt;=</code></td>
-<td>大于或等于</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>==</code></td>
-<td>等于</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>!=</code></td>
-<td>不等于</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&amp;&amp;</code></td>
-<td>和</td>
-</tr>
-<tr>
-<td style="text-align:left">&#124; &#124;</td>
-<td>或</td>
-</tr>
-</tbody>
-</table>
-<p>GitHub 进行宽松的等式比较。</p>
-<ul>
-<li>如果类型不匹配，GitHub 强制转换类型为数字。 GitHub 使用这些转换将数据类型转换为数字：</li>
-<li>一个 NaN 与另一个 NaN 的比较不会产生 true。</li>
-<li>GitHub 在比较字符串时忽略大小写。</li>
-<li>对象和数组仅在为同一实例时才视为相等。</li>
-</ul>
-<h3 id="5-函数"><a href="#5-函数" class="headerlink" title="5. 函数"></a>5. 函数</h3><p>GitHub 提供一组内置的函数，可用于表达式。 有些函数抛出值到字符串以进行比较。 GitHub 使用这些转换将数据类型转换为字符串。 函数有 contains、startsWith、 endsWith、 format、 join、 toJson、 hashFiles，还有一类作业状态检查函数，有 success、always、 cancelled、 failure。有些类似Jenkins中的post使用的一些判断条件，但github actions是使用于step中的。具体使用详情可见<a href="https://help.github.com/cn/actions/reference/context-and-expression-syntax-for-github-actions#functions" target="_blank" rel="noopener">官网</a></p>
-<h3 id="6-对象过滤器"><a href="#6-对象过滤器" class="headerlink" title="6. 对象过滤器"></a>6. 对象过滤器</h3><p>可以使用 * 语法应用过滤条件并从集合中选择匹配的项目。</p>
-<p>例如，考虑名为 fruits 的对象数组。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  &#123; <span class="string">"name"</span>: <span class="string">"apple"</span>, <span class="string">"quantity"</span>: 1 &#125;,</span><br><span class="line">  &#123; <span class="string">"name"</span>: <span class="string">"orange"</span>, <span class="string">"quantity"</span>: 2 &#125;,</span><br><span class="line">  &#123; <span class="string">"name"</span>: <span class="string">"pear"</span>, <span class="string">"quantity"</span>: 1 &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
-<p>过滤条件 fruits.*.name 返回数组 [ “apple”, “orange”, “pear” ]</p>
-<hr>
-<p><strong>由于项目实践还不多，等我哪天需要用到这些功能，以完成一些特殊情况的需求时，再来一一举例。</strong></p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GA/">GA</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
     <article id="post-Github-Actions-E06产出物" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -1455,13 +1132,110 @@
 
 </article>
     
+    <article id="post-画UML" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/02/25/画UML/"
+    >画UML</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/02/25/画UML/" class="article-date">
+  <time datetime="2020-02-25T08:54:48.000Z" itemprop="datePublished">2020-02-25</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Tools/">Tools</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>TL;DR<br>用 <strong>文字</strong> + <strong>工具</strong> ，画个好图</p>
+<h3 id="什么是-UML"><a href="#什么是-UML" class="headerlink" title="什么是 UML"></a>什么是 UML</h3><p>全称 Unified Modelling Language,<a href="https://zh.wikipedia.org/wiki/%E7%BB%9F%E4%B8%80%E5%BB%BA%E6%A8%A1%E8%AF%AD%E8%A8%80" target="_blank" rel="noopener">UML维基百科</a></p>
+<h3 id="什么是-PlantUML"><a href="#什么是-PlantUML" class="headerlink" title="什么是 PlantUML"></a>什么是 PlantUML</h3><p>是一个开源项目，支持快速绘制各种图，包括 时序图、用例图、类图、活动图、组件图、状态图、对象图、部署图、定时图；同时还支持以下非UML图:线框、图形界面、架构图、规范和描述语言 (SDL)、Dita diagram、甘特图 、思维导图 </p>
+<p>官网：<a href="https://plantuml.com/zh/" target="_blank" rel="noopener">https://plantuml.com/zh/</a>, 包含了各种具体用法，比如更改字的颜色，图片背景颜色等</p>
+<h3 id="举几个🌰🌰"><a href="#举几个🌰🌰" class="headerlink" title="举几个🌰🌰"></a>举几个🌰🌰</h3><p><strong>示例1: 画一个UML</strong><br>工具: VSCode +  插件 plantuml<br>步骤：</p>
+<ul>
+<li>1.打开VSCode,安装插件 plantuml <blockquote>
+<p>似乎要提前安装JDK,由于我本机已经安装，暂没验证这一步</p>
+</blockquote>
+</li>
+<li>2.新建文件 <code>example1.wsd</code></li>
+<li><p>3.添加内容如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@startmindmap</span><br><span class="line">skinparam  true</span><br><span class="line">* 数据库运维</span><br><span class="line">** 安装</span><br><span class="line">*** 如何安装</span><br><span class="line">*** 如何设置高可用</span><br><span class="line">** 备份</span><br><span class="line">** 恢复</span><br><span class="line">@endmindmap</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>4.按 <code>alt + d</code>,立马会生成UML图</p>
+</li>
+</ul>
+<p><strong>示例2: 给md文档添加 UML 图</strong><br>好处：不用单独保留一张图片，然后再插入到 <code>readme.md</code> 文档中<br>工具: markdown<br>新建md文件，比如 <code>example2.md</code>,成果如下：</p>
+<p><img src="/images/uml_example2.png" width="80%" height="80%"></p>
+<p>只能利用vscode 打开时，才能看到图形，如用浏览器，打开一个readme.md文档，是无法看到图形的</p>
+<hr>
+<p><strong>More Ref:</strong>  </p>
+<ol>
+<li><a href="https://zh.wikipedia.org/wiki/%E7%BB%9F%E4%B8%80%E5%BB%BA%E6%A8%A1%E8%AF%AD%E8%A8%80" target="_blank" rel="noopener">UML维基百科</a></li>
+<li><a href="https://www.freecodecamp.org/news/inserting-uml-in-markdown-using-vscode/" target="_blank" rel="noopener">参考例子</a></li>
+<li><a href="https://youtu.be/0MEs4WrOZmk" target="_blank" rel="noopener">youtube视频</a></li>
+</ol>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools/">Tools</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
   </article>
   
 
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/2/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/4/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/2/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/4/">下一页</a>
   </nav>
   
 </section>
