@@ -79,6 +79,24 @@
       </categories>
   </entry>
   <entry>
+    <title>Azure FAQs</title>
+    <url>/2019/12/11/Azure-FAQs/</url>
+    <content><![CDATA[<h3 id="1-asm-arm"><a href="#1-asm-arm" class="headerlink" title="1. asm, arm"></a>1. asm, arm</h3><ul>
+<li>asm: Azure Service Manager</li>
+<li>arm: Azure Resource Manager</li>
+</ul>
+<p>最开始一直都是classic模型，它的模型中有service的概念，所以它也叫 asm（Azure Service Manager）。2014年开始提出arm（Azure Resource Manager），其管理平台叫portal。2015年底arm发布。</p>
+<p>当前情况是微软正在将azure的所有功能往arm上迁移。以后都推荐使用arm。但 是当前状况是arm不完全向后兼容asm，有些功能只有asm上才有，所以还有很多 用户还是在使用classic。</p>
+<blockquote>
+<p>ref: <a href="https://pengpengxp.github.io/archive/before-2018-11-10/2017-06-28-Azure%E7%BB%8F%E5%85%B8%E6%A8%A1%E5%BC%8F%E5%92%8C%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB.html#orgbb66971" target="_blank" rel="noopener">https://pengpengxp.github.io/archive/before-2018-11-10/2017-06-28-Azure%E7%BB%8F%E5%85%B8%E6%A8%A1%E5%BC%8F%E5%92%8C%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB.html#orgbb66971</a></p>
+</blockquote>
+<h3 id="2-AWS-to-Azure-services-comparison"><a href="#2-AWS-to-Azure-services-comparison" class="headerlink" title="2. AWS to Azure services comparison"></a>2. AWS to Azure services comparison</h3><p>详见链接 <a href="https://docs.microsoft.com/en-us/azure/architecture/aws-professional/services" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/azure/architecture/aws-professional/services</a></p>
+]]></content>
+      <categories>
+        <category>Cloud</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Anka tutorial xx: Upgrade Record</title>
     <url>/2019/11/21/Anka-tutorial-xx-Upgrade-Record/</url>
     <content><![CDATA[<h3 id="1-升级前"><a href="#1-升级前" class="headerlink" title="1.升级前"></a>1.升级前</h3><p>从2018年11月到如今2019年11月，已经使用现有的版本1年多；anka也经历了多个版本，此次升级算是跨度较大，升级到目前最新的版本1.5.0</p>
@@ -225,24 +243,6 @@
       </categories>
   </entry>
   <entry>
-    <title>Azure FAQs</title>
-    <url>/2019/12/11/Azure-FAQs/</url>
-    <content><![CDATA[<h3 id="1-asm-arm"><a href="#1-asm-arm" class="headerlink" title="1. asm, arm"></a>1. asm, arm</h3><ul>
-<li>asm: Azure Service Manager</li>
-<li>arm: Azure Resource Manager</li>
-</ul>
-<p>最开始一直都是classic模型，它的模型中有service的概念，所以它也叫 asm（Azure Service Manager）。2014年开始提出arm（Azure Resource Manager），其管理平台叫portal。2015年底arm发布。</p>
-<p>当前情况是微软正在将azure的所有功能往arm上迁移。以后都推荐使用arm。但 是当前状况是arm不完全向后兼容asm，有些功能只有asm上才有，所以还有很多 用户还是在使用classic。</p>
-<blockquote>
-<p>ref: <a href="https://pengpengxp.github.io/archive/before-2018-11-10/2017-06-28-Azure%E7%BB%8F%E5%85%B8%E6%A8%A1%E5%BC%8F%E5%92%8C%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB.html#orgbb66971" target="_blank" rel="noopener">https://pengpengxp.github.io/archive/before-2018-11-10/2017-06-28-Azure%E7%BB%8F%E5%85%B8%E6%A8%A1%E5%BC%8F%E5%92%8C%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB.html#orgbb66971</a></p>
-</blockquote>
-<h3 id="2-AWS-to-Azure-services-comparison"><a href="#2-AWS-to-Azure-services-comparison" class="headerlink" title="2. AWS to Azure services comparison"></a>2. AWS to Azure services comparison</h3><p>详见链接 <a href="https://docs.microsoft.com/en-us/azure/architecture/aws-professional/services" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/azure/architecture/aws-professional/services</a></p>
-]]></content>
-      <categories>
-        <category>Cloud</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Azure tutorial 01: overview</title>
     <url>/2019/12/11/Azure-tutorial-01-overview/</url>
     <content><![CDATA[]]></content>
@@ -328,24 +328,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Crontab on Liunx or Jenkins</title>
-    <url>/2019/04/28/Crontab-on-Liunx-or-Jenkins/</url>
-    <content><![CDATA[<p>源起：<br><code>@midnight</code>  This will run at some point between 0:00 and 2:59</p>
-<p><code>H(0-30) 02 * * *</code> between 2:00 a.m. – 02:30 a.m.<br>//will build the same time every day</p>
-<p><strong>More Ref:</strong></p>
-<ul>
-<li><a href="https://crontab-generator.org/" target="_blank" rel="noopener">https://crontab-generator.org/</a></li>
-<li><a href="https://blogs.microsoft.co.il/meravk/2015/06/10/how-to-schedule-a-build-in-jenkins/" target="_blank" rel="noopener">https://blogs.microsoft.co.il/meravk/2015/06/10/how-to-schedule-a-build-in-jenkins/</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>jenkins</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Docker Configuration</title>
     <url>/2019/07/26/Docker-Configuration/</url>
     <content><![CDATA[<table>
@@ -376,6 +358,24 @@
 ]]></content>
       <tags>
         <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Crontab on Liunx or Jenkins</title>
+    <url>/2019/04/28/Crontab-on-Liunx-or-Jenkins/</url>
+    <content><![CDATA[<p>源起：<br><code>@midnight</code>  This will run at some point between 0:00 and 2:59</p>
+<p><code>H(0-30) 02 * * *</code> between 2:00 a.m. – 02:30 a.m.<br>//will build the same time every day</p>
+<p><strong>More Ref:</strong></p>
+<ul>
+<li><a href="https://crontab-generator.org/" target="_blank" rel="noopener">https://crontab-generator.org/</a></li>
+<li><a href="https://blogs.microsoft.co.il/meravk/2015/06/10/how-to-schedule-a-build-in-jenkins/" target="_blank" rel="noopener">https://blogs.microsoft.co.il/meravk/2015/06/10/how-to-schedule-a-build-in-jenkins/</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>jenkins</tag>
       </tags>
   </entry>
   <entry>
@@ -418,6 +418,64 @@
       </tags>
   </entry>
   <entry>
+    <title>Github Actions E03触发</title>
+    <url>/2020/03/18/Github-Actions-E03%E8%A7%A6%E5%8F%91/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
+<p>知道手机能够打电话，还得知道怎么把电话号码拨出去，这样才能实现通话的功能；而CICD的场景会更为复杂，如果一个任务在你不想让它运行的时候运行，会浪费自己资源，影响产出物。</p>
+</blockquote>
+<p>关于触发工作流-workflow，github actions的原文如下</p>
+<p><strong>Events that trigger workflows</strong></p>
+<p>You can configure your workflows to run when specific activity on GitHub happens, at a scheduled time, or when an event outside of GitHub occurs.</p>
+<hr>
+<p>根据上面描述，大致有3类事件(<em>错了的话欢迎指正</em>)，官网文档更详细的在<a href="https://help.github.com/en/actions/reference/events-that-trigger-workflows" target="_blank" rel="noopener">这里</a>，不是在<a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/configuring-a-workflow#triggering-a-workflow-with-events" target="_blank" rel="noopener"><em>那里</em></a></p>
+<blockquote>
+<p>最好看英文的，中文似乎没有翻译完，少了一个 <em>Triggering new workflows using a personal access token</em> 方法 😢</p>
+</blockquote>
+<h4 id="一、Github的特定事件-Specific-activity-on-GitHub-happens"><a href="#一、Github的特定事件-Specific-activity-on-GitHub-happens" class="headerlink" title="一、Github的特定事件 (Specific activity on GitHub happens)"></a>一、Github的特定事件 (Specific activity on GitHub happens)</h4><p>算是最常见的一种方式，比如：当小明更新了master分支代码，推送到仓库后触发这个CICD流程。</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 单一事件 Trigger on push</span></span><br><span class="line"><span class="attr">on:</span> <span class="string">push</span></span><br><span class="line"><span class="comment">#------------------分割线----------------</span></span><br><span class="line"><span class="comment"># 一个事件列表也可以，Trigger the workflow on push or pull request</span></span><br><span class="line"><span class="attr">on:</span> <span class="string">[push,</span> <span class="string">pull_request]</span></span><br><span class="line"><span class="comment">#------------------分割线----------------</span></span><br><span class="line"><span class="comment"># 不同类型的事件的组合</span></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="comment"># Trigger the workflow on push or pull request,</span></span><br><span class="line">  <span class="comment"># but only for the master branch</span></span><br><span class="line"><span class="attr">  push:</span></span><br><span class="line"><span class="attr">    branches:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">master</span></span><br><span class="line"><span class="attr">  pull_request:</span></span><br><span class="line"><span class="attr">    branches:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">master</span></span><br><span class="line">  <span class="comment"># Also trigger on page_build, as well as release created events</span></span><br><span class="line"><span class="attr">  page_build:</span></span><br><span class="line"><span class="attr">  release:</span></span><br><span class="line"><span class="attr">    types:</span> <span class="comment"># This configuration does not affect the page_build event above</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">created</span></span><br></pre></td></tr></table></figure>
+<p>Github 的 webhooks event有很多，每个event又包含很多类型。查看<a href="https://developer.github.com/webhooks/#events" target="_blank" rel="noopener">所有的event</a></p>
+<p>顺带熟悉下 github webhook 的概念</p>
+<p><strong>官方介绍</strong>：Webhooks provide a way for notifications to be delivered to an external web server whenever certain actions occur on a repository or organization.<a href="https://help.github.com/en/github/extending-github/about-webhooks" target="_blank" rel="noopener">原文点这里</a></p>
+<blockquote>
+<p><em>通俗版</em>：可以将 github Webhook 理解为一个勤勤恳恳的“卧底”，它被安插到github的一个仓库或某个组织中，一旦发生了之前定义好的事情，它会第一时间把以某种约定好的方式告知给 github acionts。<br><em>简单(不严谨地)而言</em>: 当有行为触发时，Github 会发送 POST 请求至指定的 URL。</p>
+</blockquote>
+<p>请看🌰<br><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">on:</span></span><br><span class="line"><span class="attr">  issue_comment:</span></span><br><span class="line"><span class="attr">    types:</span> <span class="string">[created,</span> <span class="string">deleted]</span></span><br></pre></td></tr></table></figure></p>
+<p>默认情况下，一个事件的所有活动类型都会触发工作流程运行。也可以使用types关键字将工作流程运行限制为特定的活动类型，精确使用。</p>
+<blockquote>
+<p>延伸一下： github webhook -&gt;  广义的webhooks、 github哪些<a href="https://developer.github.com/webhooks/#events" target="_blank" rel="noopener">events</a></p>
+</blockquote>
+<h4 id="二、定时事件-Scheduled-events"><a href="#二、定时事件-Scheduled-events" class="headerlink" title="二、定时事件(Scheduled events)"></a>二、定时事件(Scheduled events)</h4><p>类似crontab的用法，使用<a href="https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html#tag_20_25_07" target="_blank" rel="noopener">POSIX cron 语法</a>在指定的时间(<strong>UTC 时间</strong>)运行。</p>
+<p>在workflow中用 date命令也可以看到输出的是UTC时间，如:<code>Thu Mar 19 12:08:10 UTC 2020</code>。使用中要根据自己的时区计算出UTC时间，然后配置上。</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">on:</span></span><br><span class="line"><span class="attr">  schedule:</span></span><br><span class="line">    <span class="comment"># * is a special character in YAML so you have to quote this string</span></span><br><span class="line"><span class="attr">    - cron:</span>  <span class="string">'*/15 * * * *'</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注： GitHub 操作 不支持非标准语法 @yearly、@monthly、@weekly、@daily、@hourly 和 @reboot。这样的语法，如 @midnight 在jenkins中是支持的，需要区别开来。</p>
+</blockquote>
+<h4 id="三、外部事件-External-events"><a href="#三、外部事件-External-events" class="headerlink" title="三、外部事件(External events)"></a>三、外部事件(External events)</h4><ul>
+<li>通过Github API 触发叫做 repository_dispatch 的事件，以此来触发workflow.</li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">on:</span> <span class="string">repository_dispatch</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用个人访问令牌触发新工作流程(Triggering new workflows using a personal access token)</li>
+</ul>
+<p>原文引用：<br><em>For example, if a workflow run pushes code using the repository’s GITHUB_TOKEN, a new workflow will not run even when the repository contains a workflow configured to run when push events occur. </em></p>
+<p><em>If you would like to trigger a workflow from a workflow run, you can trigger the event using a personal access token. You’ll need to create a personal access token and store it as a secret in your repository. To minimize your GitHub Actions usage costs, ensure that you don’t create recursive or unintended workflow runs.</em></p>
+<p>上面提及的2中方法，都属于用外部方法来触发 workflow。 而上一段英文也提及 workflow 触发workflow的情况，有需要可详细研究。</p>
+<hr>
+<p><strong>More Ref:</strong></p>
+<ul>
+<li><a href="https://help.github.com/en/actions/reference/events-that-trigger-workflows" target="_blank" rel="noopener">https://help.github.com/en/actions/reference/events-that-trigger-workflows</a></li>
+<li><a href="https://developer.github.com/webhooks/" target="_blank" rel="noopener">https://developer.github.com/webhooks/</a></li>
+<li><a href="https://help.github.com/cn/actions/reference/workflow-syntax-for-github-actions#patterns-to-match-branches-and-tags" target="_blank" rel="noopener">Patterns to match branches and tags</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>CICD</category>
+      </categories>
+      <tags>
+        <tag>GA</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Docker image export and import</title>
     <url>/2019/04/07/Docker-image%E5%AF%BC%E5%87%BA%E5%AF%BC%E5%85%A5/</url>
     <content><![CDATA[<p>A: “为什么要导镜像，直接从网上下载不就行了？”<br>B: “too young too naive，你以为哪里都能上网的，谁家的机房没事都能上个youtube,google的吗”</p>
@@ -439,40 +497,6 @@
 ]]></content>
       <tags>
         <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Github Actions E02最小Demo</title>
-    <url>/2020/03/17/Github-Actions-E02%E6%9C%80%E5%B0%8FDemo/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
-<p><a href="https://www.devops-tech.cn/2020/03/16/Github-Actions-E01/" target="_blank" rel="noopener">前面一篇</a>已经说明一些概念，于是为了更好的理解，直接用一个简单的demo帮助进一步理解概念。</p>
-</blockquote>
-<p>示例仓库： <a href="https://github.com/cicd-draft/api-test-demo" target="_blank" rel="noopener">https://github.com/cicd-draft/api-test-demo</a></p>
-<h3 id="1-配置工作流"><a href="#1-配置工作流" class="headerlink" title="1.配置工作流"></a>1.配置工作流</h3><h4 id="1-1-步骤一"><a href="#1-1-步骤一" class="headerlink" title="1.1 步骤一"></a>1.1 步骤一</h4><p>在仓库的根目录，创建名为 .github/workflows 的目录以存储工作流程文件。</p>
-<h4 id="1-2-步骤二"><a href="#1-2-步骤二" class="headerlink" title="1.2 步骤二"></a>1.2 步骤二</h4><p>在 <code>.github/workflows</code> 中，为工作流程添加 .yml 或 .yaml 文件。 例如 .github/workflows/demo.yml。</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">my</span> <span class="string">workflow</span> <span class="string">demo</span> </span><br><span class="line"></span><br><span class="line"><span class="comment"># 此处使用最常见的触发方法，还有其他的很多方法可满足不同需求</span></span><br><span class="line"><span class="attr">on:</span> </span><br><span class="line"><span class="attr">  push:</span></span><br><span class="line"><span class="attr">    branches:</span> </span><br><span class="line"><span class="bullet">      -</span> <span class="string">master</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">#工作流程运行包括一项或多项作业。 作业默认是并行运行。 要按顺序运行作业，needs 关键词在其他作业上定义依赖项。</span></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="comment">#每项作业必须关联一个 ID。&lt;job_id&gt; 必须以字母或 _ 开头</span></span><br><span class="line"><span class="attr">  my_first_job:</span></span><br><span class="line">    <span class="comment"># 作业1名称为 Demo First job,也是作业显示在 GitHub 上的名称。</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Demo</span> <span class="string">First</span> <span class="string">job</span></span><br><span class="line">    <span class="comment"># 此作业在 Linux 上运行</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">My</span> <span class="string">step</span> <span class="string">one</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">echo</span> <span class="string">"Hello ,Github actions, I'm &gt;&gt;My step one&lt;&lt;"</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">My</span> <span class="string">step</span> <span class="string">two</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        echo "My step one begin..."</span></span><br><span class="line"><span class="string">        echo "doing..."</span></span><br><span class="line"><span class="string">        echo "Finished!!!"</span></span><br><span class="line"><span class="string"></span><span class="attr">  my_second_job:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Demo</span> <span class="string">Second</span> <span class="string">job</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">macos-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">check</span> <span class="string">OS</span> <span class="string">info</span></span><br><span class="line">        <span class="string">run</span> <span class="string">:</span> <span class="string">system_profiler</span> <span class="string">SPSoftwareDataType</span></span><br></pre></td></tr></table></figure>
-<h4 id="1-3-步骤三"><a href="#1-3-步骤三" class="headerlink" title="1.3 步骤三"></a>1.3 步骤三</h4><p>将工作流程文件中的更改提交到您希望其中运行工作流程的分支。</p>
-<p>到这里一个简单的demo就算完成了，可以去 <strong>Actions</strong> 按钮下查看运行情况。</p>
-<h3 id="2-管理工作流"><a href="#2-管理工作流" class="headerlink" title="2.管理工作流"></a>2.管理工作流</h3><p><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run" target="_blank" rel="noopener">官网链接</a>有详细说明以下每个操作中的细节</p>
-<blockquote>
-<p>由于图片太多,就不做搬运工了</p>
-</blockquote>
-<ul>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#about-workflow-permissions" target="_blank" rel="noopener">关于工作流程权限</a></li>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#about-workflow-management" target="_blank" rel="noopener">关于工作流程管理</a></li>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#viewing-your-workflow-history" target="_blank" rel="noopener">查看工作流程历史记录</a></li>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#canceling-a-workflow-run" target="_blank" rel="noopener">取消工作流程运行</a></li>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#viewing-logs-to-diagnose-failures" target="_blank" rel="noopener">查看日志以诊断故障</a></li>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#searching-logs" target="_blank" rel="noopener">搜索日志</a></li>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#downloading-logs" target="_blank" rel="noopener">下载日志</a></li>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#enabling-debug-logging" target="_blank" rel="noopener">启用调试日志</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>CICD</category>
-      </categories>
-      <tags>
-        <tag>GA</tag>
       </tags>
   </entry>
   <entry>
@@ -546,54 +570,30 @@
       </tags>
   </entry>
   <entry>
-    <title>Github Actions E03触发</title>
-    <url>/2020/03/18/Github-Actions-E03%E8%A7%A6%E5%8F%91/</url>
+    <title>Github Actions E02最小Demo</title>
+    <url>/2020/03/17/Github-Actions-E02%E6%9C%80%E5%B0%8FDemo/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
-<p>知道手机能够打电话，还得知道怎么把电话号码拨出去，这样才能实现通话的功能；而CICD的场景会更为复杂，如果一个任务在你不想让它运行的时候运行，会浪费自己资源，影响产出物。</p>
+<p><a href="https://www.devops-tech.cn/2020/03/16/Github-Actions-E01/" target="_blank" rel="noopener">前面一篇</a>已经说明一些概念，于是为了更好的理解，直接用一个简单的demo帮助进一步理解概念。</p>
 </blockquote>
-<p>关于触发工作流-workflow，github actions的原文如下</p>
-<p><strong>Events that trigger workflows</strong></p>
-<p>You can configure your workflows to run when specific activity on GitHub happens, at a scheduled time, or when an event outside of GitHub occurs.</p>
-<hr>
-<p>根据上面描述，大致有3类事件(<em>错了的话欢迎指正</em>)，官网文档更详细的在<a href="https://help.github.com/en/actions/reference/events-that-trigger-workflows" target="_blank" rel="noopener">这里</a>，不是在<a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/configuring-a-workflow#triggering-a-workflow-with-events" target="_blank" rel="noopener"><em>那里</em></a></p>
+<p>示例仓库： <a href="https://github.com/cicd-draft/api-test-demo" target="_blank" rel="noopener">https://github.com/cicd-draft/api-test-demo</a></p>
+<h3 id="1-配置工作流"><a href="#1-配置工作流" class="headerlink" title="1.配置工作流"></a>1.配置工作流</h3><h4 id="1-1-步骤一"><a href="#1-1-步骤一" class="headerlink" title="1.1 步骤一"></a>1.1 步骤一</h4><p>在仓库的根目录，创建名为 .github/workflows 的目录以存储工作流程文件。</p>
+<h4 id="1-2-步骤二"><a href="#1-2-步骤二" class="headerlink" title="1.2 步骤二"></a>1.2 步骤二</h4><p>在 <code>.github/workflows</code> 中，为工作流程添加 .yml 或 .yaml 文件。 例如 .github/workflows/demo.yml。</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">my</span> <span class="string">workflow</span> <span class="string">demo</span> </span><br><span class="line"></span><br><span class="line"><span class="comment"># 此处使用最常见的触发方法，还有其他的很多方法可满足不同需求</span></span><br><span class="line"><span class="attr">on:</span> </span><br><span class="line"><span class="attr">  push:</span></span><br><span class="line"><span class="attr">    branches:</span> </span><br><span class="line"><span class="bullet">      -</span> <span class="string">master</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">#工作流程运行包括一项或多项作业。 作业默认是并行运行。 要按顺序运行作业，needs 关键词在其他作业上定义依赖项。</span></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="comment">#每项作业必须关联一个 ID。&lt;job_id&gt; 必须以字母或 _ 开头</span></span><br><span class="line"><span class="attr">  my_first_job:</span></span><br><span class="line">    <span class="comment"># 作业1名称为 Demo First job,也是作业显示在 GitHub 上的名称。</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Demo</span> <span class="string">First</span> <span class="string">job</span></span><br><span class="line">    <span class="comment"># 此作业在 Linux 上运行</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">My</span> <span class="string">step</span> <span class="string">one</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">echo</span> <span class="string">"Hello ,Github actions, I'm &gt;&gt;My step one&lt;&lt;"</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">My</span> <span class="string">step</span> <span class="string">two</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        echo "My step one begin..."</span></span><br><span class="line"><span class="string">        echo "doing..."</span></span><br><span class="line"><span class="string">        echo "Finished!!!"</span></span><br><span class="line"><span class="string"></span><span class="attr">  my_second_job:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Demo</span> <span class="string">Second</span> <span class="string">job</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">macos-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">check</span> <span class="string">OS</span> <span class="string">info</span></span><br><span class="line">        <span class="string">run</span> <span class="string">:</span> <span class="string">system_profiler</span> <span class="string">SPSoftwareDataType</span></span><br></pre></td></tr></table></figure>
+<h4 id="1-3-步骤三"><a href="#1-3-步骤三" class="headerlink" title="1.3 步骤三"></a>1.3 步骤三</h4><p>将工作流程文件中的更改提交到您希望其中运行工作流程的分支。</p>
+<p>到这里一个简单的demo就算完成了，可以去 <strong>Actions</strong> 按钮下查看运行情况。</p>
+<h3 id="2-管理工作流"><a href="#2-管理工作流" class="headerlink" title="2.管理工作流"></a>2.管理工作流</h3><p><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run" target="_blank" rel="noopener">官网链接</a>有详细说明以下每个操作中的细节</p>
 <blockquote>
-<p>最好看英文的，中文似乎没有翻译完，少了一个 <em>Triggering new workflows using a personal access token</em> 方法 😢</p>
+<p>由于图片太多,就不做搬运工了</p>
 </blockquote>
-<h4 id="一、Github的特定事件-Specific-activity-on-GitHub-happens"><a href="#一、Github的特定事件-Specific-activity-on-GitHub-happens" class="headerlink" title="一、Github的特定事件 (Specific activity on GitHub happens)"></a>一、Github的特定事件 (Specific activity on GitHub happens)</h4><p>算是最常见的一种方式，比如：当小明更新了master分支代码，推送到仓库后触发这个CICD流程。</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 单一事件 Trigger on push</span></span><br><span class="line"><span class="attr">on:</span> <span class="string">push</span></span><br><span class="line"><span class="comment">#------------------分割线----------------</span></span><br><span class="line"><span class="comment"># 一个事件列表也可以，Trigger the workflow on push or pull request</span></span><br><span class="line"><span class="attr">on:</span> <span class="string">[push,</span> <span class="string">pull_request]</span></span><br><span class="line"><span class="comment">#------------------分割线----------------</span></span><br><span class="line"><span class="comment"># 不同类型的事件的组合</span></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="comment"># Trigger the workflow on push or pull request,</span></span><br><span class="line">  <span class="comment"># but only for the master branch</span></span><br><span class="line"><span class="attr">  push:</span></span><br><span class="line"><span class="attr">    branches:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">master</span></span><br><span class="line"><span class="attr">  pull_request:</span></span><br><span class="line"><span class="attr">    branches:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">master</span></span><br><span class="line">  <span class="comment"># Also trigger on page_build, as well as release created events</span></span><br><span class="line"><span class="attr">  page_build:</span></span><br><span class="line"><span class="attr">  release:</span></span><br><span class="line"><span class="attr">    types:</span> <span class="comment"># This configuration does not affect the page_build event above</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">created</span></span><br></pre></td></tr></table></figure>
-<p>Github 的 webhooks event有很多，每个event又包含很多类型。查看<a href="https://developer.github.com/webhooks/#events" target="_blank" rel="noopener">所有的event</a></p>
-<p>顺带熟悉下 github webhook 的概念</p>
-<p><strong>官方介绍</strong>：Webhooks provide a way for notifications to be delivered to an external web server whenever certain actions occur on a repository or organization.<a href="https://help.github.com/en/github/extending-github/about-webhooks" target="_blank" rel="noopener">原文点这里</a></p>
-<blockquote>
-<p><em>通俗版</em>：可以将 github Webhook 理解为一个勤勤恳恳的“卧底”，它被安插到github的一个仓库或某个组织中，一旦发生了之前定义好的事情，它会第一时间把以某种约定好的方式告知给 github acionts。<br><em>简单(不严谨地)而言</em>: 当有行为触发时，Github 会发送 POST 请求至指定的 URL。</p>
-</blockquote>
-<p>请看🌰<br><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">on:</span></span><br><span class="line"><span class="attr">  issue_comment:</span></span><br><span class="line"><span class="attr">    types:</span> <span class="string">[created,</span> <span class="string">deleted]</span></span><br></pre></td></tr></table></figure></p>
-<p>默认情况下，一个事件的所有活动类型都会触发工作流程运行。也可以使用types关键字将工作流程运行限制为特定的活动类型，精确使用。</p>
-<blockquote>
-<p>延伸一下： github webhook -&gt;  广义的webhooks、 github哪些<a href="https://developer.github.com/webhooks/#events" target="_blank" rel="noopener">events</a></p>
-</blockquote>
-<h4 id="二、定时事件-Scheduled-events"><a href="#二、定时事件-Scheduled-events" class="headerlink" title="二、定时事件(Scheduled events)"></a>二、定时事件(Scheduled events)</h4><p>类似crontab的用法，使用<a href="https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html#tag_20_25_07" target="_blank" rel="noopener">POSIX cron 语法</a>在指定的时间(<strong>UTC 时间</strong>)运行。</p>
-<p>在workflow中用 date命令也可以看到输出的是UTC时间，如:<code>Thu Mar 19 12:08:10 UTC 2020</code>。使用中要根据自己的时区计算出UTC时间，然后配置上。</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">on:</span></span><br><span class="line"><span class="attr">  schedule:</span></span><br><span class="line">    <span class="comment"># * is a special character in YAML so you have to quote this string</span></span><br><span class="line"><span class="attr">    - cron:</span>  <span class="string">'*/15 * * * *'</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>注： GitHub 操作 不支持非标准语法 @yearly、@monthly、@weekly、@daily、@hourly 和 @reboot。这样的语法，如 @midnight 在jenkins中是支持的，需要区别开来。</p>
-</blockquote>
-<h4 id="三、外部事件-External-events"><a href="#三、外部事件-External-events" class="headerlink" title="三、外部事件(External events)"></a>三、外部事件(External events)</h4><ul>
-<li>通过Github API 触发叫做 repository_dispatch 的事件，以此来触发workflow.</li>
-</ul>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">on:</span> <span class="string">repository_dispatch</span></span><br></pre></td></tr></table></figure>
 <ul>
-<li>使用个人访问令牌触发新工作流程(Triggering new workflows using a personal access token)</li>
-</ul>
-<p>原文引用：<br><em>For example, if a workflow run pushes code using the repository’s GITHUB_TOKEN, a new workflow will not run even when the repository contains a workflow configured to run when push events occur. </em></p>
-<p><em>If you would like to trigger a workflow from a workflow run, you can trigger the event using a personal access token. You’ll need to create a personal access token and store it as a secret in your repository. To minimize your GitHub Actions usage costs, ensure that you don’t create recursive or unintended workflow runs.</em></p>
-<p>上面提及的2中方法，都属于用外部方法来触发 workflow。 而上一段英文也提及 workflow 触发workflow的情况，有需要可详细研究。</p>
-<hr>
-<p><strong>More Ref:</strong></p>
-<ul>
-<li><a href="https://help.github.com/en/actions/reference/events-that-trigger-workflows" target="_blank" rel="noopener">https://help.github.com/en/actions/reference/events-that-trigger-workflows</a></li>
-<li><a href="https://developer.github.com/webhooks/" target="_blank" rel="noopener">https://developer.github.com/webhooks/</a></li>
-<li><a href="https://help.github.com/cn/actions/reference/workflow-syntax-for-github-actions#patterns-to-match-branches-and-tags" target="_blank" rel="noopener">Patterns to match branches and tags</a></li>
+<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#about-workflow-permissions" target="_blank" rel="noopener">关于工作流程权限</a></li>
+<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#about-workflow-management" target="_blank" rel="noopener">关于工作流程管理</a></li>
+<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#viewing-your-workflow-history" target="_blank" rel="noopener">查看工作流程历史记录</a></li>
+<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#canceling-a-workflow-run" target="_blank" rel="noopener">取消工作流程运行</a></li>
+<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#viewing-logs-to-diagnose-failures" target="_blank" rel="noopener">查看日志以诊断故障</a></li>
+<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#searching-logs" target="_blank" rel="noopener">搜索日志</a></li>
+<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#downloading-logs" target="_blank" rel="noopener">下载日志</a></li>
+<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#enabling-debug-logging" target="_blank" rel="noopener">启用调试日志</a></li>
 </ul>
 ]]></content>
       <categories>
@@ -681,6 +681,62 @@
 <li><a href="https://help.github.com/en/actions/reference/virtual-environments-for-github-hosted-runners#docker-container-filesystem" target="_blank" rel="noopener">Docker container filesystem</a></li>
 <li><a href="https://help.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners" target="_blank" rel="noopener">About self-hosted runners</a></li>
 <li><a href="https://help.github.com/en/github/setting-up-and-managing-billing-and-payments-on-github/viewing-your-github-actions-usage" target="_blank" rel="noopener">billing</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>CICD</category>
+      </categories>
+      <tags>
+        <tag>GA</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Github Actions E06产出物</title>
+    <url>/2020/03/30/Github-Actions-E06%E4%BA%A7%E5%87%BA%E7%89%A9/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
+<p>大多数时候，workflow的产出物都会直接传到对应的某些仓库，比如docker image会送到docker hub这种仓库存储。这种时候是不需要在workflow再额外的管理产出物，但也不能全盘否定；有时候我们没有一个方便的地方去存储某些形式的文件等，就需要我们有类似jenkins <code>archiveArtifacts</code> 功能。但github actions能做的会更多，请期待。</p>
+</blockquote>
+<h3 id="1-关于artifacts"><a href="#1-关于artifacts" class="headerlink" title="1. 关于artifacts"></a>1. 关于artifacts</h3><p>构件是指在工作流程运行过程中产生的文件或文件集。<br>GitHub 提供两项可用于上传和下载构建构件的操作。 上传到工作流程运行的文件将使用 .zip 格式存档。 更多信息请参阅 <code>action/upload-artifact</code> 和 <code>download-artifact</code> 操作。</p>
+<p>这些是您可能想要上传的一些常见构建和测试输出构件：</p>
+<ul>
+<li>日志文件和核心转储文件</li>
+<li>测试结果、失败和屏幕截图</li>
+<li>二进制或存档文件</li>
+<li>压力测试性能输出和代码覆盖结果</li>
+</ul>
+<p>当作业完成时，运行程序将终止并删除虚拟环境的实例。</p>
+<h3 id="2-上传"><a href="#2-上传" class="headerlink" title="2. 上传"></a>2. 上传</h3><p>常见的场景: 一个java程序的产出物是一个jar包，在构建之后需要得到这个jar用于其他环境部署。</p>
+<p>依旧用 <a href="https://github.com/cicd-draft/api-test-demo" target="_blank" rel="noopener">api-test-demo</a> 这个仓库做演示，主要分为以下个步骤：</p>
+<ul>
+<li>1.下载代码；</li>
+<li>2.构建jar包(存放于指定到路径<code>build/libs/api-demo-0.0.1-SNAPSHOT.jar</code>)；</li>
+<li>3.上传jar包</li>
+</ul>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">my</span> <span class="string">workflow</span> <span class="string">demo</span> </span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span> </span><br><span class="line"><span class="attr">  push:</span></span><br><span class="line"><span class="attr">    branches:</span> </span><br><span class="line"><span class="bullet">      -</span> <span class="string">master</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  artifacts_demo_job:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">job1</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">Checkout</span> <span class="string">code</span></span><br><span class="line"><span class="attr">      uses:</span> <span class="string">actions/checkout@v1</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">Build</span> <span class="string">jar</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        pwd  &amp;&amp; ls -l</span></span><br><span class="line"><span class="string">        ./gradlew -x jar build</span></span><br><span class="line"><span class="string">        ls -l build/libs/api-demo-0.0.1-SNAPSHOT.jar</span></span><br><span class="line"><span class="string"></span><span class="attr">    - name:</span> <span class="string">Archive</span> <span class="string">SNAPSHOT.jar</span></span><br><span class="line"><span class="attr">      uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">      with:</span></span><br><span class="line"><span class="attr">        name:</span> <span class="string">api_snapshot_jar</span></span><br><span class="line"><span class="attr">        path:</span> <span class="string">build/libs/api-demo-0.0.1-SNAPSHOT.jar</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>github actions 工作流的产出物都放在哪里的，保留多久</p>
+</blockquote>
+<h3 id="3-下载"><a href="#3-下载" class="headerlink" title="3. 下载"></a>3. 下载</h3><p>步骤官方说明如下：</p>
+<ul>
+<li>1.On GitHub, navigate to the main page of the repository.</li>
+<li>2.Under your repository name, click Actions.</li>
+<li>3.In the left sidebar, click the workflow you want to see.</li>
+<li>4.Under “Workflow runs”, click the name of the run you want to see.</li>
+<li>5.To download artifacts, use the Artifacts drop-down menu, and select the artifact you want to download.</li>
+<li>6.To delete artifacts, use the Artifacts drop-down menu, and click .</li>
+</ul>
+<p>注意事项：</p>
+<ul>
+<li>保留90天</li>
+<li>一旦删除某一个构件，无法恢复</li>
+</ul>
+<h3 id="4-在工作流程中作业之间传递数据"><a href="#4-在工作流程中作业之间传递数据" class="headerlink" title="4. 在工作流程中作业之间传递数据"></a>4. 在工作流程中作业之间传递数据</h3><p><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts#passing-data-between-jobs-in-a-workflow" target="_blank" rel="noopener">https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts#passing-data-between-jobs-in-a-workflow</a></p>
+<p>由于同一个workflow的多个job分别运行在不同的虚拟主机上，下面示例工作流程说明如何在相同工作流程中的任务之间传递数据。关键词 <strong>need</strong> 用来确保job按顺序运行.</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Share</span> <span class="string">data</span> <span class="string">between</span> <span class="string">jobs</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span> <span class="string">[push]</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  job_1:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Add</span> <span class="number">3</span> <span class="string">and</span> <span class="number">7</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          expr 3 + 7 &gt; math-homework.txt</span></span><br><span class="line"><span class="string"></span><span class="attr">      - name:</span> <span class="string">Upload</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">1</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">          path:</span> <span class="string">math-homework.txt</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  job_2:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Multiply</span> <span class="string">by</span> <span class="number">9</span></span><br><span class="line"><span class="attr">    needs:</span> <span class="string">job_1</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">windows-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Download</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">1</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/download-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">      - shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          value=`cat homework/math-homework.txt`</span></span><br><span class="line"><span class="string">          expr $value \* 9 &gt; homework/math-homework.txt</span></span><br><span class="line"><span class="string"></span><span class="attr">      - name:</span> <span class="string">Upload</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">2</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">          path:</span> <span class="string">homework/math-homework.txt</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  job_3:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Display</span> <span class="string">results</span></span><br><span class="line"><span class="attr">    needs:</span> <span class="string">job_2</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">macOS-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Download</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">2</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/download-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Print</span> <span class="string">the</span> <span class="string">final</span> <span class="string">result</span></span><br><span class="line"><span class="attr">        shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          value=`cat homework/math-homework.txt`</span></span><br><span class="line"><span class="string">          echo The result is $value</span></span><br></pre></td></tr></table></figure>
+<hr>
+<p><strong>More Ref:</strong></p>
+<ul>
+<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts" target="_blank" rel="noopener">关于该篇的原文</a></li>
 </ul>
 ]]></content>
       <categories>
@@ -787,62 +843,6 @@
 <p><strong>More Ref:</strong></p>
 <ul>
 <li><a href="https://help.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context" target="_blank" rel="noopener">GA Context</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>CICD</category>
-      </categories>
-      <tags>
-        <tag>GA</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Github Actions E06产出物</title>
-    <url>/2020/03/30/Github-Actions-E06%E4%BA%A7%E5%87%BA%E7%89%A9/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
-<p>大多数时候，workflow的产出物都会直接传到对应的某些仓库，比如docker image会送到docker hub这种仓库存储。这种时候是不需要在workflow再额外的管理产出物，但也不能全盘否定；有时候我们没有一个方便的地方去存储某些形式的文件等，就需要我们有类似jenkins <code>archiveArtifacts</code> 功能。但github actions能做的会更多，请期待。</p>
-</blockquote>
-<h3 id="1-关于artifacts"><a href="#1-关于artifacts" class="headerlink" title="1. 关于artifacts"></a>1. 关于artifacts</h3><p>构件是指在工作流程运行过程中产生的文件或文件集。<br>GitHub 提供两项可用于上传和下载构建构件的操作。 上传到工作流程运行的文件将使用 .zip 格式存档。 更多信息请参阅 <code>action/upload-artifact</code> 和 <code>download-artifact</code> 操作。</p>
-<p>这些是您可能想要上传的一些常见构建和测试输出构件：</p>
-<ul>
-<li>日志文件和核心转储文件</li>
-<li>测试结果、失败和屏幕截图</li>
-<li>二进制或存档文件</li>
-<li>压力测试性能输出和代码覆盖结果</li>
-</ul>
-<p>当作业完成时，运行程序将终止并删除虚拟环境的实例。</p>
-<h3 id="2-上传"><a href="#2-上传" class="headerlink" title="2. 上传"></a>2. 上传</h3><p>常见的场景: 一个java程序的产出物是一个jar包，在构建之后需要得到这个jar用于其他环境部署。</p>
-<p>依旧用 <a href="https://github.com/cicd-draft/api-test-demo" target="_blank" rel="noopener">api-test-demo</a> 这个仓库做演示，主要分为以下个步骤：</p>
-<ul>
-<li>1.下载代码；</li>
-<li>2.构建jar包(存放于指定到路径<code>build/libs/api-demo-0.0.1-SNAPSHOT.jar</code>)；</li>
-<li>3.上传jar包</li>
-</ul>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">my</span> <span class="string">workflow</span> <span class="string">demo</span> </span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span> </span><br><span class="line"><span class="attr">  push:</span></span><br><span class="line"><span class="attr">    branches:</span> </span><br><span class="line"><span class="bullet">      -</span> <span class="string">master</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  artifacts_demo_job:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">job1</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">Checkout</span> <span class="string">code</span></span><br><span class="line"><span class="attr">      uses:</span> <span class="string">actions/checkout@v1</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">Build</span> <span class="string">jar</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        pwd  &amp;&amp; ls -l</span></span><br><span class="line"><span class="string">        ./gradlew -x jar build</span></span><br><span class="line"><span class="string">        ls -l build/libs/api-demo-0.0.1-SNAPSHOT.jar</span></span><br><span class="line"><span class="string"></span><span class="attr">    - name:</span> <span class="string">Archive</span> <span class="string">SNAPSHOT.jar</span></span><br><span class="line"><span class="attr">      uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">      with:</span></span><br><span class="line"><span class="attr">        name:</span> <span class="string">api_snapshot_jar</span></span><br><span class="line"><span class="attr">        path:</span> <span class="string">build/libs/api-demo-0.0.1-SNAPSHOT.jar</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>github actions 工作流的产出物都放在哪里的，保留多久</p>
-</blockquote>
-<h3 id="3-下载"><a href="#3-下载" class="headerlink" title="3. 下载"></a>3. 下载</h3><p>步骤官方说明如下：</p>
-<ul>
-<li>1.On GitHub, navigate to the main page of the repository.</li>
-<li>2.Under your repository name, click Actions.</li>
-<li>3.In the left sidebar, click the workflow you want to see.</li>
-<li>4.Under “Workflow runs”, click the name of the run you want to see.</li>
-<li>5.To download artifacts, use the Artifacts drop-down menu, and select the artifact you want to download.</li>
-<li>6.To delete artifacts, use the Artifacts drop-down menu, and click .</li>
-</ul>
-<p>注意事项：</p>
-<ul>
-<li>保留90天</li>
-<li>一旦删除某一个构件，无法恢复</li>
-</ul>
-<h3 id="4-在工作流程中作业之间传递数据"><a href="#4-在工作流程中作业之间传递数据" class="headerlink" title="4. 在工作流程中作业之间传递数据"></a>4. 在工作流程中作业之间传递数据</h3><p><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts#passing-data-between-jobs-in-a-workflow" target="_blank" rel="noopener">https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts#passing-data-between-jobs-in-a-workflow</a></p>
-<p>由于同一个workflow的多个job分别运行在不同的虚拟主机上，下面示例工作流程说明如何在相同工作流程中的任务之间传递数据。关键词 <strong>need</strong> 用来确保job按顺序运行.</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Share</span> <span class="string">data</span> <span class="string">between</span> <span class="string">jobs</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span> <span class="string">[push]</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  job_1:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Add</span> <span class="number">3</span> <span class="string">and</span> <span class="number">7</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          expr 3 + 7 &gt; math-homework.txt</span></span><br><span class="line"><span class="string"></span><span class="attr">      - name:</span> <span class="string">Upload</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">1</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">          path:</span> <span class="string">math-homework.txt</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  job_2:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Multiply</span> <span class="string">by</span> <span class="number">9</span></span><br><span class="line"><span class="attr">    needs:</span> <span class="string">job_1</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">windows-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Download</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">1</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/download-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">      - shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          value=`cat homework/math-homework.txt`</span></span><br><span class="line"><span class="string">          expr $value \* 9 &gt; homework/math-homework.txt</span></span><br><span class="line"><span class="string"></span><span class="attr">      - name:</span> <span class="string">Upload</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">2</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">          path:</span> <span class="string">homework/math-homework.txt</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  job_3:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Display</span> <span class="string">results</span></span><br><span class="line"><span class="attr">    needs:</span> <span class="string">job_2</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">macOS-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Download</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">2</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/download-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Print</span> <span class="string">the</span> <span class="string">final</span> <span class="string">result</span></span><br><span class="line"><span class="attr">        shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          value=`cat homework/math-homework.txt`</span></span><br><span class="line"><span class="string">          echo The result is $value</span></span><br></pre></td></tr></table></figure>
-<hr>
-<p><strong>More Ref:</strong></p>
-<ul>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts" target="_blank" rel="noopener">关于该篇的原文</a></li>
 </ul>
 ]]></content>
       <categories>
@@ -1255,6 +1255,40 @@
       </tags>
   </entry>
   <entry>
+    <title>Jenkins  add timestamps</title>
+    <url>/2019/07/04/Jenkins-add-timestamps/</url>
+    <content><![CDATA[<p><strong>Timestamper plugin</strong>: Adds timestamps to the Console Output</p>
+<h4 id="Method-One-use-options"><a href="#Method-One-use-options" class="headerlink" title="Method One: use options"></a>Method One: use options</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//declarative pipeline</span><br><span class="line">pipeline &#123;</span><br><span class="line">    agent any     </span><br><span class="line">    options &#123; </span><br><span class="line">        timestamps () </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Example output:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">16:21:40 + <span class="built_in">echo</span> 23</span><br><span class="line">16:21:40 23</span><br><span class="line">[Pipeline] sh</span><br><span class="line">16:21:41 + <span class="built_in">echo</span> master , test.BuiltInFunction/Devops_Tools/demo-from-git</span><br><span class="line">16:21:41 master , test.BuiltInFunction/Devops_Tools/demo-from-git</span><br><span class="line">[Pipeline] <span class="built_in">echo</span></span><br><span class="line">16:21:41 haha</span><br></pre></td></tr></table></figure>
+<h4 id="Method-Two-use-wrap"><a href="#Method-Two-use-wrap" class="headerlink" title="Method Two: use wrap"></a>Method Two: use wrap</h4><pre><code class="bash">//declarative pipeline
+pipeline {
+    agent any   
+    stages {
+        stage(<span class="string">'Stage with timestamp'</span>){
+            steps{
+                sh <span class="string">"echo <span class="variable">${env.BUILD_NUMBER}</span>"</span>
+                wrap([<span class="variable">$class</span>: <span class="string">'TimestamperBuildWrapper'</span>]) {
+                  <span class="built_in">echo</span> <span class="string">"Done"</span>
+                }
+            }
+        }
+    }    
+}
+</code></pre>
+<blockquote>
+<p>默认是到分钟级别，到秒级别的需要自己定义格式,或者在菜单左侧，选择“Elapsed time”</p>
+</blockquote>
+<p><strong>More Ref:</strong></p>
+<ul>
+<li><a href="https://plugins.jenkins.io/timestamper" target="_blank" rel="noopener">Timestamper</a></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>jenkins</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Jenkins build trigger、logRotator、buildDiscarder etc</title>
     <url>/2019/04/11/Jenkins-build-trigger%E3%80%81logRotator%E3%80%81options/</url>
     <content><![CDATA[<p>Declarative Pipeline 与Job DSL的同一个功能的语法命令有些差异，不能直接套用，需要查对应的官方文档。 </p>
@@ -1289,40 +1323,6 @@
 <li><a href="https://jenkinsci.github.io/job-dsl-plugin/#path/pipelineJob-triggers" target="_blank" rel="noopener">https://jenkinsci.github.io/job-dsl-plugin/#path/pipelineJob-triggers</a></li>
 </ol>
 </blockquote>
-]]></content>
-      <tags>
-        <tag>jenkins</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Jenkins  add timestamps</title>
-    <url>/2019/07/04/Jenkins-add-timestamps/</url>
-    <content><![CDATA[<p><strong>Timestamper plugin</strong>: Adds timestamps to the Console Output</p>
-<h4 id="Method-One-use-options"><a href="#Method-One-use-options" class="headerlink" title="Method One: use options"></a>Method One: use options</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//declarative pipeline</span><br><span class="line">pipeline &#123;</span><br><span class="line">    agent any     </span><br><span class="line">    options &#123; </span><br><span class="line">        timestamps () </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Example output:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">16:21:40 + <span class="built_in">echo</span> 23</span><br><span class="line">16:21:40 23</span><br><span class="line">[Pipeline] sh</span><br><span class="line">16:21:41 + <span class="built_in">echo</span> master , test.BuiltInFunction/Devops_Tools/demo-from-git</span><br><span class="line">16:21:41 master , test.BuiltInFunction/Devops_Tools/demo-from-git</span><br><span class="line">[Pipeline] <span class="built_in">echo</span></span><br><span class="line">16:21:41 haha</span><br></pre></td></tr></table></figure>
-<h4 id="Method-Two-use-wrap"><a href="#Method-Two-use-wrap" class="headerlink" title="Method Two: use wrap"></a>Method Two: use wrap</h4><pre><code class="bash">//declarative pipeline
-pipeline {
-    agent any   
-    stages {
-        stage(<span class="string">'Stage with timestamp'</span>){
-            steps{
-                sh <span class="string">"echo <span class="variable">${env.BUILD_NUMBER}</span>"</span>
-                wrap([<span class="variable">$class</span>: <span class="string">'TimestamperBuildWrapper'</span>]) {
-                  <span class="built_in">echo</span> <span class="string">"Done"</span>
-                }
-            }
-        }
-    }    
-}
-</code></pre>
-<blockquote>
-<p>默认是到分钟级别，到秒级别的需要自己定义格式,或者在菜单左侧，选择“Elapsed time”</p>
-</blockquote>
-<p><strong>More Ref:</strong></p>
-<ul>
-<li><a href="https://plugins.jenkins.io/timestamper" target="_blank" rel="noopener">Timestamper</a></li>
-</ul>
 ]]></content>
       <tags>
         <tag>jenkins</tag>
@@ -1399,20 +1399,6 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>Makefile 103: all &amp; clean</title>
-    <url>/2019/07/05/Makefile-103-all-clean/</url>
-    <content><![CDATA[<h5 id="makefile-中的all"><a href="#makefile-中的all" class="headerlink" title="makefile 中的all"></a>makefile 中的all</h5><p>因为 makefile 的执行流程是找到第一个目标作为最终生成的目标，如果顺序错乱了，makefile 就可能报错，all 方法就是解决这个问题而存在的，并且，all 方法可以让一个 makefile 生成多个目标。示例如下：</p>
-<h5 id="makefile-中的-clean"><a href="#makefile-中的-clean" class="headerlink" title="makefile 中的 clean"></a>makefile 中的 clean</h5><p>make clean 命令是用来清除目录下临时文件的，执行 clean 这个目标时，不需要任何依赖项，也就意味着，如果目录下有一个文件名为 clean 的话，执行 make clean 命令时会判断这个目标所依赖的内容是否有变化，如有变化则重新生成，无变化则跳过，而恰恰我们这个 clean 没写依赖规则！这将导致 clean 无论如何都不会被执行。解决这个问题的办法就是将 clean 方法声明为一个伪目标，做就就是让 clean 无论如何都更新，同样我们生成的 all 目标也可能会出现这种情况，所以我们将它们两个都声明为 <strong>伪目标</strong>，方法如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">clean:</span><br><span class="line">    -rm -rf $(obj) main app </span><br><span class="line"></span><br><span class="line">.PHONY:clean all</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>makefile</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Makefile 102:Variable</title>
     <url>/2019/07/05/Makefile-102-Variable/</url>
     <content><![CDATA[<h5 id="Variables-common-use"><a href="#Variables-common-use" class="headerlink" title="Variables (common use)"></a>Variables (common use)</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">origin_file = hello.c</span><br><span class="line"></span><br><span class="line">hellofrommakefile: $(origin_file)</span><br><span class="line">	gcc hello.c -o hellofrommakefile</span><br></pre></td></tr></table></figure>
@@ -1429,6 +1415,20 @@ pipeline {
 <li><a href="http://www.chiark.greenend.org.uk/doc/make-doc/make.html/Using-Variables.html" target="_blank" rel="noopener">http://www.chiark.greenend.org.uk/doc/make-doc/make.html/Using-Variables.html</a></li>
 <li><a href="https://www.gnu.org/software/make/manual/html_node/Implicit-Variables.html" target="_blank" rel="noopener">https://www.gnu.org/software/make/manual/html_node/Implicit-Variables.html</a></li>
 </ul>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>makefile</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Makefile 103: all &amp; clean</title>
+    <url>/2019/07/05/Makefile-103-all-clean/</url>
+    <content><![CDATA[<h5 id="makefile-中的all"><a href="#makefile-中的all" class="headerlink" title="makefile 中的all"></a>makefile 中的all</h5><p>因为 makefile 的执行流程是找到第一个目标作为最终生成的目标，如果顺序错乱了，makefile 就可能报错，all 方法就是解决这个问题而存在的，并且，all 方法可以让一个 makefile 生成多个目标。示例如下：</p>
+<h5 id="makefile-中的-clean"><a href="#makefile-中的-clean" class="headerlink" title="makefile 中的 clean"></a>makefile 中的 clean</h5><p>make clean 命令是用来清除目录下临时文件的，执行 clean 这个目标时，不需要任何依赖项，也就意味着，如果目录下有一个文件名为 clean 的话，执行 make clean 命令时会判断这个目标所依赖的内容是否有变化，如有变化则重新生成，无变化则跳过，而恰恰我们这个 clean 没写依赖规则！这将导致 clean 无论如何都不会被执行。解决这个问题的办法就是将 clean 方法声明为一个伪目标，做就就是让 clean 无论如何都更新，同样我们生成的 all 目标也可能会出现这种情况，所以我们将它们两个都声明为 <strong>伪目标</strong>，方法如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">clean:</span><br><span class="line">    -rm -rf $(obj) main app </span><br><span class="line"></span><br><span class="line">.PHONY:clean all</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>Linux</category>
@@ -1751,6 +1751,22 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>Shell Print text between specified lines or patterns</title>
+    <url>/2019/06/14/Shell-Print-text-between-specified-lines-or-patterns/</url>
+    <content><![CDATA[<p>awk,grep,sed,head,tail 都可以根据条件打印部分行。最简单的方法是使用 grep 打印匹配模式的行。不过，最全能的工具还是 awk.</p>
+<h4 id="Example-1-打印从-M-行到-N-行之间的文本"><a href="#Example-1-打印从-M-行到-N-行之间的文本" class="headerlink" title="Example 1: 打印从 M 行到 N 行之间的文本"></a>Example 1: 打印从 M 行到 N 行之间的文本</h4><p><code>$ awk &#39;NR==M,NR==N&#39; filename</code></p>
+<p>也可以从stdin读取输入：<br><code>cat filename | awk &#39;NR==M, NR==N&#39;</code></p>
+<h4 id="Example-2-打印位于模式-start-pattern-与-end-pattern-之间的文本"><a href="#Example-2-打印位于模式-start-pattern-与-end-pattern-之间的文本" class="headerlink" title="Example 2: 打印位于模式 start_pattern 与 end_pattern 之间的文本"></a>Example 2: 打印位于模式 start_pattern 与 end_pattern 之间的文本</h4><p><code>awk &#39;/start_pattern/,/end_pattern/&#39; filename</code></p>
+<p>awk中使用的模式为正则表达式</p>
+]]></content>
+      <categories>
+        <category>Shell</category>
+      </categories>
+      <tags>
+        <tag>Shell</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Shell Script Standards</title>
     <url>/2019/05/29/Shell-Script-Standards/</url>
     <content><![CDATA[<p>推荐看看 <a href="https://google.github.io/styleguide/shellguide.html" target="_blank" rel="noopener">https://google.github.io/styleguide/shellguide.html</a></p>
@@ -1790,22 +1806,6 @@ pipeline {
 <li><a href="https://blog.csdn.net/wirelessqa/article/details/18863403" target="_blank" rel="noopener">https://blog.csdn.net/wirelessqa/article/details/18863403</a></li>
 </ul>
 </blockquote>
-]]></content>
-      <categories>
-        <category>Shell</category>
-      </categories>
-      <tags>
-        <tag>Shell</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Shell Print text between specified lines or patterns</title>
-    <url>/2019/06/14/Shell-Print-text-between-specified-lines-or-patterns/</url>
-    <content><![CDATA[<p>awk,grep,sed,head,tail 都可以根据条件打印部分行。最简单的方法是使用 grep 打印匹配模式的行。不过，最全能的工具还是 awk.</p>
-<h4 id="Example-1-打印从-M-行到-N-行之间的文本"><a href="#Example-1-打印从-M-行到-N-行之间的文本" class="headerlink" title="Example 1: 打印从 M 行到 N 行之间的文本"></a>Example 1: 打印从 M 行到 N 行之间的文本</h4><p><code>$ awk &#39;NR==M,NR==N&#39; filename</code></p>
-<p>也可以从stdin读取输入：<br><code>cat filename | awk &#39;NR==M, NR==N&#39;</code></p>
-<h4 id="Example-2-打印位于模式-start-pattern-与-end-pattern-之间的文本"><a href="#Example-2-打印位于模式-start-pattern-与-end-pattern-之间的文本" class="headerlink" title="Example 2: 打印位于模式 start_pattern 与 end_pattern 之间的文本"></a>Example 2: 打印位于模式 start_pattern 与 end_pattern 之间的文本</h4><p><code>awk &#39;/start_pattern/,/end_pattern/&#39; filename</code></p>
-<p>awk中使用的模式为正则表达式</p>
 ]]></content>
       <categories>
         <category>Shell</category>
@@ -2284,6 +2284,32 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>docker 镜像逆向工程得到Dockerfile</title>
+    <url>/2019/07/25/docker-%E9%95%9C%E5%83%8F%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E5%BE%97%E5%88%B0Dockerfile/</url>
+    <content><![CDATA[<p>可能有时候你得到了一个从Dockerfile创建的镜像文件，但是原始的Dockerfile丢失了。你想从这个镜像文件的构建历史记录中，逆向分析出原始的Dockerfile而省去寻找此文件的漫长过程。</p>
+<p>虽然不可能在所有的情况下将一个Docker镜像完全得进行逆向工程，但如果此镜像是通过Dockerfile构建的，很有可能分析出此镜像是通过了什么命令得到的。我们以下面的Dockerfile为例，构建一个镜像，然后运行一个简单的shell脚本来演示如何分析镜像的构建历史记录，最后来看一个简洁的容器化的解决方案，来得出原始的Dockerfile。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">FROM busybox</span><br><span class="line">MAINTAINER ian.miell@gmail.com</span><br><span class="line">ENV myenvname myenvvalue</span><br><span class="line">LABEL mylabelname mylabelvalue</span><br><span class="line">WORKDIR /opt</span><br><span class="line">RUN mkdir -p copied</span><br><span class="line">COPY Dockerfile copied/Dockerfile</span><br><span class="line">RUN mkdir -p added</span><br><span class="line">ADD Dockerfile added/Dockerfile</span><br><span class="line">RUN touch /tmp/afile</span><br><span class="line">ADD Dockerfile /</span><br><span class="line">EXPOSE 80</span><br><span class="line">VOLUME /data</span><br><span class="line">ONBUILD touch /tmp/built</span><br><span class="line">ENTRYPOINT /bin/bash</span><br><span class="line">CMD -r</span><br></pre></td></tr></table></figure>
+<p>首先要构建这个示例镜像，镜像命名为reverseme：</p>
+<p><code>$ docker build -t reverseme .</code></p>
+<h5 id="SHELL解决方案"><a href="#SHELL解决方案" class="headerlink" title="SHELL解决方案"></a>SHELL解决方案</h5><p>这个基于shell的实现主要在这里用来演示逆向工程的思路与方法，它与下面的容器化解决方案相比还不是十分完整。此方案使用了docker inspect命令来提取出镜像的metadata。</p>
+<p>此shell脚本中使用了jq程序，一个可以查询和操作JSON数据的工具。为了运行此脚本，需要安装jq程序</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">history</span> reverseme | \</span><br><span class="line">awk <span class="string">'&#123;print $1&#125;'</span> | \</span><br><span class="line">grep -v IMAGE | grep -v missing | \</span><br><span class="line">tac | \</span><br><span class="line">sed <span class="string">"s/\(.*\)/docker inspect \1 | \</span></span><br><span class="line"><span class="string">jq -r \'.[0].ContainerConfig.Cmd[2] | tostring\'/"</span> | \</span><br><span class="line">sh | \</span><br><span class="line">sed <span class="string">'s/^#(nop) //'</span></span><br></pre></td></tr></table></figure>
+<p>上述代码第1行得到了组成指定镜像的层；第2行从docker history输出得到了各层的image ID；第3行排除标题行（带有“IMAGE”的那一行）及IMAGE的 ID为missing的那一行；第4行将镜像ID倒序输出，使其符合Dockerfile的顺序（“tac”是“cat”的倒序）；第5、6行使用前面命令输出的image ID构建一个docker inspect命令，它输出Docker layer metadata。而此metadata通过管道输入到jq命令中，jq命令过滤metadata，获取当时构建此镜像时Dockerfile中使用的命令。第7行运行前面通过sed构建的整个docker inspect管道链。第8行剥离不能更改文件系统的指令——那些以“#(nop)”作为前缀的指令。<br>最后得到的输出结果类似于如下这样：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">.....</span><br><span class="line">CMD [<span class="string">"sh"</span>]</span><br><span class="line">MAINTAINER ian.miell@gmail.com</span><br><span class="line">ENV myenvname=myenvvalue</span><br><span class="line">LABEL mylabelname=mylabelvalue</span><br><span class="line">WORKDIR /opt</span><br><span class="line">mkdir -p copied</span><br><span class="line">COPY file:4d91fcee48e4591e5fdc4b8963892b7d9582524f85f84b33eac5af164f928213 <span class="keyword">in</span> copied/Dockerfile</span><br><span class="line">mkdir -p added</span><br><span class="line">ADD file:4d91fcee48e4591e5fdc4b8963892b7d9582524f85f84b33eac5af164f928213 <span class="keyword">in</span> added/Dockerfile</span><br><span class="line">touch /tmp/afile</span><br><span class="line">ADD file:4d91fcee48e4591e5fdc4b8963892b7d9582524f85f84b33eac5af164f928213 <span class="keyword">in</span> /</span><br><span class="line">EXPOSE 80/tcp</span><br><span class="line">VOLUME [/data]</span><br><span class="line">ONBUILD touch /tmp/built</span><br><span class="line">ENTRYPOINT [<span class="string">"/bin/sh"</span> <span class="string">"-c"</span> <span class="string">"/bin/bash"</span>]</span><br><span class="line">CMD [<span class="string">"/bin/sh"</span> <span class="string">"-c"</span> <span class="string">"-r"</span>]</span><br></pre></td></tr></table></figure></p>
+<p>上面的输出与初始的Dockerfile有些类似了，但还有些区别。FROM指令被替换成了上述CMD指令，丢失了使用的基础镜像BusyBox的信息。ADD和COPY命令没有使用原本的文件名而是使用的校验和（checksum），文件被拷贝到的位置保存了下来。最后，CMD和ENTRYPOINT命令变成了方括号的数组形式。<br>由于缺少构建上下文，使得ADD和COPY命令不能使用，上面逆向工程恢复的Dockerfile并不能不加修改就运行。你需要找出什么文件被添加到构建上下文中。对于前面那个例子来说，你可以启动镜像，进入容器的/opt/copied目录和/opt/added目录，将文件提取出来加入到你的新的构建上下文中。</p>
+<h5 id="容器解决方案"><a href="#容器解决方案" class="headerlink" title="容器解决方案"></a>容器解决方案</h5><p>使用前面的方案得到你感兴趣镜像的信息，是一个有用并且具有指导意义的方法，然而有更加干净的方法来得到同样的结果——使用centurylink/dockerfile-from-image镜像，同时这种方法更容易维护。而且，此方案提供了与原始Dockerfile类似的FROM命令的信息（如果它可以提供的话）：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker run -v /var/run/docker.sock:/var/run/docker.sock \</span><br><span class="line">&gt;   dockerinpractice/dockerfile-from-image reverseme</span><br><span class="line">FROM busybox:latest</span><br><span class="line">MAINTAINER ian.miell@gmail.com</span><br><span class="line">ENV myenvname=myenvvalue</span><br><span class="line">LABEL mylabelname=mylabelvalue</span><br><span class="line">WORKDIR /opt</span><br><span class="line">RUN mkdir -p copied</span><br><span class="line">COPY file:4d91fcee48e4591e5fdc4b8963892b7d9582524f85f84b33eac5af164f928213 <span class="keyword">in</span> copied/Dockerfile</span><br><span class="line">RUN mkdir -p added</span><br><span class="line">ADD file:4d91fcee48e4591e5fdc4b8963892b7d9582524f85f84b33eac5af164f928213 <span class="keyword">in</span> added/Dockerfile</span><br><span class="line">RUN touch /tmp/afile</span><br><span class="line">ADD file:4d91fcee48e4591e5fdc4b8963892b7d9582524f85f84b33eac5af164f928213 <span class="keyword">in</span> /</span><br><span class="line">EXPOSE 80/tcp</span><br><span class="line">VOLUME [/data]</span><br><span class="line">ONBUILD touch /tmp/built</span><br><span class="line">ENTRYPOINT [<span class="string">"/bin/sh"</span> <span class="string">"-c"</span> <span class="string">"/bin/bash"</span>]</span><br><span class="line">CMD [<span class="string">"/bin/sh"</span> <span class="string">"-c"</span> <span class="string">"-r"</span>]</span><br></pre></td></tr></table></figure>
+<p>此技术只适用于基于Dockerfile创建的镜像——如果镜像是通过手工创建然后commit的，镜像间的区别不能体现在镜像的metadata里。</p>
+<p><strong>然而发现有bug</strong>,可参考 <a href="https://github.com/lukapeschke/dockerfile-from-image" target="_blank" rel="noopener">https://github.com/lukapeschke/dockerfile-from-image</a>, 只支持用 image_id ，不能用 image name<br>主要使用方法如下：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">## build the image</span></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/lukapeschke/dockerfile-from-image.git</span><br><span class="line"><span class="built_in">cd</span> dockerfile-from-image</span><br><span class="line">docker build -t lukapeschke/dfa .</span><br><span class="line"></span><br><span class="line"><span class="comment">## To get a Dockerfile from an existing image:</span></span><br><span class="line">docker run --rm -v <span class="string">'/var/run/docker.sock:/var/run/docker.sock'</span> lukapeschke/dfa &lt;IMAGE_ID&gt;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>出自 《Docker IN PRACTICE》一书</p>
+</blockquote>
+<p><strong>More Ref:</strong><br><a href="https://andyyoung01.github.io/2016/08/23/%E4%BB%8E%E9%95%9C%E5%83%8F%E5%8E%86%E5%8F%B2%E8%AE%B0%E5%BD%95%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E5%87%BADockerfile/" target="_blank" rel="noopener">https://andyyoung01.github.io/2016/08/23/%E4%BB%8E%E9%95%9C%E5%83%8F%E5%8E%86%E5%8F%B2%E8%AE%B0%E5%BD%95%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E5%87%BADockerfile/</a></p>
+]]></content>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>docker 镜像的扁平化</title>
     <url>/2019/07/25/docker-%E9%95%9C%E5%83%8F%E7%9A%84%E6%89%81%E5%B9%B3%E5%8C%96/</url>
     <content><![CDATA[<blockquote>
@@ -2374,32 +2400,6 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>docker 镜像逆向工程得到Dockerfile</title>
-    <url>/2019/07/25/docker-%E9%95%9C%E5%83%8F%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E5%BE%97%E5%88%B0Dockerfile/</url>
-    <content><![CDATA[<p>可能有时候你得到了一个从Dockerfile创建的镜像文件，但是原始的Dockerfile丢失了。你想从这个镜像文件的构建历史记录中，逆向分析出原始的Dockerfile而省去寻找此文件的漫长过程。</p>
-<p>虽然不可能在所有的情况下将一个Docker镜像完全得进行逆向工程，但如果此镜像是通过Dockerfile构建的，很有可能分析出此镜像是通过了什么命令得到的。我们以下面的Dockerfile为例，构建一个镜像，然后运行一个简单的shell脚本来演示如何分析镜像的构建历史记录，最后来看一个简洁的容器化的解决方案，来得出原始的Dockerfile。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">FROM busybox</span><br><span class="line">MAINTAINER ian.miell@gmail.com</span><br><span class="line">ENV myenvname myenvvalue</span><br><span class="line">LABEL mylabelname mylabelvalue</span><br><span class="line">WORKDIR /opt</span><br><span class="line">RUN mkdir -p copied</span><br><span class="line">COPY Dockerfile copied/Dockerfile</span><br><span class="line">RUN mkdir -p added</span><br><span class="line">ADD Dockerfile added/Dockerfile</span><br><span class="line">RUN touch /tmp/afile</span><br><span class="line">ADD Dockerfile /</span><br><span class="line">EXPOSE 80</span><br><span class="line">VOLUME /data</span><br><span class="line">ONBUILD touch /tmp/built</span><br><span class="line">ENTRYPOINT /bin/bash</span><br><span class="line">CMD -r</span><br></pre></td></tr></table></figure>
-<p>首先要构建这个示例镜像，镜像命名为reverseme：</p>
-<p><code>$ docker build -t reverseme .</code></p>
-<h5 id="SHELL解决方案"><a href="#SHELL解决方案" class="headerlink" title="SHELL解决方案"></a>SHELL解决方案</h5><p>这个基于shell的实现主要在这里用来演示逆向工程的思路与方法，它与下面的容器化解决方案相比还不是十分完整。此方案使用了docker inspect命令来提取出镜像的metadata。</p>
-<p>此shell脚本中使用了jq程序，一个可以查询和操作JSON数据的工具。为了运行此脚本，需要安装jq程序</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">history</span> reverseme | \</span><br><span class="line">awk <span class="string">'&#123;print $1&#125;'</span> | \</span><br><span class="line">grep -v IMAGE | grep -v missing | \</span><br><span class="line">tac | \</span><br><span class="line">sed <span class="string">"s/\(.*\)/docker inspect \1 | \</span></span><br><span class="line"><span class="string">jq -r \'.[0].ContainerConfig.Cmd[2] | tostring\'/"</span> | \</span><br><span class="line">sh | \</span><br><span class="line">sed <span class="string">'s/^#(nop) //'</span></span><br></pre></td></tr></table></figure>
-<p>上述代码第1行得到了组成指定镜像的层；第2行从docker history输出得到了各层的image ID；第3行排除标题行（带有“IMAGE”的那一行）及IMAGE的 ID为missing的那一行；第4行将镜像ID倒序输出，使其符合Dockerfile的顺序（“tac”是“cat”的倒序）；第5、6行使用前面命令输出的image ID构建一个docker inspect命令，它输出Docker layer metadata。而此metadata通过管道输入到jq命令中，jq命令过滤metadata，获取当时构建此镜像时Dockerfile中使用的命令。第7行运行前面通过sed构建的整个docker inspect管道链。第8行剥离不能更改文件系统的指令——那些以“#(nop)”作为前缀的指令。<br>最后得到的输出结果类似于如下这样：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">.....</span><br><span class="line">CMD [<span class="string">"sh"</span>]</span><br><span class="line">MAINTAINER ian.miell@gmail.com</span><br><span class="line">ENV myenvname=myenvvalue</span><br><span class="line">LABEL mylabelname=mylabelvalue</span><br><span class="line">WORKDIR /opt</span><br><span class="line">mkdir -p copied</span><br><span class="line">COPY file:4d91fcee48e4591e5fdc4b8963892b7d9582524f85f84b33eac5af164f928213 <span class="keyword">in</span> copied/Dockerfile</span><br><span class="line">mkdir -p added</span><br><span class="line">ADD file:4d91fcee48e4591e5fdc4b8963892b7d9582524f85f84b33eac5af164f928213 <span class="keyword">in</span> added/Dockerfile</span><br><span class="line">touch /tmp/afile</span><br><span class="line">ADD file:4d91fcee48e4591e5fdc4b8963892b7d9582524f85f84b33eac5af164f928213 <span class="keyword">in</span> /</span><br><span class="line">EXPOSE 80/tcp</span><br><span class="line">VOLUME [/data]</span><br><span class="line">ONBUILD touch /tmp/built</span><br><span class="line">ENTRYPOINT [<span class="string">"/bin/sh"</span> <span class="string">"-c"</span> <span class="string">"/bin/bash"</span>]</span><br><span class="line">CMD [<span class="string">"/bin/sh"</span> <span class="string">"-c"</span> <span class="string">"-r"</span>]</span><br></pre></td></tr></table></figure></p>
-<p>上面的输出与初始的Dockerfile有些类似了，但还有些区别。FROM指令被替换成了上述CMD指令，丢失了使用的基础镜像BusyBox的信息。ADD和COPY命令没有使用原本的文件名而是使用的校验和（checksum），文件被拷贝到的位置保存了下来。最后，CMD和ENTRYPOINT命令变成了方括号的数组形式。<br>由于缺少构建上下文，使得ADD和COPY命令不能使用，上面逆向工程恢复的Dockerfile并不能不加修改就运行。你需要找出什么文件被添加到构建上下文中。对于前面那个例子来说，你可以启动镜像，进入容器的/opt/copied目录和/opt/added目录，将文件提取出来加入到你的新的构建上下文中。</p>
-<h5 id="容器解决方案"><a href="#容器解决方案" class="headerlink" title="容器解决方案"></a>容器解决方案</h5><p>使用前面的方案得到你感兴趣镜像的信息，是一个有用并且具有指导意义的方法，然而有更加干净的方法来得到同样的结果——使用centurylink/dockerfile-from-image镜像，同时这种方法更容易维护。而且，此方案提供了与原始Dockerfile类似的FROM命令的信息（如果它可以提供的话）：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker run -v /var/run/docker.sock:/var/run/docker.sock \</span><br><span class="line">&gt;   dockerinpractice/dockerfile-from-image reverseme</span><br><span class="line">FROM busybox:latest</span><br><span class="line">MAINTAINER ian.miell@gmail.com</span><br><span class="line">ENV myenvname=myenvvalue</span><br><span class="line">LABEL mylabelname=mylabelvalue</span><br><span class="line">WORKDIR /opt</span><br><span class="line">RUN mkdir -p copied</span><br><span class="line">COPY file:4d91fcee48e4591e5fdc4b8963892b7d9582524f85f84b33eac5af164f928213 <span class="keyword">in</span> copied/Dockerfile</span><br><span class="line">RUN mkdir -p added</span><br><span class="line">ADD file:4d91fcee48e4591e5fdc4b8963892b7d9582524f85f84b33eac5af164f928213 <span class="keyword">in</span> added/Dockerfile</span><br><span class="line">RUN touch /tmp/afile</span><br><span class="line">ADD file:4d91fcee48e4591e5fdc4b8963892b7d9582524f85f84b33eac5af164f928213 <span class="keyword">in</span> /</span><br><span class="line">EXPOSE 80/tcp</span><br><span class="line">VOLUME [/data]</span><br><span class="line">ONBUILD touch /tmp/built</span><br><span class="line">ENTRYPOINT [<span class="string">"/bin/sh"</span> <span class="string">"-c"</span> <span class="string">"/bin/bash"</span>]</span><br><span class="line">CMD [<span class="string">"/bin/sh"</span> <span class="string">"-c"</span> <span class="string">"-r"</span>]</span><br></pre></td></tr></table></figure>
-<p>此技术只适用于基于Dockerfile创建的镜像——如果镜像是通过手工创建然后commit的，镜像间的区别不能体现在镜像的metadata里。</p>
-<p><strong>然而发现有bug</strong>,可参考 <a href="https://github.com/lukapeschke/dockerfile-from-image" target="_blank" rel="noopener">https://github.com/lukapeschke/dockerfile-from-image</a>, 只支持用 image_id ，不能用 image name<br>主要使用方法如下：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">## build the image</span></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/lukapeschke/dockerfile-from-image.git</span><br><span class="line"><span class="built_in">cd</span> dockerfile-from-image</span><br><span class="line">docker build -t lukapeschke/dfa .</span><br><span class="line"></span><br><span class="line"><span class="comment">## To get a Dockerfile from an existing image:</span></span><br><span class="line">docker run --rm -v <span class="string">'/var/run/docker.sock:/var/run/docker.sock'</span> lukapeschke/dfa &lt;IMAGE_ID&gt;</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>出自 《Docker IN PRACTICE》一书</p>
-</blockquote>
-<p><strong>More Ref:</strong><br><a href="https://andyyoung01.github.io/2016/08/23/%E4%BB%8E%E9%95%9C%E5%83%8F%E5%8E%86%E5%8F%B2%E8%AE%B0%E5%BD%95%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E5%87%BADockerfile/" target="_blank" rel="noopener">https://andyyoung01.github.io/2016/08/23/%E4%BB%8E%E9%95%9C%E5%83%8F%E5%8E%86%E5%8F%B2%E8%AE%B0%E5%BD%95%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E5%87%BADockerfile/</a></p>
-]]></content>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>highlight code on slide/ppt</title>
     <url>/2019/08/22/highlight-code-on-slide-ppt/</url>
     <content><![CDATA[<p><strong>only for mac</strong></p>
@@ -2422,19 +2422,6 @@ pipeline {
 ]]></content>
       <tags>
         <tag>PPT</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>jenkins date timezone update</title>
-    <url>/2019/04/25/jenkins-date-timezone-update/</url>
-    <content><![CDATA[<h4 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h4><p>打开 【系统管理】-&gt;【脚本命令行】运行下面的命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">System.setProperty(<span class="string">'org.apache.commons.jelly.tags.fmt.timeZone'</span>, <span class="string">'Asia/Shanghai'</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="/images/jenkins_run_image_01.png" alt="jenkins_run_image_01"></p>
-<h4 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h4><pre><code class="java">JAVA_ARGS=<span class="string">"-Dorg.apache.commons.jelly.tags.fmt.timeZone=Asia/Shanghai -Dfile.encoding=UTF-8 -Djava.awt.headless=true"</span>
-</code></pre>
-]]></content>
-      <tags>
-        <tag>jenkins</tag>
       </tags>
   </entry>
   <entry>
@@ -2473,6 +2460,19 @@ pipeline {
       </categories>
       <tags>
         <tag>Shell</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>jenkins date timezone update</title>
+    <url>/2019/04/25/jenkins-date-timezone-update/</url>
+    <content><![CDATA[<h4 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h4><p>打开 【系统管理】-&gt;【脚本命令行】运行下面的命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">System.setProperty(<span class="string">'org.apache.commons.jelly.tags.fmt.timeZone'</span>, <span class="string">'Asia/Shanghai'</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="/images/jenkins_run_image_01.png" alt="jenkins_run_image_01"></p>
+<h4 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h4><pre><code class="java">JAVA_ARGS=<span class="string">"-Dorg.apache.commons.jelly.tags.fmt.timeZone=Asia/Shanghai -Dfile.encoding=UTF-8 -Djava.awt.headless=true"</span>
+</code></pre>
+]]></content>
+      <tags>
+        <tag>jenkins</tag>
       </tags>
   </entry>
   <entry>
@@ -3264,6 +3264,25 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>安迪-比尔定律(Andy and Bill’s Law)</title>
+    <url>/2019/03/27/%E5%AE%89%E8%BF%AA-%E6%AF%94%E5%B0%94%E5%AE%9A%E5%BE%8B-Andy-and-Bill%E2%80%99s-Law/</url>
+    <content><![CDATA[<h3 id="这句话出处是哪里？"><a href="#这句话出处是哪里？" class="headerlink" title="这句话出处是哪里？"></a>这句话出处是哪里？</h3><pre><code>“Andy gives,Bill takes away.(安迪提供什么，比尔拿走什么)&quot;
+</code></pre><h3 id="什么是安迪-比尔定律？"><a href="#什么是安迪-比尔定律？" class="headerlink" title="什么是安迪-比尔定律？"></a>什么是安迪-比尔定律？</h3><p>Andy指的是原英特尔公司CEO 安迪•格鲁<a href="https://zh.wikipedia.org/wiki/%E5%AE%89%E8%BF%AA%C2%B7%E8%91%9B%E6%B4%9B%E5%A4%AB" target="_blank" rel="noopener">Andy Grove</a>；Bill就是微软的比尔•盖茨.</p>
+<p>这句话的意思是，英特尔公司总裁安迪·格罗夫一旦向市场推广了一种新型芯片产品，微软CEO比尔盖茨就会及时的升级自己的软件产品，吸收新型芯片的高性能。硬件提高的性能，很快被软件消耗掉了。似乎两方是一对黄金搭档，心照不宣。</p>
+<blockquote>
+<p>简而言之，安迪-比尔定律揭示了硬件和软件相互促进彼此，不断更新换代的现象。</p>
+</blockquote>
+<h3 id="为什么要“更新”？"><a href="#为什么要“更新”？" class="headerlink" title="为什么要“更新”？"></a>为什么要“更新”？</h3><h6 id="1-从买卖双方分析："><a href="#1-从买卖双方分析：" class="headerlink" title="1.从买卖双方分析："></a>1.从买卖双方分析：</h6><p>对于厂商、公司而言，只有不断的推出新产品，才能有营收，才能获得更大的市场，最终通常是为了赚更多的钱。对于个人而言，个人的欲望在不断的增长，大哥比方：以前村里的张三有个mp3听听歌就可能满足的不行了，但是看着县里的李四拿着最新的mp4不仅能听歌，还能下载电影看，于是就渴望也有一个新玩意。过了一年半载出了一个新的手机，不仅有上述功能，还可以在线打游戏，只有拥有它才可以和别的小伙伴一起“冲锋陷阵”…</p>
+<h6 id="2-从硬件、软件公司分析："><a href="#2-从硬件、软件公司分析：" class="headerlink" title="2.从硬件、软件公司分析："></a>2.从硬件、软件公司分析：</h6><p>还是拿上面的例子，硬件公司老是生产mp3，等到大家差不多人手一个的时候，就赚不到更多的钱了。而这个时候有软件公司开发的新的软件，需要用新的设备才能运行，硬件公司还能又卖一波新硬件，而且又是新的市场，单价一般而言更贵，于是乎这样赚钱的机会怎么能放过。同业的竞争公司看到这样的趋势，也加紧研发去抢新的蛋糕（旧的蛋糕都快被人吃的差不多了，新的蛋糕就看谁做的快做的好了）。软件公司这时也纷纷用新的思路去做更多的软件，吸引新用户，也想着做一些更牛逼的软件（虽然现在硬件水平跟不上，但是总有一天那些硬件会有的，加紧研发自己的软件就准没错）。</p>
+]]></content>
+      <categories>
+        <category>读书笔记</category>
+      </categories>
+      <tags>
+        <tag>浪潮之巅</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>反摩尔定理 = 学如逆水行舟</title>
     <url>/2019/04/10/%E5%8F%8D%E6%91%A9%E5%B0%94%E5%AE%9A%E7%90%86-%E5%AD%A6%E5%A6%82%E9%80%86%E6%B0%B4%E8%A1%8C%E8%88%9F/</url>
     <content><![CDATA[<h3 id="1-什么是反摩尔定理？"><a href="#1-什么是反摩尔定理？" class="headerlink" title="1.什么是反摩尔定理？"></a>1.什么是反摩尔定理？</h3><p>Google(谷歌)的 CEO 埃里克•施密特在一次采访中指出，如果你反过来看摩尔定理， 一个 IT 公司如果今天和十八个月前卖掉同样多的、同样的产品，它的营业额就要降一半。IT 界把它称为 <strong>反摩尔定理</strong>。</p>
@@ -3278,25 +3297,6 @@ pipeline {
 <blockquote>
 <p>小编之前就知道一个，有点儿孤陋寡闻了 &gt;::&lt;</p>
 </blockquote>
-]]></content>
-      <categories>
-        <category>读书笔记</category>
-      </categories>
-      <tags>
-        <tag>浪潮之巅</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>安迪-比尔定律(Andy and Bill’s Law)</title>
-    <url>/2019/03/27/%E5%AE%89%E8%BF%AA-%E6%AF%94%E5%B0%94%E5%AE%9A%E5%BE%8B-Andy-and-Bill%E2%80%99s-Law/</url>
-    <content><![CDATA[<h3 id="这句话出处是哪里？"><a href="#这句话出处是哪里？" class="headerlink" title="这句话出处是哪里？"></a>这句话出处是哪里？</h3><pre><code>“Andy gives,Bill takes away.(安迪提供什么，比尔拿走什么)&quot;
-</code></pre><h3 id="什么是安迪-比尔定律？"><a href="#什么是安迪-比尔定律？" class="headerlink" title="什么是安迪-比尔定律？"></a>什么是安迪-比尔定律？</h3><p>Andy指的是原英特尔公司CEO 安迪•格鲁<a href="https://zh.wikipedia.org/wiki/%E5%AE%89%E8%BF%AA%C2%B7%E8%91%9B%E6%B4%9B%E5%A4%AB" target="_blank" rel="noopener">Andy Grove</a>；Bill就是微软的比尔•盖茨.</p>
-<p>这句话的意思是，英特尔公司总裁安迪·格罗夫一旦向市场推广了一种新型芯片产品，微软CEO比尔盖茨就会及时的升级自己的软件产品，吸收新型芯片的高性能。硬件提高的性能，很快被软件消耗掉了。似乎两方是一对黄金搭档，心照不宣。</p>
-<blockquote>
-<p>简而言之，安迪-比尔定律揭示了硬件和软件相互促进彼此，不断更新换代的现象。</p>
-</blockquote>
-<h3 id="为什么要“更新”？"><a href="#为什么要“更新”？" class="headerlink" title="为什么要“更新”？"></a>为什么要“更新”？</h3><h6 id="1-从买卖双方分析："><a href="#1-从买卖双方分析：" class="headerlink" title="1.从买卖双方分析："></a>1.从买卖双方分析：</h6><p>对于厂商、公司而言，只有不断的推出新产品，才能有营收，才能获得更大的市场，最终通常是为了赚更多的钱。对于个人而言，个人的欲望在不断的增长，大哥比方：以前村里的张三有个mp3听听歌就可能满足的不行了，但是看着县里的李四拿着最新的mp4不仅能听歌，还能下载电影看，于是就渴望也有一个新玩意。过了一年半载出了一个新的手机，不仅有上述功能，还可以在线打游戏，只有拥有它才可以和别的小伙伴一起“冲锋陷阵”…</p>
-<h6 id="2-从硬件、软件公司分析："><a href="#2-从硬件、软件公司分析：" class="headerlink" title="2.从硬件、软件公司分析："></a>2.从硬件、软件公司分析：</h6><p>还是拿上面的例子，硬件公司老是生产mp3，等到大家差不多人手一个的时候，就赚不到更多的钱了。而这个时候有软件公司开发的新的软件，需要用新的设备才能运行，硬件公司还能又卖一波新硬件，而且又是新的市场，单价一般而言更贵，于是乎这样赚钱的机会怎么能放过。同业的竞争公司看到这样的趋势，也加紧研发去抢新的蛋糕（旧的蛋糕都快被人吃的差不多了，新的蛋糕就看谁做的快做的好了）。软件公司这时也纷纷用新的思路去做更多的软件，吸引新用户，也想着做一些更牛逼的软件（虽然现在硬件水平跟不上，但是总有一天那些硬件会有的，加紧研发自己的软件就准没错）。</p>
 ]]></content>
       <categories>
         <category>读书笔记</category>
@@ -3441,28 +3441,6 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>疫情的启示[伪上帝之眼]</title>
-    <url>/2020/05/23/%E7%96%AB%E6%83%85%E7%9A%84%E5%90%AF%E7%A4%BA-%E4%BC%AA%E4%B8%8A%E5%B8%9D%E4%B9%8B%E7%9C%BC/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
-<p>从武汉封城（2020.01.23）到今天（2020.05.23）,正好4个月时间。一年过去了1/3，度过去了2个季节，很多节日（春节、元宵、38、清明、劳动节、青年节…）还有很多我们自己创造出来的节日。但在武汉的氛围里，少些悲伤就是幸运的，节日的快乐变小了很多，心中的畏惧变大了很多。时至今日，出门买菜、坐车也还能看到一些人手上带的一次性手套，还有面罩，至于口罩，是这里的每个人出门的必需品。5月，去过安徽，回过老家，一切大体如初了，武汉成了最不一样的地方，甚至在5月中旬回老家，有的人畏惧我这个从武汉回去的人。在懂事的年纪经历这样一场大事件，而且身处正中心，有些想法还是值得记录，不然哪天忘记了。</p>
-</blockquote>
-<p>以下一部分内容是早在3月份，疫情形势依旧严峻时的所想：</p>
-<h3 id="1-保持信息敏感"><a href="#1-保持信息敏感" class="headerlink" title="1.保持信息敏感"></a>1.保持信息敏感</h3><p>&ensp;&ensp;&ensp;&ensp;社会中大事件的发生，前夕必定有风声，有的人捕捉到了且重视，有的人置若罔闻。而来自专业领域的事情，非专业人士无从判断，但应该学习着去判断去思想前因后果，毕竟就像这次会生死攸关。对于信息来源，那一道看不见的墙在哪里，但也是不同看法的来源地，多听听未必是件坏事情，决定是在自己身心中的不是吗。需要多渠道的去获取关键信息，也需要辨别真伪，专业网站、官方网站的信息不可忽视，有些小道消息也很重要，而且中英文的都需要阅读。如果英文不好，尚可用一些翻译工具。</p>
-<h3 id="2-超预期的准备"><a href="#2-超预期的准备" class="headerlink" title="2.超预期的准备"></a>2.超预期的准备</h3><p>&ensp;&ensp;&ensp;&ensp;疫情期间，我们很多人做的一件事情就是屯东西，因为商店关门了，各种社会交易停止了，包括耐以生存的食物交易也受到了管控。口罩难求，要屯一点；大米不够，要屯一点；卫生纸不足，要吞一点….还有很多很多东西，零食？汽油？酒精？消毒剂？猪肉？ 而另一件凑巧的事情就是，春节前期武汉有准备腊肉腊鱼的习惯，这个时候这些荤菜派上了用场，古老的食物做法让我们在特殊的时间里还能享受到肉的味道。但是屯多久的东西了，每个人对持续的时间都有自己的看法，但都是来自自信的第六感。最好还是寻求专业的建议，比如疫情期间的流行病“老师傅”，比如那些有野外生存能力的人。最好，<strong>给那第六感的结果来个加倍，或者三倍吧</strong>，比如很多人预期1-2个月疫情就会过去，那你就按照3-4个月去储备物品，当然这没什么根据，但有总比没有好，这里的多也比少好。很多我们不了解的事情上，也都这么准备吧。比如外出带几天的干粮，第六感的双倍吧。</p>
-<h3 id="3-公共卫生"><a href="#3-公共卫生" class="headerlink" title="3.公共卫生"></a>3.公共卫生</h3><p>&ensp;&ensp;&ensp;&ensp;口罩、公筷、勤洗手、消毒用品…这些在我们平日里不太注重的东西，一些就在这样的时候成了我们保护自身的唯一方法。口罩，我以为是属于明星的必需品，或是用来冬天御寒的，更别提医用口罩，每家每户都缺少。今后每年的流感季节，我们也应该多嘱咐我们自己和家人朋友，多注意在人多的地方戴口罩，勤洗手，家庭消毒等等。如果，是做餐饮的，最好常带口罩，至少飞沫传播会被大大的减少。也不要随意用手揉眼睛，可能会让手上的细菌病毒等从眼睛粘膜处进入体内。题外话：口罩也是有好处的，别人看不见你的生气或是喜悦，也看不见你的全部五官，神秘感倍增，勇气有时候也倍增。</p>
-<blockquote>
-<p>对了，口罩遮面，眼睛就成了“窗口”，原来每个人的“窗口”还挺好看，也留下了想象的空间。</p>
-</blockquote>
-<h3 id="4-心态心理"><a href="#4-心态心理" class="headerlink" title="4.心态心理"></a>4.心态心理</h3><p>&ensp;&ensp;&ensp;&ensp;在强大的病毒氛围下，每个人如兵临城下一般，害怕肉眼看不见的东西闯入自己体内。有人上门量体温时，觉得自己有点热，心想是不是发烧了，可能又有点儿胸闷，是不是呼吸有点问题。心理的压力大小直接影响免疫力的强弱，但这种模糊的关系也是看不见摸不着的。心理受到影响，做事情的态度也自然会被影响到。比如我就无心专心的完成一些事情，心中杂念挥之不去。最好的方法，还没每天给自己设定几个任务，完成了就打个勾，不让自己漫无目的在电脑前，或者门前。</p>
-<h3 id="5-随身携带随时准备着"><a href="#5-随身携带随时准备着" class="headerlink" title="5.随身携带随时准备着"></a>5.随身携带随时准备着</h3><p>&ensp;&ensp;&ensp;&ensp;听闻因为春节回家的缘故，很多人没有选择带电脑回家，可谁知这个春节有点儿太长了，于是无法在家办公。与电脑类似的东西，还有比如剃须刀，充电器，耳机，相机，每个人的职业不一样，总有些工具需要常用到，有条件的最好还是常带在身边，不然意外的就是很意外的。另一个方面讲，出差的我不喜欢携带太多东西，有些可有可无的不带，轻松上阵，上下车的步伐都轻盈一些。如何取舍，视情况而定了。</p>
-<h3 id="6-富贵险中求"><a href="#6-富贵险中求" class="headerlink" title="6.富贵险中求"></a>6.富贵险中求</h3><p>&#160;&#160;无，留点遐想的空间。</p>
-<p><hr><br><strong>后记:</strong> 2020.05.20在小区楼下做的核酸检测，今天终于可以查到结果了，正常。</p>
-]]></content>
-      <tags>
-        <tag>Q List</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>移动端打包pipeline通识：从零开始</title>
     <url>/2020/01/03/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E6%89%93%E5%8C%85pipeline%E9%80%9A%E8%AF%86%EF%BC%9A%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B/</url>
     <content><![CDATA[<p>背景： 一台被格式化后的 MacBook Pro, 对某个移动端项目( xx类型 )做android pipeline、iOS pipeline</p>
@@ -3519,6 +3497,28 @@ pipeline {
       <categories>
         <category>CICD</category>
       </categories>
+  </entry>
+  <entry>
+    <title>疫情的启示[伪上帝之眼]</title>
+    <url>/2020/05/23/%E7%96%AB%E6%83%85%E7%9A%84%E5%90%AF%E7%A4%BA-%E4%BC%AA%E4%B8%8A%E5%B8%9D%E4%B9%8B%E7%9C%BC/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
+<p>从武汉封城（2020.01.23）到今天（2020.05.23）,正好4个月时间。一年过去了1/3，度过去了2个季节，很多节日（春节、元宵、38、清明、劳动节、青年节…）还有很多我们自己创造出来的节日。但在武汉的氛围里，少些悲伤就是幸运的，节日的快乐变小了很多，心中的畏惧变大了很多。时至今日，出门买菜、坐车也还能看到一些人手上带的一次性手套，还有面罩，至于口罩，是这里的每个人出门的必需品。5月，去过安徽，回过老家，一切大体如初了，武汉成了最不一样的地方，甚至在5月中旬回老家，有的人畏惧我这个从武汉回去的人。在懂事的年纪经历这样一场大事件，而且身处正中心，有些想法还是值得记录，不然哪天忘记了。</p>
+</blockquote>
+<p>以下一部分内容是早在3月份，疫情形势依旧严峻时的所想：</p>
+<h3 id="1-保持信息敏感"><a href="#1-保持信息敏感" class="headerlink" title="1.保持信息敏感"></a>1.保持信息敏感</h3><p>&ensp;&ensp;&ensp;&ensp;社会中大事件的发生，前夕必定有风声，有的人捕捉到了且重视，有的人置若罔闻。而来自专业领域的事情，非专业人士无从判断，但应该学习着去判断去思想前因后果，毕竟就像这次会生死攸关。对于信息来源，那一道看不见的墙在哪里，但也是不同看法的来源地，多听听未必是件坏事情，决定是在自己身心中的不是吗。需要多渠道的去获取关键信息，也需要辨别真伪，专业网站、官方网站的信息不可忽视，有些小道消息也很重要，而且中英文的都需要阅读。如果英文不好，尚可用一些翻译工具。</p>
+<h3 id="2-超预期的准备"><a href="#2-超预期的准备" class="headerlink" title="2.超预期的准备"></a>2.超预期的准备</h3><p>&ensp;&ensp;&ensp;&ensp;疫情期间，我们很多人做的一件事情就是屯东西，因为商店关门了，各种社会交易停止了，包括耐以生存的食物交易也受到了管控。口罩难求，要屯一点；大米不够，要屯一点；卫生纸不足，要吞一点….还有很多很多东西，零食？汽油？酒精？消毒剂？猪肉？ 而另一件凑巧的事情就是，春节前期武汉有准备腊肉腊鱼的习惯，这个时候这些荤菜派上了用场，古老的食物做法让我们在特殊的时间里还能享受到肉的味道。但是屯多久的东西了，每个人对持续的时间都有自己的看法，但都是来自自信的第六感。最好还是寻求专业的建议，比如疫情期间的流行病“老师傅”，比如那些有野外生存能力的人。最好，<strong>给那第六感的结果来个加倍，或者三倍吧</strong>，比如很多人预期1-2个月疫情就会过去，那你就按照3-4个月去储备物品，当然这没什么根据，但有总比没有好，这里的多也比少好。很多我们不了解的事情上，也都这么准备吧。比如外出带几天的干粮，第六感的双倍吧。</p>
+<h3 id="3-公共卫生"><a href="#3-公共卫生" class="headerlink" title="3.公共卫生"></a>3.公共卫生</h3><p>&ensp;&ensp;&ensp;&ensp;口罩、公筷、勤洗手、消毒用品…这些在我们平日里不太注重的东西，一些就在这样的时候成了我们保护自身的唯一方法。口罩，我以为是属于明星的必需品，或是用来冬天御寒的，更别提医用口罩，每家每户都缺少。今后每年的流感季节，我们也应该多嘱咐我们自己和家人朋友，多注意在人多的地方戴口罩，勤洗手，家庭消毒等等。如果，是做餐饮的，最好常带口罩，至少飞沫传播会被大大的减少。也不要随意用手揉眼睛，可能会让手上的细菌病毒等从眼睛粘膜处进入体内。题外话：口罩也是有好处的，别人看不见你的生气或是喜悦，也看不见你的全部五官，神秘感倍增，勇气有时候也倍增。</p>
+<blockquote>
+<p>对了，口罩遮面，眼睛就成了“窗口”，原来每个人的“窗口”还挺好看，也留下了想象的空间。</p>
+</blockquote>
+<h3 id="4-心态心理"><a href="#4-心态心理" class="headerlink" title="4.心态心理"></a>4.心态心理</h3><p>&ensp;&ensp;&ensp;&ensp;在强大的病毒氛围下，每个人如兵临城下一般，害怕肉眼看不见的东西闯入自己体内。有人上门量体温时，觉得自己有点热，心想是不是发烧了，可能又有点儿胸闷，是不是呼吸有点问题。心理的压力大小直接影响免疫力的强弱，但这种模糊的关系也是看不见摸不着的。心理受到影响，做事情的态度也自然会被影响到。比如我就无心专心的完成一些事情，心中杂念挥之不去。最好的方法，还没每天给自己设定几个任务，完成了就打个勾，不让自己漫无目的在电脑前，或者门前。</p>
+<h3 id="5-随身携带随时准备着"><a href="#5-随身携带随时准备着" class="headerlink" title="5.随身携带随时准备着"></a>5.随身携带随时准备着</h3><p>&ensp;&ensp;&ensp;&ensp;听闻因为春节回家的缘故，很多人没有选择带电脑回家，可谁知这个春节有点儿太长了，于是无法在家办公。与电脑类似的东西，还有比如剃须刀，充电器，耳机，相机，每个人的职业不一样，总有些工具需要常用到，有条件的最好还是常带在身边，不然意外的就是很意外的。另一个方面讲，出差的我不喜欢携带太多东西，有些可有可无的不带，轻松上阵，上下车的步伐都轻盈一些。如何取舍，视情况而定了。</p>
+<h3 id="6-富贵险中求"><a href="#6-富贵险中求" class="headerlink" title="6.富贵险中求"></a>6.富贵险中求</h3><p>&#160;&#160;无，留点遐想的空间。</p>
+<p><hr><br><strong>后记:</strong> 2020.05.20在小区楼下做的核酸检测，今天终于可以查到结果了，正常。</p>
+]]></content>
+      <tags>
+        <tag>Q List</tag>
+      </tags>
   </entry>
   <entry>
     <title>给博客上个锁</title>
@@ -3608,33 +3608,6 @@ pipeline {
       <tags>
         <tag>Q List</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>逆流而上</title>
-    <url>/2020/07/09/%E9%80%86%E6%B5%81%E8%80%8C%E4%B8%8A/</url>
-    <content><![CDATA[<h3 id="0-前言"><a href="#0-前言" class="headerlink" title="0.前言"></a>0.前言</h3><p>2020.7.9 又一年的高考结束了，往年都是在6月。青春，逆流而上，听起来都是这么的文艺。而这里讲到的这本书全名是<strong>《逆流而上 阿里巴巴技术成长之路》</strong>，哈哈 o(╯□╰)o。估计我是被这文艺的书名给吸引过去的。</p>
-<p>虽然没有细读，但也看到一些很好的总结，于是想记录一下。</p>
-<h3 id="1-关于书的信息"><a href="#1-关于书的信息" class="headerlink" title="1.关于书的信息"></a>1.关于书的信息</h3><p>时间： 2018年1月第一版</p>
-<p>一句话概括： “本书是阿里巴巴集团荣耀背后的技术血泪史。”</p>
-<p>适合谁看： “本书主要面向互联网技术从业人员和在校师生，使读者能够通过此书基本了解阿里在各技术领域的能力，学习在如此规模下可能出现的问题以及解决方案的探讨和沉淀分享。”</p>
-<h3 id="2-摘抄"><a href="#2-摘抄" class="headerlink" title="2.摘抄"></a>2.摘抄</h3><ul>
-<li><p>“问题处理环节，需要以最快的时间协同不同团队之间的响应处理，避免措施问题排查的最佳时间窗口。“</p>
-</li>
-<li><p>“稳定性要做好几点：研发与运维要靠近、故障标准要统一并强化处理流程、建设统一的基础设施并完善团队融合做到“书同文车同轨行同伦”</p>
-</li>
-<li><p>“阿里巴巴集团开发规约中对于ORM规范，有明确一条强制规约：在表查询中，一律不要使用*作为查询的字段列表，需要哪些字段必须明确写明。”</p>
-</li>
-<li><p>“数据库中的参数配置对SQL执行速度快慢也有非常大的影响，常见的三个参数包括 innodb_buffer_pool_size ,tmp_table_size, query_cache_size,table_cache”<br>（应该是笔误，明明后面也讲到了4个参数，具体参数讲解也自行搜索）</p>
-</li>
-<li><p>下面的图给了我们定位问题的一些思路，遇到棘手的问题时，要全面考量，逐一排查。不能想当然的去认为“服务器怎么会有问题”，”硬盘不可能会坏“，“网络应该不会有问题吧”<br><img src="https://s1.ax1x.com/2020/07/09/UeDKSK.png" alt="UeDKSK.png"></p>
-</li>
-</ul>
-<p>”为了找出CPU飚高的原因，开发在重启过程中通过执行一下命令找出CPU利用率比较高的线程。“<br><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ps -eL -o pid,%cpu,lwp | grep -i pid | sort -nr k2 | awk <span class="string">'&#123;print("%s %s %x\n",1,1,2,$3)&#125;'</span> | head</span><br></pre></td></tr></table></figure></p>
-<h3 id="3-读后"><a href="#3-读后" class="headerlink" title="3.读后"></a>3.读后</h3><p>没有细读的原因，应该是鄙人才疏学浅，孤陋寡闻，很多书中的事情我也没遇上过。如果是当事人，读起来应该有一种破解一桩悬案的快感。但处理问题的思路，以及开发人员、运维人员之间的配合经验十分重要，还有复盘（类比于SRE中的验尸报告）等等都是很棒的，书中对于技术细节也有很深的研究，毕竟是要解决一些棘手的问题，代码片段、逻辑图、架构图丰富，涉及基础设施架构、mysql、中间件服务、负载均衡等等很常见的技术，确实不常见的业务量。</p>
-]]></content>
-      <categories>
-        <category>读书笔记</category>
-      </categories>
   </entry>
   <entry>
     <title>那些容易被忘记的小事儿-Tech</title>
@@ -3758,6 +3731,33 @@ pipeline {
       <tags>
         <tag>Tools</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>逆流而上</title>
+    <url>/2020/07/09/%E9%80%86%E6%B5%81%E8%80%8C%E4%B8%8A/</url>
+    <content><![CDATA[<h3 id="0-前言"><a href="#0-前言" class="headerlink" title="0.前言"></a>0.前言</h3><p>2020.7.9 又一年的高考结束了，往年都是在6月。青春，逆流而上，听起来都是这么的文艺。而这里讲到的这本书全名是<strong>《逆流而上 阿里巴巴技术成长之路》</strong>，哈哈 o(╯□╰)o。估计我是被这文艺的书名给吸引过去的。</p>
+<p>虽然没有细读，但也看到一些很好的总结，于是想记录一下。</p>
+<h3 id="1-关于书的信息"><a href="#1-关于书的信息" class="headerlink" title="1.关于书的信息"></a>1.关于书的信息</h3><p>时间： 2018年1月第一版</p>
+<p>一句话概括： “本书是阿里巴巴集团荣耀背后的技术血泪史。”</p>
+<p>适合谁看： “本书主要面向互联网技术从业人员和在校师生，使读者能够通过此书基本了解阿里在各技术领域的能力，学习在如此规模下可能出现的问题以及解决方案的探讨和沉淀分享。”</p>
+<h3 id="2-摘抄"><a href="#2-摘抄" class="headerlink" title="2.摘抄"></a>2.摘抄</h3><ul>
+<li><p>“问题处理环节，需要以最快的时间协同不同团队之间的响应处理，避免措施问题排查的最佳时间窗口。“</p>
+</li>
+<li><p>“稳定性要做好几点：研发与运维要靠近、故障标准要统一并强化处理流程、建设统一的基础设施并完善团队融合做到“书同文车同轨行同伦”</p>
+</li>
+<li><p>“阿里巴巴集团开发规约中对于ORM规范，有明确一条强制规约：在表查询中，一律不要使用*作为查询的字段列表，需要哪些字段必须明确写明。”</p>
+</li>
+<li><p>“数据库中的参数配置对SQL执行速度快慢也有非常大的影响，常见的三个参数包括 innodb_buffer_pool_size ,tmp_table_size, query_cache_size,table_cache”<br>（应该是笔误，明明后面也讲到了4个参数，具体参数讲解也自行搜索）</p>
+</li>
+<li><p>下面的图给了我们定位问题的一些思路，遇到棘手的问题时，要全面考量，逐一排查。不能想当然的去认为“服务器怎么会有问题”，”硬盘不可能会坏“，“网络应该不会有问题吧”<br><img src="https://s1.ax1x.com/2020/07/09/UeDKSK.png" alt="UeDKSK.png"></p>
+</li>
+</ul>
+<p>”为了找出CPU飚高的原因，开发在重启过程中通过执行一下命令找出CPU利用率比较高的线程。“<br><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ps -eL -o pid,%cpu,lwp | grep -i pid | sort -nr k2 | awk <span class="string">'&#123;print("%s %s %x\n",1,1,2,$3)&#125;'</span> | head</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-读后"><a href="#3-读后" class="headerlink" title="3.读后"></a>3.读后</h3><p>没有细读的原因，应该是鄙人才疏学浅，孤陋寡闻，很多书中的事情我也没遇上过。如果是当事人，读起来应该有一种破解一桩悬案的快感。但处理问题的思路，以及开发人员、运维人员之间的配合经验十分重要，还有复盘（类比于SRE中的验尸报告）等等都是很棒的，书中对于技术细节也有很深的研究，毕竟是要解决一些棘手的问题，代码片段、逻辑图、架构图丰富，涉及基础设施架构、mysql、中间件服务、负载均衡等等很常见的技术，确实不常见的业务量。</p>
+]]></content>
+      <categories>
+        <category>读书笔记</category>
+      </categories>
   </entry>
   <entry>
     <title>再看git</title>
