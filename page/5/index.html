@@ -64,6 +64,82 @@
     
     
     
+    <article id="post-Anka-tutorial-03-jenkins" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/11/28/Anka-tutorial-03-jenkins/"
+    >Anka tutorial 03: jenkins</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/11/28/Anka-tutorial-03-jenkins/" class="article-date">
+  <time datetime="2019-11-28T03:02:20.000Z" itemprop="datePublished">2019-11-28</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/CICD/">CICD</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h3 id="anka-集成-Jenkins-link"><a href="#anka-集成-Jenkins-link" class="headerlink" title="anka 集成 Jenkins (link)"></a>anka 集成 Jenkins <a href="https://ankadoc.bitbucket.io/anka-build/#integrate-jenkins-with-controller" target="_blank" rel="noopener">(link)</a></h3><p>未完待续…</p>
+<p>安装插件<br><code>Manage Jenkins &gt; Manage Plugins</code></p>
+<p>搜索anka</p>
+<p>新建 ssh 用的登陆凭证</p>
+<p>新建VM的时候 默认用户名和密码分别是 <code>anka/admin</code></p>
+<p>配置jenkins<br><code>Manage Jenkins &gt; Configure System</code></p>
+<p><img src="/images/anka_jenkins_01.png" width="80%" height="80%"></p>
+<p><a href="http://localhost/#/dashboard" target="_blank" rel="noopener">http://localhost/#/dashboard</a></p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-Import-P12-file-on-Mac-OS-X-with-CLI" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -1090,103 +1166,13 @@
 
 </article>
     
-    <article id="post-kubectl-常用命令" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/10/21/kubectl-常用命令/"
-    >kubectl 常用命令</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/10/21/kubectl-常用命令/" class="article-date">
-  <time datetime="2019-10-21T07:35:21.000Z" itemprop="datePublished">2019-10-21</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h3 id="label操作"><a href="#label操作" class="headerlink" title="label操作"></a>label操作</h3><p>删除 label version=xx</p>
-<p><code>kubectl label pod webui-746df859ff-z5fwt version-</code></p>
-<p>添加 label<br><code>kubectl label pods labelex owner=michael</code></p>
-<h3 id="deploy操作"><a href="#deploy操作" class="headerlink" title="deploy操作"></a>deploy操作</h3><p><code>kubectl create delpoy [deploy_name] --image=nginx</code></p>
-<p><code>kubectl create deployment httpenv --image=iasonliu/httpenv</code></p>
-<p>kubectl run [pod_name] –image=busybox</p>
-<p>example:<br><code>kubectl run pingpong --image=alpine ping 1.1.1.1</code> or <code>kubectl run pingpong2 --image alpine ping 1.1.1.1</code></p>
-<blockquote>
-<p>当我们使用 kubectl run something启动deplyment的时候，label会是 run=something</p>
-</blockquote>
-<p><code>kubectl set image deployment/nginx busybox=busybox nginx=nginx:1.9.1</code></p>
-<h3 id="service操作"><a href="#service操作" class="headerlink" title="service操作"></a>service操作</h3><p>为webui创建service<br><code>kubectl expose deploy/webui --type=NodePort --port=80</code></p>
-<h3 id="log操作"><a href="#log操作" class="headerlink" title="log操作"></a>log操作</h3><p>查看deploy日志<br><code>kubectl logs deploy/pingpong</code></p>
-<p>查看pod日志<br><code>kubect logs [ pod_name]</code></p>
-<p>或者脚本</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env bash</span></span><br><span class="line">DEPLOYMENT=<span class="variable">$1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> p <span class="keyword">in</span> $(kubectl get pods | grep ^<span class="variable">$&#123;DEPLOYMENT&#125;</span>- | cut -f 1 -d <span class="string">' '</span>); <span class="keyword">do</span> </span><br><span class="line">    <span class="built_in">echo</span> --------------------------- </span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$p</span> </span><br><span class="line">    <span class="built_in">echo</span> --------------------------- </span><br><span class="line">    kubectl logs <span class="variable">$p</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-<h3 id="批量sacle"><a href="#批量sacle" class="headerlink" title="批量sacle"></a>批量sacle</h3><p><code>kubectl get deploy -n &lt;YOUR_NAMESPACE&gt; -o name | xargs -I % kubectl scale % --replicas=0 -n &lt;YOUR_NAMESPACE&gt;</code></p>
-<hr>
-<p>More Ref:</p>
-<ul>
-<li><a href="http://kubernetesbyexample.com/" target="_blank" rel="noopener">http://kubernetesbyexample.com/</a></li>
-<li><a href="https://linuxacademy.com/blog/containers/kubernetes-cheat-sheet/" target="_blank" rel="noopener">https://linuxacademy.com/blog/containers/kubernetes-cheat-sheet/</a></li>
-<li><a href="http://docs.kubernetes.org.cn/683.html" target="_blank" rel="noopener">http://docs.kubernetes.org.cn/683.html</a></li>
-</ul>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/k8s/">k8s</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
   </article>
   
 
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/4/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/6/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/4/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/6/">下一页</a>
   </nav>
   
 </section>
