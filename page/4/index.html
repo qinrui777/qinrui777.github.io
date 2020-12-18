@@ -64,6 +64,268 @@
     
     
     
+    <article id="post-Github-Actions-E01初识" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/03/16/Github-Actions-E01初识/"
+    >Github Actions E01初识</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/03/16/Github-Actions-E01初识/" class="article-date">
+  <time datetime="2020-03-16T08:39:12.000Z" itemprop="datePublished">2020-03-16</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/CICD/">CICD</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
+<p>随着github actions在2019年下半年的推出，越来越多的人认识并了解到它。而也因为项目上的机遇，想尝试一下它。于是会较完整地从个人使用角度去记录一下，会有一系列的关于Github actions的<a href="https://www.devops-tech.cn/tags/GA/" target="_blank" rel="noopener">文章</a>。</p>
+</blockquote>
+<blockquote>
+<p>另外，为方便会将 Github actions 简称为<strong>GA</strong>; 如果官方有简写，到时候再统一更换。</p>
+</blockquote>
+<h3 id="0-Github-Actions的历史"><a href="#0-Github-Actions的历史" class="headerlink" title="0. Github Actions的历史"></a>0. Github Actions的历史</h3><p>2018年10月16日，全球最大开发者社区GitHub Universe开发者大会在旧金山召开，发布了新产品GitHub Actions。但是仅处于 <strong>limited public beta</strong>。个人是2019年9,10月份的时候看到新闻消息，听说了这个新词。当时还是 Beta 版本,需要自己简单的申请一下，才可以使用。而到这个时间点(2020.03),对于公开的 Github Public repositories 早已经可以全面使用(‘2019年11月13日 GitHub Actions 将在 GitHub Universe 上正式发布’)。</p>
+<h3 id="1-什么是Github-Actions"><a href="#1-什么是Github-Actions" class="headerlink" title="1. 什么是Github Actions"></a>1. 什么是Github Actions</h3><p>根据<a href="https://github.com/features/actions" target="_blank" rel="noopener">官网</a>的介绍如下：</p>
+<p><strong>Github Actions</strong></p>
+<p>Automate your workflow from idea to production. </p>
+<p><em>GitHub Actions makes it easy to automate all your software workflows, now with world-class CI/CD. Build, test, and deploy your code right from GitHub. Make code reviews, branch management, and issue triaging work the way you want.</em></p>
+<blockquote>
+<p>个人理解：</p>
+<ul>
+<li>首先做了 <code>CI/CD</code> 工具的事情，后面在使用过程中也可以看到github actions 实现了很多<code>CI/CD</code>工具 jenkins,Travis CI,CircleCI 等一些部分功能；</li>
+<li>automate(自动),可以让很多与代码库相关的事情自动，比如很多人用到的 <code>用github actions  发布hexo博客</code>， <code>用github actions给自己推送天气预报</code></li>
+</ul>
+</blockquote>
+<h3 id="2-为什么使用"><a href="#2-为什么使用" class="headerlink" title="2. 为什么使用"></a>2. 为什么使用</h3><ul>
+<li><p>1.不要钱(部分)</p>
+<blockquote>
+<p>本着github 开源的原则，公开的仓库可免费，私有仓库有限制的使用，对于企业用户也是。不过很好奇对于购买了github企业版的用户，如果想要使用github actions会怎么收费，有哪些方式可选。</p>
+</blockquote>
+</li>
+<li><p>2.多平台</p>
+<blockquote>
+<p>支持3大主流操作系统 Linux, macOS, Windows,这一条无疑很有吸引力，因为毕竟一个人难以拥有三种系统的电脑（即便有方法，切换起来也会费时费劲）。而对于苹果软件而言，有一个 macOS 的构建环境实属难得，毕竟人家的系统是收费的。也可对接很多云，如AWS、Azure 或是 GCP，也支持众多语言。</p>
+</blockquote>
+</li>
+<li><p>3.功能强</p>
+<blockquote>
+<p>功能太多，不一一说明，只简单提及几点，<strong>Matrix Workflows</strong>,<strong>Container Services</strong>,<strong>Caching Dependencies</strong>, <strong>Actions Marketplace</strong> 等等，具体使用后续细解。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="3-基本概念"><a href="#3-基本概念" class="headerlink" title="3.基本概念"></a>3.基本概念</h3><p><strong>workflow（工作流程）</strong>：持续集成一次运行的过程。</p>
+<p><strong>job（任务）</strong>：一个 workflow 由一个或多个 job 构成，含义是一次持续集成的运行，可以完成多个任务。</p>
+<p><strong>step（步骤）</strong>：每个 job 由多个 step 构成，一步步完成。</p>
+<p><strong>action（动作）</strong>：每个 step 可以依次执行一个或多个命令（action）。</p>
+<blockquote>
+<p>由于自己使用jenkins较多，一直想把以上概念与jenkins的做对比，但后来发现，还是不对比较好。因为 github actions的基本组成有自己的特色和优势，在使用时不要纠结旧的Jenkins中掌握的知识，需要抛弃旧的观念.建议:不被jenkins和其他cicd工具所限制住,最好深入理解github actions开发者的初衷，灵活运用。</p>
+</blockquote>
+<h4 id="小思考"><a href="#小思考" class="headerlink" title="小思考?"></a>小思考?</h4><p>一年后，两年后，Github Actions 会怎么影响其他工具？（Jenkins,Gocd, Gitlab CI, AWS CodeDeploy等等）</p>
+<blockquote>
+<p>(欢迎评论区留言)</p>
+</blockquote>
+<hr>
+<p>待完成清单</p>
+<ul>
+<li style="list-style: none"><input type="checkbox" checked> 产出物</li>
+<li style="list-style: none"><input type="checkbox"> with用法</li>
+<li style="list-style: none"><input type="checkbox"> Badge <em><a href="https://www.jianshu.com/p/570a99aa1608" target="_blank" rel="noopener">https://www.jianshu.com/p/570a99aa1608</a></em></li>
+<li style="list-style: none"><input type="checkbox"> 邮件通知 （默认构件失败会给自己的邮箱发消息，成功不会）</li>
+</ul>
+<hr>
+<p><strong>More Ref:</strong></p>
+<ul>
+<li><a href="https://github.com/features/actions" target="_blank" rel="noopener">https://github.com/features/actions</a></li>
+</ul>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GA/">GA</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-hexo-sytnax" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/03/02/hexo-sytnax/"
+    >hexo sytnax</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/03/02/hexo-sytnax/" class="article-date">
+  <time datetime="2020-03-02T06:19:13.000Z" itemprop="datePublished">2020-03-02</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<blockquote>
+<p>用HEXO在Github建立个人博客教程： <a href="https://www.jianshu.com/p/1f23f94b73d4" target="_blank" rel="noopener">https://www.jianshu.com/p/1f23f94b73d4</a></p>
+</blockquote>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<hr>
+<p><img src="/images/hexo_sytnax.png" alt="hexo sytnax"></p>
+<center> 常用的偏门小技巧 </center>
+
+<h3 id="书写风格"><a href="#书写风格" class="headerlink" title="书写风格"></a>书写风格</h3><p><a href="https://einverne.github.io/markdown-style-guide/zh.html" target="_blank" rel="noopener">Markdown书写风格指南</a></p>
+<p><a href="https://gerrit.googlesource.com/gitiles/+/master/Documentation/markdown.md" target="_blank" rel="noopener">https://gerrit.googlesource.com/gitiles/+/master/Documentation/markdown.md</a></p>
+<h3 id="文章框架"><a href="#文章框架" class="headerlink" title="文章框架"></a>文章框架</h3><p>同一类型的文章，比如技术类的，最好有一个框架用来提醒自己，把事情尽量写清楚；推荐看看<br><a href="https://github.com/do-community/do-article-templates" target="_blank" rel="noopener">文章框架</a></p>
+<p>目录categories和标签tags的说明:</p>
+<blockquote>
+<p>也不知道合不合适，目录包含标签，是一个大的范围，标签是具体的东西，属于其中，一个目录可包含多个标签。</p>
+</blockquote>
+<h3 id="画图UML"><a href="#画图UML" class="headerlink" title="画图UML"></a>画图UML</h3><p>@startuml<br>Bob -&gt; Alice : hello<br>@enduml</p>
+<h3 id="加密"><a href="#加密" class="headerlink" title="加密"></a>加密</h3><p><a href="https://github.com/MikeCoder/hexo-blog-encrypt" target="_blank" rel="noopener">hexo-blog-encrypt</a> ，具体过程也是参考链接完成安装、使用的。</p>
+<h3 id="图床"><a href="#图床" class="headerlink" title="图床"></a>图床</h3><p>选用 <a href="https://imgchr.com/" target="_blank" rel="noopener">路过图床</a></p>
+<ul>
+<li>不用注册账号</li>
+<li>未注册最大5M,注册后最大10M。大小都够了，不行的话可以提前用 <a href="https://tinypng.com/" target="_blank" rel="noopener">https://tinypng.com/</a> 压缩一些</li>
+<li>上传后提供多种格式供嵌入代码</li>
+</ul>
+<h3 id="评论"><a href="#评论" class="headerlink" title="评论"></a>评论</h3><p>使用<a href="https://disqus.com/" target="_blank" rel="noopener">disqus</a>,其账号保持和github的账号一致，毕竟blog内容也在github上。用github用的邮箱注册一把，</p>
+<blockquote>
+<p>然后我当前的主题好像不支持</p>
+</blockquote>
+<p>该用Valine </p>
+<blockquote>
+<p>Valine是基于 LeanCloud 作为数据存储的</p>
+</blockquote>
+<ul>
+<li><p>登录 <a href="https://console.leancloud.app/" target="_blank" rel="noopener">https://console.leancloud.app/</a> 注册 （用国际版，国内的版本似乎还要实名认证）</p>
+</li>
+<li><p>邮箱验证，手机验证</p>
+</li>
+<li><p>创建应用：<code>控制台 -&gt; 创建应用（开发版）</code></p>
+</li>
+<li><p>创建 Class: <strong>Counter</strong>，<strong>Comment</strong> (默认权限配置即可)</p>
+</li>
+<li><code>Settings-&gt; App keys</code> 获取<strong>AppID</strong>，<strong>AppKey</strong>。放到对应主题的 <code>_config.yml</code>中</li>
+</ul>
+<h3 id="链接中的括号"><a href="#链接中的括号" class="headerlink" title="链接中的括号"></a>链接中的括号</h3><p><strong>解决方法1:</strong><br>%28 代替(, %29代替) 主要是后者会歧义链接部分的结束.，这是使用url符号码去代替ascii的符号，能够解决这个问题。可参考 <a href="https://www.w3schools.com/tags/ref_urlencode.asp" target="_blank" rel="noopener">https://www.w3schools.com/tags/ref_urlencode.asp</a> The default character-set in HTML5 is UTF-8.</p>
+<p><strong>例如：</strong><br>更多关于 Telegram 的介绍可以查看 <a href="https://en.wikipedia.org/wiki/Telegram_%28software%29" target="_blank" rel="noopener">Wikipedia</a></p>
+<p><strong>解决方法2:</strong><br>直接使用特殊字符的编码</p>
+<p><strong>例如：</strong><br>更多关于 Telegram 的介绍可以查看 <a href="https://en.wikipedia.org/wiki/Telegram_&#40;software&#41;" target="_blank" rel="noopener">Wikipedia</a></p>
+<h3 id="提示块"><a href="#提示块" class="headerlink" title="提示块"></a>提示块</h3><blockquote>
+<p>目前主题貌似暂时不支持<br>[note]<br><strong>Note:</strong> This is a note.</p>
+</blockquote>
+<p>[warning]<br><strong>Warning:</strong> This is a warning.</p>
+<blockquote>
+<p>[warning] 我是warning类型引用</p>
+</blockquote>
+<hr>
+<h3 id="删除线"><a href="#删除线" class="headerlink" title="删除线"></a>删除线</h3><p><del>跑路指南哇</del></p>
+<h3 id="锚点"><a href="#锚点" class="headerlink" title="锚点"></a>锚点</h3><p><a href="#jump">说明文字,点击这里会跳到下面的位置</a></p>
+<p><span id="jump">跳转到的位置</span></p>
+<h3 id="上标、下标"><a href="#上标、下标" class="headerlink" title="上标、下标"></a>上标、下标</h3><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">H&lt;sub&gt;2&lt;/sub&gt;O  CO&lt;sub&gt;2&lt;/sub&gt;</span><br><span class="line">爆米&lt;sup&gt;TM&lt;/sup&gt;</span><br></pre></td></tr></table></figure>
+<p>效果：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">H2O CO2</span><br><span class="line">爆米TM</span><br></pre></td></tr></table></figure></p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools/">Tools</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-画UML" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -834,183 +1096,6 @@
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Q-List/">Q List</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-youtube-推荐频道-Tech" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/12/10/youtube-推荐频道-Tech/"
-    >youtube 推荐频道(Tech)</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/12/10/youtube-推荐频道-Tech/" class="article-date">
-  <time datetime="2019-12-10T01:47:35.000Z" itemprop="datePublished">2019-12-10</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <ul>
-<li>Valentin Despa postman、 测试</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">频道</th>
-<th style="text-align:left">关键字</th>
-<th style="text-align:left">备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">Valentin Despa</td>
-<td style="text-align:left">postman,测试</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">Nebulaworks</td>
-<td style="text-align:left">devops,terraform</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">tutoriaLinux</td>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-</tr>
-</tbody>
-</table>
-<p><a href="https://www.devops-tech.cn/2019/05/22/Small-Tools-1-youtube-dl/" target="_blank" rel="noopener">如何下载</a>youtube视频、音频</p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Q-List/">Q List</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-Terraform-terraform-console" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/12/05/Terraform-terraform-console/"
-    >Terraform : terraform console</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/12/05/Terraform-terraform-console/" class="article-date">
-  <time datetime="2019-12-05T03:19:42.000Z" itemprop="datePublished">2019-12-05</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Terraform/">Terraform</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h5 id="1-evaluating-expressions"><a href="#1-evaluating-expressions" class="headerlink" title="1.evaluating expressions"></a>1.evaluating expressions</h5><p>The terraform console command provides an interactive console for evaluating expressions.</p>
-<p>For example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># interactive console</span></span><br><span class="line">➜ terraform console</span><br><span class="line">&gt; element(list(<span class="string">"one"</span>,<span class="string">"two"</span>,<span class="string">"three"</span>),1)</span><br><span class="line">two</span><br><span class="line"></span><br><span class="line"><span class="comment"># non-interactive scripts</span></span><br><span class="line">➜ <span class="built_in">echo</span> <span class="string">"list("</span>1<span class="string">","</span>2<span class="string">")"</span> | terraform console</span><br><span class="line">[</span><br><span class="line">  1,</span><br><span class="line">  2,</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
-<p>or</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">➜ terraform console</span><br><span class="line">&gt; aws_instance_demo.public_ip</span><br><span class="line">54.152.62.34</span><br></pre></td></tr></table></figure>
-<h5 id="2-test-Terraform-built-in-functions-locally"><a href="#2-test-Terraform-built-in-functions-locally" class="headerlink" title="2.test Terraform built-in functions locally"></a>2.test Terraform built-in functions locally</h5><p>  <a href="http://artemstar.com/2018/03/03/terraform-test-functions/" target="_blank" rel="noopener">test Terraform built-in functions locally</a></p>
-<hr>
-<p>More ref:<br><a href="https://www.terraform.io/docs/commands/console.html" target="_blank" rel="noopener">https://www.terraform.io/docs/commands/console.html</a><br><a href="http://artemstar.com/2018/03/03/terraform-test-functions/" target="_blank" rel="noopener">http://artemstar.com/2018/03/03/terraform-test-functions/</a></p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Terraform/">Terraform</a></li></ul>
 
 
     </footer>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    IntelliJ 与 Gradle版本不兼容 |  一笑皆春
+    Jenkins Error |  一笑皆春
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -30,7 +30,7 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="post-IntelliJ-与-Gradle版本不兼容" class="article article-type-post" itemscope
+  <article id="post-Jenkins-Error" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -38,7 +38,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  IntelliJ 与 Gradle版本不兼容
+  Jenkins Error
 </h1>
   
 
@@ -47,8 +47,8 @@
 
     
     <div class="article-meta">
-      <a href="/2020/11/06/IntelliJ-与-Gradle版本不兼容/" class="article-date">
-  <time datetime="2020-11-06T02:25:07.000Z" itemprop="datePublished">2020-11-06</time>
+      <a href="/2020/11/12/Jenkins-Error/" class="article-date">
+  <time datetime="2020-11-12T09:30:18.000Z" itemprop="datePublished">2020-11-12</time>
 </a>
       
       
@@ -58,7 +58,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">129字</span>
+            <span class="post-count">317字</span>
         </span>
     </span>
 
@@ -92,17 +92,14 @@
       
 
       
-      <h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>IntelliJ version: 2018.2.7 CE</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">IntelliJ IDEA 2018.2.7 (Community Edition)</span><br><span class="line">Build <span class="comment">#IC-182.5107.41, built on November 27, 2018</span></span><br><span class="line">JRE: 1.8.0_152-release-1248-b22 amd64</span><br><span class="line">JVM: OpenJDK 64-Bit Server VM by JetBrains s.r.o</span><br><span class="line">Windows 10 10.0</span><br></pre></td></tr></table></figure>
-<p>Gradle version 6.1.1</p>
-<p>报错截图如下：</p>
-<p><img src="/images/intellij_error.png" alt="error"></p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">java.lang.NoClassDefFoundError: org/gradle/api/internal/plugins/DefaultConvention</span><br><span class="line">	at org.jetbrains.plugins.gradle.tooling.builder.ProjectExtensionsDataBuilderImpl.buildAll(ProjectExtensionsDataBuilderImpl.groovy:50)</span><br><span class="line">	at org.jetbrains.plugins.gradle.tooling.internal.ExtraModelBuilder.buildAll(ExtraModelBuilder.java:67)</span><br><span class="line">	at org.gradle.tooling.provider.model.internal.DefaultToolingModelBuilderRegistry<span class="variable">$BuildOperationWrappingToolingModelBuilder</span><span class="variable">$1</span><span class="variable">$1</span>.create(DefaultToolingModelBuilderRegistry.java:104)</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p><strong>step1</strong></p>
-<p><img src="/images/Intellij-step1.png" alt="step11"></p>
-<p><strong>step2</strong></p>
-<p><img src="/images/intellij-step2.png" alt="step2"></p>
-<p>大致原因就是版本不匹配，都是时间从中作祟。</p>
+      <h3 id="中文乱码问题"><a href="#中文乱码问题" class="headerlink" title="中文乱码问题"></a>中文乱码问题</h3><p>参考<br><a href="https://www.cnblogs.com/unknows/p/8519636.html" target="_blank" rel="noopener">https://www.cnblogs.com/unknows/p/8519636.html</a></p>
+<p><a href="http://yeshaoting.github.io/article/jenkins/jenkins%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E4%B8%8E%E6%9C%8D%E5%8A%A1%E5%90%AF%E5%8A%A8/" target="_blank" rel="noopener">http://yeshaoting.github.io/article/jenkins/jenkins%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E4%B8%8E%E6%9C%8D%E5%8A%A1%E5%90%AF%E5%8A%A8/</a></p>
+<h3 id="Jenkins-console-output-display-color"><a href="#Jenkins-console-output-display-color" class="headerlink" title="Jenkins console output display color"></a>Jenkins console output display color</h3><p>打印测试报告时jenkins console output输出如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&gt; Task :cucumber</span><br><span class="line"></span><br><span class="line">Scenario: ????         [90m<span class="comment"># src/test/resources/features/bta_open_an_account.feature:3[0m</span></span><br><span class="line">Starting MSEdgeDriver 85.0.564.51 (626274a16bb350129a74ead7a3d8d53a5ad39364) on port 5325</span><br><span class="line">Only <span class="built_in">local</span> connections are allowed.</span><br><span class="line">Please see https://chromedriver.chromium.org/security-considerations <span class="keyword">for</span> suggestions on keeping MSEdgeDriver safe.</span><br><span class="line">MSEdgeDriver was started successfully.</span><br><span class="line">[1605165549.451][WARNING]: This version of MSEdgeDriver has not been tested with MSEdge version 86.</span><br><span class="line">Nov 12, 2020 3:19:11 PM org.openqa.selenium.remote.ProtocolHandshake createSession</span><br><span class="line">INFO: Detected dialect: W3C</span><br><span class="line">http://10.20.159.131:8080/ifmmanage/bizframe/loginnew.jsp</span><br><span class="line">  [32mGiven [0m[32m??BTA???????[0m   [90m<span class="comment"># steps.StepDefs.login()[0m</span></span><br><span class="line">  [32mAnd [0m[32m??BTA?????[0m       [90m<span class="comment"># steps.StepDefs.assertLoginSuccess()[0m</span></span><br><span class="line">  [32mWhen [0m[32m??[0m[32m[1m<span class="string">"????"</span>[0m[32m???[0m     [90m<span class="comment"># steps.StepDefs.open_tab(java.lang.String)[0m</span></span><br><span class="line">  [32mAnd [0m[32m???????[0m[32m[1m<span class="string">"????"</span>[0m[32m??[0m  [90m<span class="comment"># steps.StepDefs.clickClearingSystem(java.lang.String)[0m</span></span><br><span class="line">  [32mAnd [0m[32m????????[0m         [90m<span class="comment"># steps.StepDefs.clickDailyStartClearing()[0m</span></span><br><span class="line">  [32mAnd [0m[32m??????[0m           [90m<span class="comment"># steps.StepDefs.confirmWindow()[0m</span></span><br><span class="line">  [32mThen [0m[32m???????[0m[32m[1m<span class="string">"????"</span>[0m[32m??[0m [90m<span class="comment"># steps.StepDefs.clickClearingSystem(java.lang.String)[0m</span></span><br></pre></td></tr></table></figure></p>
+<p>ref: <a href="https://www.programmersought.com/article/66361313580/" target="_blank" rel="noopener">https://www.programmersought.com/article/66361313580/</a></p>
+<h3 id="How-to-stop-an-unstoppable-zombie-job-on-Jenkins-without-restarting-the-server"><a href="#How-to-stop-an-unstoppable-zombie-job-on-Jenkins-without-restarting-the-server" class="headerlink" title="How to stop an unstoppable zombie job on Jenkins without restarting the server?"></a>How to stop an unstoppable zombie job on Jenkins without restarting the server?</h3><p>Go to “Manage Jenkins” &gt; “Script Console” and run a script:</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Jenkins .instance.getItemByFullName(<span class="string">"JobName"</span>)</span><br><span class="line">        .getBuildByNumber(JobNumber)</span><br><span class="line">        .finish(hudson.model.Result.ABORTED, <span class="keyword">new</span> java.io.IOException(<span class="string">"Aborting build"</span>));</span><br></pre></td></tr></table></figure>
+<p>You’ll have just specify your JobName and JobNumber.</p>
+<p>ref: <a href="https://stackoverflow.com/questions/14456592/how-to-stop-an-unstoppable-zombie-job-on-jenkins-without-restarting-the-server" target="_blank" rel="noopener">https://stackoverflow.com/questions/14456592/how-to-stop-an-unstoppable-zombie-job-on-jenkins-without-restarting-the-server</a></p>
 
       
       <!-- reward -->
@@ -172,14 +169,14 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/11/06/IntelliJ-与-Gradle版本不兼容/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/11/12/Jenkins-Error/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools/">Tools</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jenkins/">jenkins</a></li></ul>
 
 
     </footer>
@@ -190,19 +187,19 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/11/12/Jenkins-Error/" class="article-nav-link">
+      <a href="/2020/12/18/Validate-a-Jenkinsfile/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            Jenkins Error
+            Validate a Jenkinsfile 
           
         </div>
       </a>
     
     
-      <a href="/2020/09/17/谈系列-谈家2020/" class="article-nav-link">
+      <a href="/2020/11/06/IntelliJ-与-Gradle版本不兼容/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">谈系列-谈家2020</div>
+        <div class="article-nav-title">IntelliJ 与 Gradle版本不兼容</div>
       </a>
     
   </nav>
