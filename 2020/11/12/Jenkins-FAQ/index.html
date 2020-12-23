@@ -30,7 +30,7 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="post-Jenkins-Error" class="article article-type-post" itemscope
+  <article id="post-Jenkins-FAQ" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -47,7 +47,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/11/12/Jenkins-Error/" class="article-date">
+      <a href="/2020/11/12/Jenkins-FAQ/" class="article-date">
   <time datetime="2020-11-12T09:30:18.000Z" itemprop="datePublished">2020-11-12</time>
 </a>
       
@@ -58,7 +58,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">317字</span>
+            <span class="post-count">449字</span>
         </span>
     </span>
 
@@ -67,7 +67,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">1分钟</span>
+            <span class="post-count">2分钟</span>
         </span>
     </span>
 </div>
@@ -100,6 +100,10 @@
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Jenkins .instance.getItemByFullName(<span class="string">"JobName"</span>)</span><br><span class="line">        .getBuildByNumber(JobNumber)</span><br><span class="line">        .finish(hudson.model.Result.ABORTED, <span class="keyword">new</span> java.io.IOException(<span class="string">"Aborting build"</span>));</span><br></pre></td></tr></table></figure>
 <p>You’ll have just specify your JobName and JobNumber.</p>
 <p>ref: <a href="https://stackoverflow.com/questions/14456592/how-to-stop-an-unstoppable-zombie-job-on-jenkins-without-restarting-the-server" target="_blank" rel="noopener">https://stackoverflow.com/questions/14456592/how-to-stop-an-unstoppable-zombie-job-on-jenkins-without-restarting-the-server</a></p>
+<h3 id="jenkins-的在slave-node运行的-job-状态不更新"><a href="#jenkins-的在slave-node运行的-job-状态不更新" class="headerlink" title="jenkins 的在slave node运行的 job 状态不更新"></a>jenkins 的在slave node运行的 job 状态不更新</h3><p>jenkins master： Windows PC<br>jenkins slave: linux server</p>
+<p>某个调度到slave的运行job总是不更新状态，明明已经完成了任务，但一直在页面左下角显示的是在运行中</p>
+<p>可尝试 <a href="https://kb.iu.edu/d/aopy" target="_blank" rel="noopener">https://kb.iu.edu/d/aopy</a></p>
+<h3 id="引号"><a href="#引号" class="headerlink" title="引号"></a>引号</h3><p>// 单引号需要拼接 容易出错 不推荐使用<br><code>sh &#39;mkdir -p &#39; + VARIABLE</code><br>// 三引号支持变量等内容，引号嵌套等 推荐使用<br><code>sh &quot;&quot;&quot;cp ${VARIABLE}/ &#39;abc&#39; &quot;123&quot; ${VARIABLE_1}/${VARIABLE_2}&quot;&quot;&quot;</code></p>
 
       
       <!-- reward -->
@@ -169,7 +173,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/11/12/Jenkins-Error/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/11/12/Jenkins-FAQ/" alt="微信分享二维码">
     </div>
 </div>
 
