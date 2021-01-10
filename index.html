@@ -64,6 +64,238 @@
     
     
     
+    <article id="post-Openshift-E02-部署Jenkins服务" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/01/10/Openshift-E02-部署Jenkins服务/"
+    >Openshift E02 部署Jenkins服务</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2021/01/10/Openshift-E02-部署Jenkins服务/" class="article-date">
+  <time datetime="2021-01-10T08:02:03.000Z" itemprop="datePublished">2021-01-10</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/CICD/">CICD</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>OpenShift 项目默认提供了两个Jenkins部署模板, Jenkins-ephemeral 和 Jenkins-persistent</p>
+<p>Jenkins-ephemeral模板部署的Jenkins服务的数据在容器退出后将丢失，适合测试使用；</p>
+<p>Jenkins-persistent模板部署需要持久化卷的支持，其部署的Jenkins 服务的数据可以被持久化。</p>
+<p><a href="https://github.com/openshift/origin/tree/v1.3.0/examples" target="_blank" rel="noopener">https://github.com/openshift/origin/tree/v1.3.0/examples</a></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">oc login -u developer https://192.168.99.109:8443</span><br><span class="line"></span><br><span class="line"><span class="comment"># create a new project, name: ci</span></span><br><span class="line">oc new-project ci</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create a template, </span></span><br><span class="line">oc create -f https://raw.githubusercontent.com/openshift/origin/v1.3.0/examples/jenkins/jenkins-ephemeral-template.json </span><br><span class="line"></span><br><span class="line"><span class="comment"># Get template</span></span><br><span class="line">oc get template</span><br><span class="line">NAME                DESCRIPTION                                       PARAMETERS        OBJECTS</span><br><span class="line">jenkins-ephemeral   Jenkins service, without persistent storage....   6 (1 generated)   6</span><br><span class="line"></span><br><span class="line"><span class="comment">#</span></span><br><span class="line">➜  ~ oc policy add-role-to-user edit -z default</span><br><span class="line">role <span class="string">"edit"</span> added: <span class="string">"default"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#</span></span><br><span class="line">➜  ~ oc new-app --template=jenkins-ephemeral --param=JENKINS_PASSWORD=welcome</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">--&gt; Deploying template &quot;ci/jenkins-ephemeral&quot; to project ci</span><br><span class="line"></span><br><span class="line">     jenkins-ephemeral</span><br><span class="line">     ---------</span><br><span class="line">     Jenkins service, without persistent storage.</span><br><span class="line">     WARNING: Any data stored will be lost upon pod destruction. Only use this template for testing</span><br><span class="line"></span><br><span class="line">     A Jenkins service has been created in your project.  The username/password are admin/welcome.  The tutorial at https://github.com/openshift/origin/blob/master/examples/jenkins/README.md contains more information about using this template.</span><br><span class="line"></span><br><span class="line">     * With parameters:</span><br><span class="line">        * Jenkins Service Name=jenkins</span><br><span class="line">        * Jenkins JNLP Service Name=jenkins-jnlp</span><br><span class="line">        * Jenkins Password=welcome</span><br><span class="line">        * Memory Limit=512Mi</span><br><span class="line">        * Jenkins ImageStream Namespace=openshift</span><br><span class="line">        * Jenkins ImageStreamTag=jenkins:latest</span><br><span class="line"></span><br><span class="line">--&gt; Creating resources ...</span><br><span class="line">    route.route.openshift.io &quot;jenkins&quot; created</span><br><span class="line">    deploymentconfig.apps.openshift.io &quot;jenkins&quot; created</span><br><span class="line">    serviceaccount &quot;jenkins&quot; created</span><br><span class="line">    rolebinding.authorization.openshift.io &quot;jenkins_edit&quot; created</span><br><span class="line">    service &quot;jenkins-jnlp&quot; created</span><br><span class="line">    service &quot;jenkins&quot; created</span><br><span class="line">--&gt; Success</span><br><span class="line">    Access your application via route &apos;jenkins-ci.192.168.99.109.nip.io&apos;</span><br><span class="line">    Run &apos;oc status&apos; to view your app.</span><br></pre></td></tr></table></figure>
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenShift/">OpenShift</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-Openshift-E01-最常见的使用场景" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/01/10/Openshift-E01-最常见的使用场景/"
+    >Openshift E01 最常见的使用场景</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2021/01/10/Openshift-E01-最常见的使用场景/" class="article-date">
+  <time datetime="2021-01-10T07:35:25.000Z" itemprop="datePublished">2021-01-10</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/CICD/">CICD</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>暂时不介绍 openshift 的概念，也不介绍如何安装、部署，先使用一个例子来看看 openshift 能做什么。</p>
+<h3 id="新建一个项目"><a href="#新建一个项目" class="headerlink" title="新建一个项目"></a>新建一个项目</h3><p>在我的本地，使用developer/developer登陆 OpenShift控制台,右上角点击 <code>+Create Project</code></p>
+<ul>
+<li>Name -&gt; <code>mybank</code></li>
+<li>Display Name -&gt; <code>MyBank</code></li>
+<li>Description- &gt; <code>MyBank Application</code></li>
+</ul>
+<p>新建之后，去到 <code>MyBank</code> project, <code>Overview</code>, <code>Browse Catalog</code>  <code>Wildfly</code>；补充如下截图的信息</p>
+<p><a href="https://imgchr.com/i/slR7a4" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/10/slR7a4.png" alt="slR7a4.png"></a></p>
+<p>Application github repo url: <a href="https://github.com/nichochen/mybank-demo-maven" target="_blank" rel="noopener">https://github.com/nichochen/mybank-demo-maven</a></p>
+<p>点击 <code>Create</code> 按钮后，OpenShift就会创建一系列的后台对象，进而出发S2I流程。构建的过程需要连接互联网下载应用的源代码、Maven构建所需要的Jar包以及镜像。在我的电脑上clone后大概等待了20min，然后才继续后面的步骤。</p>
+<p><a href="https://imgchr.com/i/slIrq0" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/10/slIrq0.png" alt="slIrq0.png"></a></p>
+<p>我本地使用minishift搭建的OpenShift实验环境</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># login vm</span></span><br><span class="line">minishift ssh</span><br><span class="line"></span><br><span class="line"><span class="comment"># grep the image</span></span><br><span class="line">[docker@minishift ~]<span class="variable">$docker</span> images | grep bank</span><br><span class="line">172.30.1.1:5000/mybank/mybank                            latest              9f9a257dce21        8 minutes ago       961 MB</span><br></pre></td></tr></table></figure>
+<p>一切便都结束了，不要太省心～<br><a href="https://imgchr.com/i/slTjbt" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/10/slTjbt.png" alt="slTjbt.png"></a></p>
+<p>可以直接从浏览器访问应用程序了<br><a href="https://imgchr.com/i/sl7ZV0" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/10/sl7ZV0.png" alt="sl7ZV0.png"></a></p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenShift/">OpenShift</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-Excel常用函数" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/12/24/Excel常用函数/"
+    >Excel常用函数</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/12/24/Excel常用函数/" class="article-date">
+  <time datetime="2020-12-24T04:40:07.000Z" itemprop="datePublished">2020-12-24</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>查找一一对应的关系</p>
+<p><code>=VLOOKUP(F1,configs!$D:$E,2,0)</code>   $用来保持D E不动</p>
+<p><code>=VLOOKUP(B9,configs!A:B,2,0)</code></p>
+<p><code>=MID(K2,1,1)</code>  从第一位开始，取1位</p>
+<p><code>=MID(K2,1,3)</code>  从第一位开始，取3位</p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools/">Tools</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-Validate-a-Jenkinsfile" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -611,345 +843,6 @@
 
 </article>
     
-    <article id="post-逆流而上" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/07/09/逆流而上/"
-    >逆流而上</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/07/09/逆流而上/" class="article-date">
-  <time datetime="2020-07-09T01:36:38.000Z" itemprop="datePublished">2020-07-09</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/读书笔记/">读书笔记</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h3 id="0-前言"><a href="#0-前言" class="headerlink" title="0.前言"></a>0.前言</h3><p>2020.7.9 又一年的高考结束了，往年都是在6月。青春，逆流而上，听起来都是这么的文艺。而这里讲到的这本书全名是<strong>《逆流而上 阿里巴巴技术成长之路》</strong>，哈哈 o(╯□╰)o。估计我是被这文艺的书名给吸引过去的。</p>
-<p>虽然没有细读，但也看到一些很好的总结，于是想记录一下。</p>
-<h3 id="1-关于书的信息"><a href="#1-关于书的信息" class="headerlink" title="1.关于书的信息"></a>1.关于书的信息</h3><p>时间： 2018年1月第一版</p>
-<p>一句话概括： “本书是阿里巴巴集团荣耀背后的技术血泪史。”</p>
-<p>适合谁看： “本书主要面向互联网技术从业人员和在校师生，使读者能够通过此书基本了解阿里在各技术领域的能力，学习在如此规模下可能出现的问题以及解决方案的探讨和沉淀分享。”</p>
-<h3 id="2-摘抄"><a href="#2-摘抄" class="headerlink" title="2.摘抄"></a>2.摘抄</h3><ul>
-<li><p>“问题处理环节，需要以最快的时间协同不同团队之间的响应处理，避免措施问题排查的最佳时间窗口。“</p>
-</li>
-<li><p>“稳定性要做好几点：研发与运维要靠近、故障标准要统一并强化处理流程、建设统一的基础设施并完善团队融合做到“书同文车同轨行同伦”</p>
-</li>
-<li><p>“阿里巴巴集团开发规约中对于ORM规范，有明确一条强制规约：在表查询中，一律不要使用*作为查询的字段列表，需要哪些字段必须明确写明。”</p>
-</li>
-<li><p>“数据库中的参数配置对SQL执行速度快慢也有非常大的影响，常见的三个参数包括 innodb_buffer_pool_size ,tmp_table_size, query_cache_size,table_cache”<br>（应该是笔误，明明后面也讲到了4个参数，具体参数讲解也自行搜索）</p>
-</li>
-<li><p>下面的图给了我们定位问题的一些思路，遇到棘手的问题时，要全面考量，逐一排查。不能想当然的去认为“服务器怎么会有问题”，”硬盘不可能会坏“，“网络应该不会有问题吧”<br><img src="https://s1.ax1x.com/2020/07/09/UeDKSK.png" alt="UeDKSK.png"></p>
-</li>
-</ul>
-<p>”为了找出CPU飚高的原因，开发在重启过程中通过执行一下命令找出CPU利用率比较高的线程。“<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -eL -o pid,%cpu,lwp | grep -i pid | sort -nr k2 | awk <span class="string">'&#123;print("%s %s %x\n",1,1,2,$3)&#125;'</span> | head</span><br></pre></td></tr></table></figure></p>
-<h3 id="3-读后"><a href="#3-读后" class="headerlink" title="3.读后"></a>3.读后</h3><p>没有细读的原因，应该是鄙人才疏学浅，孤陋寡闻，很多书中的事情我也没遇上过。如果是当事人，读起来应该有一种破解一桩悬案的快感。但处理问题的思路，以及开发人员、运维人员之间的配合经验十分重要，还有复盘（类比于SRE中的验尸报告）等等都是很棒的，书中对于技术细节也有很深的研究，毕竟是要解决一些棘手的问题，代码片段、逻辑图、架构图丰富，涉及基础设施架构、mysql、中间件服务、负载均衡等等很常见的技术，确实不常见的业务量。</p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-一份几年前的linux命令小手册" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/06/10/一份几年前的linux命令小手册/"
-    >一份几年前的linux命令小手册</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/06/10/一份几年前的linux命令小手册/" class="article-date">
-  <time datetime="2020-06-10T06:03:07.000Z" itemprop="datePublished">2020-06-10</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Linux/">Linux</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p>大学里可没有运维这门专业，但一部分人阴差阳错的走上了这条道路。如期初的我，像无头苍蝇一般。没有人指点迷津，对职场也懵懵懂懂的。这几天在简单收拾时，找到了一份几年前打印的10多页纸，记录了一些命令。然后这些命令中的一部分我现在也不知道用法，可能是用的太少，但以前那会儿它也是一份传递，带我领略神奇的命令。仅此记录一下，然后丢弃这几页纸张，化为乌有，轻便前行。</p>
-<p><strong>再简单的命令，也可能有我们不知道的用法，因为没有细心研究、探索、追问。再说，温故而知新。</strong></p>
-<h3 id="1-系统信息检查"><a href="#1-系统信息检查" class="headerlink" title="1.系统信息检查"></a>1.系统信息检查</h3><p>几板斧： <code>uname -a</code>,<code>hostname</code>, <code>ifconfig -a</code> ,<code>date</code>, <code>pwd</code> ,<code>whoami</code></p>
-<h3 id="2-性能检查"><a href="#2-性能检查" class="headerlink" title="2.性能检查"></a>2.性能检查</h3><table>
-<thead>
-<tr>
-<th style="text-align:left">检查项</th>
-<th>命令</th>
-<th style="text-align:center">备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">CPU占用率 <br> 内存使用率 <br>内存交换区使用率</td>
-<td><code>top</code></td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:left">文件系统占用率</td>
-<td><code>df -h</code></td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:left">CPU负载</td>
-<td><code>uptime</code></td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:left">系统i/o</td>
-<td><code>iostat 1 3</code></td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:left">系统资源使用情况</td>
-<td><code>vmstat 1 10</code></td>
-<td style="text-align:center">每隔一秒刷新一次，刷新10次</td>
-</tr>
-</tbody>
-</table>
-<h3 id="3-安全检查"><a href="#3-安全检查" class="headerlink" title="3.安全检查"></a>3.安全检查</h3><table>
-<thead>
-<tr>
-<th style="text-align:left">检查项</th>
-<th>命令</th>
-<th style="text-align:center">备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">当前登录用户</td>
-<td><code>who</code></td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:left">系统重启情况</td>
-<td><code>less /var/log/boot.log</code></td>
-<td style="text-align:center">部分linux发行版不适用</td>
-</tr>
-<tr>
-<td style="text-align:left">系统日志</td>
-<td><code>less /var/log/messages</code></td>
-<td style="text-align:center">部分linux发行版不适用</td>
-</tr>
-<tr>
-<td style="text-align:left">系统账户检查</td>
-<td><code>more /etc/password</code> <br> <code>more /etc/password</code></td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:left">系统登录情况检查</td>
-<td><code>less /var/log/lastlog</code> 或 <code>lastlog</code></td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:left">系统运行时间</td>
-<td><code>uptime</code></td>
-</tr>
-</tbody>
-</table>
-<h3 id="4-硬件信息"><a href="#4-硬件信息" class="headerlink" title="4.硬件信息"></a>4.硬件信息</h3><table>
-<thead>
-<tr>
-<th style="text-align:left">检查项</th>
-<th>命令</th>
-<th style="text-align:center">备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">查看硬件信息</td>
-<td><code>dmidecode</code></td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:left">硬件启动信息</td>
-<td><code>dmesg</code></td>
-<td style="text-align:center"></td>
-</tr>
-</tbody>
-</table>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shell/">Shell</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-Server-我是谁-我在哪里" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/05/25/Server-我是谁-我在哪里/"
-    >Server:我是谁,我在哪里...</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/05/25/Server-我是谁-我在哪里/" class="article-date">
-  <time datetime="2020-05-25T02:14:53.000Z" itemprop="datePublished">2020-05-25</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Linux/">Linux</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>给你一台现成的服务器，你该如何了解它？(可以是linux的，也可以是Windows,也可能是mac os),但这里更多的假设是linux吧，因为更加常见，假如你ssh到了一台新服务器，除此之外，别人什么都没告诉你，你该怎么办？</p>
-<h3 id="我是谁-第一问"><a href="#我是谁-第一问" class="headerlink" title="我是谁-第一问"></a>我是谁-第一问</h3><p><code>hostname</code></p>
-<p><code>whoami</code> 或 <code>id</code></p>
-<h3 id="我是谁-第二问"><a href="#我是谁-第二问" class="headerlink" title="我是谁-第二问"></a>我是谁-第二问</h3><p>linux有很多发行版本，每个都有点儿不一样，就比如下载软件的命令就是不一样的，不是每台服务器都是你所熟悉的centos，或者 ubuntu。不要去“我以为…”，而是我先确认一下，怎么确认是我们需要思考的。</p>
-<p><a href="https://www.cyberciti.biz/faq/how-to-check-os-version-in-linux-command-line/" target="_blank" rel="noopener">How to check os version in Linux command line</a></p>
-<p>比如说说 <code>hostnamectl</code> 命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">root@saltmaster:~<span class="comment"># hostnamectl</span></span><br><span class="line">   Static hostname: saltmaster</span><br><span class="line">         Icon name: computer-vm</span><br><span class="line">           Chassis: vm</span><br><span class="line">        Machine ID: 5ff54f44069c4ce289690d8b20a3a8d4</span><br><span class="line">           Boot ID: ca1c7b0381c74fadb52f2065c2bf8648</span><br><span class="line">    Virtualization: oracle   <span class="comment"># 是否使用虚拟化，及哪家的虚拟化，我这里是 vagrant + virtaul box启动的一台服务器</span></span><br><span class="line">    <span class="comment"># 如果看到的是   Virtualization: microsoft 这种，就说明是微软的，大概率是azure吧.</span></span><br><span class="line">  Operating System: Ubuntu 18.04.4 LTS</span><br><span class="line">            Kernel: Linux 4.15.0-91-generic  <span class="comment"># 内核版本</span></span><br><span class="line">      Architecture: x86-64   <span class="comment">#服务器的架构</span></span><br></pre></td></tr></table></figure>
-<h3 id="我在哪里-几点了-第三问"><a href="#我在哪里-几点了-第三问" class="headerlink" title="我在哪里,几点了-第三问"></a>我在哪里,几点了-第三问</h3><p>date</p>
-<p>tree</p>
-<p>ps </p>
-<p>systemctl service</p>
-<h3 id="出错了，怎么办"><a href="#出错了，怎么办" class="headerlink" title="出错了，怎么办-"></a>出错了，怎么办-</h3><p>日志<br>Application Logs<br>Event Logs<br>Service Logs<br>System Logs</p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shell/">Shell</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
   </article>
   
 
@@ -967,7 +860,7 @@
     <ul class="list-inline">
       <li>
         &copy;
-        2018-2020
+        2018-2021
         qinrui
       </li>
       <li>

@@ -64,6 +64,381 @@
     
     
     
+    <article id="post-Test-02-Tools" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/11/08/Test-02-Tools/"
+    >Test 02:Tools</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/11/08/Test-02-Tools/" class="article-date">
+  <time datetime="2019-11-08T07:38:23.000Z" itemprop="datePublished">2019-11-08</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Test/">Test</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p><mark>测试种类与测试工具没有一对一的关系。</mark></p>
+<p>项目原因最近在学习以下几个工具：</p>
+<h3 id="1-Postman"><a href="#1-Postman" class="headerlink" title="1.Postman"></a>1.Postman</h3><p>可做api测试，newman</p>
+<h3 id="2-Selenium"><a href="#2-Selenium" class="headerlink" title="2.Selenium"></a>2.Selenium</h3><p>Selenium is a suite of tools to automate web browsers across many platforms.</p>
+<h3 id="3-Cucumber"><a href="#3-Cucumber" class="headerlink" title="3.Cucumber"></a>3.Cucumber</h3><p>Cucumber 是 BDD（behaviour-driven development） 模式下实现可执行规范（Executable Specifications）的开源工具，但是它的使命并不局限于做自动化验收测试，更加重要的在于其能够在团队成员之间构建统一的交流基础（feature 文件）、规范交流用语（Domain Specific Language）、提高各个利益相关方（Business Stakeholders）沟通效率和效果，从而达到提升产品质量、做成客户期望得到的产品这一最终目标。<br><a href="https://www.ibm.com/developerworks/cn/java/j-lo-cucumber01/index.html" target="_blank" rel="noopener">参考</a></p>
+<ul>
+<li><p>Features介绍  </p>
+<p>feature(功能)，每一个feature文件都要开始于Feature(功能)，Feature之后的描述可以随便写，直到出现Scenario(场景)，一个feature中可以有多个 Scenario，每个Scenario包含（step）步骤列表，步骤使用Given、When、Then、But、And这些关键词，cucumber对这些关键词的处理是一样的，但是我们在使用的时候需要按照场景区分。</p>
+</li>
+<li><p>Step definitions介绍  </p>
+<p>Cucumber中定义的每一个step(步骤)都需要有一个step definition对应，默认的话是使用Ruby来编写定义的脚本，支持通过正则表达式从step中传递参数。</p>
+</li>
+<li><p>Given When then(假如 当 那么)  </p>
+<p>Cucumber的步骤中会包含Given、When、then这些词组，cucumber本身在技术实现上不区分这三个词组，但是在使用上推荐按照词组的意思来使用。</p>
+<ul>
+<li>Given-用例开始执行前的一个前置条件，类似与编写代码setup中的一些步骤</li>
+<li>When-用例开始执行的一些关键操作步骤，类似点击元素等</li>
+<li>Then-观察结果，就是平时用例中的验证步骤</li>
+<li>And-一个步骤中如果存在多个Given操作，后面的Given可以用And替代</li>
+<li>But-一个步骤中如果存在多个Then操作，第二个开始后面的Then可以用But替代</li>
+</ul>
+</li>
+</ul>
+<p><strong>工具情况统计</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Tool-Name</th>
+<th>CLI</th>
+<th>HTML-Report</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Postman</td>
+<td><code>newman</code></td>
+<td>有</td>
+</tr>
+<tr>
+<td style="text-align:left">Selenium</td>
+<td>结合<code>java</code>、<code>python</code>环境运行</td>
+<td>有 <code>HTML TestRunner</code></td>
+</tr>
+<tr>
+<td style="text-align:left">Cucumber</td>
+<td><code>cucumber</code></td>
+<td>有</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><strong>More Ref:</strong></p>
+<ul>
+<li><a href="https://zhuanlan.zhihu.com/p/44470871" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/44470871</a></li>
+<li><a href="https://www.cnblogs.com/tynam" target="_blank" rel="noopener">某个博客</a></li>
+<li><a href="http://www.zhangyanc.club/blog/84" target="_blank" rel="noopener">http://www.zhangyanc.club/blog/84</a></li>
+</ul>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Test/">Test</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-Test-01-Introduction" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/11/08/Test-01-Introduction/"
+    >Test 01:Introduction</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/11/08/Test-01-Introduction/" class="article-date">
+  <time datetime="2019-11-08T06:31:58.000Z" itemprop="datePublished">2019-11-08</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Test/">Test</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h3 id="1-测试金字塔"><a href="#1-测试金字塔" class="headerlink" title="1.测试金字塔"></a>1.测试金字塔</h3><p><img src="/images/test_pyramid.png" width="60%" height="60%"></p>
+<p>被引用较多的关于测试的文章 -&gt; <a href="https://insights.thoughtworks.cn/practical-test-pyramid/" target="_blank" rel="noopener">测试金字塔实战</a></p>
+<p>认识：  </p>
+<ul>
+<li>1、unit单元测试，速度快，且成本低（当然这里的成本低，是指可以前移测试早发现问题，缺陷修复代价来讲，但从目前如果开发要强制单元测试，成本其实并不低，影响因素也众多）</li>
+<li>2、ui端到端测试，速度慢，且成本高（与上面解释类似）</li>
+<li>3、Service集成和接口测试，处于二者中间，其实这块我认为是测试收益最大，且最容易有成果和成效的部分；</li>
+<li>4、自动化测试金字塔模型还给我们的启示是，如果在进行ui测试时，发现缺陷，有可能是你的中间service层或是unit层有缺陷，我们应追朔本源，解决问题根据原因所在。</li>
+</ul>
+<blockquote>
+<p>不要太拘泥于测试金字塔中单个层的名称。只是一个抽象概念</p>
+</blockquote>
+<h3 id="2-测试分类"><a href="#2-测试分类" class="headerlink" title="2.测试分类"></a>2.测试分类</h3><p>测试类型按照不同维度可以有很多种分类，比如说</p>
+<ul>
+<li>1.基于是否考虑软件内部结构和实现<ul>
+<li>白盒测试</li>
+<li>黑盒测试</li>
+<li>灰盒测试</li>
+</ul>
+</li>
+<li>2.基于是否执行程序<ul>
+<li>静态测试</li>
+<li>动态测试</li>
+</ul>
+</li>
+<li>3.基于测试过程<ul>
+<li>单元测试</li>
+<li>集成测试</li>
+<li>冒烟测试</li>
+<li>功能测试(系统测试)<ul>
+<li>探索式测试</li>
+<li>场景测试</li>
+<li>流测试</li>
+<li>域测试</li>
+</ul>
+</li>
+<li>兼容性测试</li>
+<li>回归测试</li>
+<li>验收测试</li>
+<li>性能测试<ul>
+<li>压力测试</li>
+<li>负载测试</li>
+</ul>
+</li>
+<li>安全测试</li>
+</ul>
+</li>
+</ul>
+<p>大牛的测试文章<a href="https://danteyu.github.io/2017/10/21/teststrategy/" target="_blank" rel="noopener">这里</a>；还有微服务相关的测试，<a href="https://insights.thoughtworks.cn/microservices-testing-practice/" target="_blank" rel="noopener">微服务测试的思考与实践</a>;还有<strong>测试左移，测试右移</strong>。</p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Test/">Test</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-shell-玩转sed，你不知道的用法" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/10/23/shell-玩转sed，你不知道的用法/"
+    >shell 玩转sed，你不知道的用法</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/10/23/shell-玩转sed，你不知道的用法/" class="article-date">
+  <time datetime="2019-10-23T02:49:44.000Z" itemprop="datePublished">2019-10-23</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Shell/">Shell</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>sed 是 stream editor（流编辑器）的缩写</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">操作</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">p</td>
+<td>打印文本行(print)</td>
+</tr>
+<tr>
+<td style="text-align:left">n</td>
+<td>取消默认输出</td>
+</tr>
+<tr>
+<td style="text-align:left">d</td>
+<td>删除(delete)</td>
+</tr>
+<tr>
+<td style="text-align:left">s</td>
+<td>字符串替换(substitude)</td>
+</tr>
+<tr>
+<td style="text-align:left">a</td>
+<td>追加新的文本(append)</td>
+</tr>
+</tbody>
+</table>
+<p>示例文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat example.conf</span></span><br><span class="line">username=this  username_2=this</span><br><span class="line">password=that</span><br><span class="line"></span><br><span class="line">url=this</span><br><span class="line"></span><br><span class="line">path=this</span><br></pre></td></tr></table></figure>
+<h3 id="1-替换"><a href="#1-替换" class="headerlink" title="1.替换"></a>1.替换</h3><p>sed 命令会将 <code>s</code> 之后的字符视为命令分隔符，这允许我们更改默认的分隔符，如:<br><code>sed &#39;s:this:new:g&#39; example.conf</code><br><code>sed &#39;s|this|new|g&#39; example.conf</code><br>如果作为分隔符的字符出现在模式中，必须使用 <code>\</code>对其进行转义</p>
+<p><code>sed &#39;s/this/new/&#39; example.conf</code>  替换 <strong>每行</strong>中 <strong>首次</strong> 匹配的内容</p>
+<p>ouput:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">username=new  username_2=this</span><br><span class="line">password=that</span><br><span class="line"></span><br><span class="line">url=new</span><br><span class="line"></span><br><span class="line">path=new</span><br></pre></td></tr></table></figure></p>
+<p><code>sed &#39;s/this/new/g&#39; example.conf</code> g标记可以使sed执行全局替换</p>
+<p><code>sed &#39;s/this/new/2g&#39; example.conf</code> #g可以使sed替换第N次出现的匹配</p>
+<p>将1-4行的url换成address, s代表替换<br><code>sed &#39;1,4s/url/address/g&#39; example.conf</code></p>
+<h3 id="2-删除"><a href="#2-删除" class="headerlink" title="2.删除"></a>2.删除</h3><p><code>sed &#39;2,4d&#39; example.conf</code>  删除第2到4行  </p>
+<p><code>sed -e &#39;/url/d&#39;  example.conf</code> 删除含”url”的行,输出到终端，实际没有替换文件</p>
+<p><code>sed &#39;/appleapple/d;$d&#39; example.conf</code> 删除包含appleapple的行和最后一行($)  </p>
+<p>移除空行<br><code>sed &#39;/^$/d&#39; file</code> 空行可以用 ^$ 进行匹配，最后的 /d 告诉sed不执行替换操作，而是直接删除匹配到的空行</p>
+<p>检查替换内容<br><code>sed -n &#39;s/mysql_host_key/mysql_host_key_new/g&#39;p  test-application.yml</code></p>
+<p>-n停止修改后的文本的输出。然后使用p打印修改后的行</p>
+<h3 id="macOS-不一样的-sed"><a href="#macOS-不一样的-sed" class="headerlink" title="macOS 不一样的 sed"></a>macOS 不一样的 sed</h3><p><strong>报错如下</strong>：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed -i <span class="string">'s/mysql_host_key/mysql_host_key_new/g'</span>  <span class="built_in">test</span>-application.yml</span><br><span class="line">sed: 1: <span class="string">"test-application.yml"</span>: undefined label <span class="string">'est-application.yml'</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>原因</strong>： The sed command is a bit different in Mac OS X, the ‘-i’ option required a parameter to tell what extension to add for the backup file.</p>
+<p>解决办法：<br><code>sed -i &#39;.bak&#39; &#39;s/mysql_host_key/mysql_host_key_new/g&#39;  test-application.yml</code></p>
+<blockquote>
+<p> 参见 <a href="https://mkyong.com/mac/sed-command-hits-undefined-label-error-on-mac-os-x/" target="_blank" rel="noopener">https://mkyong.com/mac/sed-command-hits-undefined-label-error-on-mac-os-x/</a></p>
+</blockquote>
+<hr>
+<p><strong>✍TIP</strong></p>
+<ol>
+<li><p>首先使用不带 -i选项的sed命令，查看结果是否符合预期；再加入 -i选项将更改写入文件。</p>
+</li>
+<li><p><code>sed -i.bak &#39;s/abc/def&#39; file</code> 这时的sed不仅替换文件内容，还会创建一个名为file.bak的文件，其中包含着原始文件内容的副本;如果对一个文件多次执行，则xx.bak文件只会是上一个文件的副本</p>
+</li>
+</ol>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shell/">Shell</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-shell-没有vim-vi-命令怎么办" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -727,311 +1102,6 @@
 
 </article>
     
-    <article id="post-tmux-tutorial" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/09/07/tmux-tutorial/"
-    >tmux tutorial</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/09/07/tmux-tutorial/" class="article-date">
-  <time datetime="2019-09-07T15:01:50.000Z" itemprop="datePublished">2019-09-07</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Tools/">Tools</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h3 id="1-tmux是什么"><a href="#1-tmux是什么" class="headerlink" title="1.tmux是什么"></a>1.tmux是什么</h3><p>tmux (terminal multiplexer),是一个 BSD 协议发布的终端复用软件，用来在服务器端托管同时运行的 Shell.</p>
-<p>效果如图：<br><img src="/images/image_tmux_01.png" alt="tmux_01"></p>
-<center> tmux </center>
-
-<p>几个重要概念：</p>
-<ul>
-<li>1.会话(session): 建立一个 tmux 工作区会话，会话可以长期驻留，重新连接服务器不会丢失，我们只需重新 tmux attach 到之前的工作区就可以恢复会话</li>
-<li>2.窗口(window): 容纳多个窗格</li>
-<li>3.窗格(pane): 可以在窗口中分成多个窗格</li>
-</ul>
-<p>主要解决以下问题：</p>
-<ul>
-<li>想同时打开多个目录不得不开很多终端标签来回切换</li>
-<li>开了一个 vim 窗口之后，想切到其他目录不得不重新打开个一个终端窗口 ssh 到服务器</li>
-<li>运行一个脚本，服务器断掉失联之后当前进程被服务器给无情地杀掉，不得不用 nohup 等方式让脚本在后台跑</li>
-<li>…</li>
-</ul>
-<h3 id="2-安装"><a href="#2-安装" class="headerlink" title="2.安装"></a>2.安装</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">brew install tmux       <span class="comment"># OSX</span></span><br><span class="line">pacman -S tmux          <span class="comment"># archlinux</span></span><br><span class="line">apt-get install tmux    <span class="comment"># Ubuntu</span></span><br><span class="line">yum install tmux        <span class="comment"># Centos</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#check tmux version</span></span><br><span class="line">➜  ~ tmux -V</span><br><span class="line">tmux 2.9a</span><br></pre></td></tr></table></figure>
-<h3 id="3-使用"><a href="#3-使用" class="headerlink" title="3.使用"></a>3.使用</h3><p>tmux的所有指令，都包含同一个前缀，默认为 <strong><code>Ctrl+b</code> </strong>，输入完前缀过后，<strong>控制台激活</strong>，命令按键才能生效。</p>
-<ul>
-<li>会话(session)<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#新建会话</span></span><br><span class="line">tmux new -s &lt;Session_Name&gt; <span class="comment"># tmux new-session -s &lt;Session_Name&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#列出所有会话</span></span><br><span class="line">tmux ls  <span class="comment"># tmux list-session</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#进入会话</span></span><br><span class="line">tmux a -t &lt;Session_Name&gt; <span class="comment"># tmux attach -t , -t mean 'to' </span></span><br><span class="line"></span><br><span class="line"><span class="comment">###当且只有一个session时，可以直接输入命令 tmux a 或 tmux attach 进入</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#关闭会话</span></span><br><span class="line">tmux <span class="built_in">kill</span>-session -t &lt;Session_Name&gt; <span class="comment"># kill命令有kill-pane、kill-server、kill-session 和 kill-window共四种</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<blockquote>
-<p>快捷指令<br>(先按下 Tmux 前缀 <strong>ctrl+b</strong>,然后松开，继续按下面的字母)</p>
-</blockquote>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">:new&lt;回车&gt;  启动新会话</span><br><span class="line">s           列出所有会话</span><br><span class="line">$           重命名当前会话</span><br><span class="line">d           暂时离开 deattach</span><br></pre></td></tr></table></figure>
-<ul>
-<li>窗口(window)<blockquote>
-<p>快捷指令</p>
-</blockquote>
-</li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">c  创建新窗口</span><br><span class="line">w  列出所有窗口</span><br><span class="line">n  后一个窗口 next</span><br><span class="line">p  前一个窗口 pervious</span><br><span class="line">f  查找窗口</span><br><span class="line">,  重命名当前窗口</span><br><span class="line">&amp;  关闭当前窗口</span><br><span class="line">数字0,1,2... 也可用来切换窗口</span><br></pre></td></tr></table></figure>
-<ul>
-<li>窗格(pane)<blockquote>
-<p>快捷指令</p>
-</blockquote>
-</li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">%  垂直分割</span><br><span class="line"><span class="string">"  水平分割</span></span><br><span class="line"><span class="string">上下左右 方向按键调整光标位置</span></span><br><span class="line"><span class="string">o  选择下一面板</span></span><br><span class="line"><span class="string">x  关闭窗格</span></span><br><span class="line"><span class="string">q 显示每个窗格是第几个，当数字出现的时候按数字几就选中第几个窗格</span></span><br><span class="line"><span class="string">&#123; 与上一个窗格交换位置</span></span><br><span class="line"><span class="string">&#125; 与下一个窗格交换位置</span></span><br><span class="line"><span class="string">z 切换窗格最大化/最小化</span></span><br></pre></td></tr></table></figure>
-<p>其他：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">t  窗口中央显示一个数字时钟</span><br><span class="line">?  列出所有快捷键</span><br><span class="line">:  命令提示符</span><br></pre></td></tr></table></figure></p>
-<p><strong>场景：将打的命令同步发送到所有的pane</strong></p>
-<ul>
-<li><ol>
-<li>先按下 Tmux 前缀</li>
-</ol>
-</li>
-<li><ol start="2">
-<li><code>:setw synchronize-panes</code></li>
-</ol>
-</li>
-</ul>
-<p>同样的命令（synchronize-panes）再输入一次就解除这种模式。</p>
-<p>基本配置：</p>
-<ul>
-<li><p>配置文件 <code>～/.tmux.conf</code> ,如修改 <em>默认的前缀快捷键</em></p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ touch .tmux.conf</span><br><span class="line">$ cat .tmux.conf </span><br><span class="line"><span class="comment"># Change the prefix key to C-a</span></span><br><span class="line"><span class="built_in">set</span> -g prefix C<span class="_">-a</span>                          </span><br><span class="line">unbind C-b                                 </span><br><span class="line"><span class="built_in">bind</span> C<span class="_">-a</span> send-prefix</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>生效配置 <code>tmux source-file ~/.tmux.conf</code> 或用动态载入配置的方法</p>
-</li>
-</ul>
-<p>More ref:</p>
-<ul>
-<li><a href="https://www.youtube.com/watch?v=norO25P7xHg&amp;list=PLtK75qxsQaMJ_DmXk9yZbCBJuG9HRwlGc&amp;index=2" target="_blank" rel="noopener">tmux:Shared Sessions</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/43687973" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/43687973</a></li>
-<li><a href="https://www.youtube.com/watch?v=BHhA_ZKjyxo&amp;list=PLtK75qxsQaMJ_DmXk9yZbCBJuG9HRwlGc" target="_blank" rel="noopener">https://www.youtube.com/watch?v=BHhA_ZKjyxo&amp;list=PLtK75qxsQaMJ_DmXk9yZbCBJuG9HRwlGc</a></li>
-<li><a href="https://gist.github.com/ryerh/14b7c24dfd623ef8edc7" target="_blank" rel="noopener">https://gist.github.com/ryerh/14b7c24dfd623ef8edc7</a></li>
-<li><a href="http://louiszhai.github.io/2017/09/30/tmux/" target="_blank" rel="noopener">http://louiszhai.github.io/2017/09/30/tmux/</a></li>
-</ul>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tmux/">tmux</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-packer-intro" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/08/30/packer-intro/"
-    >packer intro</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/08/30/packer-intro/" class="article-date">
-  <time datetime="2019-08-30T08:25:29.000Z" itemprop="datePublished">2019-08-30</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Linux/">Linux</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/packer/">packer</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-Terraform-100-Introduction-Install" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/08/27/Terraform-100-Introduction-Install/"
-    >Terraform 100: Introduction &amp; Install</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/08/27/Terraform-100-Introduction-Install/" class="article-date">
-  <time datetime="2019-08-27T06:03:32.000Z" itemprop="datePublished">2019-08-27</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Terraform/">Terraform</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h3 id="What-is-Terraform"><a href="#What-is-Terraform" class="headerlink" title="What is Terraform?"></a>What is Terraform?</h3><p>Terraform is a tool for building, changing, and versioning infrastructure safely and efficiently. Terraform can manage existing and popular service providers as well as custom in-house solutions.</p>
-<p>The key features of Terraform are:</p>
-<ul>
-<li>Infrastructure as Code</li>
-<li>Execution Plans</li>
-<li>Resource Graph</li>
-<li>Change Automation</li>
-</ul>
-<h3 id="tfenv"><a href="#tfenv" class="headerlink" title="tfenv"></a>tfenv</h3><p><strong>tfenv</strong>: Terraform version manager</p>
-<p><a href="https://github.com/tfutils/tfenv" target="_blank" rel="noopener">tfenv github</a></p>
-<ul>
-<li><h5 id="install-tfenv"><a href="#install-tfenv" class="headerlink" title="install tfenv"></a>install tfenv</h5><p>Install via Homebrew<br><code>$ brew install tfenv</code></p>
-</li>
-<li><h5 id="usage"><a href="#usage" class="headerlink" title="usage"></a>usage</h5><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ tfenv install 0.7.0</span><br><span class="line">$ tfenv install latest</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># use a specific version</span></span><br><span class="line">$ tfenv use 0.7.0</span><br><span class="line">$ tfenv use latest</span><br></pre></td></tr></table></figure>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#uninstall</span></span><br><span class="line">$ tfenv uninstall 0.7.0</span><br><span class="line">$ tfenv uninstall latest</span><br></pre></td></tr></table></figure>
-<h5 id="terraform-version"><a href="#terraform-version" class="headerlink" title=".terraform-version"></a>.terraform-version</h5><p>If you put .terraform-version file on your project root, or in your home directory, tfenv detects it and use the version written in it. </p>
-<blockquote>
-<p>I have installed two different version on my mac.</p>
-</blockquote>
-<p>Ihen I set version to <code>v0.12.4</code> in <code>.terraform-version</code> file<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">➜   terraform --version</span><br><span class="line">Terraform v0.12.4</span><br><span class="line">+ provider.aws v2.25.0</span><br><span class="line">+ provider.random v2.2.0</span><br><span class="line">+ provider.template v2.1.2</span><br></pre></td></tr></table></figure></p>
-<p>Then I change the verson to <strong><code>v0.12.5</code></strong> in <code>.terraform-version</code> file<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">➜   terraform --version</span><br><span class="line">Terraform v0.12.5</span><br><span class="line">+ provider.aws v2.25.0</span><br><span class="line">+ provider.random v2.2.0</span><br><span class="line">+ provider.template v2.1.2</span><br><span class="line"></span><br><span class="line">Your version of Terraform is out of date! The latest version</span><br><span class="line">is 0.12.7. You can update by downloading from www.terraform.io/downloads.html</span><br></pre></td></tr></table></figure></p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Terraform/">Terraform</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
   </article>
   
 
@@ -1049,7 +1119,7 @@
     <ul class="list-inline">
       <li>
         &copy;
-        2018-2020
+        2018-2021
         qinrui
       </li>
       <li>
