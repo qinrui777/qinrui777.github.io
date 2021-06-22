@@ -64,6 +64,405 @@
     
     
     
+    <article id="post-bash-set-command" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/05/07/bash-set-command/"
+    >bash : set command</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/05/07/bash-set-command/" class="article-date">
+  <time datetime="2019-05-07T03:04:05.000Z" itemprop="datePublished">2019-05-07</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Shell/">Shell</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h2 id="set-命令教程"><a href="#set-命令教程" class="headerlink" title="set 命令教程"></a>set 命令教程</h2><p><strong>set</strong> 命令用来修改 Shell 环境的运行参数，也就是可以定制环境</p>
+<p>介绍常用的参数</p>
+<h4 id="1-set-u"><a href="#1-set-u" class="headerlink" title="1. set -u"></a>1. <code>set -u</code></h4><p>执行脚本的时候，如果遇到不存在的变量，Bash 默认忽略它。</p>
+<p><code>set -u</code> = <code>set -o nounset</code></p>
+<h4 id="2-set-x"><a href="#2-set-x" class="headerlink" title="2. set -x"></a>2. <code>set -x</code></h4><p>默认情况下，脚本执行后，屏幕只显示运行结果，没有其他内容。如果多个命令连续执行，它们的运行结果就会连续输出。有时会分不清，某一段内容是什么命令产生的。</p>
+<p><code>set -x</code> = <code>set -o xtrace</code></p>
+<h4 id="3-set-e"><a href="#3-set-e" class="headerlink" title="3. set -e"></a>3. <code>set -e</code></h4><p>使得脚本只要发生错误，就终止执行。<br><code>set -e</code> = <code>set -o errexit</code></p>
+<h4 id="4-set-o-pipefail"><a href="#4-set-o-pipefail" class="headerlink" title="4. set -o pipefail"></a>4. <code>set -o pipefail</code></h4><p>set -e有一个例外情况，就是不适用于管道命令。</p>
+<p>所谓管道命令，就是多个子命令通过管道运算符（|）组合成为一个大的命令。Bash 会把最后一个子命令的返回值，作为整个命令的返回值。也就是说，只要最后一个子命令不失败，管道命令总是会执行成功，因此它后面命令依然会执行，set -e就失效了。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env bash</span></span><br><span class="line"><span class="built_in">set</span> -eo pipefail</span><br><span class="line"></span><br><span class="line">foo | <span class="built_in">echo</span> a</span><br><span class="line"><span class="built_in">echo</span> bar</span><br></pre></td></tr></table></figure>
+<p><code>echo bar</code>没有执行 ,否则在不用  <code>pipefail</code> 的情况下，会继续执行  <code>echo bar</code></p>
+<h4 id="End"><a href="#End" class="headerlink" title="End"></a>End</h4><p>set命令的上面这四个参数，一般都放在一起使用。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 写法一</span></span><br><span class="line">set -euxo pipefail</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 写法二</span></span><br><span class="line">set -eux</span><br><span class="line">set -o pipefail</span><br></pre></td></tr></table></figure>
+<p><strong>More Ref:</strong></p>
+<ul>
+<li><a href="https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html" target="_blank" rel="noopener">https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2017/11/bash-set.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2017/11/bash-set.html</a></li>
+</ul>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shell/">Shell</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-Crontab-on-Liunx-or-Jenkins" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/04/28/Crontab-on-Liunx-or-Jenkins/"
+    >Crontab on Liunx or Jenkins</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/04/28/Crontab-on-Liunx-or-Jenkins/" class="article-date">
+  <time datetime="2019-04-28T07:30:46.000Z" itemprop="datePublished">2019-04-28</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>源起：<br><code>@midnight</code>  This will run at some point between 0:00 and 2:59</p>
+<p><code>H(0-30) 02 * * *</code> between 2:00 a.m. – 02:30 a.m.<br>//will build the same time every day</p>
+<p><strong>More Ref:</strong></p>
+<ul>
+<li><a href="https://crontab-generator.org/" target="_blank" rel="noopener">https://crontab-generator.org/</a></li>
+<li><a href="https://blogs.microsoft.co.il/meravk/2015/06/10/how-to-schedule-a-build-in-jenkins/" target="_blank" rel="noopener">https://blogs.microsoft.co.il/meravk/2015/06/10/how-to-schedule-a-build-in-jenkins/</a></li>
+</ul>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jenkins/">jenkins</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-Shell-output-Terminal-color" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/04/28/Shell-output-Terminal-color/"
+    >Shell output/Terminal  color</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/04/28/Shell-output-Terminal-color/" class="article-date">
+  <time datetime="2019-04-28T03:20:49.000Z" itemprop="datePublished">2019-04-28</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Shell/">Shell</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h2 id="change-dispaly-color-on-the-terminal"><a href="#change-dispaly-color-on-the-terminal" class="headerlink" title="change dispaly color on the terminal"></a>change dispaly color on the terminal</h2><p>The  tput  utility uses the terminfo database to make the values of terminal-depen-dent capabilities and information available to the shell (see sh(1)), to initialize or reset the terminal, or return the long name of the requested terminal type.</p>
+<h4 id="tput-Color-Capabilities"><a href="#tput-Color-Capabilities" class="headerlink" title="tput Color Capabilities:"></a>tput Color Capabilities:</h4><ul>
+<li><code>tput setab [0-7]</code> – Set a background color using ANSI escape</li>
+<li><code>tput setb [0-7]</code> – Set a background color</li>
+<li><code>tput setaf [0-7]</code> – Set a foreground color using ANSI escape</li>
+<li><code>tput setf [0-7]</code> – Set a foreground color</li>
+</ul>
+<h4 id="Color-Code-for-tput"><a href="#Color-Code-for-tput" class="headerlink" title="Color Code for tput:"></a>Color Code for tput:</h4><ul>
+<li>0 – Black</li>
+<li>1 – Red</li>
+<li>2 – Green</li>
+<li>3 – Yellow</li>
+<li>4 – Blue</li>
+<li>5 – Magenta</li>
+<li>6 – Cyan</li>
+<li>7 – White</li>
+</ul>
+<p>bash script example:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> -e</span><br><span class="line"></span><br><span class="line">reset=$(tput sgr0)</span><br><span class="line"></span><br><span class="line">green=$(tput setaf 2 )</span><br><span class="line">blue=$(tput setaf 25)</span><br><span class="line">red=$(tput setaf 1;tput bold)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">info</span></span>() &#123;</span><br><span class="line">    <span class="built_in">printf</span> <span class="string">"<span class="variable">$&#123;blue&#125;</span>➜ %s<span class="variable">$&#123;reset&#125;</span>\n"</span> <span class="string">"<span class="variable">$@</span>"</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="title">error</span></span>() &#123;</span><br><span class="line">    <span class="built_in">printf</span> <span class="string">"<span class="variable">$&#123;red&#125;</span>× %s<span class="variable">$&#123;reset&#125;</span>\n"</span> <span class="string">"<span class="variable">$@</span>"</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="title">success</span></span>() &#123;</span><br><span class="line">    <span class="built_in">printf</span> <span class="string">"<span class="variable">$&#123;green&#125;</span>✔ %s<span class="variable">$&#123;reset&#125;</span>\n"</span> <span class="string">"<span class="variable">$@</span>"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">infoWithTime</span></span>()&#123;</span><br><span class="line">    <span class="built_in">printf</span> <span class="string">"<span class="variable">$&#123;blue&#125;</span>➜ %s<span class="variable">$&#123;reset&#125;</span>\n"</span> <span class="string">"<span class="variable">$@</span> | now: `date +'%F %T'`"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">info <span class="string">"setup ,,info......"</span></span><br><span class="line"></span><br><span class="line">error <span class="string">"haha,error..."</span></span><br><span class="line"></span><br><span class="line">success <span class="string">"old color"</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span> $(tput setaf 2;tput bold)<span class="string">'color show\n'</span> $(tput sgr0)</span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span> $(tput setf 2;tput bold)<span class="string">'color show\n'</span> $(tput sgr0)</span><br></pre></td></tr></table></figure>
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shell/">Shell</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-jenkins-date-timezone-update" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/04/25/jenkins-date-timezone-update/"
+    >jenkins date timezone update</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/04/25/jenkins-date-timezone-update/" class="article-date">
+  <time datetime="2019-04-25T06:49:34.000Z" itemprop="datePublished">2019-04-25</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h4 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h4><p>打开 【系统管理】-&gt;【脚本命令行】运行下面的命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.setProperty(<span class="string">'org.apache.commons.jelly.tags.fmt.timeZone'</span>, <span class="string">'Asia/Shanghai'</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="/images/jenkins_run_image_01.png" alt="jenkins_run_image_01"></p>
+<h4 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h4><pre><code class="java">JAVA_ARGS=<span class="string">"-Dorg.apache.commons.jelly.tags.fmt.timeZone=Asia/Shanghai -Dfile.encoding=UTF-8 -Djava.awt.headless=true"</span>
+</code></pre>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jenkins/">jenkins</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-Jenkins-Dashboard-with-Grafana-and-Prometheus" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/04/22/Jenkins-Dashboard-with-Grafana-and-Prometheus/"
+    >Jenkins Dashboard with Grafana and Prometheus </a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/04/22/Jenkins-Dashboard-with-Grafana-and-Prometheus/" class="article-date">
+  <time datetime="2019-04-22T08:35:31.000Z" itemprop="datePublished">2019-04-22</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h3 id="1-Go-to-“manage-Jenkins”-then-“manage-plugins”-and-install-“-Prometheus-metrics-plugin”"><a href="#1-Go-to-“manage-Jenkins”-then-“manage-plugins”-and-install-“-Prometheus-metrics-plugin”" class="headerlink" title="1.Go to “manage Jenkins” then “manage plugins” and install “ Prometheus metrics plugin”"></a>1.Go to “manage Jenkins” then “manage plugins” and install “ Prometheus metrics plugin”</h3><p>This plugin will expose an endpoint (default /prometheus) with metrics where a Prometheus Server can scrape data.</p>
+<p><img src="/images/jenkins_dashboard_02.png" alt="jenkins_dashboard_02"></p>
+<h3 id="2-Configure-Prometheus-to-scrape-metrics-from-Jenkins"><a href="#2-Configure-Prometheus-to-scrape-metrics-from-Jenkins" class="headerlink" title="2.Configure Prometheus to scrape metrics from Jenkins"></a>2.Configure Prometheus to scrape metrics from Jenkins</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- job_name: ‘jenkins’</span><br><span class="line">  metrics_path: /prometheus</span><br><span class="line">  static_configs:</span><br><span class="line">    - targets: [‘Jenkins_Host:PORT’]</span><br></pre></td></tr></table></figure>
+<p>you can go to your prometheus ,find some metrics to dispaly.</p>
+<p><img src="/images/jenkins_dashboard_01.png" alt="jenkins_dashboard_01"></p>
+<h3 id="3-Create-a-grafana-Dashboard"><a href="#3-Create-a-grafana-Dashboard" class="headerlink" title="3.Create a  grafana Dashboard"></a>3.Create a  grafana Dashboard</h3><p>dashboard link : <a href="https://grafana.com/dashboards/9964" target="_blank" rel="noopener">https://grafana.com/dashboards/9964</a></p>
+<p>then go to the grafana website import json file :<br><img src="/images/jenkins_dashboard_03.png" alt="jenkins_dashboard_03"></p>
+<p>you can search in the grafana dashboard (<a href="https://grafana.com/dashboards" target="_blank" rel="noopener">https://grafana.com/dashboards</a>)</p>
+<h3 id="4-Customize-your-dashboard"><a href="#4-Customize-your-dashboard" class="headerlink" title="4.Customize your dashboard"></a>4.Customize your dashboard</h3><p>example:<br><img src="/images/jenkins_dashboard_04.png" alt="jenkins_dashboard_04"></p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jenkins/">jenkins</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-How-to-Create-Custom-iTerm2-Window" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -502,91 +901,13 @@
 
 </article>
     
-    <article id="post-安迪-比尔定律-Andy-and-Bill’s-Law" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/03/27/安迪-比尔定律-Andy-and-Bill’s-Law/"
-    >安迪-比尔定律(Andy and Bill’s Law)</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/03/27/安迪-比尔定律-Andy-and-Bill’s-Law/" class="article-date">
-  <time datetime="2019-03-27T04:02:10.000Z" itemprop="datePublished">2019-03-27</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/读书笔记/">读书笔记</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h3 id="这句话出处是哪里？"><a href="#这句话出处是哪里？" class="headerlink" title="这句话出处是哪里？"></a>这句话出处是哪里？</h3><pre><code>“Andy gives,Bill takes away.(安迪提供什么，比尔拿走什么)&quot;
-</code></pre><h3 id="什么是安迪-比尔定律？"><a href="#什么是安迪-比尔定律？" class="headerlink" title="什么是安迪-比尔定律？"></a>什么是安迪-比尔定律？</h3><p>Andy指的是原英特尔公司CEO 安迪•格鲁<a href="https://zh.wikipedia.org/wiki/%E5%AE%89%E8%BF%AA%C2%B7%E8%91%9B%E6%B4%9B%E5%A4%AB" target="_blank" rel="noopener">Andy Grove</a>；Bill就是微软的比尔•盖茨.</p>
-<p>这句话的意思是，英特尔公司总裁安迪·格罗夫一旦向市场推广了一种新型芯片产品，微软CEO比尔盖茨就会及时的升级自己的软件产品，吸收新型芯片的高性能。硬件提高的性能，很快被软件消耗掉了。似乎两方是一对黄金搭档，心照不宣。</p>
-<blockquote>
-<p>简而言之，安迪-比尔定律揭示了硬件和软件相互促进彼此，不断更新换代的现象。</p>
-</blockquote>
-<h3 id="为什么要“更新”？"><a href="#为什么要“更新”？" class="headerlink" title="为什么要“更新”？"></a>为什么要“更新”？</h3><h6 id="1-从买卖双方分析："><a href="#1-从买卖双方分析：" class="headerlink" title="1.从买卖双方分析："></a>1.从买卖双方分析：</h6><p>对于厂商、公司而言，只有不断的推出新产品，才能有营收，才能获得更大的市场，最终通常是为了赚更多的钱。对于个人而言，个人的欲望在不断的增长，大哥比方：以前村里的张三有个mp3听听歌就可能满足的不行了，但是看着县里的李四拿着最新的mp4不仅能听歌，还能下载电影看，于是就渴望也有一个新玩意。过了一年半载出了一个新的手机，不仅有上述功能，还可以在线打游戏，只有拥有它才可以和别的小伙伴一起“冲锋陷阵”…</p>
-<h6 id="2-从硬件、软件公司分析："><a href="#2-从硬件、软件公司分析：" class="headerlink" title="2.从硬件、软件公司分析："></a>2.从硬件、软件公司分析：</h6><p>还是拿上面的例子，硬件公司老是生产mp3，等到大家差不多人手一个的时候，就赚不到更多的钱了。而这个时候有软件公司开发的新的软件，需要用新的设备才能运行，硬件公司还能又卖一波新硬件，而且又是新的市场，单价一般而言更贵，于是乎这样赚钱的机会怎么能放过。同业的竞争公司看到这样的趋势，也加紧研发去抢新的蛋糕（旧的蛋糕都快被人吃的差不多了，新的蛋糕就看谁做的快做的好了）。软件公司这时也纷纷用新的思路去做更多的软件，吸引新用户，也想着做一些更牛逼的软件（虽然现在硬件水平跟不上，但是总有一天那些硬件会有的，加紧研发自己的软件就准没错）。</p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/浪潮之巅/">浪潮之巅</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
   </article>
   
 
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/10/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span>
+    <a class="extend prev" rel="prev" href="/page/10/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/12/">下一页</a>
   </nav>
   
 </section>

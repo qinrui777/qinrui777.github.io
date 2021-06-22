@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    Openshift E02 部署Jenkins服务 |  一笑皆春
+    Openshift E04 Image Stream是个啥 |  一笑皆春
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -30,7 +30,7 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="post-Openshift-E02-部署Jenkins服务" class="article article-type-post" itemscope
+  <article id="post-Openshift-E04-Image-Stream是个啥" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -38,7 +38,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  Openshift E02 部署Jenkins服务
+  Openshift E04 Image Stream是个啥
 </h1>
   
 
@@ -47,8 +47,8 @@
 
     
     <div class="article-meta">
-      <a href="/2021/01/10/Openshift-E02-部署Jenkins服务/" class="article-date">
-  <time datetime="2021-01-10T08:02:03.000Z" itemprop="datePublished">2021-01-10</time>
+      <a href="/2021/01/31/Openshift-E04-Image-Stream是个啥/" class="article-date">
+  <time datetime="2021-01-31T05:23:35.000Z" itemprop="datePublished">2021-01-31</time>
 </a>
       
   <div class="article-category">
@@ -62,7 +62,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">426字</span>
+            <span class="post-count">249字</span>
         </span>
     </span>
 
@@ -71,7 +71,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">2分钟</span>
+            <span class="post-count">1分钟</span>
         </span>
     </span>
 </div>
@@ -94,24 +94,18 @@
       
 
       
-      <p>OpenShift 项目默认提供了两个Jenkins部署模板, Jenkins-ephemeral 和 Jenkins-persistent</p>
-<ul>
-<li><p><strong>Jenkins-ephemeral</strong> 模板部署的Jenkins服务的数据在容器退出后将丢失，适合测试使用；</p>
-</li>
-<li><p><strong>Jenkins-persistent</strong> 模板部署需要持久化卷的支持，其部署的Jenkins 服务的数据可以被持久化。</p>
-</li>
-</ul>
-<blockquote>
-<p> 这里有很多官方的案例源码： <a href="https://github.com/openshift/origin/tree/v1.3.0/examples" target="_blank" rel="noopener">https://github.com/openshift/origin/tree/v1.3.0/examples</a></p>
-</blockquote>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">oc login -u developer https://192.168.99.109:8443</span><br><span class="line"></span><br><span class="line"><span class="comment"># create a new project, name: ci</span></span><br><span class="line">oc new-project ci</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create a template, </span></span><br><span class="line">oc create -f https://raw.githubusercontent.com/openshift/origin/v1.3.0/examples/jenkins/jenkins-ephemeral-template.json </span><br><span class="line"></span><br><span class="line"><span class="comment"># Get template</span></span><br><span class="line">oc get template</span><br><span class="line">NAME                DESCRIPTION                                       PARAMETERS        OBJECTS</span><br><span class="line">jenkins-ephemeral   Jenkins service, without persistent storage....   6 (1 generated)   6</span><br><span class="line"></span><br><span class="line"><span class="comment">#</span></span><br><span class="line">➜  ~ oc policy add-role-to-user edit -z default</span><br><span class="line">role <span class="string">"edit"</span> added: <span class="string">"default"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#</span></span><br><span class="line">➜  ~ oc new-app --template=jenkins-ephemeral --param=JENKINS_PASSWORD=welcome123</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">--&gt; Deploying template &quot;ci/jenkins-ephemeral&quot; to project ci</span><br><span class="line"></span><br><span class="line">     jenkins-ephemeral</span><br><span class="line">     ---------</span><br><span class="line">     Jenkins service, without persistent storage.</span><br><span class="line">     WARNING: Any data stored will be lost upon pod destruction. Only use this template for testing</span><br><span class="line"></span><br><span class="line">     A Jenkins service has been created in your project.  The username/password are admin/welcome.  The tutorial at https://github.com/openshift/origin/blob/master/examples/jenkins/README.md contains more information about using this template.</span><br><span class="line"></span><br><span class="line">     * With parameters:</span><br><span class="line">        * Jenkins Service Name=jenkins</span><br><span class="line">        * Jenkins JNLP Service Name=jenkins-jnlp</span><br><span class="line">        * Jenkins Password=welcome</span><br><span class="line">        * Memory Limit=512Mi</span><br><span class="line">        * Jenkins ImageStream Namespace=openshift</span><br><span class="line">        * Jenkins ImageStreamTag=jenkins:latest</span><br><span class="line"></span><br><span class="line">--&gt; Creating resources ...</span><br><span class="line">    route.route.openshift.io &quot;jenkins&quot; created</span><br><span class="line">    deploymentconfig.apps.openshift.io &quot;jenkins&quot; created</span><br><span class="line">    serviceaccount &quot;jenkins&quot; created</span><br><span class="line">    rolebinding.authorization.openshift.io &quot;jenkins_edit&quot; created</span><br><span class="line">    service &quot;jenkins-jnlp&quot; created</span><br><span class="line">    service &quot;jenkins&quot; created</span><br><span class="line">--&gt; Success</span><br><span class="line">    Access your application via route &apos;jenkins-ci.192.168.99.109.nip.io&apos;</span><br><span class="line">    Run &apos;oc status&apos; to view your app.</span><br></pre></td></tr></table></figure>
-<p>部署失败了，💔</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">oc delete all -l app=jenkins-ephemeral</span><br><span class="line">pod <span class="string">"jenkins-1-6k7s6"</span> deleted</span><br><span class="line">replicationcontroller <span class="string">"jenkins-1"</span> deleted</span><br><span class="line">service <span class="string">"jenkins"</span> deleted</span><br><span class="line">service <span class="string">"jenkins-jnlp"</span> deleted</span><br><span class="line">deploymentconfig.apps.openshift.io <span class="string">"jenkins"</span> deleted</span><br><span class="line">route.route.openshift.io <span class="string">"jenkins"</span> deleted</span><br></pre></td></tr></table></figure>
-<p>不能删除 serviceaccounts<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">oc delete serviceaccounts -l app=jenkins-ephemeral</span><br><span class="line">oc delete rolebindings.authorization.openshift.io jenkins_edit</span><br></pre></td></tr></table></figure></p>
-<p>删除干净后，可以用命令 <code>oc get all -o wide</code> 验证</p>
-<p>再来一次 </p>
-<p><code>oc new-app --template=jenkins-ephemeral --param=JENKINS_PASSWORD=welcome123</code></p>
+      <p>Image Stream(中文名  镜像流) 是一组镜像的集合, OpenShift默认情况下提供了几个Image Streams，包括许多流行的runtime和frameworks。</p>
+<p>Image Streams tag(中文名 镜像流标签对象)是指向Image Streams中的image的别名。通常缩写为istag。它包含一个image历史记录，表示为tag曾经指向的所有images的堆栈。</p>
+<p>(??? image stream就是类似repo的概念)</p>
+<p>一个镜像流标签对象（ImageStreamTag）指向一个镜像，可以是本地镜像或者远程镜像。如下的名为“python”的镜像流包含两个标签，标签34指向Python v3.4镜像，标签35指向Pythonv3.5镜像。</p>
+<p>导入Image Stream<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Method 1</span></span><br><span class="line">oc create -f xxx.yaml -n openshift</span><br><span class="line"></span><br><span class="line"><span class="comment"># Method 2</span></span><br><span class="line">oc import-image</span><br></pre></td></tr></table></figure></p>
+<p>查看Image Stream<br><code>oc get is -n openshift</code></p>
+<p>查看Image Stream Tag</p>
+<p><code>oc get istag</code></p>
+<p>例子</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker pull ericnie2017/s2i-tomcat:latest</span><br><span class="line"></span><br><span class="line">oc import-image ericnie2017/s2i-tomcat -n openshift --confirm --insecure</span><br><span class="line"></span><br><span class="line">oc get is -n openshift | grep tomcat</span><br></pre></td></tr></table></figure>
+<p>Service Catalog 中看到的不能与 <code>oc get is</code>  的结果一一对应，只能部分对应。</p>
+<p> <a href="https://www.zhihu.com/column/p/31637802" target="_blank" rel="noopener">知乎-Service Catalog及OpenShift的历史</a></p>
 
       
       <!-- reward -->
@@ -181,7 +175,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2021/01/10/Openshift-E02-部署Jenkins服务/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2021/01/31/Openshift-E04-Image-Stream是个啥/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -199,19 +193,19 @@
   
   <nav class="article-nav">
     
-      <a href="/2021/01/31/Openshift-E03-谈谈S2I/" class="article-nav-link">
+      <a href="/2021/03/04/Mongodb-的一些概念/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            Openshift E03 谈谈S2I
+            Mongodb 的一些概念
           
         </div>
       </a>
     
     
-      <a href="/2021/01/10/Openshift-E01-最常见的使用场景/" class="article-nav-link">
+      <a href="/2021/01/31/Openshift-E03-谈谈S2I/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">Openshift E01 最常见的使用场景</div>
+        <div class="article-nav-title">Openshift E03 谈谈S2I</div>
       </a>
     
   </nav>

@@ -58,7 +58,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">298字</span>
+            <span class="post-count">310字</span>
         </span>
     </span>
 
@@ -99,6 +99,7 @@
 <p>在文件所在的目录，运行下面的命令<br><code>curl --user admin:admin -X POST -F &quot;jenkinsfile=&lt;JenkinsfileA&quot; http://localhost:8080/pipeline-model-converter/validate</code></p>
 <p>送上原文的链接 <a href="https://sandrocirulli.net/how-to-validate-a-jenkinsfile/" target="_blank" rel="noopener">https://sandrocirulli.net/how-to-validate-a-jenkinsfile/</a></p>
 <p><code>curl --user username:password -X POST -F &quot;jenkinsfile=&lt;Jenkinsfile&quot; http://jenkins-url:8080/pipeline-model-converter/validate</code></p>
+<p><strong> &lt; （尖括号）一定要，不然有问题</strong></p>
 <p>Note the following:</p>
 <p>If your Jenkins is authenticating users, you need to pass the username and password otherwise you can omit that part.<br>By default, this command expects your Jenkinsfile to be called Jenkinsfile. If not, change the name in the command.<br>Replace jenkins_url and possibly port 8080 based on the URL and port where you are running Jenkins. You can also use localhost as URL if you are running Jenkins on your machine.</p>
 <h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>VS Code 的插件也很不错 <a href="https://www.jenkins.io/blog/2018/11/07/Validate-Jenkinsfile/" target="_blank" rel="noopener">https://www.jenkins.io/blog/2018/11/07/Validate-Jenkinsfile/</a> ，但如果本地没有安装 VS Code 就还是用其他方法吧</p>

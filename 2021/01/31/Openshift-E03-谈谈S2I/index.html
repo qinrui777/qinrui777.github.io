@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    Openshift E02 部署Jenkins服务 |  一笑皆春
+    Openshift E03 谈谈S2I |  一笑皆春
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -30,7 +30,7 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="post-Openshift-E02-部署Jenkins服务" class="article article-type-post" itemscope
+  <article id="post-Openshift-E03-谈谈S2I" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -38,7 +38,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  Openshift E02 部署Jenkins服务
+  Openshift E03 谈谈S2I
 </h1>
   
 
@@ -47,8 +47,8 @@
 
     
     <div class="article-meta">
-      <a href="/2021/01/10/Openshift-E02-部署Jenkins服务/" class="article-date">
-  <time datetime="2021-01-10T08:02:03.000Z" itemprop="datePublished">2021-01-10</time>
+      <a href="/2021/01/31/Openshift-E03-谈谈S2I/" class="article-date">
+  <time datetime="2021-01-31T04:27:01.000Z" itemprop="datePublished">2021-01-31</time>
 </a>
       
   <div class="article-category">
@@ -62,7 +62,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">426字</span>
+            <span class="post-count">503字</span>
         </span>
     </span>
 
@@ -82,6 +82,8 @@
 
     
     
+    <div class="tocbot"></div>
+
 
 
 
@@ -94,24 +96,28 @@
       
 
       
-      <p>OpenShift 项目默认提供了两个Jenkins部署模板, Jenkins-ephemeral 和 Jenkins-persistent</p>
+      <p>  关于OpenShift，至今为止还没有梳理核心组件和概念上的解释，但似乎并不太妨碍初步的简单使用。而 Source to Image(S2I) 是OpenShift 的一个重要功能，也是其的一大特色。</p>
+<h3 id="What"><a href="#What" class="headerlink" title="What"></a>What</h3><h5 id="第一：从OpenShift的角度来看"><a href="#第一：从OpenShift的角度来看" class="headerlink" title="第一：从OpenShift的角度来看"></a>第一：从OpenShift的角度来看</h5><p>  Source to Image(S2I) 是OopenShift中应用容器化的 <strong>标准流程</strong>。</p>
+<h5 id="第二：-从自身工具的属性来看"><a href="#第二：-从自身工具的属性来看" class="headerlink" title="第二： 从自身工具的属性来看"></a>第二： 从自身工具的属性来看</h5><p>  Source-to-Image (S2I) 是一种用于构建可重复生成的 Docker 格式容器镜像的工具。</p>
+<h3 id="How"><a href="#How" class="headerlink" title="How"></a>How</h3><p>S2I 需要的最基本的输入只有两个： 一个是源代码仓库(Source Code)；另一个是Builder Image（也称“构建镜像、Builder镜像”、基础镜像、构建器）</p>
+<p>从应用的源代码构建并部署，Openshift通过一个S2I的构建过程编译打包并实现发布，具体可以参考<a href="https://www.cnblogs.com/ericnie/p/9677719.html" target="_blank" rel="noopener">这篇文章</a></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># install s2i tool on MacOS</span></span><br><span class="line">brew install <span class="built_in">source</span>-to-image</span><br><span class="line"></span><br><span class="line"><span class="comment"># s2i create &lt;image name&gt; &lt;destination directory&gt;</span></span><br><span class="line">s2i create s2i-tomcat s2i-tomcat</span><br><span class="line"></span><br><span class="line"><span class="comment"># get dir ,file </span></span><br><span class="line">➜  s2i-tomcat tree</span><br><span class="line">.</span><br><span class="line">├── Dockerfile</span><br><span class="line">├── Makefile</span><br><span class="line">├── README.md</span><br><span class="line">├── s2i</span><br><span class="line">│   └── bin</span><br><span class="line">│       ├── assemble</span><br><span class="line">│       ├── run</span><br><span class="line">│       ├── save-artifacts</span><br><span class="line">│       └── usage</span><br><span class="line">└── <span class="built_in">test</span></span><br><span class="line">    ├── run</span><br><span class="line">    └── <span class="built_in">test</span>-app</span><br><span class="line">        └── index.html</span><br><span class="line"></span><br><span class="line">4 directories, 9 files</span><br></pre></td></tr></table></figure>
+<p><a href="https://www.cnblogs.com/ericnie/p/9677719.html" target="_blank" rel="noopener">S2I tomcat 镜像定制案例</a>，源码可见 <a href="https://github.com/cicd-draft/s2i-tomcat" target="_blank" rel="noopener">https://github.com/cicd-draft/s2i-tomcat</a></p>
+<h3 id="OpenShift的构建"><a href="#OpenShift的构建" class="headerlink" title="OpenShift的构建"></a>OpenShift的构建</h3><p>OpenShift支持4种构建方式：Docker构建、S2I构建、Pipeline构建和自定义构建。详情可见<a href="https://access.redhat.com/documentation/zh-cn/openshift_container_platform/4.2/html-single/builds/index#builds-about_understanding-image-builds" target="_blank" rel="noopener">官方说明</a></p>
 <ul>
-<li><p><strong>Jenkins-ephemeral</strong> 模板部署的Jenkins服务的数据在容器退出后将丢失，适合测试使用；</p>
+<li><p>Docker构建会调用docker build命令，基于所提供的Dockerfile文件和所提供的内容来构建Docker镜像。</p>
 </li>
-<li><p><strong>Jenkins-persistent</strong> 模板部署需要持久化卷的支持，其部署的Jenkins 服务的数据可以被持久化。</p>
+<li><p>S2I构建是OpenShift的原创，它根据指定的构建镜像（Builder Image）和源代码（Source Code），构建生成可部署Docker镜像，并推送到OpenShift内部集成镜像库中。</p>
+</li>
+<li><p>Pipeline构建方式允许开发者定义Jenkins Pipeline。在项目首次使用该构建方式时，OpenShift容器云平台会启动一个Jenkins服务，然后再将该Pipeline交由它来执行，并负责启动、监控和管理该构建。BuildConfig对象中可以直接包含Jenkins Pipeline的内容，或者包含其Git仓库地址。</p>
 </li>
 </ul>
-<blockquote>
-<p> 这里有很多官方的案例源码： <a href="https://github.com/openshift/origin/tree/v1.3.0/examples" target="_blank" rel="noopener">https://github.com/openshift/origin/tree/v1.3.0/examples</a></p>
-</blockquote>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">oc login -u developer https://192.168.99.109:8443</span><br><span class="line"></span><br><span class="line"><span class="comment"># create a new project, name: ci</span></span><br><span class="line">oc new-project ci</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create a template, </span></span><br><span class="line">oc create -f https://raw.githubusercontent.com/openshift/origin/v1.3.0/examples/jenkins/jenkins-ephemeral-template.json </span><br><span class="line"></span><br><span class="line"><span class="comment"># Get template</span></span><br><span class="line">oc get template</span><br><span class="line">NAME                DESCRIPTION                                       PARAMETERS        OBJECTS</span><br><span class="line">jenkins-ephemeral   Jenkins service, without persistent storage....   6 (1 generated)   6</span><br><span class="line"></span><br><span class="line"><span class="comment">#</span></span><br><span class="line">➜  ~ oc policy add-role-to-user edit -z default</span><br><span class="line">role <span class="string">"edit"</span> added: <span class="string">"default"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#</span></span><br><span class="line">➜  ~ oc new-app --template=jenkins-ephemeral --param=JENKINS_PASSWORD=welcome123</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">--&gt; Deploying template &quot;ci/jenkins-ephemeral&quot; to project ci</span><br><span class="line"></span><br><span class="line">     jenkins-ephemeral</span><br><span class="line">     ---------</span><br><span class="line">     Jenkins service, without persistent storage.</span><br><span class="line">     WARNING: Any data stored will be lost upon pod destruction. Only use this template for testing</span><br><span class="line"></span><br><span class="line">     A Jenkins service has been created in your project.  The username/password are admin/welcome.  The tutorial at https://github.com/openshift/origin/blob/master/examples/jenkins/README.md contains more information about using this template.</span><br><span class="line"></span><br><span class="line">     * With parameters:</span><br><span class="line">        * Jenkins Service Name=jenkins</span><br><span class="line">        * Jenkins JNLP Service Name=jenkins-jnlp</span><br><span class="line">        * Jenkins Password=welcome</span><br><span class="line">        * Memory Limit=512Mi</span><br><span class="line">        * Jenkins ImageStream Namespace=openshift</span><br><span class="line">        * Jenkins ImageStreamTag=jenkins:latest</span><br><span class="line"></span><br><span class="line">--&gt; Creating resources ...</span><br><span class="line">    route.route.openshift.io &quot;jenkins&quot; created</span><br><span class="line">    deploymentconfig.apps.openshift.io &quot;jenkins&quot; created</span><br><span class="line">    serviceaccount &quot;jenkins&quot; created</span><br><span class="line">    rolebinding.authorization.openshift.io &quot;jenkins_edit&quot; created</span><br><span class="line">    service &quot;jenkins-jnlp&quot; created</span><br><span class="line">    service &quot;jenkins&quot; created</span><br><span class="line">--&gt; Success</span><br><span class="line">    Access your application via route &apos;jenkins-ci.192.168.99.109.nip.io&apos;</span><br><span class="line">    Run &apos;oc status&apos; to view your app.</span><br></pre></td></tr></table></figure>
-<p>部署失败了，💔</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">oc delete all -l app=jenkins-ephemeral</span><br><span class="line">pod <span class="string">"jenkins-1-6k7s6"</span> deleted</span><br><span class="line">replicationcontroller <span class="string">"jenkins-1"</span> deleted</span><br><span class="line">service <span class="string">"jenkins"</span> deleted</span><br><span class="line">service <span class="string">"jenkins-jnlp"</span> deleted</span><br><span class="line">deploymentconfig.apps.openshift.io <span class="string">"jenkins"</span> deleted</span><br><span class="line">route.route.openshift.io <span class="string">"jenkins"</span> deleted</span><br></pre></td></tr></table></figure>
-<p>不能删除 serviceaccounts<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">oc delete serviceaccounts -l app=jenkins-ephemeral</span><br><span class="line">oc delete rolebindings.authorization.openshift.io jenkins_edit</span><br></pre></td></tr></table></figure></p>
-<p>删除干净后，可以用命令 <code>oc get all -o wide</code> 验证</p>
-<p>再来一次 </p>
-<p><code>oc new-app --template=jenkins-ephemeral --param=JENKINS_PASSWORD=welcome123</code></p>
+<hr>
+<ul>
+<li><a href="https://github.com/openshift/source-to-image/blob/master/docs/cli.md" target="_blank" rel="noopener">s2i cli usage</a></li>
+<li><a href="https://www.cnblogs.com/ericnie/p/9677719.html" target="_blank" rel="noopener">S2I tomcat 镜像定制</a></li>
+<li><a href="https://www.ewhisper.cn/binary-builds-with-openshift.html" target="_blank" rel="noopener">使用OpenShift进行二进制构建</a></li>
+</ul>
 
       
       <!-- reward -->
@@ -181,7 +187,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2021/01/10/Openshift-E02-部署Jenkins服务/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2021/01/31/Openshift-E03-谈谈S2I/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -199,19 +205,19 @@
   
   <nav class="article-nav">
     
-      <a href="/2021/01/31/Openshift-E03-谈谈S2I/" class="article-nav-link">
+      <a href="/2021/01/31/Openshift-E04-Image-Stream是个啥/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            Openshift E03 谈谈S2I
+            Openshift E04 Image Stream是个啥
           
         </div>
       </a>
     
     
-      <a href="/2021/01/10/Openshift-E01-最常见的使用场景/" class="article-nav-link">
+      <a href="/2021/01/10/Openshift-E02-部署Jenkins服务/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">Openshift E01 最常见的使用场景</div>
+        <div class="article-nav-title">Openshift E02 部署Jenkins服务</div>
       </a>
     
   </nav>

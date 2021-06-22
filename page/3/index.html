@@ -64,6 +64,520 @@
     
     
     
+    <article id="post-流水账之生活费" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/04/30/流水账之生活费/"
+    >流水账之生活费</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/04/30/流水账之生活费/" class="article-date">
+  <time datetime="2020-04-30T11:56:56.000Z" itemprop="datePublished">2020-04-30</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      Here's something encrypted, password is required to continue reading.
+      
+      <a class="article-more-link" href="/2020/04/30/流水账之生活费/">阅读更多...</a>
+      
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Q-List/">Q List</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-我的租房经历" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/04/30/我的租房经历/"
+    >我的租房经历</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/04/30/我的租房经历/" class="article-date">
+  <time datetime="2020-04-30T08:02:22.000Z" itemprop="datePublished">2020-04-30</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      Here's something encrypted, password is required to continue reading.
+      
+      <a class="article-more-link" href="/2020/04/30/我的租房经历/">阅读更多...</a>
+      
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Q-List/">Q List</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-入门gpg" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/04/23/入门gpg/"
+    >入门gpg</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/04/23/入门gpg/" class="article-date">
+  <time datetime="2020-04-23T09:22:20.000Z" itemprop="datePublished">2020-04-23</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>GPG 的全称是 GNU Privacy Guard ，可以看作是一个软件，可以用来进行密钥的管理。其实和我们用的一些图形化的密码管理类似，不过GPG 好像更多是命令行交互的，所以一般人不太习惯。另外，中间包含的概念也较多。</p>
+<p>用过enpass, 1password的可以将一些概念类比起来，比如 master password ， 子密码</p>
+<blockquote>
+<p>我们应该使用且只使用子密钥，主密钥应该放在一个绝对安全的地方。</p>
+</blockquote>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>在 Mac 上可以使用 Homebrew 安装 gopass</p>
+<p><code>brew install gopass</code></p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>生成主密钥<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gpg --full-generate-key</span><br></pre></td></tr></table></figure></p>
+<p><strong>交互</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">➜ gpg --edit-key 771xx601@qq.com</span><br><span class="line">gpg (GnuPG) 2.2.20; Copyright (C) 2020 Free Software Foundation, Inc.</span><br><span class="line">This is free software: you are free to change and redistribute it.</span><br><span class="line">There is NO WARRANTY, to the extent permitted by law.</span><br><span class="line"></span><br><span class="line">Secret key is available.</span><br><span class="line"></span><br><span class="line">sec  rsa2048/00C21CE66A8AE9E0</span><br><span class="line">     created: 2020-04-23  expires: 2022-04-23  usage: SC</span><br><span class="line">     trust: ultimate      validity: ultimate</span><br><span class="line">ssb  rsa2048/9DCC33D2FECB246F</span><br><span class="line">     created: 2020-04-23  expires: never       usage: E</span><br><span class="line">[ultimate] (1). qinrui &lt;771963601@qq.com&gt;</span><br><span class="line"></span><br><span class="line">gpg&gt;</span><br></pre></td></tr></table></figure>
+<p>请注意上面的字符串”sec  rsa2048/xxxxx”，斜杆后面就是”用户ID”的Hash字符串，可以用来替代”用户ID”。</p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-Github-Actions-E08插播一条消息" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/04/19/Github-Actions-E08插播一条消息/"
+    >Github Actions E08插播一条消息</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/04/19/Github-Actions-E08插播一条消息/" class="article-date">
+  <time datetime="2020-04-19T14:01:53.000Z" itemprop="datePublished">2020-04-19</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/CICD/">CICD</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
+<p>消息是个好消息，简单不完全的结果就是：普通组织下的私有仓库可以使用github actions了。<em>题外话：有的消息会影响当天的工作任务，有的消息会影响人的一生。</em></p>
+</blockquote>
+<h3 id="1-起因"><a href="#1-起因" class="headerlink" title="1. 起因"></a>1. 起因</h3><p>github actions的免费是我们都知道的，但这句话并不完整、准确。github actions为支持开源，对于public repo是完全免费的，但是对于私有的项目是有时限的。可见下图,可在 <a href="https://github.com/features/actions" target="_blank" rel="noopener">https://github.com/features/actions</a> 中找到该信息。</p>
+<p><img src="https://s1.ax1x.com/2020/04/20/JM5Qvq.png" alt="JM5Qvq.png"></p>
+<center> 图1: github actions pricing</center>
+
+<p>正好，有一个项目上，我们想推荐客户使用github actions，最好是能免费使用；即使不能完全免费，如果可以限时免费也是可以的，这样作为开发人员可以尝试一下，并成功后向客户说明情况，以便进一步预估、申请部分费用。这里说到一个点：<strong>不谈钱，一切都好说；谈到钱，流程就会麻烦些，毕竟从公司支出的每一笔钱都要有个缘由</strong>。</p>
+<p>客户的项目情况整理如下，因为没有org的管理权限，一些team、org属性并看不到。客户自建了一个org，里边有个team关联着，然后org里的仓库都是private的。</p>
+<h3 id="2-问题过程"><a href="#2-问题过程" class="headerlink" title="2. 问题过程"></a>2. 问题过程</h3><p><strong>时间： 2020.04.08 左右</strong><br>为了实验一下，我和同事在我自己的 <code>org:cicd_draft</code> 下做实验。将组织下的 <code>repo: api-test-demo</code>下进行了一些尝试。为了模拟客户的情况，打算先将 <code>repo: api-test-demo</code> 从 public 变成 private。 如下图 gc_00<br><img src="https://s1.ax1x.com/2020/04/20/JM53rV.png" alt="JM53rV.png"></p>
+<center> 图2 </center>
+
+<p>首先提示需要 upgrade cicd_draft,点击后提示 <strong>upgrade options</strong>,如下图<br><img src="https://s1.ax1x.com/2020/04/20/JMqIpD.png" alt="JMqIpD.png"></p>
+<center> 图3 </center>
+
+<p>再仔细会想一下，似乎我的org与客户的org，或是我的team与客户的team不太一样，尽管我想把这些变量弄成一致的，以便后续的尝试。也显示一个问题：<em>我还对org team repo这几个东西的属性、类型还不太了解，以及他们之间的关系是否有依赖呢</em>。而后的分析，感觉客户使用的仓库类型不简单啊，可能是个历史遗留产物，见👇</p>
+<blockquote>
+<p>GitHub Actions is not available for private repos in legacy per-repository plans.</p>
+</blockquote>
+<blockquote>
+<p>legacy的一个意思是： denoting software or hardware that has been superseded but is difficult to replace because of its wide use.</p>
+</blockquote>
+<p>有几点事实如下：</p>
+<ol>
+<li>普通的team- <strong>Github Team For Open Source</strong>，无法拥有私有仓库。（在4.8号那个时间点，是的）</li>
+<li>客户拥有私有仓库，说明team的属性不是普通的，</li>
+</ol>
+<h3 id="3-转机"><a href="#3-转机" class="headerlink" title="3. 转机"></a>3. 转机</h3><p>源于一条消息： <strong>GitHub Free gives teams private repositories with unlimited collaborators at no cost.</strong></p>
+<p>因为我的github注册邮箱收到了这个大消息邮件。<br><img src="https://s1.ax1x.com/2020/04/20/JM5xs0.jpg" alt="JM5xs0.jpg"></p>
+<p><center> 图4：我的邮件截图 </center><br>现在这个消息可以在 <a href="https://github.com/pricing" target="_blank" rel="noopener">https://github.com/pricing</a> 网页较上部看到，但估计一段时间后会被其他“大动作”替换掉。</p>
+<blockquote>
+<p>———————分割线———————-</p>
+</blockquote>
+<p><strong>Github team 定义</strong>：Teams are groups of organization members that reflect your company or group’s structure with cascading access permissions and mentions.</p>
+<p>github repo 类型 、github org 、github team 类型，以及之间的强关系、弱关系。</p>
+<p>从个人可以免费创建几个私有仓库，到无限量的私有仓库，又到team的免费升级，越来越免费的策略，降低了成本门槛。</p>
+<hr>
+<p><strong>More Ref:</strong></p>
+<ul>
+<li><a href="https://help.github.com/en/enterprise/2.19/admin/user-management/organizations-and-teams" target="_blank" rel="noopener">user-management/organizations-and-teams</a></li>
+</ul>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GA/">GA</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-再看git" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/04/17/再看git/"
+    >再看git</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/04/17/再看git/" class="article-date">
+  <time datetime="2020-04-17T09:48:25.000Z" itemprop="datePublished">2020-04-17</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
+<p>犹如做手工大多都要用到尺子区度量一样，git也是大多it从业者的必须工具；当然哪怕你不是这个行业的，你也可以用它来做点儿别的，比如仅画一条直线、记录一段文字、存放一个图片。<br>你可以只用三板斧 <code>git add xx</code>,<code>git commit xx</code>,<code>git push xx</code>,遇到难题大不了删除本地文件，然后重新下载一份；但是你也可以把它玩出花儿来。或者感兴趣的研究一些本后的原理，处理一些复杂的使用场景。最终能达到你的目的即可，且高效一点儿，慢慢来、慢慢学～</p>
+</blockquote>
+<p>每个人的使用习惯和遇到的场景不太一样，只能尽量地讲讲命令的使用，绝对不会覆盖到所有使用场景。况且，<em>条条大道通罗马</em>，git命令也是一样，选择你偏好的就可以了。</p>
+<p><strong>主要参考资料如下</strong>：</p>
+<ul>
+<li><a href="https://git-scm.com/book/zh/v2" target="_blank" rel="noopener">Pro Git book</a></li>
+</ul>
+<h3 id="1-Git特色"><a href="#1-Git特色" class="headerlink" title="1. Git特色"></a>1. Git特色</h3><ul>
+<li>近乎所有操作都是本地执行</li>
+<li>直接记录快照，而非差异比较</li>
+<li>Git 保证完整性</li>
+</ul>
+<blockquote>
+<p>Git 中所有的数据在存储前都计算校验和，然后以校验和来引用。 这意味着不可能在 Git 不知情时更改任何文件内容或目录内容。 这个功能建构在 Git 底层，是构成 Git 哲学不可或缺的部分。 若你在传送过程中丢失信息或损坏文件，Git 就能发现。<br>Git 用以计算校验和的机制叫做 SHA-1 散列（hash，哈希）。 这是一个由 40 个十六进制字符（0-9 和 a-f）组成的字符串，基于 Git 中文件的内容或目录结构计算出来。</p>
+</blockquote>
+<h3 id="2-不同状态"><a href="#2-不同状态" class="headerlink" title="2. 不同状态"></a>2. 不同状态</h3><p>git项目的三个阶段：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">+-----------------+       +-----------------+       +-----------------+</span><br><span class="line">|    工 作 区      |       |     暂 存 区     |       |     .git目 录    |</span><br><span class="line">+--------+--------+       +--------+--------+       +---------+-------+</span><br><span class="line">         |                         |                          |</span><br><span class="line">         |                         |                          |</span><br><span class="line">         |                checkout repo                       |</span><br><span class="line">         |    &lt;--------------------+------------------------+ |</span><br><span class="line">         |                         |                          |</span><br><span class="line">         |        git add          |                          |</span><br><span class="line">         | +--------------------&gt;  |                          |</span><br><span class="line">         |                         |                          |</span><br><span class="line">         |                         |        git commit        |</span><br><span class="line">         |                         +-----------------------&gt;  |</span><br><span class="line">         |                         |                          |</span><br><span class="line">         |                         |                          |</span><br><span class="line">         +                         +                          +</span><br></pre></td></tr></table></figure>
+<p>文件可能处于其中之一： 已修改（modified）、 已暂存（staged）、已提交（committed）</p>
+<ul>
+<li>已修改表示修改了文件，但还没保存到数据库中。</li>
+<li>已暂存表示对一个已修改文件的当前版本做了标记，使之包含在下次提交的快照中。</li>
+<li>已提交表示数据已经安全地保存在本地数据库中。</li>
+</ul>
+<h3 id="3-配置"><a href="#3-配置" class="headerlink" title="3. 配置"></a>3. 配置</h3><p>Git 自带一个 <code>git config</code> 的工具来帮助设置控制用户信息、外观、行为等的配置变量。 这些变量存储在三个不同的位置：</p>
+<ul>
+<li>1.系统级<br>/etc/gitconfig 文件: 包含系统上每一个用户及他们仓库的通用配置。 如果在执行 git config 时带上 –system 选项，那么它就会读写该文件中的配置变量。 （由于它是系统配置文件，因此你需要管理员或超级用户权限来修改它。）<br>命令：<code>git config --system -l</code><blockquote>
+<p> mac OS下 似乎默认没有这个文件 <code>/etc/gitconfig</code></p>
+</blockquote>
+</li>
+<li>2.(用户)全局级<br>~/.gitconfig 或 ~/.config/git/config 文件：只针对当前用户。 你可以传递 –global 选项让 Git 读写此文件，这会对你系统上 所有 的仓库生效。<br>命令如：<code>git config --global -l</code></li>
+<li>3.仓库级<br>当前使用仓库的 Git 目录中的 config 文件（即 .git/config）：针对该仓库。 你可以传递 –local 选项让 Git 强制读写此文件，虽然默认情况下用的就是它。。 （当然，你需要进入某个 Git 仓库中才能让该选项生效。）<br><code>git config --local -l</code></li>
+</ul>
+<p>每一个级别会覆盖上一级别的配置，所以 <code>.git/config</code> 的配置变量会覆盖 <code>/etc/gitconfig</code> 中的配置变量，即(用户)全局级 &gt; 系统级</p>
+<h4 id="检查配置信息"><a href="#检查配置信息" class="headerlink" title="检查配置信息"></a>检查配置信息</h4><p>如果想要检查你的配置，可以使用 <code>git config --list</code> 命令来列出所有 Git 当时能找到的配置。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ git config --list</span><br><span class="line">user.name=John Doe</span><br><span class="line">user.email=johndoe@example.com</span><br><span class="line">color.status=auto</span><br><span class="line">color.branch=auto</span><br><span class="line">color.interactive=auto</span><br><span class="line">color.diff=auto</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<p>你可能会看到重复的变量名，因为 Git 会从不同的文件中读取同一个配置（例如：/etc/gitconfig 与 ~/.gitconfig）。 这种情况下，<strong>Git 会使用它找到的每一个变量的最后一个配置</strong>。</p>
+<p>你可以通过输入 <code>git config &lt;key&gt;</code> 来检查 Git 的某一项配置</p>
+<h3 id="4-常用命令"><a href="#4-常用命令" class="headerlink" title="4. 常用命令"></a>4. 常用命令</h3><blockquote>
+<p>参考 <a href="https://zhuanlan.zhihu.com/p/107324618" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/107324618</a> 。下面是按照子命令讲解，但如果按照场景讲解可能会更匹配日常使用。</p>
+</blockquote>
+<ul>
+<li><p>git clone/fetch/checkout</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> &lt;url&gt; <span class="comment">#克隆现有的仓库</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>git branch </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git branch  <span class="comment"># 显示当前分支</span></span><br><span class="line">git branch -a <span class="comment"># 查看本地分支、远程所有分支</span></span><br><span class="line">git branch branchName <span class="comment"># 新建分支</span></span><br><span class="line">git branch -m branchOld branchNew <span class="comment"># 修改分支名称，从 branchOld 改为 branchNew</span></span><br><span class="line">git push origin --delete dev2  <span class="comment"># 删除分支名 dev2 的远程分支,居然一行命令就搞定了</span></span><br><span class="line">git branch &lt;branchName&gt; &lt;start point&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>git checkout</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">git checkout branchName <span class="comment">#命令会将当前工作分支切换到branchName</span></span><br><span class="line">git checkout -b newBranch <span class="comment">#从当前分支copy一份到新分支，并切换到新分支下，等同于2步：1-git branch newBranch-git checkout newBranch</span></span><br><span class="line"><span class="comment"># 加入-B可选参数后会强制创建新分支，并且会覆盖原来存在的同名分支。</span></span><br><span class="line">git checkout -- CONTRIBUTING.md <span class="comment">#撤消对文件的修改。如果你并不想保留对 CONTRIBUTING.md 文件的修改怎么办？用这个命令</span></span><br><span class="line"><span class="comment"># 取消暂存的文件</span></span><br><span class="line">git reset HEAD &lt;file&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>请务必记得 git checkout – <file> 是一个危险的命令。 你对那个文件在本地的任何修改都会消失——Git 会用最近提交的版本覆盖掉它。 除非你确实清楚不想要对那个文件的本地修改了，否则请不要使用这个命令。</file></p>
+</blockquote>
+<ul>
+<li><p>git status</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#查看文件状态</span></span><br><span class="line">git status <span class="comment">#标准输出</span></span><br><span class="line">git status -s(或--short) <span class="comment"># 简洁输出;新添加的未跟踪文件前面有 ?? 标记，新添加到暂存区中的文件前面有 A 标记，修改过的文件前面有 M 标记。</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>git add </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#跟踪(track)新文件,或者说将 文件从 工作区加入到暂存区;在add之前，可以status查看到新文件是 Untracked files</span></span><br><span class="line">git add filename <span class="comment">#添加指定文件 </span></span><br><span class="line">git add *.c <span class="comment">#添加匹配结果指定的文件</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>git diff</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#diff 比较,命令可以不指定 &lt;filename&gt;，则对全部文件操作</span></span><br><span class="line">git diff --staged <span class="comment"># 暂存取 vs .git目录/仓库</span></span><br><span class="line">git diff --cached &lt;filename&gt; <span class="comment">#暂存区 vs Git仓库, --staged 和 --cached 是同义词</span></span><br><span class="line"></span><br><span class="line">git diff &lt;commit&gt; &lt;filename&gt; <span class="comment">#工作目录 vs Git仓库</span></span><br><span class="line">git diff &lt;commit&gt; &lt;commit&gt; <span class="comment">#Git仓库 vs Git仓库</span></span><br><span class="line"></span><br><span class="line">git diff branch1 branch2 --<span class="built_in">stat</span>      //显示2个分支所有有差异的文件列表</span><br><span class="line">git diff branch1 branch2             //显示2个分支所有有差异的文件的详细差异</span><br><span class="line">git diff branch1 branch2 file_path   //显示2个分支指定文件的详细差异</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>git rm</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git rm -f file-path <span class="comment">#从跟踪文件列表中清除，并从磁盘上删除文件</span></span><br><span class="line">git rm --cached file-path <span class="comment">#从跟踪文件列表中清除，仍然将源文件保存在磁盘上</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>git mv</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git mv README.md README</span><br><span class="line"></span><br><span class="line"><span class="comment">#运行 git mv 就相当于运行了下面三条命令：</span></span><br><span class="line">mv README.md README</span><br><span class="line">git rm README.md</span><br><span class="line">git add README</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>git commit</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">git commit -m “desc”  <span class="comment"># 正常提交</span></span><br><span class="line">git commit -a -m “desc”  <span class="comment">#？？</span></span><br><span class="line"><span class="comment"># -a, --all</span></span><br><span class="line"><span class="comment">#           Tell the command to automatically stage files that have been modified and</span></span><br><span class="line"><span class="comment">#           deleted, but new files you have not told Git about are not affected.</span></span><br><span class="line"></span><br><span class="line">git commit --amend <span class="comment">#有时候我们提交完了才发现漏掉了几个文件没有添加，或者提交信息写错了。 此时，可以运行带有 --amend 选项的提交命令来重新提交,这是有交互的</span></span><br><span class="line">git commit –amend -m “desc” <span class="comment">#追加提交，这是没有交互的</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>git remote<br>参见 <a href="https://git-scm.com/book/zh/v2/Git-%E5%9F%BA%E7%A1%80-%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8" target="_blank" rel="noopener">远程仓库的使用</a></p>
+</li>
+</ul>
+<p>如果你使用 clone 命令克隆了一个仓库，命令会自动将其添加为远程仓库并默认以 “origin” 为简写。 所以，git fetch origin 会抓取克隆（或上一次抓取）后新推送的所有工作。 必须注意 git fetch 命令只会将数据下载到你的本地仓库——它并不会自动合并或修改你当前的工作。 当准备好时你必须手动将其合并入你的工作。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git remote <span class="comment">#它会列出你指定的每一个远程服务器的简写。 常见输出：origin</span></span><br><span class="line">git remote -v <span class="comment">#显示需要读写远程仓库使用的 Git 保存的简写与其对应的 URL。</span></span><br><span class="line">git remote add &lt;shortname&gt; &lt;url&gt; <span class="comment">#添加一个新的远程 Git 仓库，同时指定一个方便使用的简写：</span></span><br><span class="line">git fetch &lt;remote&gt; <span class="comment">#该命令会访问远程仓库，从中拉取所有你还没有的数据。 执行完成后，你将会拥有那个远程仓库中所有分支的引用，可以随时合并或查看。</span></span><br><span class="line">git remote show &lt;remote&gt;  <span class="comment">#如果想要查看某一个远程仓库的更多信息，可以使用,例如 git remote show origin</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>git push</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin <span class="built_in">test</span>:<span class="built_in">test</span>  <span class="comment"># 提交本地test分支 作为远程的test分支</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>git merge</p>
+<ul>
+<li>[] todo<br>(在本地merge分支xx 到master，然后push)</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>git log</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> &lt;dev&gt; <span class="comment">#查看分支 dev 的提交历史记录，默认是时间倒序，最近的提交排在最上面），不写分支名查看当前分支的提交历史记录</span></span><br><span class="line">git <span class="built_in">log</span> --reverse <span class="comment">#时间正序显示提交历史记录</span></span><br><span class="line">git <span class="built_in">log</span> --oneline <span class="comment"># 一行显示提交历史记录</span></span><br><span class="line">git <span class="built_in">log</span> --graph <span class="comment">#图示法显示提交历史</span></span><br><span class="line">git <span class="built_in">log</span> --reverse --oneline --graph <span class="comment">#时间正序 + 一行显示 + 图示法显示</span></span><br><span class="line">git <span class="built_in">log</span> -n <span class="comment">#显示最近的 n 个提交</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>[] origin 是什么  git 的 origin 的含义 cnblogs.com/xuyaowen/p/git-origin.html</p>
+</li>
+<li>[] 追踪关系 –track</li>
+<li>[] upstream ??</li>
+</ul>
+<p>其他：<br>HEAD 最近一次 commit<br>HEAD^ 上次提交<br>HEAD~100 上100次提交</p>
+<p>git revert </p>
+<p>英文来定义一下 fetch 和 pull 更为明白：</p>
+<p>git fetch is the command that says “bring my local copy of the remote repository up to date.”<br>git pull says “bring the changes in the remote repository where I keep my own code.”</p>
+<h3 id="5-一些场景"><a href="#5-一些场景" class="headerlink" title="5. 一些场景"></a>5. 一些场景</h3><ul>
+<li>建立个人镜像的仓库 mirror</li>
+<li>清除github上某个文件的历史版本</li>
+<li>命令行提pull request  </li>
+</ul>
+<p><strong>Pull Request (PR) is a Github feature that allows users to collaborate better together.</strong></p>
+<p><a href="https://hub.github.com/" target="_blank" rel="noopener">hub</a>这个工具可以,以下针对github.com做的测试，如果是对于企业内部的github可能需要区别对待，或测试是否有效。另外，运行 <code>git request-pull master ./</code>这样的命令，只会做pr的内容比较，实际上是不出提交一个pr的<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">➜  api-test-demo git:(<span class="built_in">test</span>-pr) ✗ hub pull-request  <span class="comment">#会出现交互，提示输入 pr 的 comment</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#上面完成后，最后输出</span></span><br><span class="line">https://github.com/cicd-draft/api-test-demo/pull/1</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>提第一次安装、使用时，提示输入 <code>github.com username</code>,<code>github.com password</code>。参考链接： <a href="https://hackernoon.com/how-to-git-pr-from-the-command-line-a5b204a57ab" target="_blank" rel="noopener">https://hackernoon.com/how-to-git-pr-from-the-command-line-a5b204a57ab</a> 及 <a href="https://hub.github.com/" target="_blank" rel="noopener">https://hub.github.com/</a></p>
+</blockquote>
+<ul>
+<li>cherry-pick<br>cached 是什么状态</li>
+</ul>
+<p>本地和远程的关系，还要把新分支推到远程也就是在远程建立一样的一个分支。所以我们在本地和远程建立分支后还要把他们关联起来，这样才有意义！！！</p>
+<hr>
+<p><strong>More Ref:</strong></p>
+<ul>
+<li>[ascii现在画图工具]<a href="http://asciiflow.com/" target="_blank" rel="noopener">http://asciiflow.com/</a></li>
+<li><a href="https://www.jianshu.com/p/2f3c5f3ad3d9" target="_blank" rel="noopener">分支</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/107324618" target="_blank" rel="noopener">git命令-from-zhihu</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/96631135?utm_source=qq&amp;utm_medium=social&amp;utm_oi=30019480977408" target="_blank" rel="noopener">Git内部原理</a></li>
+<li>[一些git命令]<a href="https://xu3352.github.io/blog/2017/04/28/git-cheat-sheet" target="_blank" rel="noopener">https://xu3352.github.io/blog/2017/04/28/git-cheat-sheet</a></li>
+</ul>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools/">Tools</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-入手Telegram" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -520,867 +1034,13 @@
 
 </article>
     
-    <article id="post-Github-Actions-E07上下文和表达式语法" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/04/01/Github-Actions-E07上下文和表达式语法/"
-    >Github Actions E07上下文和表达式语法</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/04/01/Github-Actions-E07上下文和表达式语法/" class="article-date">
-  <time datetime="2020-04-01T02:28:06.000Z" itemprop="datePublished">2020-04-01</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/CICD/">CICD</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
-<p>如果没有这些内容，workflow照样可以运行起来；但利用上下文获取的信息和内置的表达式功能可以大大帮助我们轻松地完成更多的事情。另外，上下文和环境变量中的部分内容的目的是一样的，在选择时，用自己习惯的之一就好。</p>
-</blockquote>
-<h3 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1. 介绍"></a>1. 介绍</h3><p>可以使用表达式程序化设置工作流程文件中的变量和访问上下文。表达式可以是文字值、上下文引用或函数的任意组合。可以使用运算符组合文字、上下文引用和函数</p>
-<p>在if条件条件下使用表达式时，不需要使用表达式语法，因为GitHub会自动将if条件条件计算为表达式。</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># if 条件的示例表达式</span></span><br><span class="line"><span class="attr">steps:</span></span><br><span class="line"><span class="attr">  - uses:</span> <span class="string">actions/hello-world-javascript-action@master</span></span><br><span class="line"><span class="attr">    if:</span> <span class="string">&lt;expression&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="2-上下文"><a href="#2-上下文" class="headerlink" title="2. 上下文"></a>2. 上下文</h3><p>Contexts are a way to access information about workflow runs, runner environments, jobs, and steps. 上下文使用表达式语法。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">上下文名称</th>
-<th>类型</th>
-<th style="text-align:left">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">github</td>
-<td>对象</td>
-<td style="text-align:left">工作流程运行的相关信息。 更多信息请参阅 github 上下文。</td>
-</tr>
-<tr>
-<td style="text-align:left">env</td>
-<td>对象</td>
-<td style="text-align:left">Contains environment variables set in a workflow, job, or step. For more information, see env context .</td>
-</tr>
-<tr>
-<td style="text-align:left">job</td>
-<td>对象</td>
-<td style="text-align:left">当前执行的作业相关信息。 更多信息请参阅 job 上下文。</td>
-</tr>
-<tr>
-<td style="text-align:left">steps</td>
-<td>对象</td>
-<td style="text-align:left">此作业中已经运行的步骤的相关信息。 更多信息请参阅 steps 上下文。</td>
-</tr>
-<tr>
-<td style="text-align:left">runner</td>
-<td>对象</td>
-<td style="text-align:left">运行当前作业的运行程序相关信息。 For more information, see runner context.</td>
-</tr>
-<tr>
-<td style="text-align:left">secrets</td>
-<td>对象</td>
-<td style="text-align:left">用于访问仓库中设置的密码。 For more information about secrets, see “Creating and using encrypted secrets.”</td>
-</tr>
-<tr>
-<td style="text-align:left">strategy</td>
-<td>对象</td>
-<td style="text-align:left">用于访问配置的策略参数及当前作业的相关信息。 策略参数包括 fail-fast、job-index、job-total 和 max-parallel。</td>
-</tr>
-<tr>
-<td style="text-align:left">matrix</td>
-<td>对象</td>
-<td style="text-align:left">用于访问为当前作业配置的矩阵参数。 例如，如果使用 os 和 node 版本配置矩阵构建，matrix 上下文对象将包含当前作业的 os 和 node 版本。</td>
-</tr>
-</tbody>
-</table>
-<h4 id="2-1-github-context"><a href="#2-1-github-context" class="headerlink" title="2.1 github context"></a>2.1 github context</h4><p>官网中也提到 <strong>你可以在环境变量中读取到大多数的 github 上下文</strong></p>
-<p>作为表达式的一部分，您可以使用以下两种语法之一访问上下文信息。</p>
-<p>索引语法：github[‘sha’]<br>属性解除参考语法：github.sha </p>
-<blockquote>
-<p>注意: 在使用敏感信息时，需要更加小心。在控制台日志输出时，Github 会遮掩sercrets。但是当导出或打印上下文时应谨慎行事。</p>
-</blockquote>
-<h4 id="2-2-env-context"><a href="#2-2-env-context" class="headerlink" title="2.2 env context"></a>2.2 env context</h4><p>env上下文包含在工作流，作业或步骤中设置的环境变量。 有关在工作流中设置环境变量的更多信息，可参见之前的文章–<a href="https://www.devops-tech.cn/2020/03/24/Github-Actions-E05%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" target="_blank" rel="noopener">Github Actions E05环境变量</a></p>
-<p>env上下文语法允许您在工作流文件中使用环境变量的值。 如果要在runner中使用环境变量的值，请使用runner操作系统的常规方法读取环境变量。</p>
-<h4 id="2-3-job-context"><a href="#2-3-job-context" class="headerlink" title="2.3 job context"></a>2.3 job context</h4><p>job 上下文包含当前正在运行的作业相关信息。</p>
-<h4 id="2-4-steps-context"><a href="#2-4-steps-context" class="headerlink" title="2.4 steps context"></a>2.4 steps context</h4><p>steps 上下文包含当前作业中已经运行的步骤相关信息。</p>
-<h4 id="2-5-runner-context"><a href="#2-5-runner-context" class="headerlink" title="2.5 runner context"></a>2.5 runner context</h4><h4 id="2-6-secrets-context"><a href="#2-6-secrets-context" class="headerlink" title="2.6 secrets context"></a>2.6 secrets context</h4><h4 id="2-7-strategy-context"><a href="#2-7-strategy-context" class="headerlink" title="2.7 strategy context"></a>2.7 strategy context</h4><h4 id="2-8-matrix-context"><a href="#2-8-matrix-context" class="headerlink" title="2.8 matrix context"></a>2.8 matrix context</h4><p>各种上下文列表(还没看得到 strategy、matrix的使用)</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">属性名称</th>
-<th>类型</th>
-<th style="text-align:left">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">github</td>
-<td>object</td>
-<td style="text-align:left">工作流程中任何作业或步骤期间可用的顶层上下文。</td>
-</tr>
-<tr>
-<td style="text-align:left">github.event</td>
-<td>object</td>
-<td style="text-align:left">完整事件 web 挂钩有效负载。 更多信息请参阅“触发工作流程的事件”。</td>
-</tr>
-<tr>
-<td style="text-align:left">github.event_path</td>
-<td>string</td>
-<td style="text-align:left">The path to the full event webhook payload on the runner.</td>
-</tr>
-<tr>
-<td style="text-align:left">github.workflow</td>
-<td>string</td>
-<td style="text-align:left">工作流程的名称。 如果工作流程文件未指定 name，此属性的值将是仓库中工作流程文件的完整路径。</td>
-</tr>
-<tr>
-<td style="text-align:left">github…</td>
-<td></td>
-<td style="text-align:left">github上下文还有很多，详情请见xx</td>
-</tr>
-<tr>
-<td style="text-align:left">env</td>
-<td>object</td>
-<td style="text-align:left">此上下文针对作业中的每个步骤而改变。 您可以从作业中的任何步骤访问此上下文。</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>env.&lt;env name&gt;</code></td>
-<td>string</td>
-<td style="text-align:left">某一个具体环境变量的值。  (完)</td>
-</tr>
-<tr>
-<td style="text-align:left">job</td>
-<td>object</td>
-<td style="text-align:left">此上下文针对工作流程运行中的每项作业而改变。 您可以从作业中的任何步骤访问此上下文。</td>
-</tr>
-<tr>
-<td style="text-align:left">job.status</td>
-<td>string</td>
-<td style="text-align:left">作业的当前状态。 可能的值包括 success、failure 或 cancelled。</td>
-</tr>
-<tr>
-<td style="text-align:left">job.container</td>
-<td>object</td>
-<td style="text-align:left">作业的容器相关信息。 有关容器的更多信息，请参阅“GitHub 操作 的工作流程语法”。</td>
-</tr>
-<tr>
-<td style="text-align:left">job.container.id</td>
-<td>string</td>
-<td style="text-align:left">容器的 id。</td>
-</tr>
-<tr>
-<td style="text-align:left">job…</td>
-<td></td>
-<td style="text-align:left">job 上下文还有很多，详情请见xx</td>
-</tr>
-<tr>
-<td style="text-align:left">steps</td>
-<td>object</td>
-<td style="text-align:left">此上下文针对作业中的每个步骤而改变。 您可以从作业中的任何步骤访问此上下文。</td>
-</tr>
-<tr>
-<td style="text-align:left">steps.<step id>.outputs</step></td>
-<td>object</td>
-<td style="text-align:left">为步骤定义的输出集。 更多信息请参阅“GitHub 操作 的元数据语法”。</td>
-</tr>
-<tr>
-<td style="text-align:left">steps.<step id>.outputs.<output name></output></step></td>
-<td>string</td>
-<td style="text-align:left">特定输出的值。（完）</td>
-</tr>
-</tbody>
-</table>
-<h3 id="3-文字"><a href="#3-文字" class="headerlink" title="3. 文字"></a>3. 文字</h3><p>作为表达式的一部分，您可以使用 boolean、null、number 或 string 数据类型。 Boolean 文字不区分大小写，因此可以使用 true 或 True。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">数据类型</th>
-<th>文字值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">boolean</td>
-<td>true 或 false</td>
-</tr>
-<tr>
-<td style="text-align:left">null</td>
-<td>null</td>
-</tr>
-<tr>
-<td style="text-align:left">number</td>
-<td>JSON 支持的任何数字格式。</td>
-</tr>
-<tr>
-<td style="text-align:left">string</td>
-<td>必须使用单引号。 使用单引号逸出文字单引号。</td>
-</tr>
-</tbody>
-</table>
-<h3 id="4-运算符"><a href="#4-运算符" class="headerlink" title="4. 运算符"></a>4. 运算符</h3><table>
-<thead>
-<tr>
-<th style="text-align:left">运算符</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><code>( )</code></td>
-<td>逻辑分组</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>[ ]</code></td>
-<td>索引</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>.</code></td>
-<td>属性解除参考</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>!</code></td>
-<td>非</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&lt;</code></td>
-<td>小于</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&lt;=</code></td>
-<td>小于或等于</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&gt;</code></td>
-<td>大于</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&gt;=</code></td>
-<td>大于或等于</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>==</code></td>
-<td>等于</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>!=</code></td>
-<td>不等于</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&amp;&amp;</code></td>
-<td>和</td>
-</tr>
-<tr>
-<td style="text-align:left">&#124; &#124;</td>
-<td>或</td>
-</tr>
-</tbody>
-</table>
-<p>GitHub 进行宽松的等式比较。</p>
-<ul>
-<li>如果类型不匹配，GitHub 强制转换类型为数字。 GitHub 使用这些转换将数据类型转换为数字：</li>
-<li>一个 NaN 与另一个 NaN 的比较不会产生 true。</li>
-<li>GitHub 在比较字符串时忽略大小写。</li>
-<li>对象和数组仅在为同一实例时才视为相等。</li>
-</ul>
-<h3 id="5-函数"><a href="#5-函数" class="headerlink" title="5. 函数"></a>5. 函数</h3><p>GitHub 提供一组内置的函数，可用于表达式。 有些函数抛出值到字符串以进行比较。 GitHub 使用这些转换将数据类型转换为字符串。 函数有 contains、startsWith、 endsWith、 format、 join、 toJson、 hashFiles，还有一类作业状态检查函数，有 success、always、 cancelled、 failure。有些类似Jenkins中的post使用的一些判断条件，但github actions是使用于step中的。具体使用详情可见<a href="https://help.github.com/cn/actions/reference/context-and-expression-syntax-for-github-actions#functions" target="_blank" rel="noopener">官网</a></p>
-<h3 id="6-对象过滤器"><a href="#6-对象过滤器" class="headerlink" title="6. 对象过滤器"></a>6. 对象过滤器</h3><p>可以使用 * 语法应用过滤条件并从集合中选择匹配的项目。</p>
-<p>例如，考虑名为 fruits 的对象数组。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  &#123; <span class="string">"name"</span>: <span class="string">"apple"</span>, <span class="string">"quantity"</span>: 1 &#125;,</span><br><span class="line">  &#123; <span class="string">"name"</span>: <span class="string">"orange"</span>, <span class="string">"quantity"</span>: 2 &#125;,</span><br><span class="line">  &#123; <span class="string">"name"</span>: <span class="string">"pear"</span>, <span class="string">"quantity"</span>: 1 &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
-<p>过滤条件 fruits.*.name 返回数组 [ “apple”, “orange”, “pear” ]</p>
-<hr>
-<p><strong>由于项目实践还不多，等我哪天需要用到这些功能，以完成一些特殊情况的需求时，再来一一举例。</strong></p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GA/">GA</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-Github-Actions-E06产出物" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/03/30/Github-Actions-E06产出物/"
-    >Github Actions E06产出物</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/03/30/Github-Actions-E06产出物/" class="article-date">
-  <time datetime="2020-03-30T07:29:31.000Z" itemprop="datePublished">2020-03-30</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/CICD/">CICD</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
-<p>大多数时候，workflow的产出物都会直接传到对应的某些仓库，比如docker image会送到docker hub这种仓库存储。这种时候是不需要在workflow再额外的管理产出物，但也不能全盘否定；有时候我们没有一个方便的地方去存储某些形式的文件等，就需要我们有类似jenkins <code>archiveArtifacts</code> 功能。但github actions能做的会更多，请期待。</p>
-</blockquote>
-<h3 id="1-关于artifacts"><a href="#1-关于artifacts" class="headerlink" title="1. 关于artifacts"></a>1. 关于artifacts</h3><p>构件是指在工作流程运行过程中产生的文件或文件集。<br>GitHub 提供两项可用于上传和下载构建构件的操作。 上传到工作流程运行的文件将使用 .zip 格式存档。 更多信息请参阅 <code>action/upload-artifact</code> 和 <code>download-artifact</code> 操作。</p>
-<p>这些是您可能想要上传的一些常见构建和测试输出构件：</p>
-<ul>
-<li>日志文件和核心转储文件</li>
-<li>测试结果、失败和屏幕截图</li>
-<li>二进制或存档文件</li>
-<li>压力测试性能输出和代码覆盖结果</li>
-</ul>
-<p>当作业完成时，运行程序将终止并删除虚拟环境的实例。</p>
-<h3 id="2-上传"><a href="#2-上传" class="headerlink" title="2. 上传"></a>2. 上传</h3><p>常见的场景: 一个java程序的产出物是一个jar包，在构建之后需要得到这个jar用于其他环境部署。</p>
-<p>依旧用 <a href="https://github.com/cicd-draft/api-test-demo" target="_blank" rel="noopener">api-test-demo</a> 这个仓库做演示，主要分为以下个步骤：</p>
-<ul>
-<li>1.下载代码；</li>
-<li>2.构建jar包(存放于指定到路径<code>build/libs/api-demo-0.0.1-SNAPSHOT.jar</code>)；</li>
-<li>3.上传jar包</li>
-</ul>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">my</span> <span class="string">workflow</span> <span class="string">demo</span> </span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span> </span><br><span class="line"><span class="attr">  push:</span></span><br><span class="line"><span class="attr">    branches:</span> </span><br><span class="line"><span class="bullet">      -</span> <span class="string">master</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  artifacts_demo_job:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">job1</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">Checkout</span> <span class="string">code</span></span><br><span class="line"><span class="attr">      uses:</span> <span class="string">actions/checkout@v1</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">Build</span> <span class="string">jar</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        pwd  &amp;&amp; ls -l</span></span><br><span class="line"><span class="string">        ./gradlew -x jar build</span></span><br><span class="line"><span class="string">        ls -l build/libs/api-demo-0.0.1-SNAPSHOT.jar</span></span><br><span class="line"><span class="string"></span><span class="attr">    - name:</span> <span class="string">Archive</span> <span class="string">SNAPSHOT.jar</span></span><br><span class="line"><span class="attr">      uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">      with:</span></span><br><span class="line"><span class="attr">        name:</span> <span class="string">api_snapshot_jar</span></span><br><span class="line"><span class="attr">        path:</span> <span class="string">build/libs/api-demo-0.0.1-SNAPSHOT.jar</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>github actions 工作流的产出物都放在哪里的，保留多久</p>
-</blockquote>
-<h3 id="3-下载"><a href="#3-下载" class="headerlink" title="3. 下载"></a>3. 下载</h3><p>步骤官方说明如下：</p>
-<ul>
-<li>1.On GitHub, navigate to the main page of the repository.</li>
-<li>2.Under your repository name, click Actions.</li>
-<li>3.In the left sidebar, click the workflow you want to see.</li>
-<li>4.Under “Workflow runs”, click the name of the run you want to see.</li>
-<li>5.To download artifacts, use the Artifacts drop-down menu, and select the artifact you want to download.</li>
-<li>6.To delete artifacts, use the Artifacts drop-down menu, and click .</li>
-</ul>
-<p>注意事项：</p>
-<ul>
-<li>保留90天</li>
-<li>一旦删除某一个构件，无法恢复</li>
-</ul>
-<h3 id="4-在工作流程中作业之间传递数据"><a href="#4-在工作流程中作业之间传递数据" class="headerlink" title="4. 在工作流程中作业之间传递数据"></a>4. 在工作流程中作业之间传递数据</h3><p><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts#passing-data-between-jobs-in-a-workflow" target="_blank" rel="noopener">https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts#passing-data-between-jobs-in-a-workflow</a></p>
-<p>由于同一个workflow的多个job分别运行在不同的虚拟主机上，下面示例工作流程说明如何在相同工作流程中的任务之间传递数据。关键词 <strong>need</strong> 用来确保job按顺序运行.</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Share</span> <span class="string">data</span> <span class="string">between</span> <span class="string">jobs</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span> <span class="string">[push]</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  job_1:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Add</span> <span class="number">3</span> <span class="string">and</span> <span class="number">7</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          expr 3 + 7 &gt; math-homework.txt</span></span><br><span class="line"><span class="string"></span><span class="attr">      - name:</span> <span class="string">Upload</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">1</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">          path:</span> <span class="string">math-homework.txt</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  job_2:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Multiply</span> <span class="string">by</span> <span class="number">9</span></span><br><span class="line"><span class="attr">    needs:</span> <span class="string">job_1</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">windows-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Download</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">1</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/download-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">      - shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          value=`cat homework/math-homework.txt`</span></span><br><span class="line"><span class="string">          expr $value \* 9 &gt; homework/math-homework.txt</span></span><br><span class="line"><span class="string"></span><span class="attr">      - name:</span> <span class="string">Upload</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">2</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">          path:</span> <span class="string">homework/math-homework.txt</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  job_3:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Display</span> <span class="string">results</span></span><br><span class="line"><span class="attr">    needs:</span> <span class="string">job_2</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">macOS-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Download</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">2</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/download-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Print</span> <span class="string">the</span> <span class="string">final</span> <span class="string">result</span></span><br><span class="line"><span class="attr">        shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          value=`cat homework/math-homework.txt`</span></span><br><span class="line"><span class="string">          echo The result is $value</span></span><br></pre></td></tr></table></figure>
-<hr>
-<p><strong>More Ref:</strong></p>
-<ul>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts" target="_blank" rel="noopener">关于该篇的原文</a></li>
-</ul>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GA/">GA</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-Github-Actions-E05环境变量" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/03/24/Github-Actions-E05环境变量/"
-    >Github Actions E05环境变量</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/03/24/Github-Actions-E05环境变量/" class="article-date">
-  <time datetime="2020-03-24T06:41:34.000Z" itemprop="datePublished">2020-03-24</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/CICD/">CICD</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
-<p>例如在使用Jenkins等其他CICD工具时那样，环境变量可以帮助我们在流水线中传递参数，然后使用这些变量方便利用，或是获取更多关于构建的信息(比如<code>GITHUB_REPOSITORY</code>)。 例如构建镜像时 <code>app1:master-1</code>、<code>app1:ffac53</code>， 用分支名做判断等。</p>
-</blockquote>
-<h3 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1. 介绍"></a>1. 介绍</h3><p>GitHub为每个GitHub Actions工作流程运行设置默认环境变量。 您还可以在工作流文件中设置自定义环境变量。</p>
-<h3 id="2-默认的环境变量"><a href="#2-默认的环境变量" class="headerlink" title="2. 默认的环境变量"></a>2. 默认的环境变量</h3><table>
-<thead>
-<tr>
-<th style="text-align:left">环境变量</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">HOME</td>
-<td>用于存储用户数据的 GitHub 主目录路径。 例如  <code>/github/home</code>。</td>
-</tr>
-<tr>
-<td style="text-align:left">GITHUB_WORKFLOW</td>
-<td>工作流程的名称。</td>
-</tr>
-<tr>
-<td style="text-align:left">GITHUB_RUN_ID</td>
-<td>仓库中每次运行的唯一编号。 如果重新运行工作流运行，此数字不会更改。</td>
-</tr>
-<tr>
-<td style="text-align:left">GITHUB_RUN_NUMBER</td>
-<td>存储库中特定工作流程的每次运行的唯一编号。 对于工作流程的第一次运行，此数字从1开始，并在每次新运行时递增。 如果重新运行工作流运行，则此数字不会更改。</td>
-</tr>
-<tr>
-<td style="text-align:left">GITHUB_ACTION</td>
-<td>操作唯一的标识符 (id)。</td>
-</tr>
-<tr>
-<td style="text-align:left">GITHUB_ACTIONS</td>
-<td>当GitHub操作正在运行工作流时，请始终为true。可以使用此变量来区分何时在本地或通过GitHub运行测试.</td>
-</tr>
-<tr>
-<td style="text-align:left">GITHUB_ACTOR</td>
-<td>发起工作流程的个人或应用程序的名称。 例如 octocat。</td>
-</tr>
-<tr>
-<td style="text-align:left">GITHUB_REPOSITORY</td>
-<td>所有者和仓库名称。 例如 octocat/Hello-World。</td>
-</tr>
-<tr>
-<td style="text-align:left">GITHUB_EVENT_NAME</td>
-<td>触发工作流程的 web 挂钩事件的名称。</td>
-</tr>
-<tr>
-<td style="text-align:left">GITHUB_EVENT_PATH</td>
-<td>具有完整 web 挂钩事件有效负载的文件路径。 例如 <code>/github/workflow/event.json</code>。</td>
-</tr>
-<tr>
-<td style="text-align:left">GITHUB_WORKSPACE</td>
-<td>GitHub 工作空间目录路径。 如果工作流程使用 <code>actions/checkout</code> 操作，工作空间目录将包含存储仓库副本的子目录。 如果不使用 <code>actions/checkout</code> 操作，该目录将为空。 例如 <code>/home/runner/work/my-repo-name/my-repo-name</code>。</td>
-</tr>
-<tr>
-<td style="text-align:left">GITHUB_SHA</td>
-<td>触发工作流程的提交 SHA。例如 ffac537e6cbbf934b08745a378932722df287a53。</td>
-</tr>
-<tr>
-<td style="text-align:left">GITHUB_REF</td>
-<td>触发工作流程的分支或标记参考。例如 refs/heads/feature-branch-1，如果分支或标记都不适用于事件类型，则变量不会存在。</td>
-</tr>
-<tr>
-<td style="text-align:left">GITHUB_HEAD_REF</td>
-<td>仅为复刻的仓库设置。 头部仓库的分支。</td>
-</tr>
-<tr>
-<td style="text-align:left">GITHUB_BASE_REF</td>
-<td>仅为复刻的仓库设置。 基础仓库的分支。</td>
-</tr>
-</tbody>
-</table>
-<p><strong>作用域</strong>: 整个workflow中</p>
-<p>在例子<a href="https://github.com/cicd-draft/api-test-demo/blob/master/.github/workflows/env_usage1.yml.backup" target="_blank" rel="noopener">env_usage1.yml</a>中，从上到下依次输出如下(<em>如果需要测试，可去掉后缀 <code>.backup</code></em>):<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Show Default environment variables</span><br><span class="line">&gt;&gt; In this example &lt;&lt;</span><br><span class="line">HOME is : /home/runner</span><br><span class="line">GITHUB_WORKFLOW is: my workflow demo</span><br><span class="line">GITHUB_RUN_ID is : 62167662</span><br><span class="line">GITHUB_RUN_NUMBER is : 3</span><br><span class="line">GITHUB_ACTION is : run</span><br><span class="line">GITHUB_ACTIONS is : <span class="literal">true</span></span><br><span class="line">GITHUB_ACTOR is : qinrui777</span><br><span class="line">GITHUB_REPOSITORY is : cicd-draft/api-test-demo</span><br><span class="line">GITHUB_EVENT_NAME is : push</span><br><span class="line">GITHUB_EVENT_PATH is : /home/runner/work/_temp/_github_workflow/event.json</span><br><span class="line">GITHUB_WORKSPACE is : /home/runner/work/api-test-demo/api-test-demo</span><br><span class="line">GITHUB_SHA is : 3eb054249e103ab3d8a85e23384472433b9815a8</span><br><span class="line">GITHUB_REF is : refs/heads/master</span><br><span class="line">GITHUB_HEAD_REF is :</span><br><span class="line">GITHUB_BASE_REF is :</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>可以观察到:GitHub 会保留<code>GITHUB_</code>环境变量前缀供GitHub内部使用。设置有 GITHUB_ 前缀的环境变量或密码将导致错误。</p>
-</blockquote>
-<h3 id="3-自定义环境变量"><a href="#3-自定义环境变量" class="headerlink" title="3. 自定义环境变量"></a>3. 自定义环境变量</h3><p>默认的环境变量有时候，不足以满足我们的要求，这是就需要自定义一些，以便使用。最好定义在yml文件靠前的部分，一目了然。</p>
-<p>环境变量可用于工作流程中的所有作业和步骤，还可以设置仅适用于作业或步骤的环境变量，需要注意环境变量<strong>作用域</strong>。</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">my</span> <span class="string">workflow</span> <span class="string">demo</span> </span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span> </span><br><span class="line"><span class="attr">  push:</span></span><br><span class="line"><span class="attr">    branches:</span> </span><br><span class="line"><span class="bullet">      -</span> <span class="string">master</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 用于该workflow的所有job和steps</span></span><br><span class="line"><span class="attr">env:</span></span><br><span class="line"><span class="attr">  SERVER:</span> <span class="string">production</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  env_usage_job1:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">job1</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">My</span> <span class="string">step</span> <span class="string">one</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        echo "this is job1"</span></span><br><span class="line"><span class="string">        echo $SERVER</span></span><br><span class="line"><span class="string"># 不能写成 echo $<span class="template-variable">&#123;&#123; SERVER &#125;&#125;</span></span></span><br><span class="line"><span class="string"></span><span class="attr">  second_job:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">job2</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">macos-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">My</span> <span class="string">step</span> <span class="string">one</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        echo "this is job2"</span></span><br><span class="line"><span class="string">        echo $SERVER</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">### job 级别的</span></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  job1:</span></span><br><span class="line"><span class="attr">    env:</span></span><br><span class="line"><span class="attr">      FIRST_NAME:</span> <span class="string">Mona</span></span><br><span class="line"></span><br><span class="line"><span class="comment">### steps 级别的</span></span><br><span class="line"><span class="attr">steps:</span></span><br><span class="line"><span class="attr">  - name:</span> <span class="string">Hello</span> <span class="string">world</span></span><br><span class="line"><span class="attr">    run:</span> <span class="string">echo</span> <span class="string">Hello</span> <span class="string">world</span> <span class="string">$FIRST_NAME</span> <span class="string">$middle_name</span> <span class="string">$Last_Name!</span></span><br><span class="line"><span class="attr">    env:</span></span><br><span class="line"><span class="attr">      FIRST_NAME:</span> <span class="string">Mona</span></span><br><span class="line"><span class="attr">      middle_name:</span> <span class="string">The</span></span><br><span class="line"><span class="attr">      Last_Name:</span> <span class="string">Octocat</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>搞不懂为什么官网示例 steps 中的 env放在 run后面?</p>
-</blockquote>
-<h3 id="4-context-与-environment-variables-的关系"><a href="#4-context-与-environment-variables-的关系" class="headerlink" title="4. context 与 environment variables 的关系"></a>4. context 与 environment variables 的关系</h3><p>The github context contains information about the workflow run and the event that triggered the run. You can read most of the github context data in environment variables. For more information about environment variables, see “Using environment variables.”</p>
-<ul>
-<li>Todo</li>
-</ul>
-<hr>
-<p><strong>More Ref:</strong></p>
-<ul>
-<li><a href="https://help.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context" target="_blank" rel="noopener">GA Context</a></li>
-</ul>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GA/">GA</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-Github-Actions-E04运行环境-runner" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/03/21/Github-Actions-E04运行环境-runner/"
-    >Github Actions E04运行环境-runner</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/03/21/Github-Actions-E04运行环境-runner/" class="article-date">
-  <time datetime="2020-03-21T08:46:09.000Z" itemprop="datePublished">2020-03-21</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/CICD/">CICD</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
-<p>一个可以直接运行的CICD环境，用起来无疑节省了搭建环境的过程。但对于一个我们陌生的运行环境，最好还是提前了解一些基础的东西，比如：机器的操作系统及版本、内存、CPU、有多少磁盘可用、当前的用户是什么、权限有没有限制，以及workspace在什么目录，不然一旦遇到问题，就无从下手，或者找错方向。</p>
-</blockquote>
-<p><em>##### </em>CICD环境的灵魂3问：</p>
-<ul>
-<li>我是谁 <em>-&gt; 操作系统，具体版本，当前用户及权限</em></li>
-<li>我在哪里 <em>-&gt; 工作目录在哪里</em></li>
-<li>我能做什么 <em>—&gt; 有什么工具已经安装了，还是要自己安装</em></li>
-</ul>
-<h3 id="1-GitHub-hosted-runner-介绍"><a href="#1-GitHub-hosted-runner-介绍" class="headerlink" title="1. GitHub-hosted runner 介绍"></a>1. GitHub-hosted runner 介绍</h3><p>一个 GitHub-hosted runner 是由GitHub托管并安装了GitHub Actions运行程序应用程序的虚拟机。 GitHub为运行Linux，Windows和macOS操作系统的用户提供帮助。</p>
-<p>个人总结：GitHub Actions runner 是一个 application</p>
-<p>官网也提及 <em>“The GitHub Actions runner application is open source. You can contribute and file issues in the runner repository.”</em></p>
-<h3 id="2-硬件资源"><a href="#2-硬件资源" class="headerlink" title="2. 硬件资源"></a>2. 硬件资源</h3><p>GitHub hosts Linux and Windows runners on Standard_DS2_v2 virtual machines in Microsoft Azure.</p>
-<p>GitHub uses MacStadium to host the macOS runners.</p>
-<p>每个虚拟机有相同的硬件资源可使用。拿一台同配置的个人电脑，或者云上的服务器相比，GA 的服务器运行起来会快一些。</p>
-<ul>
-<li>2-core CPU</li>
-<li>7 GB of RAM memory</li>
-<li>14 GB of SSD disk space</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Virtual environment</th>
-<th>YAML workflow label</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">Windows Server 2019</td>
-<td>windows-latest or windows-2019</td>
-</tr>
-<tr>
-<td style="text-align:left">Ubuntu 18.04</td>
-<td>ubuntu-latest or ubuntu-18.04</td>
-</tr>
-<tr>
-<td style="text-align:left">Ubuntu 16.04</td>
-<td>ubuntu-16.04</td>
-</tr>
-<tr>
-<td style="text-align:left">macOS Catalina 10.15</td>
-<td>macos-latest or macos-10.15</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>Inbound ICMP packets are blocked for all Azure virtual machines, so ping or traceroute commands might not work. For more information about the Standard_DS2_v2 machine resources, see “Dv2 and DSv2-series” in the Microsoft Azure documentation.</p>
-</blockquote>
-<h3 id="3-运行用户的权限"><a href="#3-运行用户的权限" class="headerlink" title="3. 运行用户的权限"></a>3. 运行用户的权限</h3><p>可以写一个demo查看一下当前用户，例子见下面 👇</p>
-<p>Linux和macOS虚拟机均使用无密码sudo运行。 当您需要执行命令或安装需要比当前用户更多特权的工具时，可以使用sudo而不需要提供密码。</p>
-<p>Windows虚拟机被配置为以禁用了用户帐户控制（UAC）的管理员身份运行。</p>
-<h3 id="4-文件系统-Filesystems-on-GitHub-hosted-runners"><a href="#4-文件系统-Filesystems-on-GitHub-hosted-runners" class="headerlink" title="4. 文件系统(Filesystems on GitHub-hosted runners)"></a>4. 文件系统(Filesystems on GitHub-hosted runners)</h3><p>GitHub在虚拟机上的特定目录中执行操作和shell命令, 虚拟机上的文件路径不是静态的。</p>
-<p>Docker container filesystem 后面讲到时再说</p>
-<p>关于查看当前用户和工作目录的demo</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">CI</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span> <span class="string">[push]</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  linux:</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line">    <span class="comment">#我是谁</span></span><br><span class="line"><span class="attr">      - run:</span> <span class="string">whoami</span></span><br><span class="line">    <span class="comment">#我在那儿</span></span><br><span class="line"><span class="attr">      - run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        pwd</span></span><br><span class="line"><span class="string">        echo $HOME $GITHUB_WORKSPACE $GITHUB_EVENT_PATH</span></span><br></pre></td></tr></table></figure>
-<p>在我的<a href="https://github.com/cicd-draft/api-test-demo" target="_blank" rel="noopener">repo</a>中运行的输出为：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">runner</span><br><span class="line">/home/runner/work/api-test-demo/api-test-demo</span><br><span class="line">/home/runner /home/runner/work/api-test-demo/api-test-demo /home/runner/work/_temp/_github_workflow/event.json</span><br></pre></td></tr></table></figure></p>
-<p>GitHub为每个工作流创建的环境变量有很多，后面会单独讲到，也可以提前看一下<a href="https://help.github.com/en/actions/configuring-and-managing-workflows/using-environment-variables" target="_blank" rel="noopener">有哪些环境变量</a>。这样类似的<strong>默认的环境变量</strong>就是类似于我们在jenkins上用的 <code>BUILD_NUMBER</code>,<code>JOB_NAME</code>，当然也可以自定义环境变量。</p>
-<h3 id="5-软件安装"><a href="#5-软件安装" class="headerlink" title="5. 软件安装"></a>5. 软件安装</h3><p>不同的操作系统上都预先安装好了常用软件，详情可见下方的链接 <a href="https://help.github.com/en/actions/reference/software-installed-on-github-hosted-runners" target="_blank" rel="noopener">https://help.github.com/en/actions/reference/software-installed-on-github-hosted-runners</a></p>
-<p><a href="https://github.com/actions/virtual-environments/blob/master/images/linux/Ubuntu1804-README.md" target="_blank" rel="noopener">Ubuntu 18.04 LTS</a><br><a href="https://github.com/actions/virtual-environments/blob/master/images/linux/Ubuntu1604-README.md" target="_blank" rel="noopener">Ubuntu 16.04 LTS</a><br><a href="https://github.com/actions/virtual-environments/blob/master/images/win/Windows2019-Readme.md" target="_blank" rel="noopener">Windows Server 2019</a><br><a href="https://github.com/actions/virtual-environments/blob/master/images/win/Windows2016-Readme.md" target="_blank" rel="noopener">Windows Server 2016</a><br><a href="https://github.com/actions/virtual-environments/blob/master/images/macos/macos-10.15-Readme.md" target="_blank" rel="noopener">MacOS 10.15</a></p>
-<p>如果不想看看长长的readme，可以在运行job中先检查以下软件是否安装及具体版本；如果最后发现没有安装，就添加安装的命令即可。比如</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">CI</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span> <span class="string">[push]</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  linux:</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - run:</span> <span class="string">sudo</span> <span class="string">apt-get</span> <span class="string">install</span> <span class="string">ninja-build</span></span><br><span class="line"><span class="attr">      - run:</span> <span class="string">ninja</span> <span class="bullet">--version</span></span><br></pre></td></tr></table></figure>
-<hr>
-<p><strong>思考个问题：</strong> 自定义 runner，以及用私有的服务器运行 workflow，怎么实现？</p>
-<blockquote>
-<p>方法肯定是有的，相信github官方可考虑了runner私有化的场景(毕竟gitlab CI runner在那里摆着)，后续有时间再研究</p>
-</blockquote>
-<hr>
-<p><strong>More Ref:</strong></p>
-<ul>
-<li><a href="https://github.com/actions/runner" target="_blank" rel="noopener">Github actions runner 源码仓库</a></li>
-<li><a href="https://help.github.com/en/actions/reference/virtual-environments-for-github-hosted-runners#administrative-privileges-of-github-hosted-runners" target="_blank" rel="noopener">Administrative privileges of GitHub-hosted runners</a></li>
-<li><a href="https://help.github.com/en/actions/reference/virtual-environments-for-github-hosted-runners#docker-container-filesystem" target="_blank" rel="noopener">Docker container filesystem</a></li>
-<li><a href="https://help.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners" target="_blank" rel="noopener">About self-hosted runners</a></li>
-<li><a href="https://help.github.com/en/github/setting-up-and-managing-billing-and-payments-on-github/viewing-your-github-actions-usage" target="_blank" rel="noopener">billing</a></li>
-</ul>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GA/">GA</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-Shell-toolbox" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/03/20/Shell-toolbox/"
-    >Shell toolbox</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/03/20/Shell-toolbox/" class="article-date">
-  <time datetime="2020-03-20T12:10:01.000Z" itemprop="datePublished">2020-03-20</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Shell/">Shell</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h3 id="1-crontab"><a href="#1-crontab" class="headerlink" title="1 crontab"></a>1 <a href="https://crontab.guru/examples.html" target="_blank" rel="noopener">crontab</a></h3><p>教你怎么写定时任务的网站，并给出了很多示例，比如</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#“At every 2nd minute.”</span></span><br><span class="line">*/2 * * * *</span><br><span class="line"><span class="comment"># At 22:00 on every day-of-week from Monday through Friday</span></span><br><span class="line">0 22 * * 1-5</span><br></pre></td></tr></table></figure>
-<p>不要以为会写crontab就可以了，建议有空以下内容了解下：</p>
-<ul>
-<li><a href="https://crontab.guru/tips.html" target="_blank" rel="noopener">tips小建议</a></li>
-<li><a href="https://www.endpoint.com/blog/2008/12/08/best-practices-for-cron" target="_blank" rel="noopener">最佳实践</a> </li>
-<li><a href="https://cronitor.io/docs/cron-troubleshooting-guide?utm_source=crontabguru&amp;utm_campaign=cron_troubleshooting" target="_blank" rel="noopener">问题定位</a></li>
-<li><strong>mcron</strong>: <em>Another alternative for complicated schedules</em></li>
-</ul>
-<blockquote>
-<p>最后，有兴趣可以看看 Cron Job Monitoring 的工具 <a href="https://cronitor.io/index" target="_blank" rel="noopener">cronitor</a>,不过貌似是收费的。看介绍，可用于 Cron Job, Scheduled Event（AWS),Task Scheduler, Kubernetes Cron Job, Java Cron Job, Jenkins Job多类型的监控。</p>
-</blockquote>
-<h3 id="2-Preventing-duplicate-cron-job-executions"><a href="#2-Preventing-duplicate-cron-job-executions" class="headerlink" title="2. Preventing duplicate cron job executions"></a>2. Preventing duplicate cron job executions</h3><p><a href="http://bencane.com/2015/09/22/preventing-duplicate-cron-job-executions/" target="_blank" rel="noopener">原文链接</a>,关于 <code>Preventing duplicate cron job executions</code> 提到了多种方法和工具。另外，中文搜索的话 <code>flock</code> 命令较多，比如<a href="https://blog.csdn.net/fdipzone/article/details/38284009" target="_blank" rel="noopener">这个</a>。</p>
-<p><a href="https://coolshell.cn/articles/19219.html" target="_blank" rel="noopener">打造高效的工作环境 – SHELL 篇</a></p>
-<h3 id="3-For-循环"><a href="#3-For-循环" class="headerlink" title="3. For 循环"></a>3. For 循环</h3><p>参考<br><a href="https://linuxize.com/post/bash-for-loop/" target="_blank" rel="noopener">https://linuxize.com/post/bash-for-loop/</a><br><a href="https://www.cyberciti.biz/faq/bash-for-loop/" target="_blank" rel="noopener">https://www.cyberciti.biz/faq/bash-for-loop/</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> &#123;1..5&#125;</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">   <span class="built_in">echo</span> <span class="string">"Welcome <span class="variable">$i</span> times"</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-<p>或者写在一行里 <code>for i in {1..5};do echo &quot;Welcome $i times&quot;;done</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> $(ls ./* ); </span><br><span class="line"><span class="keyword">do</span> </span><br><span class="line">  <span class="built_in">echo</span> <span class="variable">$i</span>; </span><br><span class="line">  date; </span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> s <span class="keyword">in</span> server1 server2 server3</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    ssh vivek@<span class="variable">$&#123;s&#125;</span> <span class="string">"uptime"</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-<p>Loop over array elements</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">BOOKS=(<span class="string">'In Search of Lost Time'</span> <span class="string">'Don Quixote'</span> <span class="string">'Ulysses'</span> <span class="string">'The Great Gatsby'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> book <span class="keyword">in</span> <span class="string">"<span class="variable">$&#123;BOOKS[@]&#125;</span>"</span>; <span class="keyword">do</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"Book: <span class="variable">$book</span>"</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-<p>参考链接：</p>
-<ul>
-<li><a href="https://linuxize.com/post/bash-for-loop/" target="_blank" rel="noopener">1</a></li>
-</ul>
-<h3 id="4-xargs"><a href="#4-xargs" class="headerlink" title="4. xargs"></a>4. xargs</h3><p>先看🌰，快速 scale down k8s deployment.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">kubectl get deploy -n &lt;YOUR_NAMESPACE&gt; -o name | xargs -I % kubectl scale % --replicas=0 -n &lt;YOUR_NAMESPACE&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 分解 </span></span><br><span class="line">kubectl get deploy -n &lt;YOUR_NAMESPACE&gt; -o name</span><br><span class="line"></span><br><span class="line"><span class="comment"># output:</span></span><br><span class="line">deployment.extensions/backend-filebeat</span><br><span class="line">deployment.extensions/daemon-filebeat</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果一条一条的执行，如下</span></span><br><span class="line">kubectl scale deploy/daemon-filebeat --replicas=10 -n &lt;YOUR_NAMESPACE&gt;</span><br></pre></td></tr></table></figure>
-<p>实际使用的是 <strong>xargs 实现参数传递</strong> 这一方法：<br><code>ls *.log | xargs -I {} mv {} log_backup_dir/</code><br>这里的 <code>{}</code> 也可以用 <code>%</code> 代替，毕竟可以少敲一下键盘。另外可以看看 <em>xargs与管道的区别</em></p>
-<p>更多实际用法可以参考： <a href="https://blog.csdn.net/zhangmingxingwei/article/details/8996627" target="_blank" rel="noopener">https://blog.csdn.net/zhangmingxingwei/article/details/8996627</a> , 其中的<code>git log --format=&quot;%H %P&quot; | xargs -L 1 git diff</code> 用法也很不错。 另外，有一个原理篇也建议看看，<a href="https://www.cnblogs.com/f-ck-need-u/p/5925923.html" target="_blank" rel="noopener">戳这儿</a></p>
-<h3 id="5-pssh-pscp"><a href="#5-pssh-pscp" class="headerlink" title="5. pssh pscp"></a>5. pssh pscp</h3><p>pssh: Execute Commands on Multiple Remote Linux Servers Using Single Terminal</p>
-<p>使用 <a href="https://www.tecmint.com/execute-commands-on-multiple-linux-servers-using-pssh/" target="_blank" rel="noopener">链接1</a>, <a href="https://www.golinuxcloud.com/pssh-commands-parallel-ssh-linux-examples/" target="_blank" rel="noopener">链接2</a></p>
-<p>pscp 类似pssh，可以帮助你从一台主机上将文件发送到多台主机</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">                            +--------------+</span><br><span class="line">                  +--------&gt;|  server 1    |</span><br><span class="line">                  |         +--------------+</span><br><span class="line">                  |</span><br><span class="line">                  |</span><br><span class="line">                  |         </span><br><span class="line">+-------------|---          +--------------+</span><br><span class="line">| pssh /pscp  |------------&gt;|  server 2    | </span><br><span class="line">+-------------+---          +--------------+</span><br><span class="line">                  |</span><br><span class="line">                  |</span><br><span class="line">                  |         +--------------+</span><br><span class="line">                  +--------&gt;|  server 3    |</span><br><span class="line">                            +--------------+</span><br></pre></td></tr></table></figure>
-<hr>
-<p><a href="https://www.cnblogs.com/f-ck-need-u/p/7048359.html#blogshell" target="_blank" rel="noopener">shell系列1-来源cnblogs</a></p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shell/">Shell</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
   </article>
   
 
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/2/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/4/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/2/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/4/">下一页</a>
   </nav>
   
 </section>

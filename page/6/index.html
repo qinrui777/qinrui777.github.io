@@ -64,6 +64,543 @@
     
     
     
+    <article id="post-Anka-tutorial-03-jenkins" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/11/28/Anka-tutorial-03-jenkins/"
+    >Anka tutorial 03: jenkins</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/11/28/Anka-tutorial-03-jenkins/" class="article-date">
+  <time datetime="2019-11-28T03:02:20.000Z" itemprop="datePublished">2019-11-28</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/CICD/">CICD</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h3 id="anka-集成-Jenkins-link"><a href="#anka-集成-Jenkins-link" class="headerlink" title="anka 集成 Jenkins (link)"></a>anka 集成 Jenkins <a href="https://ankadoc.bitbucket.io/anka-build/#integrate-jenkins-with-controller" target="_blank" rel="noopener">(link)</a></h3><p>未完待续…</p>
+<p>安装插件<br><code>Manage Jenkins &gt; Manage Plugins</code></p>
+<p>搜索anka</p>
+<p>新建 ssh 用的登陆凭证</p>
+<p>新建VM的时候 默认用户名和密码分别是 <code>anka/admin</code></p>
+<p>配置jenkins<br><code>Manage Jenkins &gt; Configure System</code></p>
+<p><img src="/images/anka_jenkins_01.png" width="80%" height="80%"></p>
+<p><a href="http://localhost/#/dashboard" target="_blank" rel="noopener">http://localhost/#/dashboard</a></p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-Import-P12-file-on-Mac-OS-X-with-CLI" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/11/22/Import-P12-file-on-Mac-OS-X-with-CLI/"
+    >Import P12 file on Mac OS X with CLI</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/11/22/Import-P12-file-on-Mac-OS-X-with-CLI/" class="article-date">
+  <time datetime="2019-11-22T03:38:40.000Z" itemprop="datePublished">2019-11-22</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h3 id="目的：通过命令行倒入p12证书"><a href="#目的：通过命令行倒入p12证书" class="headerlink" title="目的：通过命令行倒入p12证书"></a>目的：通过命令行倒入p12证书</h3><p>Apple为了安全，在ssh登录时，是不允许读取Keychains（钥匙串）的，所以 <strong>security unlock-keychain</strong> 这行命令就很重要了。比如在Pipeline构建打包前，先解锁Keychains。</p>
+<h4 id="1-解锁"><a href="#1-解锁" class="headerlink" title="1.解锁"></a>1.解锁</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#方式一： 命令行中不含密码，交互方式</span></span><br><span class="line">➜   security unlock-keychain /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br><span class="line">password to unlock /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db:</span><br><span class="line"></span><br><span class="line"><span class="comment">#或者命令行中包含密码的方式</span></span><br><span class="line">➜   security unlock-keychain -p &lt;Mac_Login_PWD&gt; /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br><span class="line">➜   security list-keychains -s /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br></pre></td></tr></table></figure>
+<h4 id="2-导入"><a href="#2-导入" class="headerlink" title="2.导入"></a>2.导入</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#方式一： 命令行中不含密码，交互方式</span></span><br><span class="line"><span class="comment">#会有弹窗，提示输入 P12文件的密码</span></span><br><span class="line">➜   security import ~/Desktop/xxx.p12 -k /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br><span class="line">1 identity imported.</span><br><span class="line"><span class="comment">#或者命令行中包含密码的方式</span></span><br><span class="line">➜   security import ~/&lt;Your_Path&gt;/xxx.p12 -k /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db -P &lt;P12_Password&gt;</span><br><span class="line">1 identity imported.</span><br></pre></td></tr></table></figure>
+<h4 id="3-其他"><a href="#3-其他" class="headerlink" title="3.其他"></a>3.其他</h4><p>删除<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">##先展示证书，获取SHA1值; -p 可指定类型</span></span><br><span class="line">security find-identity -p codesigning /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br><span class="line"><span class="comment">##根据SHA1值删除对应的证书</span></span><br><span class="line">security delete-certificate -Z &lt;Your_SHA1&gt;</span><br></pre></td></tr></table></figure></p>
+<p>更过 security 用法，查看 <code>security --help</code> 、<code>security find-identity --help</code></p>
+<hr>
+<p>More ref:<br><a href="https://www.cnblogs.com/pixy/p/4817579.html" target="_blank" rel="noopener">https://www.cnblogs.com/pixy/p/4817579.html</a></p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools/">Tools</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-Anka-tutorial-xx-Upgrade-Record" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/11/21/Anka-tutorial-xx-Upgrade-Record/"
+    >Anka tutorial xx: Upgrade Record</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/11/21/Anka-tutorial-xx-Upgrade-Record/" class="article-date">
+  <time datetime="2019-11-21T05:08:03.000Z" itemprop="datePublished">2019-11-21</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/CICD/">CICD</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h3 id="1-升级前"><a href="#1-升级前" class="headerlink" title="1.升级前"></a>1.升级前</h3><p>从2018年11月到如今2019年11月，已经使用现有的版本1年多；anka也经历了多个版本，此次升级算是跨度较大，升级到目前最新的版本1.5.0</p>
+<h4 id="1-1-节点信息"><a href="#1-1-节点信息" class="headerlink" title="1.1 节点信息"></a>1.1 节点信息</h4><table>
+<thead>
+<tr>
+<th style="text-align:left">hostname (节点名称)</th>
+<th style="text-align:left">IP</th>
+<th style="text-align:left">OS</th>
+<th>组件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">node1</td>
+<td style="text-align:left">192.168.55.xx</td>
+<td style="text-align:left">linux</td>
+<td>anka-controller、anka-registry、etcd、beanstalk、 jenkins、sonarqube</td>
+</tr>
+<tr>
+<td style="text-align:left">node2</td>
+<td style="text-align:left">192.168.22.xx</td>
+<td style="text-align:left">mac OS</td>
+<td>anka build</td>
+</tr>
+</tbody>
+</table>
+<h4 id="1-2-节点组件版本信息"><a href="#1-2-节点组件版本信息" class="headerlink" title="1.2 节点组件版本信息"></a>1.2 节点组件版本信息</h4><table>
+<thead>
+<tr>
+<th style="text-align:left">Name</th>
+<th style="text-align:left">Current Ver</th>
+<th style="text-align:left">Upgrade to Ver</th>
+<th style="text-align:left">Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">anka-controller</td>
+<td style="text-align:left">1.0.14-e7cc50b</td>
+<td style="text-align:left">1.5.0-ca87f665</td>
+<td style="text-align:left">自制image</td>
+</tr>
+<tr>
+<td style="text-align:left">etcd</td>
+<td style="text-align:left">quay.io/coreos/etcd:v3.1.6</td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left"><a href="https://quay.io/repository/coreos/etcd?tab=tags" target="_blank" rel="noopener">https://quay.io/repository/coreos/etcd?tab=tags</a>, 新版本需要 自制image</td>
+</tr>
+<tr>
+<td style="text-align:left">beanstalk</td>
+<td style="text-align:left">schickling/beanstalkd</td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left">新版本可不使用</td>
+</tr>
+<tr>
+<td style="text-align:left">anka-registry</td>
+<td style="text-align:left">same as controller</td>
+<td style="text-align:left">1.5.0-ca87f665</td>
+<td style="text-align:left">自制image</td>
+</tr>
+<tr>
+<td style="text-align:left">Anka Build</td>
+<td style="text-align:left">1.4.3</td>
+<td style="text-align:left">2.1.2</td>
+<td style="text-align:left">N/A</td>
+</tr>
+</tbody>
+</table>
+<h4 id="1-2-组件端口变更信息"><a href="#1-2-组件端口变更信息" class="headerlink" title="1.2 组件端口变更信息"></a>1.2 组件端口变更信息</h4><table>
+<thead>
+<tr>
+<th style="text-align:left">组件</th>
+<th style="text-align:center">升级前端口</th>
+<th style="text-align:center">升级后端口</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">anka-controller</td>
+<td style="text-align:center">8090</td>
+<td style="text-align:center">80</td>
+</tr>
+<tr>
+<td style="text-align:left">anka-registry</td>
+<td style="text-align:center">80</td>
+<td style="text-align:center">8089</td>
+</tr>
+</tbody>
+</table>
+<p>根据节点的OS，提前下载安装包及相关文件 <a href="https://veertu.com/download-anka-build/" target="_blank" rel="noopener">Anka Build Download page</a></p>
+<p><img src="/images/anka_upgrade_install_01.png" width="75%" height="75%"></p>
+<h3 id="2-升级步骤"><a href="#2-升级步骤" class="headerlink" title="2. 升级步骤"></a>2. 升级步骤</h3><p>官网升级步骤链接： <a href="https://ankadoc.bitbucket.io/#upgrade-steps" target="_blank" rel="noopener">https://ankadoc.bitbucket.io/#upgrade-steps</a>, 但是不够详细</p>
+<h4 id="2-1-On-the-mac-nodes-run-sudo-ankacluster-disjoin"><a href="#2-1-On-the-mac-nodes-run-sudo-ankacluster-disjoin" class="headerlink" title="2.1) On the mac nodes - run sudo ankacluster disjoin."></a>2.1) On the mac nodes - run sudo ankacluster disjoin.</h4><p>在 <strong>node 2</strong> 上操作<br><code>node2 $ sudo ankacluster disjoin -g</code></p>
+<h4 id="2-2-Install-the-new-anka-pkg-on-all-the-mac-nodes"><a href="#2-2-Install-the-new-anka-pkg-on-all-the-mac-nodes" class="headerlink" title="2.2) Install the new anka pkg on all the mac nodes."></a>2.2) Install the new anka pkg on all the mac nodes.</h4><p>在 <strong>node 2</strong> 上操作, 找到安装包,双击安装即可</p>
+<h4 id="2-3-Upgrade-the-guest-addons-inside-the-VM-templates-with-anka-start-u-Check-the-upgrade-notes-to-see-if-this-step-is-necessary"><a href="#2-3-Upgrade-the-guest-addons-inside-the-VM-templates-with-anka-start-u-Check-the-upgrade-notes-to-see-if-this-step-is-necessary" class="headerlink" title="2.3) Upgrade the guest addons inside the VM templates with anka start -u. Check the upgrade notes to see if this step is necessary."></a>2.3) Upgrade the guest addons inside the VM templates with anka start -u. Check the upgrade notes to see if this step is necessary.</h4><p>在 <strong>node 2</strong> 上操作<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#先切换到root用户，方便操作</span></span><br><span class="line"><span class="comment">#这个命令执行后会等待3min左右</span></span><br><span class="line">node2:~ root<span class="comment"># anka stop -f &lt;VM_NAME&gt;</span></span><br><span class="line">node2:~ root<span class="comment"># anka start -u &lt;VM_NAME&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="2-4-Push-the-newly-upgraded-VM-templates-to-registry-with-anka-registry-push-vmname-–tag"><a href="#2-4-Push-the-newly-upgraded-VM-templates-to-registry-with-anka-registry-push-vmname-–tag" class="headerlink" title="2.4) Push the newly upgraded VM templates to registry with anka registry push vmname –tag."></a>2.4) Push the newly upgraded VM templates to registry with anka registry push vmname –tag.</h4><p>在 <strong>node 2</strong> 上操作<br><code>node2:~ root# anka registry push &lt;VM_NAME&gt; -d &#39;&lt;Message&gt;&#39; -t v100</code></p>
+<h4 id="2-5-Go-to-the-Controller-Registry-and-upgrade"><a href="#2-5-Go-to-the-Controller-Registry-and-upgrade" class="headerlink" title="2.5) Go to the Controller/Registry and upgrade."></a>2.5) Go to the Controller/Registry and upgrade.</h4><p>在 <strong>node 1</strong> 上操作 ，之前的启动方式是docker-compose,根据yaml文件启动</p>
+<p>anka 经过一年的开发升级，这块变动较大，比如：</p>
+<ul>
+<li><ol>
+<li>beanstalk 可以不使用了 <em>(starting from anka version 2.0 beanstalk is not required, please configure the controller with the configuration that doesn’t use beanstalk)</em></li>
+</ol>
+</li>
+<li><ol start="2">
+<li>端口的变化</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>etcd由之前的 quay.io/coreos/etcd 镜像改为自己制作</li>
+</ol>
+</li>
+</ul>
+<p>提前备份 docker-compose.yml;先将下载包解压，结合老版本的docker-compose.yml文件，替换 <code>services/</code> 目录下的相关文件<br><img src="/images/anka_1.5.x_package.png" width="60%" height="60%"></p>
+<p><strong>注意事项</strong>: </p>
+<pre><code>- etcd、registry 挂载的文件目录不可变动，不然影响旧的数据正常读取
+- 替换docker-compose.yml的一些值
+</code></pre><h4 id="2-6-On-the-mac-nodes-run-sudo-ankacluster-join"><a href="#2-6-On-the-mac-nodes-run-sudo-ankacluster-join" class="headerlink" title="2.6) On the mac nodes - run sudo ankacluster join."></a>2.6) On the mac nodes - run sudo ankacluster join.</h4><p>在 <strong>node 2</strong> 上操作<br><code>ankacluster join -g -n mac-mini-01 http://controller.anka.intranet.in2e.com:80</code></p>
+<blockquote>
+<p>以上是官网提及的，但是与jenkins 集成中还需要更多的操作，以下作为补充</p>
+</blockquote>
+<h4 id="2-7-Change-jenkins-configuration"><a href="#2-7-Change-jenkins-configuration" class="headerlink" title="2.7) Change jenkins configuration."></a>2.7) Change jenkins configuration.</h4><ul>
+<li><p>2.7.1 修改controller地址<br><img src="/images/anka_jenkins_config_1.png" width="100%" height="100%"></p>
+</li>
+<li><p>2.7.2 修改 anka  VM templates<br>升级后，测试发现 jenkins 日志中找不到vm templates;需要重新配置 VM templates<br><img src="/images/anka_jenkins_vm_template.png" width="100%" height="100%"></p>
+</li>
+</ul>
+<h5 id="2-8-Change-registry"><a href="#2-8-Change-registry" class="headerlink" title="2.8) Change registry"></a>2.8) Change registry</h5><blockquote>
+<p>升级后一天，再更新一个VM template时遇到问题  </p>
+</blockquote>
+<p><strong>发现问题：</strong><br>报错如下, 根据提示修改了多次命令的格式，但还是没有作用<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">anka registry push &lt;VM_NAME&gt; -d <span class="string">'update new cert'</span> -t v28</span><br><span class="line">-anka: Extra data: line 1 column 5 - line 2 column 1 (char 4 - 19)</span><br></pre></td></tr></table></figure></p>
+<p><strong>思考问题：</strong><br>在root用户下 使用 <code>anka registry list</code> 时发现也报错，于是怀疑是 registry 的问题；由于端口的变更，导致 anka push VM 会有问题；需要删除，重新添加</p>
+<p><strong>尝试解决问题：</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 先查看repo</span></span><br><span class="line">node2:~ root<span class="comment"># anka registry list-repos</span></span><br><span class="line">++</span><br><span class="line">++</span><br><span class="line">anka (default)</span><br><span class="line">+--------+-----------------------------------+</span><br><span class="line">| host   | controller.anka.intranet.xxx.com |</span><br><span class="line">+--------+-----------------------------------+</span><br><span class="line">| scheme | http                              |</span><br><span class="line">+--------+-----------------------------------+</span><br><span class="line"><span class="comment">#删除</span></span><br><span class="line">node2:~ root<span class="comment"># anka registry delete anka</span></span><br><span class="line"><span class="comment">#新增</span></span><br><span class="line">node2:~ root<span class="comment"># anka registry add anka-repo http://192.168.55.xx:8089</span></span><br><span class="line"><span class="comment">#再次list,查看以下</span></span><br><span class="line">node2:~ root<span class="comment"># anka registry list-repos</span></span><br><span class="line">++</span><br><span class="line">++</span><br><span class="line">anka-repo (default)</span><br><span class="line">+--------+---------------+</span><br><span class="line">| host   | 192.168.55.xx |</span><br><span class="line">+--------+---------------+</span><br><span class="line">| scheme | http          |</span><br><span class="line">+--------+---------------+</span><br><span class="line">| port   | 8089          |</span><br><span class="line">+--------+---------------+</span><br></pre></td></tr></table></figure></p>
+<p>一波操作后，终于可以正常 push VM, ～～～大坑</p>
+<hr>
+<p><strong>最后 —-&gt;记得修改Node上的 VM capacity</strong><br>每次disjoin -&gt; join 动作，这个值都会回到默认值 2;或者执行 <code>ankacluster join</code> 的时候可以用 <code>-m</code> 参数去指定<br>这个值的作用是，指定允许同时运行几个 mac OS 实例</p>
+<p><img src="/images/anka_vm_capacity.png" width="90%" height="90%"></p>
+<blockquote>
+<p>主要记录 2019-11-20 左右升级 anka 的操作</p>
+</blockquote>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-Anka-tutorial-02" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/11/19/Anka-tutorial-02/"
+    >Anka tutorial 02</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/11/19/Anka-tutorial-02/" class="article-date">
+  <time datetime="2019-11-19T07:38:10.000Z" itemprop="datePublished">2019-11-19</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/CICD/">CICD</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h5 id="1-Joining-Nodes"><a href="#1-Joining-Nodes" class="headerlink" title="1.Joining Nodes"></a>1.Joining Nodes</h5><p>在mac上（anka build 节点）执行  <code>sudo ankacluster join http://localhost:80/</code></p>
+<p>output:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ sudo ankacluster join http://localhost:80/ -n demo-mac</span><br><span class="line">Setting tls config</span><br><span class="line">Testing connection to controller...: Ok</span><br><span class="line">Testing connection to the registry...: Ok</span><br><span class="line">Ok</span><br><span class="line">Cluster join success</span><br></pre></td></tr></table></figure></p>
+<p>去页面 <em><a href="http://localhost/#/nodes" target="_blank" rel="noopener">http://localhost/#/nodes</a></em> 查看<br><img src="/images/anka_controller_node.png"></p>
+<h5 id="2-Create-VM-link"><a href="#2-Create-VM-link" class="headerlink" title="2. Create VM (link)"></a>2. Create VM <a href="https://ankadoc.bitbucket.io/anka-build/#create-vm" target="_blank" rel="noopener">(link)</a></h5><p>先下载mac OS安装包 (安装包7G多，需要提前下载)<br><a href="https://www.macworld.co.uk/how-to/mac-software/download-old-os-x-3629363/#el%20cap" target="_blank" rel="noopener">https://www.macworld.co.uk/how-to/mac-software/download-old-os-x-3629363/#el%20cap</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ anka create --ram-size 4G --cpu-count 2 --disk-size 40G --app /Applications/Install\ macOS\ Catalina.app CatalinaVm</span><br><span class="line">Installing macOS 10.15.1...</span><br><span class="line">Preparing target disk...</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Note For Catalina Anka VMs, –ram-size value should be 4G and –disk-size should be 80G.<br>由于电脑空间不够了，于是报错了</p>
+</blockquote>
+<p>清理电脑空间后，再来一次，大约 30min<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ anka create --ram-size 4G --cpu-count 2 --disk-size 80G --app /Applications/Install\ macOS\ Catalina.app  CatalinaVm</span><br><span class="line">Installing macOS 10.15.1...</span><br><span class="line">Preparing target disk...</span><br><span class="line">Installing addons...</span><br><span class="line">Converting to ANKA format...</span><br><span class="line">Waiting <span class="keyword">for</span> installation to complete <span class="keyword">in</span> the guest (about thirty minutes approx.)...</span><br><span class="line">vm created successfully with uuid: a23d5a05-xx89-4xx4-a8b7-6f7b9xxxxxx</span><br></pre></td></tr></table></figure></p>
+<h5 id="3-Run-VM"><a href="#3-Run-VM" class="headerlink" title="3. Run VM"></a>3. Run VM</h5><p><img src="/images/anka_demo_720.gif" width="90%" height="90%"></p>
+<p>VM 状态之间的转换如下：<br><img src="/images/anka_vm_status.png" width="75%" height="75%"></p>
+<blockquote>
+<p>需要区别 VM 和后面提到的 instance 关系，VM 更准确点讲是 VM Template，是创建instance的模版，但模版需要通过上面的方法才可以修改；新建VM后，相当于有一个基础的模版，但是要满足其他要求，可以自行在running的 vm 中操作，然后随时保存，类似于docker container的commit操作，但anka build是suspend一个running的 vm 来保存。</p>
+</blockquote>
+<h5 id="4-Manage-VM-Templates-in-Registry-link"><a href="#4-Manage-VM-Templates-in-Registry-link" class="headerlink" title="4. Manage VM Templates in Registry(link)"></a>4. Manage VM Templates in Registry<a href="https://ankadoc.bitbucket.io/anka-build/#manage-vm-templates-in-registry" target="_blank" rel="noopener">(link)</a></h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#罗列仓库</span></span><br><span class="line">➜   anka registry list-repos</span><br><span class="line">++</span><br><span class="line">++</span><br><span class="line"><span class="comment">#添加一个新仓库</span></span><br><span class="line">➜   anka registry add demo-repo http://localhost:8089</span><br><span class="line">➜   anka registry list-repos</span><br><span class="line">++</span><br><span class="line">++</span><br><span class="line">demo-repo (default)</span><br><span class="line">+--------+-----------+</span><br><span class="line">| host   | localhost |</span><br><span class="line">+--------+-----------+</span><br><span class="line">| scheme | http      |</span><br><span class="line">+--------+-----------+</span><br><span class="line">| port   | 8089      |</span><br><span class="line">+--------+-----------+</span><br><span class="line"><span class="comment">#推送VM Templates 到新仓库，</span></span><br><span class="line">➜   anka registry push CatalinaVm -d <span class="string">"first push"</span> -t v1</span><br></pre></td></tr></table></figure>
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-Anka-tutorial-01" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/11/18/Anka-tutorial-01/"
+    >Anka tutorial 01</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/11/18/Anka-tutorial-01/" class="article-date">
+  <time datetime="2019-11-18T14:36:26.000Z" itemprop="datePublished">2019-11-18</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/CICD/">CICD</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h3 id="1-Anka-是什么"><a href="#1-Anka-是什么" class="headerlink" title="1.Anka 是什么"></a>1.Anka 是什么</h3><p>  前端，后端，包括安卓的持续集成的过程都可以轻松的基于docker命令构建、打包，最终产出 docker image镜像，非常方便搭建标准化的pipeline(流水线)；但是对于iOS移动端的同学而言，似乎没有那么简单。每次打包的过程都是耗时、复杂的。另外一点由于macOS系统是捆绑在mac硬件上的，你没有苹果电脑就无法打包，相比而言docker则是纯免费开源的。针对以上问题和情况，anka就是这样一种类似于dock的针对macOS系统的虚拟化技术。</p>
+<p>  于是乎，想长期使用是需要收钱的。</p>
+<blockquote>
+<p>官网介绍 <a href="https://ankadoc.bitbucket.io/#what-is-anka-build" target="_blank" rel="noopener">https://ankadoc.bitbucket.io/#what-is-anka-build</a></p>
+</blockquote>
+<blockquote>
+<p>费用介绍 <a href="https://ankadoc.bitbucket.io/licensing/" target="_blank" rel="noopener">https://ankadoc.bitbucket.io/licensing/</a></p>
+</blockquote>
+<p>几个组件的关系<br><a href="https://veertu.com/anka-technology/" target="_blank" rel="noopener">https://veertu.com/anka-technology/</a></p>
+<p>Anka Hypervisor<br>Anka Controller<br>Anka Registry</p>
+<h3 id="2-安装"><a href="#2-安装" class="headerlink" title="2.安装"></a>2.安装</h3><p>搭建的环境： MacBook Pro(version: 10.13.6)</p>
+<p>下载地址：<a href="https://veertu.com/download-anka-build/" target="_blank" rel="noopener">https://veertu.com/download-anka-build/</a><br><img src="/images/anka_download.png" alt="anka download page"></p>
+<h5 id="2-1-Anka-Package-Install-and-Configuration"><a href="#2-1-Anka-Package-Install-and-Configuration" class="headerlink" title="2.1 Anka Package Install and Configuration"></a>2.1 Anka Package Install and Configuration</h5><p><a href="https://ankadoc.bitbucket.io/anka-build/#anka-package-install-and-configuration" target="_blank" rel="noopener">https://ankadoc.bitbucket.io/anka-build/#anka-package-install-and-configuration</a></p>
+<p>双击 <em>pkg</em> 包，默认选项安装，最终显示安装成功即可。<br><img src="/images/anka_install_continue_01.png" width="50%" height="50%"></p>
+<p><img src="/images/anka_install_continue_02.png" width="50%" height="50%"></p>
+<p><img src="/images/anka_install_success_01.png" width="50%" height="50%"></p>
+<p>安装完成后可以用过命令 <code>anka config --list</code> 查看所有的配置，比如 vm 的存储路径等</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">➜  anka config --list</span><br><span class="line">+-----------------------------+-----------------------------------------------------------------------------+</span><br><span class="line">| registry_remotes_file_path  | /Users/xxx/.anka/remote                                                   |</span><br><span class="line">+-----------------------------+-----------------------------------------------------------------------------+</span><br><span class="line">| mac_random_bytes            | 2                                                                           |</span><br><span class="line">+-----------------------------+-----------------------------------------------------------------------------+</span><br><span class="line">| disk_eraser_tool            | /Library/Application Support/Veertu/Anka/tools/erase_disk_image.sh          |</span><br><span class="line">+-----------------------------+-----------------------------------------------------------------------------+</span><br><span class="line">| process_type                | Interactive                                                                 |</span><br><span class="line">+-----------------------------+-----------------------------------------------------------------------------+</span><br><span class="line">| default_passwd              | admin                                                                       |</span><br><span class="line">+-----------------------------+-----------------------------------------------------------------------------+</span><br><span class="line">| nvram_path                  | /Library/Application Support/Veertu/Anka/uefi/anka_vars.fd                  |</span><br><span class="line">+-----------------------------+-----------------------------------------------------------------------------+</span><br><span class="line">| vm_lib_dir                  | /Users/xxxx/Library/Application Support/Veertu/Anka/vm_lib/                |</span><br><span class="line">+-----------------------------+-----------------------------------------------------------------------------+</span><br><span class="line">| anka_image_maker_executable | /Library/Application Support/Veertu/Anka/bin/anka_image                     |</span><br><span class="line">+-----------------------------+-----------------------------------------------------------------------------+</span><br><span class="line">省略100行</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<h5 id="2-2-Controller-Registry-Install-and-Configuration"><a href="#2-2-Controller-Registry-Install-and-Configuration" class="headerlink" title="2.2 Controller/Registry Install and Configuration"></a>2.2 Controller/Registry Install and Configuration</h5><p><a href="https://ankadoc.bitbucket.io/anka-build/#controller-registry-install-and-configuration" target="_blank" rel="noopener">https://ankadoc.bitbucket.io/anka-build/#controller-registry-install-and-configuration</a></p>
+<p>同上，双击 <strong><em>.pkg</em></strong> 包，默认安装，看到提示安装成功即可。</p>
+<p><img src="/images/anka_install_success_02.png" width="50%" height="50%"></p>
+<ul>
+<li><p><a href="http://localhost:80" target="_blank" rel="noopener">http://localhost:80</a> Anka controller UI界面</p>
+</li>
+<li><p><a href="http://localhost:8089" target="_blank" rel="noopener">http://localhost:8089</a>  罗列现有的API，其余啥也不能做</p>
+</li>
+</ul>
+<p>设置一下 Registry Address 地址:<br><img src="/images/anka_controller_config.png" width="70%" height="70%"></p>
+<h5 id="2-3-申请试用许可（trail-license）"><a href="#2-3-申请试用许可（trail-license）" class="headerlink" title="2.3 申请试用许可（trail license）"></a>2.3 申请试用许可（trail license）</h5><p><a href="https://veertu.com/anka-build-trial" target="_blank" rel="noopener">https://veertu.com/anka-build-trial</a></p>
+<p>完善信息提交后，会有一个成功的提示，如图所示:<br><img src="/images/anka_apply_license.png" width="70%" height="70%"></p>
+<p>激活key<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ sudo anka license activate xxxx-3750-xxxx-2265</span><br><span class="line">License activated</span><br></pre></td></tr></table></figure></p>
+<p>查看license信息<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ anka license show</span><br><span class="line">+---------------------+---------------------+</span><br><span class="line">| license_type        | com.veertu.anka.ent |</span><br><span class="line">+---------------------+---------------------+</span><br><span class="line">| status              | valid               |</span><br><span class="line">+---------------------+---------------------+</span><br><span class="line">| expires             | 20-dec-2019         |</span><br><span class="line">+---------------------+---------------------+</span><br><span class="line">| max_number_of_cores | 32                  |</span><br><span class="line">+---------------------+---------------------+</span><br></pre></td></tr></table></figure></p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-Test-02-Tools" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -629,486 +1166,13 @@
 
 </article>
     
-    <article id="post-kubectl-常用命令" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/10/21/kubectl-常用命令/"
-    >kubectl 常用命令</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/10/21/kubectl-常用命令/" class="article-date">
-  <time datetime="2019-10-21T07:35:21.000Z" itemprop="datePublished">2019-10-21</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h3 id="label操作"><a href="#label操作" class="headerlink" title="label操作"></a>label操作</h3><p>删除 label version=xx</p>
-<p><code>kubectl label pod webui-746df859ff-z5fwt version-</code></p>
-<p>添加 label<br><code>kubectl label pods labelex owner=michael</code></p>
-<h3 id="deploy操作"><a href="#deploy操作" class="headerlink" title="deploy操作"></a>deploy操作</h3><p><code>kubectl create delpoy [deploy_name] --image=nginx</code></p>
-<p><code>kubectl create deployment httpenv --image=iasonliu/httpenv</code></p>
-<p>kubectl run [pod_name] –image=busybox</p>
-<p>example:<br><code>kubectl run pingpong --image=alpine ping 1.1.1.1</code> or <code>kubectl run pingpong2 --image alpine ping 1.1.1.1</code></p>
-<blockquote>
-<p>当我们使用 kubectl run something启动deplyment的时候，label会是 run=something</p>
-</blockquote>
-<p><code>kubectl set image deployment/nginx busybox=busybox nginx=nginx:1.9.1</code></p>
-<h3 id="service操作"><a href="#service操作" class="headerlink" title="service操作"></a>service操作</h3><p>为webui创建service<br><code>kubectl expose deploy/webui --type=NodePort --port=80</code></p>
-<h3 id="log操作"><a href="#log操作" class="headerlink" title="log操作"></a>log操作</h3><p>查看deploy日志<br><code>kubectl logs deploy/pingpong</code></p>
-<p>查看pod日志<br><code>kubect logs [ pod_name]</code></p>
-<p>或者脚本</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env bash</span></span><br><span class="line">DEPLOYMENT=<span class="variable">$1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> p <span class="keyword">in</span> $(kubectl get pods | grep ^<span class="variable">$&#123;DEPLOYMENT&#125;</span>- | cut -f 1 -d <span class="string">' '</span>); <span class="keyword">do</span> </span><br><span class="line">    <span class="built_in">echo</span> --------------------------- </span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$p</span> </span><br><span class="line">    <span class="built_in">echo</span> --------------------------- </span><br><span class="line">    kubectl logs <span class="variable">$p</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-<h3 id="批量sacle"><a href="#批量sacle" class="headerlink" title="批量sacle"></a>批量sacle</h3><p><code>kubectl get deploy -n &lt;YOUR_NAMESPACE&gt; -o name | xargs -I % kubectl scale % --replicas=0 -n &lt;YOUR_NAMESPACE&gt;</code></p>
-<hr>
-<p>More Ref:</p>
-<ul>
-<li><a href="http://kubernetesbyexample.com/" target="_blank" rel="noopener">http://kubernetesbyexample.com/</a></li>
-<li><a href="https://linuxacademy.com/blog/containers/kubernetes-cheat-sheet/" target="_blank" rel="noopener">https://linuxacademy.com/blog/containers/kubernetes-cheat-sheet/</a></li>
-<li><a href="http://docs.kubernetes.org.cn/683.html" target="_blank" rel="noopener">http://docs.kubernetes.org.cn/683.html</a></li>
-</ul>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/k8s/">k8s</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-devops-4大支柱" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/10/17/devops-4大支柱/"
-    >devops 4大支柱</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/10/17/devops-4大支柱/" class="article-date">
-  <time datetime="2019-10-17T02:32:04.000Z" itemprop="datePublished">2019-10-17</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/读书笔记/">读书笔记</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h3 id="一、个人感想"><a href="#一、个人感想" class="headerlink" title="一、个人感想"></a>一、个人感想</h3><p>  书中的标题看起来总是“高大上”的，但说出来的都是一些无形的东西，要理解这类理念需要时间的积累。这里先摘抄几句，一起“品味”一下。其中许多文化、方法论与现在的外企公司比较吻合，相对理解起来容易些; 书中涉及到了很多细节，比如 <em>招聘和面试（p250）</em>, <em>当责文化(p269)</em>、<em>显性文化(p270)</em> 、<em>报酬（p241）</em>等，都值得去了解和追寻。</p>
-<ul>
-<li><p>“Patrick Debois说过，devops是一个 <strong>人类问题</strong> ，这说明每个组织都有该组织中的人特有的一种devops文化。”（p67）</p>
-</li>
-<li><p>“要实现成功的devops变革，有效的工具使用当然是必要的，但这些还不够…..实际上，解决组织中出现的人际冲突和团队之间的冲突对于培养持久的关系并最终形成一个 <strong>devops环境</strong> 至关重要。”（p67）</p>
-</li>
-<li><p>“基于有效实现devops的4大支柱，可以解决影响软件开发的 <strong>文化</strong> 和 <strong>技术问题</strong>。”（p69）</p>
-</li>
-<li><p>“工具的价值和成本是不一样的。… 即使是几乎所有人都认为很重要的工具（如配置管理或源码控制工具）也有不同，有些可能对某个特定的环境更为使用。<br>根据经验、知识和流程的不同，工具也有变化。  工具必须适应环境的上下文。如果没有上下文，最好的工具就无从谈起，而上下文是不断变化的。” （p189）</p>
-</li>
-<li><p>“工具不能与有效实现devops的另外3各支柱完全分离。最终工具还是要由人来使用…工具不仅影响我们如何工作和交互，也会受其影响…”（p220）</p>
-</li>
-</ul>
-<h3 id="二、基本套路"><a href="#二、基本套路" class="headerlink" title="二、基本套路"></a>二、基本套路</h3><p>4个章节基本套路如下</p>
-<ol>
-<li><p>解释 XX,定义 XX，附带研究一个案例</p>
-</li>
-<li><p>说明<strong>误区</strong> 告诉我们什么样的情形我们理解错误</p>
-</li>
-<li><p>说明<strong>错误排查</strong> 告诉我们如何处理困境，并根据情况解决问题</p>
-</li>
-</ol>
-<h3 id="三、脑图"><a href="#三、脑图" class="headerlink" title="三、脑图"></a>三、脑图</h3><p>见下方<br><img src="/images/devops_4pillars.png" alt="devops 4 pillars"></p>
-<p>原始地址：<a href="https://mubu.com/docfgrtOS4mn0" target="_blank" rel="noopener">https://mubu.com/docfgrtOS4mn0</a></p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-devops-还是-DevOps" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/10/08/devops-还是-DevOps/"
-    >&#39;devops&#39; 还是 &#39;DevOps&#39;?</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/10/08/devops-还是-DevOps/" class="article-date">
-  <time datetime="2019-10-08T08:14:12.000Z" itemprop="datePublished">2019-10-08</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/读书笔记/">读书笔记</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h3 id="1-什么是-devops-还是-DevOps"><a href="#1-什么是-devops-还是-DevOps" class="headerlink" title="1. 什么是 devops,还是 DevOps"></a>1. 什么是 devops,还是 DevOps</h3><p>  最近在阅读 《Effective DevOps》（中文版） 时看到一些有趣的内容，如标题所问到的 – <u>devops 还是 DevOps?</u> (P6)。<br>  接触这个概念已经2年左右，自身的职位名称也是这个单词，但从来也没有思考过这个问题，而该书的作者在前言中提出来了，不得不说思维之严谨。不妨读者自身也想一想，到底那个更合适，为什么？</p>
-<blockquote>
-<p>摘自《Effective DevOps》（中文版）P6</p>
-</blockquote>
-<p>  对于 “devops”这个词的字母是否大写我们还有很多讨论。一个简单的在线调查显示，大多数人都支持“DevOps”。我们还发现组织比较关注“Dev”和“Ops”,以至于出现了 “DevSecOps”和“DevQAOps”,因为“DevOps”隐含地只包括 “Dev” 和 “Ops”。<br>  所以最后我们选择了“devops”,这对应原来的推特上的标签，用来联系希望改善协作的人，他们希望谈话时不再区分“你们”和“我们”，而应该更多地讨论如何利用可持续的工作实践来支持企业发展。<br>  成功的项目需要有适当的输入、努力、见解以及整个组织中人们之间的协作，你的组织中存在的问题可能不只限于开发人员和运维团队。我们在这本书中有意选择使用小写的 “devops” 来反映我们的观点，这只是有一种包容，并没有其他的意思。</p>
-<h3 id="2-常见的devops误区-（P56）-devops不是什么"><a href="#2-常见的devops误区-（P56）-devops不是什么" class="headerlink" title="2.常见的devops误区 （P56）/devops不是什么"></a>2.常见的devops误区 （P56）/devops不是什么</h3><p>devops只与开发人员和系统管理员有关<br>devops是一个团队<br>devops是一个职位<br>devops表示由一半的人完成全部工作<br>devops只是关于工具<br>devops只是关于自动化<br>实现devops有一种“正确方法”（或“错误方法”）<br>…</p>
-<h3 id="3-总结"><a href="#3-总结" class="headerlink" title="3.总结"></a>3.总结</h3><p>devops 更多的是一种文化，哲学上的概念，说白了就是<strong>无法言传，只可意会</strong></p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Devops/">Devops</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-RCA-根本原因分析" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/10/08/RCA-根本原因分析/"
-    >RCA(根本原因分析)</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/10/08/RCA-根本原因分析/" class="article-date">
-  <time datetime="2019-10-08T01:28:58.000Z" itemprop="datePublished">2019-10-08</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/读书笔记/">读书笔记</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>  根本原因分析（Root cause analysis,RCA）方法是明确事件或几近错失的决定性“根本”原因，并采取适当的措施避免问题再次发生。这是一个迭代的过程，会一直持续，直到找出所有组织要素，或者知道已经处理完所有数据。</p>
-<blockquote>
-<p>《Effective DevOps》(中文版) P65</p>
-</blockquote>
-<h3 id="方法一：5-Why"><a href="#方法一：5-Why" class="headerlink" title="方法一：5 Why"></a>方法一：5 Why</h3><p>  5why分析法是指对同一个问题，进行连续的提问，可能是3次，可能是5次，也可能是10次，直到能发现最根本的原因为止。</p>
-<p><strong>5 why详细应用步骤</strong></p>
-<p>一、把握现状</p>
-<ul>
-<li>1.识别问题。 问：我知道什么？</li>
-<li>2.澄清问题。 问：实际发生了什么？</li>
-<li>3.分解问题。 问：关于这个问题，我还应该知道什么？</li>
-<li>4.查找原因要点。 问：我们需要知道什么以解决问题？</li>
-<li>5.掌握问题倾向。 问：什么时间？多大频次？</li>
-</ul>
-<p>二、原因调查</p>
-<ul>
-<li>6.识别和确认异常事件的直接原因。 问：这个问题为什么会发生？</li>
-<li>7.使用5why调查法来建立一个通向根本原因的关系链 问：为什么xxx会发生？</li>
-</ul>
-<p>三、问题纠正（验证有效性）</p>
-<ul>
-<li>8.采取明确措施，验证方案是否有效。 问： 方案是否有效，情况如何？</li>
-</ul>
-<p><strong>5why应用要点</strong>  </p>
-<ul>
-<li>推论要客观、理性；</li>
-<li>避免围绕问题本身，避免责任推卸；</li>
-<li>注意层次之间的关系，不要跳步；</li>
-<li>分析要充分，以便找出根本原因；</li>
-<li>要对分析后的方案确认，并通过现场分析观察，然后改善；</li>
-</ul>
-<p><strong><a href="https://zhuanlan.zhihu.com/p/28506456" target="_blank" rel="noopener">5why案例</a></strong></p>
-<h3 id="方法二：鱼骨图"><a href="#方法二：鱼骨图" class="headerlink" title="方法二：鱼骨图"></a>方法二：鱼骨图</h3><p><strong>什么是鱼骨图</strong></p>
-<p>  鱼骨图又名“因果分析法”，是由日本管理大师石川馨先生所发展出来的，因此又被称为“石川图”。鱼骨图是一种透过现象看本质，从而发现问题“根本原因”的分析方法。这种因果图可以帮助团队以可视化的方式分析原因，并将原因归类，找出差异来源，发现不同来源之间的关系，从而对过程行为有深层次的了解。分为问题型、原因型及对策性型鱼骨分析等三种，具有简捷、实用、直观等特点。最初，鱼骨图被用于质量管理领域。</p>
-<p><strong>如何制作鱼骨图</strong></p>
-<p>制作鱼骨图分为两个步骤： 分析问题原因/结构，绘制鱼骨图</p>
-<h4 id="Step1-分析问题原因-结构"><a href="#Step1-分析问题原因-结构" class="headerlink" title="Step1: 分析问题原因/结构"></a>Step1: 分析问题原因/结构</h4><table>
-<thead>
-<tr>
-<th style="text-align:left">No</th>
-<th style="text-align:left">Context</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">步骤</td>
-<td style="text-align:left">a. 针对问题点选择层别方法（如人机料法环等） <br>b.通过头脑风暴，分别对各类别找出所有可能因素  <br>c.将找出的各要素进行归类、整理，明确其从属关系 <br> d. 分析选取重要因素 <br>e. 检查各要素的描述方法，确保语法简明、意思明确</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:left">要点</td>
-<td style="text-align:left">a. 确定大要因（大骨）<br>b. 大因素必须用中性词描述（不说明好坏），中、小因素必须使用价值判断（如…不良）<br>c.头脑风暴时，尽可能多的找出所有可能原因，尽量客观描述 <br>d. 中因素跟特性值，小因素跟中因素有直接的原因-问题关系，小因素应该分析至可以直接下对策 <br>e. 如果某种原因可同时归属于两种或两种以上因素，庆关联性最强者最准 <br>f. 选取重要因素时，不要超过7项，且应该标识在最末端</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h4 id="Step2-绘制鱼骨图"><a href="#Step2-绘制鱼骨图" class="headerlink" title="Step2: 绘制鱼骨图"></a>Step2: 绘制鱼骨图</h4><ul>
-<li>1．由问题的负责人召集与问题有关的人员组成一个工作组(work group)，该组成员必须对问题有一定深度的了解。</li>
-<li>2．问题的负责人将拟找出原因的问题写在黑板或白纸右边的一个三角形的框内，并在其尾部引出一条水平直线，该线称为鱼脊。</li>
-<li>3．工作组成员在鱼脊上画出与鱼脊成45°角的直线，并在其上标出引起问题的主要原因，这些成45°角的直线称为大骨。</li>
-<li>4．对引起问题的原因进一步细化，画出中骨、小骨……，尽可能列出所有原因</li>
-<li>5．对鱼骨图进行优化整理。</li>
-<li>6．根据鱼骨图进行讨论。</li>
-</ul>
-<p>如何使用？？</p>
-<p><strong><a href="https://wiki.mbalib.com/wiki/%E9%B1%BC%E9%AA%A8%E5%9B%BE" target="_blank" rel="noopener">鱼骨案例</a></strong></p>
-<p>ref: <a href="https://zh.wikipedia.org/wiki/%E7%9F%B3%E5%B7%9D%E5%9B%BE" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/%E7%9F%B3%E5%B7%9D%E5%9B%BE</a></p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Devops/">Devops</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-值得收藏的技术类站点" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/10/04/值得收藏的技术类站点/"
-    >值得收藏的技术类站点</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/10/04/值得收藏的技术类站点/" class="article-date">
-  <time datetime="2019-10-04T06:05:07.000Z" itemprop="datePublished">2019-10-04</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Tools/">Tools</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>一些技术公司，及其站点网站的列表，有很多高质量的文章和最佳实践。</p>
-<p><a href="https://www.praqma.com/" target="_blank" rel="noopener">https://www.praqma.com/</a></p>
-<p><a href="https://www.cloudbees.com/" target="_blank" rel="noopener">https://www.cloudbees.com/</a></p>
-<p><a href="https://www.freecodecamp.org/" target="_blank" rel="noopener">https://www.freecodecamp.org/</a></p>
-<p><a href="https://devopscube.com/" target="_blank" rel="noopener">https://devopscube.com/</a></p>
-<p><a href="https://www.endpoint.com/blog" target="_blank" rel="noopener">https://www.endpoint.com/blog</a></p>
-<p>技术归类：<a href="http://www.devopsbookmarks.com" target="_blank" rel="noopener">http://www.devopsbookmarks.com</a></p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools/">Tools</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
   </article>
   
 
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/5/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/7/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/5/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/7/">下一页</a>
   </nav>
   
 </section>
