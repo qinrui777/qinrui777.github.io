@@ -41,22 +41,6 @@
       </categories>
   </entry>
   <entry>
-    <title>Anka tutorial 03: jenkins</title>
-    <url>/2019/11/28/Anka-tutorial-03-jenkins/</url>
-    <content><![CDATA[<h3 id="anka-集成-Jenkins-link"><a href="#anka-集成-Jenkins-link" class="headerlink" title="anka 集成 Jenkins (link)"></a>anka 集成 Jenkins <a href="https://ankadoc.bitbucket.io/anka-build/#integrate-jenkins-with-controller" target="_blank" rel="noopener">(link)</a></h3><p>未完待续…</p>
-<p>安装插件<br><code>Manage Jenkins &gt; Manage Plugins</code></p>
-<p>搜索anka</p>
-<p>新建 ssh 用的登陆凭证</p>
-<p>新建VM的时候 默认用户名和密码分别是 <code>anka/admin</code></p>
-<p>配置jenkins<br><code>Manage Jenkins &gt; Configure System</code></p>
-<p><img src="/images/anka_jenkins_01.png" width="80%" height="80%"></p>
-<p><a href="http://localhost/#/dashboard" target="_blank" rel="noopener">http://localhost/#/dashboard</a></p>
-]]></content>
-      <categories>
-        <category>CICD</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Anka tutorial 02</title>
     <url>/2019/11/19/Anka-tutorial-02/</url>
     <content><![CDATA[<h5 id="1-Joining-Nodes"><a href="#1-Joining-Nodes" class="headerlink" title="1.Joining Nodes"></a>1.Joining Nodes</h5><p>在mac上（anka build 节点）执行  <code>sudo ankacluster join http://localhost:80/</code></p>
@@ -76,6 +60,40 @@
 <h5 id="4-Manage-VM-Templates-in-Registry-link"><a href="#4-Manage-VM-Templates-in-Registry-link" class="headerlink" title="4. Manage VM Templates in Registry(link)"></a>4. Manage VM Templates in Registry<a href="https://ankadoc.bitbucket.io/anka-build/#manage-vm-templates-in-registry" target="_blank" rel="noopener">(link)</a></h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#罗列仓库</span></span><br><span class="line">➜   anka registry list-repos</span><br><span class="line">++</span><br><span class="line">++</span><br><span class="line"><span class="comment">#添加一个新仓库</span></span><br><span class="line">➜   anka registry add demo-repo http://localhost:8089</span><br><span class="line">➜   anka registry list-repos</span><br><span class="line">++</span><br><span class="line">++</span><br><span class="line">demo-repo (default)</span><br><span class="line">+--------+-----------+</span><br><span class="line">| host   | localhost |</span><br><span class="line">+--------+-----------+</span><br><span class="line">| scheme | http      |</span><br><span class="line">+--------+-----------+</span><br><span class="line">| port   | 8089      |</span><br><span class="line">+--------+-----------+</span><br><span class="line"><span class="comment">#推送VM Templates 到新仓库，</span></span><br><span class="line">➜   anka registry push CatalinaVm -d <span class="string">"first push"</span> -t v1</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>CICD</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Anka tutorial 03: jenkins</title>
+    <url>/2019/11/28/Anka-tutorial-03-jenkins/</url>
+    <content><![CDATA[<h3 id="anka-集成-Jenkins-link"><a href="#anka-集成-Jenkins-link" class="headerlink" title="anka 集成 Jenkins (link)"></a>anka 集成 Jenkins <a href="https://ankadoc.bitbucket.io/anka-build/#integrate-jenkins-with-controller" target="_blank" rel="noopener">(link)</a></h3><p>未完待续…</p>
+<p>安装插件<br><code>Manage Jenkins &gt; Manage Plugins</code></p>
+<p>搜索anka</p>
+<p>新建 ssh 用的登陆凭证</p>
+<p>新建VM的时候 默认用户名和密码分别是 <code>anka/admin</code></p>
+<p>配置jenkins<br><code>Manage Jenkins &gt; Configure System</code></p>
+<p><img src="/images/anka_jenkins_01.png" width="80%" height="80%"></p>
+<p><a href="http://localhost/#/dashboard" target="_blank" rel="noopener">http://localhost/#/dashboard</a></p>
+]]></content>
+      <categories>
+        <category>CICD</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Azure FAQs</title>
+    <url>/2019/12/11/Azure-FAQs/</url>
+    <content><![CDATA[<h3 id="1-asm-arm"><a href="#1-asm-arm" class="headerlink" title="1. asm, arm"></a>1. asm, arm</h3><ul>
+<li>asm: Azure Service Manager</li>
+<li>arm: Azure Resource Manager</li>
+</ul>
+<p>最开始一直都是classic模型，它的模型中有service的概念，所以它也叫 asm（Azure Service Manager）。2014年开始提出arm（Azure Resource Manager），其管理平台叫portal。2015年底arm发布。</p>
+<p>当前情况是微软正在将azure的所有功能往arm上迁移。以后都推荐使用arm。但 是当前状况是arm不完全向后兼容asm，有些功能只有asm上才有，所以还有很多 用户还是在使用classic。</p>
+<blockquote>
+<p>ref: <a href="https://pengpengxp.github.io/archive/before-2018-11-10/2017-06-28-Azure%E7%BB%8F%E5%85%B8%E6%A8%A1%E5%BC%8F%E5%92%8C%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB.html#orgbb66971" target="_blank" rel="noopener">https://pengpengxp.github.io/archive/before-2018-11-10/2017-06-28-Azure%E7%BB%8F%E5%85%B8%E6%A8%A1%E5%BC%8F%E5%92%8C%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB.html#orgbb66971</a></p>
+</blockquote>
+<h3 id="2-AWS-to-Azure-services-comparison"><a href="#2-AWS-to-Azure-services-comparison" class="headerlink" title="2. AWS to Azure services comparison"></a>2. AWS to Azure services comparison</h3><p>详见链接 <a href="https://docs.microsoft.com/en-us/azure/architecture/aws-professional/services" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/azure/architecture/aws-professional/services</a></p>
+]]></content>
+      <categories>
+        <category>Cloud</category>
       </categories>
   </entry>
   <entry>
@@ -225,19 +243,9 @@
       </categories>
   </entry>
   <entry>
-    <title>Azure FAQs</title>
-    <url>/2019/12/11/Azure-FAQs/</url>
-    <content><![CDATA[<h3 id="1-asm-arm"><a href="#1-asm-arm" class="headerlink" title="1. asm, arm"></a>1. asm, arm</h3><ul>
-<li>asm: Azure Service Manager</li>
-<li>arm: Azure Resource Manager</li>
-</ul>
-<p>最开始一直都是classic模型，它的模型中有service的概念，所以它也叫 asm（Azure Service Manager）。2014年开始提出arm（Azure Resource Manager），其管理平台叫portal。2015年底arm发布。</p>
-<p>当前情况是微软正在将azure的所有功能往arm上迁移。以后都推荐使用arm。但 是当前状况是arm不完全向后兼容asm，有些功能只有asm上才有，所以还有很多 用户还是在使用classic。</p>
-<blockquote>
-<p>ref: <a href="https://pengpengxp.github.io/archive/before-2018-11-10/2017-06-28-Azure%E7%BB%8F%E5%85%B8%E6%A8%A1%E5%BC%8F%E5%92%8C%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB.html#orgbb66971" target="_blank" rel="noopener">https://pengpengxp.github.io/archive/before-2018-11-10/2017-06-28-Azure%E7%BB%8F%E5%85%B8%E6%A8%A1%E5%BC%8F%E5%92%8C%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB.html#orgbb66971</a></p>
-</blockquote>
-<h3 id="2-AWS-to-Azure-services-comparison"><a href="#2-AWS-to-Azure-services-comparison" class="headerlink" title="2. AWS to Azure services comparison"></a>2. AWS to Azure services comparison</h3><p>详见链接 <a href="https://docs.microsoft.com/en-us/azure/architecture/aws-professional/services" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/azure/architecture/aws-professional/services</a></p>
-]]></content>
+    <title>Azure tutorial 01: overview</title>
+    <url>/2019/12/11/Azure-tutorial-01-overview/</url>
+    <content><![CDATA[]]></content>
       <categories>
         <category>Cloud</category>
       </categories>
@@ -297,14 +305,6 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#mac os terminal</span></span><br><span class="line">azcopy cp <span class="string">"/Users/xxx/Desktop/testdir/hello_azure.txt"</span>  <span class="string">"https://storage873375.blob.core.windows.net/container1/newdir/?sv=2019-02-02&amp;ss=bfqt&amp;srt=sco&amp;sp=rwdlacup&amp;se=2019-12-11T11:40:09Z&amp;st=2019-12-11T03:40:09Z&amp;spr=https&amp;sig=5%2FFHo4%2BBwxDB6wLftyB7%2FSF7gqnhaEmpFa4nheBOXQg%3D"</span></span><br></pre></td></tr></table></figure>
 <p><a href="https://docs.microsoft.com/en-us/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs</a></p>
 ]]></content>
-      <categories>
-        <category>Cloud</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Azure tutorial 01: overview</title>
-    <url>/2019/12/11/Azure-tutorial-01-overview/</url>
-    <content><![CDATA[]]></content>
       <categories>
         <category>Cloud</category>
       </categories>
@@ -704,62 +704,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Github Actions E06产出物</title>
-    <url>/2020/03/30/Github-Actions-E06%E4%BA%A7%E5%87%BA%E7%89%A9/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
-<p>大多数时候，workflow的产出物都会直接传到对应的某些仓库，比如docker image会送到docker hub这种仓库存储。这种时候是不需要在workflow再额外的管理产出物，但也不能全盘否定；有时候我们没有一个方便的地方去存储某些形式的文件等，就需要我们有类似jenkins <code>archiveArtifacts</code> 功能。但github actions能做的会更多，请期待。</p>
-</blockquote>
-<h3 id="1-关于artifacts"><a href="#1-关于artifacts" class="headerlink" title="1. 关于artifacts"></a>1. 关于artifacts</h3><p>构件是指在工作流程运行过程中产生的文件或文件集。<br>GitHub 提供两项可用于上传和下载构建构件的操作。 上传到工作流程运行的文件将使用 .zip 格式存档。 更多信息请参阅 <code>action/upload-artifact</code> 和 <code>download-artifact</code> 操作。</p>
-<p>这些是您可能想要上传的一些常见构建和测试输出构件：</p>
-<ul>
-<li>日志文件和核心转储文件</li>
-<li>测试结果、失败和屏幕截图</li>
-<li>二进制或存档文件</li>
-<li>压力测试性能输出和代码覆盖结果</li>
-</ul>
-<p>当作业完成时，运行程序将终止并删除虚拟环境的实例。</p>
-<h3 id="2-上传"><a href="#2-上传" class="headerlink" title="2. 上传"></a>2. 上传</h3><p>常见的场景: 一个java程序的产出物是一个jar包，在构建之后需要得到这个jar用于其他环境部署。</p>
-<p>依旧用 <a href="https://github.com/cicd-draft/api-test-demo" target="_blank" rel="noopener">api-test-demo</a> 这个仓库做演示，主要分为以下个步骤：</p>
-<ul>
-<li>1.下载代码；</li>
-<li>2.构建jar包(存放于指定到路径<code>build/libs/api-demo-0.0.1-SNAPSHOT.jar</code>)；</li>
-<li>3.上传jar包</li>
-</ul>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">my</span> <span class="string">workflow</span> <span class="string">demo</span> </span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span> </span><br><span class="line"><span class="attr">  push:</span></span><br><span class="line"><span class="attr">    branches:</span> </span><br><span class="line"><span class="bullet">      -</span> <span class="string">master</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  artifacts_demo_job:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">job1</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">Checkout</span> <span class="string">code</span></span><br><span class="line"><span class="attr">      uses:</span> <span class="string">actions/checkout@v1</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">Build</span> <span class="string">jar</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        pwd  &amp;&amp; ls -l</span></span><br><span class="line"><span class="string">        ./gradlew -x jar build</span></span><br><span class="line"><span class="string">        ls -l build/libs/api-demo-0.0.1-SNAPSHOT.jar</span></span><br><span class="line"><span class="string"></span><span class="attr">    - name:</span> <span class="string">Archive</span> <span class="string">SNAPSHOT.jar</span></span><br><span class="line"><span class="attr">      uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">      with:</span></span><br><span class="line"><span class="attr">        name:</span> <span class="string">api_snapshot_jar</span></span><br><span class="line"><span class="attr">        path:</span> <span class="string">build/libs/api-demo-0.0.1-SNAPSHOT.jar</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>github actions 工作流的产出物都放在哪里的，保留多久</p>
-</blockquote>
-<h3 id="3-下载"><a href="#3-下载" class="headerlink" title="3. 下载"></a>3. 下载</h3><p>步骤官方说明如下：</p>
-<ul>
-<li>1.On GitHub, navigate to the main page of the repository.</li>
-<li>2.Under your repository name, click Actions.</li>
-<li>3.In the left sidebar, click the workflow you want to see.</li>
-<li>4.Under “Workflow runs”, click the name of the run you want to see.</li>
-<li>5.To download artifacts, use the Artifacts drop-down menu, and select the artifact you want to download.</li>
-<li>6.To delete artifacts, use the Artifacts drop-down menu, and click .</li>
-</ul>
-<p>注意事项：</p>
-<ul>
-<li>保留90天</li>
-<li>一旦删除某一个构件，无法恢复</li>
-</ul>
-<h3 id="4-在工作流程中作业之间传递数据"><a href="#4-在工作流程中作业之间传递数据" class="headerlink" title="4. 在工作流程中作业之间传递数据"></a>4. 在工作流程中作业之间传递数据</h3><p><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts#passing-data-between-jobs-in-a-workflow" target="_blank" rel="noopener">https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts#passing-data-between-jobs-in-a-workflow</a></p>
-<p>由于同一个workflow的多个job分别运行在不同的虚拟主机上，下面示例工作流程说明如何在相同工作流程中的任务之间传递数据。关键词 <strong>need</strong> 用来确保job按顺序运行.</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Share</span> <span class="string">data</span> <span class="string">between</span> <span class="string">jobs</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span> <span class="string">[push]</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  job_1:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Add</span> <span class="number">3</span> <span class="string">and</span> <span class="number">7</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          expr 3 + 7 &gt; math-homework.txt</span></span><br><span class="line"><span class="string"></span><span class="attr">      - name:</span> <span class="string">Upload</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">1</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">          path:</span> <span class="string">math-homework.txt</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  job_2:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Multiply</span> <span class="string">by</span> <span class="number">9</span></span><br><span class="line"><span class="attr">    needs:</span> <span class="string">job_1</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">windows-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Download</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">1</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/download-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">      - shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          value=`cat homework/math-homework.txt`</span></span><br><span class="line"><span class="string">          expr $value \* 9 &gt; homework/math-homework.txt</span></span><br><span class="line"><span class="string"></span><span class="attr">      - name:</span> <span class="string">Upload</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">2</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">          path:</span> <span class="string">homework/math-homework.txt</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  job_3:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Display</span> <span class="string">results</span></span><br><span class="line"><span class="attr">    needs:</span> <span class="string">job_2</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">macOS-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Download</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">2</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/download-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Print</span> <span class="string">the</span> <span class="string">final</span> <span class="string">result</span></span><br><span class="line"><span class="attr">        shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          value=`cat homework/math-homework.txt`</span></span><br><span class="line"><span class="string">          echo The result is $value</span></span><br></pre></td></tr></table></figure>
-<hr>
-<p><strong>More Ref:</strong></p>
-<ul>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts" target="_blank" rel="noopener">关于该篇的原文</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>CICD</category>
-      </categories>
-      <tags>
-        <tag>GA</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Github Actions E05环境变量</title>
     <url>/2020/03/24/Github-Actions-E05%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
@@ -856,6 +800,62 @@
 <p><strong>More Ref:</strong></p>
 <ul>
 <li><a href="https://help.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context" target="_blank" rel="noopener">GA Context</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>CICD</category>
+      </categories>
+      <tags>
+        <tag>GA</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Github Actions E06产出物</title>
+    <url>/2020/03/30/Github-Actions-E06%E4%BA%A7%E5%87%BA%E7%89%A9/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
+<p>大多数时候，workflow的产出物都会直接传到对应的某些仓库，比如docker image会送到docker hub这种仓库存储。这种时候是不需要在workflow再额外的管理产出物，但也不能全盘否定；有时候我们没有一个方便的地方去存储某些形式的文件等，就需要我们有类似jenkins <code>archiveArtifacts</code> 功能。但github actions能做的会更多，请期待。</p>
+</blockquote>
+<h3 id="1-关于artifacts"><a href="#1-关于artifacts" class="headerlink" title="1. 关于artifacts"></a>1. 关于artifacts</h3><p>构件是指在工作流程运行过程中产生的文件或文件集。<br>GitHub 提供两项可用于上传和下载构建构件的操作。 上传到工作流程运行的文件将使用 .zip 格式存档。 更多信息请参阅 <code>action/upload-artifact</code> 和 <code>download-artifact</code> 操作。</p>
+<p>这些是您可能想要上传的一些常见构建和测试输出构件：</p>
+<ul>
+<li>日志文件和核心转储文件</li>
+<li>测试结果、失败和屏幕截图</li>
+<li>二进制或存档文件</li>
+<li>压力测试性能输出和代码覆盖结果</li>
+</ul>
+<p>当作业完成时，运行程序将终止并删除虚拟环境的实例。</p>
+<h3 id="2-上传"><a href="#2-上传" class="headerlink" title="2. 上传"></a>2. 上传</h3><p>常见的场景: 一个java程序的产出物是一个jar包，在构建之后需要得到这个jar用于其他环境部署。</p>
+<p>依旧用 <a href="https://github.com/cicd-draft/api-test-demo" target="_blank" rel="noopener">api-test-demo</a> 这个仓库做演示，主要分为以下个步骤：</p>
+<ul>
+<li>1.下载代码；</li>
+<li>2.构建jar包(存放于指定到路径<code>build/libs/api-demo-0.0.1-SNAPSHOT.jar</code>)；</li>
+<li>3.上传jar包</li>
+</ul>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">my</span> <span class="string">workflow</span> <span class="string">demo</span> </span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span> </span><br><span class="line"><span class="attr">  push:</span></span><br><span class="line"><span class="attr">    branches:</span> </span><br><span class="line"><span class="bullet">      -</span> <span class="string">master</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  artifacts_demo_job:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">job1</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">Checkout</span> <span class="string">code</span></span><br><span class="line"><span class="attr">      uses:</span> <span class="string">actions/checkout@v1</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">Build</span> <span class="string">jar</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        pwd  &amp;&amp; ls -l</span></span><br><span class="line"><span class="string">        ./gradlew -x jar build</span></span><br><span class="line"><span class="string">        ls -l build/libs/api-demo-0.0.1-SNAPSHOT.jar</span></span><br><span class="line"><span class="string"></span><span class="attr">    - name:</span> <span class="string">Archive</span> <span class="string">SNAPSHOT.jar</span></span><br><span class="line"><span class="attr">      uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">      with:</span></span><br><span class="line"><span class="attr">        name:</span> <span class="string">api_snapshot_jar</span></span><br><span class="line"><span class="attr">        path:</span> <span class="string">build/libs/api-demo-0.0.1-SNAPSHOT.jar</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>github actions 工作流的产出物都放在哪里的，保留多久</p>
+</blockquote>
+<h3 id="3-下载"><a href="#3-下载" class="headerlink" title="3. 下载"></a>3. 下载</h3><p>步骤官方说明如下：</p>
+<ul>
+<li>1.On GitHub, navigate to the main page of the repository.</li>
+<li>2.Under your repository name, click Actions.</li>
+<li>3.In the left sidebar, click the workflow you want to see.</li>
+<li>4.Under “Workflow runs”, click the name of the run you want to see.</li>
+<li>5.To download artifacts, use the Artifacts drop-down menu, and select the artifact you want to download.</li>
+<li>6.To delete artifacts, use the Artifacts drop-down menu, and click .</li>
+</ul>
+<p>注意事项：</p>
+<ul>
+<li>保留90天</li>
+<li>一旦删除某一个构件，无法恢复</li>
+</ul>
+<h3 id="4-在工作流程中作业之间传递数据"><a href="#4-在工作流程中作业之间传递数据" class="headerlink" title="4. 在工作流程中作业之间传递数据"></a>4. 在工作流程中作业之间传递数据</h3><p><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts#passing-data-between-jobs-in-a-workflow" target="_blank" rel="noopener">https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts#passing-data-between-jobs-in-a-workflow</a></p>
+<p>由于同一个workflow的多个job分别运行在不同的虚拟主机上，下面示例工作流程说明如何在相同工作流程中的任务之间传递数据。关键词 <strong>need</strong> 用来确保job按顺序运行.</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Share</span> <span class="string">data</span> <span class="string">between</span> <span class="string">jobs</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span> <span class="string">[push]</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  job_1:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Add</span> <span class="number">3</span> <span class="string">and</span> <span class="number">7</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          expr 3 + 7 &gt; math-homework.txt</span></span><br><span class="line"><span class="string"></span><span class="attr">      - name:</span> <span class="string">Upload</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">1</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">          path:</span> <span class="string">math-homework.txt</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  job_2:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Multiply</span> <span class="string">by</span> <span class="number">9</span></span><br><span class="line"><span class="attr">    needs:</span> <span class="string">job_1</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">windows-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Download</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">1</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/download-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">      - shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          value=`cat homework/math-homework.txt`</span></span><br><span class="line"><span class="string">          expr $value \* 9 &gt; homework/math-homework.txt</span></span><br><span class="line"><span class="string"></span><span class="attr">      - name:</span> <span class="string">Upload</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">2</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">          path:</span> <span class="string">homework/math-homework.txt</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  job_3:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Display</span> <span class="string">results</span></span><br><span class="line"><span class="attr">    needs:</span> <span class="string">job_2</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">macOS-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Download</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">2</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/download-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Print</span> <span class="string">the</span> <span class="string">final</span> <span class="string">result</span></span><br><span class="line"><span class="attr">        shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          value=`cat homework/math-homework.txt`</span></span><br><span class="line"><span class="string">          echo The result is $value</span></span><br></pre></td></tr></table></figure>
+<hr>
+<p><strong>More Ref:</strong></p>
+<ul>
+<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts" target="_blank" rel="noopener">关于该篇的原文</a></li>
 </ul>
 ]]></content>
       <categories>
@@ -1200,21 +1200,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Import P12 file on Mac OS X with CLI</title>
-    <url>/2019/11/22/Import-P12-file-on-Mac-OS-X-with-CLI/</url>
-    <content><![CDATA[<h3 id="目的：通过命令行倒入p12证书"><a href="#目的：通过命令行倒入p12证书" class="headerlink" title="目的：通过命令行倒入p12证书"></a>目的：通过命令行倒入p12证书</h3><p>Apple为了安全，在ssh登录时，是不允许读取Keychains（钥匙串）的，所以 <strong>security unlock-keychain</strong> 这行命令就很重要了。比如在Pipeline构建打包前，先解锁Keychains。</p>
-<h4 id="1-解锁"><a href="#1-解锁" class="headerlink" title="1.解锁"></a>1.解锁</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#方式一： 命令行中不含密码，交互方式</span></span><br><span class="line">➜   security unlock-keychain /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br><span class="line">password to unlock /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db:</span><br><span class="line"></span><br><span class="line"><span class="comment">#或者命令行中包含密码的方式</span></span><br><span class="line">➜   security unlock-keychain -p &lt;Mac_Login_PWD&gt; /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br><span class="line">➜   security list-keychains -s /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br></pre></td></tr></table></figure>
-<h4 id="2-导入"><a href="#2-导入" class="headerlink" title="2.导入"></a>2.导入</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#方式一： 命令行中不含密码，交互方式</span></span><br><span class="line"><span class="comment">#会有弹窗，提示输入 P12文件的密码</span></span><br><span class="line">➜   security import ~/Desktop/xxx.p12 -k /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br><span class="line">1 identity imported.</span><br><span class="line"><span class="comment">#或者命令行中包含密码的方式</span></span><br><span class="line">➜   security import ~/&lt;Your_Path&gt;/xxx.p12 -k /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db -P &lt;P12_Password&gt;</span><br><span class="line">1 identity imported.</span><br></pre></td></tr></table></figure>
-<h4 id="3-其他"><a href="#3-其他" class="headerlink" title="3.其他"></a>3.其他</h4><p>删除<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">##先展示证书，获取SHA1值; -p 可指定类型</span></span><br><span class="line">security find-identity -p codesigning /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br><span class="line"><span class="comment">##根据SHA1值删除对应的证书</span></span><br><span class="line">security delete-certificate -Z &lt;Your_SHA1&gt;</span><br></pre></td></tr></table></figure></p>
-<p>更过 security 用法，查看 <code>security --help</code> 、<code>security find-identity --help</code></p>
-<hr>
-<p>More ref:<br><a href="https://www.cnblogs.com/pixy/p/4817579.html" target="_blank" rel="noopener">https://www.cnblogs.com/pixy/p/4817579.html</a></p>
-]]></content>
-      <tags>
-        <tag>Tools</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>IntelliJ 与 Gradle版本不兼容</title>
     <url>/2020/11/06/IntelliJ-%E4%B8%8E-Gradle%E7%89%88%E6%9C%AC%E4%B8%8D%E5%85%BC%E5%AE%B9/</url>
     <content><![CDATA[<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>IntelliJ version: 2018.2.7 CE</p>
@@ -1228,6 +1213,21 @@
 <p><strong>step2</strong></p>
 <p><img src="/images/intellij-step2.png" alt="step2"></p>
 <p>大致原因就是版本不匹配，都是时间从中作祟。</p>
+]]></content>
+      <tags>
+        <tag>Tools</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Import P12 file on Mac OS X with CLI</title>
+    <url>/2019/11/22/Import-P12-file-on-Mac-OS-X-with-CLI/</url>
+    <content><![CDATA[<h3 id="目的：通过命令行倒入p12证书"><a href="#目的：通过命令行倒入p12证书" class="headerlink" title="目的：通过命令行倒入p12证书"></a>目的：通过命令行倒入p12证书</h3><p>Apple为了安全，在ssh登录时，是不允许读取Keychains（钥匙串）的，所以 <strong>security unlock-keychain</strong> 这行命令就很重要了。比如在Pipeline构建打包前，先解锁Keychains。</p>
+<h4 id="1-解锁"><a href="#1-解锁" class="headerlink" title="1.解锁"></a>1.解锁</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#方式一： 命令行中不含密码，交互方式</span></span><br><span class="line">➜   security unlock-keychain /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br><span class="line">password to unlock /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db:</span><br><span class="line"></span><br><span class="line"><span class="comment">#或者命令行中包含密码的方式</span></span><br><span class="line">➜   security unlock-keychain -p &lt;Mac_Login_PWD&gt; /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br><span class="line">➜   security list-keychains -s /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br></pre></td></tr></table></figure>
+<h4 id="2-导入"><a href="#2-导入" class="headerlink" title="2.导入"></a>2.导入</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#方式一： 命令行中不含密码，交互方式</span></span><br><span class="line"><span class="comment">#会有弹窗，提示输入 P12文件的密码</span></span><br><span class="line">➜   security import ~/Desktop/xxx.p12 -k /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br><span class="line">1 identity imported.</span><br><span class="line"><span class="comment">#或者命令行中包含密码的方式</span></span><br><span class="line">➜   security import ~/&lt;Your_Path&gt;/xxx.p12 -k /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db -P &lt;P12_Password&gt;</span><br><span class="line">1 identity imported.</span><br></pre></td></tr></table></figure>
+<h4 id="3-其他"><a href="#3-其他" class="headerlink" title="3.其他"></a>3.其他</h4><p>删除<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">##先展示证书，获取SHA1值; -p 可指定类型</span></span><br><span class="line">security find-identity -p codesigning /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br><span class="line"><span class="comment">##根据SHA1值删除对应的证书</span></span><br><span class="line">security delete-certificate -Z &lt;Your_SHA1&gt;</span><br></pre></td></tr></table></figure></p>
+<p>更过 security 用法，查看 <code>security --help</code> 、<code>security find-identity --help</code></p>
+<hr>
+<p>More ref:<br><a href="https://www.cnblogs.com/pixy/p/4817579.html" target="_blank" rel="noopener">https://www.cnblogs.com/pixy/p/4817579.html</a></p>
 ]]></content>
       <tags>
         <tag>Tools</tag>
@@ -1251,24 +1251,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Jenkins Unicode icons</title>
-    <url>/2019/07/04/Jenkins-Unicode-icons/</url>
-    <content><![CDATA[<h5 id="Unicode-icons-list"><a href="#Unicode-icons-list" class="headerlink" title="Unicode icons list:"></a>Unicode icons list:</h5><p>“\u2776” = ❶<br>“\u27A1” = ➡<br>“\u2756” = ❖<br>“\u273F” = ✿<br>“\u2795” = ➕</p>
-<p>“\u2713” = ✓<br>“\u2705” = ✅<br>“\u274E” = ❎<br>“\u2717” = ✗<br>“\u274C” = ❌</p>
-<p>“\u2600” = ☀<br>“\u2601” = ☁<br>“\u2622” = ☢<br>“\u2623” = ☣<br>“\u2639” = ☹<br>“\u263A” = ☺</p>
-<p>Example :<br>make stage name to a icon, or command message<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//declarative pipeline</span><br><span class="line">...</span><br><span class="line">    stages &#123;</span><br><span class="line">        stage(<span class="string">'\u270A RAISED FIST'</span>)&#123;</span><br><span class="line">            steps&#123;</span><br><span class="line">                script&#123;</span><br><span class="line">                    <span class="built_in">echo</span> <span class="string">"This is Stage One"</span></span><br><span class="line">                    currentBuild.displayName = <span class="string">"<span class="variable">$&#123;env.BUILD_NUMBER&#125;</span> -&gt; <span class="variable">$&#123;env.GIT_BRANCH&#125;</span>"</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">'\u273F Verify'</span> //u2700</span><br><span class="line"><span class="built_in">echo</span> <span class="string">'\u2620 kulou'</span> //u2600</span><br></pre></td></tr></table></figure>
-<p><strong>More Ref:</strong></p>
-<ul>
-<li><a href="http://www.fileformat.info/info/unicode/block/dingbats/list.htm" target="_blank" rel="noopener">More icons in the \u2700 Unicode Digbats block.</a></li>
-<li><a href="https://www.w3schools.com/charsets/ref_utf_symbols.asp" target="_blank" rel="noopener">More icons in the \u2600 range</a></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>jenkins</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Jenkins Error</title>
     <url>/2020/11/12/Jenkins-FAQ/</url>
     <content><![CDATA[<h3 id="中文乱码问题"><a href="#中文乱码问题" class="headerlink" title="中文乱码问题"></a>中文乱码问题</h3><p>参考<br><a href="https://www.cnblogs.com/unknows/p/8519636.html" target="_blank" rel="noopener">https://www.cnblogs.com/unknows/p/8519636.html</a></p>
@@ -1283,6 +1265,24 @@
 <p>某个调度到slave的运行job总是不更新状态，明明已经完成了任务，但一直在页面左下角显示的是在运行中</p>
 <p>可尝试 <a href="https://kb.iu.edu/d/aopy" target="_blank" rel="noopener">https://kb.iu.edu/d/aopy</a></p>
 <h3 id="引号"><a href="#引号" class="headerlink" title="引号"></a>引号</h3><p>// 单引号需要拼接 容易出错 不推荐使用<br><code>sh &#39;mkdir -p &#39; + VARIABLE</code><br>// 三引号支持变量等内容，引号嵌套等 推荐使用<br><code>sh &quot;&quot;&quot;cp ${VARIABLE}/ &#39;abc&#39; &quot;123&quot; ${VARIABLE_1}/${VARIABLE_2}&quot;&quot;&quot;</code></p>
+]]></content>
+      <tags>
+        <tag>jenkins</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Jenkins Unicode icons</title>
+    <url>/2019/07/04/Jenkins-Unicode-icons/</url>
+    <content><![CDATA[<h5 id="Unicode-icons-list"><a href="#Unicode-icons-list" class="headerlink" title="Unicode icons list:"></a>Unicode icons list:</h5><p>“\u2776” = ❶<br>“\u27A1” = ➡<br>“\u2756” = ❖<br>“\u273F” = ✿<br>“\u2795” = ➕</p>
+<p>“\u2713” = ✓<br>“\u2705” = ✅<br>“\u274E” = ❎<br>“\u2717” = ✗<br>“\u274C” = ❌</p>
+<p>“\u2600” = ☀<br>“\u2601” = ☁<br>“\u2622” = ☢<br>“\u2623” = ☣<br>“\u2639” = ☹<br>“\u263A” = ☺</p>
+<p>Example :<br>make stage name to a icon, or command message<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//declarative pipeline</span><br><span class="line">...</span><br><span class="line">    stages &#123;</span><br><span class="line">        stage(<span class="string">'\u270A RAISED FIST'</span>)&#123;</span><br><span class="line">            steps&#123;</span><br><span class="line">                script&#123;</span><br><span class="line">                    <span class="built_in">echo</span> <span class="string">"This is Stage One"</span></span><br><span class="line">                    currentBuild.displayName = <span class="string">"<span class="variable">$&#123;env.BUILD_NUMBER&#125;</span> -&gt; <span class="variable">$&#123;env.GIT_BRANCH&#125;</span>"</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">'\u273F Verify'</span> //u2700</span><br><span class="line"><span class="built_in">echo</span> <span class="string">'\u2620 kulou'</span> //u2600</span><br></pre></td></tr></table></figure>
+<p><strong>More Ref:</strong></p>
+<ul>
+<li><a href="http://www.fileformat.info/info/unicode/block/dingbats/list.htm" target="_blank" rel="noopener">More icons in the \u2700 Unicode Digbats block.</a></li>
+<li><a href="https://www.w3schools.com/charsets/ref_utf_symbols.asp" target="_blank" rel="noopener">More icons in the \u2600 range</a></li>
+</ul>
 ]]></content>
       <tags>
         <tag>jenkins</tag>
@@ -1391,31 +1391,6 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>Makefile 102:Variable</title>
-    <url>/2019/07/05/Makefile-102-Variable/</url>
-    <content><![CDATA[<h5 id="Variables-common-use"><a href="#Variables-common-use" class="headerlink" title="Variables (common use)"></a>Variables (common use)</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">origin_file = hello.c</span><br><span class="line"></span><br><span class="line">hellofrommakefile: $(origin_file)</span><br><span class="line">	gcc hello.c -o hellofrommakefile</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">env := <span class="string">"local"</span></span><br><span class="line"></span><br><span class="line">task1:</span><br><span class="line">	@<span class="built_in">echo</span> <span class="string">"hello ,task1"</span></span><br><span class="line">	@<span class="built_in">echo</span> <span class="string">"This is environment: <span class="variable">$(env)</span></span></span><br></pre></td></tr></table></figure>
-<p>设置变量 env，如果在执行make时不传值，则使用默认值 local, 输出如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 不给env值</span></span><br><span class="line">make</span><br><span class="line">hello ,task1</span><br><span class="line">This is env: <span class="built_in">local</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 给env=uat</span></span><br><span class="line">make  env=uat</span><br><span class="line">hello ,task1</span><br><span class="line">This is env: uat</span><br></pre></td></tr></table></figure>
-<h5 id="Automatic-Variables-自动变量"><a href="#Automatic-Variables-自动变量" class="headerlink" title="Automatic Variables(自动变量)"></a>Automatic Variables(自动变量)</h5><p>makefile 中有一些预定义的变量，你可以理解它像是 C 语言中的一些关键字，分别有不同的意义，我们列举几个常用的自动变量，<a href="https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html#Automatic-Variables" target="_blank" rel="noopener">其他还有很多</a></p>
-<p>$@：在命令中使用，表示规则中的目标<br>$&lt;：在命令中使用，表示规则中的第一个条件<br>$^：在命令中使用，表示规则中的所有条件，组成一个列表，以空格隔开，如果这个列表中有重复的项则消除重复项。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hellofrommakefile: hello.c</span><br><span class="line">	gcc hello.c -o hellofrommakefile</span><br></pre></td></tr></table></figure>
-<p>等价于<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hellofrommakefile: hello.c</span><br><span class="line">	gcc hello.c -o <span class="variable">$@</span></span><br></pre></td></tr></table></figure></p>
-<h5 id="mplicit-Variables-内置变量"><a href="#mplicit-Variables-内置变量" class="headerlink" title="mplicit Variables(内置变量)"></a>mplicit Variables(内置变量)</h5><p>Make命令提供一系列内置变量，比如，$(CC) 指向当前使用的编译器，$(MAKE) 指向当前使用的Make工具。这主要是为了跨平台的兼容性，详细的内置变量清单见<a href="https://www.gnu.org/software/make/manual/html_node/Implicit-Variables.html" target="_blank" rel="noopener">ta</a>。</p>
-<p><strong>More Ref:</strong></p>
-<ul>
-<li><a href="http://www.chiark.greenend.org.uk/doc/make-doc/make.html/Using-Variables.html" target="_blank" rel="noopener">http://www.chiark.greenend.org.uk/doc/make-doc/make.html/Using-Variables.html</a></li>
-<li><a href="https://www.gnu.org/software/make/manual/html_node/Implicit-Variables.html" target="_blank" rel="noopener">https://www.gnu.org/software/make/manual/html_node/Implicit-Variables.html</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>makefile</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Makefile 101 :Intro</title>
     <url>/2019/07/04/Makefile-101-Intro/</url>
     <content><![CDATA[<p>新建文件 ，文件名 makefile 或 Makefile</p>
@@ -1448,6 +1423,31 @@ pipeline {
 <li><a href="https://www.mycode.net.cn/platform/linux-unix/1499.html" target="_blank" rel="noopener">https://www.mycode.net.cn/platform/linux-unix/1499.html</a></li>
 <li><a href="http://www.ruanyifeng.com/blog/2015/02/make.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2015/02/make.html</a></li>
 <li><a href="https://blog.csdn.net/chinawangfei/article/details/42125241" target="_blank" rel="noopener">https://blog.csdn.net/chinawangfei/article/details/42125241</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>makefile</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Makefile 102:Variable</title>
+    <url>/2019/07/05/Makefile-102-Variable/</url>
+    <content><![CDATA[<h5 id="Variables-common-use"><a href="#Variables-common-use" class="headerlink" title="Variables (common use)"></a>Variables (common use)</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">origin_file = hello.c</span><br><span class="line"></span><br><span class="line">hellofrommakefile: $(origin_file)</span><br><span class="line">	gcc hello.c -o hellofrommakefile</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">env := <span class="string">"local"</span></span><br><span class="line"></span><br><span class="line">task1:</span><br><span class="line">	@<span class="built_in">echo</span> <span class="string">"hello ,task1"</span></span><br><span class="line">	@<span class="built_in">echo</span> <span class="string">"This is environment: <span class="variable">$(env)</span></span></span><br></pre></td></tr></table></figure>
+<p>设置变量 env，如果在执行make时不传值，则使用默认值 local, 输出如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 不给env值</span></span><br><span class="line">make</span><br><span class="line">hello ,task1</span><br><span class="line">This is env: <span class="built_in">local</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 给env=uat</span></span><br><span class="line">make  env=uat</span><br><span class="line">hello ,task1</span><br><span class="line">This is env: uat</span><br></pre></td></tr></table></figure>
+<h5 id="Automatic-Variables-自动变量"><a href="#Automatic-Variables-自动变量" class="headerlink" title="Automatic Variables(自动变量)"></a>Automatic Variables(自动变量)</h5><p>makefile 中有一些预定义的变量，你可以理解它像是 C 语言中的一些关键字，分别有不同的意义，我们列举几个常用的自动变量，<a href="https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html#Automatic-Variables" target="_blank" rel="noopener">其他还有很多</a></p>
+<p>$@：在命令中使用，表示规则中的目标<br>$&lt;：在命令中使用，表示规则中的第一个条件<br>$^：在命令中使用，表示规则中的所有条件，组成一个列表，以空格隔开，如果这个列表中有重复的项则消除重复项。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hellofrommakefile: hello.c</span><br><span class="line">	gcc hello.c -o hellofrommakefile</span><br></pre></td></tr></table></figure>
+<p>等价于<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hellofrommakefile: hello.c</span><br><span class="line">	gcc hello.c -o <span class="variable">$@</span></span><br></pre></td></tr></table></figure></p>
+<h5 id="mplicit-Variables-内置变量"><a href="#mplicit-Variables-内置变量" class="headerlink" title="mplicit Variables(内置变量)"></a>mplicit Variables(内置变量)</h5><p>Make命令提供一系列内置变量，比如，$(CC) 指向当前使用的编译器，$(MAKE) 指向当前使用的Make工具。这主要是为了跨平台的兼容性，详细的内置变量清单见<a href="https://www.gnu.org/software/make/manual/html_node/Implicit-Variables.html" target="_blank" rel="noopener">ta</a>。</p>
+<p><strong>More Ref:</strong></p>
+<ul>
+<li><a href="http://www.chiark.greenend.org.uk/doc/make-doc/make.html/Using-Variables.html" target="_blank" rel="noopener">http://www.chiark.greenend.org.uk/doc/make-doc/make.html/Using-Variables.html</a></li>
+<li><a href="https://www.gnu.org/software/make/manual/html_node/Implicit-Variables.html" target="_blank" rel="noopener">https://www.gnu.org/software/make/manual/html_node/Implicit-Variables.html</a></li>
 </ul>
 ]]></content>
       <categories>
@@ -1524,29 +1524,6 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>Mongodb 的一些概念</title>
-    <url>/2021/03/04/Mongodb-%E7%9A%84%E4%B8%80%E4%BA%9B%E6%A6%82%E5%BF%B5/</url>
-    <content><![CDATA[<p>基本概念，还是对照常用的关系型数据库，这样更容易理解一些</p>
-<p><a href="https://imgtu.com/i/6V7h3n" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/03/04/6V7h3n.png" alt="6V7h3n.png"></a></p>
-<h3 id="collection"><a href="#collection" class="headerlink" title="collection"></a>collection</h3><p>mongodb是通过一个个collection来做数据存储的，可以类比关系型数据库的表。</p>
-<h3 id="shard-key-分片键"><a href="#shard-key-分片键" class="headerlink" title="shard_key (分片键)"></a>shard_key (分片键)</h3><p>mongodb是通过分片键来对collection进行分区的，也就是通过分片键来决定一个document如何分布式存入collection中。分片键是每个存放在collection中的document都持续拥有的不可缺少的一个字段或多个字段的组合。 分片键有下面几个要求：</p>
-<ul>
-<li>每个document都必须拥有，不可缺少。</li>
-<li>已经分片的数据，分片键不可更改。</li>
-<li>分片键必须加上索引。</li>
-<li>分片键的选择对分片的性能、效率和可扩展性都有着重要影响。分片键和索引也会影响集群的分片策略。</li>
-</ul>
-<p><strong>分片键索引</strong></p>
-<p>分片键必须有索引，索引可以是分片键上的索引，当分片键是索引前缀时，也可以是复合索引。 注意：分片键索引必须是横向(正向)，比如用id做索引时定义为key{id:1} 参考：<a href="https://docs.mongodb.com/manual/core/sharding-shard-key/#sharding-shard-key-indexes" target="_blank" rel="noopener">https://docs.mongodb.com/manual/core/sharding-shard-key/#sharding-shard-key-indexes</a></p>
-<p>shard key在sharding搭建完毕后是不能修改的，一个collection上只能有一个shard key。<br>shard key上必须有索引（可以是以shard key开头的联合索引），如果没有mongodb会为shard key创建索引。如果是已经存在的collection那么必须手动为shard key创建索引。</p>
-<p>MongoDB creates a unique index on the _id field during the creation of a collection. The _id index prevents clients from inserting two documents with the same value for the _id field. You cannot drop this index on the _id field.</p>
-<p>mongodb offical doc <a href="https://docs.mongodb.com/manual/indexes/" target="_blank" rel="noopener">https://docs.mongodb.com/manual/indexes/</a></p>
-]]></content>
-      <tags>
-        <tag>Tools</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Openshift E01 最常见的使用场景</title>
     <url>/2021/01/10/Openshift-E01-%E6%9C%80%E5%B8%B8%E8%A7%81%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/</url>
     <content><![CDATA[<p>暂时不介绍 openshift 的概念，也不介绍如何安装、部署，先使用一个例子来看看 openshift 能做什么。</p>
@@ -1600,6 +1577,29 @@ pipeline {
       </categories>
       <tags>
         <tag>OpenShift</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Mongodb 的一些概念</title>
+    <url>/2021/03/04/Mongodb-%E7%9A%84%E4%B8%80%E4%BA%9B%E6%A6%82%E5%BF%B5/</url>
+    <content><![CDATA[<p>基本概念，还是对照常用的关系型数据库，这样更容易理解一些</p>
+<p><a href="https://imgtu.com/i/6V7h3n" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/03/04/6V7h3n.png" alt="6V7h3n.png"></a></p>
+<h3 id="collection"><a href="#collection" class="headerlink" title="collection"></a>collection</h3><p>mongodb是通过一个个collection来做数据存储的，可以类比关系型数据库的表。</p>
+<h3 id="shard-key-分片键"><a href="#shard-key-分片键" class="headerlink" title="shard_key (分片键)"></a>shard_key (分片键)</h3><p>mongodb是通过分片键来对collection进行分区的，也就是通过分片键来决定一个document如何分布式存入collection中。分片键是每个存放在collection中的document都持续拥有的不可缺少的一个字段或多个字段的组合。 分片键有下面几个要求：</p>
+<ul>
+<li>每个document都必须拥有，不可缺少。</li>
+<li>已经分片的数据，分片键不可更改。</li>
+<li>分片键必须加上索引。</li>
+<li>分片键的选择对分片的性能、效率和可扩展性都有着重要影响。分片键和索引也会影响集群的分片策略。</li>
+</ul>
+<p><strong>分片键索引</strong></p>
+<p>分片键必须有索引，索引可以是分片键上的索引，当分片键是索引前缀时，也可以是复合索引。 注意：分片键索引必须是横向(正向)，比如用id做索引时定义为key{id:1} 参考：<a href="https://docs.mongodb.com/manual/core/sharding-shard-key/#sharding-shard-key-indexes" target="_blank" rel="noopener">https://docs.mongodb.com/manual/core/sharding-shard-key/#sharding-shard-key-indexes</a></p>
+<p>shard key在sharding搭建完毕后是不能修改的，一个collection上只能有一个shard key。<br>shard key上必须有索引（可以是以shard key开头的联合索引），如果没有mongodb会为shard key创建索引。如果是已经存在的collection那么必须手动为shard key创建索引。</p>
+<p>MongoDB creates a unique index on the _id field during the creation of a collection. The _id index prevents clients from inserting two documents with the same value for the _id field. You cannot drop this index on the _id field.</p>
+<p>mongodb offical doc <a href="https://docs.mongodb.com/manual/indexes/" target="_blank" rel="noopener">https://docs.mongodb.com/manual/indexes/</a></p>
+]]></content>
+      <tags>
+        <tag>Tools</tag>
       </tags>
   </entry>
   <entry>
@@ -1941,6 +1941,20 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>Shell count time</title>
+    <url>/2019/06/17/Shell-count-time/</url>
+    <content><![CDATA[<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">start=$(date +%s)</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> ---------</span><br><span class="line"><span class="comment">#type your command, like: sleep 50</span></span><br><span class="line">sleep 50</span><br><span class="line"></span><br><span class="line">end=$(date +%s)</span><br><span class="line"></span><br><span class="line">diff=$((end - start))</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">"\e[1;32m take time is: <span class="variable">$diff</span> \e[m"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> Count:</span><br><span class="line">tput sc</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> count <span class="keyword">in</span> `seq 0 40`</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  tput rc</span><br><span class="line">  tput ed</span><br><span class="line">  <span class="built_in">echo</span> -n <span class="variable">$count</span></span><br><span class="line">  sleep 1</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<p>用 tput sc 存储光标位置。在每次循环中，通过 tput rc 恢复之前的存储的光标位置，在终端中打印出新的 count 值，然后使用 tputs ed 清除从当前位置到行尾之间的所有内容。行被清空之后，脚本就可以显示出新的值。sleep  可以使脚本在每次循环迭代之间延迟1秒钟。</p>
+]]></content>
+      <categories>
+        <category>Shell</category>
+      </categories>
+      <tags>
+        <tag>Shell</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Shell Script Standards</title>
     <url>/2019/05/29/Shell-Script-Standards/</url>
     <content><![CDATA[<p>推荐看看 <a href="https://google.github.io/styleguide/shellguide.html" target="_blank" rel="noopener">https://google.github.io/styleguide/shellguide.html</a></p>
@@ -1980,20 +1994,6 @@ pipeline {
 <li><a href="https://blog.csdn.net/wirelessqa/article/details/18863403" target="_blank" rel="noopener">https://blog.csdn.net/wirelessqa/article/details/18863403</a></li>
 </ul>
 </blockquote>
-]]></content>
-      <categories>
-        <category>Shell</category>
-      </categories>
-      <tags>
-        <tag>Shell</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Shell count time</title>
-    <url>/2019/06/17/Shell-count-time/</url>
-    <content><![CDATA[<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">start=$(date +%s)</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> ---------</span><br><span class="line"><span class="comment">#type your command, like: sleep 50</span></span><br><span class="line">sleep 50</span><br><span class="line"></span><br><span class="line">end=$(date +%s)</span><br><span class="line"></span><br><span class="line">diff=$((end - start))</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">"\e[1;32m take time is: <span class="variable">$diff</span> \e[m"</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> Count:</span><br><span class="line">tput sc</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> count <span class="keyword">in</span> `seq 0 40`</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  tput rc</span><br><span class="line">  tput ed</span><br><span class="line">  <span class="built_in">echo</span> -n <span class="variable">$count</span></span><br><span class="line">  sleep 1</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-<p>用 tput sc 存储光标位置。在每次循环中，通过 tput rc 恢复之前的存储的光标位置，在终端中打印出新的 count 值，然后使用 tputs ed 清除从当前位置到行尾之间的所有内容。行被清空之后，脚本就可以显示出新的值。sleep  可以使脚本在每次循环迭代之间延迟1秒钟。</p>
 ]]></content>
       <categories>
         <category>Shell</category>
@@ -2135,24 +2135,6 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>Terraform : terraform console</title>
-    <url>/2019/12/05/Terraform-terraform-console/</url>
-    <content><![CDATA[<h5 id="1-evaluating-expressions"><a href="#1-evaluating-expressions" class="headerlink" title="1.evaluating expressions"></a>1.evaluating expressions</h5><p>The terraform console command provides an interactive console for evaluating expressions.</p>
-<p>For example:<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># interactive console</span></span><br><span class="line">➜ terraform console</span><br><span class="line">&gt; element(list(<span class="string">"one"</span>,<span class="string">"two"</span>,<span class="string">"three"</span>),1)</span><br><span class="line">two</span><br><span class="line"></span><br><span class="line"><span class="comment"># non-interactive scripts</span></span><br><span class="line">➜ <span class="built_in">echo</span> <span class="string">"list("</span>1<span class="string">","</span>2<span class="string">")"</span> | terraform console</span><br><span class="line">[</span><br><span class="line">  1,</span><br><span class="line">  2,</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
-<p>or</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜ terraform console</span><br><span class="line">&gt; aws_instance_demo.public_ip</span><br><span class="line">54.152.62.34</span><br></pre></td></tr></table></figure>
-<h5 id="2-test-Terraform-built-in-functions-locally"><a href="#2-test-Terraform-built-in-functions-locally" class="headerlink" title="2.test Terraform built-in functions locally"></a>2.test Terraform built-in functions locally</h5><p>  <a href="http://artemstar.com/2018/03/03/terraform-test-functions/" target="_blank" rel="noopener">test Terraform built-in functions locally</a></p>
-<hr>
-<p>More ref:<br><a href="https://www.terraform.io/docs/commands/console.html" target="_blank" rel="noopener">https://www.terraform.io/docs/commands/console.html</a><br><a href="http://artemstar.com/2018/03/03/terraform-test-functions/" target="_blank" rel="noopener">http://artemstar.com/2018/03/03/terraform-test-functions/</a></p>
-]]></content>
-      <categories>
-        <category>Terraform</category>
-      </categories>
-      <tags>
-        <tag>Terraform</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Terraform 100: Introduction &amp; Install</title>
     <url>/2019/08/27/Terraform-100-Introduction-Install/</url>
     <content><![CDATA[<h3 id="What-is-Terraform"><a href="#What-is-Terraform" class="headerlink" title="What is Terraform?"></a>What is Terraform?</h3><p>Terraform is a tool for building, changing, and versioning infrastructure safely and efficiently. Terraform can manage existing and popular service providers as well as custom in-house solutions.</p>
@@ -2179,6 +2161,24 @@ pipeline {
 </blockquote>
 <p>Ihen I set version to <code>v0.12.4</code> in <code>.terraform-version</code> file<br><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">➜   terraform --version</span><br><span class="line">Terraform v0.12.4</span><br><span class="line">+ provider.aws v2.25.0</span><br><span class="line">+ provider.random v2.2.0</span><br><span class="line">+ provider.template v2.1.2</span><br></pre></td></tr></table></figure></p>
 <p>Then I change the verson to <strong><code>v0.12.5</code></strong> in <code>.terraform-version</code> file<br><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">➜   terraform --version</span><br><span class="line">Terraform v0.12.5</span><br><span class="line">+ provider.aws v2.25.0</span><br><span class="line">+ provider.random v2.2.0</span><br><span class="line">+ provider.template v2.1.2</span><br><span class="line"></span><br><span class="line">Your version of Terraform is out of date! The latest version</span><br><span class="line">is 0.12.7. You can update by downloading from www.terraform.io/downloads.html</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>Terraform</category>
+      </categories>
+      <tags>
+        <tag>Terraform</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Terraform : terraform console</title>
+    <url>/2019/12/05/Terraform-terraform-console/</url>
+    <content><![CDATA[<h5 id="1-evaluating-expressions"><a href="#1-evaluating-expressions" class="headerlink" title="1.evaluating expressions"></a>1.evaluating expressions</h5><p>The terraform console command provides an interactive console for evaluating expressions.</p>
+<p>For example:<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># interactive console</span></span><br><span class="line">➜ terraform console</span><br><span class="line">&gt; element(list(<span class="string">"one"</span>,<span class="string">"two"</span>,<span class="string">"three"</span>),1)</span><br><span class="line">two</span><br><span class="line"></span><br><span class="line"><span class="comment"># non-interactive scripts</span></span><br><span class="line">➜ <span class="built_in">echo</span> <span class="string">"list("</span>1<span class="string">","</span>2<span class="string">")"</span> | terraform console</span><br><span class="line">[</span><br><span class="line">  1,</span><br><span class="line">  2,</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
+<p>or</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜ terraform console</span><br><span class="line">&gt; aws_instance_demo.public_ip</span><br><span class="line">54.152.62.34</span><br></pre></td></tr></table></figure>
+<h5 id="2-test-Terraform-built-in-functions-locally"><a href="#2-test-Terraform-built-in-functions-locally" class="headerlink" title="2.test Terraform built-in functions locally"></a>2.test Terraform built-in functions locally</h5><p>  <a href="http://artemstar.com/2018/03/03/terraform-test-functions/" target="_blank" rel="noopener">test Terraform built-in functions locally</a></p>
+<hr>
+<p>More ref:<br><a href="https://www.terraform.io/docs/commands/console.html" target="_blank" rel="noopener">https://www.terraform.io/docs/commands/console.html</a><br><a href="http://artemstar.com/2018/03/03/terraform-test-functions/" target="_blank" rel="noopener">http://artemstar.com/2018/03/03/terraform-test-functions/</a></p>
 ]]></content>
       <categories>
         <category>Terraform</category>
@@ -2365,6 +2365,19 @@ pipeline {
 ]]></content>
   </entry>
   <entry>
+    <title>adminMongo: a cross platform user interface (GUI) to connect MongoDB</title>
+    <url>/2019/07/15/adminMongo-a-cross-platform-user-interface-GUI-to-connect-MongoDB/</url>
+    <content><![CDATA[<p><strong>Github address</strong>:<br><a href="https://github.com/mrvautin/adminMongo" target="_blank" rel="noopener">https://github.com/mrvautin/adminMongo</a></p>
+<p><strong>dockerhub</strong>:<br><a href="https://hub.docker.com/r/mrvautin/adminmongo" target="_blank" rel="noopener">https://hub.docker.com/r/mrvautin/adminmongo</a></p>
+<p>example:</p>
+<p><img src="/images/adminMongo_image_01.png" alt="adminMongo_image_01"></p>
+<p>Give a name to the connection and use the following connection string: ‘mongodb://root:example@mongo’.</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+  </entry>
+  <entry>
     <title>bash : set command</title>
     <url>/2019/05/07/bash-set-command/</url>
     <content><![CDATA[<h2 id="set-命令教程"><a href="#set-命令教程" class="headerlink" title="set 命令教程"></a>set 命令教程</h2><p><strong>set</strong> 命令用来修改 Shell 环境的运行参数，也就是可以定制环境</p>
@@ -2391,37 +2404,6 @@ pipeline {
       </categories>
       <tags>
         <tag>Shell</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>adminMongo: a cross platform user interface (GUI) to connect MongoDB</title>
-    <url>/2019/07/15/adminMongo-a-cross-platform-user-interface-GUI-to-connect-MongoDB/</url>
-    <content><![CDATA[<p><strong>Github address</strong>:<br><a href="https://github.com/mrvautin/adminMongo" target="_blank" rel="noopener">https://github.com/mrvautin/adminMongo</a></p>
-<p><strong>dockerhub</strong>:<br><a href="https://hub.docker.com/r/mrvautin/adminmongo" target="_blank" rel="noopener">https://hub.docker.com/r/mrvautin/adminmongo</a></p>
-<p>example:</p>
-<p><img src="/images/adminMongo_image_01.png" alt="adminMongo_image_01"></p>
-<p>Give a name to the connection and use the following connection string: ‘mongodb://root:example@mongo’.</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>&#39;devops&#39; 还是 &#39;DevOps&#39;?</title>
-    <url>/2019/10/08/devops-%E8%BF%98%E6%98%AF-DevOps/</url>
-    <content><![CDATA[<h3 id="1-什么是-devops-还是-DevOps"><a href="#1-什么是-devops-还是-DevOps" class="headerlink" title="1. 什么是 devops,还是 DevOps"></a>1. 什么是 devops,还是 DevOps</h3><p>  最近在阅读 《Effective DevOps》（中文版） 时看到一些有趣的内容，如标题所问到的 – <u>devops 还是 DevOps?</u> (P6)。<br>  接触这个概念已经2年左右，自身的职位名称也是这个单词，但从来也没有思考过这个问题，而该书的作者在前言中提出来了，不得不说思维之严谨。不妨读者自身也想一想，到底那个更合适，为什么？</p>
-<blockquote>
-<p>摘自《Effective DevOps》（中文版）P6</p>
-</blockquote>
-<p>  对于 “devops”这个词的字母是否大写我们还有很多讨论。一个简单的在线调查显示，大多数人都支持“DevOps”。我们还发现组织比较关注“Dev”和“Ops”,以至于出现了 “DevSecOps”和“DevQAOps”,因为“DevOps”隐含地只包括 “Dev” 和 “Ops”。<br>  所以最后我们选择了“devops”,这对应原来的推特上的标签，用来联系希望改善协作的人，他们希望谈话时不再区分“你们”和“我们”，而应该更多地讨论如何利用可持续的工作实践来支持企业发展。<br>  成功的项目需要有适当的输入、努力、见解以及整个组织中人们之间的协作，你的组织中存在的问题可能不只限于开发人员和运维团队。我们在这本书中有意选择使用小写的 “devops” 来反映我们的观点，这只是有一种包容，并没有其他的意思。</p>
-<h3 id="2-常见的devops误区-（P56）-devops不是什么"><a href="#2-常见的devops误区-（P56）-devops不是什么" class="headerlink" title="2.常见的devops误区 （P56）/devops不是什么"></a>2.常见的devops误区 （P56）/devops不是什么</h3><p>devops只与开发人员和系统管理员有关<br>devops是一个团队<br>devops是一个职位<br>devops表示由一半的人完成全部工作<br>devops只是关于工具<br>devops只是关于自动化<br>实现devops有一种“正确方法”（或“错误方法”）<br>…</p>
-<h3 id="3-总结"><a href="#3-总结" class="headerlink" title="3.总结"></a>3.总结</h3><p>devops 更多的是一种文化，哲学上的概念，说白了就是<strong>无法言传，只可意会</strong></p>
-]]></content>
-      <categories>
-        <category>读书笔记</category>
-      </categories>
-      <tags>
-        <tag>Devops</tag>
       </tags>
   </entry>
   <entry>
@@ -2457,6 +2439,24 @@ pipeline {
       </categories>
   </entry>
   <entry>
+    <title>&#39;devops&#39; 还是 &#39;DevOps&#39;?</title>
+    <url>/2019/10/08/devops-%E8%BF%98%E6%98%AF-DevOps/</url>
+    <content><![CDATA[<h3 id="1-什么是-devops-还是-DevOps"><a href="#1-什么是-devops-还是-DevOps" class="headerlink" title="1. 什么是 devops,还是 DevOps"></a>1. 什么是 devops,还是 DevOps</h3><p>  最近在阅读 《Effective DevOps》（中文版） 时看到一些有趣的内容，如标题所问到的 – <u>devops 还是 DevOps?</u> (P6)。<br>  接触这个概念已经2年左右，自身的职位名称也是这个单词，但从来也没有思考过这个问题，而该书的作者在前言中提出来了，不得不说思维之严谨。不妨读者自身也想一想，到底那个更合适，为什么？</p>
+<blockquote>
+<p>摘自《Effective DevOps》（中文版）P6</p>
+</blockquote>
+<p>  对于 “devops”这个词的字母是否大写我们还有很多讨论。一个简单的在线调查显示，大多数人都支持“DevOps”。我们还发现组织比较关注“Dev”和“Ops”,以至于出现了 “DevSecOps”和“DevQAOps”,因为“DevOps”隐含地只包括 “Dev” 和 “Ops”。<br>  所以最后我们选择了“devops”,这对应原来的推特上的标签，用来联系希望改善协作的人，他们希望谈话时不再区分“你们”和“我们”，而应该更多地讨论如何利用可持续的工作实践来支持企业发展。<br>  成功的项目需要有适当的输入、努力、见解以及整个组织中人们之间的协作，你的组织中存在的问题可能不只限于开发人员和运维团队。我们在这本书中有意选择使用小写的 “devops” 来反映我们的观点，这只是有一种包容，并没有其他的意思。</p>
+<h3 id="2-常见的devops误区-（P56）-devops不是什么"><a href="#2-常见的devops误区-（P56）-devops不是什么" class="headerlink" title="2.常见的devops误区 （P56）/devops不是什么"></a>2.常见的devops误区 （P56）/devops不是什么</h3><p>devops只与开发人员和系统管理员有关<br>devops是一个团队<br>devops是一个职位<br>devops表示由一半的人完成全部工作<br>devops只是关于工具<br>devops只是关于自动化<br>实现devops有一种“正确方法”（或“错误方法”）<br>…</p>
+<h3 id="3-总结"><a href="#3-总结" class="headerlink" title="3.总结"></a>3.总结</h3><p>devops 更多的是一种文化，哲学上的概念，说白了就是<strong>无法言传，只可意会</strong></p>
+]]></content>
+      <categories>
+        <category>读书笔记</category>
+      </categories>
+      <tags>
+        <tag>Devops</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>docker build ignore .dockerignore</title>
     <url>/2019/08/22/docker-build-ignore-dockerignore/</url>
     <content><![CDATA[<p>Demo project:<br><a href="https://github.com/qinrui777/api-test-demo" target="_blank" rel="noopener">https://github.com/qinrui777/api-test-demo</a></p>
@@ -2472,24 +2472,6 @@ pipeline {
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  api-test-demo git:(master) ✗ docker  build -t api-demo:have-ignore .</span><br><span class="line">Sending build context to Docker daemon  17.33MB</span><br><span class="line">Step 1/3 : FROM openjdk:8-jdk-alpine</span><br><span class="line"> ---&gt; 97bc1352afde</span><br><span class="line">Step 2/3 : ADD build/libs/api-demo-0.0.1-SNAPSHOT.jar /app.jar</span><br><span class="line"> ---&gt; Using cache</span><br><span class="line"> ---&gt; 7f709f7b4381</span><br><span class="line">Step 3/3 : ENTRYPOINT [<span class="string">"java"</span>,<span class="string">"-jar"</span>,<span class="string">"/app.jar"</span>]</span><br><span class="line"> ---&gt; Using cache</span><br><span class="line"> ---&gt; 62d9f7b72b38</span><br><span class="line">Successfully built 62d9f7b72b38</span><br><span class="line">Successfully tagged api-demo:have-ignore</span><br></pre></td></tr></table></figure></li>
 </ul>
 ]]></content>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>docker 镜像的扁平化</title>
-    <url>/2019/07/25/docker-%E9%95%9C%E5%83%8F%E7%9A%84%E6%89%81%E5%B9%B3%E5%8C%96/</url>
-    <content><![CDATA[<blockquote>
-<p>Dockerfile 的设计以及它们产出 Docker 镜像的结果便是，最终镜像里包含了 Dockerfile 里每一步的数据状态。在构建镜像的过程中，可能需要复制私密信息来确保构建工作可以顺利进行。这些所谓的私密信息可能是 ssH 密钥、证书或者密码文件等。在提交镜像前删除这些私密信息的话可能不会提供任何实质性的保护，因为它们将出现在最终镜像的更高分层里，而恶意用户则可以轻松地从镜像中提取它们。解决这一问题的其中一个办法便是将得到的镜像扁平化。</p>
-</blockquote>
-<p><strong>问题</strong><br>想要从镜像的分层历史中移除私密信息。</p>
-<p><strong>解决方案</strong><br>基于该镜像创建一个容器，将它导出再导人，然后给它打上最初镜像田的标签。</p>
-<p><strong>讨论</strong><br>为了演示这种做法的可用场景，让我们在一个新目录里创建一个简单的 Dockerfile ，该目录下藏着一个大秘密。运行 mkdir secrets “ cd Secrets ，然后在该目录里创建一个包含如下内容的 Dockerfile :</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">FROM busybox</span><br><span class="line">RUN <span class="built_in">echo</span> <span class="string">"My Big secret"</span> &gt;&gt; /tmp/secret_key</span><br><span class="line">RUN cat /tmp/secret_key</span><br><span class="line">RUn rm /tmp/secret_key</span><br></pre></td></tr></table></figure>
-<p>运行  <code>docker build -t mysecret .</code><br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   docker build -t mysecret .</span><br><span class="line">Sending build context to Docker daemon  2.048kB</span><br><span class="line">Step 1/4 : FROM busybox</span><br><span class="line"> ---&gt; 8c811b4aec35</span><br><span class="line">Step 2/4 : RUN <span class="built_in">echo</span> <span class="string">"My Big secret"</span> &gt;&gt; /tmp/secret_key</span><br><span class="line"> ---&gt; Running <span class="keyword">in</span> 2b6f94ac0148</span><br><span class="line">Removing intermediate container 2b6f94ac0148</span><br><span class="line"> ---&gt; a9ecbe44119c</span><br><span class="line">Step 3/4 : RUN cat /tmp/secret_key</span><br><span class="line"> ---&gt; Running <span class="keyword">in</span> b515370b1b88</span><br><span class="line">My Big secret</span><br><span class="line">Removing intermediate container b515370b1b88</span><br><span class="line"> ---&gt; 8a890a1ace7c</span><br><span class="line">Step 4/4 : RUn rm /tmp/secret_key</span><br><span class="line"> ---&gt; Running <span class="keyword">in</span> c9910e46efc2</span><br><span class="line">Removing intermediate container c9910e46efc2</span><br><span class="line"> ---&gt; 6010dbf70359</span><br><span class="line">Successfully built 6010dbf70359</span><br><span class="line">Successfully tagged mysecret:latest</span><br></pre></td></tr></table></figure></p>
-<p>可以使用docker history 命令检查得到的Docker镜像的分层.如果该镜像上传到公有仓库，被他人下载，在没有原始 Dockerfile 到情况下，可以轻松获取私密信息。<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   docker <span class="built_in">history</span> mysecret:latest</span><br><span class="line">IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT</span><br><span class="line">6010dbf70359        22 seconds ago      /bin/sh -c rm /tmp/secret_key                   0B</span><br><span class="line">8a890a1ace7c        23 seconds ago      /bin/sh -c cat /tmp/secret_key                  0B</span><br><span class="line">a9ecbe44119c        25 seconds ago      /bin/sh -c <span class="built_in">echo</span> <span class="string">"My Big secret"</span> &gt;&gt; /tmp/secr…   14B</span><br><span class="line">8c811b4aec35        14 months ago       /bin/sh -c <span class="comment">#(nop)  CMD ["sh"]                   0B</span></span><br><span class="line">&lt;missing&gt;           14 months ago       /bin/sh -c <span class="comment">#(nop) ADD file:5f0439d8328ab58c0…   1.15MB</span></span><br></pre></td></tr></table></figure></p>
-<h5 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h5><p>将该镜像导出为一个简单运行的容器，然后再重新导入并给得到的镜像打上标签</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   docker run -d mysecret /bin/<span class="literal">true</span></span><br><span class="line">02cbd0f59623472acc4571c1b654cdca40730d036d7a96a7dbaacaaf264177aa</span><br><span class="line">➜   docker <span class="built_in">export</span> 02cbd0f5962 | docker import - mysecret</span><br><span class="line">sha256:080b122e43cb5d46efec5aa0b6abd0570e1abc52b3293f77b091bf22722c1168</span><br><span class="line">➜   docker <span class="built_in">history</span> mysecret</span><br><span class="line">IMAGE               CREATED             CREATED BY          SIZE                COMMENT</span><br><span class="line">080b122e43cb        9 seconds ago                           1.15MB              Imported from -</span><br></pre></td></tr></table></figure>]]></content>
       <tags>
         <tag>Docker</tag>
       </tags>
@@ -2593,6 +2575,24 @@ pipeline {
 ]]></content>
       <tags>
         <tag>Tools</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>docker 镜像的扁平化</title>
+    <url>/2019/07/25/docker-%E9%95%9C%E5%83%8F%E7%9A%84%E6%89%81%E5%B9%B3%E5%8C%96/</url>
+    <content><![CDATA[<blockquote>
+<p>Dockerfile 的设计以及它们产出 Docker 镜像的结果便是，最终镜像里包含了 Dockerfile 里每一步的数据状态。在构建镜像的过程中，可能需要复制私密信息来确保构建工作可以顺利进行。这些所谓的私密信息可能是 ssH 密钥、证书或者密码文件等。在提交镜像前删除这些私密信息的话可能不会提供任何实质性的保护，因为它们将出现在最终镜像的更高分层里，而恶意用户则可以轻松地从镜像中提取它们。解决这一问题的其中一个办法便是将得到的镜像扁平化。</p>
+</blockquote>
+<p><strong>问题</strong><br>想要从镜像的分层历史中移除私密信息。</p>
+<p><strong>解决方案</strong><br>基于该镜像创建一个容器，将它导出再导人，然后给它打上最初镜像田的标签。</p>
+<p><strong>讨论</strong><br>为了演示这种做法的可用场景，让我们在一个新目录里创建一个简单的 Dockerfile ，该目录下藏着一个大秘密。运行 mkdir secrets “ cd Secrets ，然后在该目录里创建一个包含如下内容的 Dockerfile :</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">FROM busybox</span><br><span class="line">RUN <span class="built_in">echo</span> <span class="string">"My Big secret"</span> &gt;&gt; /tmp/secret_key</span><br><span class="line">RUN cat /tmp/secret_key</span><br><span class="line">RUn rm /tmp/secret_key</span><br></pre></td></tr></table></figure>
+<p>运行  <code>docker build -t mysecret .</code><br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   docker build -t mysecret .</span><br><span class="line">Sending build context to Docker daemon  2.048kB</span><br><span class="line">Step 1/4 : FROM busybox</span><br><span class="line"> ---&gt; 8c811b4aec35</span><br><span class="line">Step 2/4 : RUN <span class="built_in">echo</span> <span class="string">"My Big secret"</span> &gt;&gt; /tmp/secret_key</span><br><span class="line"> ---&gt; Running <span class="keyword">in</span> 2b6f94ac0148</span><br><span class="line">Removing intermediate container 2b6f94ac0148</span><br><span class="line"> ---&gt; a9ecbe44119c</span><br><span class="line">Step 3/4 : RUN cat /tmp/secret_key</span><br><span class="line"> ---&gt; Running <span class="keyword">in</span> b515370b1b88</span><br><span class="line">My Big secret</span><br><span class="line">Removing intermediate container b515370b1b88</span><br><span class="line"> ---&gt; 8a890a1ace7c</span><br><span class="line">Step 4/4 : RUn rm /tmp/secret_key</span><br><span class="line"> ---&gt; Running <span class="keyword">in</span> c9910e46efc2</span><br><span class="line">Removing intermediate container c9910e46efc2</span><br><span class="line"> ---&gt; 6010dbf70359</span><br><span class="line">Successfully built 6010dbf70359</span><br><span class="line">Successfully tagged mysecret:latest</span><br></pre></td></tr></table></figure></p>
+<p>可以使用docker history 命令检查得到的Docker镜像的分层.如果该镜像上传到公有仓库，被他人下载，在没有原始 Dockerfile 到情况下，可以轻松获取私密信息。<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   docker <span class="built_in">history</span> mysecret:latest</span><br><span class="line">IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT</span><br><span class="line">6010dbf70359        22 seconds ago      /bin/sh -c rm /tmp/secret_key                   0B</span><br><span class="line">8a890a1ace7c        23 seconds ago      /bin/sh -c cat /tmp/secret_key                  0B</span><br><span class="line">a9ecbe44119c        25 seconds ago      /bin/sh -c <span class="built_in">echo</span> <span class="string">"My Big secret"</span> &gt;&gt; /tmp/secr…   14B</span><br><span class="line">8c811b4aec35        14 months ago       /bin/sh -c <span class="comment">#(nop)  CMD ["sh"]                   0B</span></span><br><span class="line">&lt;missing&gt;           14 months ago       /bin/sh -c <span class="comment">#(nop) ADD file:5f0439d8328ab58c0…   1.15MB</span></span><br></pre></td></tr></table></figure></p>
+<h5 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h5><p>将该镜像导出为一个简单运行的容器，然后再重新导入并给得到的镜像打上标签</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   docker run -d mysecret /bin/<span class="literal">true</span></span><br><span class="line">02cbd0f59623472acc4571c1b654cdca40730d036d7a96a7dbaacaaf264177aa</span><br><span class="line">➜   docker <span class="built_in">export</span> 02cbd0f5962 | docker import - mysecret</span><br><span class="line">sha256:080b122e43cb5d46efec5aa0b6abd0570e1abc52b3293f77b091bf22722c1168</span><br><span class="line">➜   docker <span class="built_in">history</span> mysecret</span><br><span class="line">IMAGE               CREATED             CREATED BY          SIZE                COMMENT</span><br><span class="line">080b122e43cb        9 seconds ago                           1.15MB              Imported from -</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>Docker</tag>
       </tags>
   </entry>
   <entry>
@@ -2730,41 +2730,6 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>python module SimpleHTTPServer</title>
-    <url>/2019/08/18/python-module-SimpleHTTPServer/</url>
-    <content><![CDATA[<h3 id="what-is"><a href="#what-is" class="headerlink" title="what is"></a>what is</h3><p>The <strong>SimpleHTTPServer</strong> module can be used in the following manner in order to set up a very basic web server serving files <strong>relative</strong> to the current directory.</p>
-<p>Warning SimpleHTTPServer is not recommended for production. It only implements basic security checks.</p>
-<h4 id="Example-1-fetch-files-from-a-server"><a href="#Example-1-fetch-files-from-a-server" class="headerlink" title="Example 1: fetch files from a server"></a>Example 1: fetch files from a server</h4><ul>
-<li><ol>
-<li>Start <code>SimpleHTTPServer</code> on server node<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span>   your_file_dir</span><br><span class="line">python -m SimpleHTTPServer &lt;PORT&gt;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-<li><ol start="2">
-<li>Excute command on client node<br><code>wget &lt;SERVER_NODE_IP&gt;:&lt;PROT&gt;/relative path/test.sh</code></li>
-</ol>
-</li>
-</ul>
-<p><em>or</em> go to the browser and type this URL: <code>http://&lt;SERVER_NODE_IP&gt;:&lt;PROT&gt;</code> and see the output.</p>
-<p><strong>✍TIP</strong><br>The SimpleHTTPServer module has been merged into http.server in Python 3.0. The 2to3 tool will automatically adapt imports when converting your sources to 3.0.<br><code>python3 -m http.server</code></p>
-]]></content>
-      <tags>
-        <tag>Tools</tag>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>packer intro</title>
-    <url>/2019/08/30/packer-intro/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>packer</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>mktemp command</title>
     <url>/2019/05/07/mktemp-command/</url>
     <content><![CDATA[<p>最适合存储临时数据的位置是/tmp, <strong>mktemp</strong> 命令可以为临时文件或目录创建唯一的名字</p>
@@ -2786,6 +2751,41 @@ pipeline {
       </categories>
       <tags>
         <tag>Shell</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>packer intro</title>
+    <url>/2019/08/30/packer-intro/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>packer</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python module SimpleHTTPServer</title>
+    <url>/2019/08/18/python-module-SimpleHTTPServer/</url>
+    <content><![CDATA[<h3 id="what-is"><a href="#what-is" class="headerlink" title="what is"></a>what is</h3><p>The <strong>SimpleHTTPServer</strong> module can be used in the following manner in order to set up a very basic web server serving files <strong>relative</strong> to the current directory.</p>
+<p>Warning SimpleHTTPServer is not recommended for production. It only implements basic security checks.</p>
+<h4 id="Example-1-fetch-files-from-a-server"><a href="#Example-1-fetch-files-from-a-server" class="headerlink" title="Example 1: fetch files from a server"></a>Example 1: fetch files from a server</h4><ul>
+<li><ol>
+<li>Start <code>SimpleHTTPServer</code> on server node<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span>   your_file_dir</span><br><span class="line">python -m SimpleHTTPServer &lt;PORT&gt;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>Excute command on client node<br><code>wget &lt;SERVER_NODE_IP&gt;:&lt;PROT&gt;/relative path/test.sh</code></li>
+</ol>
+</li>
+</ul>
+<p><em>or</em> go to the browser and type this URL: <code>http://&lt;SERVER_NODE_IP&gt;:&lt;PROT&gt;</code> and see the output.</p>
+<p><strong>✍TIP</strong><br>The SimpleHTTPServer module has been merged into http.server in Python 3.0. The 2to3 tool will automatically adapt imports when converting your sources to 3.0.<br><code>python3 -m http.server</code></p>
+]]></content>
+      <tags>
+        <tag>Tools</tag>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -3013,6 +3013,29 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>xargs command</title>
+    <url>/2019/06/21/xargs-command/</url>
+    <content><![CDATA[<p>xargs 命令应该紧跟在管道操作符之后。它使用标准输入作为主要的数据源，将从 stdin 中读取的数据作为指定命令的参数并执行该命令。</p>
+<p>例如：<br>在一组 C 语言源码文件中搜索自负串main:<br><code>ls *.c | sargs grep main</code></p>
+<h4 id="Example-1-将多行输入-–-gt-单行输出"><a href="#Example-1-将多行输入-–-gt-单行输出" class="headerlink" title="Example 1: 将多行输入  –&gt; 单行输出"></a>Example 1: 将多行输入  –&gt; 单行输出</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   cat example.txt</span><br><span class="line">1 2 3 4</span><br><span class="line">5 6</span><br><span class="line">7 8 9</span><br><span class="line">10 11</span><br><span class="line">➜   cat example.txt | xargs</span><br><span class="line">1 2 3 4 5 6 7 8 9 10 11</span><br></pre></td></tr></table></figure>
+<h4 id="Example-2-将单行输入-–-gt-多行输出"><a href="#Example-2-将单行输入-–-gt-多行输出" class="headerlink" title="Example 2: 将单行输入  –&gt; 多行输出"></a>Example 2: 将单行输入  –&gt; 多行输出</h4><p>xargs 的 -n 选项可以限制每次调用命令时用到的参数个数。<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   cat example.txt | xargs -n  3</span><br><span class="line">1 2 3</span><br><span class="line">4 5 6</span><br><span class="line">7 8 9</span><br><span class="line">10 11</span><br></pre></td></tr></table></figure></p>
+<p>工作原理：<br>xargs 命令接收来自stdin的输入，将数据解析成单个元素，然后调用指定命令讲这些元素作为该命令的参数。xargs 默认使用 <strong>空白字符</strong> 分割输入并执行 <code>/bin/echo</code></p>
+<h4 id="Example-3-自定义分隔符-d-选项"><a href="#Example-3-自定义分隔符-d-选项" class="headerlink" title="Example 3: 自定义分隔符 -d 选项"></a>Example 3: 自定义分隔符 -d 选项</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"splitXsplit1Xsplit2Xsplit3"</span> | xargs -d X</span><br><span class="line">split split1 split2 split3</span><br></pre></td></tr></table></figure>
+<h4 id="Example-4-结合find使用xargs"><a href="#Example-4-结合find使用xargs" class="headerlink" title="Example 4: 结合find使用xargs"></a>Example 4: 结合find使用xargs</h4><p><code>find . -type f -name &quot;*.txt&quot; -print0 | xargs -o grep -L image</code></p>
+<p> 如果文件系统的有些文件名中包含忠哥，find 命令的 -print0 选项可以使用0（NUL）来分割查找到的元素，然后再用xargs对应的-0选项进行解析</p>
+<p> 反例：<br> <code>$find . -type f -name &quot;*.txt&quot; -print | xargs rm -f</code><br>这样做很危险，由可能会误删除文件。我们无法预测 find命令输出的分隔符究竟是什么（究竟是‘\n’还是 ‘’）。如果由文件名中包含空格符（‘ ’ ），xargs会将其误认为是分隔符。例如， <code>bashrc text.txt</code> 会被是为 bashrc 和 text.txt 。因此上面的命令不会删除 <code>bashrc text.txt</code> ,而是会把 bashrc删除</p>
+<p>正确的姿势：<br> <code>$find . -type f -name &quot;*.txt&quot; -print0 | xargs -0 rm -f</code></p>
+<h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><p> <code>docker ps -a -q | xargs --no-run-if-empty docker rm -f</code></p>
+<p> 参数 <code>--no-run-if-empty</code> 可以避免在前面的命令完全没有输出的情况下执行该命令</p>
+]]></content>
+      <categories>
+        <category>Shell</category>
+      </categories>
+      <tags>
+        <tag>Shell</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>youtube 推荐频道(Non-tech)</title>
     <url>/2019/12/10/youtube-%E6%8E%A8%E8%8D%90%E9%A2%91%E9%81%93-Non-tech/</url>
     <content><![CDATA[<p>自从到新公司有梯子后，外出运动的时间变少了，都奉献给了youtube.有些节目被查水表了，<strong>“此帐户已被终止，因为我们收到多份第三方提交的关于该用户发布的内容侵犯版权的声明。”</strong> 所以也不能保证下面罗列的节目在未来可以持续观看</p>
@@ -3090,29 +3113,6 @@ pipeline {
 ]]></content>
       <tags>
         <tag>Q List</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>xargs command</title>
-    <url>/2019/06/21/xargs-command/</url>
-    <content><![CDATA[<p>xargs 命令应该紧跟在管道操作符之后。它使用标准输入作为主要的数据源，将从 stdin 中读取的数据作为指定命令的参数并执行该命令。</p>
-<p>例如：<br>在一组 C 语言源码文件中搜索自负串main:<br><code>ls *.c | sargs grep main</code></p>
-<h4 id="Example-1-将多行输入-–-gt-单行输出"><a href="#Example-1-将多行输入-–-gt-单行输出" class="headerlink" title="Example 1: 将多行输入  –&gt; 单行输出"></a>Example 1: 将多行输入  –&gt; 单行输出</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   cat example.txt</span><br><span class="line">1 2 3 4</span><br><span class="line">5 6</span><br><span class="line">7 8 9</span><br><span class="line">10 11</span><br><span class="line">➜   cat example.txt | xargs</span><br><span class="line">1 2 3 4 5 6 7 8 9 10 11</span><br></pre></td></tr></table></figure>
-<h4 id="Example-2-将单行输入-–-gt-多行输出"><a href="#Example-2-将单行输入-–-gt-多行输出" class="headerlink" title="Example 2: 将单行输入  –&gt; 多行输出"></a>Example 2: 将单行输入  –&gt; 多行输出</h4><p>xargs 的 -n 选项可以限制每次调用命令时用到的参数个数。<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   cat example.txt | xargs -n  3</span><br><span class="line">1 2 3</span><br><span class="line">4 5 6</span><br><span class="line">7 8 9</span><br><span class="line">10 11</span><br></pre></td></tr></table></figure></p>
-<p>工作原理：<br>xargs 命令接收来自stdin的输入，将数据解析成单个元素，然后调用指定命令讲这些元素作为该命令的参数。xargs 默认使用 <strong>空白字符</strong> 分割输入并执行 <code>/bin/echo</code></p>
-<h4 id="Example-3-自定义分隔符-d-选项"><a href="#Example-3-自定义分隔符-d-选项" class="headerlink" title="Example 3: 自定义分隔符 -d 选项"></a>Example 3: 自定义分隔符 -d 选项</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"splitXsplit1Xsplit2Xsplit3"</span> | xargs -d X</span><br><span class="line">split split1 split2 split3</span><br></pre></td></tr></table></figure>
-<h4 id="Example-4-结合find使用xargs"><a href="#Example-4-结合find使用xargs" class="headerlink" title="Example 4: 结合find使用xargs"></a>Example 4: 结合find使用xargs</h4><p><code>find . -type f -name &quot;*.txt&quot; -print0 | xargs -o grep -L image</code></p>
-<p> 如果文件系统的有些文件名中包含忠哥，find 命令的 -print0 选项可以使用0（NUL）来分割查找到的元素，然后再用xargs对应的-0选项进行解析</p>
-<p> 反例：<br> <code>$find . -type f -name &quot;*.txt&quot; -print | xargs rm -f</code><br>这样做很危险，由可能会误删除文件。我们无法预测 find命令输出的分隔符究竟是什么（究竟是‘\n’还是 ‘’）。如果由文件名中包含空格符（‘ ’ ），xargs会将其误认为是分隔符。例如， <code>bashrc text.txt</code> 会被是为 bashrc 和 text.txt 。因此上面的命令不会删除 <code>bashrc text.txt</code> ,而是会把 bashrc删除</p>
-<p>正确的姿势：<br> <code>$find . -type f -name &quot;*.txt&quot; -print0 | xargs -0 rm -f</code></p>
-<h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><p> <code>docker ps -a -q | xargs --no-run-if-empty docker rm -f</code></p>
-<p> 参数 <code>--no-run-if-empty</code> 可以避免在前面的命令完全没有输出的情况下执行该命令</p>
-]]></content>
-      <categories>
-        <category>Shell</category>
-      </categories>
-      <tags>
-        <tag>Shell</tag>
       </tags>
   </entry>
   <entry>
@@ -3446,20 +3446,6 @@ pipeline {
 ]]></content>
   </entry>
   <entry>
-    <title>出行清单</title>
-    <url>/2020/08/28/%E5%87%BA%E8%A1%8C%E6%B8%85%E5%8D%95/</url>
-    <content><![CDATA[<p>良久的蛰伏后，迎来一次出差的机会，时隔近2年吧。小时候梦想着能走出去，多坐坐火车、飞机、轮船等等，长大后实现了，发现并不那么美好。</p>
-<h3 id="1-夏季-短期-出差"><a href="#1-夏季-短期-出差" class="headerlink" title="1.夏季-短期-出差"></a>1.夏季-短期-出差</h3><blockquote>
-<p>1个月以内的，衣物数量包括自己身上穿的那一套</p>
-</blockquote>
-<p>短袖3件以上<br>内裤3件<br>长裤2件<br>袜子3件<br>证件、卡照（身份证，驾照，银行卡）<br>毛巾<br>充电线（手机的，手表的）<br>洗漱包（牙刷，不用电动牙刷）<br>水杯<br>纸巾2包<br>人字拖<br>书2本<br>耳机<br>电脑 及 充电线</p>
-<p>特产</p>
-]]></content>
-      <tags>
-        <tag>Q List</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>再看git</title>
     <url>/2020/04/17/%E5%86%8D%E7%9C%8Bgit/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
@@ -3589,6 +3575,20 @@ pipeline {
 ]]></content>
       <tags>
         <tag>Tools</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>出行清单</title>
+    <url>/2020/08/28/%E5%87%BA%E8%A1%8C%E6%B8%85%E5%8D%95/</url>
+    <content><![CDATA[<p>良久的蛰伏后，迎来一次出差的机会，时隔近2年吧。小时候梦想着能走出去，多坐坐火车、飞机、轮船等等，长大后实现了，发现并不那么美好。</p>
+<h3 id="1-夏季-短期-出差"><a href="#1-夏季-短期-出差" class="headerlink" title="1.夏季-短期-出差"></a>1.夏季-短期-出差</h3><blockquote>
+<p>1个月以内的，衣物数量包括自己身上穿的那一套</p>
+</blockquote>
+<p>短袖3件以上<br>内裤3件<br>长裤2件<br>袜子3件<br>证件、卡照（身份证，驾照，银行卡）<br>毛巾<br>充电线（手机的，手表的）<br>洗漱包（牙刷，不用电动牙刷）<br>水杯<br>纸巾2包<br>人字拖<br>书2本<br>耳机<br>电脑 及 充电线</p>
+<p>特产</p>
+]]></content>
+      <tags>
+        <tag>Q List</tag>
       </tags>
   </entry>
   <entry>
@@ -3781,6 +3781,28 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>疫情的启示[伪上帝之眼]</title>
+    <url>/2020/05/23/%E7%96%AB%E6%83%85%E7%9A%84%E5%90%AF%E7%A4%BA-%E4%BC%AA%E4%B8%8A%E5%B8%9D%E4%B9%8B%E7%9C%BC/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
+<p>从武汉封城（2020.01.23）到今天（2020.05.23）,正好4个月时间。一年过去了1/3，度过去了2个季节，很多节日（春节、元宵、38、清明、劳动节、青年节…）还有很多我们自己创造出来的节日。但在武汉的氛围里，少些悲伤就是幸运的，节日的快乐变小了很多，心中的畏惧变大了很多。时至今日，出门买菜、坐车也还能看到一些人手上带的一次性手套，还有面罩，至于口罩，是这里的每个人出门的必需品。5月，去过安徽，回过老家，一切大体如初了，武汉成了最不一样的地方，甚至在5月中旬回老家，有的人畏惧我这个从武汉回去的人。在懂事的年纪经历这样一场大事件，而且身处正中心，有些想法还是值得记录，不然哪天忘记了。</p>
+</blockquote>
+<p>以下一部分内容是早在3月份，疫情形势依旧严峻时的所想：</p>
+<h3 id="1-保持信息敏感"><a href="#1-保持信息敏感" class="headerlink" title="1.保持信息敏感"></a>1.保持信息敏感</h3><p>&ensp;&ensp;&ensp;&ensp;社会中大事件的发生，前夕必定有风声，有的人捕捉到了且重视，有的人置若罔闻。而来自专业领域的事情，非专业人士无从判断，但应该学习着去判断去思想前因后果，毕竟就像这次会生死攸关。对于信息来源，那一道看不见的墙在哪里，但也是不同看法的来源地，多听听未必是件坏事情，决定是在自己身心中的不是吗。需要多渠道的去获取关键信息，也需要辨别真伪，专业网站、官方网站的信息不可忽视，有些小道消息也很重要，而且中英文的都需要阅读。如果英文不好，尚可用一些翻译工具。</p>
+<h3 id="2-超预期的准备"><a href="#2-超预期的准备" class="headerlink" title="2.超预期的准备"></a>2.超预期的准备</h3><p>&ensp;&ensp;&ensp;&ensp;疫情期间，我们很多人做的一件事情就是屯东西，因为商店关门了，各种社会交易停止了，包括耐以生存的食物交易也受到了管控。口罩难求，要屯一点；大米不够，要屯一点；卫生纸不足，要吞一点….还有很多很多东西，零食？汽油？酒精？消毒剂？猪肉？ 而另一件凑巧的事情就是，春节前期武汉有准备腊肉腊鱼的习惯，这个时候这些荤菜派上了用场，古老的食物做法让我们在特殊的时间里还能享受到肉的味道。但是屯多久的东西了，每个人对持续的时间都有自己的看法，但都是来自自信的第六感。最好还是寻求专业的建议，比如疫情期间的流行病“老师傅”，比如那些有野外生存能力的人。最好，<strong>给那第六感的结果来个加倍，或者三倍吧</strong>，比如很多人预期1-2个月疫情就会过去，那你就按照3-4个月去储备物品，当然这没什么根据，但有总比没有好，这里的多也比少好。很多我们不了解的事情上，也都这么准备吧。比如外出带几天的干粮，第六感的双倍吧。</p>
+<h3 id="3-公共卫生"><a href="#3-公共卫生" class="headerlink" title="3.公共卫生"></a>3.公共卫生</h3><p>&ensp;&ensp;&ensp;&ensp;口罩、公筷、勤洗手、消毒用品…这些在我们平日里不太注重的东西，一些就在这样的时候成了我们保护自身的唯一方法。口罩，我以为是属于明星的必需品，或是用来冬天御寒的，更别提医用口罩，每家每户都缺少。今后每年的流感季节，我们也应该多嘱咐我们自己和家人朋友，多注意在人多的地方戴口罩，勤洗手，家庭消毒等等。如果，是做餐饮的，最好常带口罩，至少飞沫传播会被大大的减少。也不要随意用手揉眼睛，可能会让手上的细菌病毒等从眼睛粘膜处进入体内。题外话：口罩也是有好处的，别人看不见你的生气或是喜悦，也看不见你的全部五官，神秘感倍增，勇气有时候也倍增。</p>
+<blockquote>
+<p>对了，口罩遮面，眼睛就成了“窗口”，原来每个人的“窗口”还挺好看，也留下了想象的空间。</p>
+</blockquote>
+<h3 id="4-心态心理"><a href="#4-心态心理" class="headerlink" title="4.心态心理"></a>4.心态心理</h3><p>&ensp;&ensp;&ensp;&ensp;在强大的病毒氛围下，每个人如兵临城下一般，害怕肉眼看不见的东西闯入自己体内。有人上门量体温时，觉得自己有点热，心想是不是发烧了，可能又有点儿胸闷，是不是呼吸有点问题。心理的压力大小直接影响免疫力的强弱，但这种模糊的关系也是看不见摸不着的。心理受到影响，做事情的态度也自然会被影响到。比如我就无心专心的完成一些事情，心中杂念挥之不去。最好的方法，还没每天给自己设定几个任务，完成了就打个勾，不让自己漫无目的在电脑前，或者门前。</p>
+<h3 id="5-随身携带随时准备着"><a href="#5-随身携带随时准备着" class="headerlink" title="5.随身携带随时准备着"></a>5.随身携带随时准备着</h3><p>&ensp;&ensp;&ensp;&ensp;听闻因为春节回家的缘故，很多人没有选择带电脑回家，可谁知这个春节有点儿太长了，于是无法在家办公。与电脑类似的东西，还有比如剃须刀，充电器，耳机，相机，每个人的职业不一样，总有些工具需要常用到，有条件的最好还是常带在身边，不然意外的就是很意外的。另一个方面讲，出差的我不喜欢携带太多东西，有些可有可无的不带，轻松上阵，上下车的步伐都轻盈一些。如何取舍，视情况而定了。</p>
+<h3 id="6-富贵险中求"><a href="#6-富贵险中求" class="headerlink" title="6.富贵险中求"></a>6.富贵险中求</h3><p>&#160;&#160;无，留点遐想的空间。</p>
+<p><hr><br><strong>后记:</strong> 2020.05.20在小区楼下做的核酸检测，今天终于可以查到结果了，正常。</p>
+]]></content>
+      <tags>
+        <tag>Q List</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>移动端打包pipeline通识：从零开始</title>
     <url>/2020/01/03/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E6%89%93%E5%8C%85pipeline%E9%80%9A%E8%AF%86%EF%BC%9A%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B/</url>
     <content><![CDATA[<p>背景： 一台被格式化后的 MacBook Pro, 对某个移动端项目( xx类型 )做android pipeline、iOS pipeline</p>
@@ -3837,28 +3859,6 @@ pipeline {
       <categories>
         <category>CICD</category>
       </categories>
-  </entry>
-  <entry>
-    <title>疫情的启示[伪上帝之眼]</title>
-    <url>/2020/05/23/%E7%96%AB%E6%83%85%E7%9A%84%E5%90%AF%E7%A4%BA-%E4%BC%AA%E4%B8%8A%E5%B8%9D%E4%B9%8B%E7%9C%BC/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
-<p>从武汉封城（2020.01.23）到今天（2020.05.23）,正好4个月时间。一年过去了1/3，度过去了2个季节，很多节日（春节、元宵、38、清明、劳动节、青年节…）还有很多我们自己创造出来的节日。但在武汉的氛围里，少些悲伤就是幸运的，节日的快乐变小了很多，心中的畏惧变大了很多。时至今日，出门买菜、坐车也还能看到一些人手上带的一次性手套，还有面罩，至于口罩，是这里的每个人出门的必需品。5月，去过安徽，回过老家，一切大体如初了，武汉成了最不一样的地方，甚至在5月中旬回老家，有的人畏惧我这个从武汉回去的人。在懂事的年纪经历这样一场大事件，而且身处正中心，有些想法还是值得记录，不然哪天忘记了。</p>
-</blockquote>
-<p>以下一部分内容是早在3月份，疫情形势依旧严峻时的所想：</p>
-<h3 id="1-保持信息敏感"><a href="#1-保持信息敏感" class="headerlink" title="1.保持信息敏感"></a>1.保持信息敏感</h3><p>&ensp;&ensp;&ensp;&ensp;社会中大事件的发生，前夕必定有风声，有的人捕捉到了且重视，有的人置若罔闻。而来自专业领域的事情，非专业人士无从判断，但应该学习着去判断去思想前因后果，毕竟就像这次会生死攸关。对于信息来源，那一道看不见的墙在哪里，但也是不同看法的来源地，多听听未必是件坏事情，决定是在自己身心中的不是吗。需要多渠道的去获取关键信息，也需要辨别真伪，专业网站、官方网站的信息不可忽视，有些小道消息也很重要，而且中英文的都需要阅读。如果英文不好，尚可用一些翻译工具。</p>
-<h3 id="2-超预期的准备"><a href="#2-超预期的准备" class="headerlink" title="2.超预期的准备"></a>2.超预期的准备</h3><p>&ensp;&ensp;&ensp;&ensp;疫情期间，我们很多人做的一件事情就是屯东西，因为商店关门了，各种社会交易停止了，包括耐以生存的食物交易也受到了管控。口罩难求，要屯一点；大米不够，要屯一点；卫生纸不足，要吞一点….还有很多很多东西，零食？汽油？酒精？消毒剂？猪肉？ 而另一件凑巧的事情就是，春节前期武汉有准备腊肉腊鱼的习惯，这个时候这些荤菜派上了用场，古老的食物做法让我们在特殊的时间里还能享受到肉的味道。但是屯多久的东西了，每个人对持续的时间都有自己的看法，但都是来自自信的第六感。最好还是寻求专业的建议，比如疫情期间的流行病“老师傅”，比如那些有野外生存能力的人。最好，<strong>给那第六感的结果来个加倍，或者三倍吧</strong>，比如很多人预期1-2个月疫情就会过去，那你就按照3-4个月去储备物品，当然这没什么根据，但有总比没有好，这里的多也比少好。很多我们不了解的事情上，也都这么准备吧。比如外出带几天的干粮，第六感的双倍吧。</p>
-<h3 id="3-公共卫生"><a href="#3-公共卫生" class="headerlink" title="3.公共卫生"></a>3.公共卫生</h3><p>&ensp;&ensp;&ensp;&ensp;口罩、公筷、勤洗手、消毒用品…这些在我们平日里不太注重的东西，一些就在这样的时候成了我们保护自身的唯一方法。口罩，我以为是属于明星的必需品，或是用来冬天御寒的，更别提医用口罩，每家每户都缺少。今后每年的流感季节，我们也应该多嘱咐我们自己和家人朋友，多注意在人多的地方戴口罩，勤洗手，家庭消毒等等。如果，是做餐饮的，最好常带口罩，至少飞沫传播会被大大的减少。也不要随意用手揉眼睛，可能会让手上的细菌病毒等从眼睛粘膜处进入体内。题外话：口罩也是有好处的，别人看不见你的生气或是喜悦，也看不见你的全部五官，神秘感倍增，勇气有时候也倍增。</p>
-<blockquote>
-<p>对了，口罩遮面，眼睛就成了“窗口”，原来每个人的“窗口”还挺好看，也留下了想象的空间。</p>
-</blockquote>
-<h3 id="4-心态心理"><a href="#4-心态心理" class="headerlink" title="4.心态心理"></a>4.心态心理</h3><p>&ensp;&ensp;&ensp;&ensp;在强大的病毒氛围下，每个人如兵临城下一般，害怕肉眼看不见的东西闯入自己体内。有人上门量体温时，觉得自己有点热，心想是不是发烧了，可能又有点儿胸闷，是不是呼吸有点问题。心理的压力大小直接影响免疫力的强弱，但这种模糊的关系也是看不见摸不着的。心理受到影响，做事情的态度也自然会被影响到。比如我就无心专心的完成一些事情，心中杂念挥之不去。最好的方法，还没每天给自己设定几个任务，完成了就打个勾，不让自己漫无目的在电脑前，或者门前。</p>
-<h3 id="5-随身携带随时准备着"><a href="#5-随身携带随时准备着" class="headerlink" title="5.随身携带随时准备着"></a>5.随身携带随时准备着</h3><p>&ensp;&ensp;&ensp;&ensp;听闻因为春节回家的缘故，很多人没有选择带电脑回家，可谁知这个春节有点儿太长了，于是无法在家办公。与电脑类似的东西，还有比如剃须刀，充电器，耳机，相机，每个人的职业不一样，总有些工具需要常用到，有条件的最好还是常带在身边，不然意外的就是很意外的。另一个方面讲，出差的我不喜欢携带太多东西，有些可有可无的不带，轻松上阵，上下车的步伐都轻盈一些。如何取舍，视情况而定了。</p>
-<h3 id="6-富贵险中求"><a href="#6-富贵险中求" class="headerlink" title="6.富贵险中求"></a>6.富贵险中求</h3><p>&#160;&#160;无，留点遐想的空间。</p>
-<p><hr><br><strong>后记:</strong> 2020.05.20在小区楼下做的核酸检测，今天终于可以查到结果了，正常。</p>
-]]></content>
-      <tags>
-        <tag>Q List</tag>
-      </tags>
   </entry>
   <entry>
     <title>给博客上个锁</title>
@@ -4073,6 +4073,57 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>面试交流群</title>
+    <url>/2021/06/22/%E9%9D%A2%E8%AF%95%E4%BA%A4%E6%B5%81%E7%BE%A4/</url>
+    <content><![CDATA[<table>
+<thead>
+<tr>
+<th style="text-align:center">群名称</th>
+<th style="text-align:left">群二维码</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><font size="8">前端</font></td>
+<td style="text-align:left"><img src="/images/group-frontend.png" width="30%" height="30%"></td>
+</tr>
+<tr>
+<td style="text-align:center"><font size="20">后端/架构</font></td>
+<td style="text-align:left"><img src="/images/group-backend.png" width="30%" height="30%"></td>
+</tr>
+<tr>
+<td style="text-align:center">算法</td>
+<td style="text-align:left"><img src="/images/group-algorithm.png" width="30%" height="30%"></td>
+</tr>
+<tr>
+<td style="text-align:center">移动端</td>
+<td style="text-align:left"><img src="/images/group-mobile.png" width="30%" height="30%"></td>
+</tr>
+<tr>
+<td style="text-align:center">运维/测试</td>
+<td style="text-align:left"><img src="/images/group-operator.png" width="30%" height="30%"></td>
+</tr>
+<tr>
+<td style="text-align:center">产品/运营</td>
+<td style="text-align:left"><img src="/images/group-product.png" width="30%" height="30%"></td>
+</tr>
+<tr>
+<td style="text-align:center">职能/财务</td>
+<td style="text-align:left"><img src="/images/group-function.png" width="30%" height="30%"></td>
+</tr>
+</tbody>
+</table>
+<button type="button" name="button" class="btn">Button element</button>
+
+]]></content>
+      <categories>
+        <category>Tools</category>
+      </categories>
+      <tags>
+        <tag>Tools</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>逆流而上</title>
     <url>/2020/07/09/%E9%80%86%E6%B5%81%E8%80%8C%E4%B8%8A/</url>
     <content><![CDATA[<h3 id="0-前言"><a href="#0-前言" class="headerlink" title="0.前言"></a>0.前言</h3><p>2020.7.9 又一年的高考结束了，往年都是在6月。青春，逆流而上，听起来都是这么的文艺。而这里讲到的这本书全名是<strong>《逆流而上 阿里巴巴技术成长之路》</strong>，哈哈 o(╯□╰)o。估计我是被这文艺的书名给吸引过去的。</p>
@@ -4098,47 +4149,5 @@ pipeline {
       <categories>
         <category>读书笔记</category>
       </categories>
-  </entry>
-  <entry>
-    <title>面试交流群</title>
-    <url>/2021/06/22/%E9%9D%A2%E8%AF%95%E4%BA%A4%E6%B5%81%E7%BE%A4/</url>
-    <content><![CDATA[<table>
-<thead>
-<tr>
-<th style="text-align:left">群名称</th>
-<th style="text-align:left">群二维码</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">前段面试群</td>
-<td style="text-align:left"><img src="/images/group-frontend.png" width="20%" height="20%"></td>
-</tr>
-<tr>
-<td style="text-align:left">移动端</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">运维测试群</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">产品/运营</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">运维测试群</td>
-</tr>
-</tbody>
-</table>
-<button type="button" name="button" class="btn">Button element</button>
-
-]]></content>
-      <categories>
-        <category>Tools</category>
-      </categories>
-      <tags>
-        <tag>Tools</tag>
-      </tags>
   </entry>
 </search>
