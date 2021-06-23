@@ -225,14 +225,6 @@
       </categories>
   </entry>
   <entry>
-    <title>Azure tutorial 01: overview</title>
-    <url>/2019/12/11/Azure-tutorial-01-overview/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Cloud</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Azure FAQs</title>
     <url>/2019/12/11/Azure-FAQs/</url>
     <content><![CDATA[<h3 id="1-asm-arm"><a href="#1-asm-arm" class="headerlink" title="1. asm, arm"></a>1. asm, arm</h3><ul>
@@ -251,40 +243,12 @@
       </categories>
   </entry>
   <entry>
-    <title>Bash function skill</title>
-    <url>/2019/06/18/Bash-function-skill/</url>
-    <content><![CDATA[<p>bash 函数技巧</p>
-<h4 id="1-递归函数"><a href="#1-递归函数" class="headerlink" title="1. 递归函数"></a>1. 递归函数</h4><h4 id="2-导出函数"><a href="#2-导出函数" class="headerlink" title="2.导出函数"></a>2.导出函数</h4><p>函数也可以像环境变量一样用 export 导出<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   <span class="function"><span class="title">foo</span></span>() &#123;<span class="built_in">echo</span> <span class="string">"This is foo function"</span>&#125;</span><br><span class="line">➜   <span class="built_in">export</span> -f foo</span><br><span class="line"><span class="function"><span class="title">foo</span></span> () &#123;</span><br><span class="line">	<span class="built_in">echo</span> <span class="string">"This is foo function"</span></span><br><span class="line">&#125;</span><br><span class="line">➜   foo</span><br><span class="line">This is foo <span class="keyword">function</span></span><br><span class="line">➜</span><br></pre></td></tr></table></figure></p>
-<h4 id="3-读取命令返回值"><a href="#3-读取命令返回值" class="headerlink" title="3. 读取命令返回值"></a>3. 读取命令返回值</h4><p>命令的返回值被保存在变量 <code>$?</code> 中<br>返回值被称为 <strong>退出状态</strong> 。它可用于确定命令执行成功与否。如果命令成功退出，那么退出状态为0，否则为非0.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   cat success_test.sh </span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#file name: success_test.sh</span></span><br><span class="line"><span class="comment">#对命令行参数求值，比如 success_test.sh `ls | grep txt`</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"parameter is :"</span><span class="variable">$@</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">eval</span> <span class="variable">$@</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ $? -eq 0 ];</span><br><span class="line"><span class="keyword">then</span> </span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"<span class="variable">$CMD</span> executed successfully."</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"<span class="variable">$CMD</span> terminated unsuccessfully."</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
-<p>执行：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   success_test.sh <span class="string">'ls'</span></span><br><span class="line">parameter is :ls</span><br><span class="line">certbot-auto	t1		t3		test.sh</span><br><span class="line">success_test.sh	t2		test.jsonnet</span><br><span class="line"> executed successfully.</span><br></pre></td></tr></table></figure></p>
-<h4 id="4-向命令传递参数"><a href="#4-向命令传递参数" class="headerlink" title="4. 向命令传递参数"></a>4. 向命令传递参数</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   cat showArgs.sh</span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> `seq 1 <span class="variable">$#</span>`</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$i</span> is <span class="variable">$1</span></span><br><span class="line"><span class="built_in">shift</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-<p>执行：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   showArgs.sh a b cc</span><br><span class="line">1 is a</span><br><span class="line">2 is b</span><br><span class="line">3 is cc</span><br></pre></td></tr></table></figure></p>
-]]></content>
+    <title>Azure tutorial 01: overview</title>
+    <url>/2019/12/11/Azure-tutorial-01-overview/</url>
+    <content><![CDATA[]]></content>
       <categories>
-        <category>Shell</category>
+        <category>Cloud</category>
       </categories>
-      <tags>
-        <tag>Shell</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Crontab on Liunx or Jenkins</title>
-    <url>/2019/04/28/Crontab-on-Liunx-or-Jenkins/</url>
-    <content><![CDATA[<p>源起：<br><code>@midnight</code>  This will run at some point between 0:00 and 2:59</p>
-<p><code>H(0-30) 02 * * *</code> between 2:00 a.m. – 02:30 a.m.<br>//will build the same time every day</p>
-<p><strong>More Ref:</strong></p>
-<ul>
-<li><a href="https://crontab-generator.org/" target="_blank" rel="noopener">https://crontab-generator.org/</a></li>
-<li><a href="https://blogs.microsoft.co.il/meravk/2015/06/10/how-to-schedule-a-build-in-jenkins/" target="_blank" rel="noopener">https://blogs.microsoft.co.il/meravk/2015/06/10/how-to-schedule-a-build-in-jenkins/</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>jenkins</tag>
-      </tags>
   </entry>
   <entry>
     <title>Azure tutorial 02: Storage</title>
@@ -344,6 +308,42 @@
       <categories>
         <category>Cloud</category>
       </categories>
+  </entry>
+  <entry>
+    <title>Bash function skill</title>
+    <url>/2019/06/18/Bash-function-skill/</url>
+    <content><![CDATA[<p>bash 函数技巧</p>
+<h4 id="1-递归函数"><a href="#1-递归函数" class="headerlink" title="1. 递归函数"></a>1. 递归函数</h4><h4 id="2-导出函数"><a href="#2-导出函数" class="headerlink" title="2.导出函数"></a>2.导出函数</h4><p>函数也可以像环境变量一样用 export 导出<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   <span class="function"><span class="title">foo</span></span>() &#123;<span class="built_in">echo</span> <span class="string">"This is foo function"</span>&#125;</span><br><span class="line">➜   <span class="built_in">export</span> -f foo</span><br><span class="line"><span class="function"><span class="title">foo</span></span> () &#123;</span><br><span class="line">	<span class="built_in">echo</span> <span class="string">"This is foo function"</span></span><br><span class="line">&#125;</span><br><span class="line">➜   foo</span><br><span class="line">This is foo <span class="keyword">function</span></span><br><span class="line">➜</span><br></pre></td></tr></table></figure></p>
+<h4 id="3-读取命令返回值"><a href="#3-读取命令返回值" class="headerlink" title="3. 读取命令返回值"></a>3. 读取命令返回值</h4><p>命令的返回值被保存在变量 <code>$?</code> 中<br>返回值被称为 <strong>退出状态</strong> 。它可用于确定命令执行成功与否。如果命令成功退出，那么退出状态为0，否则为非0.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   cat success_test.sh </span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#file name: success_test.sh</span></span><br><span class="line"><span class="comment">#对命令行参数求值，比如 success_test.sh `ls | grep txt`</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"parameter is :"</span><span class="variable">$@</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">eval</span> <span class="variable">$@</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ $? -eq 0 ];</span><br><span class="line"><span class="keyword">then</span> </span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"<span class="variable">$CMD</span> executed successfully."</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"<span class="variable">$CMD</span> terminated unsuccessfully."</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+<p>执行：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   success_test.sh <span class="string">'ls'</span></span><br><span class="line">parameter is :ls</span><br><span class="line">certbot-auto	t1		t3		test.sh</span><br><span class="line">success_test.sh	t2		test.jsonnet</span><br><span class="line"> executed successfully.</span><br></pre></td></tr></table></figure></p>
+<h4 id="4-向命令传递参数"><a href="#4-向命令传递参数" class="headerlink" title="4. 向命令传递参数"></a>4. 向命令传递参数</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   cat showArgs.sh</span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> `seq 1 <span class="variable">$#</span>`</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$i</span> is <span class="variable">$1</span></span><br><span class="line"><span class="built_in">shift</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<p>执行：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   showArgs.sh a b cc</span><br><span class="line">1 is a</span><br><span class="line">2 is b</span><br><span class="line">3 is cc</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>Shell</category>
+      </categories>
+      <tags>
+        <tag>Shell</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Crontab on Liunx or Jenkins</title>
+    <url>/2019/04/28/Crontab-on-Liunx-or-Jenkins/</url>
+    <content><![CDATA[<p>源起：<br><code>@midnight</code>  This will run at some point between 0:00 and 2:59</p>
+<p><code>H(0-30) 02 * * *</code> between 2:00 a.m. – 02:30 a.m.<br>//will build the same time every day</p>
+<p><strong>More Ref:</strong></p>
+<ul>
+<li><a href="https://crontab-generator.org/" target="_blank" rel="noopener">https://crontab-generator.org/</a></li>
+<li><a href="https://blogs.microsoft.co.il/meravk/2015/06/10/how-to-schedule-a-build-in-jenkins/" target="_blank" rel="noopener">https://blogs.microsoft.co.il/meravk/2015/06/10/how-to-schedule-a-build-in-jenkins/</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>jenkins</tag>
+      </tags>
   </entry>
   <entry>
     <title>Docker Configuration</title>
@@ -583,40 +583,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Github Actions E02最小Demo</title>
-    <url>/2020/03/17/Github-Actions-E02%E6%9C%80%E5%B0%8FDemo/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
-<p><a href="https://www.devops-tech.cn/2020/03/16/Github-Actions-E01/" target="_blank" rel="noopener">前面一篇</a>已经说明一些概念，于是为了更好的理解，直接用一个简单的demo帮助进一步理解概念。</p>
-</blockquote>
-<p>示例仓库： <a href="https://github.com/cicd-draft/api-test-demo" target="_blank" rel="noopener">https://github.com/cicd-draft/api-test-demo</a></p>
-<h3 id="1-配置工作流"><a href="#1-配置工作流" class="headerlink" title="1.配置工作流"></a>1.配置工作流</h3><h4 id="1-1-步骤一"><a href="#1-1-步骤一" class="headerlink" title="1.1 步骤一"></a>1.1 步骤一</h4><p>在仓库的根目录，创建名为 .github/workflows 的目录以存储工作流程文件。</p>
-<h4 id="1-2-步骤二"><a href="#1-2-步骤二" class="headerlink" title="1.2 步骤二"></a>1.2 步骤二</h4><p>在 <code>.github/workflows</code> 中，为工作流程添加 .yml 或 .yaml 文件。 例如 .github/workflows/demo.yml。</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">my</span> <span class="string">workflow</span> <span class="string">demo</span> </span><br><span class="line"></span><br><span class="line"><span class="comment"># 此处使用最常见的触发方法，还有其他的很多方法可满足不同需求</span></span><br><span class="line"><span class="attr">on:</span> </span><br><span class="line"><span class="attr">  push:</span></span><br><span class="line"><span class="attr">    branches:</span> </span><br><span class="line"><span class="bullet">      -</span> <span class="string">master</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">#工作流程运行包括一项或多项作业。 作业默认是并行运行。 要按顺序运行作业，needs 关键词在其他作业上定义依赖项。</span></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="comment">#每项作业必须关联一个 ID。&lt;job_id&gt; 必须以字母或 _ 开头</span></span><br><span class="line"><span class="attr">  my_first_job:</span></span><br><span class="line">    <span class="comment"># 作业1名称为 Demo First job,也是作业显示在 GitHub 上的名称。</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Demo</span> <span class="string">First</span> <span class="string">job</span></span><br><span class="line">    <span class="comment"># 此作业在 Linux 上运行</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">My</span> <span class="string">step</span> <span class="string">one</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">echo</span> <span class="string">"Hello ,Github actions, I'm &gt;&gt;My step one&lt;&lt;"</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">My</span> <span class="string">step</span> <span class="string">two</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        echo "My step one begin..."</span></span><br><span class="line"><span class="string">        echo "doing..."</span></span><br><span class="line"><span class="string">        echo "Finished!!!"</span></span><br><span class="line"><span class="string"></span><span class="attr">  my_second_job:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Demo</span> <span class="string">Second</span> <span class="string">job</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">macos-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">check</span> <span class="string">OS</span> <span class="string">info</span></span><br><span class="line">        <span class="string">run</span> <span class="string">:</span> <span class="string">system_profiler</span> <span class="string">SPSoftwareDataType</span></span><br></pre></td></tr></table></figure>
-<h4 id="1-3-步骤三"><a href="#1-3-步骤三" class="headerlink" title="1.3 步骤三"></a>1.3 步骤三</h4><p>将工作流程文件中的更改提交到您希望其中运行工作流程的分支。</p>
-<p>到这里一个简单的demo就算完成了，可以去 <strong>Actions</strong> 按钮下查看运行情况。</p>
-<h3 id="2-管理工作流"><a href="#2-管理工作流" class="headerlink" title="2.管理工作流"></a>2.管理工作流</h3><p><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run" target="_blank" rel="noopener">官网链接</a>有详细说明以下每个操作中的细节</p>
-<blockquote>
-<p>由于图片太多,就不做搬运工了</p>
-</blockquote>
-<ul>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#about-workflow-permissions" target="_blank" rel="noopener">关于工作流程权限</a></li>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#about-workflow-management" target="_blank" rel="noopener">关于工作流程管理</a></li>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#viewing-your-workflow-history" target="_blank" rel="noopener">查看工作流程历史记录</a></li>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#canceling-a-workflow-run" target="_blank" rel="noopener">取消工作流程运行</a></li>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#viewing-logs-to-diagnose-failures" target="_blank" rel="noopener">查看日志以诊断故障</a></li>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#searching-logs" target="_blank" rel="noopener">搜索日志</a></li>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#downloading-logs" target="_blank" rel="noopener">下载日志</a></li>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#enabling-debug-logging" target="_blank" rel="noopener">启用调试日志</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>CICD</category>
-      </categories>
-      <tags>
-        <tag>GA</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Github Actions E04运行环境-runner</title>
     <url>/2020/03/21/Github-Actions-E04%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83-runner/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
@@ -694,6 +660,40 @@
 <li><a href="https://help.github.com/en/actions/reference/virtual-environments-for-github-hosted-runners#docker-container-filesystem" target="_blank" rel="noopener">Docker container filesystem</a></li>
 <li><a href="https://help.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners" target="_blank" rel="noopener">About self-hosted runners</a></li>
 <li><a href="https://help.github.com/en/github/setting-up-and-managing-billing-and-payments-on-github/viewing-your-github-actions-usage" target="_blank" rel="noopener">billing</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>CICD</category>
+      </categories>
+      <tags>
+        <tag>GA</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Github Actions E02最小Demo</title>
+    <url>/2020/03/17/Github-Actions-E02%E6%9C%80%E5%B0%8FDemo/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
+<p><a href="https://www.devops-tech.cn/2020/03/16/Github-Actions-E01/" target="_blank" rel="noopener">前面一篇</a>已经说明一些概念，于是为了更好的理解，直接用一个简单的demo帮助进一步理解概念。</p>
+</blockquote>
+<p>示例仓库： <a href="https://github.com/cicd-draft/api-test-demo" target="_blank" rel="noopener">https://github.com/cicd-draft/api-test-demo</a></p>
+<h3 id="1-配置工作流"><a href="#1-配置工作流" class="headerlink" title="1.配置工作流"></a>1.配置工作流</h3><h4 id="1-1-步骤一"><a href="#1-1-步骤一" class="headerlink" title="1.1 步骤一"></a>1.1 步骤一</h4><p>在仓库的根目录，创建名为 .github/workflows 的目录以存储工作流程文件。</p>
+<h4 id="1-2-步骤二"><a href="#1-2-步骤二" class="headerlink" title="1.2 步骤二"></a>1.2 步骤二</h4><p>在 <code>.github/workflows</code> 中，为工作流程添加 .yml 或 .yaml 文件。 例如 .github/workflows/demo.yml。</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">my</span> <span class="string">workflow</span> <span class="string">demo</span> </span><br><span class="line"></span><br><span class="line"><span class="comment"># 此处使用最常见的触发方法，还有其他的很多方法可满足不同需求</span></span><br><span class="line"><span class="attr">on:</span> </span><br><span class="line"><span class="attr">  push:</span></span><br><span class="line"><span class="attr">    branches:</span> </span><br><span class="line"><span class="bullet">      -</span> <span class="string">master</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">#工作流程运行包括一项或多项作业。 作业默认是并行运行。 要按顺序运行作业，needs 关键词在其他作业上定义依赖项。</span></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="comment">#每项作业必须关联一个 ID。&lt;job_id&gt; 必须以字母或 _ 开头</span></span><br><span class="line"><span class="attr">  my_first_job:</span></span><br><span class="line">    <span class="comment"># 作业1名称为 Demo First job,也是作业显示在 GitHub 上的名称。</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Demo</span> <span class="string">First</span> <span class="string">job</span></span><br><span class="line">    <span class="comment"># 此作业在 Linux 上运行</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">My</span> <span class="string">step</span> <span class="string">one</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">echo</span> <span class="string">"Hello ,Github actions, I'm &gt;&gt;My step one&lt;&lt;"</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">My</span> <span class="string">step</span> <span class="string">two</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        echo "My step one begin..."</span></span><br><span class="line"><span class="string">        echo "doing..."</span></span><br><span class="line"><span class="string">        echo "Finished!!!"</span></span><br><span class="line"><span class="string"></span><span class="attr">  my_second_job:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Demo</span> <span class="string">Second</span> <span class="string">job</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">macos-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">check</span> <span class="string">OS</span> <span class="string">info</span></span><br><span class="line">        <span class="string">run</span> <span class="string">:</span> <span class="string">system_profiler</span> <span class="string">SPSoftwareDataType</span></span><br></pre></td></tr></table></figure>
+<h4 id="1-3-步骤三"><a href="#1-3-步骤三" class="headerlink" title="1.3 步骤三"></a>1.3 步骤三</h4><p>将工作流程文件中的更改提交到您希望其中运行工作流程的分支。</p>
+<p>到这里一个简单的demo就算完成了，可以去 <strong>Actions</strong> 按钮下查看运行情况。</p>
+<h3 id="2-管理工作流"><a href="#2-管理工作流" class="headerlink" title="2.管理工作流"></a>2.管理工作流</h3><p><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run" target="_blank" rel="noopener">官网链接</a>有详细说明以下每个操作中的细节</p>
+<blockquote>
+<p>由于图片太多,就不做搬运工了</p>
+</blockquote>
+<ul>
+<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#about-workflow-permissions" target="_blank" rel="noopener">关于工作流程权限</a></li>
+<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#about-workflow-management" target="_blank" rel="noopener">关于工作流程管理</a></li>
+<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#viewing-your-workflow-history" target="_blank" rel="noopener">查看工作流程历史记录</a></li>
+<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#canceling-a-workflow-run" target="_blank" rel="noopener">取消工作流程运行</a></li>
+<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#viewing-logs-to-diagnose-failures" target="_blank" rel="noopener">查看日志以诊断故障</a></li>
+<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#searching-logs" target="_blank" rel="noopener">搜索日志</a></li>
+<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#downloading-logs" target="_blank" rel="noopener">下载日志</a></li>
+<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#enabling-debug-logging" target="_blank" rel="noopener">启用调试日志</a></li>
 </ul>
 ]]></content>
       <categories>
@@ -1271,24 +1271,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Jenkins Unicode icons</title>
-    <url>/2019/07/04/Jenkins-Unicode-icons/</url>
-    <content><![CDATA[<h5 id="Unicode-icons-list"><a href="#Unicode-icons-list" class="headerlink" title="Unicode icons list:"></a>Unicode icons list:</h5><p>“\u2776” = ❶<br>“\u27A1” = ➡<br>“\u2756” = ❖<br>“\u273F” = ✿<br>“\u2795” = ➕</p>
-<p>“\u2713” = ✓<br>“\u2705” = ✅<br>“\u274E” = ❎<br>“\u2717” = ✗<br>“\u274C” = ❌</p>
-<p>“\u2600” = ☀<br>“\u2601” = ☁<br>“\u2622” = ☢<br>“\u2623” = ☣<br>“\u2639” = ☹<br>“\u263A” = ☺</p>
-<p>Example :<br>make stage name to a icon, or command message<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//declarative pipeline</span><br><span class="line">...</span><br><span class="line">    stages &#123;</span><br><span class="line">        stage(<span class="string">'\u270A RAISED FIST'</span>)&#123;</span><br><span class="line">            steps&#123;</span><br><span class="line">                script&#123;</span><br><span class="line">                    <span class="built_in">echo</span> <span class="string">"This is Stage One"</span></span><br><span class="line">                    currentBuild.displayName = <span class="string">"<span class="variable">$&#123;env.BUILD_NUMBER&#125;</span> -&gt; <span class="variable">$&#123;env.GIT_BRANCH&#125;</span>"</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">'\u273F Verify'</span> //u2700</span><br><span class="line"><span class="built_in">echo</span> <span class="string">'\u2620 kulou'</span> //u2600</span><br></pre></td></tr></table></figure>
-<p><strong>More Ref:</strong></p>
-<ul>
-<li><a href="http://www.fileformat.info/info/unicode/block/dingbats/list.htm" target="_blank" rel="noopener">More icons in the \u2700 Unicode Digbats block.</a></li>
-<li><a href="https://www.w3schools.com/charsets/ref_utf_symbols.asp" target="_blank" rel="noopener">More icons in the \u2600 range</a></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>jenkins</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Jenkins  add timestamps</title>
     <url>/2019/07/04/Jenkins-add-timestamps/</url>
     <content><![CDATA[<p><strong>Timestamper plugin</strong>: Adds timestamps to the Console Output</p>
@@ -1316,6 +1298,24 @@ pipeline {
 <p><strong>More Ref:</strong></p>
 <ul>
 <li><a href="https://plugins.jenkins.io/timestamper" target="_blank" rel="noopener">Timestamper</a></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>jenkins</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Jenkins Unicode icons</title>
+    <url>/2019/07/04/Jenkins-Unicode-icons/</url>
+    <content><![CDATA[<h5 id="Unicode-icons-list"><a href="#Unicode-icons-list" class="headerlink" title="Unicode icons list:"></a>Unicode icons list:</h5><p>“\u2776” = ❶<br>“\u27A1” = ➡<br>“\u2756” = ❖<br>“\u273F” = ✿<br>“\u2795” = ➕</p>
+<p>“\u2713” = ✓<br>“\u2705” = ✅<br>“\u274E” = ❎<br>“\u2717” = ✗<br>“\u274C” = ❌</p>
+<p>“\u2600” = ☀<br>“\u2601” = ☁<br>“\u2622” = ☢<br>“\u2623” = ☣<br>“\u2639” = ☹<br>“\u263A” = ☺</p>
+<p>Example :<br>make stage name to a icon, or command message<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//declarative pipeline</span><br><span class="line">...</span><br><span class="line">    stages &#123;</span><br><span class="line">        stage(<span class="string">'\u270A RAISED FIST'</span>)&#123;</span><br><span class="line">            steps&#123;</span><br><span class="line">                script&#123;</span><br><span class="line">                    <span class="built_in">echo</span> <span class="string">"This is Stage One"</span></span><br><span class="line">                    currentBuild.displayName = <span class="string">"<span class="variable">$&#123;env.BUILD_NUMBER&#125;</span> -&gt; <span class="variable">$&#123;env.GIT_BRANCH&#125;</span>"</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">'\u273F Verify'</span> //u2700</span><br><span class="line"><span class="built_in">echo</span> <span class="string">'\u2620 kulou'</span> //u2600</span><br></pre></td></tr></table></figure>
+<p><strong>More Ref:</strong></p>
+<ul>
+<li><a href="http://www.fileformat.info/info/unicode/block/dingbats/list.htm" target="_blank" rel="noopener">More icons in the \u2700 Unicode Digbats block.</a></li>
+<li><a href="https://www.w3schools.com/charsets/ref_utf_symbols.asp" target="_blank" rel="noopener">More icons in the \u2600 range</a></li>
 </ul>
 ]]></content>
       <tags>
@@ -1433,27 +1433,6 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>Makefile 105: syntax</title>
-    <url>/2019/07/05/Makefile-105-syntax/</url>
-    <content><![CDATA[<h5 id="5-1-注释"><a href="#5-1-注释" class="headerlink" title="5.1 注释"></a>5.1 注释</h5><p>井号（#）在Makefile中表示注释。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 这是注释</span></span><br><span class="line">result.txt: source.txt</span><br><span class="line">    <span class="comment"># 这是注释</span></span><br><span class="line">    cp source.txt result.txt <span class="comment"># 这也是注释</span></span><br></pre></td></tr></table></figure>
-<h5 id="5-2-回声（echoing）"><a href="#5-2-回声（echoing）" class="headerlink" title="5.2 回声（echoing）"></a>5.2 回声（echoing）</h5><p><code>@</code> suppress the normal ‘echo’ of the command that is executed.<br>正常情况下，make会打印每条命令，然后再执行，这就叫做回声（echoing）。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">test</span>:</span><br><span class="line">    <span class="comment"># 这是测试</span></span><br><span class="line">执行上面的规则，会得到下面的结果。</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ make <span class="built_in">test</span></span><br><span class="line"><span class="comment"># 这是测试</span></span><br></pre></td></tr></table></figure>
-<p>在命令的前面加上@，就可以关闭回声。<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">test</span>:</span><br><span class="line">    @<span class="comment"># 这是测试</span></span><br></pre></td></tr></table></figure></p>
-<h5 id="5-3-减号"><a href="#5-3-减号" class="headerlink" title="5.3 减号-"></a>5.3 减号-</h5><p><code>-</code> means ignore the exit status of the command that is executed (normally, a non-zero exit status would stop that part of htat build) </p>
-<p>通常情况下，Makefile在执行到某一条命令时，如果返回值不正常，就会推出当前make进程，通常结合 rm ,mkdir 命令使用，（空文件或者文件不存在都会返回错误）</p>
-<p>这个符号的目的就是如果这条命令执行失败了继续执行，不影响后续命令的执行。<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   cat Makefile</span><br><span class="line">all: stage1 stage2</span><br><span class="line"></span><br><span class="line">stage1: ;@<span class="built_in">echo</span> <span class="string">"run stage1....."</span>;</span><br><span class="line">	@<span class="built_in">echo</span> <span class="string">"I am stage1"</span></span><br><span class="line"></span><br><span class="line">stage2:</span><br><span class="line">	<span class="built_in">echo</span> <span class="string">"I am stage2"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#执行</span></span><br><span class="line">➜   make</span><br><span class="line">run stage1.....</span><br><span class="line">I am stage1</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"I am stage2"</span></span><br><span class="line">I am stage2</span><br></pre></td></tr></table></figure></p>
-<h5 id="5-4-加号"><a href="#5-4-加号" class="headerlink" title="5.4 加号+"></a>5.4 加号+</h5><p><code>+</code> means execute this comand under make -n (when commands are not normally executed)<br>对于命令行前面加上加号+的含义，表明在使用 make -n 命令的时候，其他行都只是显示命令而不执行，只有+ 行的才会被执行。</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>makefile</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Makefile 102:Variable</title>
     <url>/2019/07/05/Makefile-102-Variable/</url>
     <content><![CDATA[<h5 id="Variables-common-use"><a href="#Variables-common-use" class="headerlink" title="Variables (common use)"></a>Variables (common use)</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">origin_file = hello.c</span><br><span class="line"></span><br><span class="line">hellofrommakefile: $(origin_file)</span><br><span class="line">	gcc hello.c -o hellofrommakefile</span><br></pre></td></tr></table></figure>
@@ -1479,12 +1458,47 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>Makefile 103: all &amp; clean</title>
+    <url>/2019/07/05/Makefile-103-all-clean/</url>
+    <content><![CDATA[<h5 id="makefile-中的all"><a href="#makefile-中的all" class="headerlink" title="makefile 中的all"></a>makefile 中的all</h5><p>因为 makefile 的执行流程是找到第一个目标作为最终生成的目标，如果顺序错乱了，makefile 就可能报错，all 方法就是解决这个问题而存在的，并且，all 方法可以让一个 makefile 生成多个目标。示例如下：</p>
+<h5 id="makefile-中的-clean"><a href="#makefile-中的-clean" class="headerlink" title="makefile 中的 clean"></a>makefile 中的 clean</h5><p>make clean 命令是用来清除目录下临时文件的，执行 clean 这个目标时，不需要任何依赖项，也就意味着，如果目录下有一个文件名为 clean 的话，执行 make clean 命令时会判断这个目标所依赖的内容是否有变化，如有变化则重新生成，无变化则跳过，而恰恰我们这个 clean 没写依赖规则！这将导致 clean 无论如何都不会被执行。解决这个问题的办法就是将 clean 方法声明为一个伪目标，做就就是让 clean 无论如何都更新，同样我们生成的 all 目标也可能会出现这种情况，所以我们将它们两个都声明为 <strong>伪目标</strong>，方法如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">clean:</span><br><span class="line">    -rm -rf $(obj) main app </span><br><span class="line"></span><br><span class="line">.PHONY:clean all</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>makefile</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Makefile 104: Help</title>
     <url>/2019/07/05/Makefile-104-Help/</url>
     <content><![CDATA[<p>help</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  example_stages cat Makefile</span><br><span class="line">.DEFAULT_GOAL := <span class="built_in">help</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">help</span>:	<span class="comment">## show this help</span></span><br><span class="line">	@fgrep -h <span class="string">"##"</span> $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e <span class="string">'s/\\$$//'</span> | sed -e <span class="string">'s/##//'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">stage1:  <span class="comment">## This message will show up when typing 'make help'</span></span><br><span class="line">	@<span class="built_in">echo</span> I am stage1</span><br><span class="line"></span><br><span class="line">stage2:</span><br><span class="line">	<span class="built_in">echo</span> <span class="string">"I am stage2"</span></span><br><span class="line">➜  example_stages make <span class="built_in">help</span></span><br><span class="line"><span class="built_in">help</span>:	 show this <span class="built_in">help</span></span><br><span class="line">stage1:   This message will show up when typing <span class="string">'make help'</span></span><br></pre></td></tr></table></figure>
 <p>output:</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   make <span class="built_in">help</span></span><br><span class="line"><span class="built_in">help</span>:	 show this <span class="built_in">help</span></span><br><span class="line">stage1:   This message will show up when typing <span class="string">'make help'</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>makefile</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Makefile 105: syntax</title>
+    <url>/2019/07/05/Makefile-105-syntax/</url>
+    <content><![CDATA[<h5 id="5-1-注释"><a href="#5-1-注释" class="headerlink" title="5.1 注释"></a>5.1 注释</h5><p>井号（#）在Makefile中表示注释。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 这是注释</span></span><br><span class="line">result.txt: source.txt</span><br><span class="line">    <span class="comment"># 这是注释</span></span><br><span class="line">    cp source.txt result.txt <span class="comment"># 这也是注释</span></span><br></pre></td></tr></table></figure>
+<h5 id="5-2-回声（echoing）"><a href="#5-2-回声（echoing）" class="headerlink" title="5.2 回声（echoing）"></a>5.2 回声（echoing）</h5><p><code>@</code> suppress the normal ‘echo’ of the command that is executed.<br>正常情况下，make会打印每条命令，然后再执行，这就叫做回声（echoing）。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">test</span>:</span><br><span class="line">    <span class="comment"># 这是测试</span></span><br><span class="line">执行上面的规则，会得到下面的结果。</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ make <span class="built_in">test</span></span><br><span class="line"><span class="comment"># 这是测试</span></span><br></pre></td></tr></table></figure>
+<p>在命令的前面加上@，就可以关闭回声。<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">test</span>:</span><br><span class="line">    @<span class="comment"># 这是测试</span></span><br></pre></td></tr></table></figure></p>
+<h5 id="5-3-减号"><a href="#5-3-减号" class="headerlink" title="5.3 减号-"></a>5.3 减号-</h5><p><code>-</code> means ignore the exit status of the command that is executed (normally, a non-zero exit status would stop that part of htat build) </p>
+<p>通常情况下，Makefile在执行到某一条命令时，如果返回值不正常，就会推出当前make进程，通常结合 rm ,mkdir 命令使用，（空文件或者文件不存在都会返回错误）</p>
+<p>这个符号的目的就是如果这条命令执行失败了继续执行，不影响后续命令的执行。<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   cat Makefile</span><br><span class="line">all: stage1 stage2</span><br><span class="line"></span><br><span class="line">stage1: ;@<span class="built_in">echo</span> <span class="string">"run stage1....."</span>;</span><br><span class="line">	@<span class="built_in">echo</span> <span class="string">"I am stage1"</span></span><br><span class="line"></span><br><span class="line">stage2:</span><br><span class="line">	<span class="built_in">echo</span> <span class="string">"I am stage2"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#执行</span></span><br><span class="line">➜   make</span><br><span class="line">run stage1.....</span><br><span class="line">I am stage1</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"I am stage2"</span></span><br><span class="line">I am stage2</span><br></pre></td></tr></table></figure></p>
+<h5 id="5-4-加号"><a href="#5-4-加号" class="headerlink" title="5.4 加号+"></a>5.4 加号+</h5><p><code>+</code> means execute this comand under make -n (when commands are not normally executed)<br>对于命令行前面加上加号+的含义，表明在使用 make -n 命令的时候，其他行都只是显示命令而不执行，只有+ 行的才会被执行。</p>
 ]]></content>
       <categories>
         <category>Linux</category>
@@ -1501,20 +1515,6 @@ pipeline {
 <p>（3）subst 函数</p>
 <p>（4）patsubst函数</p>
 <p>（5）替换后缀名</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>makefile</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Makefile 103: all &amp; clean</title>
-    <url>/2019/07/05/Makefile-103-all-clean/</url>
-    <content><![CDATA[<h5 id="makefile-中的all"><a href="#makefile-中的all" class="headerlink" title="makefile 中的all"></a>makefile 中的all</h5><p>因为 makefile 的执行流程是找到第一个目标作为最终生成的目标，如果顺序错乱了，makefile 就可能报错，all 方法就是解决这个问题而存在的，并且，all 方法可以让一个 makefile 生成多个目标。示例如下：</p>
-<h5 id="makefile-中的-clean"><a href="#makefile-中的-clean" class="headerlink" title="makefile 中的 clean"></a>makefile 中的 clean</h5><p>make clean 命令是用来清除目录下临时文件的，执行 clean 这个目标时，不需要任何依赖项，也就意味着，如果目录下有一个文件名为 clean 的话，执行 make clean 命令时会判断这个目标所依赖的内容是否有变化，如有变化则重新生成，无变化则跳过，而恰恰我们这个 clean 没写依赖规则！这将导致 clean 无论如何都不会被执行。解决这个问题的办法就是将 clean 方法声明为一个伪目标，做就就是让 clean 无论如何都更新，同样我们生成的 all 目标也可能会出现这种情况，所以我们将它们两个都声明为 <strong>伪目标</strong>，方法如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">clean:</span><br><span class="line">    -rm -rf $(obj) main app </span><br><span class="line"></span><br><span class="line">.PHONY:clean all</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>Linux</category>
@@ -1547,33 +1547,6 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>Openshift E01 最常见的使用场景</title>
-    <url>/2021/01/10/Openshift-E01-%E6%9C%80%E5%B8%B8%E8%A7%81%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/</url>
-    <content><![CDATA[<p>暂时不介绍 openshift 的概念，也不介绍如何安装、部署，先使用一个例子来看看 openshift 能做什么。</p>
-<h3 id="新建一个项目"><a href="#新建一个项目" class="headerlink" title="新建一个项目"></a>新建一个项目</h3><p>在我的本地，使用developer/developer登陆 OpenShift控制台,右上角点击 <code>+Create Project</code></p>
-<ul>
-<li>Name -&gt; <code>mybank</code></li>
-<li>Display Name -&gt; <code>MyBank</code></li>
-<li>Description- &gt; <code>MyBank Application</code></li>
-</ul>
-<p>新建之后，去到 <code>MyBank</code> project, <code>Overview</code>, <code>Browse Catalog</code>  <code>Wildfly</code>；补充如下截图的信息</p>
-<p><a href="https://imgchr.com/i/slR7a4" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/10/slR7a4.png" alt="slR7a4.png"></a></p>
-<p>Application github repo url: <a href="https://github.com/nichochen/mybank-demo-maven" target="_blank" rel="noopener">https://github.com/nichochen/mybank-demo-maven</a></p>
-<p>点击 <code>Create</code> 按钮后，OpenShift就会创建一系列的后台对象，进而出发S2I流程。构建的过程需要连接互联网下载应用的源代码、Maven构建所需要的Jar包以及镜像。在我的电脑上clone后大概等待了20min，然后才继续后面的步骤。</p>
-<p><a href="https://imgchr.com/i/slIrq0" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/10/slIrq0.png" alt="slIrq0.png"></a></p>
-<p>我本地使用minishift搭建的OpenShift实验环境</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># login vm</span></span><br><span class="line">minishift ssh</span><br><span class="line"></span><br><span class="line"><span class="comment"># grep the image</span></span><br><span class="line">[docker@minishift ~]<span class="variable">$docker</span> images | grep bank</span><br><span class="line">172.30.1.1:5000/mybank/mybank                            latest              9f9a257dce21        8 minutes ago       961 MB</span><br></pre></td></tr></table></figure>
-<p>一切便都结束了，不要太省心～<br><a href="https://imgchr.com/i/slTjbt" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/10/slTjbt.png" alt="slTjbt.png"></a></p>
-<p>可以直接从浏览器访问应用程序了<br><a href="https://imgchr.com/i/sl7ZV0" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/10/sl7ZV0.png" alt="sl7ZV0.png"></a></p>
-]]></content>
-      <categories>
-        <category>CICD</category>
-      </categories>
-      <tags>
-        <tag>OpenShift</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Openshift E02 部署Jenkins服务</title>
     <url>/2021/01/10/Openshift-E02-%E9%83%A8%E7%BD%B2Jenkins%E6%9C%8D%E5%8A%A1/</url>
     <content><![CDATA[<p>OpenShift 项目默认提供了两个Jenkins部署模板, Jenkins-ephemeral 和 Jenkins-persistent</p>
@@ -1594,6 +1567,33 @@ pipeline {
 <p>删除干净后，可以用命令 <code>oc get all -o wide</code> 验证</p>
 <p>再来一次 </p>
 <p><code>oc new-app --template=jenkins-ephemeral --param=JENKINS_PASSWORD=welcome123</code></p>
+]]></content>
+      <categories>
+        <category>CICD</category>
+      </categories>
+      <tags>
+        <tag>OpenShift</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Openshift E01 最常见的使用场景</title>
+    <url>/2021/01/10/Openshift-E01-%E6%9C%80%E5%B8%B8%E8%A7%81%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/</url>
+    <content><![CDATA[<p>暂时不介绍 openshift 的概念，也不介绍如何安装、部署，先使用一个例子来看看 openshift 能做什么。</p>
+<h3 id="新建一个项目"><a href="#新建一个项目" class="headerlink" title="新建一个项目"></a>新建一个项目</h3><p>在我的本地，使用developer/developer登陆 OpenShift控制台,右上角点击 <code>+Create Project</code></p>
+<ul>
+<li>Name -&gt; <code>mybank</code></li>
+<li>Display Name -&gt; <code>MyBank</code></li>
+<li>Description- &gt; <code>MyBank Application</code></li>
+</ul>
+<p>新建之后，去到 <code>MyBank</code> project, <code>Overview</code>, <code>Browse Catalog</code>  <code>Wildfly</code>；补充如下截图的信息</p>
+<p><a href="https://imgchr.com/i/slR7a4" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/10/slR7a4.png" alt="slR7a4.png"></a></p>
+<p>Application github repo url: <a href="https://github.com/nichochen/mybank-demo-maven" target="_blank" rel="noopener">https://github.com/nichochen/mybank-demo-maven</a></p>
+<p>点击 <code>Create</code> 按钮后，OpenShift就会创建一系列的后台对象，进而出发S2I流程。构建的过程需要连接互联网下载应用的源代码、Maven构建所需要的Jar包以及镜像。在我的电脑上clone后大概等待了20min，然后才继续后面的步骤。</p>
+<p><a href="https://imgchr.com/i/slIrq0" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/10/slIrq0.png" alt="slIrq0.png"></a></p>
+<p>我本地使用minishift搭建的OpenShift实验环境</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># login vm</span></span><br><span class="line">minishift ssh</span><br><span class="line"></span><br><span class="line"><span class="comment"># grep the image</span></span><br><span class="line">[docker@minishift ~]<span class="variable">$docker</span> images | grep bank</span><br><span class="line">172.30.1.1:5000/mybank/mybank                            latest              9f9a257dce21        8 minutes ago       961 MB</span><br></pre></td></tr></table></figure>
+<p>一切便都结束了，不要太省心～<br><a href="https://imgchr.com/i/slTjbt" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/10/slTjbt.png" alt="slTjbt.png"></a></p>
+<p>可以直接从浏览器访问应用程序了<br><a href="https://imgchr.com/i/sl7ZV0" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/10/sl7ZV0.png" alt="sl7ZV0.png"></a></p>
 ]]></content>
       <categories>
         <category>CICD</category>
@@ -1633,61 +1633,6 @@ pipeline {
       </categories>
       <tags>
         <tag>OpenShift</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>PPT Tools</title>
-    <url>/2019/08/25/PPT-Tools/</url>
-    <content><![CDATA[<p>TL;DR<br>  一个好的PPT，全靠自己一块一块地“搬砖”当然可以制作的很精良，但时间也就流逝了许多，介绍一些可能用到的工具，简化这些制作的步骤。</p>
-<ul>
-<li>Coolors 网站配色 <a href="https://coolors.co/" target="_blank" rel="noopener">https://coolors.co/</a></li>
-<li>Lorem Ipsum 假文生成器  <a href="https://www.lipsum.com/feed/html" target="_blank" rel="noopener">https://www.lipsum.com/feed/html</a></li>
-<li>QR Code 產生器 <a href="https://qr.ioi.tw/zh/" target="_blank" rel="noopener">https://qr.ioi.tw/zh/</a></li>
-<li>图片转文字<ul>
-<li><a href="http://www.i2ocr.com/" target="_blank" rel="noopener">http://www.i2ocr.com/</a>  (英文)</li>
-<li><a href="http://www.pdfdo.com/image-to-txt.aspx" target="_blank" rel="noopener">http://www.pdfdo.com/image-to-txt.aspx</a> （中文）</li>
-</ul>
-</li>
-<li><p>词云图工具 </p>
-<ul>
-<li><a href="https://wordart.com/create" target="_blank" rel="noopener">https://wordart.com/create</a> （中文要用Noto Sans S Chinese）</li>
-<li><a href="https://www.weiciyun.com/create.html" target="_blank" rel="noopener">https://www.weiciyun.com/create.html</a> （国产，还要登录）</li>
-</ul>
-</li>
-<li><p>各种转换 <a href="https://convertio.co/" target="_blank" rel="noopener">https://convertio.co/</a></p>
-</li>
-<li>Icon 小图标网站<ul>
-<li><a href="https://www.flaticon.com/" target="_blank" rel="noopener">https://www.flaticon.com/</a></li>
-<li><a href="https://remixicon.com/" target="_blank" rel="noopener">https://remixicon.com/</a></li>
-<li><a href="http://www.iconfont.cn/" target="_blank" rel="noopener">http://www.iconfont.cn/</a></li>
-</ul>
-</li>
-<li>智能识别线条，画图工具  <a href="https://www.autodraw.com/" target="_blank" rel="noopener">https://www.autodraw.com/</a></li>
-<li>在线消除背景  <a href="https://www.remove.bg/" target="_blank" rel="noopener">https://www.remove.bg/</a></li>
-<li>免费背景音乐  <a href="https://www.youtube.com/audiolibrary/music?nv=1" target="_blank" rel="noopener">https://www.youtube.com/audiolibrary/music?nv=1</a></li>
-<li>炫酷的几何图形  <a href="http://weavesilk.com/" target="_blank" rel="noopener">http://weavesilk.com/</a></li>
-<li><p>炫酷图形工具集合 <a href="https://wangyasai.github.io/designtools.html" target="_blank" rel="noopener">https://wangyasai.github.io/designtools.html</a> （包含黑客背景、speed line等）</p>
-<ul>
-<li><p><a href="https://github.com/vkarampinis/awesome-icons" target="_blank" rel="noopener">https://github.com/vkarampinis/awesome-icons</a> 各种 + 在线编辑svg格式，拖动、改变颜色等 <a href="https://svg.wxeditor.com/" target="_blank" rel="noopener">https://svg.wxeditor.com/</a></p>
-</li>
-<li><p>有矢量、有动画效果、可以调节组件颜色的素材王章 <a href="https://stories.freepik.com/，教程可见[这里](https://www.youtube.com/watch?v=HbGhZR-tiJA)" target="_blank" rel="noopener">https://stories.freepik.com/，教程可见[这里](https://www.youtube.com/watch?v=HbGhZR-tiJA)</a></p>
-</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>Icons made by Smashicons、iconixar、Vitaly Gorbachev、Vectors Market from <a href="http://www.flaticon.com" target="_blank" rel="noopener">www.flaticon.com</a></p>
-</blockquote>
-<p><a href="http://smallpdf.com/cn" target="_blank" rel="noopener">http://smallpdf.com/cn</a></p>
-<p>用markdown写ppt，并展示的工具</p>
-<ul>
-<li><a href="https://cn.sli.dev/" target="_blank" rel="noopener">https://cn.sli.dev/</a></li>
-<li><a href="https://mark.show/" target="_blank" rel="noopener">https://mark.show/</a></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>Tools</tag>
-        <tag>PPT</tag>
       </tags>
   </entry>
   <entry>
@@ -1744,6 +1689,61 @@ pipeline {
       </categories>
       <tags>
         <tag>Shell</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PPT Tools</title>
+    <url>/2019/08/25/PPT-Tools/</url>
+    <content><![CDATA[<p>TL;DR<br>  一个好的PPT，全靠自己一块一块地“搬砖”当然可以制作的很精良，但时间也就流逝了许多，介绍一些可能用到的工具，简化这些制作的步骤。</p>
+<ul>
+<li>Coolors 网站配色 <a href="https://coolors.co/" target="_blank" rel="noopener">https://coolors.co/</a></li>
+<li>Lorem Ipsum 假文生成器  <a href="https://www.lipsum.com/feed/html" target="_blank" rel="noopener">https://www.lipsum.com/feed/html</a></li>
+<li>QR Code 產生器 <a href="https://qr.ioi.tw/zh/" target="_blank" rel="noopener">https://qr.ioi.tw/zh/</a></li>
+<li>图片转文字<ul>
+<li><a href="http://www.i2ocr.com/" target="_blank" rel="noopener">http://www.i2ocr.com/</a>  (英文)</li>
+<li><a href="http://www.pdfdo.com/image-to-txt.aspx" target="_blank" rel="noopener">http://www.pdfdo.com/image-to-txt.aspx</a> （中文）</li>
+</ul>
+</li>
+<li><p>词云图工具 </p>
+<ul>
+<li><a href="https://wordart.com/create" target="_blank" rel="noopener">https://wordart.com/create</a> （中文要用Noto Sans S Chinese）</li>
+<li><a href="https://www.weiciyun.com/create.html" target="_blank" rel="noopener">https://www.weiciyun.com/create.html</a> （国产，还要登录）</li>
+</ul>
+</li>
+<li><p>各种转换 <a href="https://convertio.co/" target="_blank" rel="noopener">https://convertio.co/</a></p>
+</li>
+<li>Icon 小图标网站<ul>
+<li><a href="https://www.flaticon.com/" target="_blank" rel="noopener">https://www.flaticon.com/</a></li>
+<li><a href="https://remixicon.com/" target="_blank" rel="noopener">https://remixicon.com/</a></li>
+<li><a href="http://www.iconfont.cn/" target="_blank" rel="noopener">http://www.iconfont.cn/</a></li>
+</ul>
+</li>
+<li>智能识别线条，画图工具  <a href="https://www.autodraw.com/" target="_blank" rel="noopener">https://www.autodraw.com/</a></li>
+<li>在线消除背景  <a href="https://www.remove.bg/" target="_blank" rel="noopener">https://www.remove.bg/</a></li>
+<li>免费背景音乐  <a href="https://www.youtube.com/audiolibrary/music?nv=1" target="_blank" rel="noopener">https://www.youtube.com/audiolibrary/music?nv=1</a></li>
+<li>炫酷的几何图形  <a href="http://weavesilk.com/" target="_blank" rel="noopener">http://weavesilk.com/</a></li>
+<li><p>炫酷图形工具集合 <a href="https://wangyasai.github.io/designtools.html" target="_blank" rel="noopener">https://wangyasai.github.io/designtools.html</a> （包含黑客背景、speed line等）</p>
+<ul>
+<li><p><a href="https://github.com/vkarampinis/awesome-icons" target="_blank" rel="noopener">https://github.com/vkarampinis/awesome-icons</a> 各种 + 在线编辑svg格式，拖动、改变颜色等 <a href="https://svg.wxeditor.com/" target="_blank" rel="noopener">https://svg.wxeditor.com/</a></p>
+</li>
+<li><p>有矢量、有动画效果、可以调节组件颜色的素材王章 <a href="https://stories.freepik.com/，教程可见[这里](https://www.youtube.com/watch?v=HbGhZR-tiJA)" target="_blank" rel="noopener">https://stories.freepik.com/，教程可见[这里](https://www.youtube.com/watch?v=HbGhZR-tiJA)</a></p>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>Icons made by Smashicons、iconixar、Vitaly Gorbachev、Vectors Market from <a href="http://www.flaticon.com" target="_blank" rel="noopener">www.flaticon.com</a></p>
+</blockquote>
+<p><a href="http://smallpdf.com/cn" target="_blank" rel="noopener">http://smallpdf.com/cn</a></p>
+<p>用markdown写ppt，并展示的工具</p>
+<ul>
+<li><a href="https://cn.sli.dev/" target="_blank" rel="noopener">https://cn.sli.dev/</a></li>
+<li><a href="https://mark.show/" target="_blank" rel="noopener">https://mark.show/</a></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>Tools</tag>
+        <tag>PPT</tag>
       </tags>
   </entry>
   <entry>
@@ -2596,41 +2596,28 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>http vs curl</title>
-    <url>/2019/06/19/http-vs-curl/</url>
-    <content><![CDATA[<blockquote>
-<p>http不仅是个协议，还是一个命令。</p>
-</blockquote>
-<p>Httpie 是个 HTTP 的命令行客户端，http就是它的命令。</p>
-<h4 id="1-Httpie-是什么"><a href="#1-Httpie-是什么" class="headerlink" title="1. Httpie 是什么"></a>1. Httpie 是什么</h4><p>Httpie （aych-tee-tee-pie）是一个 HTTP 的命令行客户端。其目标是让 CLI 和 web 服务之间的交互尽可能的人性化。你可以用它很方便的用 http 的命令调试接口，最常用的应该就是 GET 和 POST 了。</p>
-<h4 id="2-安装"><a href="#2-安装" class="headerlink" title="2. 安装"></a>2. 安装</h4><p>Linux上安装</p>
-<ul>
-<li><p>Debian, Ubuntu或Linux Mint<br><code>sudo apt-get install httpie</code></p>
+    <title>highlight code on slide/ppt</title>
+    <url>/2019/08/22/highlight-code-on-slide-ppt/</url>
+    <content><![CDATA[<p><strong>only for mac</strong></p>
+<p><strong>问题</strong><br>写ppt的时候代码如何呈现，能够看起来比较明显，更好是根据不同语言高亮</p>
+<p><strong>解决方案</strong><br>highlight</p>
+<ol>
+<li><p>Install<br><code>brew install highlight</code></p>
 </li>
-<li><p>Fedora，CentOS/RHEL<br><code>sudo yum install httpie</code></p>
+<li><p>Use<br><code>hightlight -l -O rtf your_code.sh | pbcopy</code></p>
 </li>
-</ul>
-<p>或者使用python的方式来安装<br><code>sudo  pip install --upgrade httpie</code></p>
+</ol>
 <ul>
-<li>Mac OSX<br><code>brew install httpie</code></li>
+<li>hightlight –help 可以查看文档，</li>
+<li>-l 显示行号，-O rtf为格式化输出 rtf 格式文本</li>
+<li>pbcopy 是内置剪贴板</li>
 </ul>
-<h4 id="3-http-command-能做什么"><a href="#3-http-command-能做什么" class="headerlink" title="3. http command 能做什么"></a>3. http command 能做什么</h4><blockquote>
-<p>curl能做的，大部分都能做。</p>
-</blockquote>
-<p>HTTPie 基于 python 编写，内部使用了 Requests 和 Pygments 库。</p>
-<p>HTTPie 的用法要比 cURL 直观很多，没有那么多选项，基本上心里怎么想就怎么写，默认输入和输出都是 json 格式 (而 cURL 必须要指定 -H “Content-Type: application/json”)。我们同样实现上面获取 token 的功能，效果如下:</p>
-<ul>
-<li>example 1:<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  tmp http https://www.devops-tech.cn/</span><br><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Accept-Ranges: bytes</span><br><span class="line">Access-Control-Allow-Origin: *</span><br><span class="line">Age: 7</span><br><span class="line">Cache-Control: max-age=600</span><br><span class="line">Connection: keep-alive</span><br><span class="line">Content-Encoding: gzip</span><br><span class="line">Content-Length: 2510</span><br><span class="line">Content-Type: text/html; charset=utf-8</span><br><span class="line">Date: Wed, 19 Jun 2019 08:28:44 GMT</span><br><span class="line">ETag: W/<span class="string">"5d0848b1-2d66"</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>others<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">http</span><br><span class="line"></span><br><span class="line">HTTPie: HTTP client, a user-friendly cURL replacement.</span><br><span class="line"></span><br><span class="line">- Download a URL to a file:</span><br><span class="line">    http -d example.org</span><br><span class="line"></span><br><span class="line">- Send form-encoded data:</span><br><span class="line">    http -f example.org name=<span class="string">'bob'</span> profile_picture@<span class="string">'bob.png'</span></span><br><span class="line"></span><br><span class="line">- Send JSON object:</span><br><span class="line">    http example.org name=<span class="string">'bob'</span></span><br><span class="line"></span><br><span class="line">- Specify an HTTP method:</span><br><span class="line">    http HEAD example.org</span><br><span class="line"></span><br><span class="line">- Include an extra header:</span><br><span class="line">    http example.org X-MyHeader:123</span><br><span class="line"></span><br><span class="line">- Pass a user name and password <span class="keyword">for</span> server authentication:</span><br><span class="line">    http -a username:password example.org</span><br><span class="line"></span><br><span class="line">- Specify raw request body via stdin:</span><br><span class="line">    cat data.txt | http PUT example.org</span><br></pre></td></tr></table></figure></p>
-<h4 id="4-特点："><a href="#4-特点：" class="headerlink" title="4. 特点："></a>4. 特点：</h4><p>1、直观的语法<br>2、格式化和色彩化的终端输出<br>3、内置 JSON 支持<br>4、支持上传表单和文件<br>5、HTTPS、代理和认证支持<br>6、支持任意请求数据<br>7、自定义标题<br>8、持久性会话<br>9、类 Wget 下载<br>10、支持 Python 2.6, 2.7 和 3.x<br>11、支持 Linux, Mac OS X 和 Windows<br>12、插件<br>13、文档<br>14、测试覆盖率</p>
+<p>到PPT里粘贴就行了，Keynote 和 PowerPoint 都可以使用.<br>example:<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  ~ cat output.sh</span><br><span class="line">docker <span class="built_in">exec</span> -it -u root tw-jenkins bash</span><br><span class="line"></span><br><span class="line">chmod 777 /var/run/docker.sock</span><br><span class="line">apt-get update &amp;&amp; \</span><br><span class="line">apt-get -y install apt-transport-https \</span><br><span class="line">     ca-certificates \</span><br><span class="line">     curl \</span><br><span class="line">     gnupg2 \</span><br><span class="line">     software-properties-common &amp;&amp; \</span><br><span class="line">curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; <span class="built_in">echo</span> <span class="string">"<span class="variable">$ID</span>"</span>)/gpg &gt; /tmp/dkey; apt-key add /tmp/dkey &amp;&amp; \</span><br><span class="line">add-apt-repository \</span><br><span class="line">    <span class="string">"deb [arch=amd64] https://download.docker.com/linux/<span class="variable">$(. /etc/os-release; echo     "$ID")</span> \</span></span><br><span class="line"><span class="string">    <span class="variable">$(lsb_release -cs)</span> \</span></span><br><span class="line"><span class="string">stable"</span> &amp;&amp; \</span><br><span class="line">apt-get update &amp;&amp; \</span><br><span class="line">apt-get -y install docker-ce</span><br></pre></td></tr></table></figure></p>
+<p><code>➜  ~ highlight -l -O rtf output.sh | pbcopy</code></p>
+<p><img src="/images/highlight_demo01.png" alt="highlight_demo01.png"></p>
 ]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
       <tags>
-        <tag>Shell</tag>
+        <tag>PPT</tag>
       </tags>
   </entry>
   <entry>
@@ -2679,46 +2666,35 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>highlight code on slide/ppt</title>
-    <url>/2019/08/22/highlight-code-on-slide-ppt/</url>
-    <content><![CDATA[<p><strong>only for mac</strong></p>
-<p><strong>问题</strong><br>写ppt的时候代码如何呈现，能够看起来比较明显，更好是根据不同语言高亮</p>
-<p><strong>解决方案</strong><br>highlight</p>
-<ol>
-<li><p>Install<br><code>brew install highlight</code></p>
-</li>
-<li><p>Use<br><code>hightlight -l -O rtf your_code.sh | pbcopy</code></p>
-</li>
-</ol>
+    <title>http vs curl</title>
+    <url>/2019/06/19/http-vs-curl/</url>
+    <content><![CDATA[<blockquote>
+<p>http不仅是个协议，还是一个命令。</p>
+</blockquote>
+<p>Httpie 是个 HTTP 的命令行客户端，http就是它的命令。</p>
+<h4 id="1-Httpie-是什么"><a href="#1-Httpie-是什么" class="headerlink" title="1. Httpie 是什么"></a>1. Httpie 是什么</h4><p>Httpie （aych-tee-tee-pie）是一个 HTTP 的命令行客户端。其目标是让 CLI 和 web 服务之间的交互尽可能的人性化。你可以用它很方便的用 http 的命令调试接口，最常用的应该就是 GET 和 POST 了。</p>
+<h4 id="2-安装"><a href="#2-安装" class="headerlink" title="2. 安装"></a>2. 安装</h4><p>Linux上安装</p>
 <ul>
-<li>hightlight –help 可以查看文档，</li>
-<li>-l 显示行号，-O rtf为格式化输出 rtf 格式文本</li>
-<li>pbcopy 是内置剪贴板</li>
-</ul>
-<p>到PPT里粘贴就行了，Keynote 和 PowerPoint 都可以使用.<br>example:<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  ~ cat output.sh</span><br><span class="line">docker <span class="built_in">exec</span> -it -u root tw-jenkins bash</span><br><span class="line"></span><br><span class="line">chmod 777 /var/run/docker.sock</span><br><span class="line">apt-get update &amp;&amp; \</span><br><span class="line">apt-get -y install apt-transport-https \</span><br><span class="line">     ca-certificates \</span><br><span class="line">     curl \</span><br><span class="line">     gnupg2 \</span><br><span class="line">     software-properties-common &amp;&amp; \</span><br><span class="line">curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; <span class="built_in">echo</span> <span class="string">"<span class="variable">$ID</span>"</span>)/gpg &gt; /tmp/dkey; apt-key add /tmp/dkey &amp;&amp; \</span><br><span class="line">add-apt-repository \</span><br><span class="line">    <span class="string">"deb [arch=amd64] https://download.docker.com/linux/<span class="variable">$(. /etc/os-release; echo     "$ID")</span> \</span></span><br><span class="line"><span class="string">    <span class="variable">$(lsb_release -cs)</span> \</span></span><br><span class="line"><span class="string">stable"</span> &amp;&amp; \</span><br><span class="line">apt-get update &amp;&amp; \</span><br><span class="line">apt-get -y install docker-ce</span><br></pre></td></tr></table></figure></p>
-<p><code>➜  ~ highlight -l -O rtf output.sh | pbcopy</code></p>
-<p><img src="/images/highlight_demo01.png" alt="highlight_demo01.png"></p>
-]]></content>
-      <tags>
-        <tag>PPT</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>mktemp command</title>
-    <url>/2019/05/07/mktemp-command/</url>
-    <content><![CDATA[<p>最适合存储临时数据的位置是/tmp, <strong>mktemp</strong> 命令可以为临时文件或目录创建唯一的名字</p>
-<p>Create a temporary file or directory.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mktemp</span><br><span class="line"></span><br><span class="line">Create a temporary file or directory.</span><br><span class="line"></span><br><span class="line">- Create an empty temporary file and return the absolute path to it:</span><br><span class="line">    mktemp</span><br><span class="line"></span><br><span class="line">- Create a temporary directory and return the absolute path to it:</span><br><span class="line">    mktemp -d</span><br><span class="line"></span><br><span class="line">- Create a temporary file with a specified suffix:</span><br><span class="line">    mktemp --suffix &quot;.txt&quot;</span><br></pre></td></tr></table></figure>
-<h4 id="1-create-temporary-file-创建临时目录"><a href="#1-create-temporary-file-创建临时目录" class="headerlink" title="1.create temporary file (创建临时目录)"></a>1.create temporary file (创建临时目录)</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$filename</span>=`mktemp`</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$filename</span></span><br><span class="line">/tmp/tmp.8xefliegnD9</span><br></pre></td></tr></table></figure>
-<h4 id="2-create-temporary-directory-创建临时目录"><a href="#2-create-temporary-directory-创建临时目录" class="headerlink" title="2. create temporary directory (创建临时目录)"></a>2. create temporary directory (创建临时目录)</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dirname=`mktemp -d`</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$dirname</span></span><br><span class="line">tmp.NJ8dhf6wk</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>If you just want to generate a filename and don’t want to create the actual file or directory, you can(如果仅仅是想生成文件名，不希望创建实际的文件或目录，可以):<br><code>mktemp -u</code></p>
+<li><p>Debian, Ubuntu或Linux Mint<br><code>sudo apt-get install httpie</code></p>
 </li>
-<li><p>Create a temporary filename based on the tempplate(基于模板创建临时文件名)</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  qr_blog mktemp study.XXX</span><br><span class="line">study.UWT</span><br><span class="line">➜  qr_blog mktemp study.XXX</span><br><span class="line">study.Usm</span><br><span class="line">➜  qr_blog mktemp study.XXX</span><br><span class="line">study.M6a</span><br></pre></td></tr></table></figure>
+<li><p>Fedora，CentOS/RHEL<br><code>sudo yum install httpie</code></p>
 </li>
 </ul>
-<p>Mac OS 与linux用法略有区别，请视情况使用</p>
+<p>或者使用python的方式来安装<br><code>sudo  pip install --upgrade httpie</code></p>
+<ul>
+<li>Mac OSX<br><code>brew install httpie</code></li>
+</ul>
+<h4 id="3-http-command-能做什么"><a href="#3-http-command-能做什么" class="headerlink" title="3. http command 能做什么"></a>3. http command 能做什么</h4><blockquote>
+<p>curl能做的，大部分都能做。</p>
+</blockquote>
+<p>HTTPie 基于 python 编写，内部使用了 Requests 和 Pygments 库。</p>
+<p>HTTPie 的用法要比 cURL 直观很多，没有那么多选项，基本上心里怎么想就怎么写，默认输入和输出都是 json 格式 (而 cURL 必须要指定 -H “Content-Type: application/json”)。我们同样实现上面获取 token 的功能，效果如下:</p>
+<ul>
+<li>example 1:<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  tmp http https://www.devops-tech.cn/</span><br><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Accept-Ranges: bytes</span><br><span class="line">Access-Control-Allow-Origin: *</span><br><span class="line">Age: 7</span><br><span class="line">Cache-Control: max-age=600</span><br><span class="line">Connection: keep-alive</span><br><span class="line">Content-Encoding: gzip</span><br><span class="line">Content-Length: 2510</span><br><span class="line">Content-Type: text/html; charset=utf-8</span><br><span class="line">Date: Wed, 19 Jun 2019 08:28:44 GMT</span><br><span class="line">ETag: W/<span class="string">"5d0848b1-2d66"</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>others<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">http</span><br><span class="line"></span><br><span class="line">HTTPie: HTTP client, a user-friendly cURL replacement.</span><br><span class="line"></span><br><span class="line">- Download a URL to a file:</span><br><span class="line">    http -d example.org</span><br><span class="line"></span><br><span class="line">- Send form-encoded data:</span><br><span class="line">    http -f example.org name=<span class="string">'bob'</span> profile_picture@<span class="string">'bob.png'</span></span><br><span class="line"></span><br><span class="line">- Send JSON object:</span><br><span class="line">    http example.org name=<span class="string">'bob'</span></span><br><span class="line"></span><br><span class="line">- Specify an HTTP method:</span><br><span class="line">    http HEAD example.org</span><br><span class="line"></span><br><span class="line">- Include an extra header:</span><br><span class="line">    http example.org X-MyHeader:123</span><br><span class="line"></span><br><span class="line">- Pass a user name and password <span class="keyword">for</span> server authentication:</span><br><span class="line">    http -a username:password example.org</span><br><span class="line"></span><br><span class="line">- Specify raw request body via stdin:</span><br><span class="line">    cat data.txt | http PUT example.org</span><br></pre></td></tr></table></figure></p>
+<h4 id="4-特点："><a href="#4-特点：" class="headerlink" title="4. 特点："></a>4. 特点：</h4><p>1、直观的语法<br>2、格式化和色彩化的终端输出<br>3、内置 JSON 支持<br>4、支持上传表单和文件<br>5、HTTPS、代理和认证支持<br>6、支持任意请求数据<br>7、自定义标题<br>8、持久性会话<br>9、类 Wget 下载<br>10、支持 Python 2.6, 2.7 和 3.x<br>11、支持 Linux, Mac OS X 和 Windows<br>12、插件<br>13、文档<br>14、测试覆盖率</p>
 ]]></content>
       <categories>
         <category>Linux</category>
@@ -2751,6 +2727,30 @@ pipeline {
 ]]></content>
       <tags>
         <tag>Tools</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>mktemp command</title>
+    <url>/2019/05/07/mktemp-command/</url>
+    <content><![CDATA[<p>最适合存储临时数据的位置是/tmp, <strong>mktemp</strong> 命令可以为临时文件或目录创建唯一的名字</p>
+<p>Create a temporary file or directory.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mktemp</span><br><span class="line"></span><br><span class="line">Create a temporary file or directory.</span><br><span class="line"></span><br><span class="line">- Create an empty temporary file and return the absolute path to it:</span><br><span class="line">    mktemp</span><br><span class="line"></span><br><span class="line">- Create a temporary directory and return the absolute path to it:</span><br><span class="line">    mktemp -d</span><br><span class="line"></span><br><span class="line">- Create a temporary file with a specified suffix:</span><br><span class="line">    mktemp --suffix &quot;.txt&quot;</span><br></pre></td></tr></table></figure>
+<h4 id="1-create-temporary-file-创建临时目录"><a href="#1-create-temporary-file-创建临时目录" class="headerlink" title="1.create temporary file (创建临时目录)"></a>1.create temporary file (创建临时目录)</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$filename</span>=`mktemp`</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$filename</span></span><br><span class="line">/tmp/tmp.8xefliegnD9</span><br></pre></td></tr></table></figure>
+<h4 id="2-create-temporary-directory-创建临时目录"><a href="#2-create-temporary-directory-创建临时目录" class="headerlink" title="2. create temporary directory (创建临时目录)"></a>2. create temporary directory (创建临时目录)</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dirname=`mktemp -d`</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$dirname</span></span><br><span class="line">tmp.NJ8dhf6wk</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>If you just want to generate a filename and don’t want to create the actual file or directory, you can(如果仅仅是想生成文件名，不希望创建实际的文件或目录，可以):<br><code>mktemp -u</code></p>
+</li>
+<li><p>Create a temporary filename based on the tempplate(基于模板创建临时文件名)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  qr_blog mktemp study.XXX</span><br><span class="line">study.UWT</span><br><span class="line">➜  qr_blog mktemp study.XXX</span><br><span class="line">study.Usm</span><br><span class="line">➜  qr_blog mktemp study.XXX</span><br><span class="line">study.M6a</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>Mac OS 与linux用法略有区别，请视情况使用</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Shell</tag>
       </tags>
   </entry>
   <entry>
@@ -3376,6 +3376,22 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>入门gpg</title>
+    <url>/2020/04/23/%E5%85%A5%E9%97%A8gpg/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>GPG 的全称是 GNU Privacy Guard ，可以看作是一个软件，可以用来进行密钥的管理。其实和我们用的一些图形化的密码管理类似，不过GPG 好像更多是命令行交互的，所以一般人不太习惯。另外，中间包含的概念也较多。</p>
+<p>用过enpass, 1password的可以将一些概念类比起来，比如 master password ， 子密码</p>
+<blockquote>
+<p>我们应该使用且只使用子密钥，主密钥应该放在一个绝对安全的地方。</p>
+</blockquote>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>在 Mac 上可以使用 Homebrew 安装 gopass</p>
+<p><code>brew install gopass</code></p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>生成主密钥<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gpg --full-generate-key</span><br></pre></td></tr></table></figure></p>
+<p><strong>交互</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜ gpg --edit-key 771xx601@qq.com</span><br><span class="line">gpg (GnuPG) 2.2.20; Copyright (C) 2020 Free Software Foundation, Inc.</span><br><span class="line">This is free software: you are free to change and redistribute it.</span><br><span class="line">There is NO WARRANTY, to the extent permitted by law.</span><br><span class="line"></span><br><span class="line">Secret key is available.</span><br><span class="line"></span><br><span class="line">sec  rsa2048/00C21CE66A8AE9E0</span><br><span class="line">     created: 2020-04-23  expires: 2022-04-23  usage: SC</span><br><span class="line">     trust: ultimate      validity: ultimate</span><br><span class="line">ssb  rsa2048/9DCC33D2FECB246F</span><br><span class="line">     created: 2020-04-23  expires: never       usage: E</span><br><span class="line">[ultimate] (1). qinrui &lt;771963601@qq.com&gt;</span><br><span class="line"></span><br><span class="line">gpg&gt;</span><br></pre></td></tr></table></figure>
+<p>请注意上面的字符串”sec  rsa2048/xxxxx”，斜杆后面就是”用户ID”的Hash字符串，可以用来替代”用户ID”。</p>
+]]></content>
+  </entry>
+  <entry>
     <title>Vivaldi入手</title>
     <url>/2020/04/09/%E5%85%A5%E6%89%8BVivaldi/</url>
     <content><![CDATA[<h3 id="0-前言"><a href="#0-前言" class="headerlink" title="0.前言"></a>0.前言</h3><p>最近才在一些论坛上听说 <strong>Vivaldi</strong> 浏览器的大名（我孤陋寡闻了😅）。毕竟入手一个浏览器工具又不花钱，那Chrome挺好用的，为什么要换？</p>
@@ -3428,22 +3444,6 @@ pipeline {
       <tags>
         <tag>Tools</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>入门gpg</title>
-    <url>/2020/04/23/%E5%85%A5%E9%97%A8gpg/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>GPG 的全称是 GNU Privacy Guard ，可以看作是一个软件，可以用来进行密钥的管理。其实和我们用的一些图形化的密码管理类似，不过GPG 好像更多是命令行交互的，所以一般人不太习惯。另外，中间包含的概念也较多。</p>
-<p>用过enpass, 1password的可以将一些概念类比起来，比如 master password ， 子密码</p>
-<blockquote>
-<p>我们应该使用且只使用子密钥，主密钥应该放在一个绝对安全的地方。</p>
-</blockquote>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>在 Mac 上可以使用 Homebrew 安装 gopass</p>
-<p><code>brew install gopass</code></p>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>生成主密钥<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gpg --full-generate-key</span><br></pre></td></tr></table></figure></p>
-<p><strong>交互</strong></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜ gpg --edit-key 771xx601@qq.com</span><br><span class="line">gpg (GnuPG) 2.2.20; Copyright (C) 2020 Free Software Foundation, Inc.</span><br><span class="line">This is free software: you are free to change and redistribute it.</span><br><span class="line">There is NO WARRANTY, to the extent permitted by law.</span><br><span class="line"></span><br><span class="line">Secret key is available.</span><br><span class="line"></span><br><span class="line">sec  rsa2048/00C21CE66A8AE9E0</span><br><span class="line">     created: 2020-04-23  expires: 2022-04-23  usage: SC</span><br><span class="line">     trust: ultimate      validity: ultimate</span><br><span class="line">ssb  rsa2048/9DCC33D2FECB246F</span><br><span class="line">     created: 2020-04-23  expires: never       usage: E</span><br><span class="line">[ultimate] (1). qinrui &lt;771963601@qq.com&gt;</span><br><span class="line"></span><br><span class="line">gpg&gt;</span><br></pre></td></tr></table></figure>
-<p>请注意上面的字符串”sec  rsa2048/xxxxx”，斜杆后面就是”用户ID”的Hash字符串，可以用来替代”用户ID”。</p>
-]]></content>
   </entry>
   <entry>
     <title>再看git</title>
@@ -3803,22 +3803,6 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>给博客上个锁</title>
-    <url>/2020/04/02/%E7%BB%99%E5%8D%9A%E5%AE%A2%E4%B8%8A%E4%B8%AA%E9%94%81/</url>
-    <content><![CDATA[<div id="hexo-blog-encrypt" data-wpm="用心想想，ta可能用什么密码" data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
-  <div class="hbe-input-container">
-  <input type="password" id="hbePass" placeholder="" />
-    <label for="hbePass">Hey, password is required here.</label>
-    <div class="bottom-line"></div>
-  </div>
-  <script id="hbeData" type="hbeData" data-hmacdigest="e3ba2a2745f8b54091e691830ca3c77c3a7af95ed890a95b99fb0973d65cc760">0636e496fac5754b4846b68700f647e94a4117673556fa334fa7165fc370f9069161e79c8834690f4047090bb3173fefae7b982705e2cc745c5e45d536789e6551e690f5c596272a2013f609b0de93ad65af9d04921726938b4901a59059d4c8bb78419fbe5dc1fa202a70e7231fe668ac5944687c627ca9167dc8955ac4d3816a2024df6da403018fe6a0153087f1a91540097d87ed1882dc676f4f365b53611eb5f005085562b3f360a58a1e5ce35e92f053d0b30408b17428d688a183e31bd291ad11e815cbb6abb4ca90557bbaff50ef98a4bd78ab961c7096e939d7db0743a633ffc32f0fbe11a7c3c1039e6e70031966007de4a3b607470a98a15ef60aed34b07f43327dd4a9ccc152b4aaa13b7856aa28d1e60e92acb51f9916c2c5d51ea06c0cd302ccc9690cea3e6e1da60263790ae70114dd45faf2e1fb83d78e2dc7aa081d5fb268e038ff8bac2b3403c03cbd2f052bd3462fd2fa2e1ca5c82ae28a13272a1f9fe56d912518e82ba051f6c64d3897c0551868e6b3bebbc045976cf26d68473581adbcf6f69424d8e68039ac161a16cf883c0bc7e384fe56480e426c140d50d831c8a654cf1a97445de55e9e053d6dd3848b6d2bd1492021d815abe38af0bc6a2ae6fac5a3ae80d7f102a298a56f3c64266584d84a073ee4b4abd303df5a0ba80c028c70c2cb7d172449e172bf2a7eeeeb0cb0ef88df43ec67de95606395746167a9b4317452fec4ea073eaf547eab815ce1933c90b8aa1dc35bb9273145d9a895989e5f3098ceaf4ecb9cbb994186b661969c7709daa9732e1801ff4ba5342d74e5792e340254d0e081305a11525448371d70322bf0aafa8bc2d52309a680a731256e00a7818fd4bfc17029d459e50f4b5896e52cc439ff7028974a5ca97a936ec583c5e1d9c5c604f8da5dc387303e0de9bbc4120300fde0a18c2afea9b7d40e0ef8cdfb3e7870525cd689d0787a2a3ca31a61049d90ec16ddd843f43e13744f4a8e37f10a471d26a129b3e645f4b21e383e66784724eeddf21b806f256217a7be51e7102306a862d166fd1cb967fccfb8219cb57c29f16368f0ab23e77b850adc66607292d28f8154fed37c000fbd9333d32b88547283729f90ca51e63bbfd684a112eea3f9736687abc05aea61198c3533c71e6c7df189c69c7b3b209b8b32d42af2afd584fed6d3c7984b2aec8791bf241b5ec30ca0fea825d3c1a1243d5e2a1d53e4c78bb5abdb0e339fc320bf3d522aa63ccc042b9f858a5f64f55f229d72e1d6e9384988b05e4ff1e03a2f9fb9fdfa37a8511f1af99e4694e8eda3c452e2aaac2984de46f699bce3a0ceb5b95b0a5d41f341b362761673ebba9b3eb301a7eaf7ed72b2020207fc3fa7574477dc4cfee4871b9da9f656204acd171d878193508ac551906c13915ad6b33d0d927dd3270903581464d795b74cb8e61737fe85585fbf37f2784a01db379547937322b6140b1947eafd91520a0dbdcb110ad55b0cd26fac9774f414c150d3f67cd8b4a656df5b7e0ce0f2b6bda2eca1b4ad596a044fb291f07e945e0ea98166fb2221f200887b61243eeb464b3a04c785e006288e1afe659eb19e1f63b92666df0a704352ab77223ff73bac3cd80bc9899fd110ee9f43757a40fc6b19f13be03d943a3a1fa62e5e8bf277e4f789de8b6e7ffe4a603852545819f0fbc00ce819e54ca5c10ca8fbdbac007651bc16b6538031362f4c3f07cc916ead54971893a949e21f798f2473a28852cff7c2472218d62a629f0ad4cf5cafc25531f4320771910fdea49cf4bda06aa3e1bac8d8c475b422b8acdee48ff144125e5d8644df73014f5e24e8b0f7e205e3ff9173e1e26f52fd268119d07bb13aa725bc6a67a00eec25a01ad74166d99e7effc9aeb8198b9cda6c7907a901b72042cebde47a3dd6b17f9018011f9f3f0e3bd4661945f28375e0c96eb539d287eb83e196cbb4ccd63962abd1850fa6ce63ad65d4ad95554c28e3592cd4d0e1908870d9e5177d8c1c03ebff26d66469c79f46d74c7979ab4fae8e4a5f741db7a8e3350ecc9bf12d8ca6dc94a34e9adf82e61d6c969b5a1b1dbddf7f81755c4c8eeda3abdf508c48a09f6f3622dfce218a80a60bbb6b805c54d1b8211e05fd4f1d1f1c68381314244455d446cbcbaee11190afdee551dd058e2deb59aa4714ec9f6da8c714d1b8169b1fdfee28e6d04231d9be218df18122227861e534d092e6ff724da72ea640972bd7bad5dfb751e2f12753518b5290ef07b38b375c74685faef31a7449c1914e2b0edee0d2c1dc2cd1b7d3d07d143068b79f2484c580718325e6911a5297a63e3e7bc2c23e685c1550c8ad921747a8e963382e960763fa6fe9bac9c7cec88ba9e00b96694757e3b96911fd0e765c793a9ced17280ebcdf65eaba3c12005b2bb569625b00880829b6b11d0342ab7b0b7109e7d7bb5bd22db27b71fdcee206a2fdccf7b4361c43ebfb835ee67c3481aad90fb009d49dd3b07b0df300241c3ae9543fc03a62984ca24712b81fb568efaa4f1b380cd864ad056ddff46e04e8616c59cb6283f216b2a5123abdf19d38fe54abb75d316ce5006a7052a26fb6ca99b7a8530f247d0e85ae716c250071fbd6df6221ace515e0d59e8b85dbf5c46479cee097dcd92e9bd0448ca2891a6f3c0ff5dcd79230dc0d32914395ea1a8c0c4a9c7b101d7a0866ce8e7e5a11319512259d3e618ef3749c697a14963a938a1e411a773146b888a1f50a048be99083503765ab48f70d51527c2a42ed23f5c61023cc608b88cc8f0f30c882c1dfab61d5b67ebf8d8505339d580c47d0d00509c682a27b9666d344b8fb3f1f3539f6debd283ed116141d8e75d68157f5ff23af46bf0f9dc07090caff5df45fffd03de379bae518b55182995f0b285083ba3d8edb851932bed9c4b929efdeaa6889c8cb12887dcf20c474d348abd93be04158b667d5fac3a9ea53d376ea9c1b3bb1d949a3237473fad8c0ca511fc5b39b0f900dfec3416f2608999a24bda115b0837275e4f757b07c38ff594e942f805c1ddf17c43e9df5886b28377313ee0cc17ea827687b98a0a923155c23480c3f4dc44bb1c7ffe0ab7bf2d4aebaf5855cf76ce2461c7d35e79d3be683f471d8c8628f96e4fa349fa7c19046e06b79915e2f28062f4dd43204293ec54ae500f84c601a8ab21a0dc5eed8dd4ee2bdd0c31319354aafe7349ee4352bfb3640dbf5f42b52f4d05a64d6488edeb96b57174ab86257bf5c2cfca1f2d7fcf686011bb509e21a91737cf7de793b159809e1933a205f674a404786eb577fd5ce508ff03a19c542751c889730045c1cb1ec83de23dbd655fdb928883144270281a38c4ed6d8305eee05e3f3740327dd75237835ea277f27303c17d2a87c4182775bc2cfde962f379579fecc580efe012b0b090fee8e0ea5d4c8344c9a08ca38aa672063bb2e56e1ec9ebf46bee7144131be3e825dea763ddaddad93d480cfa863f7b43efcba03c208788bacb63e67af3fd707ba5dad19dfa11207af91c9e44cbcba1027c38127b999d053ded27b9f100cff3d5e6c48ea7f6d9d6630df5aa91f22e5190c6d905c9d9a06194a9cafc9c3a031835ef665f8d14b82ab653b3a6858bc7248827a217fd61befe9dc3eec7aefd980dba84f54952a5aca1fa659166a520a1d44eb334e5c00e6195e4eca08b25caeb6dadc7042ae60cd30bf76d9f65680e570c5fb12eb28c32fb9eaf6f0ce60f96a948f96f8d2d8343b964ac51fcaa55c19d333c0da82a3f929cafe3582e2eea5f9eff69809270767d64514fa718a37ef5ef87f85d583e09f604033a4bc310c9453d74568eb506f63da59000fca36daa0c286cc174cc6b0ef87cc8640c7cbf464064361c12dfce261c73b78252fa5239df24b5a96a5771cf055acab5686dea5225e49afafd5b9370967db170b3512afa6de695fa8057907d237a812d12908f9ab933a48ad838cbf1b8e2d60ce9d58d9d7867bf840b446f98775aa7ea9107fc5f58158be1faf941b067c1ce2b5699321f4e9ef45928e4b8cb2bb02fa76ba7a039f03b80bc0f5158507f6fe69e971d78224b5f36950fa4c040b0d00b0cb7cff60e0d5a9ef4bfd10af83c3dd7bea328ba93a7fa849cc14d11f444c79dd3a1f012a6ddae38178db8b61941b3009ce1a61294710f5a0381483e93bbc387be684fef0c0b454deaed33f30d37ce6441db3d0e46ebcd61609d3b8fd7de6ecf45c584153094800969de7021d5856b14a46f380e4fc511b9d3cd442a017d054edec712620a13299e5f905c1308f8f14941bbca6b4d756695b26d885a072e13df3fd128d31357c0b682b140f2b6ffa6f1686b9a326cb180400df1ab4053e683b4a560580fd962c06f4813db0a535e25091fe1cc1bd8874abfb4c5ad23aa67bafa7e625023bec42a1fb83f895663e2e751ea91ac79612767daf6c8995a7caedff3fd1e9fd32718f8bd4a177d6f900f424acf7d00706f4c057635b7f0b984e32a48cc15c3a94a2740287e8c46816c945b714756b6188268e0566ba342df9bfcbfb741cd193e09bc6eee3f1b900260e255f7c74c107c3edc0b16546488bd4fd8012e6a042561f829e521d2738c3afde18b031681a4a85cb4143780dfa66bdfc1540981b1a4a116cb0ae1833995ed8f239c948b42a4e7f7f79796f272859e3452b5fa562c2f457bec41c6e35b8233cf73606b4c652e75f045866186f9c52a942d40f1c048359ba5520ab120cecbf8e881abfd26c74f271164974003249d75c93ceaf9207a917c4d1e3b779dd4f4e3bb487d5ed8e9984fa09699af683c6542e8bc7761b444cfdb20e7ab5cbb7b5d3afbf517d8b49a1f9436a9e206e48a9bdb814432d90b812c1393cb04446bb0b106ebfe5184569ca8b7089be6a32bde910dfb6179621dec5a11115b95e3bbb3011b359fdee22aa564b6800d7b0f65fd50e3bfb76767799d2f5557a9c06740b12776447302703ace3e2a2e35d772ffaa02334d4655f67ce590b46a8430a9ad7c664ef35ff8405c1b74a928b98d3f184a365ecad096e87991a915cbfde596e5641889db797d8c5e266a582dcb4006442d1967d7b13f9f3faaaa7bb0346afc8bc25cb837a810f825c33221faa632da499ce9aaa449570330c16967fa13a24692c43096d2d2f66ff5b334caff452a9f539b9a60f1be63e5b913aba65fd2b4f768664b9c787b80b847cd35ecc4cbb2989a911742fd28fb09e45dbb44e756b82b57b3755eebc4674f3ae76dd32a99a03d0af33941dd568bf7a9be6d47ff0dff28034b05ab6f10261bdab31fd58daf7e869b2011762d0a400a54ca0b58225a1e29dd50ac6fb0a2cbcbff3223ff1c1193e06b9738baa4bac27820649d2afc2f5cf39453cee7117a50de708ab8d89da49c8def7e3eec5565290a2143c77b44eb581543122c5604db379a904c6715150e54bc42fae1e31f316bb302c342e56a906d4d923bbaf0faffdff29c308f6b8bab6da4058b04a9321adc0e192878cac9b6153b92f715d5339e457abae8a507f73c16af3abd9381f5b0b3ce6f643ffed8bb072e18cdd2c1d209b053dc93876acabd3e743c40cedf15b2a6bb138a7a11e71c0c00e6896e3c9a9f4ba6a7d8ac23ba733df53f67695abd4290c033e3a812e4294793a210436bc3ec808294efa9b859d9596c0dd478786bb9dd916f87a69d267ea3c1912529b709b9644594c6b9ee67fa7f9f99187af925475383cf4077f3d2815f8af68d58d24697a34a29bf89d353cde710d213871f2a37d5949a65a0d243a722b697778ebcea33d7684d58542bfbf49ac6da75d8a7131a5003e9f35d86f9c026c2d378a3e374267f7bc97e11d6f723bea368d34c7a3fb3021b96ab94ada189addbcbf23a5d33cc7e7026ca64722ed4a97ebaeeb7e8d9c3f20e2e553d847aa54c209f240d1c233f3b08c07403f1f88345c2a5eebcdac71dcda1ab0d926997a27ece3cf46c4e0f63a357c4876305bfb160866121cacec92f498454e5dd3ee0cb32042604b406a2ee82dfa45644eb0c6b317302a355afa0253d3f5bfb828010025dd16ff1c7ce2b0092d327993b1fdd079d10aa99ca8e2772153c7ac17cb2e5c288503d0a4d2eef17e44be6ff67e15cf92a49e13a24d9a2b035013a98c63e51b9aeb8a2dd2ad13d0fb1ce00f2f24f3f0ac08bda5ef32b69dcba8576a76d78852c3f48a3b687a94c3d5515e3846197423366e7ee6e486cfc40104b16360d66c7551bc86d78992dd66ac1e26038af9e4ae13c36c9f078e184cecfe5ed1117f67380ee61d7ef55daa6efb2451793e0cdfc77c90ced8ee27bc740a7d1e33003a38933a0d01c87d5ed13887770f34622d7375d9e332325af62057c956acf2cce43bdd47a1dc70696fb95cbc4febe6e38929deb565d095058facbbba5573b1fc275724196287dbc5aae9e5e8d3d3b5962e1644dd485aa437fc0582254ea70c6832551bdc8d72302df724446fba1c92ce42c3e9102d241445e9272438799223f7fae3819353544ed6e19e2f5bc8ef7ff8d2b92b13f04265612ae187c0ab1b21fe7847a16a49a3e74fe9bd584ac63abc641b9788dadce58dfa2c9aa1b7da552bc2f48c9bc4d8ea4c572f27402b6fa6aa572493cb1d64a7f67765709838d8840c53820d92b669305781d9984e03d6a453c924e07aa93296d68fba47c91734fab0071a287b247177844a56b752e71e18135ac1cf4c0d7f282442daf848c68ee93661c42bb36910608fb4f7f9d4ddc2bcf8fb1c6f6da6c7490f1bb58c6c8da58a127d4efc3598710d464066185ac02af569858218c5ddfc278574e30ddfd843ad9e0248b10cfa5d8dec9bfbbe9cb2511ff5b778131c46a15daeedef216dfbe3396b6e505e2a22e464833bc6d781c6205915436eaae71deeefd2f1d0465441c099a45953bd78e9b3412856313a1f4fad19c37007f9f41ed91fb15d6a444064bc0d8fa34c706baada701727e21ea58a8a1a5b0f1e156de1d51362a6bb0378ea78026f00fe9fb6254e131ba8bd6963f2a0436865740184ac4537ee74deb2469ac3e0d10a6f47d0efeed69f16cb1d4780fb468f7e0b7436f2ca481e76f533304fedb2bcd6e7df58de8f3b7ad9031c42b7724546361144a7883f4cd21b7a82c10eb27c067b6ca542e0a84f630b2e8ae65722e41dddda6f614d7a3d93652bb145ec4bc7aa6d9e13bef22a86dee78f36f5497cfba65443de49b2c572d9921f91505815563062ba2142db9eb94292c0a15d5b20d8b60fb01e4d3babc180d68993e316d9b456d21b9e06135b77b0427a8dd714ea58a4b03ab69e8a9010200299190d852cb598ccf22cdad6af4794710c2f882352e66034bbfff7f093990e0bf87bf40736950d47d10558d91c323efe12acb14b39be2eec2dbc75753aa93fb5859e49c8f8740b7895d630771a636992176e1cba9fb5ac12081fdfa614fad7d61152c5ba462f1e30406a5b99d74a3224c555eb9b770f36579c85376791be05090e25fff3ef8121854f2084596a5ced06a045fc149394c0ff82bf4a3e8fc0d95959bc643d47061dde51d34a365e185d5212b819648fafbdd0e9406a847333708786c12978ba6e0005a38c6e729e17c991b430e2edc7fd83e1e2a936abf3bac8026a38ccb758c30521c83e5c172ebf4fcbf02d8c8f911dde7b5670ff84847859577e95d0faef2f8fd04c8c5e3880a11ff707220fa69be2b945c124eaceffd4826d9a0ad859de2bcb455d5e74eea6090b372964b57c326b8a85319b25bcd658a174b8c83821b437b37576cfd53b4a313dc24a0f80024bd996c75a7acbaed794fd7efc3393e3a8400aee42f7e7db388b0c14ce6c7302b9118b856c40b0ca5b91a301754ebd8b615ad75359cd122b75c0ff30dd29588f4e71c9acc5e5cfee68d300e25870ad6280657f4548c9c579e54ec4eaedd32b4ad87799d69c6ea51fb6aa554e21a78c87f6f7b69f2b86901b0ab31afc955715be115c7e7979fcef8a318961e9da5a3f80190ff97712170ed7889d8150e6d051e792a41200f8d8f8bf2b7a28495514e483c78c7075b435d559961d6c1e3b9d6ec20ef421b46fe8b214b2e4cafbb74de9dcf7e24ca46a17153eef6a3d09d09340fdd7d70fd659f1e395813f0fe636939624371dbdb0495921334a96a8afc95ab471b53238a5bddff5c26719d2ef2d7784419b79d4f1035a87e8d80dc5cc6bee00bddab25cd3a7cb0cb763887e82e78db79e7d5b4933d321c5c641df14651a219101c3376dbda592b3d30b5d6b80f87187277e093eb6bce3afc87488522efd0e284e4e9f20b5361ccbec18b495310949a28e92e1a89d8bc67eb3fa9e458e89e595a873fa651e5d28de388c9cbbb13e101269c3a4c04738859e9ed1e0bfb208ff405aadc81d4bbfff047473a53bc95c8def6e6f1f98f58d1765ba61c1b0d658f061351167a61f4957f1409c7767d5376c963ee06f45cddb6764a5e41e8f104dd35d0ee7033e5e40b05091fa60d1b4f78549244805f849ca5468aebcaaf91f82df0b2e38464eecc162fd5312fbf2cd6bf09083591dfee393ef3adae35fcd1f5cf5de7547853e8307b38cb5a853c39c1d2fa93656a700f6777ce53db6fcc5a29514cf7d0e9a012c5b5b3e95a25e43aa2057396878c65faae7ded546fcbdc03860a971334264604e5037478e6b006aaf058dce1cee289b3adc99d726c8d27f615682102b0b18cbc03f0351ceb9e93e2a6afd60d02013f6e72d8e6aac66e24ec0ccaa1c48ae9f8ed30e8e99d7dc2573847ebd122125bfe94b9eddf79283651c9d5c9235cf91de93851f9deb67045f7954a8ddc874ebe2730fb2c9ab88a9ab98a2c249a1d3ae14d5c82f4396fd8e220a1f083fc85b2b80f608f6f02cc63a1bf33add983f68f964068b760c9711fc6fda522b5123c045dff7e8b1982bc546450e54fa2407d3aec9ce9e8973de39566cd25e8359f76afd1763c80b7e8b4e4f065fbbd45914978ac51426c74b32e01562fdd85c56bf1fa368fb8ea918efab398afaa703251e6ff20e63fa900ef3c312a05c13a419ecc1dc7b3c6d460b5ba428172ad4ee4decbb013a973754ab06e4ff396944b4e4c87dc04e0cb1af61fa8fadc8bd73bd49d98b8774960e2f62f65844b0f3556750c8845c810aa03d69b1fe90e5384abf6451311e56f66941bf4df00e9e231233b169569a214829f2775ef65787bdca74992981b872469c2cdc56a3788053ff8a8af56bf9bdcfa389433a516ae2c54b5841392f491dd63bd624bd4e61538d841a2db418fe09e7dc7c351790a0f54646155bb39ea58dadeb5b6f8586fcba911e6ce8c9377d4420a1731716ff4647c8ecb4e08c87940a1642fce2ce4604f76d1ac8fe370d2ad512f1da56e579e89d848314a4beeaedd24f755ed111ac59d448f8b503c2a26d4a02062c72142f55f4a3a343ee5cdf4840ba31f10d663bce34f1414e2661c27ab2831b841ca595abadd56492a201248f855a9baad360dbd52266bb8d07c6c755ac7e97b80cbbd310e85039a2b734669d56c0665fd1010f27eccf32a4b6bb9e58df640b354e09a4112eb7fc1a3432a9f10a0ff420d58bd7c14758e00139d96a5572e6212f9a57ce47ba20040419d4078ce033b8d94fdf2970f81430c93503e91b5847d05394f6074b39109ee7960c5612f122d704681f337075625745463fc60bcf7bec29cfee49b01a8a865acf0a8e92fba3672aa52fabcea0de45a9483d3ae35ee97af42aca7f5c53349eb430cc2cb3c2c3dbf7716e8747f848c309a304c0b18bd661e1c6bdfffbe67ebf959083f7e1b8dc5377eff5cdbac16a67731b5856bd131173a48948b9f2a294ad8b22921e68d5ee04bb6f157ee5a987d22426127843b463</script>
-</div>
-<script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
-      <tags>
-        <tag>Tools</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>移动端打包pipeline通识：从零开始</title>
     <url>/2020/01/03/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E6%89%93%E5%8C%85pipeline%E9%80%9A%E8%AF%86%EF%BC%9A%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B/</url>
     <content><![CDATA[<p>背景： 一台被格式化后的 MacBook Pro, 对某个移动端项目( xx类型 )做android pipeline、iOS pipeline</p>
@@ -3875,6 +3859,22 @@ pipeline {
       <categories>
         <category>CICD</category>
       </categories>
+  </entry>
+  <entry>
+    <title>给博客上个锁</title>
+    <url>/2020/04/02/%E7%BB%99%E5%8D%9A%E5%AE%A2%E4%B8%8A%E4%B8%AA%E9%94%81/</url>
+    <content><![CDATA[<div id="hexo-blog-encrypt" data-wpm="用心想想，ta可能用什么密码" data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <div class="hbe-input-container">
+  <input type="password" id="hbePass" placeholder="" />
+    <label for="hbePass">Hey, password is required here.</label>
+    <div class="bottom-line"></div>
+  </div>
+  <script id="hbeData" type="hbeData" data-hmacdigest="e3ba2a2745f8b54091e691830ca3c77c3a7af95ed890a95b99fb0973d65cc760">0636e496fac5754b4846b68700f647e94a4117673556fa334fa7165fc370f9069161e79c8834690f4047090bb3173fefae7b982705e2cc745c5e45d536789e6551e690f5c596272a2013f609b0de93ad65af9d04921726938b4901a59059d4c8bb78419fbe5dc1fa202a70e7231fe668ac5944687c627ca9167dc8955ac4d3816a2024df6da403018fe6a0153087f1a91540097d87ed1882dc676f4f365b53611eb5f005085562b3f360a58a1e5ce35e92f053d0b30408b17428d688a183e31bd291ad11e815cbb6abb4ca90557bbaff50ef98a4bd78ab961c7096e939d7db0743a633ffc32f0fbe11a7c3c1039e6e70031966007de4a3b607470a98a15ef60aed34b07f43327dd4a9ccc152b4aaa13b7856aa28d1e60e92acb51f9916c2c5d51ea06c0cd302ccc9690cea3e6e1da60263790ae70114dd45faf2e1fb83d78e2dc7aa081d5fb268e038ff8bac2b3403c03cbd2f052bd3462fd2fa2e1ca5c82ae28a13272a1f9fe56d912518e82ba051f6c64d3897c0551868e6b3bebbc045976cf26d68473581adbcf6f69424d8e68039ac161a16cf883c0bc7e384fe56480e426c140d50d831c8a654cf1a97445de55e9e053d6dd3848b6d2bd1492021d815abe38af0bc6a2ae6fac5a3ae80d7f102a298a56f3c64266584d84a073ee4b4abd303df5a0ba80c028c70c2cb7d172449e172bf2a7eeeeb0cb0ef88df43ec67de95606395746167a9b4317452fec4ea073eaf547eab815ce1933c90b8aa1dc35bb9273145d9a895989e5f3098ceaf4ecb9cbb994186b661969c7709daa9732e1801ff4ba5342d74e5792e340254d0e081305a11525448371d70322bf0aafa8bc2d52309a680a731256e00a7818fd4bfc17029d459e50f4b5896e52cc439ff7028974a5ca97a936ec583c5e1d9c5c604f8da5dc387303e0de9bbc4120300fde0a18c2afea9b7d40e0ef8cdfb3e7870525cd689d0787a2a3ca31a61049d90ec16ddd843f43e13744f4a8e37f10a471d26a129b3e645f4b21e383e66784724eeddf21b806f256217a7be51e7102306a862d166fd1cb967fccfb8219cb57c29f16368f0ab23e77b850adc66607292d28f8154fed37c000fbd9333d32b88547283729f90ca51e63bbfd684a112eea3f9736687abc05aea61198c3533c71e6c7df189c69c7b3b209b8b32d42af2afd584fed6d3c7984b2aec8791bf241b5ec30ca0fea825d3c1a1243d5e2a1d53e4c78bb5abdb0e339fc320bf3d522aa63ccc042b9f858a5f64f55f229d72e1d6e9384988b05e4ff1e03a2f9fb9fdfa37a8511f1af99e4694e8eda3c452e2aaac2984de46f699bce3a0ceb5b95b0a5d41f341b362761673ebba9b3eb301a7eaf7ed72b2020207fc3fa7574477dc4cfee4871b9da9f656204acd171d878193508ac551906c13915ad6b33d0d927dd3270903581464d795b74cb8e61737fe85585fbf37f2784a01db379547937322b6140b1947eafd91520a0dbdcb110ad55b0cd26fac9774f414c150d3f67cd8b4a656df5b7e0ce0f2b6bda2eca1b4ad596a044fb291f07e945e0ea98166fb2221f200887b61243eeb464b3a04c785e006288e1afe659eb19e1f63b92666df0a704352ab77223ff73bac3cd80bc9899fd110ee9f43757a40fc6b19f13be03d943a3a1fa62e5e8bf277e4f789de8b6e7ffe4a603852545819f0fbc00ce819e54ca5c10ca8fbdbac007651bc16b6538031362f4c3f07cc916ead54971893a949e21f798f2473a28852cff7c2472218d62a629f0ad4cf5cafc25531f4320771910fdea49cf4bda06aa3e1bac8d8c475b422b8acdee48ff144125e5d8644df73014f5e24e8b0f7e205e3ff9173e1e26f52fd268119d07bb13aa725bc6a67a00eec25a01ad74166d99e7effc9aeb8198b9cda6c7907a901b72042cebde47a3dd6b17f9018011f9f3f0e3bd4661945f28375e0c96eb539d287eb83e196cbb4ccd63962abd1850fa6ce63ad65d4ad95554c28e3592cd4d0e1908870d9e5177d8c1c03ebff26d66469c79f46d74c7979ab4fae8e4a5f741db7a8e3350ecc9bf12d8ca6dc94a34e9adf82e61d6c969b5a1b1dbddf7f81755c4c8eeda3abdf508c48a09f6f3622dfce218a80a60bbb6b805c54d1b8211e05fd4f1d1f1c68381314244455d446cbcbaee11190afdee551dd058e2deb59aa4714ec9f6da8c714d1b8169b1fdfee28e6d04231d9be218df18122227861e534d092e6ff724da72ea640972bd7bad5dfb751e2f12753518b5290ef07b38b375c74685faef31a7449c1914e2b0edee0d2c1dc2cd1b7d3d07d143068b79f2484c580718325e6911a5297a63e3e7bc2c23e685c1550c8ad921747a8e963382e960763fa6fe9bac9c7cec88ba9e00b96694757e3b96911fd0e765c793a9ced17280ebcdf65eaba3c12005b2bb569625b00880829b6b11d0342ab7b0b7109e7d7bb5bd22db27b71fdcee206a2fdccf7b4361c43ebfb835ee67c3481aad90fb009d49dd3b07b0df300241c3ae9543fc03a62984ca24712b81fb568efaa4f1b380cd864ad056ddff46e04e8616c59cb6283f216b2a5123abdf19d38fe54abb75d316ce5006a7052a26fb6ca99b7a8530f247d0e85ae716c250071fbd6df6221ace515e0d59e8b85dbf5c46479cee097dcd92e9bd0448ca2891a6f3c0ff5dcd79230dc0d32914395ea1a8c0c4a9c7b101d7a0866ce8e7e5a11319512259d3e618ef3749c697a14963a938a1e411a773146b888a1f50a048be99083503765ab48f70d51527c2a42ed23f5c61023cc608b88cc8f0f30c882c1dfab61d5b67ebf8d8505339d580c47d0d00509c682a27b9666d344b8fb3f1f3539f6debd283ed116141d8e75d68157f5ff23af46bf0f9dc07090caff5df45fffd03de379bae518b55182995f0b285083ba3d8edb851932bed9c4b929efdeaa6889c8cb12887dcf20c474d348abd93be04158b667d5fac3a9ea53d376ea9c1b3bb1d949a3237473fad8c0ca511fc5b39b0f900dfec3416f2608999a24bda115b0837275e4f757b07c38ff594e942f805c1ddf17c43e9df5886b28377313ee0cc17ea827687b98a0a923155c23480c3f4dc44bb1c7ffe0ab7bf2d4aebaf5855cf76ce2461c7d35e79d3be683f471d8c8628f96e4fa349fa7c19046e06b79915e2f28062f4dd43204293ec54ae500f84c601a8ab21a0dc5eed8dd4ee2bdd0c31319354aafe7349ee4352bfb3640dbf5f42b52f4d05a64d6488edeb96b57174ab86257bf5c2cfca1f2d7fcf686011bb509e21a91737cf7de793b159809e1933a205f674a404786eb577fd5ce508ff03a19c542751c889730045c1cb1ec83de23dbd655fdb928883144270281a38c4ed6d8305eee05e3f3740327dd75237835ea277f27303c17d2a87c4182775bc2cfde962f379579fecc580efe012b0b090fee8e0ea5d4c8344c9a08ca38aa672063bb2e56e1ec9ebf46bee7144131be3e825dea763ddaddad93d480cfa863f7b43efcba03c208788bacb63e67af3fd707ba5dad19dfa11207af91c9e44cbcba1027c38127b999d053ded27b9f100cff3d5e6c48ea7f6d9d6630df5aa91f22e5190c6d905c9d9a06194a9cafc9c3a031835ef665f8d14b82ab653b3a6858bc7248827a217fd61befe9dc3eec7aefd980dba84f54952a5aca1fa659166a520a1d44eb334e5c00e6195e4eca08b25caeb6dadc7042ae60cd30bf76d9f65680e570c5fb12eb28c32fb9eaf6f0ce60f96a948f96f8d2d8343b964ac51fcaa55c19d333c0da82a3f929cafe3582e2eea5f9eff69809270767d64514fa718a37ef5ef87f85d583e09f604033a4bc310c9453d74568eb506f63da59000fca36daa0c286cc174cc6b0ef87cc8640c7cbf464064361c12dfce261c73b78252fa5239df24b5a96a5771cf055acab5686dea5225e49afafd5b9370967db170b3512afa6de695fa8057907d237a812d12908f9ab933a48ad838cbf1b8e2d60ce9d58d9d7867bf840b446f98775aa7ea9107fc5f58158be1faf941b067c1ce2b5699321f4e9ef45928e4b8cb2bb02fa76ba7a039f03b80bc0f5158507f6fe69e971d78224b5f36950fa4c040b0d00b0cb7cff60e0d5a9ef4bfd10af83c3dd7bea328ba93a7fa849cc14d11f444c79dd3a1f012a6ddae38178db8b61941b3009ce1a61294710f5a0381483e93bbc387be684fef0c0b454deaed33f30d37ce6441db3d0e46ebcd61609d3b8fd7de6ecf45c584153094800969de7021d5856b14a46f380e4fc511b9d3cd442a017d054edec712620a13299e5f905c1308f8f14941bbca6b4d756695b26d885a072e13df3fd128d31357c0b682b140f2b6ffa6f1686b9a326cb180400df1ab4053e683b4a560580fd962c06f4813db0a535e25091fe1cc1bd8874abfb4c5ad23aa67bafa7e625023bec42a1fb83f895663e2e751ea91ac79612767daf6c8995a7caedff3fd1e9fd32718f8bd4a177d6f900f424acf7d00706f4c057635b7f0b984e32a48cc15c3a94a2740287e8c46816c945b714756b6188268e0566ba342df9bfcbfb741cd193e09bc6eee3f1b900260e255f7c74c107c3edc0b16546488bd4fd8012e6a042561f829e521d2738c3afde18b031681a4a85cb4143780dfa66bdfc1540981b1a4a116cb0ae1833995ed8f239c948b42a4e7f7f79796f272859e3452b5fa562c2f457bec41c6e35b8233cf73606b4c652e75f045866186f9c52a942d40f1c048359ba5520ab120cecbf8e881abfd26c74f271164974003249d75c93ceaf9207a917c4d1e3b779dd4f4e3bb487d5ed8e9984fa09699af683c6542e8bc7761b444cfdb20e7ab5cbb7b5d3afbf517d8b49a1f9436a9e206e48a9bdb814432d90b812c1393cb04446bb0b106ebfe5184569ca8b7089be6a32bde910dfb6179621dec5a11115b95e3bbb3011b359fdee22aa564b6800d7b0f65fd50e3bfb76767799d2f5557a9c06740b12776447302703ace3e2a2e35d772ffaa02334d4655f67ce590b46a8430a9ad7c664ef35ff8405c1b74a928b98d3f184a365ecad096e87991a915cbfde596e5641889db797d8c5e266a582dcb4006442d1967d7b13f9f3faaaa7bb0346afc8bc25cb837a810f825c33221faa632da499ce9aaa449570330c16967fa13a24692c43096d2d2f66ff5b334caff452a9f539b9a60f1be63e5b913aba65fd2b4f768664b9c787b80b847cd35ecc4cbb2989a911742fd28fb09e45dbb44e756b82b57b3755eebc4674f3ae76dd32a99a03d0af33941dd568bf7a9be6d47ff0dff28034b05ab6f10261bdab31fd58daf7e869b2011762d0a400a54ca0b58225a1e29dd50ac6fb0a2cbcbff3223ff1c1193e06b9738baa4bac27820649d2afc2f5cf39453cee7117a50de708ab8d89da49c8def7e3eec5565290a2143c77b44eb581543122c5604db379a904c6715150e54bc42fae1e31f316bb302c342e56a906d4d923bbaf0faffdff29c308f6b8bab6da4058b04a9321adc0e192878cac9b6153b92f715d5339e457abae8a507f73c16af3abd9381f5b0b3ce6f643ffed8bb072e18cdd2c1d209b053dc93876acabd3e743c40cedf15b2a6bb138a7a11e71c0c00e6896e3c9a9f4ba6a7d8ac23ba733df53f67695abd4290c033e3a812e4294793a210436bc3ec808294efa9b859d9596c0dd478786bb9dd916f87a69d267ea3c1912529b709b9644594c6b9ee67fa7f9f99187af925475383cf4077f3d2815f8af68d58d24697a34a29bf89d353cde710d213871f2a37d5949a65a0d243a722b697778ebcea33d7684d58542bfbf49ac6da75d8a7131a5003e9f35d86f9c026c2d378a3e374267f7bc97e11d6f723bea368d34c7a3fb3021b96ab94ada189addbcbf23a5d33cc7e7026ca64722ed4a97ebaeeb7e8d9c3f20e2e553d847aa54c209f240d1c233f3b08c07403f1f88345c2a5eebcdac71dcda1ab0d926997a27ece3cf46c4e0f63a357c4876305bfb160866121cacec92f498454e5dd3ee0cb32042604b406a2ee82dfa45644eb0c6b317302a355afa0253d3f5bfb828010025dd16ff1c7ce2b0092d327993b1fdd079d10aa99ca8e2772153c7ac17cb2e5c288503d0a4d2eef17e44be6ff67e15cf92a49e13a24d9a2b035013a98c63e51b9aeb8a2dd2ad13d0fb1ce00f2f24f3f0ac08bda5ef32b69dcba8576a76d78852c3f48a3b687a94c3d5515e3846197423366e7ee6e486cfc40104b16360d66c7551bc86d78992dd66ac1e26038af9e4ae13c36c9f078e184cecfe5ed1117f67380ee61d7ef55daa6efb2451793e0cdfc77c90ced8ee27bc740a7d1e33003a38933a0d01c87d5ed13887770f34622d7375d9e332325af62057c956acf2cce43bdd47a1dc70696fb95cbc4febe6e38929deb565d095058facbbba5573b1fc275724196287dbc5aae9e5e8d3d3b5962e1644dd485aa437fc0582254ea70c6832551bdc8d72302df724446fba1c92ce42c3e9102d241445e9272438799223f7fae3819353544ed6e19e2f5bc8ef7ff8d2b92b13f04265612ae187c0ab1b21fe7847a16a49a3e74fe9bd584ac63abc641b9788dadce58dfa2c9aa1b7da552bc2f48c9bc4d8ea4c572f27402b6fa6aa572493cb1d64a7f67765709838d8840c53820d92b669305781d9984e03d6a453c924e07aa93296d68fba47c91734fab0071a287b247177844a56b752e71e18135ac1cf4c0d7f282442daf848c68ee93661c42bb36910608fb4f7f9d4ddc2bcf8fb1c6f6da6c7490f1bb58c6c8da58a127d4efc3598710d464066185ac02af569858218c5ddfc278574e30ddfd843ad9e0248b10cfa5d8dec9bfbbe9cb2511ff5b778131c46a15daeedef216dfbe3396b6e505e2a22e464833bc6d781c6205915436eaae71deeefd2f1d0465441c099a45953bd78e9b3412856313a1f4fad19c37007f9f41ed91fb15d6a444064bc0d8fa34c706baada701727e21ea58a8a1a5b0f1e156de1d51362a6bb0378ea78026f00fe9fb6254e131ba8bd6963f2a0436865740184ac4537ee74deb2469ac3e0d10a6f47d0efeed69f16cb1d4780fb468f7e0b7436f2ca481e76f533304fedb2bcd6e7df58de8f3b7ad9031c42b7724546361144a7883f4cd21b7a82c10eb27c067b6ca542e0a84f630b2e8ae65722e41dddda6f614d7a3d93652bb145ec4bc7aa6d9e13bef22a86dee78f36f5497cfba65443de49b2c572d9921f91505815563062ba2142db9eb94292c0a15d5b20d8b60fb01e4d3babc180d68993e316d9b456d21b9e06135b77b0427a8dd714ea58a4b03ab69e8a9010200299190d852cb598ccf22cdad6af4794710c2f882352e66034bbfff7f093990e0bf87bf40736950d47d10558d91c323efe12acb14b39be2eec2dbc75753aa93fb5859e49c8f8740b7895d630771a636992176e1cba9fb5ac12081fdfa614fad7d61152c5ba462f1e30406a5b99d74a3224c555eb9b770f36579c85376791be05090e25fff3ef8121854f2084596a5ced06a045fc149394c0ff82bf4a3e8fc0d95959bc643d47061dde51d34a365e185d5212b819648fafbdd0e9406a847333708786c12978ba6e0005a38c6e729e17c991b430e2edc7fd83e1e2a936abf3bac8026a38ccb758c30521c83e5c172ebf4fcbf02d8c8f911dde7b5670ff84847859577e95d0faef2f8fd04c8c5e3880a11ff707220fa69be2b945c124eaceffd4826d9a0ad859de2bcb455d5e74eea6090b372964b57c326b8a85319b25bcd658a174b8c83821b437b37576cfd53b4a313dc24a0f80024bd996c75a7acbaed794fd7efc3393e3a8400aee42f7e7db388b0c14ce6c7302b9118b856c40b0ca5b91a301754ebd8b615ad75359cd122b75c0ff30dd29588f4e71c9acc5e5cfee68d300e25870ad6280657f4548c9c579e54ec4eaedd32b4ad87799d69c6ea51fb6aa554e21a78c87f6f7b69f2b86901b0ab31afc955715be115c7e7979fcef8a318961e9da5a3f80190ff97712170ed7889d8150e6d051e792a41200f8d8f8bf2b7a28495514e483c78c7075b435d559961d6c1e3b9d6ec20ef421b46fe8b214b2e4cafbb74de9dcf7e24ca46a17153eef6a3d09d09340fdd7d70fd659f1e395813f0fe636939624371dbdb0495921334a96a8afc95ab471b53238a5bddff5c26719d2ef2d7784419b79d4f1035a87e8d80dc5cc6bee00bddab25cd3a7cb0cb763887e82e78db79e7d5b4933d321c5c641df14651a219101c3376dbda592b3d30b5d6b80f87187277e093eb6bce3afc87488522efd0e284e4e9f20b5361ccbec18b495310949a28e92e1a89d8bc67eb3fa9e458e89e595a873fa651e5d28de388c9cbbb13e101269c3a4c04738859e9ed1e0bfb208ff405aadc81d4bbfff047473a53bc95c8def6e6f1f98f58d1765ba61c1b0d658f061351167a61f4957f1409c7767d5376c963ee06f45cddb6764a5e41e8f104dd35d0ee7033e5e40b05091fa60d1b4f78549244805f849ca5468aebcaaf91f82df0b2e38464eecc162fd5312fbf2cd6bf09083591dfee393ef3adae35fcd1f5cf5de7547853e8307b38cb5a853c39c1d2fa93656a700f6777ce53db6fcc5a29514cf7d0e9a012c5b5b3e95a25e43aa2057396878c65faae7ded546fcbdc03860a971334264604e5037478e6b006aaf058dce1cee289b3adc99d726c8d27f615682102b0b18cbc03f0351ceb9e93e2a6afd60d02013f6e72d8e6aac66e24ec0ccaa1c48ae9f8ed30e8e99d7dc2573847ebd122125bfe94b9eddf79283651c9d5c9235cf91de93851f9deb67045f7954a8ddc874ebe2730fb2c9ab88a9ab98a2c249a1d3ae14d5c82f4396fd8e220a1f083fc85b2b80f608f6f02cc63a1bf33add983f68f964068b760c9711fc6fda522b5123c045dff7e8b1982bc546450e54fa2407d3aec9ce9e8973de39566cd25e8359f76afd1763c80b7e8b4e4f065fbbd45914978ac51426c74b32e01562fdd85c56bf1fa368fb8ea918efab398afaa703251e6ff20e63fa900ef3c312a05c13a419ecc1dc7b3c6d460b5ba428172ad4ee4decbb013a973754ab06e4ff396944b4e4c87dc04e0cb1af61fa8fadc8bd73bd49d98b8774960e2f62f65844b0f3556750c8845c810aa03d69b1fe90e5384abf6451311e56f66941bf4df00e9e231233b169569a214829f2775ef65787bdca74992981b872469c2cdc56a3788053ff8a8af56bf9bdcfa389433a516ae2c54b5841392f491dd63bd624bd4e61538d841a2db418fe09e7dc7c351790a0f54646155bb39ea58dadeb5b6f8586fcba911e6ce8c9377d4420a1731716ff4647c8ecb4e08c87940a1642fce2ce4604f76d1ac8fe370d2ad512f1da56e579e89d848314a4beeaedd24f755ed111ac59d448f8b503c2a26d4a02062c72142f55f4a3a343ee5cdf4840ba31f10d663bce34f1414e2661c27ab2831b841ca595abadd56492a201248f855a9baad360dbd52266bb8d07c6c755ac7e97b80cbbd310e85039a2b734669d56c0665fd1010f27eccf32a4b6bb9e58df640b354e09a4112eb7fc1a3432a9f10a0ff420d58bd7c14758e00139d96a5572e6212f9a57ce47ba20040419d4078ce033b8d94fdf2970f81430c93503e91b5847d05394f6074b39109ee7960c5612f122d704681f337075625745463fc60bcf7bec29cfee49b01a8a865acf0a8e92fba3672aa52fabcea0de45a9483d3ae35ee97af42aca7f5c53349eb430cc2cb3c2c3dbf7716e8747f848c309a304c0b18bd661e1c6bdfffbe67ebf959083f7e1b8dc5377eff5cdbac16a67731b5856bd131173a48948b9f2a294ad8b22921e68d5ee04bb6f157ee5a987d22426127843b463</script>
+</div>
+<script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
+      <tags>
+        <tag>Tools</tag>
+      </tags>
   </entry>
   <entry>
     <title>获取fir中的ios ipa安装包</title>
@@ -3975,52 +3975,6 @@ pipeline {
       <categories>
         <category>读书笔记</category>
       </categories>
-  </entry>
-  <entry>
-    <title>面试交流群</title>
-    <url>/2021/06/22/%E9%9D%A2%E8%AF%95%E4%BA%A4%E6%B5%81%E7%BE%A4/</url>
-    <content><![CDATA[<blockquote>
-<p> 面试交流群仅做面试交流之用，按需加入，禁止一切形式的广告。</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">群名称</th>
-<th style="text-align:left">群二维码</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center"><font size="4">前端</font></td>
-<td style="text-align:left"><img src="/images/group-frontend.png" width="30%" height="30%"></td>
-</tr>
-<tr>
-<td style="text-align:center"><font size="4">后端/架构</font></td>
-<td style="text-align:left"><img src="/images/group-backend.png" width="30%" height="30%"></td>
-</tr>
-<tr>
-<td style="text-align:center"><font size="4">算法</font></td>
-<td style="text-align:left"><img src="/images/group-algorithm.png" width="30%" height="30%"></td>
-</tr>
-<tr>
-<td style="text-align:center"><font size="4">移动端</font></td>
-<td style="text-align:left"><img src="/images/group-mobile.png" width="30%" height="30%"></td>
-</tr>
-<tr>
-<td style="text-align:center"><font size="4">运维/测试</font></td>
-<td style="text-align:left"><img src="/images/group-operator.png" width="30%" height="30%"></td>
-</tr>
-<tr>
-<td style="text-align:center"><font size="4">产品/运营</font></td>
-<td style="text-align:left"><img src="/images/group-product.png" width="30%" height="30%"></td>
-</tr>
-<tr>
-<td style="text-align:center"><font size="4">职能/财务</font></td>
-<td style="text-align:left"><img src="/images/group-function.png" width="30%" height="30%"></td>
-</tr>
-</tbody>
-</table>
-]]></content>
   </entry>
   <entry>
     <title>那些容易被忘记的小事儿-Tech</title>
@@ -4144,5 +4098,51 @@ pipeline {
       <tags>
         <tag>Tools</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>面试交流群</title>
+    <url>/2021/06/22/%E9%9D%A2%E8%AF%95%E4%BA%A4%E6%B5%81%E7%BE%A4/</url>
+    <content><![CDATA[<blockquote>
+<p> 面试交流群仅做面试交流之用，按需加入，禁止一切形式的广告。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">群名称</th>
+<th style="text-align:left">群二维码</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><font size="4">前端</font></td>
+<td style="text-align:left"><img src="/images/group-frontend.png" width="30%" height="30%"></td>
+</tr>
+<tr>
+<td style="text-align:center"><font size="4">后端/架构</font></td>
+<td style="text-align:left"><img src="/images/group-backend.png" width="30%" height="30%"></td>
+</tr>
+<tr>
+<td style="text-align:center"><font size="4">算法</font></td>
+<td style="text-align:left"><img src="/images/group-algorithm.png" width="30%" height="30%"></td>
+</tr>
+<tr>
+<td style="text-align:center"><font size="4">移动端</font></td>
+<td style="text-align:left"><img src="/images/group-mobile.png" width="30%" height="30%"></td>
+</tr>
+<tr>
+<td style="text-align:center"><font size="4">运维/测试</font></td>
+<td style="text-align:left"><img src="/images/group-operator.png" width="30%" height="30%"></td>
+</tr>
+<tr>
+<td style="text-align:center"><font size="4">产品/运营</font></td>
+<td style="text-align:left"><img src="/images/group-product.png" width="30%" height="30%"></td>
+</tr>
+<tr>
+<td style="text-align:center"><font size="4">职能/财务</font></td>
+<td style="text-align:left"><img src="/images/group-function.png" width="30%" height="30%"></td>
+</tr>
+</tbody>
+</table>
+]]></content>
   </entry>
 </search>
