@@ -41,6 +41,22 @@
       </categories>
   </entry>
   <entry>
+    <title>Anka tutorial 03: jenkins</title>
+    <url>/2019/11/28/Anka-tutorial-03-jenkins/</url>
+    <content><![CDATA[<h3 id="anka-集成-Jenkins-link"><a href="#anka-集成-Jenkins-link" class="headerlink" title="anka 集成 Jenkins (link)"></a>anka 集成 Jenkins <a href="https://ankadoc.bitbucket.io/anka-build/#integrate-jenkins-with-controller" target="_blank" rel="noopener">(link)</a></h3><p>未完待续…</p>
+<p>安装插件<br><code>Manage Jenkins &gt; Manage Plugins</code></p>
+<p>搜索anka</p>
+<p>新建 ssh 用的登陆凭证</p>
+<p>新建VM的时候 默认用户名和密码分别是 <code>anka/admin</code></p>
+<p>配置jenkins<br><code>Manage Jenkins &gt; Configure System</code></p>
+<p><img src="/images/anka_jenkins_01.png" width="80%" height="80%"></p>
+<p><a href="http://localhost/#/dashboard" target="_blank" rel="noopener">http://localhost/#/dashboard</a></p>
+]]></content>
+      <categories>
+        <category>CICD</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Anka tutorial 02</title>
     <url>/2019/11/19/Anka-tutorial-02/</url>
     <content><![CDATA[<h5 id="1-Joining-Nodes"><a href="#1-Joining-Nodes" class="headerlink" title="1.Joining Nodes"></a>1.Joining Nodes</h5><p>在mac上（anka build 节点）执行  <code>sudo ankacluster join http://localhost:80/</code></p>
@@ -58,22 +74,6 @@
 <p>需要区别 VM 和后面提到的 instance 关系，VM 更准确点讲是 VM Template，是创建instance的模版，但模版需要通过上面的方法才可以修改；新建VM后，相当于有一个基础的模版，但是要满足其他要求，可以自行在running的 vm 中操作，然后随时保存，类似于docker container的commit操作，但anka build是suspend一个running的 vm 来保存。</p>
 </blockquote>
 <h5 id="4-Manage-VM-Templates-in-Registry-link"><a href="#4-Manage-VM-Templates-in-Registry-link" class="headerlink" title="4. Manage VM Templates in Registry(link)"></a>4. Manage VM Templates in Registry<a href="https://ankadoc.bitbucket.io/anka-build/#manage-vm-templates-in-registry" target="_blank" rel="noopener">(link)</a></h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#罗列仓库</span></span><br><span class="line">➜   anka registry list-repos</span><br><span class="line">++</span><br><span class="line">++</span><br><span class="line"><span class="comment">#添加一个新仓库</span></span><br><span class="line">➜   anka registry add demo-repo http://localhost:8089</span><br><span class="line">➜   anka registry list-repos</span><br><span class="line">++</span><br><span class="line">++</span><br><span class="line">demo-repo (default)</span><br><span class="line">+--------+-----------+</span><br><span class="line">| host   | localhost |</span><br><span class="line">+--------+-----------+</span><br><span class="line">| scheme | http      |</span><br><span class="line">+--------+-----------+</span><br><span class="line">| port   | 8089      |</span><br><span class="line">+--------+-----------+</span><br><span class="line"><span class="comment">#推送VM Templates 到新仓库，</span></span><br><span class="line">➜   anka registry push CatalinaVm -d <span class="string">"first push"</span> -t v1</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>CICD</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Anka tutorial 03: jenkins</title>
-    <url>/2019/11/28/Anka-tutorial-03-jenkins/</url>
-    <content><![CDATA[<h3 id="anka-集成-Jenkins-link"><a href="#anka-集成-Jenkins-link" class="headerlink" title="anka 集成 Jenkins (link)"></a>anka 集成 Jenkins <a href="https://ankadoc.bitbucket.io/anka-build/#integrate-jenkins-with-controller" target="_blank" rel="noopener">(link)</a></h3><p>未完待续…</p>
-<p>安装插件<br><code>Manage Jenkins &gt; Manage Plugins</code></p>
-<p>搜索anka</p>
-<p>新建 ssh 用的登陆凭证</p>
-<p>新建VM的时候 默认用户名和密码分别是 <code>anka/admin</code></p>
-<p>配置jenkins<br><code>Manage Jenkins &gt; Configure System</code></p>
-<p><img src="/images/anka_jenkins_01.png" width="80%" height="80%"></p>
-<p><a href="http://localhost/#/dashboard" target="_blank" rel="noopener">http://localhost/#/dashboard</a></p>
-]]></content>
       <categories>
         <category>CICD</category>
       </categories>
@@ -225,24 +225,6 @@
       </categories>
   </entry>
   <entry>
-    <title>Azure FAQs</title>
-    <url>/2019/12/11/Azure-FAQs/</url>
-    <content><![CDATA[<h3 id="1-asm-arm"><a href="#1-asm-arm" class="headerlink" title="1. asm, arm"></a>1. asm, arm</h3><ul>
-<li>asm: Azure Service Manager</li>
-<li>arm: Azure Resource Manager</li>
-</ul>
-<p>最开始一直都是classic模型，它的模型中有service的概念，所以它也叫 asm（Azure Service Manager）。2014年开始提出arm（Azure Resource Manager），其管理平台叫portal。2015年底arm发布。</p>
-<p>当前情况是微软正在将azure的所有功能往arm上迁移。以后都推荐使用arm。但 是当前状况是arm不完全向后兼容asm，有些功能只有asm上才有，所以还有很多 用户还是在使用classic。</p>
-<blockquote>
-<p>ref: <a href="https://pengpengxp.github.io/archive/before-2018-11-10/2017-06-28-Azure%E7%BB%8F%E5%85%B8%E6%A8%A1%E5%BC%8F%E5%92%8C%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB.html#orgbb66971" target="_blank" rel="noopener">https://pengpengxp.github.io/archive/before-2018-11-10/2017-06-28-Azure%E7%BB%8F%E5%85%B8%E6%A8%A1%E5%BC%8F%E5%92%8C%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB.html#orgbb66971</a></p>
-</blockquote>
-<h3 id="2-AWS-to-Azure-services-comparison"><a href="#2-AWS-to-Azure-services-comparison" class="headerlink" title="2. AWS to Azure services comparison"></a>2. AWS to Azure services comparison</h3><p>详见链接 <a href="https://docs.microsoft.com/en-us/azure/architecture/aws-professional/services" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/azure/architecture/aws-professional/services</a></p>
-]]></content>
-      <categories>
-        <category>Cloud</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Azure tutorial 01: overview</title>
     <url>/2019/12/11/Azure-tutorial-01-overview/</url>
     <content><![CDATA[]]></content>
@@ -310,6 +292,24 @@
       </categories>
   </entry>
   <entry>
+    <title>Azure FAQs</title>
+    <url>/2019/12/11/Azure-FAQs/</url>
+    <content><![CDATA[<h3 id="1-asm-arm"><a href="#1-asm-arm" class="headerlink" title="1. asm, arm"></a>1. asm, arm</h3><ul>
+<li>asm: Azure Service Manager</li>
+<li>arm: Azure Resource Manager</li>
+</ul>
+<p>最开始一直都是classic模型，它的模型中有service的概念，所以它也叫 asm（Azure Service Manager）。2014年开始提出arm（Azure Resource Manager），其管理平台叫portal。2015年底arm发布。</p>
+<p>当前情况是微软正在将azure的所有功能往arm上迁移。以后都推荐使用arm。但 是当前状况是arm不完全向后兼容asm，有些功能只有asm上才有，所以还有很多 用户还是在使用classic。</p>
+<blockquote>
+<p>ref: <a href="https://pengpengxp.github.io/archive/before-2018-11-10/2017-06-28-Azure%E7%BB%8F%E5%85%B8%E6%A8%A1%E5%BC%8F%E5%92%8C%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB.html#orgbb66971" target="_blank" rel="noopener">https://pengpengxp.github.io/archive/before-2018-11-10/2017-06-28-Azure%E7%BB%8F%E5%85%B8%E6%A8%A1%E5%BC%8F%E5%92%8C%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB.html#orgbb66971</a></p>
+</blockquote>
+<h3 id="2-AWS-to-Azure-services-comparison"><a href="#2-AWS-to-Azure-services-comparison" class="headerlink" title="2. AWS to Azure services comparison"></a>2. AWS to Azure services comparison</h3><p>详见链接 <a href="https://docs.microsoft.com/en-us/azure/architecture/aws-professional/services" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/azure/architecture/aws-professional/services</a></p>
+]]></content>
+      <categories>
+        <category>Cloud</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Bash function skill</title>
     <url>/2019/06/18/Bash-function-skill/</url>
     <content><![CDATA[<p>bash 函数技巧</p>
@@ -325,6 +325,24 @@
       </categories>
       <tags>
         <tag>Shell</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Crontab on Liunx or Jenkins</title>
+    <url>/2019/04/28/Crontab-on-Liunx-or-Jenkins/</url>
+    <content><![CDATA[<p>源起：<br><code>@midnight</code>  This will run at some point between 0:00 and 2:59</p>
+<p><code>H(0-30) 02 * * *</code> between 2:00 a.m. – 02:30 a.m.<br>//will build the same time every day</p>
+<p><strong>More Ref:</strong></p>
+<ul>
+<li><a href="https://crontab-generator.org/" target="_blank" rel="noopener">https://crontab-generator.org/</a></li>
+<li><a href="https://blogs.microsoft.co.il/meravk/2015/06/10/how-to-schedule-a-build-in-jenkins/" target="_blank" rel="noopener">https://blogs.microsoft.co.il/meravk/2015/06/10/how-to-schedule-a-build-in-jenkins/</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>jenkins</tag>
       </tags>
   </entry>
   <entry>
@@ -384,21 +402,19 @@
       </tags>
   </entry>
   <entry>
-    <title>Crontab on Liunx or Jenkins</title>
-    <url>/2019/04/28/Crontab-on-Liunx-or-Jenkins/</url>
-    <content><![CDATA[<p>源起：<br><code>@midnight</code>  This will run at some point between 0:00 and 2:59</p>
-<p><code>H(0-30) 02 * * *</code> between 2:00 a.m. – 02:30 a.m.<br>//will build the same time every day</p>
+    <title>Docker clean</title>
+    <url>/2019/05/07/Docker-clean/</url>
+    <content><![CDATA[<h4 id="1-Cleanup-exited-processes"><a href="#1-Cleanup-exited-processes" class="headerlink" title="1.Cleanup exited processes:"></a>1.Cleanup exited processes:</h4><p>docker rm $(docker ps -q -f status=exited)</p>
+<h4 id="3-Cleanup-dangling-volumes"><a href="#3-Cleanup-dangling-volumes" class="headerlink" title="3.Cleanup dangling volumes:"></a>3.Cleanup dangling volumes:</h4><p>docker volume rm $(docker volume ls -qf dangling=true)</p>
+<h4 id="3-Cleanup-dangling-images"><a href="#3-Cleanup-dangling-images" class="headerlink" title="3.Cleanup dangling images:"></a>3.Cleanup dangling images:</h4><p>docker rmi $(docker images –filter “dangling=true” -q –no-trunc)</p>
+<p>more methods go to below link ↓</p>
 <p><strong>More Ref:</strong></p>
 <ul>
-<li><a href="https://crontab-generator.org/" target="_blank" rel="noopener">https://crontab-generator.org/</a></li>
-<li><a href="https://blogs.microsoft.co.il/meravk/2015/06/10/how-to-schedule-a-build-in-jenkins/" target="_blank" rel="noopener">https://blogs.microsoft.co.il/meravk/2015/06/10/how-to-schedule-a-build-in-jenkins/</a></li>
+<li><a href="https://www.jianshu.com/p/470e29801be2" target="_blank" rel="noopener">https://www.jianshu.com/p/470e29801be2</a></li>
 </ul>
 ]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
       <tags>
-        <tag>jenkins</tag>
+        <tag>Docker</tag>
       </tags>
   </entry>
   <entry>
@@ -420,22 +436,6 @@
 <li><a href="https://jingsam.github.io/2017/08/26/docker-save-and-docker-export.html" target="_blank" rel="noopener">https://jingsam.github.io/2017/08/26/docker-save-and-docker-export.html</a></li>
 <li><a href="https://www.jianshu.com/p/8408e06b7273" target="_blank" rel="noopener">https://www.jianshu.com/p/8408e06b7273</a></li>
 </ol>
-]]></content>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Docker clean</title>
-    <url>/2019/05/07/Docker-clean/</url>
-    <content><![CDATA[<h4 id="1-Cleanup-exited-processes"><a href="#1-Cleanup-exited-processes" class="headerlink" title="1.Cleanup exited processes:"></a>1.Cleanup exited processes:</h4><p>docker rm $(docker ps -q -f status=exited)</p>
-<h4 id="3-Cleanup-dangling-volumes"><a href="#3-Cleanup-dangling-volumes" class="headerlink" title="3.Cleanup dangling volumes:"></a>3.Cleanup dangling volumes:</h4><p>docker volume rm $(docker volume ls -qf dangling=true)</p>
-<h4 id="3-Cleanup-dangling-images"><a href="#3-Cleanup-dangling-images" class="headerlink" title="3.Cleanup dangling images:"></a>3.Cleanup dangling images:</h4><p>docker rmi $(docker images –filter “dangling=true” -q –no-trunc)</p>
-<p>more methods go to below link ↓</p>
-<p><strong>More Ref:</strong></p>
-<ul>
-<li><a href="https://www.jianshu.com/p/470e29801be2" target="_blank" rel="noopener">https://www.jianshu.com/p/470e29801be2</a></li>
-</ul>
 ]]></content>
       <tags>
         <tag>Docker</tag>
@@ -512,19 +512,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Excel常用函数</title>
-    <url>/2020/12/24/Excel%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/</url>
-    <content><![CDATA[<p>查找一一对应的关系</p>
-<p><code>=VLOOKUP(F1,configs!$D:$E,2,0)</code>   $用来保持D E不动</p>
-<p><code>=VLOOKUP(B9,configs!A:B,2,0)</code></p>
-<p><code>=MID(K2,1,1)</code>  从第一位开始，取1位</p>
-<p><code>=MID(K2,1,3)</code>  从第一位开始，取3位</p>
-]]></content>
-      <tags>
-        <tag>Tools</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Github Actions E02最小Demo</title>
     <url>/2020/03/17/Github-Actions-E02%E6%9C%80%E5%B0%8FDemo/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
@@ -549,6 +536,77 @@
 <li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#searching-logs" target="_blank" rel="noopener">搜索日志</a></li>
 <li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#downloading-logs" target="_blank" rel="noopener">下载日志</a></li>
 <li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#enabling-debug-logging" target="_blank" rel="noopener">启用调试日志</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>CICD</category>
+      </categories>
+      <tags>
+        <tag>GA</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Excel常用函数</title>
+    <url>/2020/12/24/Excel%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<p>查找一一对应的关系</p>
+<p><code>=VLOOKUP(F1,configs!$D:$E,2,0)</code>   $用来保持D E不动</p>
+<p><code>=VLOOKUP(B9,configs!A:B,2,0)</code></p>
+<p><code>=MID(K2,1,1)</code>  从第一位开始，取1位</p>
+<p><code>=MID(K2,1,3)</code>  从第一位开始，取3位</p>
+]]></content>
+      <tags>
+        <tag>Tools</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Github Actions E03触发</title>
+    <url>/2020/03/18/Github-Actions-E03%E8%A7%A6%E5%8F%91/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
+<p>知道手机能够打电话，还得知道怎么把电话号码拨出去，这样才能实现通话的功能；而CICD的场景会更为复杂，如果一个任务在你不想让它运行的时候运行，会浪费自己资源，影响产出物。</p>
+</blockquote>
+<p>关于触发工作流-workflow，github actions的原文如下</p>
+<p><strong>Events that trigger workflows</strong></p>
+<p>You can configure your workflows to run when specific activity on GitHub happens, at a scheduled time, or when an event outside of GitHub occurs.</p>
+<hr>
+<p>根据上面描述，大致有3类事件(<em>错了的话欢迎指正</em>)，官网文档更详细的在<a href="https://help.github.com/en/actions/reference/events-that-trigger-workflows" target="_blank" rel="noopener">这里</a>，不是在<a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/configuring-a-workflow#triggering-a-workflow-with-events" target="_blank" rel="noopener"><em>那里</em></a></p>
+<blockquote>
+<p>最好看英文的，中文似乎没有翻译完，少了一个 <em>Triggering new workflows using a personal access token</em> 方法 😢</p>
+</blockquote>
+<h4 id="一、Github的特定事件-Specific-activity-on-GitHub-happens"><a href="#一、Github的特定事件-Specific-activity-on-GitHub-happens" class="headerlink" title="一、Github的特定事件 (Specific activity on GitHub happens)"></a>一、Github的特定事件 (Specific activity on GitHub happens)</h4><p>算是最常见的一种方式，比如：当小明更新了master分支代码，推送到仓库后触发这个CICD流程。</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 单一事件 Trigger on push</span></span><br><span class="line"><span class="attr">on:</span> <span class="string">push</span></span><br><span class="line"><span class="comment">#------------------分割线----------------</span></span><br><span class="line"><span class="comment"># 一个事件列表也可以，Trigger the workflow on push or pull request</span></span><br><span class="line"><span class="attr">on:</span> <span class="string">[push,</span> <span class="string">pull_request]</span></span><br><span class="line"><span class="comment">#------------------分割线----------------</span></span><br><span class="line"><span class="comment"># 不同类型的事件的组合</span></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="comment"># Trigger the workflow on push or pull request,</span></span><br><span class="line">  <span class="comment"># but only for the master branch</span></span><br><span class="line"><span class="attr">  push:</span></span><br><span class="line"><span class="attr">    branches:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">master</span></span><br><span class="line"><span class="attr">  pull_request:</span></span><br><span class="line"><span class="attr">    branches:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">master</span></span><br><span class="line">  <span class="comment"># Also trigger on page_build, as well as release created events</span></span><br><span class="line"><span class="attr">  page_build:</span></span><br><span class="line"><span class="attr">  release:</span></span><br><span class="line"><span class="attr">    types:</span> <span class="comment"># This configuration does not affect the page_build event above</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">created</span></span><br></pre></td></tr></table></figure>
+<p>Github 的 webhooks event有很多，每个event又包含很多类型。查看<a href="https://developer.github.com/webhooks/#events" target="_blank" rel="noopener">所有的event</a></p>
+<p>顺带熟悉下 github webhook 的概念</p>
+<p><strong>官方介绍</strong>：Webhooks provide a way for notifications to be delivered to an external web server whenever certain actions occur on a repository or organization.<a href="https://help.github.com/en/github/extending-github/about-webhooks" target="_blank" rel="noopener">原文点这里</a></p>
+<blockquote>
+<p><em>通俗版</em>：可以将 github Webhook 理解为一个勤勤恳恳的“卧底”，它被安插到github的一个仓库或某个组织中，一旦发生了之前定义好的事情，它会第一时间把以某种约定好的方式告知给 github acionts。<br><em>简单(不严谨地)而言</em>: 当有行为触发时，Github 会发送 POST 请求至指定的 URL。</p>
+</blockquote>
+<p>请看🌰<br><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">on:</span></span><br><span class="line"><span class="attr">  issue_comment:</span></span><br><span class="line"><span class="attr">    types:</span> <span class="string">[created,</span> <span class="string">deleted]</span></span><br></pre></td></tr></table></figure></p>
+<p>默认情况下，一个事件的所有活动类型都会触发工作流程运行。也可以使用types关键字将工作流程运行限制为特定的活动类型，精确使用。</p>
+<blockquote>
+<p>延伸一下： github webhook -&gt;  广义的webhooks、 github哪些<a href="https://developer.github.com/webhooks/#events" target="_blank" rel="noopener">events</a></p>
+</blockquote>
+<h4 id="二、定时事件-Scheduled-events"><a href="#二、定时事件-Scheduled-events" class="headerlink" title="二、定时事件(Scheduled events)"></a>二、定时事件(Scheduled events)</h4><p>类似crontab的用法，使用<a href="https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html#tag_20_25_07" target="_blank" rel="noopener">POSIX cron 语法</a>在指定的时间(<strong>UTC 时间</strong>)运行。</p>
+<p>在workflow中用 date命令也可以看到输出的是UTC时间，如:<code>Thu Mar 19 12:08:10 UTC 2020</code>。使用中要根据自己的时区计算出UTC时间，然后配置上。</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">on:</span></span><br><span class="line"><span class="attr">  schedule:</span></span><br><span class="line">    <span class="comment"># * is a special character in YAML so you have to quote this string</span></span><br><span class="line"><span class="attr">    - cron:</span>  <span class="string">'*/15 * * * *'</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注： GitHub 操作 不支持非标准语法 @yearly、@monthly、@weekly、@daily、@hourly 和 @reboot。这样的语法，如 @midnight 在jenkins中是支持的，需要区别开来。</p>
+</blockquote>
+<h4 id="三、外部事件-External-events"><a href="#三、外部事件-External-events" class="headerlink" title="三、外部事件(External events)"></a>三、外部事件(External events)</h4><ul>
+<li>通过Github API 触发叫做 repository_dispatch 的事件，以此来触发workflow.</li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">on:</span> <span class="string">repository_dispatch</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用个人访问令牌触发新工作流程(Triggering new workflows using a personal access token)</li>
+</ul>
+<p>原文引用：<br><em>For example, if a workflow run pushes code using the repository’s GITHUB_TOKEN, a new workflow will not run even when the repository contains a workflow configured to run when push events occur. </em></p>
+<p><em>If you would like to trigger a workflow from a workflow run, you can trigger the event using a personal access token. You’ll need to create a personal access token and store it as a secret in your repository. To minimize your GitHub Actions usage costs, ensure that you don’t create recursive or unintended workflow runs.</em></p>
+<p>上面提及的2中方法，都属于用外部方法来触发 workflow。 而上一段英文也提及 workflow 触发workflow的情况，有需要可详细研究。</p>
+<hr>
+<p><strong>More Ref:</strong></p>
+<ul>
+<li><a href="https://help.github.com/en/actions/reference/events-that-trigger-workflows" target="_blank" rel="noopener">https://help.github.com/en/actions/reference/events-that-trigger-workflows</a></li>
+<li><a href="https://developer.github.com/webhooks/" target="_blank" rel="noopener">https://developer.github.com/webhooks/</a></li>
+<li><a href="https://help.github.com/cn/actions/reference/workflow-syntax-for-github-actions#patterns-to-match-branches-and-tags" target="_blank" rel="noopener">Patterns to match branches and tags</a></li>
 </ul>
 ]]></content>
       <categories>
@@ -636,120 +694,6 @@
 <li><a href="https://help.github.com/en/actions/reference/virtual-environments-for-github-hosted-runners#docker-container-filesystem" target="_blank" rel="noopener">Docker container filesystem</a></li>
 <li><a href="https://help.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners" target="_blank" rel="noopener">About self-hosted runners</a></li>
 <li><a href="https://help.github.com/en/github/setting-up-and-managing-billing-and-payments-on-github/viewing-your-github-actions-usage" target="_blank" rel="noopener">billing</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>CICD</category>
-      </categories>
-      <tags>
-        <tag>GA</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Github Actions E03触发</title>
-    <url>/2020/03/18/Github-Actions-E03%E8%A7%A6%E5%8F%91/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
-<p>知道手机能够打电话，还得知道怎么把电话号码拨出去，这样才能实现通话的功能；而CICD的场景会更为复杂，如果一个任务在你不想让它运行的时候运行，会浪费自己资源，影响产出物。</p>
-</blockquote>
-<p>关于触发工作流-workflow，github actions的原文如下</p>
-<p><strong>Events that trigger workflows</strong></p>
-<p>You can configure your workflows to run when specific activity on GitHub happens, at a scheduled time, or when an event outside of GitHub occurs.</p>
-<hr>
-<p>根据上面描述，大致有3类事件(<em>错了的话欢迎指正</em>)，官网文档更详细的在<a href="https://help.github.com/en/actions/reference/events-that-trigger-workflows" target="_blank" rel="noopener">这里</a>，不是在<a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/configuring-a-workflow#triggering-a-workflow-with-events" target="_blank" rel="noopener"><em>那里</em></a></p>
-<blockquote>
-<p>最好看英文的，中文似乎没有翻译完，少了一个 <em>Triggering new workflows using a personal access token</em> 方法 😢</p>
-</blockquote>
-<h4 id="一、Github的特定事件-Specific-activity-on-GitHub-happens"><a href="#一、Github的特定事件-Specific-activity-on-GitHub-happens" class="headerlink" title="一、Github的特定事件 (Specific activity on GitHub happens)"></a>一、Github的特定事件 (Specific activity on GitHub happens)</h4><p>算是最常见的一种方式，比如：当小明更新了master分支代码，推送到仓库后触发这个CICD流程。</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 单一事件 Trigger on push</span></span><br><span class="line"><span class="attr">on:</span> <span class="string">push</span></span><br><span class="line"><span class="comment">#------------------分割线----------------</span></span><br><span class="line"><span class="comment"># 一个事件列表也可以，Trigger the workflow on push or pull request</span></span><br><span class="line"><span class="attr">on:</span> <span class="string">[push,</span> <span class="string">pull_request]</span></span><br><span class="line"><span class="comment">#------------------分割线----------------</span></span><br><span class="line"><span class="comment"># 不同类型的事件的组合</span></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="comment"># Trigger the workflow on push or pull request,</span></span><br><span class="line">  <span class="comment"># but only for the master branch</span></span><br><span class="line"><span class="attr">  push:</span></span><br><span class="line"><span class="attr">    branches:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">master</span></span><br><span class="line"><span class="attr">  pull_request:</span></span><br><span class="line"><span class="attr">    branches:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">master</span></span><br><span class="line">  <span class="comment"># Also trigger on page_build, as well as release created events</span></span><br><span class="line"><span class="attr">  page_build:</span></span><br><span class="line"><span class="attr">  release:</span></span><br><span class="line"><span class="attr">    types:</span> <span class="comment"># This configuration does not affect the page_build event above</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">created</span></span><br></pre></td></tr></table></figure>
-<p>Github 的 webhooks event有很多，每个event又包含很多类型。查看<a href="https://developer.github.com/webhooks/#events" target="_blank" rel="noopener">所有的event</a></p>
-<p>顺带熟悉下 github webhook 的概念</p>
-<p><strong>官方介绍</strong>：Webhooks provide a way for notifications to be delivered to an external web server whenever certain actions occur on a repository or organization.<a href="https://help.github.com/en/github/extending-github/about-webhooks" target="_blank" rel="noopener">原文点这里</a></p>
-<blockquote>
-<p><em>通俗版</em>：可以将 github Webhook 理解为一个勤勤恳恳的“卧底”，它被安插到github的一个仓库或某个组织中，一旦发生了之前定义好的事情，它会第一时间把以某种约定好的方式告知给 github acionts。<br><em>简单(不严谨地)而言</em>: 当有行为触发时，Github 会发送 POST 请求至指定的 URL。</p>
-</blockquote>
-<p>请看🌰<br><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">on:</span></span><br><span class="line"><span class="attr">  issue_comment:</span></span><br><span class="line"><span class="attr">    types:</span> <span class="string">[created,</span> <span class="string">deleted]</span></span><br></pre></td></tr></table></figure></p>
-<p>默认情况下，一个事件的所有活动类型都会触发工作流程运行。也可以使用types关键字将工作流程运行限制为特定的活动类型，精确使用。</p>
-<blockquote>
-<p>延伸一下： github webhook -&gt;  广义的webhooks、 github哪些<a href="https://developer.github.com/webhooks/#events" target="_blank" rel="noopener">events</a></p>
-</blockquote>
-<h4 id="二、定时事件-Scheduled-events"><a href="#二、定时事件-Scheduled-events" class="headerlink" title="二、定时事件(Scheduled events)"></a>二、定时事件(Scheduled events)</h4><p>类似crontab的用法，使用<a href="https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html#tag_20_25_07" target="_blank" rel="noopener">POSIX cron 语法</a>在指定的时间(<strong>UTC 时间</strong>)运行。</p>
-<p>在workflow中用 date命令也可以看到输出的是UTC时间，如:<code>Thu Mar 19 12:08:10 UTC 2020</code>。使用中要根据自己的时区计算出UTC时间，然后配置上。</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">on:</span></span><br><span class="line"><span class="attr">  schedule:</span></span><br><span class="line">    <span class="comment"># * is a special character in YAML so you have to quote this string</span></span><br><span class="line"><span class="attr">    - cron:</span>  <span class="string">'*/15 * * * *'</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>注： GitHub 操作 不支持非标准语法 @yearly、@monthly、@weekly、@daily、@hourly 和 @reboot。这样的语法，如 @midnight 在jenkins中是支持的，需要区别开来。</p>
-</blockquote>
-<h4 id="三、外部事件-External-events"><a href="#三、外部事件-External-events" class="headerlink" title="三、外部事件(External events)"></a>三、外部事件(External events)</h4><ul>
-<li>通过Github API 触发叫做 repository_dispatch 的事件，以此来触发workflow.</li>
-</ul>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">on:</span> <span class="string">repository_dispatch</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>使用个人访问令牌触发新工作流程(Triggering new workflows using a personal access token)</li>
-</ul>
-<p>原文引用：<br><em>For example, if a workflow run pushes code using the repository’s GITHUB_TOKEN, a new workflow will not run even when the repository contains a workflow configured to run when push events occur. </em></p>
-<p><em>If you would like to trigger a workflow from a workflow run, you can trigger the event using a personal access token. You’ll need to create a personal access token and store it as a secret in your repository. To minimize your GitHub Actions usage costs, ensure that you don’t create recursive or unintended workflow runs.</em></p>
-<p>上面提及的2中方法，都属于用外部方法来触发 workflow。 而上一段英文也提及 workflow 触发workflow的情况，有需要可详细研究。</p>
-<hr>
-<p><strong>More Ref:</strong></p>
-<ul>
-<li><a href="https://help.github.com/en/actions/reference/events-that-trigger-workflows" target="_blank" rel="noopener">https://help.github.com/en/actions/reference/events-that-trigger-workflows</a></li>
-<li><a href="https://developer.github.com/webhooks/" target="_blank" rel="noopener">https://developer.github.com/webhooks/</a></li>
-<li><a href="https://help.github.com/cn/actions/reference/workflow-syntax-for-github-actions#patterns-to-match-branches-and-tags" target="_blank" rel="noopener">Patterns to match branches and tags</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>CICD</category>
-      </categories>
-      <tags>
-        <tag>GA</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Github Actions E06产出物</title>
-    <url>/2020/03/30/Github-Actions-E06%E4%BA%A7%E5%87%BA%E7%89%A9/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
-<p>大多数时候，workflow的产出物都会直接传到对应的某些仓库，比如docker image会送到docker hub这种仓库存储。这种时候是不需要在workflow再额外的管理产出物，但也不能全盘否定；有时候我们没有一个方便的地方去存储某些形式的文件等，就需要我们有类似jenkins <code>archiveArtifacts</code> 功能。但github actions能做的会更多，请期待。</p>
-</blockquote>
-<h3 id="1-关于artifacts"><a href="#1-关于artifacts" class="headerlink" title="1. 关于artifacts"></a>1. 关于artifacts</h3><p>构件是指在工作流程运行过程中产生的文件或文件集。<br>GitHub 提供两项可用于上传和下载构建构件的操作。 上传到工作流程运行的文件将使用 .zip 格式存档。 更多信息请参阅 <code>action/upload-artifact</code> 和 <code>download-artifact</code> 操作。</p>
-<p>这些是您可能想要上传的一些常见构建和测试输出构件：</p>
-<ul>
-<li>日志文件和核心转储文件</li>
-<li>测试结果、失败和屏幕截图</li>
-<li>二进制或存档文件</li>
-<li>压力测试性能输出和代码覆盖结果</li>
-</ul>
-<p>当作业完成时，运行程序将终止并删除虚拟环境的实例。</p>
-<h3 id="2-上传"><a href="#2-上传" class="headerlink" title="2. 上传"></a>2. 上传</h3><p>常见的场景: 一个java程序的产出物是一个jar包，在构建之后需要得到这个jar用于其他环境部署。</p>
-<p>依旧用 <a href="https://github.com/cicd-draft/api-test-demo" target="_blank" rel="noopener">api-test-demo</a> 这个仓库做演示，主要分为以下个步骤：</p>
-<ul>
-<li>1.下载代码；</li>
-<li>2.构建jar包(存放于指定到路径<code>build/libs/api-demo-0.0.1-SNAPSHOT.jar</code>)；</li>
-<li>3.上传jar包</li>
-</ul>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">my</span> <span class="string">workflow</span> <span class="string">demo</span> </span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span> </span><br><span class="line"><span class="attr">  push:</span></span><br><span class="line"><span class="attr">    branches:</span> </span><br><span class="line"><span class="bullet">      -</span> <span class="string">master</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  artifacts_demo_job:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">job1</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">Checkout</span> <span class="string">code</span></span><br><span class="line"><span class="attr">      uses:</span> <span class="string">actions/checkout@v1</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">Build</span> <span class="string">jar</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        pwd  &amp;&amp; ls -l</span></span><br><span class="line"><span class="string">        ./gradlew -x jar build</span></span><br><span class="line"><span class="string">        ls -l build/libs/api-demo-0.0.1-SNAPSHOT.jar</span></span><br><span class="line"><span class="string"></span><span class="attr">    - name:</span> <span class="string">Archive</span> <span class="string">SNAPSHOT.jar</span></span><br><span class="line"><span class="attr">      uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">      with:</span></span><br><span class="line"><span class="attr">        name:</span> <span class="string">api_snapshot_jar</span></span><br><span class="line"><span class="attr">        path:</span> <span class="string">build/libs/api-demo-0.0.1-SNAPSHOT.jar</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>github actions 工作流的产出物都放在哪里的，保留多久</p>
-</blockquote>
-<h3 id="3-下载"><a href="#3-下载" class="headerlink" title="3. 下载"></a>3. 下载</h3><p>步骤官方说明如下：</p>
-<ul>
-<li>1.On GitHub, navigate to the main page of the repository.</li>
-<li>2.Under your repository name, click Actions.</li>
-<li>3.In the left sidebar, click the workflow you want to see.</li>
-<li>4.Under “Workflow runs”, click the name of the run you want to see.</li>
-<li>5.To download artifacts, use the Artifacts drop-down menu, and select the artifact you want to download.</li>
-<li>6.To delete artifacts, use the Artifacts drop-down menu, and click .</li>
-</ul>
-<p>注意事项：</p>
-<ul>
-<li>保留90天</li>
-<li>一旦删除某一个构件，无法恢复</li>
-</ul>
-<h3 id="4-在工作流程中作业之间传递数据"><a href="#4-在工作流程中作业之间传递数据" class="headerlink" title="4. 在工作流程中作业之间传递数据"></a>4. 在工作流程中作业之间传递数据</h3><p><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts#passing-data-between-jobs-in-a-workflow" target="_blank" rel="noopener">https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts#passing-data-between-jobs-in-a-workflow</a></p>
-<p>由于同一个workflow的多个job分别运行在不同的虚拟主机上，下面示例工作流程说明如何在相同工作流程中的任务之间传递数据。关键词 <strong>need</strong> 用来确保job按顺序运行.</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Share</span> <span class="string">data</span> <span class="string">between</span> <span class="string">jobs</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span> <span class="string">[push]</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  job_1:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Add</span> <span class="number">3</span> <span class="string">and</span> <span class="number">7</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          expr 3 + 7 &gt; math-homework.txt</span></span><br><span class="line"><span class="string"></span><span class="attr">      - name:</span> <span class="string">Upload</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">1</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">          path:</span> <span class="string">math-homework.txt</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  job_2:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Multiply</span> <span class="string">by</span> <span class="number">9</span></span><br><span class="line"><span class="attr">    needs:</span> <span class="string">job_1</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">windows-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Download</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">1</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/download-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">      - shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          value=`cat homework/math-homework.txt`</span></span><br><span class="line"><span class="string">          expr $value \* 9 &gt; homework/math-homework.txt</span></span><br><span class="line"><span class="string"></span><span class="attr">      - name:</span> <span class="string">Upload</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">2</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">          path:</span> <span class="string">homework/math-homework.txt</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  job_3:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Display</span> <span class="string">results</span></span><br><span class="line"><span class="attr">    needs:</span> <span class="string">job_2</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">macOS-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Download</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">2</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/download-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Print</span> <span class="string">the</span> <span class="string">final</span> <span class="string">result</span></span><br><span class="line"><span class="attr">        shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          value=`cat homework/math-homework.txt`</span></span><br><span class="line"><span class="string">          echo The result is $value</span></span><br></pre></td></tr></table></figure>
-<hr>
-<p><strong>More Ref:</strong></p>
-<ul>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts" target="_blank" rel="noopener">关于该篇的原文</a></li>
 </ul>
 ]]></content>
       <categories>
@@ -1130,6 +1074,80 @@
       </tags>
   </entry>
   <entry>
+    <title>Github Actions E06产出物</title>
+    <url>/2020/03/30/Github-Actions-E06%E4%BA%A7%E5%87%BA%E7%89%A9/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
+<p>大多数时候，workflow的产出物都会直接传到对应的某些仓库，比如docker image会送到docker hub这种仓库存储。这种时候是不需要在workflow再额外的管理产出物，但也不能全盘否定；有时候我们没有一个方便的地方去存储某些形式的文件等，就需要我们有类似jenkins <code>archiveArtifacts</code> 功能。但github actions能做的会更多，请期待。</p>
+</blockquote>
+<h3 id="1-关于artifacts"><a href="#1-关于artifacts" class="headerlink" title="1. 关于artifacts"></a>1. 关于artifacts</h3><p>构件是指在工作流程运行过程中产生的文件或文件集。<br>GitHub 提供两项可用于上传和下载构建构件的操作。 上传到工作流程运行的文件将使用 .zip 格式存档。 更多信息请参阅 <code>action/upload-artifact</code> 和 <code>download-artifact</code> 操作。</p>
+<p>这些是您可能想要上传的一些常见构建和测试输出构件：</p>
+<ul>
+<li>日志文件和核心转储文件</li>
+<li>测试结果、失败和屏幕截图</li>
+<li>二进制或存档文件</li>
+<li>压力测试性能输出和代码覆盖结果</li>
+</ul>
+<p>当作业完成时，运行程序将终止并删除虚拟环境的实例。</p>
+<h3 id="2-上传"><a href="#2-上传" class="headerlink" title="2. 上传"></a>2. 上传</h3><p>常见的场景: 一个java程序的产出物是一个jar包，在构建之后需要得到这个jar用于其他环境部署。</p>
+<p>依旧用 <a href="https://github.com/cicd-draft/api-test-demo" target="_blank" rel="noopener">api-test-demo</a> 这个仓库做演示，主要分为以下个步骤：</p>
+<ul>
+<li>1.下载代码；</li>
+<li>2.构建jar包(存放于指定到路径<code>build/libs/api-demo-0.0.1-SNAPSHOT.jar</code>)；</li>
+<li>3.上传jar包</li>
+</ul>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">my</span> <span class="string">workflow</span> <span class="string">demo</span> </span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span> </span><br><span class="line"><span class="attr">  push:</span></span><br><span class="line"><span class="attr">    branches:</span> </span><br><span class="line"><span class="bullet">      -</span> <span class="string">master</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  artifacts_demo_job:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">job1</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">Checkout</span> <span class="string">code</span></span><br><span class="line"><span class="attr">      uses:</span> <span class="string">actions/checkout@v1</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">Build</span> <span class="string">jar</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        pwd  &amp;&amp; ls -l</span></span><br><span class="line"><span class="string">        ./gradlew -x jar build</span></span><br><span class="line"><span class="string">        ls -l build/libs/api-demo-0.0.1-SNAPSHOT.jar</span></span><br><span class="line"><span class="string"></span><span class="attr">    - name:</span> <span class="string">Archive</span> <span class="string">SNAPSHOT.jar</span></span><br><span class="line"><span class="attr">      uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">      with:</span></span><br><span class="line"><span class="attr">        name:</span> <span class="string">api_snapshot_jar</span></span><br><span class="line"><span class="attr">        path:</span> <span class="string">build/libs/api-demo-0.0.1-SNAPSHOT.jar</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>github actions 工作流的产出物都放在哪里的，保留多久</p>
+</blockquote>
+<h3 id="3-下载"><a href="#3-下载" class="headerlink" title="3. 下载"></a>3. 下载</h3><p>步骤官方说明如下：</p>
+<ul>
+<li>1.On GitHub, navigate to the main page of the repository.</li>
+<li>2.Under your repository name, click Actions.</li>
+<li>3.In the left sidebar, click the workflow you want to see.</li>
+<li>4.Under “Workflow runs”, click the name of the run you want to see.</li>
+<li>5.To download artifacts, use the Artifacts drop-down menu, and select the artifact you want to download.</li>
+<li>6.To delete artifacts, use the Artifacts drop-down menu, and click .</li>
+</ul>
+<p>注意事项：</p>
+<ul>
+<li>保留90天</li>
+<li>一旦删除某一个构件，无法恢复</li>
+</ul>
+<h3 id="4-在工作流程中作业之间传递数据"><a href="#4-在工作流程中作业之间传递数据" class="headerlink" title="4. 在工作流程中作业之间传递数据"></a>4. 在工作流程中作业之间传递数据</h3><p><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts#passing-data-between-jobs-in-a-workflow" target="_blank" rel="noopener">https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts#passing-data-between-jobs-in-a-workflow</a></p>
+<p>由于同一个workflow的多个job分别运行在不同的虚拟主机上，下面示例工作流程说明如何在相同工作流程中的任务之间传递数据。关键词 <strong>need</strong> 用来确保job按顺序运行.</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Share</span> <span class="string">data</span> <span class="string">between</span> <span class="string">jobs</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span> <span class="string">[push]</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  job_1:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Add</span> <span class="number">3</span> <span class="string">and</span> <span class="number">7</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          expr 3 + 7 &gt; math-homework.txt</span></span><br><span class="line"><span class="string"></span><span class="attr">      - name:</span> <span class="string">Upload</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">1</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">          path:</span> <span class="string">math-homework.txt</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  job_2:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Multiply</span> <span class="string">by</span> <span class="number">9</span></span><br><span class="line"><span class="attr">    needs:</span> <span class="string">job_1</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">windows-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Download</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">1</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/download-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">      - shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          value=`cat homework/math-homework.txt`</span></span><br><span class="line"><span class="string">          expr $value \* 9 &gt; homework/math-homework.txt</span></span><br><span class="line"><span class="string"></span><span class="attr">      - name:</span> <span class="string">Upload</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">2</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">          path:</span> <span class="string">homework/math-homework.txt</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  job_3:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Display</span> <span class="string">results</span></span><br><span class="line"><span class="attr">    needs:</span> <span class="string">job_2</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">macOS-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Download</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">2</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/download-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Print</span> <span class="string">the</span> <span class="string">final</span> <span class="string">result</span></span><br><span class="line"><span class="attr">        shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          value=`cat homework/math-homework.txt`</span></span><br><span class="line"><span class="string">          echo The result is $value</span></span><br></pre></td></tr></table></figure>
+<hr>
+<p><strong>More Ref:</strong></p>
+<ul>
+<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts" target="_blank" rel="noopener">关于该篇的原文</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>CICD</category>
+      </categories>
+      <tags>
+        <tag>GA</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>How to Create Custom iTerm2 Window</title>
+    <url>/2019/04/18/How-to-Create-Custom-iTerm2-Window/</url>
+    <content><![CDATA[<h4 id="1-Open-iTerm-preferences-setting-打开偏好设置"><a href="#1-Open-iTerm-preferences-setting-打开偏好设置" class="headerlink" title="1.Open iTerm preferences setting (打开偏好设置)"></a>1.Open iTerm preferences setting (打开偏好设置)</h4><p><img src="/images/iterm_image_01.png" alt="iterm_image_01"></p>
+<h4 id="2-New-add-a-profile-新加一个配置"><a href="#2-New-add-a-profile-新加一个配置" class="headerlink" title="2.New add a profile (新加一个配置)"></a>2.New add a profile (新加一个配置)</h4><p><img src="/images/iterm_image_02.png" alt="iterm_image_02"></p>
+<h4 id="3-Setting-windows-name-etc-（定义名称，窗口高度，宽度等）"><a href="#3-Setting-windows-name-etc-（定义名称，窗口高度，宽度等）" class="headerlink" title="3.Setting windows name etc （定义名称，窗口高度，宽度等）"></a>3.Setting windows name etc （定义名称，窗口高度，宽度等）</h4><p><img src="/images/iterm_image_03.png" alt="iterm_image_03"></p>
+<p><img src="/images/iterm_image_04.png" alt="iterm_image_04"></p>
+<h4 id="4-define-hotkey-定义快捷键"><a href="#4-define-hotkey-定义快捷键" class="headerlink" title="4.define hotkey (定义快捷键)"></a>4.define hotkey (定义快捷键)</h4><p><img src="/images/iterm_image_05.png" alt="iterm_image_05"></p>
+<p><img src="/images/iterm_image_06.png" alt="iterm_image_06"></p>
+<h4 id="Finally-使用快捷键"><a href="#Finally-使用快捷键" class="headerlink" title="Finally 使用快捷键"></a>Finally 使用快捷键</h4><p>按 <strong>一次</strong> 出现窗口，<strong>再按一次</strong> 窗口消失。如果是多屏，可以在不同屏幕下调用出来，会话内容仍保持着。</p>
+]]></content>
+      <categories>
+        <category>Tools</category>
+      </categories>
+      <tags>
+        <tag>Tools</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Github Actions E08插播一条消息</title>
     <url>/2020/04/19/Github-Actions-E08%E6%8F%92%E6%92%AD%E4%B8%80%E6%9D%A1%E6%B6%88%E6%81%AF/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
@@ -1179,24 +1197,6 @@
       </categories>
       <tags>
         <tag>GA</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>How to Create Custom iTerm2 Window</title>
-    <url>/2019/04/18/How-to-Create-Custom-iTerm2-Window/</url>
-    <content><![CDATA[<h4 id="1-Open-iTerm-preferences-setting-打开偏好设置"><a href="#1-Open-iTerm-preferences-setting-打开偏好设置" class="headerlink" title="1.Open iTerm preferences setting (打开偏好设置)"></a>1.Open iTerm preferences setting (打开偏好设置)</h4><p><img src="/images/iterm_image_01.png" alt="iterm_image_01"></p>
-<h4 id="2-New-add-a-profile-新加一个配置"><a href="#2-New-add-a-profile-新加一个配置" class="headerlink" title="2.New add a profile (新加一个配置)"></a>2.New add a profile (新加一个配置)</h4><p><img src="/images/iterm_image_02.png" alt="iterm_image_02"></p>
-<h4 id="3-Setting-windows-name-etc-（定义名称，窗口高度，宽度等）"><a href="#3-Setting-windows-name-etc-（定义名称，窗口高度，宽度等）" class="headerlink" title="3.Setting windows name etc （定义名称，窗口高度，宽度等）"></a>3.Setting windows name etc （定义名称，窗口高度，宽度等）</h4><p><img src="/images/iterm_image_03.png" alt="iterm_image_03"></p>
-<p><img src="/images/iterm_image_04.png" alt="iterm_image_04"></p>
-<h4 id="4-define-hotkey-定义快捷键"><a href="#4-define-hotkey-定义快捷键" class="headerlink" title="4.define hotkey (定义快捷键)"></a>4.define hotkey (定义快捷键)</h4><p><img src="/images/iterm_image_05.png" alt="iterm_image_05"></p>
-<p><img src="/images/iterm_image_06.png" alt="iterm_image_06"></p>
-<h4 id="Finally-使用快捷键"><a href="#Finally-使用快捷键" class="headerlink" title="Finally 使用快捷键"></a>Finally 使用快捷键</h4><p>按 <strong>一次</strong> 出现窗口，<strong>再按一次</strong> 窗口消失。如果是多屏，可以在不同屏幕下调用出来，会话内容仍保持着。</p>
-]]></content>
-      <categories>
-        <category>Tools</category>
-      </categories>
-      <tags>
-        <tag>Tools</tag>
       </tags>
   </entry>
   <entry>
@@ -1376,6 +1376,21 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>backup specially with shell script or python</title>
+    <url>/2019/05/21/Linux-backup-specially/</url>
+    <content><![CDATA[<h3 id="需求：-备份目录，只备份新加的文件，不备份减少的文件"><a href="#需求：-备份目录，只备份新加的文件，不备份减少的文件" class="headerlink" title="需求： 备份目录，只备份新加的文件，不备份减少的文件"></a>需求： 备份目录，只备份新加的文件，不备份减少的文件</h3><p>分析： 通常备份目录用 <code>rsync</code> 就可以达到目的，但开发同学怕误操作，删除文件，于是提出这个 <em>只增不减</em> 的需求</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="function"><span class="title">backUp</span></span>()&#123;</span><br><span class="line"><span class="built_in">local</span> sourceDir=<span class="variable">$1</span> <span class="comment">#需要备份的文件/目录</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">local</span> destDir=<span class="variable">$2</span> <span class="comment">#备份目的地</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -d <span class="string">"<span class="variable">$sourceDir</span>"</span> ] <span class="comment">#备份目录</span></span><br><span class="line"><span class="keyword">then</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">#如果目录尚未备份，则创建此目录</span></span><br><span class="line">  <span class="keyword">if</span> [ ! -d <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span> ]</span><br><span class="line">  <span class="keyword">then</span></span><br><span class="line">  <span class="built_in">echo</span> -e <span class="string">"创建目录\t<span class="variable">$sourceDir</span>"</span></span><br><span class="line">  mkdir -p <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span></span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#对目录中对每一个文件,递归调用此函数进行备份</span></span><br><span class="line"><span class="keyword">for</span> var <span class="keyword">in</span> $(ls <span class="string">"<span class="variable">$sourceDir</span>"</span>)</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">backUp <span class="string">"<span class="variable">$sourceDir</span>/<span class="variable">$var</span>"</span> <span class="string">"<span class="variable">$destDir</span>"</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"><span class="keyword">else</span> <span class="comment">#备份文件</span></span><br><span class="line">  <span class="comment">#如果文件在尚未备份，则直接复制</span></span><br><span class="line">  <span class="keyword">if</span> [ ! -f <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span> ]</span><br><span class="line">  <span class="keyword">then</span></span><br><span class="line">  <span class="built_in">echo</span> -e <span class="string">"备份文件\t<span class="variable">$sourceDir</span>"</span></span><br><span class="line">  cp <span class="string">"<span class="variable">$sourceDir</span>"</span> <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span></span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">#如果文件已存在，则比较两个文件对最后修改时间，如果文件已修改，则更新文件</span></span><br><span class="line">  lastModifi_backup=$(date -r <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span> +%s)</span><br><span class="line">  lastModifi_current=$(date -r <span class="string">"<span class="variable">$sourceDir</span>"</span> +%s)</span><br><span class="line">    <span class="keyword">if</span> [ <span class="string">"<span class="variable">$lastModifi_current</span>"</span> -gt <span class="string">"<span class="variable">$lastModifi_backup</span>"</span> ]</span><br><span class="line">    <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> -e <span class="string">"更新文件\t<span class="variable">$sourceDir</span>"</span> </span><br><span class="line">    cp <span class="string">"<span class="variable">$sourceDir</span>"</span> <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line">backUp <span class="string">"<span class="variable">$1</span>"</span> <span class="string">"<span class="variable">$2</span>"</span></span><br></pre></td></tr></table></figure>
+<p>运行脚本： <code>./backupSpecially.sh &quot;/date/originData&quot; &quot;/date/backup_dir&quot;</code></p>
+<p>发现运行shell脚本有问题，于是大神帮我写了个python</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python2.7</span></span><br><span class="line"><span class="comment"># -*- encoding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> os,time,filecmp</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">differentFileCopy</span><span class="params">(sourcePath, targetPath)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(sourcePath):</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(targetPath):</span><br><span class="line">        os.makedirs(targetPath)</span><br><span class="line">    <span class="keyword">for</span> fileName <span class="keyword">in</span> os.listdir(sourcePath):</span><br><span class="line">        absourcePath = os.path.join(sourcePath, fileName)</span><br><span class="line">        abstargetPath = os.path.join(targetPath, fileName)</span><br><span class="line">        <span class="keyword">if</span> os.path.isdir(absourcePath):</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(abstargetPath):</span><br><span class="line">                os.makedirs(abstargetPath)</span><br><span class="line">                differentFileCopy(absourcePath, abstargetPath)</span><br><span class="line">        <span class="keyword">if</span> os.path.isfile(absourcePath):</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(abstargetPath):</span><br><span class="line">                <span class="keyword">print</span> <span class="string">'copy %s to %s'</span> %(fileName,abstargetPath)</span><br><span class="line">                os.system(<span class="string">'cp'</span>+<span class="string">' '</span>+absourcePath+<span class="string">' '</span>+targetPath)</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> filecmp.cmp(absourcePath,abstargetPath):</span><br><span class="line">                <span class="keyword">print</span> <span class="string">'copy %s to %s'</span> %(fileName,abstargetPath)</span><br><span class="line">                os.system(<span class="string">'cp'</span>+<span class="string">' '</span>+absourcePath+<span class="string">' '</span>+targetPath)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    startTime = time.clock()</span><br><span class="line">    sourcePath = <span class="string">r"/date/originData"</span></span><br><span class="line">    targetPath = <span class="string">r"/date/Data_backupDir"</span></span><br><span class="line">    differentFileCopy(sourcePath, targetPath)</span><br><span class="line">    endTime = time.clock()</span><br><span class="line">    time_mi = endTime // <span class="number">60</span></span><br><span class="line">    time_s = endTime // <span class="number">1</span> % <span class="number">60</span></span><br><span class="line">    time_ms = ((endTime * <span class="number">100</span>) // <span class="number">1</span>) % <span class="number">100</span></span><br><span class="line">    print(<span class="string">"总用时:%02.0f:%02.0f:%2.0f"</span> % (time_mi, time_s, time_ms))</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Shell</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Makefile 101 :Intro</title>
     <url>/2019/07/04/Makefile-101-Intro/</url>
     <content><![CDATA[<p>新建文件 ，文件名 makefile 或 Makefile</p>
@@ -1415,21 +1430,6 @@ pipeline {
       </categories>
       <tags>
         <tag>makefile</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>backup specially with shell script or python</title>
-    <url>/2019/05/21/Linux-backup-specially/</url>
-    <content><![CDATA[<h3 id="需求：-备份目录，只备份新加的文件，不备份减少的文件"><a href="#需求：-备份目录，只备份新加的文件，不备份减少的文件" class="headerlink" title="需求： 备份目录，只备份新加的文件，不备份减少的文件"></a>需求： 备份目录，只备份新加的文件，不备份减少的文件</h3><p>分析： 通常备份目录用 <code>rsync</code> 就可以达到目的，但开发同学怕误操作，删除文件，于是提出这个 <em>只增不减</em> 的需求</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="function"><span class="title">backUp</span></span>()&#123;</span><br><span class="line"><span class="built_in">local</span> sourceDir=<span class="variable">$1</span> <span class="comment">#需要备份的文件/目录</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">local</span> destDir=<span class="variable">$2</span> <span class="comment">#备份目的地</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -d <span class="string">"<span class="variable">$sourceDir</span>"</span> ] <span class="comment">#备份目录</span></span><br><span class="line"><span class="keyword">then</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">#如果目录尚未备份，则创建此目录</span></span><br><span class="line">  <span class="keyword">if</span> [ ! -d <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span> ]</span><br><span class="line">  <span class="keyword">then</span></span><br><span class="line">  <span class="built_in">echo</span> -e <span class="string">"创建目录\t<span class="variable">$sourceDir</span>"</span></span><br><span class="line">  mkdir -p <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span></span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#对目录中对每一个文件,递归调用此函数进行备份</span></span><br><span class="line"><span class="keyword">for</span> var <span class="keyword">in</span> $(ls <span class="string">"<span class="variable">$sourceDir</span>"</span>)</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">backUp <span class="string">"<span class="variable">$sourceDir</span>/<span class="variable">$var</span>"</span> <span class="string">"<span class="variable">$destDir</span>"</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"><span class="keyword">else</span> <span class="comment">#备份文件</span></span><br><span class="line">  <span class="comment">#如果文件在尚未备份，则直接复制</span></span><br><span class="line">  <span class="keyword">if</span> [ ! -f <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span> ]</span><br><span class="line">  <span class="keyword">then</span></span><br><span class="line">  <span class="built_in">echo</span> -e <span class="string">"备份文件\t<span class="variable">$sourceDir</span>"</span></span><br><span class="line">  cp <span class="string">"<span class="variable">$sourceDir</span>"</span> <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span></span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">#如果文件已存在，则比较两个文件对最后修改时间，如果文件已修改，则更新文件</span></span><br><span class="line">  lastModifi_backup=$(date -r <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span> +%s)</span><br><span class="line">  lastModifi_current=$(date -r <span class="string">"<span class="variable">$sourceDir</span>"</span> +%s)</span><br><span class="line">    <span class="keyword">if</span> [ <span class="string">"<span class="variable">$lastModifi_current</span>"</span> -gt <span class="string">"<span class="variable">$lastModifi_backup</span>"</span> ]</span><br><span class="line">    <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> -e <span class="string">"更新文件\t<span class="variable">$sourceDir</span>"</span> </span><br><span class="line">    cp <span class="string">"<span class="variable">$sourceDir</span>"</span> <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line">backUp <span class="string">"<span class="variable">$1</span>"</span> <span class="string">"<span class="variable">$2</span>"</span></span><br></pre></td></tr></table></figure>
-<p>运行脚本： <code>./backupSpecially.sh &quot;/date/originData&quot; &quot;/date/backup_dir&quot;</code></p>
-<p>发现运行shell脚本有问题，于是大神帮我写了个python</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python2.7</span></span><br><span class="line"><span class="comment"># -*- encoding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> os,time,filecmp</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">differentFileCopy</span><span class="params">(sourcePath, targetPath)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(sourcePath):</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(targetPath):</span><br><span class="line">        os.makedirs(targetPath)</span><br><span class="line">    <span class="keyword">for</span> fileName <span class="keyword">in</span> os.listdir(sourcePath):</span><br><span class="line">        absourcePath = os.path.join(sourcePath, fileName)</span><br><span class="line">        abstargetPath = os.path.join(targetPath, fileName)</span><br><span class="line">        <span class="keyword">if</span> os.path.isdir(absourcePath):</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(abstargetPath):</span><br><span class="line">                os.makedirs(abstargetPath)</span><br><span class="line">                differentFileCopy(absourcePath, abstargetPath)</span><br><span class="line">        <span class="keyword">if</span> os.path.isfile(absourcePath):</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(abstargetPath):</span><br><span class="line">                <span class="keyword">print</span> <span class="string">'copy %s to %s'</span> %(fileName,abstargetPath)</span><br><span class="line">                os.system(<span class="string">'cp'</span>+<span class="string">' '</span>+absourcePath+<span class="string">' '</span>+targetPath)</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> filecmp.cmp(absourcePath,abstargetPath):</span><br><span class="line">                <span class="keyword">print</span> <span class="string">'copy %s to %s'</span> %(fileName,abstargetPath)</span><br><span class="line">                os.system(<span class="string">'cp'</span>+<span class="string">' '</span>+absourcePath+<span class="string">' '</span>+targetPath)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    startTime = time.clock()</span><br><span class="line">    sourcePath = <span class="string">r"/date/originData"</span></span><br><span class="line">    targetPath = <span class="string">r"/date/Data_backupDir"</span></span><br><span class="line">    differentFileCopy(sourcePath, targetPath)</span><br><span class="line">    endTime = time.clock()</span><br><span class="line">    time_mi = endTime // <span class="number">60</span></span><br><span class="line">    time_s = endTime // <span class="number">1</span> % <span class="number">60</span></span><br><span class="line">    time_ms = ((endTime * <span class="number">100</span>) // <span class="number">1</span>) % <span class="number">100</span></span><br><span class="line">    print(<span class="string">"总用时:%02.0f:%02.0f:%2.0f"</span> % (time_mi, time_s, time_ms))</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Shell</tag>
       </tags>
   </entry>
   <entry>
@@ -1574,35 +1574,6 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>Openshift E02 部署Jenkins服务</title>
-    <url>/2021/01/10/Openshift-E02-%E9%83%A8%E7%BD%B2Jenkins%E6%9C%8D%E5%8A%A1/</url>
-    <content><![CDATA[<p>OpenShift 项目默认提供了两个Jenkins部署模板, Jenkins-ephemeral 和 Jenkins-persistent</p>
-<ul>
-<li><p><strong>Jenkins-ephemeral</strong> 模板部署的Jenkins服务的数据在容器退出后将丢失，适合测试使用；</p>
-</li>
-<li><p><strong>Jenkins-persistent</strong> 模板部署需要持久化卷的支持，其部署的Jenkins 服务的数据可以被持久化。</p>
-</li>
-</ul>
-<blockquote>
-<p> 这里有很多官方的案例源码： <a href="https://github.com/openshift/origin/tree/v1.3.0/examples" target="_blank" rel="noopener">https://github.com/openshift/origin/tree/v1.3.0/examples</a></p>
-</blockquote>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">oc login -u developer https://192.168.99.109:8443</span><br><span class="line"></span><br><span class="line"><span class="comment"># create a new project, name: ci</span></span><br><span class="line">oc new-project ci</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create a template, </span></span><br><span class="line">oc create -f https://raw.githubusercontent.com/openshift/origin/v1.3.0/examples/jenkins/jenkins-ephemeral-template.json </span><br><span class="line"></span><br><span class="line"><span class="comment"># Get template</span></span><br><span class="line">oc get template</span><br><span class="line">NAME                DESCRIPTION                                       PARAMETERS        OBJECTS</span><br><span class="line">jenkins-ephemeral   Jenkins service, without persistent storage....   6 (1 generated)   6</span><br><span class="line"></span><br><span class="line"><span class="comment">#</span></span><br><span class="line">➜  ~ oc policy add-role-to-user edit -z default</span><br><span class="line">role <span class="string">"edit"</span> added: <span class="string">"default"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#</span></span><br><span class="line">➜  ~ oc new-app --template=jenkins-ephemeral --param=JENKINS_PASSWORD=welcome123</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">--&gt; Deploying template &quot;ci/jenkins-ephemeral&quot; to project ci</span><br><span class="line"></span><br><span class="line">     jenkins-ephemeral</span><br><span class="line">     ---------</span><br><span class="line">     Jenkins service, without persistent storage.</span><br><span class="line">     WARNING: Any data stored will be lost upon pod destruction. Only use this template for testing</span><br><span class="line"></span><br><span class="line">     A Jenkins service has been created in your project.  The username/password are admin/welcome.  The tutorial at https://github.com/openshift/origin/blob/master/examples/jenkins/README.md contains more information about using this template.</span><br><span class="line"></span><br><span class="line">     * With parameters:</span><br><span class="line">        * Jenkins Service Name=jenkins</span><br><span class="line">        * Jenkins JNLP Service Name=jenkins-jnlp</span><br><span class="line">        * Jenkins Password=welcome</span><br><span class="line">        * Memory Limit=512Mi</span><br><span class="line">        * Jenkins ImageStream Namespace=openshift</span><br><span class="line">        * Jenkins ImageStreamTag=jenkins:latest</span><br><span class="line"></span><br><span class="line">--&gt; Creating resources ...</span><br><span class="line">    route.route.openshift.io &quot;jenkins&quot; created</span><br><span class="line">    deploymentconfig.apps.openshift.io &quot;jenkins&quot; created</span><br><span class="line">    serviceaccount &quot;jenkins&quot; created</span><br><span class="line">    rolebinding.authorization.openshift.io &quot;jenkins_edit&quot; created</span><br><span class="line">    service &quot;jenkins-jnlp&quot; created</span><br><span class="line">    service &quot;jenkins&quot; created</span><br><span class="line">--&gt; Success</span><br><span class="line">    Access your application via route &apos;jenkins-ci.192.168.99.109.nip.io&apos;</span><br><span class="line">    Run &apos;oc status&apos; to view your app.</span><br></pre></td></tr></table></figure>
-<p>部署失败了，💔</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">oc delete all -l app=jenkins-ephemeral</span><br><span class="line">pod <span class="string">"jenkins-1-6k7s6"</span> deleted</span><br><span class="line">replicationcontroller <span class="string">"jenkins-1"</span> deleted</span><br><span class="line">service <span class="string">"jenkins"</span> deleted</span><br><span class="line">service <span class="string">"jenkins-jnlp"</span> deleted</span><br><span class="line">deploymentconfig.apps.openshift.io <span class="string">"jenkins"</span> deleted</span><br><span class="line">route.route.openshift.io <span class="string">"jenkins"</span> deleted</span><br></pre></td></tr></table></figure>
-<p>不能删除 serviceaccounts<br><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">oc delete serviceaccounts -l app=jenkins-ephemeral</span><br><span class="line">oc delete rolebindings.authorization.openshift.io jenkins_edit</span><br></pre></td></tr></table></figure></p>
-<p>删除干净后，可以用命令 <code>oc get all -o wide</code> 验证</p>
-<p>再来一次 </p>
-<p><code>oc new-app --template=jenkins-ephemeral --param=JENKINS_PASSWORD=welcome123</code></p>
-]]></content>
-      <categories>
-        <category>CICD</category>
-      </categories>
-      <tags>
-        <tag>OpenShift</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Openshift E03 谈谈S2I</title>
     <url>/2021/01/31/Openshift-E03-%E8%B0%88%E8%B0%88S2I/</url>
     <content><![CDATA[<p>  关于OpenShift，至今为止还没有梳理核心组件和概念上的解释，但似乎并不太妨碍初步的简单使用。而 Source to Image(S2I) 是OpenShift 的一个重要功能，也是其的一大特色。</p>
@@ -1627,6 +1598,35 @@ pipeline {
 <li><a href="https://www.cnblogs.com/ericnie/p/9677719.html" target="_blank" rel="noopener">S2I tomcat 镜像定制</a></li>
 <li><a href="https://www.ewhisper.cn/binary-builds-with-openshift.html" target="_blank" rel="noopener">使用OpenShift进行二进制构建</a></li>
 </ul>
+]]></content>
+      <categories>
+        <category>CICD</category>
+      </categories>
+      <tags>
+        <tag>OpenShift</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Openshift E02 部署Jenkins服务</title>
+    <url>/2021/01/10/Openshift-E02-%E9%83%A8%E7%BD%B2Jenkins%E6%9C%8D%E5%8A%A1/</url>
+    <content><![CDATA[<p>OpenShift 项目默认提供了两个Jenkins部署模板, Jenkins-ephemeral 和 Jenkins-persistent</p>
+<ul>
+<li><p><strong>Jenkins-ephemeral</strong> 模板部署的Jenkins服务的数据在容器退出后将丢失，适合测试使用；</p>
+</li>
+<li><p><strong>Jenkins-persistent</strong> 模板部署需要持久化卷的支持，其部署的Jenkins 服务的数据可以被持久化。</p>
+</li>
+</ul>
+<blockquote>
+<p> 这里有很多官方的案例源码： <a href="https://github.com/openshift/origin/tree/v1.3.0/examples" target="_blank" rel="noopener">https://github.com/openshift/origin/tree/v1.3.0/examples</a></p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">oc login -u developer https://192.168.99.109:8443</span><br><span class="line"></span><br><span class="line"><span class="comment"># create a new project, name: ci</span></span><br><span class="line">oc new-project ci</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create a template, </span></span><br><span class="line">oc create -f https://raw.githubusercontent.com/openshift/origin/v1.3.0/examples/jenkins/jenkins-ephemeral-template.json </span><br><span class="line"></span><br><span class="line"><span class="comment"># Get template</span></span><br><span class="line">oc get template</span><br><span class="line">NAME                DESCRIPTION                                       PARAMETERS        OBJECTS</span><br><span class="line">jenkins-ephemeral   Jenkins service, without persistent storage....   6 (1 generated)   6</span><br><span class="line"></span><br><span class="line"><span class="comment">#</span></span><br><span class="line">➜  ~ oc policy add-role-to-user edit -z default</span><br><span class="line">role <span class="string">"edit"</span> added: <span class="string">"default"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#</span></span><br><span class="line">➜  ~ oc new-app --template=jenkins-ephemeral --param=JENKINS_PASSWORD=welcome123</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">--&gt; Deploying template &quot;ci/jenkins-ephemeral&quot; to project ci</span><br><span class="line"></span><br><span class="line">     jenkins-ephemeral</span><br><span class="line">     ---------</span><br><span class="line">     Jenkins service, without persistent storage.</span><br><span class="line">     WARNING: Any data stored will be lost upon pod destruction. Only use this template for testing</span><br><span class="line"></span><br><span class="line">     A Jenkins service has been created in your project.  The username/password are admin/welcome.  The tutorial at https://github.com/openshift/origin/blob/master/examples/jenkins/README.md contains more information about using this template.</span><br><span class="line"></span><br><span class="line">     * With parameters:</span><br><span class="line">        * Jenkins Service Name=jenkins</span><br><span class="line">        * Jenkins JNLP Service Name=jenkins-jnlp</span><br><span class="line">        * Jenkins Password=welcome</span><br><span class="line">        * Memory Limit=512Mi</span><br><span class="line">        * Jenkins ImageStream Namespace=openshift</span><br><span class="line">        * Jenkins ImageStreamTag=jenkins:latest</span><br><span class="line"></span><br><span class="line">--&gt; Creating resources ...</span><br><span class="line">    route.route.openshift.io &quot;jenkins&quot; created</span><br><span class="line">    deploymentconfig.apps.openshift.io &quot;jenkins&quot; created</span><br><span class="line">    serviceaccount &quot;jenkins&quot; created</span><br><span class="line">    rolebinding.authorization.openshift.io &quot;jenkins_edit&quot; created</span><br><span class="line">    service &quot;jenkins-jnlp&quot; created</span><br><span class="line">    service &quot;jenkins&quot; created</span><br><span class="line">--&gt; Success</span><br><span class="line">    Access your application via route &apos;jenkins-ci.192.168.99.109.nip.io&apos;</span><br><span class="line">    Run &apos;oc status&apos; to view your app.</span><br></pre></td></tr></table></figure>
+<p>部署失败了，💔</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">oc delete all -l app=jenkins-ephemeral</span><br><span class="line">pod <span class="string">"jenkins-1-6k7s6"</span> deleted</span><br><span class="line">replicationcontroller <span class="string">"jenkins-1"</span> deleted</span><br><span class="line">service <span class="string">"jenkins"</span> deleted</span><br><span class="line">service <span class="string">"jenkins-jnlp"</span> deleted</span><br><span class="line">deploymentconfig.apps.openshift.io <span class="string">"jenkins"</span> deleted</span><br><span class="line">route.route.openshift.io <span class="string">"jenkins"</span> deleted</span><br></pre></td></tr></table></figure>
+<p>不能删除 serviceaccounts<br><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">oc delete serviceaccounts -l app=jenkins-ephemeral</span><br><span class="line">oc delete rolebindings.authorization.openshift.io jenkins_edit</span><br></pre></td></tr></table></figure></p>
+<p>删除干净后，可以用命令 <code>oc get all -o wide</code> 验证</p>
+<p>再来一次 </p>
+<p><code>oc new-app --template=jenkins-ephemeral --param=JENKINS_PASSWORD=welcome123</code></p>
 ]]></content>
       <categories>
         <category>CICD</category>
@@ -2621,6 +2621,19 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>jenkins date timezone update</title>
+    <url>/2019/04/25/jenkins-date-timezone-update/</url>
+    <content><![CDATA[<h4 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h4><p>打开 【系统管理】-&gt;【脚本命令行】运行下面的命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">System.setProperty(<span class="string">'org.apache.commons.jelly.tags.fmt.timeZone'</span>, <span class="string">'Asia/Shanghai'</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="/images/jenkins_run_image_01.png" alt="jenkins_run_image_01"></p>
+<h4 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h4><pre><code class="java">JAVA_ARGS=<span class="string">"-Dorg.apache.commons.jelly.tags.fmt.timeZone=Asia/Shanghai -Dfile.encoding=UTF-8 -Djava.awt.headless=true"</span>
+</code></pre>
+]]></content>
+      <tags>
+        <tag>jenkins</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>http vs curl</title>
     <url>/2019/06/19/http-vs-curl/</url>
     <content><![CDATA[<blockquote>
@@ -2656,19 +2669,6 @@ pipeline {
       </categories>
       <tags>
         <tag>Shell</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>jenkins date timezone update</title>
-    <url>/2019/04/25/jenkins-date-timezone-update/</url>
-    <content><![CDATA[<h4 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h4><p>打开 【系统管理】-&gt;【脚本命令行】运行下面的命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">System.setProperty(<span class="string">'org.apache.commons.jelly.tags.fmt.timeZone'</span>, <span class="string">'Asia/Shanghai'</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="/images/jenkins_run_image_01.png" alt="jenkins_run_image_01"></p>
-<h4 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h4><pre><code class="java">JAVA_ARGS=<span class="string">"-Dorg.apache.commons.jelly.tags.fmt.timeZone=Asia/Shanghai -Dfile.encoding=UTF-8 -Djava.awt.headless=true"</span>
-</code></pre>
-]]></content>
-      <tags>
-        <tag>jenkins</tag>
       </tags>
   </entry>
   <entry>
@@ -3013,6 +3013,29 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>xargs command</title>
+    <url>/2019/06/21/xargs-command/</url>
+    <content><![CDATA[<p>xargs 命令应该紧跟在管道操作符之后。它使用标准输入作为主要的数据源，将从 stdin 中读取的数据作为指定命令的参数并执行该命令。</p>
+<p>例如：<br>在一组 C 语言源码文件中搜索自负串main:<br><code>ls *.c | sargs grep main</code></p>
+<h4 id="Example-1-将多行输入-–-gt-单行输出"><a href="#Example-1-将多行输入-–-gt-单行输出" class="headerlink" title="Example 1: 将多行输入  –&gt; 单行输出"></a>Example 1: 将多行输入  –&gt; 单行输出</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   cat example.txt</span><br><span class="line">1 2 3 4</span><br><span class="line">5 6</span><br><span class="line">7 8 9</span><br><span class="line">10 11</span><br><span class="line">➜   cat example.txt | xargs</span><br><span class="line">1 2 3 4 5 6 7 8 9 10 11</span><br></pre></td></tr></table></figure>
+<h4 id="Example-2-将单行输入-–-gt-多行输出"><a href="#Example-2-将单行输入-–-gt-多行输出" class="headerlink" title="Example 2: 将单行输入  –&gt; 多行输出"></a>Example 2: 将单行输入  –&gt; 多行输出</h4><p>xargs 的 -n 选项可以限制每次调用命令时用到的参数个数。<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   cat example.txt | xargs -n  3</span><br><span class="line">1 2 3</span><br><span class="line">4 5 6</span><br><span class="line">7 8 9</span><br><span class="line">10 11</span><br></pre></td></tr></table></figure></p>
+<p>工作原理：<br>xargs 命令接收来自stdin的输入，将数据解析成单个元素，然后调用指定命令讲这些元素作为该命令的参数。xargs 默认使用 <strong>空白字符</strong> 分割输入并执行 <code>/bin/echo</code></p>
+<h4 id="Example-3-自定义分隔符-d-选项"><a href="#Example-3-自定义分隔符-d-选项" class="headerlink" title="Example 3: 自定义分隔符 -d 选项"></a>Example 3: 自定义分隔符 -d 选项</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"splitXsplit1Xsplit2Xsplit3"</span> | xargs -d X</span><br><span class="line">split split1 split2 split3</span><br></pre></td></tr></table></figure>
+<h4 id="Example-4-结合find使用xargs"><a href="#Example-4-结合find使用xargs" class="headerlink" title="Example 4: 结合find使用xargs"></a>Example 4: 结合find使用xargs</h4><p><code>find . -type f -name &quot;*.txt&quot; -print0 | xargs -o grep -L image</code></p>
+<p> 如果文件系统的有些文件名中包含忠哥，find 命令的 -print0 选项可以使用0（NUL）来分割查找到的元素，然后再用xargs对应的-0选项进行解析</p>
+<p> 反例：<br> <code>$find . -type f -name &quot;*.txt&quot; -print | xargs rm -f</code><br>这样做很危险，由可能会误删除文件。我们无法预测 find命令输出的分隔符究竟是什么（究竟是‘\n’还是 ‘’）。如果由文件名中包含空格符（‘ ’ ），xargs会将其误认为是分隔符。例如， <code>bashrc text.txt</code> 会被是为 bashrc 和 text.txt 。因此上面的命令不会删除 <code>bashrc text.txt</code> ,而是会把 bashrc删除</p>
+<p>正确的姿势：<br> <code>$find . -type f -name &quot;*.txt&quot; -print0 | xargs -0 rm -f</code></p>
+<h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><p> <code>docker ps -a -q | xargs --no-run-if-empty docker rm -f</code></p>
+<p> 参数 <code>--no-run-if-empty</code> 可以避免在前面的命令完全没有输出的情况下执行该命令</p>
+]]></content>
+      <categories>
+        <category>Shell</category>
+      </categories>
+      <tags>
+        <tag>Shell</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>youtube 推荐频道(Non-tech)</title>
     <url>/2019/12/10/youtube-%E6%8E%A8%E8%8D%90%E9%A2%91%E9%81%93-Non-tech/</url>
     <content><![CDATA[<p>自从到新公司有梯子后，外出运动的时间变少了，都奉献给了youtube.有些节目被查水表了，<strong>“此帐户已被终止，因为我们收到多份第三方提交的关于该用户发布的内容侵犯版权的声明。”</strong> 所以也不能保证下面罗列的节目在未来可以持续观看</p>
@@ -3090,29 +3113,6 @@ pipeline {
 ]]></content>
       <tags>
         <tag>Q List</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>xargs command</title>
-    <url>/2019/06/21/xargs-command/</url>
-    <content><![CDATA[<p>xargs 命令应该紧跟在管道操作符之后。它使用标准输入作为主要的数据源，将从 stdin 中读取的数据作为指定命令的参数并执行该命令。</p>
-<p>例如：<br>在一组 C 语言源码文件中搜索自负串main:<br><code>ls *.c | sargs grep main</code></p>
-<h4 id="Example-1-将多行输入-–-gt-单行输出"><a href="#Example-1-将多行输入-–-gt-单行输出" class="headerlink" title="Example 1: 将多行输入  –&gt; 单行输出"></a>Example 1: 将多行输入  –&gt; 单行输出</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   cat example.txt</span><br><span class="line">1 2 3 4</span><br><span class="line">5 6</span><br><span class="line">7 8 9</span><br><span class="line">10 11</span><br><span class="line">➜   cat example.txt | xargs</span><br><span class="line">1 2 3 4 5 6 7 8 9 10 11</span><br></pre></td></tr></table></figure>
-<h4 id="Example-2-将单行输入-–-gt-多行输出"><a href="#Example-2-将单行输入-–-gt-多行输出" class="headerlink" title="Example 2: 将单行输入  –&gt; 多行输出"></a>Example 2: 将单行输入  –&gt; 多行输出</h4><p>xargs 的 -n 选项可以限制每次调用命令时用到的参数个数。<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   cat example.txt | xargs -n  3</span><br><span class="line">1 2 3</span><br><span class="line">4 5 6</span><br><span class="line">7 8 9</span><br><span class="line">10 11</span><br></pre></td></tr></table></figure></p>
-<p>工作原理：<br>xargs 命令接收来自stdin的输入，将数据解析成单个元素，然后调用指定命令讲这些元素作为该命令的参数。xargs 默认使用 <strong>空白字符</strong> 分割输入并执行 <code>/bin/echo</code></p>
-<h4 id="Example-3-自定义分隔符-d-选项"><a href="#Example-3-自定义分隔符-d-选项" class="headerlink" title="Example 3: 自定义分隔符 -d 选项"></a>Example 3: 自定义分隔符 -d 选项</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"splitXsplit1Xsplit2Xsplit3"</span> | xargs -d X</span><br><span class="line">split split1 split2 split3</span><br></pre></td></tr></table></figure>
-<h4 id="Example-4-结合find使用xargs"><a href="#Example-4-结合find使用xargs" class="headerlink" title="Example 4: 结合find使用xargs"></a>Example 4: 结合find使用xargs</h4><p><code>find . -type f -name &quot;*.txt&quot; -print0 | xargs -o grep -L image</code></p>
-<p> 如果文件系统的有些文件名中包含忠哥，find 命令的 -print0 选项可以使用0（NUL）来分割查找到的元素，然后再用xargs对应的-0选项进行解析</p>
-<p> 反例：<br> <code>$find . -type f -name &quot;*.txt&quot; -print | xargs rm -f</code><br>这样做很危险，由可能会误删除文件。我们无法预测 find命令输出的分隔符究竟是什么（究竟是‘\n’还是 ‘’）。如果由文件名中包含空格符（‘ ’ ），xargs会将其误认为是分隔符。例如， <code>bashrc text.txt</code> 会被是为 bashrc 和 text.txt 。因此上面的命令不会删除 <code>bashrc text.txt</code> ,而是会把 bashrc删除</p>
-<p>正确的姿势：<br> <code>$find . -type f -name &quot;*.txt&quot; -print0 | xargs -0 rm -f</code></p>
-<h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><p> <code>docker ps -a -q | xargs --no-run-if-empty docker rm -f</code></p>
-<p> 参数 <code>--no-run-if-empty</code> 可以避免在前面的命令完全没有输出的情况下执行该命令</p>
-]]></content>
-      <categories>
-        <category>Shell</category>
-      </categories>
-      <tags>
-        <tag>Shell</tag>
       </tags>
   </entry>
   <entry>
@@ -3317,24 +3317,6 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>值得收藏的技术类站点</title>
-    <url>/2019/10/04/%E5%80%BC%E5%BE%97%E6%94%B6%E8%97%8F%E7%9A%84%E6%8A%80%E6%9C%AF%E7%B1%BB%E7%AB%99%E7%82%B9/</url>
-    <content><![CDATA[<p>一些技术公司，及其站点网站的列表，有很多高质量的文章和最佳实践。</p>
-<p><a href="https://www.praqma.com/" target="_blank" rel="noopener">https://www.praqma.com/</a></p>
-<p><a href="https://www.cloudbees.com/" target="_blank" rel="noopener">https://www.cloudbees.com/</a></p>
-<p><a href="https://www.freecodecamp.org/" target="_blank" rel="noopener">https://www.freecodecamp.org/</a></p>
-<p><a href="https://devopscube.com/" target="_blank" rel="noopener">https://devopscube.com/</a></p>
-<p><a href="https://www.endpoint.com/blog" target="_blank" rel="noopener">https://www.endpoint.com/blog</a></p>
-<p>技术归类：<a href="http://www.devopsbookmarks.com" target="_blank" rel="noopener">http://www.devopsbookmarks.com</a></p>
-]]></content>
-      <categories>
-        <category>Tools</category>
-      </categories>
-      <tags>
-        <tag>Tools</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>入手Telegram</title>
     <url>/2020/04/17/%E5%85%A5%E6%89%8BTelegram/</url>
     <content><![CDATA[<p>听说有很多有趣的组织、个人都有电报，于是想看看。</p>
@@ -3374,6 +3356,22 @@ pipeline {
       <tags>
         <tag>Tools</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>入门gpg</title>
+    <url>/2020/04/23/%E5%85%A5%E9%97%A8gpg/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>GPG 的全称是 GNU Privacy Guard ，可以看作是一个软件，可以用来进行密钥的管理。其实和我们用的一些图形化的密码管理类似，不过GPG 好像更多是命令行交互的，所以一般人不太习惯。另外，中间包含的概念也较多。</p>
+<p>用过enpass, 1password的可以将一些概念类比起来，比如 master password ， 子密码</p>
+<blockquote>
+<p>我们应该使用且只使用子密钥，主密钥应该放在一个绝对安全的地方。</p>
+</blockquote>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>在 Mac 上可以使用 Homebrew 安装 gopass</p>
+<p><code>brew install gopass</code></p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>生成主密钥<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gpg --full-generate-key</span><br></pre></td></tr></table></figure></p>
+<p><strong>交互</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜ gpg --edit-key 771xx601@qq.com</span><br><span class="line">gpg (GnuPG) 2.2.20; Copyright (C) 2020 Free Software Foundation, Inc.</span><br><span class="line">This is free software: you are free to change and redistribute it.</span><br><span class="line">There is NO WARRANTY, to the extent permitted by law.</span><br><span class="line"></span><br><span class="line">Secret key is available.</span><br><span class="line"></span><br><span class="line">sec  rsa2048/00C21CE66A8AE9E0</span><br><span class="line">     created: 2020-04-23  expires: 2022-04-23  usage: SC</span><br><span class="line">     trust: ultimate      validity: ultimate</span><br><span class="line">ssb  rsa2048/9DCC33D2FECB246F</span><br><span class="line">     created: 2020-04-23  expires: never       usage: E</span><br><span class="line">[ultimate] (1). qinrui &lt;771963601@qq.com&gt;</span><br><span class="line"></span><br><span class="line">gpg&gt;</span><br></pre></td></tr></table></figure>
+<p>请注意上面的字符串”sec  rsa2048/xxxxx”，斜杆后面就是”用户ID”的Hash字符串，可以用来替代”用户ID”。</p>
+]]></content>
   </entry>
   <entry>
     <title>Vivaldi入手</title>
@@ -3430,20 +3428,22 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>入门gpg</title>
-    <url>/2020/04/23/%E5%85%A5%E9%97%A8gpg/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>GPG 的全称是 GNU Privacy Guard ，可以看作是一个软件，可以用来进行密钥的管理。其实和我们用的一些图形化的密码管理类似，不过GPG 好像更多是命令行交互的，所以一般人不太习惯。另外，中间包含的概念也较多。</p>
-<p>用过enpass, 1password的可以将一些概念类比起来，比如 master password ， 子密码</p>
-<blockquote>
-<p>我们应该使用且只使用子密钥，主密钥应该放在一个绝对安全的地方。</p>
-</blockquote>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>在 Mac 上可以使用 Homebrew 安装 gopass</p>
-<p><code>brew install gopass</code></p>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>生成主密钥<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gpg --full-generate-key</span><br></pre></td></tr></table></figure></p>
-<p><strong>交互</strong></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜ gpg --edit-key 771xx601@qq.com</span><br><span class="line">gpg (GnuPG) 2.2.20; Copyright (C) 2020 Free Software Foundation, Inc.</span><br><span class="line">This is free software: you are free to change and redistribute it.</span><br><span class="line">There is NO WARRANTY, to the extent permitted by law.</span><br><span class="line"></span><br><span class="line">Secret key is available.</span><br><span class="line"></span><br><span class="line">sec  rsa2048/00C21CE66A8AE9E0</span><br><span class="line">     created: 2020-04-23  expires: 2022-04-23  usage: SC</span><br><span class="line">     trust: ultimate      validity: ultimate</span><br><span class="line">ssb  rsa2048/9DCC33D2FECB246F</span><br><span class="line">     created: 2020-04-23  expires: never       usage: E</span><br><span class="line">[ultimate] (1). qinrui &lt;771963601@qq.com&gt;</span><br><span class="line"></span><br><span class="line">gpg&gt;</span><br></pre></td></tr></table></figure>
-<p>请注意上面的字符串”sec  rsa2048/xxxxx”，斜杆后面就是”用户ID”的Hash字符串，可以用来替代”用户ID”。</p>
+    <title>值得收藏的技术类站点</title>
+    <url>/2019/10/04/%E5%80%BC%E5%BE%97%E6%94%B6%E8%97%8F%E7%9A%84%E6%8A%80%E6%9C%AF%E7%B1%BB%E7%AB%99%E7%82%B9/</url>
+    <content><![CDATA[<p>一些技术公司，及其站点网站的列表，有很多高质量的文章和最佳实践。</p>
+<p><a href="https://www.praqma.com/" target="_blank" rel="noopener">https://www.praqma.com/</a></p>
+<p><a href="https://www.cloudbees.com/" target="_blank" rel="noopener">https://www.cloudbees.com/</a></p>
+<p><a href="https://www.freecodecamp.org/" target="_blank" rel="noopener">https://www.freecodecamp.org/</a></p>
+<p><a href="https://devopscube.com/" target="_blank" rel="noopener">https://devopscube.com/</a></p>
+<p><a href="https://www.endpoint.com/blog" target="_blank" rel="noopener">https://www.endpoint.com/blog</a></p>
+<p>技术归类：<a href="http://www.devopsbookmarks.com" target="_blank" rel="noopener">http://www.devopsbookmarks.com</a></p>
 ]]></content>
+      <categories>
+        <category>Tools</category>
+      </categories>
+      <tags>
+        <tag>Tools</tag>
+      </tags>
   </entry>
   <entry>
     <title>再看git</title>
