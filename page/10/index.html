@@ -484,6 +484,15 @@
 
 <h3 id="新增一个类似工具"><a href="#新增一个类似工具" class="headerlink" title="新增一个类似工具"></a>新增一个类似工具</h3><p>最近发现新的工具 <code>you-get</code><br>对国内支持比较好，国内视频下载速度极快（比youtube-dl快很多倍），使用方便，语法简单。</p>
 <p>比如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下载网易云音乐的mv</span></span><br><span class="line">you-get https://music.163.com/\<span class="comment">#/mv\?id\=5307835</span></span><br><span class="line"><span class="comment"># 然后提取音频</span></span><br><span class="line">ffmpeg -i 祝你一路顺风\ -\ 吴奇隆.mp4 -vn 祝你一路顺风\ -\ 吴奇隆.mp3</span><br></pre></td></tr></table></figure></p>
+<h3 id="再新增一个类似工具"><a href="#再新增一个类似工具" class="headerlink" title="再新增一个类似工具"></a>再新增一个类似工具</h3><p><a href="https://github.com/nilaoda/BBDown" target="_blank" rel="noopener">https://github.com/nilaoda/BBDown</a></p>
+<blockquote>
+<p>我用这个下载过英文字幕，好用！</p>
+</blockquote>
+<p><strong>下载</strong>：对于Mac,直接去下载<a href="https://github.com/nilaoda/BBDown/releases" target="_blank" rel="noopener">https://github.com/nilaoda/BBDown/releases</a>  osx版本的.</p>
+<blockquote>
+<p>解压后，chmod 加权限；右键打开时会提示”Are you sure you want to open it?”,选择 “Open”; 然后便可命令行使用</p>
+</blockquote>
+<p><strong>使用</strong>： e.g. <code>./BBDown --sub-only https://www.bilibili.com/video/BV1S64y1i7m6</code></p>
 <p><strong>More Ref:</strong></p>
 <ul>
 <li><a href="http://ytdl-org" target="_blank" rel="noopener">http://ytdl-org</a> (官网)</li>
