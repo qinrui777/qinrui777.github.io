@@ -93,94 +93,6 @@
     
     
     <article
-  id="post-面试交流群"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/06/22/面试交流群/"
-    >面试交流群</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2021/06/22/面试交流群/" class="article-date">
-  <time datetime="2021-06-22T08:45:25.861Z" itemprop="datePublished">2021-06-22</time>
-</a>  
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <blockquote>
-<p> 面试交流群仅做面试交流之用，按需加入，禁止一切形式的广告。</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">群名称</th>
-<th style="text-align:left">群二维码</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center"><font size="4">前端</font></td>
-<td style="text-align:left"><img src="/images/group-frontend.png" width="30%" height="30%"></td>
-</tr>
-<tr>
-<td style="text-align:center"><font size="4">后端/架构</font></td>
-<td style="text-align:left"><img src="/images/group-backend.png" width="30%" height="30%"></td>
-</tr>
-<tr>
-<td style="text-align:center"><font size="4">算法</font></td>
-<td style="text-align:left"><img src="/images/group-algorithm.png" width="30%" height="30%"></td>
-</tr>
-<tr>
-<td style="text-align:center"><font size="4">移动端</font></td>
-<td style="text-align:left"><img src="/images/group-mobile.png" width="30%" height="30%"></td>
-</tr>
-<tr>
-<td style="text-align:center"><font size="4">运维/测试</font></td>
-<td style="text-align:left"><img src="/images/group-operator.png" width="30%" height="30%"></td>
-</tr>
-<tr>
-<td style="text-align:center"><font size="4">产品/运营</font></td>
-<td style="text-align:left"><img src="/images/group-product.png" width="30%" height="30%"></td>
-</tr>
-<tr>
-<td style="text-align:center"><font size="4">职能/财务</font></td>
-<td style="text-align:left"><img src="/images/group-function.png" width="30%" height="30%"></td>
-</tr>
-</tbody>
-</table>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
   id="post-我的git常用命令"
   class="article article-type-post"
   itemscope
@@ -752,13 +664,73 @@
 </article>
 
     
+    <article
+  id="post-IntelliJ-与-Gradle版本不兼容"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/11/06/IntelliJ-与-Gradle版本不兼容/"
+    >IntelliJ 与 Gradle版本不兼容</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/11/06/IntelliJ-与-Gradle版本不兼容/" class="article-date">
+  <time datetime="2020-11-06T02:25:07.000Z" itemprop="datePublished">2020-11-06</time>
+</a>  
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>IntelliJ version: 2018.2.7 CE</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">IntelliJ IDEA 2018.2.7 (Community Edition)</span><br><span class="line">Build <span class="comment">#IC-182.5107.41, built on November 27, 2018</span></span><br><span class="line">JRE: 1.8.0_152-release-1248-b22 amd64</span><br><span class="line">JVM: OpenJDK 64-Bit Server VM by JetBrains s.r.o</span><br><span class="line">Windows 10 10.0</span><br></pre></td></tr></table></figure>
+<p>Gradle version 6.1.1</p>
+<p>报错截图如下：</p>
+<p><img src="/images/intellij_error.png" alt="error"></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">java.lang.NoClassDefFoundError: org/gradle/api/internal/plugins/DefaultConvention</span><br><span class="line">	at org.jetbrains.plugins.gradle.tooling.builder.ProjectExtensionsDataBuilderImpl.buildAll(ProjectExtensionsDataBuilderImpl.groovy:50)</span><br><span class="line">	at org.jetbrains.plugins.gradle.tooling.internal.ExtraModelBuilder.buildAll(ExtraModelBuilder.java:67)</span><br><span class="line">	at org.gradle.tooling.provider.model.internal.DefaultToolingModelBuilderRegistry<span class="variable">$BuildOperationWrappingToolingModelBuilder</span><span class="variable">$1</span><span class="variable">$1</span>.create(DefaultToolingModelBuilderRegistry.java:104)</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p><strong>step1</strong></p>
+<p><img src="/images/Intellij-step1.png" alt="step11"></p>
+<p><strong>step2</strong></p>
+<p><img src="/images/intellij-step2.png" alt="step2"></p>
+<p>大致原因就是版本不匹配，都是时间从中作祟。</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools/">Tools</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
   </article>
   
 
   
   <nav class="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
   </nav>
   
 </section>
