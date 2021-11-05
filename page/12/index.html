@@ -93,6 +93,88 @@
     
     
     <article
+  id="post-获取fir中的ios-ipa安装包"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/04/09/获取fir中的ios-ipa安装包/"
+    >获取fir中的ios ipa安装包</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/04/09/获取fir中的ios-ipa安装包/" class="article-date">
+  <time datetime="2019-04-09T08:42:20.000Z" itemprop="datePublished">2019-04-09</time>
+</a>  
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h2 id="主要是针对iOS-移动端的打包，下载可能出现的需求。"><a href="#主要是针对iOS-移动端的打包，下载可能出现的需求。" class="headerlink" title="主要是针对iOS 移动端的打包，下载可能出现的需求。"></a>主要是针对iOS 移动端的打包，下载可能出现的需求。</h2><blockquote>
+<p>通常流程： pipeline用fir cli命令，或者dev同学用fir cli直接将产出的xx.ipa软件包推送到fir仓库，Qa同学以及业务同事直接拿二维码下载安装在手机上即可。</p>
+</blockquote>
+<blockquote>
+<p>新需求： 安全团队的同事需要直接拿xx.ipa软件包做安全方面的扫描、测试工作，怎么办？</p>
+</blockquote>
+<p>～～～请看下面～～～</p>
+<h3 id="Steps"><a href="#Steps" class="headerlink" title="Steps"></a>Steps</h3><h4 id="1-用浏览器打开fir链接地址"><a href="#1-用浏览器打开fir链接地址" class="headerlink" title="1.用浏览器打开fir链接地址"></a>1.用浏览器打开fir链接地址</h4><p><img src="/images/fir_image_01.png" alt="fir_image_01"></p>
+<h4 id="2-模拟手机下载的请求"><a href="#2-模拟手机下载的请求" class="headerlink" title="2.模拟手机下载的请求"></a>2.模拟手机下载的请求</h4><p>打开 <strong>开发者工具</strong> ，模拟iPhone，刷新一下<br><img src="/images/fir_image_02.png" alt="fir_image_02"></p>
+<p>点击 “下载安装”<br><img src="/images/fir_image_03.png" alt="fir_image_03"></p>
+<h4 id="3-获取url"><a href="#3-获取url" class="headerlink" title="3.获取url"></a>3.获取url</h4><p><img src="/images/fir_image_04.png" alt="fir_image_04"></p>
+<h4 id="4-获取下载ipa文件的下载地址："><a href="#4-获取下载ipa文件的下载地址：" class="headerlink" title="4.获取下载ipa文件的下载地址："></a>4.获取下载ipa文件的下载地址：</h4><p><img src="/images/fir_image_05.png" alt="fir_image_05"></p>
+<p><strong>header</strong> 的 <strong>key-value</strong> 如下：</p>
+<table>
+<thead>
+<tr>
+<th>key</th>
+<th>value </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>User-Agent</td>
+<td>Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1</td>
+</tr>
+<tr>
+<td>Upgrade-Insecure-Requests</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>当然可以直接用下面的命令得到下载地址:<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">curl -s -X GET \</span><br><span class="line">  <span class="string">'https://apps-cn.xxx.com/fir-api-&lt;3中的url&gt;'</span> \</span><br><span class="line">  -H <span class="string">'Cache-Control: no-cache'</span> \</span><br><span class="line">  -H <span class="string">'Postman-Token: 12ee4b20-c8cc-4729-8342-4d2dd32df2d4'</span> \</span><br><span class="line">  -H <span class="string">'User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1'</span> \</span><br><span class="line">  -H <span class="string">'Upgrade-Insecure-Requests: 1'</span> | grep software-package -A 3 | awk -F <span class="string">"["</span> <span class="string">'&#123;print $3&#125;'</span> | awk -F <span class="string">"]"</span> <span class="string">'&#123;print $1&#125;'</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="5-下载"><a href="#5-下载" class="headerlink" title="5.下载"></a>5.下载</h4><p>直接将第4步中的下载地址粘贴到浏览器中，或者用 <code>wget</code> 命令下载均可</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools/">Tools</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-Docker-image导出导入"
   class="article article-type-post"
   itemscope

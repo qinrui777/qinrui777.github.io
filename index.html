@@ -93,6 +93,93 @@
     
     
     <article
+  id="post-Clean-up-Azure-Container-Registry"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/11/05/Clean-up-Azure-Container-Registry/"
+    >Clean up Azure Container Registry</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/11/05/Clean-up-Azure-Container-Registry/" class="article-date">
+  <time datetime="2021-11-05T03:04:19.000Z" itemprop="datePublished">2021-11-05</time>
+</a>  
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h3 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h3><p>打开项目上用了2-3年的Azure Container Registry，就像打开了一个尘封多年的仓库一般。使用者不停的往仓库里堆放物品，但从来不整理、打扫。仓库的容积足够大，不考虑成本的话，都不是问题。但本着“清道夫”的理念，本着清楚潜在问题的出发点（其实是不想后面打开仓库的人也口出“狂言”，而来责怪前面维护的人。）</p>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p>在个人电脑上，下载镜像过多且长期不删除也会面临磁盘不足的风险。或多或少都适用过类似 <code>docker image rm</code>的命令，但一个一个的清理难免麻烦耗时。这时候就需要一个一键搞定的命令，例如<code>docker system prune</code>。</p>
+<p>对于Azure Container Registry 这样一个成熟的产品服务，已经不建议个人去造轮子、写脚本了。搜索一番之后找到了一篇不错的<a href="https://zimmergren.net/purging-container-images-from-azure-container-registry/" target="_blank" rel="noopener">文章</a>，里面提到了两个具体的方法。</p>
+<ul>
+<li>1.Set a retention policy for untagged manifests (<a href="https://docs.microsoft.com/en-us/azure/container-registry/container-registry-retention-policy?WT.mc_id=AZ-MVP-4021705" target="_blank" rel="noopener">Microsoft Docs</a>)</li>
+<li>2.Automatically purge images from an Azure Container Registry (<a href="https://docs.microsoft.com/en-us/azure/container-registry/container-registry-auto-purge" target="_blank" rel="noopener">Microsoft Docs</a>)</li>
+</ul>
+<p>具体的使用当然还是参照azure官方的文档为宜，毕竟具体实践因情况而异。</p>
+<p>对于，需要注意一点，该policy并不能立刻对现有的镜像生效，原文描述如下：</p>
+<p>! Important</p>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">! Important</span><br><span class="line">The retention policy applies only to untagged manifests with timestamps after the policy is enabled. Untagged manifests in the registry with earlier timestamps aren't subject to the policy. For other options to delete image data, see examples in Delete container images in Azure Container Registry.</span><br></pre></td></tr></table></figure>
+<p>运行了一些命令：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 删除2021-04-01 之前的镜像, 有dry-run参数也可以提前测试一下</span></span><br><span class="line">az acr repository show-manifests --name &lt;YourACRName&gt; --repository demo-web-app \</span><br><span class="line">    --orderby time_asc --query <span class="string">"[?timestamp &lt; '2021-04-01'].digest"</span> -o tsv \</span><br><span class="line">    | xargs -I% az acr repository delete --name &lt;YourACRName&gt; --image demo-web-app@% --yes</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设置定时任务，以后就会自动按照时间来删除</span></span><br><span class="line">PURGE_CMD=<span class="string">"acr purge --filter 'service-one:.*' --ago 180d"</span></span><br><span class="line"></span><br><span class="line">az acr task create --name purgeAppOneImage  \</span><br><span class="line">--cmd <span class="string">"<span class="variable">$PURGE_CMD</span>"</span> \</span><br><span class="line">--schedule <span class="string">"0 0 * * 2"</span> \</span><br><span class="line">--registry &lt;YourACRName&gt; \</span><br><span class="line">--context /dev/null</span><br></pre></td></tr></table></figure>
+<h3 id="意外收获"><a href="#意外收获" class="headerlink" title="意外收获"></a>意外收获</h3><p><strong>tag or digest</strong></p>
+<blockquote>
+<ul>
+<li>The “digest” is a hash of the manifest, introduced in Docker registry v2.</li>
+<li>The image ID is a hash of the local image JSON configuration.</li>
+</ul>
+</blockquote>
+<p><strong>using-container-image-digests-in-kubernetes-manifests</strong></p>
+<blockquote>
+<p><a href="https://cloud.google.com/architecture/using-container-image-digests-in-kubernetes-manifests" target="_blank" rel="noopener">https://cloud.google.com/architecture/using-container-image-digests-in-kubernetes-manifests</a>)</p>
+</blockquote>
+<p> <strong>Tag Count =? Mainfest Count</strong></p>
+<blockquote>
+<p>详解可见<a href="https://medium.com/@anantvardhan.04/azure-container-registry-acr-cleanup-dfeb8a8bb6a9" target="_blank" rel="noopener">文章</a></p>
+</blockquote>
+<hr>
+<p>Reference:</p>
+<ul>
+<li><a href="https://zimmergren.net/purging-container-images-from-azure-container-registry/" target="_blank" rel="noopener">https://zimmergren.net/purging-container-images-from-azure-container-registry/</a></li>
+<li><a href="https://docs.microsoft.com/en-us/azure/container-registry/container-registry-retention-policy" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/azure/container-registry/container-registry-retention-policy</a></li>
+<li><a href="https://docs.microsoft.com/en-us/azure/container-registry/container-registry-auto-purge" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/azure/container-registry/container-registry-auto-purge</a></li>
+<li><a href="https://www.ibm.com/docs/en/filenet-p8-platform/5.5.x?topic=deployment-choosing-image-tags-digest" target="_blank" rel="noopener">https://www.ibm.com/docs/en/filenet-p8-platform/5.5.x?topic=deployment-choosing-image-tags-digest</a></li>
+<li><a href="https://medium.com/@anantvardhan.04/azure-container-registry-acr-cleanup-dfeb8a8bb6a9" target="_blank" rel="noopener">https://medium.com/@anantvardhan.04/azure-container-registry-acr-cleanup-dfeb8a8bb6a9</a></li>
+</ul>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Azure/">Azure</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Docker/">Docker</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-Bash-对变量动手脚"
   class="article article-type-post"
   itemscope
@@ -656,66 +743,6 @@
     <footer class="article-footer">
        
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools/">Tools</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-Validate-a-Jenkinsfile"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/12/18/Validate-a-Jenkinsfile/"
-    >Validate a Jenkinsfile </a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2020/12/18/Validate-a-Jenkinsfile/" class="article-date">
-  <time datetime="2020-12-18T08:54:20.000Z" itemprop="datePublished">2020-12-18</time>
-</a>  
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>总是在运行jenkins pipeline时，才发现语法问题。能不能在运行前发现问题呢</p>
-<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p>方法之一如下，更多方法可参考链接</p>
-<p>新建一个文件，JenkinsfileA，添加以下正确的内容</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">pipeline &#123;</span><br><span class="line">    agent any</span><br><span class="line">    environment &#123;</span><br><span class="line">        MY_ENV = <span class="string">'my-test'</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    stages &#123;</span><br><span class="line">        stage(<span class="string">"Open the door"</span>) &#123;</span><br><span class="line">            steps &#123;</span><br><span class="line">                echo <span class="string">'Open the door ..'</span></span><br><span class="line">                bat <span class="string">label:</span> <span class="string">''</span>, <span class="string">script:</span> <span class="string">'chdir'</span></span><br><span class="line">                bat <span class="string">label:</span> <span class="string">''</span>, <span class="string">script:</span> <span class="string">'set'</span></span><br><span class="line">                powershell <span class="string">label:</span> <span class="string">''</span>, <span class="string">script:</span> <span class="string">"echo $&#123;MY_ENV&#125;"</span></span><br><span class="line">                powershell <span class="string">label:</span> <span class="string">''</span>, <span class="string">script:</span> <span class="string">"echo \\name\\folder"</span></span><br><span class="line">                powershell <span class="string">label:</span> <span class="string">''</span>, <span class="string">script:</span> <span class="string">"echo //123//565"</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-<p>在文件所在的目录，运行下面的命令<br><code>curl --user admin:admin -X POST -F &quot;jenkinsfile=&lt;JenkinsfileA&quot; http://localhost:8080/pipeline-model-converter/validate</code></p>
-<p>送上原文的链接 <a href="https://sandrocirulli.net/how-to-validate-a-jenkinsfile/" target="_blank" rel="noopener">https://sandrocirulli.net/how-to-validate-a-jenkinsfile/</a></p>
-<p><code>curl --user username:password -X POST -F &quot;jenkinsfile=&lt;Jenkinsfile&quot; http://jenkins-url:8080/pipeline-model-converter/validate</code></p>
-<p><strong> &lt; （尖括号）一定要，不然有问题</strong></p>
-<p>Note the following:</p>
-<p>If your Jenkins is authenticating users, you need to pass the username and password otherwise you can omit that part.<br>By default, this command expects your Jenkinsfile to be called Jenkinsfile. If not, change the name in the command.<br>Replace jenkins_url and possibly port 8080 based on the URL and port where you are running Jenkins. You can also use localhost as URL if you are running Jenkins on your machine.</p>
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>VS Code 的插件也很不错 <a href="https://www.jenkins.io/blog/2018/11/07/Validate-Jenkinsfile/" target="_blank" rel="noopener">https://www.jenkins.io/blog/2018/11/07/Validate-Jenkinsfile/</a> ，但如果本地没有安装 VS Code 就还是用其他方法吧</p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jenkins/">jenkins</a></li></ul>
 
     </footer>
   </div>
