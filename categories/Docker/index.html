@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>Clean up Azure Container Registry |  Hexo</title>
+      <title>Docker |  Hexo</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/palm-tree.ico" />
@@ -38,180 +38,58 @@
       
     <main class="content on">
       <section class="outer">
-  <article
-  id="post-Clean-up-Azure-Container-Registry"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
+  
+  
+  <article class="articles">
     
-    <header class="article-header">
+    
+    <h1 class="page-type-title">Docker</h1>
+    
+    
+  
+  
+  
+  
+  
+  
+  <div class="archives-wrap">
+    <div class="archive-year-wrap">
+      <a href="/archives/2021" class="archive-year">2021</a>
+    </div>
+    <div class="archives">
+      
+      <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2021/11/05/Clean-up-Azure-Container-Registry/" class="archive-article-date">
+  <time datetime="2021-11-05T03:04:19.000Z" itemprop="datePublished">11/05</time>
+</a>
        
-<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  Clean up Azure Container Registry
-</h1>
+<h2 itemprop="name">
+  <a class="archive-article-title" href="/2021/11/05/Clean-up-Azure-Container-Registry/"
+    >Clean up Azure Container Registry</a> 
+</h2>
  
 
-      
     </header>
-     
-    <div class="article-meta">
-      <a href="/2021/11/05/Clean-up-Azure-Container-Registry/" class="article-date">
-  <time datetime="2021-11-05T03:04:19.000Z" itemprop="datePublished">2021-11-05</time>
-</a> 
+    
+      
   <div class="article-category">
     <a class="article-category-link" href="/categories/Docker/">Docker</a>
   </div>
- 
-    </div>
+
+    
+    
+  </div>
+</article>
       
-    <div class="tocbot"></div>
-
-
-
+      
+    </div>
+  </div>
+  
+  
 
   
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h3 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h3><p>打开项目上用了2-3年的Azure Container Registry，就像打开了一个尘封多年的仓库一般。使用者不停的往仓库里堆放物品，但从来不整理、打扫。仓库的容积足够大，不考虑成本的话，都不是问题。但本着“清道夫”的理念，本着清楚潜在问题的出发点（其实是不想后面打开仓库的人也口出“狂言”，而来责怪前面维护的人。）</p>
-<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p>在个人电脑上，下载镜像过多且长期不删除也会面临磁盘不足的风险。或多或少都适用过类似 <code>docker image rm</code>的命令，但一个一个的清理难免麻烦耗时。这时候就需要一个一键搞定的命令，例如<code>docker system prune</code>。</p>
-<p>对于Azure Container Registry 这样一个成熟的产品服务，已经不建议个人去造轮子、写脚本了。搜索一番之后找到了一篇不错的<a href="https://zimmergren.net/purging-container-images-from-azure-container-registry/" target="_blank" rel="noopener">文章</a>，里面提到了两个具体的方法。</p>
-<ul>
-<li>1.Set a retention policy for untagged manifests (<a href="https://docs.microsoft.com/en-us/azure/container-registry/container-registry-retention-policy?WT.mc_id=AZ-MVP-4021705" target="_blank" rel="noopener">Microsoft Docs</a>)</li>
-<li>2.Automatically purge images from an Azure Container Registry (<a href="https://docs.microsoft.com/en-us/azure/container-registry/container-registry-auto-purge" target="_blank" rel="noopener">Microsoft Docs</a>)</li>
-</ul>
-<p>具体的使用当然还是参照azure官方的文档为宜，毕竟具体实践因情况而异。</p>
-<p>对于，需要注意一点，该policy并不能立刻对现有的镜像生效，原文描述如下：</p>
-<blockquote>
-<p>! Important</p>
-<p>The retention policy applies only to untagged manifests with timestamps after the policy is enabled. Untagged manifests in the registry with earlier timestamps aren’t subject to the policy. For other options to delete image data, see examples in Delete container images in Azure Container Registry.</p>
-</blockquote>
-<p>运行了一些命令：</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 删除2021-04-01 之前的镜像, 有dry-run参数也可以提前测试一下</span></span><br><span class="line">az acr repository show-manifests --name &lt;YourACRName&gt; --repository demo-web-app \</span><br><span class="line">    --orderby time_asc --query <span class="string">"[?timestamp &lt; '2021-04-01'].digest"</span> -o tsv \</span><br><span class="line">    | xargs -I% az acr repository delete --name &lt;YourACRName&gt; --image demo-web-app@% --yes</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设置定时任务，以后就会自动按照时间来删除</span></span><br><span class="line">PURGE_CMD=<span class="string">"acr purge --filter 'service-one:.*' --ago 180d"</span></span><br><span class="line"></span><br><span class="line">az acr task create --name purgeAppOneImage  \</span><br><span class="line">--cmd <span class="string">"<span class="variable">$PURGE_CMD</span>"</span> \</span><br><span class="line">--schedule <span class="string">"0 0 * * 2"</span> \</span><br><span class="line">--registry &lt;YourACRName&gt; \</span><br><span class="line">--context /dev/null</span><br></pre></td></tr></table></figure>
-<h3 id="意外收获"><a href="#意外收获" class="headerlink" title="意外收获"></a>意外收获</h3><p><strong>tag or digest</strong></p>
-<blockquote>
-<ul>
-<li>The “digest” is a hash of the manifest, introduced in Docker registry v2.</li>
-<li>The image ID is a hash of the local image JSON configuration.</li>
-</ul>
-</blockquote>
-<p><strong>using-container-image-digests-in-kubernetes-manifests</strong></p>
-<blockquote>
-<p><a href="https://cloud.google.com/architecture/using-container-image-digests-in-kubernetes-manifests" target="_blank" rel="noopener">https://cloud.google.com/architecture/using-container-image-digests-in-kubernetes-manifests</a>)</p>
-</blockquote>
-<p> <strong>Tag Count =? Mainfest Count</strong></p>
-<blockquote>
-<p>详解可见<a href="https://medium.com/@anantvardhan.04/azure-container-registry-acr-cleanup-dfeb8a8bb6a9" target="_blank" rel="noopener">文章</a></p>
-</blockquote>
-<hr>
-<p>Reference:</p>
-<ul>
-<li><a href="https://zimmergren.net/purging-container-images-from-azure-container-registry/" target="_blank" rel="noopener">https://zimmergren.net/purging-container-images-from-azure-container-registry/</a></li>
-<li><a href="https://docs.microsoft.com/en-us/azure/container-registry/container-registry-retention-policy" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/azure/container-registry/container-registry-retention-policy</a></li>
-<li><a href="https://docs.microsoft.com/en-us/azure/container-registry/container-registry-auto-purge" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/azure/container-registry/container-registry-auto-purge</a></li>
-<li><a href="https://www.ibm.com/docs/en/filenet-p8-platform/5.5.x?topic=deployment-choosing-image-tags-digest" target="_blank" rel="noopener">https://www.ibm.com/docs/en/filenet-p8-platform/5.5.x?topic=deployment-choosing-image-tags-digest</a></li>
-<li><a href="https://medium.com/@anantvardhan.04/azure-container-registry-acr-cleanup-dfeb8a8bb6a9" target="_blank" rel="noopener">https://medium.com/@anantvardhan.04/azure-container-registry-acr-cleanup-dfeb8a8bb6a9</a></li>
-</ul>
- 
-      <!-- reward -->
-      
-      <div id="reword-out">
-        <div id="reward-btn">
-          Donate
-        </div>
-      </div>
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <div class="declare">
-      <ul class="post-copyright">
-        <li>
-          <i class="ri-copyright-line"></i>
-          <strong>Copyright： </strong>
-          
-          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
-          
-        </li>
-      </ul>
-    </div>
-    
-    <footer class="article-footer">
-       
-<div class="share-btn">
-      <span class="share-sns share-outer">
-        <i class="ri-share-forward-line"></i>
-        分享
-      </span>
-      <div class="share-wrap">
-        <i class="arrow"></i>
-        <div class="share-icons">
-          
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="ri-weibo-fill"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="ri-wechat-fill"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="ri-qq-fill"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="ri-douban-line"></i>
-          </a>
-          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a> -->
-          
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="ri-facebook-circle-fill"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="ri-twitter-fill"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="ri-google-fill"></i>
-          </a>
-        </div>
-      </div>
-</div>
-
-<div class="wx-share-modal">
-    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2021/11/05/Clean-up-Azure-Container-Registry/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div id="share-mask"></div>  
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Azure/">Azure</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Docker/">Docker</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-  <nav class="article-nav">
-    
-    
-      <a href="/2021/11/03/Bash-对变量动手脚/" class="article-nav-link">
-        <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">Bash-对变量动手脚</div>
-      </a>
-    
-  </nav>
-
-   
- 
-   
-     
-</article>
-
 </section>
       <footer class="footer">
   <div class="outer">
@@ -340,20 +218,6 @@
 </div>
     <script src="/js/jquery-2.0.3.min.js"></script> <script src="/js/lazyload.min.js"></script>
 <!-- Tocbot -->
- <script src="/js/tocbot.min.js"></script>
-<script>
-  tocbot.init({
-    tocSelector: ".tocbot",
-    contentSelector: ".article-entry",
-    headingSelector: "h1, h2, h3, h4, h5, h6",
-    hasInnerContainers: true,
-    scrollSmooth: true,
-    scrollContainer: "main",
-    positionFixedSelector: ".tocbot",
-    positionFixedClass: "is-position-fixed",
-    fixedSidebarOffset: "auto",
-  });
-</script>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
 <link
