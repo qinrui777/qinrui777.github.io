@@ -93,6 +93,446 @@
     
     
     <article
+  id="post-再看git"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/04/17/再看git/"
+    >再看git</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/04/17/再看git/" class="article-date">
+  <time datetime="2020-04-17T09:48:25.000Z" itemprop="datePublished">2020-04-17</time>
+</a>  
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
+<p>犹如做手工大多都要用到尺子区度量一样，git也是大多it从业者的必须工具；当然哪怕你不是这个行业的，你也可以用它来做点儿别的，比如仅画一条直线、记录一段文字、存放一个图片。<br>你可以只用三板斧 <code>git add xx</code>,<code>git commit xx</code>,<code>git push xx</code>,遇到难题大不了删除本地文件，然后重新下载一份；但是你也可以把它玩出花儿来。或者感兴趣的研究一些本后的原理，处理一些复杂的使用场景。最终能达到你的目的即可，且高效一点儿，慢慢来、慢慢学～</p>
+</blockquote>
+<p>每个人的使用习惯和遇到的场景不太一样，只能尽量地讲讲命令的使用，绝对不会覆盖到所有使用场景。况且，<em>条条大道通罗马</em>，git命令也是一样，选择你偏好的就可以了。</p>
+<p><strong>主要参考资料如下</strong>：</p>
+<ul>
+<li><a href="https://git-scm.com/book/zh/v2" target="_blank" rel="noopener">Pro Git book</a></li>
+</ul>
+<h3 id="1-Git特色"><a href="#1-Git特色" class="headerlink" title="1. Git特色"></a>1. Git特色</h3><ul>
+<li>近乎所有操作都是本地执行</li>
+<li>直接记录快照，而非差异比较</li>
+<li>Git 保证完整性</li>
+</ul>
+<blockquote>
+<p>Git 中所有的数据在存储前都计算校验和，然后以校验和来引用。 这意味着不可能在 Git 不知情时更改任何文件内容或目录内容。 这个功能建构在 Git 底层，是构成 Git 哲学不可或缺的部分。 若你在传送过程中丢失信息或损坏文件，Git 就能发现。<br>Git 用以计算校验和的机制叫做 SHA-1 散列（hash，哈希）。 这是一个由 40 个十六进制字符（0-9 和 a-f）组成的字符串，基于 Git 中文件的内容或目录结构计算出来。</p>
+</blockquote>
+<h3 id="2-不同状态"><a href="#2-不同状态" class="headerlink" title="2. 不同状态"></a>2. 不同状态</h3><p>git项目的三个阶段：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">+-----------------+       +-----------------+       +-----------------+</span><br><span class="line">|    工 作 区      |       |     暂 存 区     |       |     .git目 录    |</span><br><span class="line">+--------+--------+       +--------+--------+       +---------+-------+</span><br><span class="line">         |                         |                          |</span><br><span class="line">         |                         |                          |</span><br><span class="line">         |                checkout repo                       |</span><br><span class="line">         |    &lt;--------------------+------------------------+ |</span><br><span class="line">         |                         |                          |</span><br><span class="line">         |        git add          |                          |</span><br><span class="line">         | +--------------------&gt;  |                          |</span><br><span class="line">         |                         |                          |</span><br><span class="line">         |                         |        git commit        |</span><br><span class="line">         |                         +-----------------------&gt;  |</span><br><span class="line">         |                         |                          |</span><br><span class="line">         |                         |                          |</span><br><span class="line">         +                         +                          +</span><br></pre></td></tr></table></figure>
+<p>文件可能处于其中之一： 已修改（modified）、 已暂存（staged）、已提交（committed）</p>
+<ul>
+<li>已修改表示修改了文件，但还没保存到数据库中。</li>
+<li>已暂存表示对一个已修改文件的当前版本做了标记，使之包含在下次提交的快照中。</li>
+<li>已提交表示数据已经安全地保存在本地数据库中。</li>
+</ul>
+<h3 id="3-配置"><a href="#3-配置" class="headerlink" title="3. 配置"></a>3. 配置</h3><p>Git 自带一个 <code>git config</code> 的工具来帮助设置控制用户信息、外观、行为等的配置变量。 这些变量存储在三个不同的位置：</p>
+<ul>
+<li>1.系统级<br>/etc/gitconfig 文件: 包含系统上每一个用户及他们仓库的通用配置。 如果在执行 git config 时带上 –system 选项，那么它就会读写该文件中的配置变量。 （由于它是系统配置文件，因此你需要管理员或超级用户权限来修改它。）<br>命令：<code>git config --system -l</code><blockquote>
+<p> mac OS下 似乎默认没有这个文件 <code>/etc/gitconfig</code></p>
+</blockquote>
+</li>
+<li>2.(用户)全局级<br>~/.gitconfig 或 ~/.config/git/config 文件：只针对当前用户。 你可以传递 –global 选项让 Git 读写此文件，这会对你系统上 所有 的仓库生效。<br>命令如：<code>git config --global -l</code></li>
+<li>3.仓库级<br>当前使用仓库的 Git 目录中的 config 文件（即 .git/config）：针对该仓库。 你可以传递 –local 选项让 Git 强制读写此文件，虽然默认情况下用的就是它。。 （当然，你需要进入某个 Git 仓库中才能让该选项生效。）<br><code>git config --local -l</code></li>
+</ul>
+<p>每一个级别会覆盖上一级别的配置，所以 <code>.git/config</code> 的配置变量会覆盖 <code>/etc/gitconfig</code> 中的配置变量，即(用户)全局级 &gt; 系统级</p>
+<h4 id="检查配置信息"><a href="#检查配置信息" class="headerlink" title="检查配置信息"></a>检查配置信息</h4><p>如果想要检查你的配置，可以使用 <code>git config --list</code> 命令来列出所有 Git 当时能找到的配置。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ git config --list</span><br><span class="line">user.name=John Doe</span><br><span class="line">user.email=johndoe@example.com</span><br><span class="line">color.status=auto</span><br><span class="line">color.branch=auto</span><br><span class="line">color.interactive=auto</span><br><span class="line">color.diff=auto</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<p>你可能会看到重复的变量名，因为 Git 会从不同的文件中读取同一个配置（例如：/etc/gitconfig 与 ~/.gitconfig）。 这种情况下，<strong>Git 会使用它找到的每一个变量的最后一个配置</strong>。</p>
+<p>你可以通过输入 <code>git config &lt;key&gt;</code> 来检查 Git 的某一项配置</p>
+<h3 id="4-常用命令"><a href="#4-常用命令" class="headerlink" title="4. 常用命令"></a>4. 常用命令</h3><blockquote>
+<p>参考 <a href="https://zhuanlan.zhihu.com/p/107324618" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/107324618</a> 。下面是按照子命令讲解，但如果按照场景讲解可能会更匹配日常使用。</p>
+</blockquote>
+<ul>
+<li><p>git clone/fetch/checkout</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> &lt;url&gt; <span class="comment">#克隆现有的仓库</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>git branch </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git branch  <span class="comment"># 显示当前分支</span></span><br><span class="line">git branch -a <span class="comment"># 查看本地分支、远程所有分支</span></span><br><span class="line">git branch branchName <span class="comment"># 新建分支</span></span><br><span class="line">git branch -m branchOld branchNew <span class="comment"># 修改分支名称，从 branchOld 改为 branchNew</span></span><br><span class="line">git push origin --delete dev2  <span class="comment"># 删除分支名 dev2 的远程分支,居然一行命令就搞定了</span></span><br><span class="line">git branch &lt;branchName&gt; &lt;start point&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>git checkout</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">git checkout branchName <span class="comment">#命令会将当前工作分支切换到branchName</span></span><br><span class="line">git checkout -b newBranch <span class="comment">#从当前分支copy一份到新分支，并切换到新分支下，等同于2步：1-git branch newBranch-git checkout newBranch</span></span><br><span class="line"><span class="comment"># 加入-B可选参数后会强制创建新分支，并且会覆盖原来存在的同名分支。</span></span><br><span class="line">git checkout -- CONTRIBUTING.md <span class="comment">#撤消对文件的修改。如果你并不想保留对 CONTRIBUTING.md 文件的修改怎么办？用这个命令</span></span><br><span class="line"><span class="comment"># 取消暂存的文件</span></span><br><span class="line">git reset HEAD &lt;file&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>请务必记得 git checkout – <file> 是一个危险的命令。 你对那个文件在本地的任何修改都会消失——Git 会用最近提交的版本覆盖掉它。 除非你确实清楚不想要对那个文件的本地修改了，否则请不要使用这个命令。</file></p>
+</blockquote>
+<ul>
+<li><p>git status</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#查看文件状态</span></span><br><span class="line">git status <span class="comment">#标准输出</span></span><br><span class="line">git status -s(或--short) <span class="comment"># 简洁输出;新添加的未跟踪文件前面有 ?? 标记，新添加到暂存区中的文件前面有 A 标记，修改过的文件前面有 M 标记。</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>git add </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#跟踪(track)新文件,或者说将 文件从 工作区加入到暂存区;在add之前，可以status查看到新文件是 Untracked files</span></span><br><span class="line">git add filename <span class="comment">#添加指定文件 </span></span><br><span class="line">git add *.c <span class="comment">#添加匹配结果指定的文件</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>git diff</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#diff 比较,命令可以不指定 &lt;filename&gt;，则对全部文件操作</span></span><br><span class="line">git diff --staged <span class="comment"># 暂存取 vs .git目录/仓库</span></span><br><span class="line">git diff --cached &lt;filename&gt; <span class="comment">#暂存区 vs Git仓库, --staged 和 --cached 是同义词</span></span><br><span class="line"></span><br><span class="line">git diff &lt;commit&gt; &lt;filename&gt; <span class="comment">#工作目录 vs Git仓库</span></span><br><span class="line">git diff &lt;commit&gt; &lt;commit&gt; <span class="comment">#Git仓库 vs Git仓库</span></span><br><span class="line"></span><br><span class="line">git diff branch1 branch2 --<span class="built_in">stat</span>      //显示2个分支所有有差异的文件列表</span><br><span class="line">git diff branch1 branch2             //显示2个分支所有有差异的文件的详细差异</span><br><span class="line">git diff branch1 branch2 file_path   //显示2个分支指定文件的详细差异</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>git rm</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git rm -f file-path <span class="comment">#从跟踪文件列表中清除，并从磁盘上删除文件</span></span><br><span class="line">git rm --cached file-path <span class="comment">#从跟踪文件列表中清除，仍然将源文件保存在磁盘上</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>git mv</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git mv README.md README</span><br><span class="line"></span><br><span class="line"><span class="comment">#运行 git mv 就相当于运行了下面三条命令：</span></span><br><span class="line">mv README.md README</span><br><span class="line">git rm README.md</span><br><span class="line">git add README</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>git commit</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">git commit -m “desc”  <span class="comment"># 正常提交</span></span><br><span class="line">git commit -a -m “desc”  <span class="comment">#？？</span></span><br><span class="line"><span class="comment"># -a, --all</span></span><br><span class="line"><span class="comment">#           Tell the command to automatically stage files that have been modified and</span></span><br><span class="line"><span class="comment">#           deleted, but new files you have not told Git about are not affected.</span></span><br><span class="line"></span><br><span class="line">git commit --amend <span class="comment">#有时候我们提交完了才发现漏掉了几个文件没有添加，或者提交信息写错了。 此时，可以运行带有 --amend 选项的提交命令来重新提交,这是有交互的</span></span><br><span class="line">git commit –amend -m “desc” <span class="comment">#追加提交，这是没有交互的</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>git remote<br>参见 <a href="https://git-scm.com/book/zh/v2/Git-%E5%9F%BA%E7%A1%80-%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8" target="_blank" rel="noopener">远程仓库的使用</a></p>
+</li>
+</ul>
+<p>如果你使用 clone 命令克隆了一个仓库，命令会自动将其添加为远程仓库并默认以 “origin” 为简写。 所以，git fetch origin 会抓取克隆（或上一次抓取）后新推送的所有工作。 必须注意 git fetch 命令只会将数据下载到你的本地仓库——它并不会自动合并或修改你当前的工作。 当准备好时你必须手动将其合并入你的工作。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git remote <span class="comment">#它会列出你指定的每一个远程服务器的简写。 常见输出：origin</span></span><br><span class="line">git remote -v <span class="comment">#显示需要读写远程仓库使用的 Git 保存的简写与其对应的 URL。</span></span><br><span class="line">git remote add &lt;shortname&gt; &lt;url&gt; <span class="comment">#添加一个新的远程 Git 仓库，同时指定一个方便使用的简写：</span></span><br><span class="line">git fetch &lt;remote&gt; <span class="comment">#该命令会访问远程仓库，从中拉取所有你还没有的数据。 执行完成后，你将会拥有那个远程仓库中所有分支的引用，可以随时合并或查看。</span></span><br><span class="line">git remote show &lt;remote&gt;  <span class="comment">#如果想要查看某一个远程仓库的更多信息，可以使用,例如 git remote show origin</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>git push</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin <span class="built_in">test</span>:<span class="built_in">test</span>  <span class="comment"># 提交本地test分支 作为远程的test分支</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>git merge</p>
+<ul>
+<li>[] todo<br>(在本地merge分支xx 到master，然后push)</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>git log</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> &lt;dev&gt; <span class="comment">#查看分支 dev 的提交历史记录，默认是时间倒序，最近的提交排在最上面），不写分支名查看当前分支的提交历史记录</span></span><br><span class="line">git <span class="built_in">log</span> --reverse <span class="comment">#时间正序显示提交历史记录</span></span><br><span class="line">git <span class="built_in">log</span> --oneline <span class="comment"># 一行显示提交历史记录</span></span><br><span class="line">git <span class="built_in">log</span> --graph <span class="comment">#图示法显示提交历史</span></span><br><span class="line">git <span class="built_in">log</span> --reverse --oneline --graph <span class="comment">#时间正序 + 一行显示 + 图示法显示</span></span><br><span class="line">git <span class="built_in">log</span> -n <span class="comment">#显示最近的 n 个提交</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>[] origin 是什么  git 的 origin 的含义 cnblogs.com/xuyaowen/p/git-origin.html</p>
+</li>
+<li>[] 追踪关系 –track</li>
+<li>[] upstream ??</li>
+</ul>
+<p>其他：<br>HEAD 最近一次 commit<br>HEAD^ 上次提交<br>HEAD~100 上100次提交</p>
+<p>git revert </p>
+<p>英文来定义一下 fetch 和 pull 更为明白：</p>
+<p>git fetch is the command that says “bring my local copy of the remote repository up to date.”<br>git pull says “bring the changes in the remote repository where I keep my own code.”</p>
+<h3 id="5-一些场景"><a href="#5-一些场景" class="headerlink" title="5. 一些场景"></a>5. 一些场景</h3><ul>
+<li>建立个人镜像的仓库 mirror</li>
+<li>清除github上某个文件的历史版本</li>
+<li>命令行提pull request  </li>
+</ul>
+<p><strong>Pull Request (PR) is a Github feature that allows users to collaborate better together.</strong></p>
+<p><a href="https://hub.github.com/" target="_blank" rel="noopener">hub</a>这个工具可以,以下针对github.com做的测试，如果是对于企业内部的github可能需要区别对待，或测试是否有效。另外，运行 <code>git request-pull master ./</code>这样的命令，只会做pr的内容比较，实际上是不出提交一个pr的<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">➜  api-test-demo git:(<span class="built_in">test</span>-pr) ✗ hub pull-request  <span class="comment">#会出现交互，提示输入 pr 的 comment</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#上面完成后，最后输出</span></span><br><span class="line">https://github.com/cicd-draft/api-test-demo/pull/1</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>提第一次安装、使用时，提示输入 <code>github.com username</code>,<code>github.com password</code>。参考链接： <a href="https://hackernoon.com/how-to-git-pr-from-the-command-line-a5b204a57ab" target="_blank" rel="noopener">https://hackernoon.com/how-to-git-pr-from-the-command-line-a5b204a57ab</a> 及 <a href="https://hub.github.com/" target="_blank" rel="noopener">https://hub.github.com/</a></p>
+</blockquote>
+<ul>
+<li>cherry-pick<br>cached 是什么状态</li>
+</ul>
+<p>本地和远程的关系，还要把新分支推到远程也就是在远程建立一样的一个分支。所以我们在本地和远程建立分支后还要把他们关联起来，这样才有意义！！！</p>
+<hr>
+<p><strong>More Ref:</strong></p>
+<ul>
+<li>[ascii现在画图工具]<a href="http://asciiflow.com/" target="_blank" rel="noopener">http://asciiflow.com/</a></li>
+<li><a href="https://www.jianshu.com/p/2f3c5f3ad3d9" target="_blank" rel="noopener">分支</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/107324618" target="_blank" rel="noopener">git命令-from-zhihu</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/96631135?utm_source=qq&amp;utm_medium=social&amp;utm_oi=30019480977408" target="_blank" rel="noopener">Git内部原理</a></li>
+<li>[一些git命令]<a href="https://xu3352.github.io/blog/2017/04/28/git-cheat-sheet" target="_blank" rel="noopener">https://xu3352.github.io/blog/2017/04/28/git-cheat-sheet</a></li>
+</ul>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools/">Tools</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
+  id="post-入手Telegram"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/04/17/入手Telegram/"
+    >入手Telegram</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/04/17/入手Telegram/" class="article-date">
+  <time datetime="2020-04-17T03:04:59.000Z" itemprop="datePublished">2020-04-17</time>
+</a>  
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>听说有很多有趣的组织、个人都有电报，于是想看看。</p>
+<h3 id="1-是什么？"><a href="#1-是什么？" class="headerlink" title="1. 是什么？"></a>1. 是什么？</h3><p><a href="https://telegram.org/" target="_blank" rel="noopener">Telegram</a> —— 中文名又称”电报”，或简称”TG”。Telegram 是跨平台的即时通信软件。</p>
+<p>作用和特色有点太多，还是直接上图吧👇</p>
+<p><img src="https://s1.ax1x.com/2020/04/19/Juq1FU.png" alt="Juq1FU.png"></p>
+<p>更多关于 Telegram 的介绍可以查看 <a href="https://en.wikipedia.org/wiki/Telegram_%28software%29" target="_blank" rel="noopener">Wikipedia</a></p>
+<h3 id="2-怎么用"><a href="#2-怎么用" class="headerlink" title="2. 怎么用"></a>2. 怎么用</h3><p>在中国大陆境内无法直接连接，注册和使用都需要科学上网。</p>
+<p>自己注册过程如下：</p>
+<ul>
+<li><ol>
+<li>为了不下载东西，在网页直接注册 <a href="https://web.telegram.org/" target="_blank" rel="noopener">https://web.telegram.org/</a><br>多次尝试无法注册，提示如下：<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Too fast</span><br><span class="line">You are performing too many actions. Please try again later.</span><br><span class="line">Click for technical details</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
+<blockquote>
+<p>其实尝试的次数并不多，1-2次后就有以上提示了。+ 86的中国大陆号码似乎收不到验证码</p>
+</blockquote>
+<ul>
+<li><ol start="2">
+<li>找一个临时的美国号码<blockquote>
+<p>不太好使</p>
+</blockquote>
+</li>
+</ol>
+</li>
+<li><p>[ ] 尚未注册成功</p>
+</li>
+</ul>
+<h3 id="3-推荐内容"><a href="#3-推荐内容" class="headerlink" title="3. 推荐内容"></a>3. 推荐内容</h3><ul>
+<li style="list-style: none"><input type="checkbox"> todo </li>
+</ul>
+<hr>
+<p><strong>More Ref:</strong><br><a href="https://www.notion.so/Telegram-95a6c23f0bb1466892b55f9ec8c755fd" target="_blank" rel="noopener">Telegram 教程全指南</a><br><a href="https://telegram.org/faq" target="_blank" rel="noopener">官网faq</a></p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools/">Tools</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
+  id="post-断简残篇"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/04/15/断简残篇/"
+    >断简残篇</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/04/15/断简残篇/" class="article-date">
+  <time datetime="2020-04-15T09:05:03.000Z" itemprop="datePublished">2020-04-15</time>
+</a>  
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h3 id="自言自语"><a href="#自言自语" class="headerlink" title="自言自语"></a>自言自语</h3><p>不随意在论坛上发布言论，容易被不知上下文的人乱七八说。</p>
+<p><em>注：相比较，在技术论坛上，将自己的问题描述清楚，很多人乐意、有兴趣来帮你解决；最好把上下文给全一点，即使没有给全，一般技术人员会耐心的询问。但很多日常生活的论坛，缺乏谨慎、客观、耐心，弄不好就是一场大战。</em></p>
+<p>————————–分割线—————————<br>由于内容不多，下面的就一并放在一个链接里，日后再new一个</p>
+<h3 id="ta说的"><a href="#ta说的" class="headerlink" title="ta说的"></a>ta说的</h3><blockquote>
+<p><strong>自由有各种不同的类型，而最宝贵那一种，在这个以胜利、成就和炫耀为基准的花花世界中，很少被人提及。真正重要的那种自由，意味着专注、自觉、自律、不懈努。</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>关乎于真正教育的真正价值，与成绩无关，与学位无关，而在于一种自觉——意识到什么是真实的，什么是必要的；这种自觉就隐藏在我们身边平淡无奇的生活之中，我们必须时时刻刻一遍又一遍地提醒自己。</strong></p>
+</blockquote>
+<p><em>注：来自 <strong>大卫·福斯特·华莱士</strong>《生命中最简单又最困难的事》。最近才知道这么一个人，他是特别爱哲思的一个人，对于生活中最显而易见的平常之事，却用不同于常人的角度思考者，提及的也是最容易被我们忽视的东西。看他的文字比较费脑子，但能感受到其真诚、朴实。  有人说哲学就是抬杠，就是钻牛角尖，就是较真儿…也没有错吧。</em></p>
+<blockquote>
+<p>生活不总是一帆风顺，我们要学会提醒自己走出思维定势的泥沼。</p>
+</blockquote>
+<p><em>注：来自《生命中最简单又最困难的事》导读部分</em></p>
+<blockquote>
+<p>真正的体贴是让人察觉不到的，穷得开朗<br><em>注：来自《佐贺的超级阿嬷》某部分，还在看中</em></p>
+</blockquote>
+<blockquote>
+<p><strong>今天我们遇到的所有问题，都可以用一句话概括：信息不对称。如果你知道了行业信息，就不会迷茫，如果你知道了市场信息，你的产品会卖爆。如何消除信息不对称，其实你消不了。这就是二八定律。你能做的，就是多和不同的人交流沟通，取长补短，在可控范围那多去尝试，扩展视野。这么做的目的不是为了让自己爬的更高，，而是为了别让自己跌得很惨。</strong></p>
+</blockquote>
+<p><em>注：来自豆瓣某处，身处交易频繁的生活中，不管你在城市，还是乡镇，我们经常交易着。这就意味着，你要购买某一个东西或者服务，而常说买的“买的没有卖的精”便是由于信息不对称。而很多时候，人们对一笔交易在事后气氛、扯皮，也都是因为它。花很多时间收集信息，必定耗费精力，或者你也可以选择承受信息不对称的后果，但关键是信息壁垒有很多时候很严重，你都没有机会去选择，或者说你连后果的程度都无法得知。在最近几年的<a href="https://www.devops-tech.cn/2020/04/30/%E6%88%91%E7%9A%84%E7%A7%9F%E6%88%BF%E7%BB%8F%E5%8E%86/" target="_blank" rel="noopener">租房经历</a>中感受颇深，相比于，程序的世界，开源的世界，那里似乎是一个理想国。</em></p>
+<blockquote>
+<p><strong>坐在钢筋水泥的办公室里，终日和文件、盖章、领导打交道的办公室职员，需要消费额外的心里，来不断确认自己在这个世界中的存在价值。除了薪酬，我们很难直观感受到自己的劳动成果，也不知道有谁在意自己所做的一切。有时候，在内心深处，我们甚至为自己的工作感到沮丧和心虚…</strong></p>
+</blockquote>
+<p><em>注：据说来自李松蔚老师，我又孤陋寡闻了。有些时刻，我也会怀疑工作的意义，怀疑每天上下班的意义，也可能因此消沉数日。但上述的也不是每个人经常的感受，毕竟有时候工作的内容还是有意思的。</em></p>
+<blockquote>
+<p>心怀质疑，胸有主见</p>
+</blockquote>
+<blockquote>
+<p><strong>当你心灰意冷的時候，就去做这些事情吧</strong></p>
+<ul>
+<li>去户外挥洒汗水</li>
+<li>去卧室清扫疲惫</li>
+<li>去菜市场感受人间烟火</li>
+<li>去书里领略万千风景</li>
+<li>去医院体悟人生百态</li>
+</ul>
+</blockquote>
+<p>20年的武汉像一个人，像一个灰心丧气的、不停遇到各种坎坷麻烦不断的人；也像今天的天气一般，笼罩着的不是雾霾，而是你我都知道的雨汽，很少见到蓝天白云,而这几天的雨下着不停。道路依旧堵得慌，整个氛围都让人堵得慌。</p>
+<p>老旧城区交织的一条街，几个世界。如果从0点开始观看这条街，凌晨3、4点就是一些少男少女的街道，他们刚结束他们的狂欢、工作，准备回到自己的住处；然后到了4、5点的时候，街边的早餐店慢慢开门准备着；6、7点，学生们三五成群地走向校园，纯粹而快乐，吃个好吃的早餐就可以让其开心一下；8、9点，城市的上班族，买着早餐、等着公交车，骑着电瓶车各自穿行，不宽不窄的道路也慢慢拥挤了；紧接着就是生活的人们，慢悠悠地买菜、送货，为自己的午饭准备着，有的为别人的午饭准备着，直到下午3、4点学生放学了，5、6点上班族下班，偶尔为了犒劳自己去小店大馆子搓一顿。接着，7-9点天色渐黑、华灯初上，道路上红成一条珍珠项链一般。到了夜色全部降临，另一部分人又开始出门，就是那群少男少女，打扮装饰一番去迎接他们的夜生活。</p>
+<p>有的人多着阳光，迎上黑夜的庇护；有的人渴望那黑夜，却不得不</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Q-List/">Q List</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
+  id="post-入手Vivaldi"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/04/09/入手Vivaldi/"
+    >Vivaldi入手</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/04/09/入手Vivaldi/" class="article-date">
+  <time datetime="2020-04-09T08:18:07.000Z" itemprop="datePublished">2020-04-09</time>
+</a>  
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h3 id="0-前言"><a href="#0-前言" class="headerlink" title="0.前言"></a>0.前言</h3><p>最近才在一些论坛上听说 <strong>Vivaldi</strong> 浏览器的大名（我孤陋寡闻了😅）。毕竟入手一个浏览器工具又不花钱，那Chrome挺好用的，为什么要换？</p>
+<blockquote>
+<p>尝尝新鲜的，换着试试看，毕竟不尝试一段时间怎么知道好不好。</p>
+</blockquote>
+<h3 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1.介绍"></a>1.介绍</h3><p>从<a href="https://en.wikipedia.org/wiki/Vivaldi_(web_browser" target="_blank" rel="noopener">维基百科的介绍</a>)来看，Vivaldi的来头可不小，创始人是 Opera 浏览器的前任CEO，估计中间有很多商业故事。使用 Chromium 做内核，能直接安装Chrome网上应用店的应用程序.2016年4月发布第一个版本，距今正好4年，算是比较年轻。后生可畏，轻装上阵，说不定比庞大的chrome会有一些小优势。</p>
+<p><code>Vivaldi is a freeware, cross-platform web browser developed by Vivaldi Technologies, a company founded by Opera Software co-founder and former CEO Jon Stephenson von Tetzchner and Tatsuki Tomita. It was officially launched on April 6, 2016.</code></p>
+<h3 id="2-安装"><a href="#2-安装" class="headerlink" title="2.安装"></a>2.安装</h3><p>直接到官网 <a href="https://vivaldi.com/" target="_blank" rel="noopener">https://vivaldi.com/</a> 下载安装对应系统的版本即可。我当前安装的具体版本是：<code>Vivaldi    2.11.1811.52 (Stable channel) (64-bit)</code></p>
+<h3 id="3-使用"><a href="#3-使用" class="headerlink" title="3.使用"></a>3.使用</h3><p>打开安装好的浏览器后会有一个链接 <code>vivaldi://welcome</code> ，引导做初始化设置</p>
+<h5 id="3-1-引导"><a href="#3-1-引导" class="headerlink" title="3.1 引导"></a>3.1 引导</h5><p><strong>Welcome to Vivaldi</strong></p>
+<blockquote>
+<p>没啥～</p>
+</blockquote>
+<p><strong>Import Bookmarks &amp; Settings</strong></p>
+<blockquote>
+<p>不要要导入导出的步骤，vivaldi会要求输入电脑的密码获取权限拿其他浏览器的书签内容。</p>
+</blockquote>
+<p><strong>Pick a Theme</strong></p>
+<blockquote>
+<p>选背景主题，不多说，但是据说能够做很多自定义的设置，比如某个网站打开后指定其tab颜色。</p>
+</blockquote>
+<p><strong>Position Your Tabs</strong></p>
+<blockquote>
+<p>这里的Tabs指的是一般浏览器最上头一栏，可以切换你的网页的部分。vivaldi 支持你把这个Tabs放到 顶部、左边、右边、底部，但是一般还是习惯 顶部，暂时不换了。尝试了一下放到左边，占据的面积会大一些，因为会直接显示每个网页的缩略图，清晰的让你看到网页大致内容。</p>
+</blockquote>
+<p><strong>Get Going</strong></p>
+<blockquote>
+<p>观看指南的链接、加入社区的链接、关注多个社交账、号是否接收邮件</p>
+</blockquote>
+<p>更多详细的功能也可以看发布<a href="https://en.wikipedia.org/wiki/Vivaldi_(web_browser" target="_blank" rel="noopener">计划</a>#Releases)，毕竟每次新加功能都会在发布计划里提到。</p>
+<h5 id="3-2-实际使用"><a href="#3-2-实际使用" class="headerlink" title="3.2 实际使用"></a>3.2 实际使用</h5><p>很容易实现在多panel功能，效果如下，方便对比、或者参考：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">+-------------+ +-------------+</span><br><span class="line">|             | |             |</span><br><span class="line">|             | |             |</span><br><span class="line">| website 1   | |   website 2 |</span><br><span class="line">|             | |             |</span><br><span class="line">|             | |             |</span><br><span class="line">|             | |             |</span><br><span class="line">|             | |             |</span><br><span class="line">+-------------+ +-------------+</span><br></pre></td></tr></table></figure>
+<p>针对网页记笔记，右边网页，左边笔记，后期也可查找、使用。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">+-----------------------------+</span><br><span class="line">|    ||                       |</span><br><span class="line">|    ||                       |</span><br><span class="line">|note||                       |</span><br><span class="line">|    ||       website         |</span><br><span class="line">|    ||                       |</span><br><span class="line">+-----|                       |</span><br><span class="line">|    ||                       |</span><br><span class="line">+-----------------------------+</span><br></pre></td></tr></table></figure></p>
+<hr>
+<ul>
+<li style="list-style: none"><input type="checkbox"> TODO 很多功能还未尝试，等用过后再来聊聊。不过听说<em>快捷键</em>、<em>网页笔记</em>（保存百度文库的复制内容？）算是特色吧</li>
+</ul>
+<ul>
+<li style="list-style: none"><input type="checkbox"> TODO 但其实以前也没研究过chrome，firefox有没有类似功能。移动端来看，目前还只有 Android 版 Vivaldi，而且还是测试版本，估计等待不久就会出正式版。对开发人员而言，如何调试程序、定位bug，清理缓存数据？是否会有新的交互方式呢，</li>
+</ul>
+<hr>
+<p><strong>More Ref:</strong></p>
+<ul>
+<li><a href="https://www.youtube.com/playlist?list=PL72e6dBabYNVRfpvEUt-WNfV7tZuKDAPB" target="_blank" rel="noopener">youtube播放列表</a></li>
+<li>详细的功能也可以看发布计划,<a href="https://en.wikipedia.org/wiki/Vivaldi_(web_browser)#Releases" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Vivaldi_(web_browser)#Releases</a>, 毕竟每次新加功能都会在发布计划里提到</li>
+<li>小工具<a href="http://asciiflow.com/" target="_blank" rel="noopener">asciiflow</a></li>
+</ul>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools/">Tools</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-枢纽1"
   class="article article-type-post"
   itemscope
@@ -870,326 +1310,6 @@
        
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GA/">GA</a></li></ul>
 
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-Shell-toolbox"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/03/20/Shell-toolbox/"
-    >Shell toolbox</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2020/03/20/Shell-toolbox/" class="article-date">
-  <time datetime="2020-03-20T12:10:01.000Z" itemprop="datePublished">2020-03-20</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Bash/">Bash</a>
-  </div>
- 
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h3 id="1-crontab"><a href="#1-crontab" class="headerlink" title="1 crontab"></a>1 <a href="https://crontab.guru/examples.html" target="_blank" rel="noopener">crontab</a></h3><p>教你怎么写定时任务的网站，并给出了很多示例，比如</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#“At every 2nd minute.”</span></span><br><span class="line">*/2 * * * *</span><br><span class="line"><span class="comment"># At 22:00 on every day-of-week from Monday through Friday</span></span><br><span class="line">0 22 * * 1-5</span><br></pre></td></tr></table></figure>
-<p>不要以为会写crontab就可以了，建议有空以下内容了解下：</p>
-<ul>
-<li><a href="https://crontab.guru/tips.html" target="_blank" rel="noopener">tips小建议</a></li>
-<li><a href="https://www.endpoint.com/blog/2008/12/08/best-practices-for-cron" target="_blank" rel="noopener">最佳实践</a> </li>
-<li><a href="https://cronitor.io/docs/cron-troubleshooting-guide?utm_source=crontabguru&amp;utm_campaign=cron_troubleshooting" target="_blank" rel="noopener">问题定位</a></li>
-<li><strong>mcron</strong>: <em>Another alternative for complicated schedules</em></li>
-</ul>
-<blockquote>
-<p>最后，有兴趣可以看看 Cron Job Monitoring 的工具 <a href="https://cronitor.io/index" target="_blank" rel="noopener">cronitor</a>,不过貌似是收费的。看介绍，可用于 Cron Job, Scheduled Event（AWS),Task Scheduler, Kubernetes Cron Job, Java Cron Job, Jenkins Job多类型的监控。</p>
-</blockquote>
-<h3 id="2-Preventing-duplicate-cron-job-executions"><a href="#2-Preventing-duplicate-cron-job-executions" class="headerlink" title="2. Preventing duplicate cron job executions"></a>2. Preventing duplicate cron job executions</h3><p><a href="http://bencane.com/2015/09/22/preventing-duplicate-cron-job-executions/" target="_blank" rel="noopener">原文链接</a>,关于 <code>Preventing duplicate cron job executions</code> 提到了多种方法和工具。另外，中文搜索的话 <code>flock</code> 命令较多，比如<a href="https://blog.csdn.net/fdipzone/article/details/38284009" target="_blank" rel="noopener">这个</a>。</p>
-<p><a href="https://coolshell.cn/articles/19219.html" target="_blank" rel="noopener">打造高效的工作环境 – SHELL 篇</a></p>
-<h3 id="3-For-循环"><a href="#3-For-循环" class="headerlink" title="3. For 循环"></a>3. For 循环</h3><p>参考<br><a href="https://linuxize.com/post/bash-for-loop/" target="_blank" rel="noopener">https://linuxize.com/post/bash-for-loop/</a><br><a href="https://www.cyberciti.biz/faq/bash-for-loop/" target="_blank" rel="noopener">https://www.cyberciti.biz/faq/bash-for-loop/</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> &#123;1..5&#125;</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">   <span class="built_in">echo</span> <span class="string">"Welcome <span class="variable">$i</span> times"</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-<p>或者写在一行里 <code>for i in {1..5};do echo &quot;Welcome $i times&quot;;done</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> $(ls ./* ); </span><br><span class="line"><span class="keyword">do</span> </span><br><span class="line">  <span class="built_in">echo</span> <span class="variable">$i</span>; </span><br><span class="line">  date; </span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> s <span class="keyword">in</span> server1 server2 server3</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    ssh vivek@<span class="variable">$&#123;s&#125;</span> <span class="string">"uptime"</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-<p>Loop over array elements</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">BOOKS=(<span class="string">'In Search of Lost Time'</span> <span class="string">'Don Quixote'</span> <span class="string">'Ulysses'</span> <span class="string">'The Great Gatsby'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> book <span class="keyword">in</span> <span class="string">"<span class="variable">$&#123;BOOKS[@]&#125;</span>"</span>; <span class="keyword">do</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"Book: <span class="variable">$book</span>"</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-<p>参考链接：</p>
-<ul>
-<li><a href="https://linuxize.com/post/bash-for-loop/" target="_blank" rel="noopener">1</a></li>
-</ul>
-<h3 id="4-xargs"><a href="#4-xargs" class="headerlink" title="4. xargs"></a>4. xargs</h3><p>先看🌰，快速 scale down k8s deployment.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">kubectl get deploy -n &lt;YOUR_NAMESPACE&gt; -o name | xargs -I % kubectl scale % --replicas=0 -n &lt;YOUR_NAMESPACE&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 分解 </span></span><br><span class="line">kubectl get deploy -n &lt;YOUR_NAMESPACE&gt; -o name</span><br><span class="line"></span><br><span class="line"><span class="comment"># output:</span></span><br><span class="line">deployment.extensions/backend-filebeat</span><br><span class="line">deployment.extensions/daemon-filebeat</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果一条一条的执行，如下</span></span><br><span class="line">kubectl scale deploy/daemon-filebeat --replicas=10 -n &lt;YOUR_NAMESPACE&gt;</span><br></pre></td></tr></table></figure>
-<p>实际使用的是 <strong>xargs 实现参数传递</strong> 这一方法：<br><code>ls *.log | xargs -I {} mv {} log_backup_dir/</code><br>这里的 <code>{}</code> 也可以用 <code>%</code> 代替，毕竟可以少敲一下键盘。另外可以看看 <em>xargs与管道的区别</em></p>
-<p>更多实际用法可以参考： <a href="https://blog.csdn.net/zhangmingxingwei/article/details/8996627" target="_blank" rel="noopener">https://blog.csdn.net/zhangmingxingwei/article/details/8996627</a> , 其中的<code>git log --format=&quot;%H %P&quot; | xargs -L 1 git diff</code> 用法也很不错。 另外，有一个原理篇也建议看看，<a href="https://www.cnblogs.com/f-ck-need-u/p/5925923.html" target="_blank" rel="noopener">戳这儿</a></p>
-<h3 id="5-pssh-pscp"><a href="#5-pssh-pscp" class="headerlink" title="5. pssh pscp"></a>5. pssh pscp</h3><p>pssh: Execute Commands on Multiple Remote Linux Servers Using Single Terminal</p>
-<p>使用 <a href="https://www.tecmint.com/execute-commands-on-multiple-linux-servers-using-pssh/" target="_blank" rel="noopener">链接1</a>, <a href="https://www.golinuxcloud.com/pssh-commands-parallel-ssh-linux-examples/" target="_blank" rel="noopener">链接2</a></p>
-<p>pscp 类似pssh，可以帮助你从一台主机上将文件发送到多台主机</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">                            +--------------+</span><br><span class="line">                  +--------&gt;|  server 1    |</span><br><span class="line">                  |         +--------------+</span><br><span class="line">                  |</span><br><span class="line">                  |</span><br><span class="line">                  |         </span><br><span class="line">+-------------|---          +--------------+</span><br><span class="line">| pssh /pscp  |------------&gt;|  server 2    | </span><br><span class="line">+-------------+---          +--------------+</span><br><span class="line">                  |</span><br><span class="line">                  |</span><br><span class="line">                  |         +--------------+</span><br><span class="line">                  +--------&gt;|  server 3    |</span><br><span class="line">                            +--------------+</span><br></pre></td></tr></table></figure>
-<hr>
-<p><a href="https://www.cnblogs.com/f-ck-need-u/p/7048359.html#blogshell" target="_blank" rel="noopener">shell系列1-来源cnblogs</a></p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Bash/">Bash</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shell/">Shell</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-Github-Actions-E03触发"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/03/18/Github-Actions-E03触发/"
-    >Github Actions E03触发</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2020/03/18/Github-Actions-E03触发/" class="article-date">
-  <time datetime="2020-03-18T06:12:50.000Z" itemprop="datePublished">2020-03-18</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/CICD/">CICD</a>
-  </div>
- 
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
-<p>知道手机能够打电话，还得知道怎么把电话号码拨出去，这样才能实现通话的功能；而CICD的场景会更为复杂，如果一个任务在你不想让它运行的时候运行，会浪费自己资源，影响产出物。</p>
-</blockquote>
-<p>关于触发工作流-workflow，github actions的原文如下</p>
-<p><strong>Events that trigger workflows</strong></p>
-<p>You can configure your workflows to run when specific activity on GitHub happens, at a scheduled time, or when an event outside of GitHub occurs.</p>
-<hr>
-<p>根据上面描述，大致有3类事件(<em>错了的话欢迎指正</em>)，官网文档更详细的在<a href="https://help.github.com/en/actions/reference/events-that-trigger-workflows" target="_blank" rel="noopener">这里</a>，不是在<a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/configuring-a-workflow#triggering-a-workflow-with-events" target="_blank" rel="noopener"><em>那里</em></a></p>
-<blockquote>
-<p>最好看英文的，中文似乎没有翻译完，少了一个 <em>Triggering new workflows using a personal access token</em> 方法 😢</p>
-</blockquote>
-<h4 id="一、Github的特定事件-Specific-activity-on-GitHub-happens"><a href="#一、Github的特定事件-Specific-activity-on-GitHub-happens" class="headerlink" title="一、Github的特定事件 (Specific activity on GitHub happens)"></a>一、Github的特定事件 (Specific activity on GitHub happens)</h4><p>算是最常见的一种方式，比如：当小明更新了master分支代码，推送到仓库后触发这个CICD流程。</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 单一事件 Trigger on push</span></span><br><span class="line"><span class="attr">on:</span> <span class="string">push</span></span><br><span class="line"><span class="comment">#------------------分割线----------------</span></span><br><span class="line"><span class="comment"># 一个事件列表也可以，Trigger the workflow on push or pull request</span></span><br><span class="line"><span class="attr">on:</span> <span class="string">[push,</span> <span class="string">pull_request]</span></span><br><span class="line"><span class="comment">#------------------分割线----------------</span></span><br><span class="line"><span class="comment"># 不同类型的事件的组合</span></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="comment"># Trigger the workflow on push or pull request,</span></span><br><span class="line">  <span class="comment"># but only for the master branch</span></span><br><span class="line"><span class="attr">  push:</span></span><br><span class="line"><span class="attr">    branches:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">master</span></span><br><span class="line"><span class="attr">  pull_request:</span></span><br><span class="line"><span class="attr">    branches:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">master</span></span><br><span class="line">  <span class="comment"># Also trigger on page_build, as well as release created events</span></span><br><span class="line"><span class="attr">  page_build:</span></span><br><span class="line"><span class="attr">  release:</span></span><br><span class="line"><span class="attr">    types:</span> <span class="comment"># This configuration does not affect the page_build event above</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">created</span></span><br></pre></td></tr></table></figure>
-<p>Github 的 webhooks event有很多，每个event又包含很多类型。查看<a href="https://developer.github.com/webhooks/#events" target="_blank" rel="noopener">所有的event</a></p>
-<p>顺带熟悉下 github webhook 的概念</p>
-<p><strong>官方介绍</strong>：Webhooks provide a way for notifications to be delivered to an external web server whenever certain actions occur on a repository or organization.<a href="https://help.github.com/en/github/extending-github/about-webhooks" target="_blank" rel="noopener">原文点这里</a></p>
-<blockquote>
-<p><em>通俗版</em>：可以将 github Webhook 理解为一个勤勤恳恳的“卧底”，它被安插到github的一个仓库或某个组织中，一旦发生了之前定义好的事情，它会第一时间把以某种约定好的方式告知给 github acionts。<br><em>简单(不严谨地)而言</em>: 当有行为触发时，Github 会发送 POST 请求至指定的 URL。</p>
-</blockquote>
-<p>请看🌰<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">on:</span></span><br><span class="line"><span class="attr">  issue_comment:</span></span><br><span class="line"><span class="attr">    types:</span> <span class="string">[created,</span> <span class="string">deleted]</span></span><br></pre></td></tr></table></figure></p>
-<p>默认情况下，一个事件的所有活动类型都会触发工作流程运行。也可以使用types关键字将工作流程运行限制为特定的活动类型，精确使用。</p>
-<blockquote>
-<p>延伸一下： github webhook -&gt;  广义的webhooks、 github哪些<a href="https://developer.github.com/webhooks/#events" target="_blank" rel="noopener">events</a></p>
-</blockquote>
-<h4 id="二、定时事件-Scheduled-events"><a href="#二、定时事件-Scheduled-events" class="headerlink" title="二、定时事件(Scheduled events)"></a>二、定时事件(Scheduled events)</h4><p>类似crontab的用法，使用<a href="https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html#tag_20_25_07" target="_blank" rel="noopener">POSIX cron 语法</a>在指定的时间(<strong>UTC 时间</strong>)运行。</p>
-<p>在workflow中用 date命令也可以看到输出的是UTC时间，如:<code>Thu Mar 19 12:08:10 UTC 2020</code>。使用中要根据自己的时区计算出UTC时间，然后配置上。</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">on:</span></span><br><span class="line"><span class="attr">  schedule:</span></span><br><span class="line">    <span class="comment"># * is a special character in YAML so you have to quote this string</span></span><br><span class="line"><span class="attr">    - cron:</span>  <span class="string">'*/15 * * * *'</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>注： GitHub 操作 不支持非标准语法 @yearly、@monthly、@weekly、@daily、@hourly 和 @reboot。这样的语法，如 @midnight 在jenkins中是支持的，需要区别开来。</p>
-</blockquote>
-<h4 id="三、外部事件-External-events"><a href="#三、外部事件-External-events" class="headerlink" title="三、外部事件(External events)"></a>三、外部事件(External events)</h4><ul>
-<li>通过Github API 触发叫做 repository_dispatch 的事件，以此来触发workflow.</li>
-</ul>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">on:</span> <span class="string">repository_dispatch</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>使用个人访问令牌触发新工作流程(Triggering new workflows using a personal access token)</li>
-</ul>
-<p>原文引用：<br><em>For example, if a workflow run pushes code using the repository’s GITHUB_TOKEN, a new workflow will not run even when the repository contains a workflow configured to run when push events occur. </em></p>
-<p><em>If you would like to trigger a workflow from a workflow run, you can trigger the event using a personal access token. You’ll need to create a personal access token and store it as a secret in your repository. To minimize your GitHub Actions usage costs, ensure that you don’t create recursive or unintended workflow runs.</em></p>
-<p>上面提及的2中方法，都属于用外部方法来触发 workflow。 而上一段英文也提及 workflow 触发workflow的情况，有需要可详细研究。</p>
-<hr>
-<p><strong>More Ref:</strong></p>
-<ul>
-<li><a href="https://help.github.com/en/actions/reference/events-that-trigger-workflows" target="_blank" rel="noopener">https://help.github.com/en/actions/reference/events-that-trigger-workflows</a></li>
-<li><a href="https://developer.github.com/webhooks/" target="_blank" rel="noopener">https://developer.github.com/webhooks/</a></li>
-<li><a href="https://help.github.com/cn/actions/reference/workflow-syntax-for-github-actions#patterns-to-match-branches-and-tags" target="_blank" rel="noopener">Patterns to match branches and tags</a></li>
-</ul>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GA/">GA</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-Github-Actions-E02最小Demo"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/03/17/Github-Actions-E02最小Demo/"
-    >Github Actions E02最小Demo</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2020/03/17/Github-Actions-E02最小Demo/" class="article-date">
-  <time datetime="2020-03-17T11:24:12.000Z" itemprop="datePublished">2020-03-17</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/CICD/">CICD</a>
-  </div>
- 
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
-<p><a href="https://www.devops-tech.cn/2020/03/16/Github-Actions-E01/" target="_blank" rel="noopener">前面一篇</a>已经说明一些概念，于是为了更好的理解，直接用一个简单的demo帮助进一步理解概念。</p>
-</blockquote>
-<p>示例仓库： <a href="https://github.com/cicd-draft/api-test-demo" target="_blank" rel="noopener">https://github.com/cicd-draft/api-test-demo</a></p>
-<h3 id="1-配置工作流"><a href="#1-配置工作流" class="headerlink" title="1.配置工作流"></a>1.配置工作流</h3><h4 id="1-1-步骤一"><a href="#1-1-步骤一" class="headerlink" title="1.1 步骤一"></a>1.1 步骤一</h4><p>在仓库的根目录，创建名为 .github/workflows 的目录以存储工作流程文件。</p>
-<h4 id="1-2-步骤二"><a href="#1-2-步骤二" class="headerlink" title="1.2 步骤二"></a>1.2 步骤二</h4><p>在 <code>.github/workflows</code> 中，为工作流程添加 .yml 或 .yaml 文件。 例如 .github/workflows/demo.yml。</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">my</span> <span class="string">workflow</span> <span class="string">demo</span> </span><br><span class="line"></span><br><span class="line"><span class="comment"># 此处使用最常见的触发方法，还有其他的很多方法可满足不同需求</span></span><br><span class="line"><span class="attr">on:</span> </span><br><span class="line"><span class="attr">  push:</span></span><br><span class="line"><span class="attr">    branches:</span> </span><br><span class="line"><span class="bullet">      -</span> <span class="string">master</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">#工作流程运行包括一项或多项作业。 作业默认是并行运行。 要按顺序运行作业，needs 关键词在其他作业上定义依赖项。</span></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="comment">#每项作业必须关联一个 ID。&lt;job_id&gt; 必须以字母或 _ 开头</span></span><br><span class="line"><span class="attr">  my_first_job:</span></span><br><span class="line">    <span class="comment"># 作业1名称为 Demo First job,也是作业显示在 GitHub 上的名称。</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Demo</span> <span class="string">First</span> <span class="string">job</span></span><br><span class="line">    <span class="comment"># 此作业在 Linux 上运行</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">My</span> <span class="string">step</span> <span class="string">one</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">echo</span> <span class="string">"Hello ,Github actions, I'm &gt;&gt;My step one&lt;&lt;"</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">My</span> <span class="string">step</span> <span class="string">two</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        echo "My step one begin..."</span></span><br><span class="line"><span class="string">        echo "doing..."</span></span><br><span class="line"><span class="string">        echo "Finished!!!"</span></span><br><span class="line"><span class="string"></span><span class="attr">  my_second_job:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Demo</span> <span class="string">Second</span> <span class="string">job</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">macos-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">check</span> <span class="string">OS</span> <span class="string">info</span></span><br><span class="line">        <span class="string">run</span> <span class="string">:</span> <span class="string">system_profiler</span> <span class="string">SPSoftwareDataType</span></span><br></pre></td></tr></table></figure>
-<h4 id="1-3-步骤三"><a href="#1-3-步骤三" class="headerlink" title="1.3 步骤三"></a>1.3 步骤三</h4><p>将工作流程文件中的更改提交到您希望其中运行工作流程的分支。</p>
-<p>到这里一个简单的demo就算完成了，可以去 <strong>Actions</strong> 按钮下查看运行情况。</p>
-<h3 id="2-管理工作流"><a href="#2-管理工作流" class="headerlink" title="2.管理工作流"></a>2.管理工作流</h3><p><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run" target="_blank" rel="noopener">官网链接</a>有详细说明以下每个操作中的细节</p>
-<blockquote>
-<p>由于图片太多,就不做搬运工了</p>
-</blockquote>
-<ul>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#about-workflow-permissions" target="_blank" rel="noopener">关于工作流程权限</a></li>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#about-workflow-management" target="_blank" rel="noopener">关于工作流程管理</a></li>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#viewing-your-workflow-history" target="_blank" rel="noopener">查看工作流程历史记录</a></li>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#canceling-a-workflow-run" target="_blank" rel="noopener">取消工作流程运行</a></li>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#viewing-logs-to-diagnose-failures" target="_blank" rel="noopener">查看日志以诊断故障</a></li>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#searching-logs" target="_blank" rel="noopener">搜索日志</a></li>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#downloading-logs" target="_blank" rel="noopener">下载日志</a></li>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#enabling-debug-logging" target="_blank" rel="noopener">启用调试日志</a></li>
-</ul>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GA/">GA</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-about"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/03/16/about/"
-    >about</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2020/03/16/about/" class="article-date">
-  <time datetime="2020-03-16T11:29:24.000Z" itemprop="datePublished">2020-03-16</time>
-</a>  
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <blockquote>
-<p>Ops/Devops, China.</p>
-</blockquote>
-<p>Email: <a href="mailto:771963601@qq.com" target="_blank" rel="noopener">771963601@qq.com</a></p>
-<p>宅，爱好发呆、阅读、羽毛球…</p>
-<p>电影爱好者，程序员里的中学生了</p>
-<p>一个足够简单的人，还想成为一个有趣的人</p>
-<hr>
-<p>👏 找工作可邮件，城市：北上深、西安、武安、成都，职位：Devops,开发,测试,PM等！</p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
     </footer>
   </div>
 

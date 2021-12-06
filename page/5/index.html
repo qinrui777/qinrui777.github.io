@@ -93,6 +93,326 @@
     
     
     <article
+  id="post-Shell-toolbox"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/03/20/Shell-toolbox/"
+    >Shell toolbox</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/03/20/Shell-toolbox/" class="article-date">
+  <time datetime="2020-03-20T12:10:01.000Z" itemprop="datePublished">2020-03-20</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Bash/">Bash</a>
+  </div>
+ 
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h3 id="1-crontab"><a href="#1-crontab" class="headerlink" title="1 crontab"></a>1 <a href="https://crontab.guru/examples.html" target="_blank" rel="noopener">crontab</a></h3><p>教你怎么写定时任务的网站，并给出了很多示例，比如</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#“At every 2nd minute.”</span></span><br><span class="line">*/2 * * * *</span><br><span class="line"><span class="comment"># At 22:00 on every day-of-week from Monday through Friday</span></span><br><span class="line">0 22 * * 1-5</span><br></pre></td></tr></table></figure>
+<p>不要以为会写crontab就可以了，建议有空以下内容了解下：</p>
+<ul>
+<li><a href="https://crontab.guru/tips.html" target="_blank" rel="noopener">tips小建议</a></li>
+<li><a href="https://www.endpoint.com/blog/2008/12/08/best-practices-for-cron" target="_blank" rel="noopener">最佳实践</a> </li>
+<li><a href="https://cronitor.io/docs/cron-troubleshooting-guide?utm_source=crontabguru&amp;utm_campaign=cron_troubleshooting" target="_blank" rel="noopener">问题定位</a></li>
+<li><strong>mcron</strong>: <em>Another alternative for complicated schedules</em></li>
+</ul>
+<blockquote>
+<p>最后，有兴趣可以看看 Cron Job Monitoring 的工具 <a href="https://cronitor.io/index" target="_blank" rel="noopener">cronitor</a>,不过貌似是收费的。看介绍，可用于 Cron Job, Scheduled Event（AWS),Task Scheduler, Kubernetes Cron Job, Java Cron Job, Jenkins Job多类型的监控。</p>
+</blockquote>
+<h3 id="2-Preventing-duplicate-cron-job-executions"><a href="#2-Preventing-duplicate-cron-job-executions" class="headerlink" title="2. Preventing duplicate cron job executions"></a>2. Preventing duplicate cron job executions</h3><p><a href="http://bencane.com/2015/09/22/preventing-duplicate-cron-job-executions/" target="_blank" rel="noopener">原文链接</a>,关于 <code>Preventing duplicate cron job executions</code> 提到了多种方法和工具。另外，中文搜索的话 <code>flock</code> 命令较多，比如<a href="https://blog.csdn.net/fdipzone/article/details/38284009" target="_blank" rel="noopener">这个</a>。</p>
+<p><a href="https://coolshell.cn/articles/19219.html" target="_blank" rel="noopener">打造高效的工作环境 – SHELL 篇</a></p>
+<h3 id="3-For-循环"><a href="#3-For-循环" class="headerlink" title="3. For 循环"></a>3. For 循环</h3><p>参考<br><a href="https://linuxize.com/post/bash-for-loop/" target="_blank" rel="noopener">https://linuxize.com/post/bash-for-loop/</a><br><a href="https://www.cyberciti.biz/faq/bash-for-loop/" target="_blank" rel="noopener">https://www.cyberciti.biz/faq/bash-for-loop/</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> &#123;1..5&#125;</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">   <span class="built_in">echo</span> <span class="string">"Welcome <span class="variable">$i</span> times"</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<p>或者写在一行里 <code>for i in {1..5};do echo &quot;Welcome $i times&quot;;done</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> $(ls ./* ); </span><br><span class="line"><span class="keyword">do</span> </span><br><span class="line">  <span class="built_in">echo</span> <span class="variable">$i</span>; </span><br><span class="line">  date; </span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> s <span class="keyword">in</span> server1 server2 server3</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    ssh vivek@<span class="variable">$&#123;s&#125;</span> <span class="string">"uptime"</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<p>Loop over array elements</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">BOOKS=(<span class="string">'In Search of Lost Time'</span> <span class="string">'Don Quixote'</span> <span class="string">'Ulysses'</span> <span class="string">'The Great Gatsby'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> book <span class="keyword">in</span> <span class="string">"<span class="variable">$&#123;BOOKS[@]&#125;</span>"</span>; <span class="keyword">do</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"Book: <span class="variable">$book</span>"</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<p>参考链接：</p>
+<ul>
+<li><a href="https://linuxize.com/post/bash-for-loop/" target="_blank" rel="noopener">1</a></li>
+</ul>
+<h3 id="4-xargs"><a href="#4-xargs" class="headerlink" title="4. xargs"></a>4. xargs</h3><p>先看🌰，快速 scale down k8s deployment.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">kubectl get deploy -n &lt;YOUR_NAMESPACE&gt; -o name | xargs -I % kubectl scale % --replicas=0 -n &lt;YOUR_NAMESPACE&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 分解 </span></span><br><span class="line">kubectl get deploy -n &lt;YOUR_NAMESPACE&gt; -o name</span><br><span class="line"></span><br><span class="line"><span class="comment"># output:</span></span><br><span class="line">deployment.extensions/backend-filebeat</span><br><span class="line">deployment.extensions/daemon-filebeat</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果一条一条的执行，如下</span></span><br><span class="line">kubectl scale deploy/daemon-filebeat --replicas=10 -n &lt;YOUR_NAMESPACE&gt;</span><br></pre></td></tr></table></figure>
+<p>实际使用的是 <strong>xargs 实现参数传递</strong> 这一方法：<br><code>ls *.log | xargs -I {} mv {} log_backup_dir/</code><br>这里的 <code>{}</code> 也可以用 <code>%</code> 代替，毕竟可以少敲一下键盘。另外可以看看 <em>xargs与管道的区别</em></p>
+<p>更多实际用法可以参考： <a href="https://blog.csdn.net/zhangmingxingwei/article/details/8996627" target="_blank" rel="noopener">https://blog.csdn.net/zhangmingxingwei/article/details/8996627</a> , 其中的<code>git log --format=&quot;%H %P&quot; | xargs -L 1 git diff</code> 用法也很不错。 另外，有一个原理篇也建议看看，<a href="https://www.cnblogs.com/f-ck-need-u/p/5925923.html" target="_blank" rel="noopener">戳这儿</a></p>
+<h3 id="5-pssh-pscp"><a href="#5-pssh-pscp" class="headerlink" title="5. pssh pscp"></a>5. pssh pscp</h3><p>pssh: Execute Commands on Multiple Remote Linux Servers Using Single Terminal</p>
+<p>使用 <a href="https://www.tecmint.com/execute-commands-on-multiple-linux-servers-using-pssh/" target="_blank" rel="noopener">链接1</a>, <a href="https://www.golinuxcloud.com/pssh-commands-parallel-ssh-linux-examples/" target="_blank" rel="noopener">链接2</a></p>
+<p>pscp 类似pssh，可以帮助你从一台主机上将文件发送到多台主机</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">                            +--------------+</span><br><span class="line">                  +--------&gt;|  server 1    |</span><br><span class="line">                  |         +--------------+</span><br><span class="line">                  |</span><br><span class="line">                  |</span><br><span class="line">                  |         </span><br><span class="line">+-------------|---          +--------------+</span><br><span class="line">| pssh /pscp  |------------&gt;|  server 2    | </span><br><span class="line">+-------------+---          +--------------+</span><br><span class="line">                  |</span><br><span class="line">                  |</span><br><span class="line">                  |         +--------------+</span><br><span class="line">                  +--------&gt;|  server 3    |</span><br><span class="line">                            +--------------+</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://www.cnblogs.com/f-ck-need-u/p/7048359.html#blogshell" target="_blank" rel="noopener">shell系列1-来源cnblogs</a></p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Bash/">Bash</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shell/">Shell</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
+  id="post-Github-Actions-E03触发"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/03/18/Github-Actions-E03触发/"
+    >Github Actions E03触发</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/03/18/Github-Actions-E03触发/" class="article-date">
+  <time datetime="2020-03-18T06:12:50.000Z" itemprop="datePublished">2020-03-18</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/CICD/">CICD</a>
+  </div>
+ 
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
+<p>知道手机能够打电话，还得知道怎么把电话号码拨出去，这样才能实现通话的功能；而CICD的场景会更为复杂，如果一个任务在你不想让它运行的时候运行，会浪费自己资源，影响产出物。</p>
+</blockquote>
+<p>关于触发工作流-workflow，github actions的原文如下</p>
+<p><strong>Events that trigger workflows</strong></p>
+<p>You can configure your workflows to run when specific activity on GitHub happens, at a scheduled time, or when an event outside of GitHub occurs.</p>
+<hr>
+<p>根据上面描述，大致有3类事件(<em>错了的话欢迎指正</em>)，官网文档更详细的在<a href="https://help.github.com/en/actions/reference/events-that-trigger-workflows" target="_blank" rel="noopener">这里</a>，不是在<a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/configuring-a-workflow#triggering-a-workflow-with-events" target="_blank" rel="noopener"><em>那里</em></a></p>
+<blockquote>
+<p>最好看英文的，中文似乎没有翻译完，少了一个 <em>Triggering new workflows using a personal access token</em> 方法 😢</p>
+</blockquote>
+<h4 id="一、Github的特定事件-Specific-activity-on-GitHub-happens"><a href="#一、Github的特定事件-Specific-activity-on-GitHub-happens" class="headerlink" title="一、Github的特定事件 (Specific activity on GitHub happens)"></a>一、Github的特定事件 (Specific activity on GitHub happens)</h4><p>算是最常见的一种方式，比如：当小明更新了master分支代码，推送到仓库后触发这个CICD流程。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 单一事件 Trigger on push</span></span><br><span class="line"><span class="attr">on:</span> <span class="string">push</span></span><br><span class="line"><span class="comment">#------------------分割线----------------</span></span><br><span class="line"><span class="comment"># 一个事件列表也可以，Trigger the workflow on push or pull request</span></span><br><span class="line"><span class="attr">on:</span> <span class="string">[push,</span> <span class="string">pull_request]</span></span><br><span class="line"><span class="comment">#------------------分割线----------------</span></span><br><span class="line"><span class="comment"># 不同类型的事件的组合</span></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="comment"># Trigger the workflow on push or pull request,</span></span><br><span class="line">  <span class="comment"># but only for the master branch</span></span><br><span class="line"><span class="attr">  push:</span></span><br><span class="line"><span class="attr">    branches:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">master</span></span><br><span class="line"><span class="attr">  pull_request:</span></span><br><span class="line"><span class="attr">    branches:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">master</span></span><br><span class="line">  <span class="comment"># Also trigger on page_build, as well as release created events</span></span><br><span class="line"><span class="attr">  page_build:</span></span><br><span class="line"><span class="attr">  release:</span></span><br><span class="line"><span class="attr">    types:</span> <span class="comment"># This configuration does not affect the page_build event above</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">created</span></span><br></pre></td></tr></table></figure>
+<p>Github 的 webhooks event有很多，每个event又包含很多类型。查看<a href="https://developer.github.com/webhooks/#events" target="_blank" rel="noopener">所有的event</a></p>
+<p>顺带熟悉下 github webhook 的概念</p>
+<p><strong>官方介绍</strong>：Webhooks provide a way for notifications to be delivered to an external web server whenever certain actions occur on a repository or organization.<a href="https://help.github.com/en/github/extending-github/about-webhooks" target="_blank" rel="noopener">原文点这里</a></p>
+<blockquote>
+<p><em>通俗版</em>：可以将 github Webhook 理解为一个勤勤恳恳的“卧底”，它被安插到github的一个仓库或某个组织中，一旦发生了之前定义好的事情，它会第一时间把以某种约定好的方式告知给 github acionts。<br><em>简单(不严谨地)而言</em>: 当有行为触发时，Github 会发送 POST 请求至指定的 URL。</p>
+</blockquote>
+<p>请看🌰<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">on:</span></span><br><span class="line"><span class="attr">  issue_comment:</span></span><br><span class="line"><span class="attr">    types:</span> <span class="string">[created,</span> <span class="string">deleted]</span></span><br></pre></td></tr></table></figure></p>
+<p>默认情况下，一个事件的所有活动类型都会触发工作流程运行。也可以使用types关键字将工作流程运行限制为特定的活动类型，精确使用。</p>
+<blockquote>
+<p>延伸一下： github webhook -&gt;  广义的webhooks、 github哪些<a href="https://developer.github.com/webhooks/#events" target="_blank" rel="noopener">events</a></p>
+</blockquote>
+<h4 id="二、定时事件-Scheduled-events"><a href="#二、定时事件-Scheduled-events" class="headerlink" title="二、定时事件(Scheduled events)"></a>二、定时事件(Scheduled events)</h4><p>类似crontab的用法，使用<a href="https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html#tag_20_25_07" target="_blank" rel="noopener">POSIX cron 语法</a>在指定的时间(<strong>UTC 时间</strong>)运行。</p>
+<p>在workflow中用 date命令也可以看到输出的是UTC时间，如:<code>Thu Mar 19 12:08:10 UTC 2020</code>。使用中要根据自己的时区计算出UTC时间，然后配置上。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">on:</span></span><br><span class="line"><span class="attr">  schedule:</span></span><br><span class="line">    <span class="comment"># * is a special character in YAML so you have to quote this string</span></span><br><span class="line"><span class="attr">    - cron:</span>  <span class="string">'*/15 * * * *'</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注： GitHub 操作 不支持非标准语法 @yearly、@monthly、@weekly、@daily、@hourly 和 @reboot。这样的语法，如 @midnight 在jenkins中是支持的，需要区别开来。</p>
+</blockquote>
+<h4 id="三、外部事件-External-events"><a href="#三、外部事件-External-events" class="headerlink" title="三、外部事件(External events)"></a>三、外部事件(External events)</h4><ul>
+<li>通过Github API 触发叫做 repository_dispatch 的事件，以此来触发workflow.</li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">on:</span> <span class="string">repository_dispatch</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用个人访问令牌触发新工作流程(Triggering new workflows using a personal access token)</li>
+</ul>
+<p>原文引用：<br><em>For example, if a workflow run pushes code using the repository’s GITHUB_TOKEN, a new workflow will not run even when the repository contains a workflow configured to run when push events occur. </em></p>
+<p><em>If you would like to trigger a workflow from a workflow run, you can trigger the event using a personal access token. You’ll need to create a personal access token and store it as a secret in your repository. To minimize your GitHub Actions usage costs, ensure that you don’t create recursive or unintended workflow runs.</em></p>
+<p>上面提及的2中方法，都属于用外部方法来触发 workflow。 而上一段英文也提及 workflow 触发workflow的情况，有需要可详细研究。</p>
+<hr>
+<p><strong>More Ref:</strong></p>
+<ul>
+<li><a href="https://help.github.com/en/actions/reference/events-that-trigger-workflows" target="_blank" rel="noopener">https://help.github.com/en/actions/reference/events-that-trigger-workflows</a></li>
+<li><a href="https://developer.github.com/webhooks/" target="_blank" rel="noopener">https://developer.github.com/webhooks/</a></li>
+<li><a href="https://help.github.com/cn/actions/reference/workflow-syntax-for-github-actions#patterns-to-match-branches-and-tags" target="_blank" rel="noopener">Patterns to match branches and tags</a></li>
+</ul>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GA/">GA</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
+  id="post-Github-Actions-E02最小Demo"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/03/17/Github-Actions-E02最小Demo/"
+    >Github Actions E02最小Demo</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/03/17/Github-Actions-E02最小Demo/" class="article-date">
+  <time datetime="2020-03-17T11:24:12.000Z" itemprop="datePublished">2020-03-17</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/CICD/">CICD</a>
+  </div>
+ 
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
+<p><a href="https://www.devops-tech.cn/2020/03/16/Github-Actions-E01/" target="_blank" rel="noopener">前面一篇</a>已经说明一些概念，于是为了更好的理解，直接用一个简单的demo帮助进一步理解概念。</p>
+</blockquote>
+<p>示例仓库： <a href="https://github.com/cicd-draft/api-test-demo" target="_blank" rel="noopener">https://github.com/cicd-draft/api-test-demo</a></p>
+<h3 id="1-配置工作流"><a href="#1-配置工作流" class="headerlink" title="1.配置工作流"></a>1.配置工作流</h3><h4 id="1-1-步骤一"><a href="#1-1-步骤一" class="headerlink" title="1.1 步骤一"></a>1.1 步骤一</h4><p>在仓库的根目录，创建名为 .github/workflows 的目录以存储工作流程文件。</p>
+<h4 id="1-2-步骤二"><a href="#1-2-步骤二" class="headerlink" title="1.2 步骤二"></a>1.2 步骤二</h4><p>在 <code>.github/workflows</code> 中，为工作流程添加 .yml 或 .yaml 文件。 例如 .github/workflows/demo.yml。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">my</span> <span class="string">workflow</span> <span class="string">demo</span> </span><br><span class="line"></span><br><span class="line"><span class="comment"># 此处使用最常见的触发方法，还有其他的很多方法可满足不同需求</span></span><br><span class="line"><span class="attr">on:</span> </span><br><span class="line"><span class="attr">  push:</span></span><br><span class="line"><span class="attr">    branches:</span> </span><br><span class="line"><span class="bullet">      -</span> <span class="string">master</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">#工作流程运行包括一项或多项作业。 作业默认是并行运行。 要按顺序运行作业，needs 关键词在其他作业上定义依赖项。</span></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="comment">#每项作业必须关联一个 ID。&lt;job_id&gt; 必须以字母或 _ 开头</span></span><br><span class="line"><span class="attr">  my_first_job:</span></span><br><span class="line">    <span class="comment"># 作业1名称为 Demo First job,也是作业显示在 GitHub 上的名称。</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Demo</span> <span class="string">First</span> <span class="string">job</span></span><br><span class="line">    <span class="comment"># 此作业在 Linux 上运行</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">My</span> <span class="string">step</span> <span class="string">one</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">echo</span> <span class="string">"Hello ,Github actions, I'm &gt;&gt;My step one&lt;&lt;"</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">My</span> <span class="string">step</span> <span class="string">two</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        echo "My step one begin..."</span></span><br><span class="line"><span class="string">        echo "doing..."</span></span><br><span class="line"><span class="string">        echo "Finished!!!"</span></span><br><span class="line"><span class="string"></span><span class="attr">  my_second_job:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Demo</span> <span class="string">Second</span> <span class="string">job</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">macos-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">check</span> <span class="string">OS</span> <span class="string">info</span></span><br><span class="line">        <span class="string">run</span> <span class="string">:</span> <span class="string">system_profiler</span> <span class="string">SPSoftwareDataType</span></span><br></pre></td></tr></table></figure>
+<h4 id="1-3-步骤三"><a href="#1-3-步骤三" class="headerlink" title="1.3 步骤三"></a>1.3 步骤三</h4><p>将工作流程文件中的更改提交到您希望其中运行工作流程的分支。</p>
+<p>到这里一个简单的demo就算完成了，可以去 <strong>Actions</strong> 按钮下查看运行情况。</p>
+<h3 id="2-管理工作流"><a href="#2-管理工作流" class="headerlink" title="2.管理工作流"></a>2.管理工作流</h3><p><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run" target="_blank" rel="noopener">官网链接</a>有详细说明以下每个操作中的细节</p>
+<blockquote>
+<p>由于图片太多,就不做搬运工了</p>
+</blockquote>
+<ul>
+<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#about-workflow-permissions" target="_blank" rel="noopener">关于工作流程权限</a></li>
+<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#about-workflow-management" target="_blank" rel="noopener">关于工作流程管理</a></li>
+<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#viewing-your-workflow-history" target="_blank" rel="noopener">查看工作流程历史记录</a></li>
+<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#canceling-a-workflow-run" target="_blank" rel="noopener">取消工作流程运行</a></li>
+<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#viewing-logs-to-diagnose-failures" target="_blank" rel="noopener">查看日志以诊断故障</a></li>
+<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#searching-logs" target="_blank" rel="noopener">搜索日志</a></li>
+<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#downloading-logs" target="_blank" rel="noopener">下载日志</a></li>
+<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/managing-a-workflow-run#enabling-debug-logging" target="_blank" rel="noopener">启用调试日志</a></li>
+</ul>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GA/">GA</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
+  id="post-about"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/03/16/about/"
+    >about</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/03/16/about/" class="article-date">
+  <time datetime="2020-03-16T11:29:24.000Z" itemprop="datePublished">2020-03-16</time>
+</a>  
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <blockquote>
+<p>Ops/Devops, China.</p>
+</blockquote>
+<p>Email: <a href="mailto:771963601@qq.com" target="_blank" rel="noopener">771963601@qq.com</a></p>
+<p>宅，爱好发呆、阅读、羽毛球…</p>
+<p>电影爱好者，程序员里的中学生了</p>
+<p>一个足够简单的人，还想成为一个有趣的人</p>
+<hr>
+<p>👏 找工作可邮件，城市：北上深、西安、武安、成都，职位：Devops,开发,测试,PM等！</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-Github-Actions-E01初识"
   class="article article-type-post"
   itemscope
@@ -625,341 +945,6 @@
     <footer class="article-footer">
        
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Docker/">Docker</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-Azure-FAQs"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/12/11/Azure-FAQs/"
-    >Azure FAQs</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/12/11/Azure-FAQs/" class="article-date">
-  <time datetime="2019-12-11T09:14:59.000Z" itemprop="datePublished">2019-12-11</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Cloud/">Cloud</a>
-  </div>
- 
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h3 id="1-asm-arm"><a href="#1-asm-arm" class="headerlink" title="1. asm, arm"></a>1. asm, arm</h3><ul>
-<li>asm: Azure Service Manager</li>
-<li>arm: Azure Resource Manager</li>
-</ul>
-<p>最开始一直都是classic模型，它的模型中有service的概念，所以它也叫 asm（Azure Service Manager）。2014年开始提出arm（Azure Resource Manager），其管理平台叫portal。2015年底arm发布。</p>
-<p>当前情况是微软正在将azure的所有功能往arm上迁移。以后都推荐使用arm。但 是当前状况是arm不完全向后兼容asm，有些功能只有asm上才有，所以还有很多 用户还是在使用classic。</p>
-<blockquote>
-<p>ref: <a href="https://pengpengxp.github.io/archive/before-2018-11-10/2017-06-28-Azure%E7%BB%8F%E5%85%B8%E6%A8%A1%E5%BC%8F%E5%92%8C%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB.html#orgbb66971" target="_blank" rel="noopener">https://pengpengxp.github.io/archive/before-2018-11-10/2017-06-28-Azure%E7%BB%8F%E5%85%B8%E6%A8%A1%E5%BC%8F%E5%92%8C%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB.html#orgbb66971</a></p>
-</blockquote>
-<h3 id="2-AWS-to-Azure-services-comparison"><a href="#2-AWS-to-Azure-services-comparison" class="headerlink" title="2. AWS to Azure services comparison"></a>2. AWS to Azure services comparison</h3><p>详见链接 <a href="https://docs.microsoft.com/en-us/azure/architecture/aws-professional/services" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/azure/architecture/aws-professional/services</a></p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-Azure-tutorial-02-Storage"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/12/11/Azure-tutorial-02-Storage/"
-    >Azure tutorial 02: Storage</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/12/11/Azure-tutorial-02-Storage/" class="article-date">
-  <time datetime="2019-12-11T01:54:12.000Z" itemprop="datePublished">2019-12-11</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Cloud/">Cloud</a>
-  </div>
- 
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>storage account type<br><a href="https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview</a></p>
-<p><strong>Blob</strong> - Binary Large Object<br><strong>Binary Object</strong> - Images,Documents,Media Files, Log Files, Backup data Virtual Disks</p>
-<p><strong>Blod types:</strong> </p>
-<ul>
-<li>Block Blob - Text and binary data Files</li>
-<li>Append Blobs - Optimized for append operations</li>
-<li>Page Blob - A collection of 512 byte pages optimized for random read and writes(virtual disk)</li>
-</ul>
-<p><strong>Locations and Redundancy:</strong> </p>
-<ul>
-<li>Locally-redundant storage (LRS): A simple, low-cost replication strategy. Data is replicated synchronously three times within the primary region.</li>
-<li>Zone-redundant storage (ZRS): Replication for scenarios requiring high availability. Data is replicated synchronously across three Azure availability zones in the primary region.</li>
-<li>Geo-redundant storage (GRS): Cross-regional replication to protect against regional outages. Data is replicated synchronously three times in the primary region, then replicated asynchronously to the secondary region. For read access to data in the secondary region, enable read-access geo-redundant storage (RA-GRS).</li>
-<li>Geo-zone-redundant storage (GZRS) (preview): Replication for scenarios requiring both high availability and maximum durability. Data is replicated synchronously across three Azure availability zones in the primary region, then replicated asynchronously to the secondary region. For read access to data in the secondary region, enable read-access geo-zone-redundant storage (RA-GZRS).</li>
-</ul>
-<p><strong>Access Tiers:</strong></p>
-<ul>
-<li>Hot </li>
-<li>Cool </li>
-<li>Archive</li>
-</ul>
-<p><strong>Azure Storage services:</strong></p>
-<ul>
-<li>Blob service</li>
-<li>File service</li>
-<li>Queue service</li>
-<li>Table Storage</li>
-</ul>
-<p><strong>Securing Storage Accounts:</strong></p>
-<ul>
-<li>Access Keys -Two per storage account,full access</li>
-<li>Share Access Signatures - Time based access keys that give granular control</li>
-</ul>
-<p><strong>作业：新建storage account ,并上传文件或文件夹到</strong></p>
-<p>create顺序:<br>a subscriptions -&gt;  a storage account -&gt; a SAS token   </p>
-<p>除了从azure portal页面操作之外，还提供以下两种方式</p>
-<ul>
-<li>Azure Storage Explorer - <a href="https://azure.microsoft.com/en-us/features/storage-explorer/" target="_blank" rel="noopener">install tutorial</a><blockquote>
-<p>或者浏览器中直接打开链接<a href="https://go.microsoft.com/fwlink/?LinkId=708342&amp;clcid=0x409，会自动下载" target="_blank" rel="noopener">https://go.microsoft.com/fwlink/?LinkId=708342&amp;clcid=0x409，会自动下载</a></p>
-</blockquote>
-</li>
-</ul>
-<p>打开 Azure Storage Explorer， 通过xx链接storage<br><img src="/images/azure_storage_01.png" width="80%" height="80%"></p>
-<p><img src="/images/azure_storage_02.png" width="80%" height="80%"></p>
-<ul>
-<li>azcopy - <a href="https://docs.microsoft.com/zh-cn/azure/storage/common/storage-use-azcopy-v10?WT.mc_id=thomasmaurer-blog-thmaure" target="_blank" rel="noopener">install tutorial</a></li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#mac os terminal</span></span><br><span class="line">azcopy cp <span class="string">"/Users/xxx/Desktop/testdir/hello_azure.txt"</span> <span class="string">"https://storage873375.blob.core.windows.net/container1/?[?sv=2019-02-02&amp;ss=bfqt&amp;srt=sco&amp;sp=rwdlacup&amp;se=2019-12-11T11:40:09Z&amp;st=2019-12-11T03:40:09Z&amp;spr=https&amp;sig=5%2FFHo4%2BBwxDB6wLftyB7%2FSF7gqnhaEmpFa4nheBOXQg%3D]"</span></span><br></pre></td></tr></table></figure>
-<p>报错,原始是 <code>？</code> 后边格式的问题</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#mac os terminal</span></span><br><span class="line">azcopy cp <span class="string">"/Users/xxx/Desktop/testdir/hello_azure.txt"</span>  <span class="string">"https://storage873375.blob.core.windows.net/container1/newdir/?sv=2019-02-02&amp;ss=bfqt&amp;srt=sco&amp;sp=rwdlacup&amp;se=2019-12-11T11:40:09Z&amp;st=2019-12-11T03:40:09Z&amp;spr=https&amp;sig=5%2FFHo4%2BBwxDB6wLftyB7%2FSF7gqnhaEmpFa4nheBOXQg%3D"</span></span><br></pre></td></tr></table></figure>
-<p><a href="https://docs.microsoft.com/en-us/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs</a></p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-Azure-tutorial-01-overview"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/12/11/Azure-tutorial-01-overview/"
-    >Azure tutorial 01: overview</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/12/11/Azure-tutorial-01-overview/" class="article-date">
-  <time datetime="2019-12-11T01:53:50.000Z" itemprop="datePublished">2019-12-11</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Cloud/">Cloud</a>
-  </div>
- 
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-   
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-youtube-推荐频道-Non-tech"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/12/10/youtube-推荐频道-Non-tech/"
-    >youtube 推荐频道(Non-tech)</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/12/10/youtube-推荐频道-Non-tech/" class="article-date">
-  <time datetime="2019-12-10T01:47:53.000Z" itemprop="datePublished">2019-12-10</time>
-</a>  
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>自从到新公司有梯子后，外出运动的时间变少了，都奉献给了youtube.有些节目被查水表了，<strong>“此帐户已被终止，因为我们收到多份第三方提交的关于该用户发布的内容侵犯版权的声明。”</strong> 所以也不能保证下面罗列的节目在未来可以持续观看</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">频道</th>
-<th style="text-align:left">关键字</th>
-<th style="text-align:left">备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">梦觉教游泳</td>
-<td style="text-align:left">postman,测试</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">一本好书</td>
-<td style="text-align:left">devops,terraform</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">越哥说电影</td>
-<td style="text-align:left">电影解读</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">树根朽木</td>
-<td style="text-align:left">电影解读</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">宇哥讲电影</td>
-<td style="text-align:left">电影、剧集解读</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">看电影了没</td>
-<td style="text-align:left">电影</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">盗月社食遇记</td>
-<td style="text-align:left">美食</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">回形针PaperClip</td>
-<td style="text-align:left">科普</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">5分鐘DIY</td>
-<td style="text-align:left">生活小技巧</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">四季萌芽</td>
-<td style="text-align:left">火影</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">深夜讀書</td>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">PAPAYA 電腦教室</td>
-<td style="text-align:left">office三件套</td>
-</tr>
-</tbody>
-</table>
-<p><a href="https://www.devops-tech.cn/2019/05/22/Small-Tools-1-youtube-dl/" target="_blank" rel="noopener">如何下载</a>youtube视频、音频</p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Q-List/">Q List</a></li></ul>
 
     </footer>
   </div>

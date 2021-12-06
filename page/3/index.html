@@ -93,6 +93,383 @@
     
     
     <article
+  id="post-修个数据"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/07/17/修个数据/"
+    >修个数据</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/07/17/修个数据/" class="article-date">
+  <time datetime="2020-07-17T02:19:16.000Z" itemprop="datePublished">2020-07-17</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Tools/">Tools</a>
+  </div>
+ 
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <blockquote>
+<p>一件事，即使看似平凡，但只要你做深、做久，很快就能变成你的专业，平凡的事情做久了，也能不平凡。</p>
+</blockquote>
+<p>最近项目中的每天都有很多sql需要执行，以便修复客户的数据，大概持续了近2个月的时间。鉴于开发人员对生产环境的隔离，一般这种修改生产环境数据的活儿就由专职的DBA，或Ops完成。但说到底，开发人员对于sql更熟悉，但这只是通常情况，所以“打铁还需自身硬”。</p>
+<p>在没有任何数据管理系统的前提下，如何规范、准确的修复数据，便有很多细节需要我们思考，并找到合适的实践路径，不至于让某些角色花费大量的时间在这个事情上面。</p>
+<h3 id="1-审批流程，反馈流程"><a href="#1-审批流程，反馈流程" class="headerlink" title="1. 审批流程，反馈流程"></a>1. 审批流程，反馈流程</h3><p>修改数据通常涉及多方，为了保证流程规范（其实是后期甩锅），有关人员需要掌管好自己手中的小权利，通常涉及 PO, Dev, Ops/DBA, Manager等角色。其他问题：三级审批、四级审批、人多、传话丢失、语义产生歧义等；如果sql有问题，该如何找人，如何反馈，</p>
+<h3 id="2-先备份"><a href="#2-先备份" class="headerlink" title="2. 先备份"></a>2. 先备份</h3><p>对于ops人员而言，数据无小事，但在dev眼里，有些表中的数据无足轻重，有些确实很重要，但ops/DBA是不那么了解业务的，也是或许是一些Dev没有经历过丢数据后的无奈和严重后果。</p>
+<p>备份规则（即什么情况下需要备份，什么情况可以不备份）：</p>
+<ul>
+<li>数据量变更大于500条时，必须备份数据</li>
+<li>无需备份的需要备注原因，以便其余人了解不备份的上下文</li>
+</ul>
+<p>备份方式：</p>
+<ul>
+<li>在数据库里备份,例如  <code>create table &lt;table_a_copy_date&gt; select * from users;</code></li>
+<li>少量数据，本地备份，上传到jira中，数据安全问题，</li>
+<li>备份到某个云☁️上，有需要的时候开放权限获取备份文件</li>
+</ul>
+<h3 id="3-执行，用技术去规范"><a href="#3-执行，用技术去规范" class="headerlink" title="3.执行，用技术去规范"></a>3.执行，用技术去规范</h3><p>对于不同的数据库引擎，sql语法有部分差异，使用不同的sql客户端工具，也有不同的差异。</p>
+<p>吐槽遇到的问题：</p>
+<ul>
+<li>sql中的中英文符号不区分，导致的语法问题</li>
+<li>单引号’和间隔号`</li>
+<li>看着正常，<a href="https://tool.lu/sql/" target="_blank" rel="noopener">https://tool.lu/sql/</a> 也检查不出来的，但其实很有问题的语法 （<a href="https://blog.csdn.net/whatday/article/details/103308922）" target="_blank" rel="noopener">https://blog.csdn.net/whatday/article/details/103308922）</a></li>
+<li>多条语句的，不用<code>;</code>分割</li>
+<li>自增id，不要随便插入新的id</li>
+<li>一个sql需要执行1个小时，而且不能重复执行的，确保不能断网，最好不用本地的sql客户端，而使用tmux 后台执行</li>
+</ul>
+<p>pipeline化、脚本化, 需包含语法检查、备份、执行、执行后核对等功能，解放ops的双手</p>
+<p>dbname.tablename</p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ul>
+<li><a href="https://tool.lu/sql/" target="_blank" rel="noopener">检查sql语法的在线工具</a></li>
+<li>SOAR(SQL Optimizer And Rewriter)   是一个对 SQL 进行优化和改写的自动化工具。 由小米人工智能与云平台的数据库团队开发与维护。<a href="https://github.com/XiaoMi/soar" target="_blank" rel="noopener">github地址</a></li>
+<li><a href="https://help.aliyun.com/product/26437.html?spm=5176.cndms.0.0.4a755063X2vQ5l" target="_blank" rel="noopener">数据管理 DMS</a></li>
+<li><a href="http://yearning.io/" target="_blank" rel="noopener">Yearning Mysql SQL审核平台</a></li>
+</ul>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools/">Tools</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
+  id="post-逆流而上"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/07/09/逆流而上/"
+    >逆流而上</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/07/09/逆流而上/" class="article-date">
+  <time datetime="2020-07-09T01:36:38.000Z" itemprop="datePublished">2020-07-09</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/读书笔记/">读书笔记</a>
+  </div>
+ 
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h3 id="0-前言"><a href="#0-前言" class="headerlink" title="0.前言"></a>0.前言</h3><p>2020.7.9 又一年的高考结束了，往年都是在6月。青春，逆流而上，听起来都是这么的文艺。而这里讲到的这本书全名是<strong>《逆流而上 阿里巴巴技术成长之路》</strong>，哈哈 o(╯□╰)o。估计我是被这文艺的书名给吸引过去的。</p>
+<p>虽然没有细读，但也看到一些很好的总结，于是想记录一下。</p>
+<h3 id="1-关于书的信息"><a href="#1-关于书的信息" class="headerlink" title="1.关于书的信息"></a>1.关于书的信息</h3><p>时间： 2018年1月第一版</p>
+<p>一句话概括： “本书是阿里巴巴集团荣耀背后的技术血泪史。”</p>
+<p>适合谁看： “本书主要面向互联网技术从业人员和在校师生，使读者能够通过此书基本了解阿里在各技术领域的能力，学习在如此规模下可能出现的问题以及解决方案的探讨和沉淀分享。”</p>
+<h3 id="2-摘抄"><a href="#2-摘抄" class="headerlink" title="2.摘抄"></a>2.摘抄</h3><ul>
+<li><p>“问题处理环节，需要以最快的时间协同不同团队之间的响应处理，避免措施问题排查的最佳时间窗口。“</p>
+</li>
+<li><p>“稳定性要做好几点：研发与运维要靠近、故障标准要统一并强化处理流程、建设统一的基础设施并完善团队融合做到“书同文车同轨行同伦”</p>
+</li>
+<li><p>“阿里巴巴集团开发规约中对于ORM规范，有明确一条强制规约：在表查询中，一律不要使用*作为查询的字段列表，需要哪些字段必须明确写明。”</p>
+</li>
+<li><p>“数据库中的参数配置对SQL执行速度快慢也有非常大的影响，常见的三个参数包括 innodb_buffer_pool_size ,tmp_table_size, query_cache_size,table_cache”<br>（应该是笔误，明明后面也讲到了4个参数，具体参数讲解也自行搜索）</p>
+</li>
+<li><p>下面的图给了我们定位问题的一些思路，遇到棘手的问题时，要全面考量，逐一排查。不能想当然的去认为“服务器怎么会有问题”，”硬盘不可能会坏“，“网络应该不会有问题吧”<br><img src="https://s1.ax1x.com/2020/07/09/UeDKSK.png" alt="UeDKSK.png"></p>
+</li>
+</ul>
+<p>”为了找出CPU飚高的原因，开发在重启过程中通过执行一下命令找出CPU利用率比较高的线程。“<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -eL -o pid,%cpu,lwp | grep -i pid | sort -nr k2 | awk <span class="string">'&#123;print("%s %s %x\n",1,1,2,$3)&#125;'</span> | head</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-读后"><a href="#3-读后" class="headerlink" title="3.读后"></a>3.读后</h3><p>没有细读的原因，应该是鄙人才疏学浅，孤陋寡闻，很多书中的事情我也没遇上过。如果是当事人，读起来应该有一种破解一桩悬案的快感。但处理问题的思路，以及开发人员、运维人员之间的配合经验十分重要，还有复盘（类比于SRE中的验尸报告）等等都是很棒的，书中对于技术细节也有很深的研究，毕竟是要解决一些棘手的问题，代码片段、逻辑图、架构图丰富，涉及基础设施架构、mysql、中间件服务、负载均衡等等很常见的技术，确实不常见的业务量。</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
+  id="post-一份几年前的linux命令小手册"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/06/10/一份几年前的linux命令小手册/"
+    >一份几年前的linux命令小手册</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/06/10/一份几年前的linux命令小手册/" class="article-date">
+  <time datetime="2020-06-10T06:03:07.000Z" itemprop="datePublished">2020-06-10</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+ 
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p>大学里可没有运维这门专业，但一部分人阴差阳错的走上了这条道路。如期初的我，像无头苍蝇一般。没有人指点迷津，对职场也懵懵懂懂的。这几天在简单收拾时，找到了一份几年前打印的10多页纸，记录了一些命令。然后这些命令中的一部分我现在也不知道用法，可能是用的太少，但以前那会儿它也是一份传递，带我领略神奇的命令。仅此记录一下，然后丢弃这几页纸张，化为乌有，轻便前行。</p>
+<p><strong>再简单的命令，也可能有我们不知道的用法，因为没有细心研究、探索、追问。再说，温故而知新。</strong></p>
+<h3 id="1-系统信息检查"><a href="#1-系统信息检查" class="headerlink" title="1.系统信息检查"></a>1.系统信息检查</h3><p>几板斧： <code>uname -a</code>,<code>hostname</code>, <code>ifconfig -a</code> ,<code>date</code>, <code>pwd</code> ,<code>whoami</code></p>
+<h3 id="2-性能检查"><a href="#2-性能检查" class="headerlink" title="2.性能检查"></a>2.性能检查</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">检查项</th>
+<th>命令</th>
+<th style="text-align:center">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">CPU占用率 <br> 内存使用率 <br>内存交换区使用率</td>
+<td><code>top</code></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">文件系统占用率</td>
+<td><code>df -h</code></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">CPU负载</td>
+<td><code>uptime</code></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">系统i/o</td>
+<td><code>iostat 1 3</code></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">系统资源使用情况</td>
+<td><code>vmstat 1 10</code></td>
+<td style="text-align:center">每隔一秒刷新一次，刷新10次</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-安全检查"><a href="#3-安全检查" class="headerlink" title="3.安全检查"></a>3.安全检查</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">检查项</th>
+<th>命令</th>
+<th style="text-align:center">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">当前登录用户</td>
+<td><code>who</code></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">系统重启情况</td>
+<td><code>less /var/log/boot.log</code></td>
+<td style="text-align:center">部分linux发行版不适用</td>
+</tr>
+<tr>
+<td style="text-align:left">系统日志</td>
+<td><code>less /var/log/messages</code></td>
+<td style="text-align:center">部分linux发行版不适用</td>
+</tr>
+<tr>
+<td style="text-align:left">系统账户检查</td>
+<td><code>more /etc/password</code> <br> <code>more /etc/password</code></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">系统登录情况检查</td>
+<td><code>less /var/log/lastlog</code> 或 <code>lastlog</code></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">系统运行时间</td>
+<td><code>uptime</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="4-硬件信息"><a href="#4-硬件信息" class="headerlink" title="4.硬件信息"></a>4.硬件信息</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">检查项</th>
+<th>命令</th>
+<th style="text-align:center">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">查看硬件信息</td>
+<td><code>dmidecode</code></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:left">硬件启动信息</td>
+<td><code>dmesg</code></td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shell/">Shell</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
+  id="post-Server-我是谁-我在哪里"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/25/Server-我是谁-我在哪里/"
+    >Server:我是谁,我在哪里...</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/05/25/Server-我是谁-我在哪里/" class="article-date">
+  <time datetime="2020-05-25T02:14:53.000Z" itemprop="datePublished">2020-05-25</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+ 
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>给你一台现成的服务器，你该如何了解它？(可以是linux的，也可以是Windows,也可能是mac os),但这里更多的假设是linux吧，因为更加常见，假如你ssh到了一台新服务器，除此之外，别人什么都没告诉你，你该怎么办？</p>
+<h3 id="我是谁-第一问"><a href="#我是谁-第一问" class="headerlink" title="我是谁-第一问"></a>我是谁-第一问</h3><p><code>hostname</code></p>
+<p><code>whoami</code> 或 <code>id</code></p>
+<h3 id="我是谁-第二问"><a href="#我是谁-第二问" class="headerlink" title="我是谁-第二问"></a>我是谁-第二问</h3><p>linux有很多发行版本，每个都有点儿不一样，就比如下载软件的命令就是不一样的，不是每台服务器都是你所熟悉的centos，或者 ubuntu。不要去“我以为…”，而是我先确认一下，怎么确认是我们需要思考的。</p>
+<p><a href="https://www.cyberciti.biz/faq/how-to-check-os-version-in-linux-command-line/" target="_blank" rel="noopener">How to check os version in Linux command line</a></p>
+<p>比如说说 <code>hostnamectl</code> 命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">root@saltmaster:~<span class="comment"># hostnamectl</span></span><br><span class="line">   Static hostname: saltmaster</span><br><span class="line">         Icon name: computer-vm</span><br><span class="line">           Chassis: vm</span><br><span class="line">        Machine ID: 5ff54f44069c4ce289690d8b20a3a8d4</span><br><span class="line">           Boot ID: ca1c7b0381c74fadb52f2065c2bf8648</span><br><span class="line">    Virtualization: oracle   <span class="comment"># 是否使用虚拟化，及哪家的虚拟化，我这里是 vagrant + virtaul box启动的一台服务器</span></span><br><span class="line">    <span class="comment"># 如果看到的是   Virtualization: microsoft 这种，就说明是微软的，大概率是azure吧.</span></span><br><span class="line">  Operating System: Ubuntu 18.04.4 LTS</span><br><span class="line">            Kernel: Linux 4.15.0-91-generic  <span class="comment"># 内核版本</span></span><br><span class="line">      Architecture: x86-64   <span class="comment">#服务器的架构</span></span><br></pre></td></tr></table></figure>
+<h3 id="我在哪里-几点了-第三问"><a href="#我在哪里-几点了-第三问" class="headerlink" title="我在哪里,几点了-第三问"></a>我在哪里,几点了-第三问</h3><p>date</p>
+<p>tree</p>
+<p>ps </p>
+<p>systemctl service</p>
+<h3 id="出错了，怎么办"><a href="#出错了，怎么办" class="headerlink" title="出错了，怎么办-"></a>出错了，怎么办-</h3><p>日志<br>Application Logs<br>Event Logs<br>Service Logs<br>System Logs</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shell/">Shell</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-疫情的启示-伪上帝之眼"
   class="article article-type-post"
   itemscope
@@ -568,446 +945,6 @@
     <footer class="article-footer">
        
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GA/">GA</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-再看git"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/04/17/再看git/"
-    >再看git</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2020/04/17/再看git/" class="article-date">
-  <time datetime="2020-04-17T09:48:25.000Z" itemprop="datePublished">2020-04-17</time>
-</a>  
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
-<p>犹如做手工大多都要用到尺子区度量一样，git也是大多it从业者的必须工具；当然哪怕你不是这个行业的，你也可以用它来做点儿别的，比如仅画一条直线、记录一段文字、存放一个图片。<br>你可以只用三板斧 <code>git add xx</code>,<code>git commit xx</code>,<code>git push xx</code>,遇到难题大不了删除本地文件，然后重新下载一份；但是你也可以把它玩出花儿来。或者感兴趣的研究一些本后的原理，处理一些复杂的使用场景。最终能达到你的目的即可，且高效一点儿，慢慢来、慢慢学～</p>
-</blockquote>
-<p>每个人的使用习惯和遇到的场景不太一样，只能尽量地讲讲命令的使用，绝对不会覆盖到所有使用场景。况且，<em>条条大道通罗马</em>，git命令也是一样，选择你偏好的就可以了。</p>
-<p><strong>主要参考资料如下</strong>：</p>
-<ul>
-<li><a href="https://git-scm.com/book/zh/v2" target="_blank" rel="noopener">Pro Git book</a></li>
-</ul>
-<h3 id="1-Git特色"><a href="#1-Git特色" class="headerlink" title="1. Git特色"></a>1. Git特色</h3><ul>
-<li>近乎所有操作都是本地执行</li>
-<li>直接记录快照，而非差异比较</li>
-<li>Git 保证完整性</li>
-</ul>
-<blockquote>
-<p>Git 中所有的数据在存储前都计算校验和，然后以校验和来引用。 这意味着不可能在 Git 不知情时更改任何文件内容或目录内容。 这个功能建构在 Git 底层，是构成 Git 哲学不可或缺的部分。 若你在传送过程中丢失信息或损坏文件，Git 就能发现。<br>Git 用以计算校验和的机制叫做 SHA-1 散列（hash，哈希）。 这是一个由 40 个十六进制字符（0-9 和 a-f）组成的字符串，基于 Git 中文件的内容或目录结构计算出来。</p>
-</blockquote>
-<h3 id="2-不同状态"><a href="#2-不同状态" class="headerlink" title="2. 不同状态"></a>2. 不同状态</h3><p>git项目的三个阶段：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">+-----------------+       +-----------------+       +-----------------+</span><br><span class="line">|    工 作 区      |       |     暂 存 区     |       |     .git目 录    |</span><br><span class="line">+--------+--------+       +--------+--------+       +---------+-------+</span><br><span class="line">         |                         |                          |</span><br><span class="line">         |                         |                          |</span><br><span class="line">         |                checkout repo                       |</span><br><span class="line">         |    &lt;--------------------+------------------------+ |</span><br><span class="line">         |                         |                          |</span><br><span class="line">         |        git add          |                          |</span><br><span class="line">         | +--------------------&gt;  |                          |</span><br><span class="line">         |                         |                          |</span><br><span class="line">         |                         |        git commit        |</span><br><span class="line">         |                         +-----------------------&gt;  |</span><br><span class="line">         |                         |                          |</span><br><span class="line">         |                         |                          |</span><br><span class="line">         +                         +                          +</span><br></pre></td></tr></table></figure>
-<p>文件可能处于其中之一： 已修改（modified）、 已暂存（staged）、已提交（committed）</p>
-<ul>
-<li>已修改表示修改了文件，但还没保存到数据库中。</li>
-<li>已暂存表示对一个已修改文件的当前版本做了标记，使之包含在下次提交的快照中。</li>
-<li>已提交表示数据已经安全地保存在本地数据库中。</li>
-</ul>
-<h3 id="3-配置"><a href="#3-配置" class="headerlink" title="3. 配置"></a>3. 配置</h3><p>Git 自带一个 <code>git config</code> 的工具来帮助设置控制用户信息、外观、行为等的配置变量。 这些变量存储在三个不同的位置：</p>
-<ul>
-<li>1.系统级<br>/etc/gitconfig 文件: 包含系统上每一个用户及他们仓库的通用配置。 如果在执行 git config 时带上 –system 选项，那么它就会读写该文件中的配置变量。 （由于它是系统配置文件，因此你需要管理员或超级用户权限来修改它。）<br>命令：<code>git config --system -l</code><blockquote>
-<p> mac OS下 似乎默认没有这个文件 <code>/etc/gitconfig</code></p>
-</blockquote>
-</li>
-<li>2.(用户)全局级<br>~/.gitconfig 或 ~/.config/git/config 文件：只针对当前用户。 你可以传递 –global 选项让 Git 读写此文件，这会对你系统上 所有 的仓库生效。<br>命令如：<code>git config --global -l</code></li>
-<li>3.仓库级<br>当前使用仓库的 Git 目录中的 config 文件（即 .git/config）：针对该仓库。 你可以传递 –local 选项让 Git 强制读写此文件，虽然默认情况下用的就是它。。 （当然，你需要进入某个 Git 仓库中才能让该选项生效。）<br><code>git config --local -l</code></li>
-</ul>
-<p>每一个级别会覆盖上一级别的配置，所以 <code>.git/config</code> 的配置变量会覆盖 <code>/etc/gitconfig</code> 中的配置变量，即(用户)全局级 &gt; 系统级</p>
-<h4 id="检查配置信息"><a href="#检查配置信息" class="headerlink" title="检查配置信息"></a>检查配置信息</h4><p>如果想要检查你的配置，可以使用 <code>git config --list</code> 命令来列出所有 Git 当时能找到的配置。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ git config --list</span><br><span class="line">user.name=John Doe</span><br><span class="line">user.email=johndoe@example.com</span><br><span class="line">color.status=auto</span><br><span class="line">color.branch=auto</span><br><span class="line">color.interactive=auto</span><br><span class="line">color.diff=auto</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
-<p>你可能会看到重复的变量名，因为 Git 会从不同的文件中读取同一个配置（例如：/etc/gitconfig 与 ~/.gitconfig）。 这种情况下，<strong>Git 会使用它找到的每一个变量的最后一个配置</strong>。</p>
-<p>你可以通过输入 <code>git config &lt;key&gt;</code> 来检查 Git 的某一项配置</p>
-<h3 id="4-常用命令"><a href="#4-常用命令" class="headerlink" title="4. 常用命令"></a>4. 常用命令</h3><blockquote>
-<p>参考 <a href="https://zhuanlan.zhihu.com/p/107324618" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/107324618</a> 。下面是按照子命令讲解，但如果按照场景讲解可能会更匹配日常使用。</p>
-</blockquote>
-<ul>
-<li><p>git clone/fetch/checkout</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> &lt;url&gt; <span class="comment">#克隆现有的仓库</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>git branch </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git branch  <span class="comment"># 显示当前分支</span></span><br><span class="line">git branch -a <span class="comment"># 查看本地分支、远程所有分支</span></span><br><span class="line">git branch branchName <span class="comment"># 新建分支</span></span><br><span class="line">git branch -m branchOld branchNew <span class="comment"># 修改分支名称，从 branchOld 改为 branchNew</span></span><br><span class="line">git push origin --delete dev2  <span class="comment"># 删除分支名 dev2 的远程分支,居然一行命令就搞定了</span></span><br><span class="line">git branch &lt;branchName&gt; &lt;start point&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>git checkout</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">git checkout branchName <span class="comment">#命令会将当前工作分支切换到branchName</span></span><br><span class="line">git checkout -b newBranch <span class="comment">#从当前分支copy一份到新分支，并切换到新分支下，等同于2步：1-git branch newBranch-git checkout newBranch</span></span><br><span class="line"><span class="comment"># 加入-B可选参数后会强制创建新分支，并且会覆盖原来存在的同名分支。</span></span><br><span class="line">git checkout -- CONTRIBUTING.md <span class="comment">#撤消对文件的修改。如果你并不想保留对 CONTRIBUTING.md 文件的修改怎么办？用这个命令</span></span><br><span class="line"><span class="comment"># 取消暂存的文件</span></span><br><span class="line">git reset HEAD &lt;file&gt;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<blockquote>
-<p>请务必记得 git checkout – <file> 是一个危险的命令。 你对那个文件在本地的任何修改都会消失——Git 会用最近提交的版本覆盖掉它。 除非你确实清楚不想要对那个文件的本地修改了，否则请不要使用这个命令。</file></p>
-</blockquote>
-<ul>
-<li><p>git status</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#查看文件状态</span></span><br><span class="line">git status <span class="comment">#标准输出</span></span><br><span class="line">git status -s(或--short) <span class="comment"># 简洁输出;新添加的未跟踪文件前面有 ?? 标记，新添加到暂存区中的文件前面有 A 标记，修改过的文件前面有 M 标记。</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>git add </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#跟踪(track)新文件,或者说将 文件从 工作区加入到暂存区;在add之前，可以status查看到新文件是 Untracked files</span></span><br><span class="line">git add filename <span class="comment">#添加指定文件 </span></span><br><span class="line">git add *.c <span class="comment">#添加匹配结果指定的文件</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>git diff</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#diff 比较,命令可以不指定 &lt;filename&gt;，则对全部文件操作</span></span><br><span class="line">git diff --staged <span class="comment"># 暂存取 vs .git目录/仓库</span></span><br><span class="line">git diff --cached &lt;filename&gt; <span class="comment">#暂存区 vs Git仓库, --staged 和 --cached 是同义词</span></span><br><span class="line"></span><br><span class="line">git diff &lt;commit&gt; &lt;filename&gt; <span class="comment">#工作目录 vs Git仓库</span></span><br><span class="line">git diff &lt;commit&gt; &lt;commit&gt; <span class="comment">#Git仓库 vs Git仓库</span></span><br><span class="line"></span><br><span class="line">git diff branch1 branch2 --<span class="built_in">stat</span>      //显示2个分支所有有差异的文件列表</span><br><span class="line">git diff branch1 branch2             //显示2个分支所有有差异的文件的详细差异</span><br><span class="line">git diff branch1 branch2 file_path   //显示2个分支指定文件的详细差异</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>git rm</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git rm -f file-path <span class="comment">#从跟踪文件列表中清除，并从磁盘上删除文件</span></span><br><span class="line">git rm --cached file-path <span class="comment">#从跟踪文件列表中清除，仍然将源文件保存在磁盘上</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>git mv</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git mv README.md README</span><br><span class="line"></span><br><span class="line"><span class="comment">#运行 git mv 就相当于运行了下面三条命令：</span></span><br><span class="line">mv README.md README</span><br><span class="line">git rm README.md</span><br><span class="line">git add README</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>git commit</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">git commit -m “desc”  <span class="comment"># 正常提交</span></span><br><span class="line">git commit -a -m “desc”  <span class="comment">#？？</span></span><br><span class="line"><span class="comment"># -a, --all</span></span><br><span class="line"><span class="comment">#           Tell the command to automatically stage files that have been modified and</span></span><br><span class="line"><span class="comment">#           deleted, but new files you have not told Git about are not affected.</span></span><br><span class="line"></span><br><span class="line">git commit --amend <span class="comment">#有时候我们提交完了才发现漏掉了几个文件没有添加，或者提交信息写错了。 此时，可以运行带有 --amend 选项的提交命令来重新提交,这是有交互的</span></span><br><span class="line">git commit –amend -m “desc” <span class="comment">#追加提交，这是没有交互的</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>git remote<br>参见 <a href="https://git-scm.com/book/zh/v2/Git-%E5%9F%BA%E7%A1%80-%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8" target="_blank" rel="noopener">远程仓库的使用</a></p>
-</li>
-</ul>
-<p>如果你使用 clone 命令克隆了一个仓库，命令会自动将其添加为远程仓库并默认以 “origin” 为简写。 所以，git fetch origin 会抓取克隆（或上一次抓取）后新推送的所有工作。 必须注意 git fetch 命令只会将数据下载到你的本地仓库——它并不会自动合并或修改你当前的工作。 当准备好时你必须手动将其合并入你的工作。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git remote <span class="comment">#它会列出你指定的每一个远程服务器的简写。 常见输出：origin</span></span><br><span class="line">git remote -v <span class="comment">#显示需要读写远程仓库使用的 Git 保存的简写与其对应的 URL。</span></span><br><span class="line">git remote add &lt;shortname&gt; &lt;url&gt; <span class="comment">#添加一个新的远程 Git 仓库，同时指定一个方便使用的简写：</span></span><br><span class="line">git fetch &lt;remote&gt; <span class="comment">#该命令会访问远程仓库，从中拉取所有你还没有的数据。 执行完成后，你将会拥有那个远程仓库中所有分支的引用，可以随时合并或查看。</span></span><br><span class="line">git remote show &lt;remote&gt;  <span class="comment">#如果想要查看某一个远程仓库的更多信息，可以使用,例如 git remote show origin</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>git push</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin <span class="built_in">test</span>:<span class="built_in">test</span>  <span class="comment"># 提交本地test分支 作为远程的test分支</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>git merge</p>
-<ul>
-<li>[] todo<br>(在本地merge分支xx 到master，然后push)</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>git log</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> &lt;dev&gt; <span class="comment">#查看分支 dev 的提交历史记录，默认是时间倒序，最近的提交排在最上面），不写分支名查看当前分支的提交历史记录</span></span><br><span class="line">git <span class="built_in">log</span> --reverse <span class="comment">#时间正序显示提交历史记录</span></span><br><span class="line">git <span class="built_in">log</span> --oneline <span class="comment"># 一行显示提交历史记录</span></span><br><span class="line">git <span class="built_in">log</span> --graph <span class="comment">#图示法显示提交历史</span></span><br><span class="line">git <span class="built_in">log</span> --reverse --oneline --graph <span class="comment">#时间正序 + 一行显示 + 图示法显示</span></span><br><span class="line">git <span class="built_in">log</span> -n <span class="comment">#显示最近的 n 个提交</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>[] origin 是什么  git 的 origin 的含义 cnblogs.com/xuyaowen/p/git-origin.html</p>
-</li>
-<li>[] 追踪关系 –track</li>
-<li>[] upstream ??</li>
-</ul>
-<p>其他：<br>HEAD 最近一次 commit<br>HEAD^ 上次提交<br>HEAD~100 上100次提交</p>
-<p>git revert </p>
-<p>英文来定义一下 fetch 和 pull 更为明白：</p>
-<p>git fetch is the command that says “bring my local copy of the remote repository up to date.”<br>git pull says “bring the changes in the remote repository where I keep my own code.”</p>
-<h3 id="5-一些场景"><a href="#5-一些场景" class="headerlink" title="5. 一些场景"></a>5. 一些场景</h3><ul>
-<li>建立个人镜像的仓库 mirror</li>
-<li>清除github上某个文件的历史版本</li>
-<li>命令行提pull request  </li>
-</ul>
-<p><strong>Pull Request (PR) is a Github feature that allows users to collaborate better together.</strong></p>
-<p><a href="https://hub.github.com/" target="_blank" rel="noopener">hub</a>这个工具可以,以下针对github.com做的测试，如果是对于企业内部的github可能需要区别对待，或测试是否有效。另外，运行 <code>git request-pull master ./</code>这样的命令，只会做pr的内容比较，实际上是不出提交一个pr的<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">➜  api-test-demo git:(<span class="built_in">test</span>-pr) ✗ hub pull-request  <span class="comment">#会出现交互，提示输入 pr 的 comment</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#上面完成后，最后输出</span></span><br><span class="line">https://github.com/cicd-draft/api-test-demo/pull/1</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>提第一次安装、使用时，提示输入 <code>github.com username</code>,<code>github.com password</code>。参考链接： <a href="https://hackernoon.com/how-to-git-pr-from-the-command-line-a5b204a57ab" target="_blank" rel="noopener">https://hackernoon.com/how-to-git-pr-from-the-command-line-a5b204a57ab</a> 及 <a href="https://hub.github.com/" target="_blank" rel="noopener">https://hub.github.com/</a></p>
-</blockquote>
-<ul>
-<li>cherry-pick<br>cached 是什么状态</li>
-</ul>
-<p>本地和远程的关系，还要把新分支推到远程也就是在远程建立一样的一个分支。所以我们在本地和远程建立分支后还要把他们关联起来，这样才有意义！！！</p>
-<hr>
-<p><strong>More Ref:</strong></p>
-<ul>
-<li>[ascii现在画图工具]<a href="http://asciiflow.com/" target="_blank" rel="noopener">http://asciiflow.com/</a></li>
-<li><a href="https://www.jianshu.com/p/2f3c5f3ad3d9" target="_blank" rel="noopener">分支</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/107324618" target="_blank" rel="noopener">git命令-from-zhihu</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/96631135?utm_source=qq&amp;utm_medium=social&amp;utm_oi=30019480977408" target="_blank" rel="noopener">Git内部原理</a></li>
-<li>[一些git命令]<a href="https://xu3352.github.io/blog/2017/04/28/git-cheat-sheet" target="_blank" rel="noopener">https://xu3352.github.io/blog/2017/04/28/git-cheat-sheet</a></li>
-</ul>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools/">Tools</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-入手Telegram"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/04/17/入手Telegram/"
-    >入手Telegram</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2020/04/17/入手Telegram/" class="article-date">
-  <time datetime="2020-04-17T03:04:59.000Z" itemprop="datePublished">2020-04-17</time>
-</a>  
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>听说有很多有趣的组织、个人都有电报，于是想看看。</p>
-<h3 id="1-是什么？"><a href="#1-是什么？" class="headerlink" title="1. 是什么？"></a>1. 是什么？</h3><p><a href="https://telegram.org/" target="_blank" rel="noopener">Telegram</a> —— 中文名又称”电报”，或简称”TG”。Telegram 是跨平台的即时通信软件。</p>
-<p>作用和特色有点太多，还是直接上图吧👇</p>
-<p><img src="https://s1.ax1x.com/2020/04/19/Juq1FU.png" alt="Juq1FU.png"></p>
-<p>更多关于 Telegram 的介绍可以查看 <a href="https://en.wikipedia.org/wiki/Telegram_%28software%29" target="_blank" rel="noopener">Wikipedia</a></p>
-<h3 id="2-怎么用"><a href="#2-怎么用" class="headerlink" title="2. 怎么用"></a>2. 怎么用</h3><p>在中国大陆境内无法直接连接，注册和使用都需要科学上网。</p>
-<p>自己注册过程如下：</p>
-<ul>
-<li><ol>
-<li>为了不下载东西，在网页直接注册 <a href="https://web.telegram.org/" target="_blank" rel="noopener">https://web.telegram.org/</a><br>多次尝试无法注册，提示如下：<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Too fast</span><br><span class="line">You are performing too many actions. Please try again later.</span><br><span class="line">Click for technical details</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-</ul>
-<blockquote>
-<p>其实尝试的次数并不多，1-2次后就有以上提示了。+ 86的中国大陆号码似乎收不到验证码</p>
-</blockquote>
-<ul>
-<li><ol start="2">
-<li>找一个临时的美国号码<blockquote>
-<p>不太好使</p>
-</blockquote>
-</li>
-</ol>
-</li>
-<li><p>[ ] 尚未注册成功</p>
-</li>
-</ul>
-<h3 id="3-推荐内容"><a href="#3-推荐内容" class="headerlink" title="3. 推荐内容"></a>3. 推荐内容</h3><ul>
-<li style="list-style: none"><input type="checkbox"> todo </li>
-</ul>
-<hr>
-<p><strong>More Ref:</strong><br><a href="https://www.notion.so/Telegram-95a6c23f0bb1466892b55f9ec8c755fd" target="_blank" rel="noopener">Telegram 教程全指南</a><br><a href="https://telegram.org/faq" target="_blank" rel="noopener">官网faq</a></p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools/">Tools</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-断简残篇"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/04/15/断简残篇/"
-    >断简残篇</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2020/04/15/断简残篇/" class="article-date">
-  <time datetime="2020-04-15T09:05:03.000Z" itemprop="datePublished">2020-04-15</time>
-</a>  
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h3 id="自言自语"><a href="#自言自语" class="headerlink" title="自言自语"></a>自言自语</h3><p>不随意在论坛上发布言论，容易被不知上下文的人乱七八说。</p>
-<p><em>注：相比较，在技术论坛上，将自己的问题描述清楚，很多人乐意、有兴趣来帮你解决；最好把上下文给全一点，即使没有给全，一般技术人员会耐心的询问。但很多日常生活的论坛，缺乏谨慎、客观、耐心，弄不好就是一场大战。</em></p>
-<p>————————–分割线—————————<br>由于内容不多，下面的就一并放在一个链接里，日后再new一个</p>
-<h3 id="ta说的"><a href="#ta说的" class="headerlink" title="ta说的"></a>ta说的</h3><blockquote>
-<p><strong>自由有各种不同的类型，而最宝贵那一种，在这个以胜利、成就和炫耀为基准的花花世界中，很少被人提及。真正重要的那种自由，意味着专注、自觉、自律、不懈努。</strong></p>
-</blockquote>
-<blockquote>
-<p><strong>关乎于真正教育的真正价值，与成绩无关，与学位无关，而在于一种自觉——意识到什么是真实的，什么是必要的；这种自觉就隐藏在我们身边平淡无奇的生活之中，我们必须时时刻刻一遍又一遍地提醒自己。</strong></p>
-</blockquote>
-<p><em>注：来自 <strong>大卫·福斯特·华莱士</strong>《生命中最简单又最困难的事》。最近才知道这么一个人，他是特别爱哲思的一个人，对于生活中最显而易见的平常之事，却用不同于常人的角度思考者，提及的也是最容易被我们忽视的东西。看他的文字比较费脑子，但能感受到其真诚、朴实。  有人说哲学就是抬杠，就是钻牛角尖，就是较真儿…也没有错吧。</em></p>
-<blockquote>
-<p>生活不总是一帆风顺，我们要学会提醒自己走出思维定势的泥沼。</p>
-</blockquote>
-<p><em>注：来自《生命中最简单又最困难的事》导读部分</em></p>
-<blockquote>
-<p>真正的体贴是让人察觉不到的，穷得开朗<br><em>注：来自《佐贺的超级阿嬷》某部分，还在看中</em></p>
-</blockquote>
-<blockquote>
-<p><strong>今天我们遇到的所有问题，都可以用一句话概括：信息不对称。如果你知道了行业信息，就不会迷茫，如果你知道了市场信息，你的产品会卖爆。如何消除信息不对称，其实你消不了。这就是二八定律。你能做的，就是多和不同的人交流沟通，取长补短，在可控范围那多去尝试，扩展视野。这么做的目的不是为了让自己爬的更高，，而是为了别让自己跌得很惨。</strong></p>
-</blockquote>
-<p><em>注：来自豆瓣某处，身处交易频繁的生活中，不管你在城市，还是乡镇，我们经常交易着。这就意味着，你要购买某一个东西或者服务，而常说买的“买的没有卖的精”便是由于信息不对称。而很多时候，人们对一笔交易在事后气氛、扯皮，也都是因为它。花很多时间收集信息，必定耗费精力，或者你也可以选择承受信息不对称的后果，但关键是信息壁垒有很多时候很严重，你都没有机会去选择，或者说你连后果的程度都无法得知。在最近几年的<a href="https://www.devops-tech.cn/2020/04/30/%E6%88%91%E7%9A%84%E7%A7%9F%E6%88%BF%E7%BB%8F%E5%8E%86/" target="_blank" rel="noopener">租房经历</a>中感受颇深，相比于，程序的世界，开源的世界，那里似乎是一个理想国。</em></p>
-<blockquote>
-<p><strong>坐在钢筋水泥的办公室里，终日和文件、盖章、领导打交道的办公室职员，需要消费额外的心里，来不断确认自己在这个世界中的存在价值。除了薪酬，我们很难直观感受到自己的劳动成果，也不知道有谁在意自己所做的一切。有时候，在内心深处，我们甚至为自己的工作感到沮丧和心虚…</strong></p>
-</blockquote>
-<p><em>注：据说来自李松蔚老师，我又孤陋寡闻了。有些时刻，我也会怀疑工作的意义，怀疑每天上下班的意义，也可能因此消沉数日。但上述的也不是每个人经常的感受，毕竟有时候工作的内容还是有意思的。</em></p>
-<blockquote>
-<p>心怀质疑，胸有主见</p>
-</blockquote>
-<blockquote>
-<p><strong>当你心灰意冷的時候，就去做这些事情吧</strong></p>
-<ul>
-<li>去户外挥洒汗水</li>
-<li>去卧室清扫疲惫</li>
-<li>去菜市场感受人间烟火</li>
-<li>去书里领略万千风景</li>
-<li>去医院体悟人生百态</li>
-</ul>
-</blockquote>
-<p>20年的武汉像一个人，像一个灰心丧气的、不停遇到各种坎坷麻烦不断的人；也像今天的天气一般，笼罩着的不是雾霾，而是你我都知道的雨汽，很少见到蓝天白云,而这几天的雨下着不停。道路依旧堵得慌，整个氛围都让人堵得慌。</p>
-<p>老旧城区交织的一条街，几个世界。如果从0点开始观看这条街，凌晨3、4点就是一些少男少女的街道，他们刚结束他们的狂欢、工作，准备回到自己的住处；然后到了4、5点的时候，街边的早餐店慢慢开门准备着；6、7点，学生们三五成群地走向校园，纯粹而快乐，吃个好吃的早餐就可以让其开心一下；8、9点，城市的上班族，买着早餐、等着公交车，骑着电瓶车各自穿行，不宽不窄的道路也慢慢拥挤了；紧接着就是生活的人们，慢悠悠地买菜、送货，为自己的午饭准备着，有的为别人的午饭准备着，直到下午3、4点学生放学了，5、6点上班族下班，偶尔为了犒劳自己去小店大馆子搓一顿。接着，7-9点天色渐黑、华灯初上，道路上红成一条珍珠项链一般。到了夜色全部降临，另一部分人又开始出门，就是那群少男少女，打扮装饰一番去迎接他们的夜生活。</p>
-<p>有的人多着阳光，迎上黑夜的庇护；有的人渴望那黑夜，却不得不</p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Q-List/">Q List</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-入手Vivaldi"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/04/09/入手Vivaldi/"
-    >Vivaldi入手</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2020/04/09/入手Vivaldi/" class="article-date">
-  <time datetime="2020-04-09T08:18:07.000Z" itemprop="datePublished">2020-04-09</time>
-</a>  
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h3 id="0-前言"><a href="#0-前言" class="headerlink" title="0.前言"></a>0.前言</h3><p>最近才在一些论坛上听说 <strong>Vivaldi</strong> 浏览器的大名（我孤陋寡闻了😅）。毕竟入手一个浏览器工具又不花钱，那Chrome挺好用的，为什么要换？</p>
-<blockquote>
-<p>尝尝新鲜的，换着试试看，毕竟不尝试一段时间怎么知道好不好。</p>
-</blockquote>
-<h3 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1.介绍"></a>1.介绍</h3><p>从<a href="https://en.wikipedia.org/wiki/Vivaldi_(web_browser" target="_blank" rel="noopener">维基百科的介绍</a>)来看，Vivaldi的来头可不小，创始人是 Opera 浏览器的前任CEO，估计中间有很多商业故事。使用 Chromium 做内核，能直接安装Chrome网上应用店的应用程序.2016年4月发布第一个版本，距今正好4年，算是比较年轻。后生可畏，轻装上阵，说不定比庞大的chrome会有一些小优势。</p>
-<p><code>Vivaldi is a freeware, cross-platform web browser developed by Vivaldi Technologies, a company founded by Opera Software co-founder and former CEO Jon Stephenson von Tetzchner and Tatsuki Tomita. It was officially launched on April 6, 2016.</code></p>
-<h3 id="2-安装"><a href="#2-安装" class="headerlink" title="2.安装"></a>2.安装</h3><p>直接到官网 <a href="https://vivaldi.com/" target="_blank" rel="noopener">https://vivaldi.com/</a> 下载安装对应系统的版本即可。我当前安装的具体版本是：<code>Vivaldi    2.11.1811.52 (Stable channel) (64-bit)</code></p>
-<h3 id="3-使用"><a href="#3-使用" class="headerlink" title="3.使用"></a>3.使用</h3><p>打开安装好的浏览器后会有一个链接 <code>vivaldi://welcome</code> ，引导做初始化设置</p>
-<h5 id="3-1-引导"><a href="#3-1-引导" class="headerlink" title="3.1 引导"></a>3.1 引导</h5><p><strong>Welcome to Vivaldi</strong></p>
-<blockquote>
-<p>没啥～</p>
-</blockquote>
-<p><strong>Import Bookmarks &amp; Settings</strong></p>
-<blockquote>
-<p>不要要导入导出的步骤，vivaldi会要求输入电脑的密码获取权限拿其他浏览器的书签内容。</p>
-</blockquote>
-<p><strong>Pick a Theme</strong></p>
-<blockquote>
-<p>选背景主题，不多说，但是据说能够做很多自定义的设置，比如某个网站打开后指定其tab颜色。</p>
-</blockquote>
-<p><strong>Position Your Tabs</strong></p>
-<blockquote>
-<p>这里的Tabs指的是一般浏览器最上头一栏，可以切换你的网页的部分。vivaldi 支持你把这个Tabs放到 顶部、左边、右边、底部，但是一般还是习惯 顶部，暂时不换了。尝试了一下放到左边，占据的面积会大一些，因为会直接显示每个网页的缩略图，清晰的让你看到网页大致内容。</p>
-</blockquote>
-<p><strong>Get Going</strong></p>
-<blockquote>
-<p>观看指南的链接、加入社区的链接、关注多个社交账、号是否接收邮件</p>
-</blockquote>
-<p>更多详细的功能也可以看发布<a href="https://en.wikipedia.org/wiki/Vivaldi_(web_browser" target="_blank" rel="noopener">计划</a>#Releases)，毕竟每次新加功能都会在发布计划里提到。</p>
-<h5 id="3-2-实际使用"><a href="#3-2-实际使用" class="headerlink" title="3.2 实际使用"></a>3.2 实际使用</h5><p>很容易实现在多panel功能，效果如下，方便对比、或者参考：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">+-------------+ +-------------+</span><br><span class="line">|             | |             |</span><br><span class="line">|             | |             |</span><br><span class="line">| website 1   | |   website 2 |</span><br><span class="line">|             | |             |</span><br><span class="line">|             | |             |</span><br><span class="line">|             | |             |</span><br><span class="line">|             | |             |</span><br><span class="line">+-------------+ +-------------+</span><br></pre></td></tr></table></figure>
-<p>针对网页记笔记，右边网页，左边笔记，后期也可查找、使用。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">+-----------------------------+</span><br><span class="line">|    ||                       |</span><br><span class="line">|    ||                       |</span><br><span class="line">|note||                       |</span><br><span class="line">|    ||       website         |</span><br><span class="line">|    ||                       |</span><br><span class="line">+-----|                       |</span><br><span class="line">|    ||                       |</span><br><span class="line">+-----------------------------+</span><br></pre></td></tr></table></figure></p>
-<hr>
-<ul>
-<li style="list-style: none"><input type="checkbox"> TODO 很多功能还未尝试，等用过后再来聊聊。不过听说<em>快捷键</em>、<em>网页笔记</em>（保存百度文库的复制内容？）算是特色吧</li>
-</ul>
-<ul>
-<li style="list-style: none"><input type="checkbox"> TODO 但其实以前也没研究过chrome，firefox有没有类似功能。移动端来看，目前还只有 Android 版 Vivaldi，而且还是测试版本，估计等待不久就会出正式版。对开发人员而言，如何调试程序、定位bug，清理缓存数据？是否会有新的交互方式呢，</li>
-</ul>
-<hr>
-<p><strong>More Ref:</strong></p>
-<ul>
-<li><a href="https://www.youtube.com/playlist?list=PL72e6dBabYNVRfpvEUt-WNfV7tZuKDAPB" target="_blank" rel="noopener">youtube播放列表</a></li>
-<li>详细的功能也可以看发布计划,<a href="https://en.wikipedia.org/wiki/Vivaldi_(web_browser)#Releases" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Vivaldi_(web_browser)#Releases</a>, 毕竟每次新加功能都会在发布计划里提到</li>
-<li>小工具<a href="http://asciiflow.com/" target="_blank" rel="noopener">asciiflow</a></li>
-</ul>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools/">Tools</a></li></ul>
 
     </footer>
   </div>

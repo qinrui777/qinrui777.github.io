@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>tags |  Hexo</title>
+      <title>Helm 使用小结 |  Hexo</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/palm-tree.ico" />
@@ -38,13 +38,240 @@
       
     <main class="content on">
       <section class="outer">
+  <article
+  id="post-Helm-使用小结"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Helm 使用小结
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/11/15/Helm-使用小结/" class="article-date">
+  <time datetime="2021-11-15T07:06:58.000Z" itemprop="datePublished">2021-11-15</time>
+</a>  
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
   
-    <h1 class="page-type-title">Tags</h1>
-    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Agile/">Agile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure/">Azure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bash/">Bash</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Devops/">Devops</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-Note/">English-Note</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GA/">GA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Helm/">Helm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenShift/">OpenShift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PPT/">PPT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Q-List/">Q List</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shell/">Shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Terraform/">Terraform</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Test/">Test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tools/">Tools</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jenkins/">jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k8s/">k8s</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/makefile/">makefile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/packer/">packer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tmux/">tmux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浪潮之巅/">浪潮之巅</a></li></ul>
-  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h3 id="1-What-is-Helm"><a href="#1-What-is-Helm" class="headerlink" title="1.What is Helm"></a>1.What is Helm</h3><p>Helm is a tool for managing Kubernetes packages called charts.</p>
+<p>Three important concepts</p>
+<ul>
+<li>The <strong>Chart</strong> is a bundle of information necessary to create an instance of a Kubernetes application.</li>
+</ul>
+<ul>
+<li>A <strong>Release</strong> is a running instance of a chart, combined with a specific config.</li>
+<li><strong>Repository</strong> – Publicly available charts.</li>
+</ul>
+<p>Helm v2 和 v3的架构如下，主要区别是 Tiller。</p>
+<p><img src="https://cdnjson.com/images/2021/06/02/helm_arch.png" alt="helm_arch.png"></p>
+<p> 当然 helm v2与 v3  在命令上也有一些区别，不过老的命令（例如fetch）亲自试验过还能用</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Command</th>
+<th style="text-align:left">Helm2</th>
+<th style="text-align:left">Helm3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Initialize Helm client/server</td>
+<td style="text-align:left">init</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">Download a chart to your local directory</td>
+<td style="text-align:left">fetch</td>
+<td style="text-align:left">pull</td>
+</tr>
+<tr>
+<td style="text-align:left">Given a release name, delete the release from Kubernetes</td>
+<td style="text-align:left">delete</td>
+<td style="text-align:left">uninstall</td>
+</tr>
+<tr>
+<td style="text-align:left">Helm client environment information</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">env</td>
+</tr>
+<tr>
+<td style="text-align:left">Displays the location of HELM_HOME</td>
+<td style="text-align:left">home</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">Inspect a chart</td>
+<td style="text-align:left">inspect</td>
+<td style="text-align:left">show</td>
+</tr>
+<tr>
+<td style="text-align:left">Uninstalls Tiller from a cluster</td>
+<td style="text-align:left">reset</td>
+</tr>
+</tbody>
+</table>
+<p>Hub - &gt; repo -&gt; Chart -&gt; App， 从左到右均是一对多的关系。</p>
+<h3 id="2-一些常用的命令"><a href="#2-一些常用的命令" class="headerlink" title="2.一些常用的命令"></a>2.一些常用的命令</h3><p><strong>关于repo</strong></p>
+<p>list repos</p>
+<p><code>helm repo list</code></p>
+<p>add a repo</p>
+<p><code>helm repo add aliyun https://kubernetes.oss-cn-hangzhou.aliyuncs.com/charts</code></p>
+<p>remove a repo, then check again</p>
+<p><code>helm repo remove aliyun &amp;&amp; helm repo list</code></p>
+<p>helm search hub – Searches through the <a href="https://artifacthub.io/packages/search?kind=0" target="_blank" rel="noopener">Artifact Hub</a> from dozens of repositories.</p>
+<p><code>helm search hub wordpress</code></p>
+<p>helm search repo – Searches through repositories added in the local helm client using helm repo add.</p>
+<p><code>helm search repo wordpress</code></p>
+<blockquote>
+<p>When you find a suitable chart, install it using <code>helm install</code></p>
+</blockquote>
+<p>一个repo里可以有多个chart，</p>
+<p><strong>关于chart</strong></p>
+<p>download a chart to local</p>
+<p><code>helm pull csi-secrets-store-provider-azure/csi-secrets-store-provider-azure --version 0.0.19 --untar</code></p>
+<p>list all the charts in a repository</p>
+<p><code>helm search repo bitnami</code></p>
+<p><code>helm repo add stable https://charts.helm.sh/stable</code></p>
+<p><code>helm show readme stable/ghost</code></p>
+<p><code>helm install --values=ghost-values.yaml stable/ghost --generate-name</code></p>
+<p><code>helm ls</code></p>
+<p><code>helm delete ghost-1622450894</code></p>
+<h4 id="What-else"><a href="#What-else" class="headerlink" title="What else"></a>What else</h4><p><code>helm upgrade --values=ghost-values.yaml ghost-1576075187 stable/ghost</code></p>
+<p>rollback the app to a specific version</p>
+<p><code>helm rollback ghost-1576075187 1</code></p>
+<p><code>helm uninstall ghost-1576075187</code></p>
+<p>check all resources which is deployed with helm </p>
+<p><code>helm get manifest datadog -n datadog</code></p>
+<hr>
+<p>Reference:</p>
+<ul>
+<li><a href="https://dev.to/ridaehamdani/some-changes-between-helm-v2-and-helm-v3-that-you-should-know-32ga" target="_blank" rel="noopener">https://dev.to/ridaehamdani/some-changes-between-helm-v2-and-helm-v3-that-you-should-know-32ga</a></li>
+</ul>
+ 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          Donate
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2021/11/15/Helm-使用小结/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Helm/">Helm</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2021/11/19/Spike-回顾/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            Spike 回顾
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2021/11/05/Clean-up-Azure-Container-Registry/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">Clean up Azure Container Registry</div>
+      </a>
+    
+  </nav>
+
+   
+ 
+   
+     
+</article>
+
 </section>
-
-
       <footer class="footer">
   <div class="outer">
     <ul>
@@ -172,6 +399,20 @@
 </div>
     <script src="/js/jquery-2.0.3.min.js"></script> <script src="/js/lazyload.min.js"></script>
 <!-- Tocbot -->
+ <script src="/js/tocbot.min.js"></script>
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
 <link

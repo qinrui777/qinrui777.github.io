@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>tags |  Hexo</title>
+      <title>Spike 回顾 |  Hexo</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/palm-tree.ico" />
@@ -38,13 +38,171 @@
       
     <main class="content on">
       <section class="outer">
+  <article
+  id="post-Spike-回顾"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Spike 回顾
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/11/19/Spike-回顾/" class="article-date">
+  <time datetime="2021-11-19T06:53:26.000Z" itemprop="datePublished">2021-11-19</time>
+</a>  
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
   
-    <h1 class="page-type-title">Tags</h1>
-    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Agile/">Agile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure/">Azure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bash/">Bash</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Devops/">Devops</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English-Note/">English-Note</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GA/">GA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Helm/">Helm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenShift/">OpenShift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PPT/">PPT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Q-List/">Q List</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shell/">Shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Terraform/">Terraform</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Test/">Test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tools/">Tools</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jenkins/">jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k8s/">k8s</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/makefile/">makefile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/packer/">packer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tmux/">tmux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浪潮之巅/">浪潮之巅</a></li></ul>
-  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h3 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h3><p>在当前的项目已经快一年了，当初团队成员的一句要求，给大家换来了定期的Innovation Week。在这一周里可以不用专注于当前手上乱七八糟的各种问题和令人有喜有忧的新功能，而是专注于另一项自己感兴趣的小工具、特定使用场景，也可以是某个疑难杂症。而在一周结束之后，团队成员汇聚一堂做简单的成果分享，然后结束这个过程。所以我们的做法本质上还不是Spike，但相互之间却有很多值得借鉴的地方。</p>
+<p>这样做的好处显而易见，给成员留足了时间去学习新工具、新技术，也可以看作是一种变向的自我学习周期。当然，从管理者角度出发，无疑燃烧了经费成本，但却不一定对项目有明显的效果。偶然之后才意思到这个Spike的过程是个专业术语，前人早就有了较好的模式和实践流程，而自身尽然摸爬滚打野路子出家弄了半年。好在回过头来看，并没有走 太多的错路，弄出一些奇怪的实践。但却是时候回顾这个Spike原本的样子，然后理解它，免得日后张冠李戴。</p>
+<h4 id="什么是Spike"><a href="#什么是Spike" class="headerlink" title="什么是Spike?"></a>什么是Spike?</h4><p>spike这个词的英文翻译是“长钉或者刺穿”，名词或动词。 在攀岩过程中，攀岩的人在没有办法落脚的情况下，选择使用岩钉作为锚点来保护自己，从而避免跌倒或协助后续的辅助攀登。其次，这个词来源于 Extreme Programming (XP)</p>
+<blockquote>
+<p>“A spike solution is a very simple program to explore potential solutions.” </p>
+</blockquote>
+<p>然后来到敏捷开发过程中，由于敏捷中强调不确定性、拥抱变化，那么在日常开发过程中，也会遇到一些任务，比如技术方案或者未知的探索，于是敏捷中的spike是一项技术调研。通过简答的调查、设计、demo来快速验证，这样说起来和POC(prove of concept)是不是很像。</p>
+<p>虽然spike本身没有完成相应的功能，没有交付业务功能，但是为后续可能遇到的难题扫除了障碍，降低了不确定性，从而保障最终业务价值的交付，减少延期的风险。</p>
+<h4 id="为什么要做Spike"><a href="#为什么要做Spike" class="headerlink" title="为什么要做Spike?"></a>为什么要做Spike?</h4><p>上一段落已经提到了，简要概括如下：</p>
+<ul>
+<li>消除未知</li>
+<li>减少风险</li>
+<li>寻求方案</li>
+</ul>
+<h4 id="Spike与故事卡的区别？"><a href="#Spike与故事卡的区别？" class="headerlink" title="Spike与故事卡的区别？"></a>Spike与故事卡的区别？</h4><p>Spike 在某种程度上可以是一种特殊的user story，区别在于用户故事交付产品业务功能，需求目标相对明确；二spike本身不交付产品功能，问题明确，但在实际做的过程中可能有很多的不确定性。</p>
+<h4 id="如何来做Spike"><a href="#如何来做Spike" class="headerlink" title="如何来做Spike?"></a>如何来做Spike?</h4><p>认清现状，明确目标，细化任务，得到产出。</p>
+<p>控制范围时间，不要抛离主要目标。设置Timebox，即使时间结束时没有一个完整的方案，也没有关系，做了多少就在最后环节展示多少，团队在听完之后再来判断是否可以继续。</p>
+<h3 id="回顾一下"><a href="#回顾一下" class="headerlink" title="回顾一下"></a>回顾一下</h3><p>讲述了我所在项目的背景和它的Spike，对比真正的定义上的Spike，其实还是有本质的区别的。我们的做法更偏向于study或者 workshop，并没有去解决实际遇到的问题，而是做自己喜欢的事情。当然后期由于事情变多，不确定的事情也多了，确实做了一些真正的Spike去调研潜在的问题和未知的技术实现。</p>
+<hr>
+<p>Reference:</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Spike_(software_development)" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Spike_(software_development)</a></li>
+<li><a href="http://agiledictionary.com/209/spike/" target="_blank" rel="noopener">http://agiledictionary.com/209/spike/</a></li>
+<li><a href="https://www.leadingagile.com/2016/09/whats-an-agile-spike-who-should-enter-it-how-to-word-it/" target="_blank" rel="noopener">https://www.leadingagile.com/2016/09/whats-an-agile-spike-who-should-enter-it-how-to-word-it/</a></li>
+</ul>
+ 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          Donate
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2021/11/19/Spike-回顾/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Agile/">Agile</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2021/12/02/English-Note-01-会议用语/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            English Note 01-会议用语
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2021/11/15/Helm-使用小结/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">Helm 使用小结</div>
+      </a>
+    
+  </nav>
+
+   
+ 
+   
+     
+</article>
+
 </section>
-
-
       <footer class="footer">
   <div class="outer">
     <ul>
@@ -172,6 +330,20 @@
 </div>
     <script src="/js/jquery-2.0.3.min.js"></script> <script src="/js/lazyload.min.js"></script>
 <!-- Tocbot -->
+ <script src="/js/tocbot.min.js"></script>
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
 <link

@@ -93,6 +93,270 @@
     
     
     <article
+  id="post-Jenkins-Dashboard-with-Grafana-and-Prometheus"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/04/22/Jenkins-Dashboard-with-Grafana-and-Prometheus/"
+    >Jenkins Dashboard with Grafana and Prometheus </a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/04/22/Jenkins-Dashboard-with-Grafana-and-Prometheus/" class="article-date">
+  <time datetime="2019-04-22T08:35:31.000Z" itemprop="datePublished">2019-04-22</time>
+</a>  
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h3 id="1-Go-to-“manage-Jenkins”-then-“manage-plugins”-and-install-“-Prometheus-metrics-plugin”"><a href="#1-Go-to-“manage-Jenkins”-then-“manage-plugins”-and-install-“-Prometheus-metrics-plugin”" class="headerlink" title="1.Go to “manage Jenkins” then “manage plugins” and install “ Prometheus metrics plugin”"></a>1.Go to “manage Jenkins” then “manage plugins” and install “ Prometheus metrics plugin”</h3><p>This plugin will expose an endpoint (default /prometheus) with metrics where a Prometheus Server can scrape data.</p>
+<p><img src="/images/jenkins_dashboard_02.png" alt="jenkins_dashboard_02"></p>
+<h3 id="2-Configure-Prometheus-to-scrape-metrics-from-Jenkins"><a href="#2-Configure-Prometheus-to-scrape-metrics-from-Jenkins" class="headerlink" title="2.Configure Prometheus to scrape metrics from Jenkins"></a>2.Configure Prometheus to scrape metrics from Jenkins</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- job_name: ‘jenkins’</span><br><span class="line">  metrics_path: /prometheus</span><br><span class="line">  static_configs:</span><br><span class="line">    - targets: [‘Jenkins_Host:PORT’]</span><br></pre></td></tr></table></figure>
+<p>you can go to your prometheus ,find some metrics to dispaly.</p>
+<p><img src="/images/jenkins_dashboard_01.png" alt="jenkins_dashboard_01"></p>
+<h3 id="3-Create-a-grafana-Dashboard"><a href="#3-Create-a-grafana-Dashboard" class="headerlink" title="3.Create a  grafana Dashboard"></a>3.Create a  grafana Dashboard</h3><p>dashboard link : <a href="https://grafana.com/dashboards/9964" target="_blank" rel="noopener">https://grafana.com/dashboards/9964</a></p>
+<p>then go to the grafana website import json file :<br><img src="/images/jenkins_dashboard_03.png" alt="jenkins_dashboard_03"></p>
+<p>you can search in the grafana dashboard (<a href="https://grafana.com/dashboards" target="_blank" rel="noopener">https://grafana.com/dashboards</a>)</p>
+<h3 id="4-Customize-your-dashboard"><a href="#4-Customize-your-dashboard" class="headerlink" title="4.Customize your dashboard"></a>4.Customize your dashboard</h3><p>example:<br><img src="/images/jenkins_dashboard_04.png" alt="jenkins_dashboard_04"></p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jenkins/">jenkins</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
+  id="post-How-to-Create-Custom-iTerm2-Window"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/04/18/How-to-Create-Custom-iTerm2-Window/"
+    >How to Create Custom iTerm2 Window</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/04/18/How-to-Create-Custom-iTerm2-Window/" class="article-date">
+  <time datetime="2019-04-18T09:08:34.000Z" itemprop="datePublished">2019-04-18</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Tools/">Tools</a>
+  </div>
+ 
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h4 id="1-Open-iTerm-preferences-setting-打开偏好设置"><a href="#1-Open-iTerm-preferences-setting-打开偏好设置" class="headerlink" title="1.Open iTerm preferences setting (打开偏好设置)"></a>1.Open iTerm preferences setting (打开偏好设置)</h4><p><img src="/images/iterm_image_01.png" alt="iterm_image_01"></p>
+<h4 id="2-New-add-a-profile-新加一个配置"><a href="#2-New-add-a-profile-新加一个配置" class="headerlink" title="2.New add a profile (新加一个配置)"></a>2.New add a profile (新加一个配置)</h4><p><img src="/images/iterm_image_02.png" alt="iterm_image_02"></p>
+<h4 id="3-Setting-windows-name-etc-（定义名称，窗口高度，宽度等）"><a href="#3-Setting-windows-name-etc-（定义名称，窗口高度，宽度等）" class="headerlink" title="3.Setting windows name etc （定义名称，窗口高度，宽度等）"></a>3.Setting windows name etc （定义名称，窗口高度，宽度等）</h4><p><img src="/images/iterm_image_03.png" alt="iterm_image_03"></p>
+<p><img src="/images/iterm_image_04.png" alt="iterm_image_04"></p>
+<h4 id="4-define-hotkey-定义快捷键"><a href="#4-define-hotkey-定义快捷键" class="headerlink" title="4.define hotkey (定义快捷键)"></a>4.define hotkey (定义快捷键)</h4><p><img src="/images/iterm_image_05.png" alt="iterm_image_05"></p>
+<p><img src="/images/iterm_image_06.png" alt="iterm_image_06"></p>
+<h4 id="Finally-使用快捷键"><a href="#Finally-使用快捷键" class="headerlink" title="Finally 使用快捷键"></a>Finally 使用快捷键</h4><p>按 <strong>一次</strong> 出现窗口，<strong>再按一次</strong> 窗口消失。如果是多屏，可以在不同屏幕下调用出来，会话内容仍保持着。</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools/">Tools</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
+  id="post-Jenkins-build-trigger、logRotator、options"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/04/11/Jenkins-build-trigger、logRotator、options/"
+    >Jenkins build trigger、logRotator、buildDiscarder etc</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/04/11/Jenkins-build-trigger、logRotator、options/" class="article-date">
+  <time datetime="2019-04-11T08:40:30.000Z" itemprop="datePublished">2019-04-11</time>
+</a>  
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>Declarative Pipeline 与Job DSL的同一个功能的语法命令有些差异，不能直接套用，需要查对应的官方文档。 </p>
+<h4 id="1-Jenkins-Declarative-Pipeline"><a href="#1-Jenkins-Declarative-Pipeline" class="headerlink" title="1.Jenkins Declarative Pipeline"></a>1.Jenkins Declarative Pipeline</h4><p>语法如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">//Jenkinsfile (Declarative Pipeline)</span><br><span class="line">pipeline &#123;</span><br><span class="line">    agent &#123; label  <span class="string">'sbt'</span> &#125;</span><br><span class="line">    options&#123;</span><br><span class="line">        buildDiscarder(logRotator(numToKeepStr:<span class="string">'5'</span>))</span><br><span class="line">        disableConcurrentBuilds()</span><br><span class="line">    &#125;</span><br><span class="line">    triggers&#123;</span><br><span class="line">       pollSCM(<span class="string">'H/2 * * * 1-5'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    environment &#123;</span><br><span class="line">        MYBRANCH = <span class="string">"<span class="variable">$&#123;env.BRANCH_NAME&#125;</span>"</span></span><br><span class="line">        NEXUS_URL = <span class="string">'117.121.xxx.xx:443'</span></span><br><span class="line">        BASE_IMAGE_TAG = <span class="string">"<span class="variable">$&#123;NEXUS_URL&#125;</span>/<span class="variable">$&#123;GROUP_NAME&#125;</span>/<span class="variable">$&#123;SERVICE_NAME&#125;</span>"</span></span><br><span class="line">        BRANCH_IMAGE_TAG = <span class="string">"<span class="variable">$&#123;NEXUS_URL&#125;</span>/<span class="variable">$&#123;GROUP_NAME&#125;</span>/<span class="variable">$&#123;SERVICE_NAME&#125;</span>-<span class="variable">$&#123;MYBRANCH&#125;</span>"</span></span><br><span class="line">    &#125;</span><br><span class="line">...   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>1.1  triggers</strong></p>
+<p><strong>1.2  buildDiscarder</strong></p>
+<p><strong>1.3  disableConcurrentBuilds</strong></p>
+<ul>
+<li>daysToKeepStr: history is only kept up to this days.</li>
+<li>numToKeepStr: only this number of build logs are kept.</li>
+<li>artifactDaysToKeepStr: artifacts are only kept up to this days.</li>
+<li>artifactNumToKeepStr: only this number of builds have their artifacts kept.</li>
+</ul>
+<p><strong>1.4 environment</strong></p>
+<h4 id="2-Jenkins-Job-DSL"><a href="#2-Jenkins-Job-DSL" class="headerlink" title="2.Jenkins Job DSL"></a>2.Jenkins Job DSL</h4><p>语法如下<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">pipelineJob(<span class="string">"$&#123;AndroidFolder&#125;/nightly-build"</span>) &#123;</span><br><span class="line">  description <span class="string">"""</span></span><br><span class="line"><span class="string">&lt;h3&gt;</span></span><br><span class="line"><span class="string"> Android Build for nightly build</span></span><br><span class="line"><span class="string">&lt;/h3&gt;</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">  <span class="comment">//@midnight This will run at some point between 0:00 and 2:59</span></span><br><span class="line">  triggers&#123;</span><br><span class="line">    cron <span class="string">'''TZ=Asia/Shanghai</span></span><br><span class="line"><span class="string">    @midnight</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">  &#125;</span><br><span class="line">  logRotator &#123;</span><br><span class="line">    artifactNumToKeep(<span class="number">30</span>)</span><br><span class="line">    numToKeep(<span class="number">30</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  throttleConcurrentBuilds &#123;</span><br><span class="line">    maxTotal(<span class="number">1</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  environmentVariables &#123;</span><br><span class="line">    env(<span class="string">'GIT_URL'</span>, gitUrl)</span><br><span class="line">    env(<span class="string">'GIT_BRANCH'</span>, gitBranch)</span><br><span class="line">    env(<span class="string">'GIT_CREDENTIAL_ID'</span>, <span class="string">'xxxx-git-ssh-private'</span>)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>2.1 triggers</strong></p>
+<p><strong>2.2  logRotator</strong></p>
+<ul>
+<li>artifactDaysToKeep: If specified, artifacts from builds older than this number of days will be deleted, but the logs, history, reports, etc for the build will be kept.</li>
+<li>artifactNumToKeep: If specified, only up to this number of builds have their artifacts retained.</li>
+<li>daysToKeep: If specified, build records are only kept up to this number of days.</li>
+<li>numToKeep: If specified, only up to this number of build records are kept.</li>
+</ul>
+<p><strong>2.3 throttleConcurrentBuilds</strong><br>throttleConcurrentBuilds 需要单独给Jenkins安装插件 <strong>Throttle Concurrent Builds</strong> </p>
+<p><strong>2.4 environmentVariables</strong></p>
+<p><strong>More Ref:</strong></p>
+<blockquote>
+<ol>
+<li><a href="https://jenkins.io/doc/book/pipeline/syntax/#available-options" target="_blank" rel="noopener">https://jenkins.io/doc/book/pipeline/syntax/#available-options</a></li>
+<li><a href="https://jenkinsci.github.io/job-dsl-plugin/#path/pipelineJob-logRotator" target="_blank" rel="noopener">https://jenkinsci.github.io/job-dsl-plugin/#path/pipelineJob-logRotator</a></li>
+<li><a href="https://jenkinsci.github.io/job-dsl-plugin/#path/pipelineJob-triggers" target="_blank" rel="noopener">https://jenkinsci.github.io/job-dsl-plugin/#path/pipelineJob-triggers</a></li>
+</ol>
+</blockquote>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jenkins/">jenkins</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
+  id="post-反摩尔定理-学如逆水行舟"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/04/10/反摩尔定理-学如逆水行舟/"
+    >反摩尔定理 = 学如逆水行舟</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/04/10/反摩尔定理-学如逆水行舟/" class="article-date">
+  <time datetime="2019-04-10T14:32:50.000Z" itemprop="datePublished">2019-04-10</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/读书笔记/">读书笔记</a>
+  </div>
+ 
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h3 id="1-什么是反摩尔定理？"><a href="#1-什么是反摩尔定理？" class="headerlink" title="1.什么是反摩尔定理？"></a>1.什么是反摩尔定理？</h3><p>Google(谷歌)的 CEO 埃里克•施密特在一次采访中指出，如果你反过来看摩尔定理， 一个 IT 公司如果今天和十八个月前卖掉同样多的、同样的产品，它的营业额就要降一半。IT 界把它称为 <strong>反摩尔定理</strong>。</p>
+<h3 id="2-如何解释反摩尔定理"><a href="#2-如何解释反摩尔定理" class="headerlink" title="2.如何解释反摩尔定理"></a>2.如何解释反摩尔定理</h3><p>反摩尔定理的前提是摩尔定理（即当价格不变时，集成电路上可容纳的晶体管数目，约每隔18个月便会增加一倍，性能也将提升一倍。换言之，每一美元所能买到的电脑性能，将每隔18个月翻两倍以上。）</p>
+<p>打个比方： 小蓝公司 2018年6月，生产了1000万台手机，每台销售1000元，等过了18个月，由于摩尔定理的存在，硬件价格大大下降只有原来的一半即500元，在同样多的、同样的产品的情况下，营业额自然减半了。</p>
+<h3 id="3-通俗解释"><a href="#3-通俗解释" class="headerlink" title="3.通俗解释"></a>3.通俗解释</h3><p>别人都在努力学习，而有个成绩优异的小忧同学现在成绩很好，等过了一年半载，其他人都进步很快，相对而言，那个成绩优异的小忧就退步了。</p>
+<h3 id="4-影响"><a href="#4-影响" class="headerlink" title="4.影响"></a>4.影响</h3><ul>
+<li>消极影响：<br>反摩尔定律对于所有的IT公司来讲，都是非常可怕的，因为一个IT公司花了同样的劳动，却只得到以前一半的收入。反摩尔定律逼着所有的硬件设备公司必须赶上摩尔定律所规定的更新速度</li>
+<li>积极影响：<br>反摩尔定律促成科技领域质的进步，并为新兴公司提供生存和发展的可能。和所有事物的发展一样，IT领域的技术进步也有量变和质变两种。为了赶上摩尔定律预测的发展速度，光靠量变是不够的。每一种技术，过不了多少年，量变的潜力就会被挖掘光，这时就必须要有革命性的创造发明诞生。</li>
+</ul>
+<h3 id="5-‘反摩尔定理’-‘学如逆水行舟，不进则退’"><a href="#5-‘反摩尔定理’-‘学如逆水行舟，不进则退’" class="headerlink" title="5.‘反摩尔定理’ == ‘学如逆水行舟，不进则退’"></a>5.‘反摩尔定理’ == ‘学如逆水行舟，不进则退’</h3><p>总结一下，IT界三大定律: <strong>摩尔定律</strong> 、<strong>反摩尔定律</strong>、<strong><a href="https://qinrui777.github.io/2019/03/27/%E5%AE%89%E8%BF%AA-%E6%AF%94%E5%B0%94%E5%AE%9A%E5%BE%8B-Andy-and-Bill%E2%80%99s-Law/" target="_blank" rel="noopener">安迪-比尔定律</a></strong> </p>
+<blockquote>
+<p>小编之前就知道一个，有点儿孤陋寡闻了 &gt;::&lt;</p>
+</blockquote>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/浪潮之巅/">浪潮之巅</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-获取fir中的ios-ipa安装包"
   class="article article-type-post"
   itemscope

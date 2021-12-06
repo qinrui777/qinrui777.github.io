@@ -41,6 +41,22 @@
       </categories>
   </entry>
   <entry>
+    <title>Anka tutorial 03: jenkins</title>
+    <url>/2019/11/28/Anka-tutorial-03-jenkins/</url>
+    <content><![CDATA[<h3 id="anka-集成-Jenkins-link"><a href="#anka-集成-Jenkins-link" class="headerlink" title="anka 集成 Jenkins (link)"></a>anka 集成 Jenkins <a href="https://ankadoc.bitbucket.io/anka-build/#integrate-jenkins-with-controller" target="_blank" rel="noopener">(link)</a></h3><p>未完待续…</p>
+<p>安装插件<br><code>Manage Jenkins &gt; Manage Plugins</code></p>
+<p>搜索anka</p>
+<p>新建 ssh 用的登陆凭证</p>
+<p>新建VM的时候 默认用户名和密码分别是 <code>anka/admin</code></p>
+<p>配置jenkins<br><code>Manage Jenkins &gt; Configure System</code></p>
+<p><img src="/images/anka_jenkins_01.png" width="80%" height="80%"></p>
+<p><a href="http://localhost/#/dashboard" target="_blank" rel="noopener">http://localhost/#/dashboard</a></p>
+]]></content>
+      <categories>
+        <category>CICD</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Anka tutorial 02</title>
     <url>/2019/11/19/Anka-tutorial-02/</url>
     <content><![CDATA[<h5 id="1-Joining-Nodes"><a href="#1-Joining-Nodes" class="headerlink" title="1.Joining Nodes"></a>1.Joining Nodes</h5><p>在mac上（anka build 节点）执行  <code>sudo ankacluster join http://localhost:80/</code></p>
@@ -60,30 +76,6 @@
 <h5 id="4-Manage-VM-Templates-in-Registry-link"><a href="#4-Manage-VM-Templates-in-Registry-link" class="headerlink" title="4. Manage VM Templates in Registry(link)"></a>4. Manage VM Templates in Registry<a href="https://ankadoc.bitbucket.io/anka-build/#manage-vm-templates-in-registry" target="_blank" rel="noopener">(link)</a></h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#罗列仓库</span></span><br><span class="line">➜   anka registry list-repos</span><br><span class="line">++</span><br><span class="line">++</span><br><span class="line"><span class="comment">#添加一个新仓库</span></span><br><span class="line">➜   anka registry add demo-repo http://localhost:8089</span><br><span class="line">➜   anka registry list-repos</span><br><span class="line">++</span><br><span class="line">++</span><br><span class="line">demo-repo (default)</span><br><span class="line">+--------+-----------+</span><br><span class="line">| host   | localhost |</span><br><span class="line">+--------+-----------+</span><br><span class="line">| scheme | http      |</span><br><span class="line">+--------+-----------+</span><br><span class="line">| port   | 8089      |</span><br><span class="line">+--------+-----------+</span><br><span class="line"><span class="comment">#推送VM Templates 到新仓库，</span></span><br><span class="line">➜   anka registry push CatalinaVm -d <span class="string">"first push"</span> -t v1</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>CICD</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Anka tutorial 03: jenkins</title>
-    <url>/2019/11/28/Anka-tutorial-03-jenkins/</url>
-    <content><![CDATA[<h3 id="anka-集成-Jenkins-link"><a href="#anka-集成-Jenkins-link" class="headerlink" title="anka 集成 Jenkins (link)"></a>anka 集成 Jenkins <a href="https://ankadoc.bitbucket.io/anka-build/#integrate-jenkins-with-controller" target="_blank" rel="noopener">(link)</a></h3><p>未完待续…</p>
-<p>安装插件<br><code>Manage Jenkins &gt; Manage Plugins</code></p>
-<p>搜索anka</p>
-<p>新建 ssh 用的登陆凭证</p>
-<p>新建VM的时候 默认用户名和密码分别是 <code>anka/admin</code></p>
-<p>配置jenkins<br><code>Manage Jenkins &gt; Configure System</code></p>
-<p><img src="/images/anka_jenkins_01.png" width="80%" height="80%"></p>
-<p><a href="http://localhost/#/dashboard" target="_blank" rel="noopener">http://localhost/#/dashboard</a></p>
-]]></content>
-      <categories>
-        <category>CICD</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Azure tutorial 01: overview</title>
-    <url>/2019/12/11/Azure-tutorial-01-overview/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Cloud</category>
       </categories>
   </entry>
   <entry>
@@ -251,6 +243,14 @@
       </categories>
   </entry>
   <entry>
+    <title>Azure tutorial 01: overview</title>
+    <url>/2019/12/11/Azure-tutorial-01-overview/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Cloud</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Azure tutorial 02: Storage</title>
     <url>/2019/12/11/Azure-tutorial-02-Storage/</url>
     <content><![CDATA[<p>storage account type<br><a href="https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview</a></p>
@@ -375,6 +375,14 @@
 <li>The “digest” is a hash of the manifest, introduced in Docker registry v2.</li>
 <li>The image ID is a hash of the local image JSON configuration.</li>
 </ul>
+</blockquote>
+<p>在使用 Dockerfile 构建镜像时，base image的使用也涉及这点。提出了一个解决方案 <a href="https://github.com/safe-waters/docker-lock" target="_blank" rel="noopener">docker-lock</a> ，有兴趣的可以使用看看，欢迎交流心得体会～</p>
+<blockquote>
+<p>Link: <a href="https://developers.redhat.com/blog/2020/03/24/red-hat-universal-base-images-for-docker-users#" target="_blank" rel="noopener">https://developers.redhat.com/blog/2020/03/24/red-hat-universal-base-images-for-docker-users#</a></p>
+<p>As you discovered, with docker, tags are mutable. This means that an update to a base image could be pushed that breaks your application code, even if you did not change any of your application code.</p>
+<p>You could eliminate this class of bugs by referencing base images by digest rather than by tag. For instance, instead of ruby:2.6.3, use ruby:2.6.3@sha256:2afcffd1a8276d58ef7d2c6d440c83290831abc2d80772a7af720db9aca9cd2e. If you reference by digest, when a new update is pushed to ruby:2.6.3, your application will still use the base image referenced by the digest, and you won’t be affected by the update.</p>
+<p>Specifying digests manually is a pain for a variety of reasons. Instead, consider using docker-lock <a href="https://github.com/michaelp..." target="_blank" rel="noopener">https://github.com/michaelp...</a>. docker-lock is a cli-plugin for docker that manages digests in a lockfile (think package-lock.json), so you can still reference base images by tag but receive the benefits of referencing them by digest.</p>
+<p>docker-lock ships with 3 commands that take you from development to production:<br>docker lock generate finds base images in your docker and docker-compose files and generates a lockfile containing digests that correspond to their tags.<br>docker lock verify lets you know if there are more recent digests than those last recorded in the lockfile.<br>docker lock rewrite rewrites Dockerfiles and docker-compose files to include digests.</p>
 </blockquote>
 <p><strong>using-container-image-digests-in-kubernetes-manifests</strong></p>
 <blockquote>
@@ -514,6 +522,31 @@
 ]]></content>
       <tags>
         <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>English Note 01-会议用语</title>
+    <url>/2021/12/02/English-Note-01-%E4%BC%9A%E8%AE%AE%E7%94%A8%E8%AF%AD/</url>
+    <content><![CDATA[<p>I’ve scheduled a meeting for Friday to discuss our marketing strategy.</p>
+<p>I will be with a client until 12,so i need you to <strong>chair the meeting</strong> if I’m late.</p>
+<p>Basically we need to use this meeting to <strong>iron out concerns over</strong> the new platform.</p>
+<p>Can you look through this agenda and highlight our areas of interest?</p>
+<p>I’ll take notes and <strong>pass them through to</strong> everyone this afternoon.</p>
+<p>:star: Does anyone have any concerns?</p>
+<p>That’s one idea, but I’d like to look at mutilple solutions.</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>English Note 02-邮件</title>
+    <url>/2021/12/06/English-Note-02-%E9%82%AE%E4%BB%B6/</url>
+    <content><![CDATA[<p>一封回复客户提出的具体技术问题的邮件，参考如下：</p>
+<p>I hope you are well.  This is Jack from XXX Support and I have taken ownership of your case to further assist you.</p>
+<p>It’s my understanding you are looking to increase …. At this time, we have raised the limit from 20 to 100 and 100 is our hard limit.</p>
+<p>As a workaround, we recommend you / your team to check and see if there are any used API that may be deleted so new keys can be provisioned under the 100 limit.</p>
+<p>Thank You for your understanding and please let us know if further question.</p>
+]]></content>
+      <tags>
+        <tag>English-Note</tag>
       </tags>
   </entry>
   <entry>
@@ -885,114 +918,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Github Actions E06产出物</title>
-    <url>/2020/03/30/Github-Actions-E06%E4%BA%A7%E5%87%BA%E7%89%A9/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
-<p>大多数时候，workflow的产出物都会直接传到对应的某些仓库，比如docker image会送到docker hub这种仓库存储。这种时候是不需要在workflow再额外的管理产出物，但也不能全盘否定；有时候我们没有一个方便的地方去存储某些形式的文件等，就需要我们有类似jenkins <code>archiveArtifacts</code> 功能。但github actions能做的会更多，请期待。</p>
-</blockquote>
-<h3 id="1-关于artifacts"><a href="#1-关于artifacts" class="headerlink" title="1. 关于artifacts"></a>1. 关于artifacts</h3><p>构件是指在工作流程运行过程中产生的文件或文件集。<br>GitHub 提供两项可用于上传和下载构建构件的操作。 上传到工作流程运行的文件将使用 .zip 格式存档。 更多信息请参阅 <code>action/upload-artifact</code> 和 <code>download-artifact</code> 操作。</p>
-<p>这些是您可能想要上传的一些常见构建和测试输出构件：</p>
-<ul>
-<li>日志文件和核心转储文件</li>
-<li>测试结果、失败和屏幕截图</li>
-<li>二进制或存档文件</li>
-<li>压力测试性能输出和代码覆盖结果</li>
-</ul>
-<p>当作业完成时，运行程序将终止并删除虚拟环境的实例。</p>
-<h3 id="2-上传"><a href="#2-上传" class="headerlink" title="2. 上传"></a>2. 上传</h3><p>常见的场景: 一个java程序的产出物是一个jar包，在构建之后需要得到这个jar用于其他环境部署。</p>
-<p>依旧用 <a href="https://github.com/cicd-draft/api-test-demo" target="_blank" rel="noopener">api-test-demo</a> 这个仓库做演示，主要分为以下个步骤：</p>
-<ul>
-<li>1.下载代码；</li>
-<li>2.构建jar包(存放于指定到路径<code>build/libs/api-demo-0.0.1-SNAPSHOT.jar</code>)；</li>
-<li>3.上传jar包</li>
-</ul>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">my</span> <span class="string">workflow</span> <span class="string">demo</span> </span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span> </span><br><span class="line"><span class="attr">  push:</span></span><br><span class="line"><span class="attr">    branches:</span> </span><br><span class="line"><span class="bullet">      -</span> <span class="string">master</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  artifacts_demo_job:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">job1</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">Checkout</span> <span class="string">code</span></span><br><span class="line"><span class="attr">      uses:</span> <span class="string">actions/checkout@v1</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">Build</span> <span class="string">jar</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        pwd  &amp;&amp; ls -l</span></span><br><span class="line"><span class="string">        ./gradlew -x jar build</span></span><br><span class="line"><span class="string">        ls -l build/libs/api-demo-0.0.1-SNAPSHOT.jar</span></span><br><span class="line"><span class="string"></span><span class="attr">    - name:</span> <span class="string">Archive</span> <span class="string">SNAPSHOT.jar</span></span><br><span class="line"><span class="attr">      uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">      with:</span></span><br><span class="line"><span class="attr">        name:</span> <span class="string">api_snapshot_jar</span></span><br><span class="line"><span class="attr">        path:</span> <span class="string">build/libs/api-demo-0.0.1-SNAPSHOT.jar</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>github actions 工作流的产出物都放在哪里的，保留多久</p>
-</blockquote>
-<h3 id="3-下载"><a href="#3-下载" class="headerlink" title="3. 下载"></a>3. 下载</h3><p>步骤官方说明如下：</p>
-<ul>
-<li>1.On GitHub, navigate to the main page of the repository.</li>
-<li>2.Under your repository name, click Actions.</li>
-<li>3.In the left sidebar, click the workflow you want to see.</li>
-<li>4.Under “Workflow runs”, click the name of the run you want to see.</li>
-<li>5.To download artifacts, use the Artifacts drop-down menu, and select the artifact you want to download.</li>
-<li>6.To delete artifacts, use the Artifacts drop-down menu, and click .</li>
-</ul>
-<p>注意事项：</p>
-<ul>
-<li>保留90天</li>
-<li>一旦删除某一个构件，无法恢复</li>
-</ul>
-<h3 id="4-在工作流程中作业之间传递数据"><a href="#4-在工作流程中作业之间传递数据" class="headerlink" title="4. 在工作流程中作业之间传递数据"></a>4. 在工作流程中作业之间传递数据</h3><p><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts#passing-data-between-jobs-in-a-workflow" target="_blank" rel="noopener">https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts#passing-data-between-jobs-in-a-workflow</a></p>
-<p>由于同一个workflow的多个job分别运行在不同的虚拟主机上，下面示例工作流程说明如何在相同工作流程中的任务之间传递数据。关键词 <strong>need</strong> 用来确保job按顺序运行.</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Share</span> <span class="string">data</span> <span class="string">between</span> <span class="string">jobs</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span> <span class="string">[push]</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  job_1:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Add</span> <span class="number">3</span> <span class="string">and</span> <span class="number">7</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          expr 3 + 7 &gt; math-homework.txt</span></span><br><span class="line"><span class="string"></span><span class="attr">      - name:</span> <span class="string">Upload</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">1</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">          path:</span> <span class="string">math-homework.txt</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  job_2:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Multiply</span> <span class="string">by</span> <span class="number">9</span></span><br><span class="line"><span class="attr">    needs:</span> <span class="string">job_1</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">windows-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Download</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">1</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/download-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">      - shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          value=`cat homework/math-homework.txt`</span></span><br><span class="line"><span class="string">          expr $value \* 9 &gt; homework/math-homework.txt</span></span><br><span class="line"><span class="string"></span><span class="attr">      - name:</span> <span class="string">Upload</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">2</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">          path:</span> <span class="string">homework/math-homework.txt</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  job_3:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Display</span> <span class="string">results</span></span><br><span class="line"><span class="attr">    needs:</span> <span class="string">job_2</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">macOS-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Download</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">2</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/download-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Print</span> <span class="string">the</span> <span class="string">final</span> <span class="string">result</span></span><br><span class="line"><span class="attr">        shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          value=`cat homework/math-homework.txt`</span></span><br><span class="line"><span class="string">          echo The result is $value</span></span><br></pre></td></tr></table></figure>
-<hr>
-<p><strong>More Ref:</strong></p>
-<ul>
-<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts" target="_blank" rel="noopener">关于该篇的原文</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>CICD</category>
-      </categories>
-      <tags>
-        <tag>GA</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Github Actions E08插播一条消息</title>
-    <url>/2020/04/19/Github-Actions-E08%E6%8F%92%E6%92%AD%E4%B8%80%E6%9D%A1%E6%B6%88%E6%81%AF/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
-<p>消息是个好消息，简单不完全的结果就是：普通组织下的私有仓库可以使用github actions了。<em>题外话：有的消息会影响当天的工作任务，有的消息会影响人的一生。</em></p>
-</blockquote>
-<h3 id="1-起因"><a href="#1-起因" class="headerlink" title="1. 起因"></a>1. 起因</h3><p>github actions的免费是我们都知道的，但这句话并不完整、准确。github actions为支持开源，对于public repo是完全免费的，但是对于私有的项目是有时限的。可见下图,可在 <a href="https://github.com/features/actions" target="_blank" rel="noopener">https://github.com/features/actions</a> 中找到该信息。</p>
-<p><img src="https://s1.ax1x.com/2020/04/20/JM5Qvq.png" alt="JM5Qvq.png"></p>
-<center> 图1: github actions pricing</center>
-
-<p>正好，有一个项目上，我们想推荐客户使用github actions，最好是能免费使用；即使不能完全免费，如果可以限时免费也是可以的，这样作为开发人员可以尝试一下，并成功后向客户说明情况，以便进一步预估、申请部分费用。这里说到一个点：<strong>不谈钱，一切都好说；谈到钱，流程就会麻烦些，毕竟从公司支出的每一笔钱都要有个缘由</strong>。</p>
-<p>客户的项目情况整理如下，因为没有org的管理权限，一些team、org属性并看不到。客户自建了一个org，里边有个team关联着，然后org里的仓库都是private的。</p>
-<h3 id="2-问题过程"><a href="#2-问题过程" class="headerlink" title="2. 问题过程"></a>2. 问题过程</h3><p><strong>时间： 2020.04.08 左右</strong><br>为了实验一下，我和同事在我自己的 <code>org:cicd_draft</code> 下做实验。将组织下的 <code>repo: api-test-demo</code>下进行了一些尝试。为了模拟客户的情况，打算先将 <code>repo: api-test-demo</code> 从 public 变成 private。 如下图 gc_00<br><img src="https://s1.ax1x.com/2020/04/20/JM53rV.png" alt="JM53rV.png"></p>
-<center> 图2 </center>
-
-<p>首先提示需要 upgrade cicd_draft,点击后提示 <strong>upgrade options</strong>,如下图<br><img src="https://s1.ax1x.com/2020/04/20/JMqIpD.png" alt="JMqIpD.png"></p>
-<center> 图3 </center>
-
-<p>再仔细会想一下，似乎我的org与客户的org，或是我的team与客户的team不太一样，尽管我想把这些变量弄成一致的，以便后续的尝试。也显示一个问题：<em>我还对org team repo这几个东西的属性、类型还不太了解，以及他们之间的关系是否有依赖呢</em>。而后的分析，感觉客户使用的仓库类型不简单啊，可能是个历史遗留产物，见👇</p>
-<blockquote>
-<p>GitHub Actions is not available for private repos in legacy per-repository plans.</p>
-</blockquote>
-<blockquote>
-<p>legacy的一个意思是： denoting software or hardware that has been superseded but is difficult to replace because of its wide use.</p>
-</blockquote>
-<p>有几点事实如下：</p>
-<ol>
-<li>普通的team- <strong>Github Team For Open Source</strong>，无法拥有私有仓库。（在4.8号那个时间点，是的）</li>
-<li>客户拥有私有仓库，说明team的属性不是普通的，</li>
-</ol>
-<h3 id="3-转机"><a href="#3-转机" class="headerlink" title="3. 转机"></a>3. 转机</h3><p>源于一条消息： <strong>GitHub Free gives teams private repositories with unlimited collaborators at no cost.</strong></p>
-<p>因为我的github注册邮箱收到了这个大消息邮件。<br><img src="https://s1.ax1x.com/2020/04/20/JM5xs0.jpg" alt="JM5xs0.jpg"></p>
-<p><center> 图4：我的邮件截图 </center><br>现在这个消息可以在 <a href="https://github.com/pricing" target="_blank" rel="noopener">https://github.com/pricing</a> 网页较上部看到，但估计一段时间后会被其他“大动作”替换掉。</p>
-<blockquote>
-<p>———————分割线———————-</p>
-</blockquote>
-<p><strong>Github team 定义</strong>：Teams are groups of organization members that reflect your company or group’s structure with cascading access permissions and mentions.</p>
-<p>github repo 类型 、github org 、github team 类型，以及之间的强关系、弱关系。</p>
-<p>从个人可以免费创建几个私有仓库，到无限量的私有仓库，又到team的免费升级，越来越免费的策略，降低了成本门槛。</p>
-<hr>
-<p><strong>More Ref:</strong></p>
-<ul>
-<li><a href="https://help.github.com/en/enterprise/2.19/admin/user-management/organizations-and-teams" target="_blank" rel="noopener">user-management/organizations-and-teams</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>CICD</category>
-      </categories>
-      <tags>
-        <tag>GA</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Github Actions E07上下文和表达式语法</title>
     <url>/2020/04/01/Github-Actions-E07%E4%B8%8A%E4%B8%8B%E6%96%87%E5%92%8C%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AF%AD%E6%B3%95/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
@@ -1257,18 +1182,213 @@
       </tags>
   </entry>
   <entry>
-    <title>Import P12 file on Mac OS X with CLI</title>
-    <url>/2019/11/22/Import-P12-file-on-Mac-OS-X-with-CLI/</url>
-    <content><![CDATA[<h3 id="目的：通过命令行倒入p12证书"><a href="#目的：通过命令行倒入p12证书" class="headerlink" title="目的：通过命令行倒入p12证书"></a>目的：通过命令行倒入p12证书</h3><p>Apple为了安全，在ssh登录时，是不允许读取Keychains（钥匙串）的，所以 <strong>security unlock-keychain</strong> 这行命令就很重要了。比如在Pipeline构建打包前，先解锁Keychains。</p>
-<h4 id="1-解锁"><a href="#1-解锁" class="headerlink" title="1.解锁"></a>1.解锁</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#方式一： 命令行中不含密码，交互方式</span></span><br><span class="line">➜   security unlock-keychain /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br><span class="line">password to unlock /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db:</span><br><span class="line"></span><br><span class="line"><span class="comment">#或者命令行中包含密码的方式</span></span><br><span class="line">➜   security unlock-keychain -p &lt;Mac_Login_PWD&gt; /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br><span class="line">➜   security list-keychains -s /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br></pre></td></tr></table></figure>
-<h4 id="2-导入"><a href="#2-导入" class="headerlink" title="2.导入"></a>2.导入</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#方式一： 命令行中不含密码，交互方式</span></span><br><span class="line"><span class="comment">#会有弹窗，提示输入 P12文件的密码</span></span><br><span class="line">➜   security import ~/Desktop/xxx.p12 -k /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br><span class="line">1 identity imported.</span><br><span class="line"><span class="comment">#或者命令行中包含密码的方式</span></span><br><span class="line">➜   security import ~/&lt;Your_Path&gt;/xxx.p12 -k /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db -P &lt;P12_Password&gt;</span><br><span class="line">1 identity imported.</span><br></pre></td></tr></table></figure>
-<h4 id="3-其他"><a href="#3-其他" class="headerlink" title="3.其他"></a>3.其他</h4><p>删除<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">##先展示证书，获取SHA1值; -p 可指定类型</span></span><br><span class="line">security find-identity -p codesigning /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br><span class="line"><span class="comment">##根据SHA1值删除对应的证书</span></span><br><span class="line">security delete-certificate -Z &lt;Your_SHA1&gt;</span><br></pre></td></tr></table></figure></p>
-<p>更过 security 用法，查看 <code>security --help</code> 、<code>security find-identity --help</code></p>
+    <title>Github Actions E06产出物</title>
+    <url>/2020/03/30/Github-Actions-E06%E4%BA%A7%E5%87%BA%E7%89%A9/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
+<p>大多数时候，workflow的产出物都会直接传到对应的某些仓库，比如docker image会送到docker hub这种仓库存储。这种时候是不需要在workflow再额外的管理产出物，但也不能全盘否定；有时候我们没有一个方便的地方去存储某些形式的文件等，就需要我们有类似jenkins <code>archiveArtifacts</code> 功能。但github actions能做的会更多，请期待。</p>
+</blockquote>
+<h3 id="1-关于artifacts"><a href="#1-关于artifacts" class="headerlink" title="1. 关于artifacts"></a>1. 关于artifacts</h3><p>构件是指在工作流程运行过程中产生的文件或文件集。<br>GitHub 提供两项可用于上传和下载构建构件的操作。 上传到工作流程运行的文件将使用 .zip 格式存档。 更多信息请参阅 <code>action/upload-artifact</code> 和 <code>download-artifact</code> 操作。</p>
+<p>这些是您可能想要上传的一些常见构建和测试输出构件：</p>
+<ul>
+<li>日志文件和核心转储文件</li>
+<li>测试结果、失败和屏幕截图</li>
+<li>二进制或存档文件</li>
+<li>压力测试性能输出和代码覆盖结果</li>
+</ul>
+<p>当作业完成时，运行程序将终止并删除虚拟环境的实例。</p>
+<h3 id="2-上传"><a href="#2-上传" class="headerlink" title="2. 上传"></a>2. 上传</h3><p>常见的场景: 一个java程序的产出物是一个jar包，在构建之后需要得到这个jar用于其他环境部署。</p>
+<p>依旧用 <a href="https://github.com/cicd-draft/api-test-demo" target="_blank" rel="noopener">api-test-demo</a> 这个仓库做演示，主要分为以下个步骤：</p>
+<ul>
+<li>1.下载代码；</li>
+<li>2.构建jar包(存放于指定到路径<code>build/libs/api-demo-0.0.1-SNAPSHOT.jar</code>)；</li>
+<li>3.上传jar包</li>
+</ul>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">my</span> <span class="string">workflow</span> <span class="string">demo</span> </span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span> </span><br><span class="line"><span class="attr">  push:</span></span><br><span class="line"><span class="attr">    branches:</span> </span><br><span class="line"><span class="bullet">      -</span> <span class="string">master</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  artifacts_demo_job:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">job1</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">Checkout</span> <span class="string">code</span></span><br><span class="line"><span class="attr">      uses:</span> <span class="string">actions/checkout@v1</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">Build</span> <span class="string">jar</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        pwd  &amp;&amp; ls -l</span></span><br><span class="line"><span class="string">        ./gradlew -x jar build</span></span><br><span class="line"><span class="string">        ls -l build/libs/api-demo-0.0.1-SNAPSHOT.jar</span></span><br><span class="line"><span class="string"></span><span class="attr">    - name:</span> <span class="string">Archive</span> <span class="string">SNAPSHOT.jar</span></span><br><span class="line"><span class="attr">      uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">      with:</span></span><br><span class="line"><span class="attr">        name:</span> <span class="string">api_snapshot_jar</span></span><br><span class="line"><span class="attr">        path:</span> <span class="string">build/libs/api-demo-0.0.1-SNAPSHOT.jar</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>github actions 工作流的产出物都放在哪里的，保留多久</p>
+</blockquote>
+<h3 id="3-下载"><a href="#3-下载" class="headerlink" title="3. 下载"></a>3. 下载</h3><p>步骤官方说明如下：</p>
+<ul>
+<li>1.On GitHub, navigate to the main page of the repository.</li>
+<li>2.Under your repository name, click Actions.</li>
+<li>3.In the left sidebar, click the workflow you want to see.</li>
+<li>4.Under “Workflow runs”, click the name of the run you want to see.</li>
+<li>5.To download artifacts, use the Artifacts drop-down menu, and select the artifact you want to download.</li>
+<li>6.To delete artifacts, use the Artifacts drop-down menu, and click .</li>
+</ul>
+<p>注意事项：</p>
+<ul>
+<li>保留90天</li>
+<li>一旦删除某一个构件，无法恢复</li>
+</ul>
+<h3 id="4-在工作流程中作业之间传递数据"><a href="#4-在工作流程中作业之间传递数据" class="headerlink" title="4. 在工作流程中作业之间传递数据"></a>4. 在工作流程中作业之间传递数据</h3><p><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts#passing-data-between-jobs-in-a-workflow" target="_blank" rel="noopener">https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts#passing-data-between-jobs-in-a-workflow</a></p>
+<p>由于同一个workflow的多个job分别运行在不同的虚拟主机上，下面示例工作流程说明如何在相同工作流程中的任务之间传递数据。关键词 <strong>need</strong> 用来确保job按顺序运行.</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Share</span> <span class="string">data</span> <span class="string">between</span> <span class="string">jobs</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span> <span class="string">[push]</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  job_1:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Add</span> <span class="number">3</span> <span class="string">and</span> <span class="number">7</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          expr 3 + 7 &gt; math-homework.txt</span></span><br><span class="line"><span class="string"></span><span class="attr">      - name:</span> <span class="string">Upload</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">1</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">          path:</span> <span class="string">math-homework.txt</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  job_2:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Multiply</span> <span class="string">by</span> <span class="number">9</span></span><br><span class="line"><span class="attr">    needs:</span> <span class="string">job_1</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">windows-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Download</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">1</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/download-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">      - shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          value=`cat homework/math-homework.txt`</span></span><br><span class="line"><span class="string">          expr $value \* 9 &gt; homework/math-homework.txt</span></span><br><span class="line"><span class="string"></span><span class="attr">      - name:</span> <span class="string">Upload</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">2</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/upload-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">          path:</span> <span class="string">homework/math-homework.txt</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  job_3:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">Display</span> <span class="string">results</span></span><br><span class="line"><span class="attr">    needs:</span> <span class="string">job_2</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">macOS-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Download</span> <span class="string">math</span> <span class="string">result</span> <span class="string">for</span> <span class="string">job</span> <span class="number">2</span></span><br><span class="line"><span class="attr">        uses:</span> <span class="string">actions/download-artifact@v1</span></span><br><span class="line"><span class="attr">        with:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">homework</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">Print</span> <span class="string">the</span> <span class="string">final</span> <span class="string">result</span></span><br><span class="line"><span class="attr">        shell:</span> <span class="string">bash</span></span><br><span class="line"><span class="attr">        run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          value=`cat homework/math-homework.txt`</span></span><br><span class="line"><span class="string">          echo The result is $value</span></span><br></pre></td></tr></table></figure>
 <hr>
-<p>More ref:<br><a href="https://www.cnblogs.com/pixy/p/4817579.html" target="_blank" rel="noopener">https://www.cnblogs.com/pixy/p/4817579.html</a></p>
+<p><strong>More Ref:</strong></p>
+<ul>
+<li><a href="https://help.github.com/cn/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts" target="_blank" rel="noopener">关于该篇的原文</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>CICD</category>
+      </categories>
+      <tags>
+        <tag>GA</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Github Actions E08插播一条消息</title>
+    <url>/2020/04/19/Github-Actions-E08%E6%8F%92%E6%92%AD%E4%B8%80%E6%9D%A1%E6%B6%88%E6%81%AF/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
+<p>消息是个好消息，简单不完全的结果就是：普通组织下的私有仓库可以使用github actions了。<em>题外话：有的消息会影响当天的工作任务，有的消息会影响人的一生。</em></p>
+</blockquote>
+<h3 id="1-起因"><a href="#1-起因" class="headerlink" title="1. 起因"></a>1. 起因</h3><p>github actions的免费是我们都知道的，但这句话并不完整、准确。github actions为支持开源，对于public repo是完全免费的，但是对于私有的项目是有时限的。可见下图,可在 <a href="https://github.com/features/actions" target="_blank" rel="noopener">https://github.com/features/actions</a> 中找到该信息。</p>
+<p><img src="https://s1.ax1x.com/2020/04/20/JM5Qvq.png" alt="JM5Qvq.png"></p>
+<center> 图1: github actions pricing</center>
+
+<p>正好，有一个项目上，我们想推荐客户使用github actions，最好是能免费使用；即使不能完全免费，如果可以限时免费也是可以的，这样作为开发人员可以尝试一下，并成功后向客户说明情况，以便进一步预估、申请部分费用。这里说到一个点：<strong>不谈钱，一切都好说；谈到钱，流程就会麻烦些，毕竟从公司支出的每一笔钱都要有个缘由</strong>。</p>
+<p>客户的项目情况整理如下，因为没有org的管理权限，一些team、org属性并看不到。客户自建了一个org，里边有个team关联着，然后org里的仓库都是private的。</p>
+<h3 id="2-问题过程"><a href="#2-问题过程" class="headerlink" title="2. 问题过程"></a>2. 问题过程</h3><p><strong>时间： 2020.04.08 左右</strong><br>为了实验一下，我和同事在我自己的 <code>org:cicd_draft</code> 下做实验。将组织下的 <code>repo: api-test-demo</code>下进行了一些尝试。为了模拟客户的情况，打算先将 <code>repo: api-test-demo</code> 从 public 变成 private。 如下图 gc_00<br><img src="https://s1.ax1x.com/2020/04/20/JM53rV.png" alt="JM53rV.png"></p>
+<center> 图2 </center>
+
+<p>首先提示需要 upgrade cicd_draft,点击后提示 <strong>upgrade options</strong>,如下图<br><img src="https://s1.ax1x.com/2020/04/20/JMqIpD.png" alt="JMqIpD.png"></p>
+<center> 图3 </center>
+
+<p>再仔细会想一下，似乎我的org与客户的org，或是我的team与客户的team不太一样，尽管我想把这些变量弄成一致的，以便后续的尝试。也显示一个问题：<em>我还对org team repo这几个东西的属性、类型还不太了解，以及他们之间的关系是否有依赖呢</em>。而后的分析，感觉客户使用的仓库类型不简单啊，可能是个历史遗留产物，见👇</p>
+<blockquote>
+<p>GitHub Actions is not available for private repos in legacy per-repository plans.</p>
+</blockquote>
+<blockquote>
+<p>legacy的一个意思是： denoting software or hardware that has been superseded but is difficult to replace because of its wide use.</p>
+</blockquote>
+<p>有几点事实如下：</p>
+<ol>
+<li>普通的team- <strong>Github Team For Open Source</strong>，无法拥有私有仓库。（在4.8号那个时间点，是的）</li>
+<li>客户拥有私有仓库，说明team的属性不是普通的，</li>
+</ol>
+<h3 id="3-转机"><a href="#3-转机" class="headerlink" title="3. 转机"></a>3. 转机</h3><p>源于一条消息： <strong>GitHub Free gives teams private repositories with unlimited collaborators at no cost.</strong></p>
+<p>因为我的github注册邮箱收到了这个大消息邮件。<br><img src="https://s1.ax1x.com/2020/04/20/JM5xs0.jpg" alt="JM5xs0.jpg"></p>
+<p><center> 图4：我的邮件截图 </center><br>现在这个消息可以在 <a href="https://github.com/pricing" target="_blank" rel="noopener">https://github.com/pricing</a> 网页较上部看到，但估计一段时间后会被其他“大动作”替换掉。</p>
+<blockquote>
+<p>———————分割线———————-</p>
+</blockquote>
+<p><strong>Github team 定义</strong>：Teams are groups of organization members that reflect your company or group’s structure with cascading access permissions and mentions.</p>
+<p>github repo 类型 、github org 、github team 类型，以及之间的强关系、弱关系。</p>
+<p>从个人可以免费创建几个私有仓库，到无限量的私有仓库，又到team的免费升级，越来越免费的策略，降低了成本门槛。</p>
+<hr>
+<p><strong>More Ref:</strong></p>
+<ul>
+<li><a href="https://help.github.com/en/enterprise/2.19/admin/user-management/organizations-and-teams" target="_blank" rel="noopener">user-management/organizations-and-teams</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>CICD</category>
+      </categories>
+      <tags>
+        <tag>GA</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Helm 使用小结</title>
+    <url>/2021/11/15/Helm-%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93/</url>
+    <content><![CDATA[<h3 id="1-What-is-Helm"><a href="#1-What-is-Helm" class="headerlink" title="1.What is Helm"></a>1.What is Helm</h3><p>Helm is a tool for managing Kubernetes packages called charts.</p>
+<p>Three important concepts</p>
+<ul>
+<li>The <strong>Chart</strong> is a bundle of information necessary to create an instance of a Kubernetes application.</li>
+</ul>
+<ul>
+<li>A <strong>Release</strong> is a running instance of a chart, combined with a specific config.</li>
+<li><strong>Repository</strong> – Publicly available charts.</li>
+</ul>
+<p>Helm v2 和 v3的架构如下，主要区别是 Tiller。</p>
+<p><img src="https://cdnjson.com/images/2021/06/02/helm_arch.png" alt="helm_arch.png"></p>
+<p> 当然 helm v2与 v3  在命令上也有一些区别，不过老的命令（例如fetch）亲自试验过还能用</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Command</th>
+<th style="text-align:left">Helm2</th>
+<th style="text-align:left">Helm3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Initialize Helm client/server</td>
+<td style="text-align:left">init</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">Download a chart to your local directory</td>
+<td style="text-align:left">fetch</td>
+<td style="text-align:left">pull</td>
+</tr>
+<tr>
+<td style="text-align:left">Given a release name, delete the release from Kubernetes</td>
+<td style="text-align:left">delete</td>
+<td style="text-align:left">uninstall</td>
+</tr>
+<tr>
+<td style="text-align:left">Helm client environment information</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">env</td>
+</tr>
+<tr>
+<td style="text-align:left">Displays the location of HELM_HOME</td>
+<td style="text-align:left">home</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">Inspect a chart</td>
+<td style="text-align:left">inspect</td>
+<td style="text-align:left">show</td>
+</tr>
+<tr>
+<td style="text-align:left">Uninstalls Tiller from a cluster</td>
+<td style="text-align:left">reset</td>
+</tr>
+</tbody>
+</table>
+<p>Hub - &gt; repo -&gt; Chart -&gt; App， 从左到右均是一对多的关系。</p>
+<h3 id="2-一些常用的命令"><a href="#2-一些常用的命令" class="headerlink" title="2.一些常用的命令"></a>2.一些常用的命令</h3><p><strong>关于repo</strong></p>
+<p>list repos</p>
+<p><code>helm repo list</code></p>
+<p>add a repo</p>
+<p><code>helm repo add aliyun https://kubernetes.oss-cn-hangzhou.aliyuncs.com/charts</code></p>
+<p>remove a repo, then check again</p>
+<p><code>helm repo remove aliyun &amp;&amp; helm repo list</code></p>
+<p>helm search hub – Searches through the <a href="https://artifacthub.io/packages/search?kind=0" target="_blank" rel="noopener">Artifact Hub</a> from dozens of repositories.</p>
+<p><code>helm search hub wordpress</code></p>
+<p>helm search repo – Searches through repositories added in the local helm client using helm repo add.</p>
+<p><code>helm search repo wordpress</code></p>
+<blockquote>
+<p>When you find a suitable chart, install it using <code>helm install</code></p>
+</blockquote>
+<p>一个repo里可以有多个chart，</p>
+<p><strong>关于chart</strong></p>
+<p>download a chart to local</p>
+<p><code>helm pull csi-secrets-store-provider-azure/csi-secrets-store-provider-azure --version 0.0.19 --untar</code></p>
+<p>list all the charts in a repository</p>
+<p><code>helm search repo bitnami</code></p>
+<p><code>helm repo add stable https://charts.helm.sh/stable</code></p>
+<p><code>helm show readme stable/ghost</code></p>
+<p><code>helm install --values=ghost-values.yaml stable/ghost --generate-name</code></p>
+<p><code>helm ls</code></p>
+<p><code>helm delete ghost-1622450894</code></p>
+<h4 id="What-else"><a href="#What-else" class="headerlink" title="What else"></a>What else</h4><p><code>helm upgrade --values=ghost-values.yaml ghost-1576075187 stable/ghost</code></p>
+<p>rollback the app to a specific version</p>
+<p><code>helm rollback ghost-1576075187 1</code></p>
+<p><code>helm uninstall ghost-1576075187</code></p>
+<p>check all resources which is deployed with helm </p>
+<p><code>helm get manifest datadog -n datadog</code></p>
+<hr>
+<p>Reference:</p>
+<ul>
+<li><a href="https://dev.to/ridaehamdani/some-changes-between-helm-v2-and-helm-v3-that-you-should-know-32ga" target="_blank" rel="noopener">https://dev.to/ridaehamdani/some-changes-between-helm-v2-and-helm-v3-that-you-should-know-32ga</a></li>
+</ul>
 ]]></content>
       <tags>
-        <tag>Tools</tag>
+        <tag>Helm</tag>
       </tags>
   </entry>
   <entry>
@@ -1285,6 +1405,21 @@
       <categories>
         <category>Tools</category>
       </categories>
+      <tags>
+        <tag>Tools</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Import P12 file on Mac OS X with CLI</title>
+    <url>/2019/11/22/Import-P12-file-on-Mac-OS-X-with-CLI/</url>
+    <content><![CDATA[<h3 id="目的：通过命令行倒入p12证书"><a href="#目的：通过命令行倒入p12证书" class="headerlink" title="目的：通过命令行倒入p12证书"></a>目的：通过命令行倒入p12证书</h3><p>Apple为了安全，在ssh登录时，是不允许读取Keychains（钥匙串）的，所以 <strong>security unlock-keychain</strong> 这行命令就很重要了。比如在Pipeline构建打包前，先解锁Keychains。</p>
+<h4 id="1-解锁"><a href="#1-解锁" class="headerlink" title="1.解锁"></a>1.解锁</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#方式一： 命令行中不含密码，交互方式</span></span><br><span class="line">➜   security unlock-keychain /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br><span class="line">password to unlock /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db:</span><br><span class="line"></span><br><span class="line"><span class="comment">#或者命令行中包含密码的方式</span></span><br><span class="line">➜   security unlock-keychain -p &lt;Mac_Login_PWD&gt; /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br><span class="line">➜   security list-keychains -s /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br></pre></td></tr></table></figure>
+<h4 id="2-导入"><a href="#2-导入" class="headerlink" title="2.导入"></a>2.导入</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#方式一： 命令行中不含密码，交互方式</span></span><br><span class="line"><span class="comment">#会有弹窗，提示输入 P12文件的密码</span></span><br><span class="line">➜   security import ~/Desktop/xxx.p12 -k /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br><span class="line">1 identity imported.</span><br><span class="line"><span class="comment">#或者命令行中包含密码的方式</span></span><br><span class="line">➜   security import ~/&lt;Your_Path&gt;/xxx.p12 -k /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db -P &lt;P12_Password&gt;</span><br><span class="line">1 identity imported.</span><br></pre></td></tr></table></figure>
+<h4 id="3-其他"><a href="#3-其他" class="headerlink" title="3.其他"></a>3.其他</h4><p>删除<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">##先展示证书，获取SHA1值; -p 可指定类型</span></span><br><span class="line">security find-identity -p codesigning /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br><span class="line"><span class="comment">##根据SHA1值删除对应的证书</span></span><br><span class="line">security delete-certificate -Z &lt;Your_SHA1&gt;</span><br></pre></td></tr></table></figure></p>
+<p>更过 security 用法，查看 <code>security --help</code> 、<code>security find-identity --help</code></p>
+<hr>
+<p>More ref:<br><a href="https://www.cnblogs.com/pixy/p/4817579.html" target="_blank" rel="noopener">https://www.cnblogs.com/pixy/p/4817579.html</a></p>
+]]></content>
       <tags>
         <tag>Tools</tag>
       </tags>
@@ -1340,24 +1475,6 @@
 <p>某个调度到slave的运行job总是不更新状态，明明已经完成了任务，但一直在页面左下角显示的是在运行中</p>
 <p>可尝试 <a href="https://kb.iu.edu/d/aopy" target="_blank" rel="noopener">https://kb.iu.edu/d/aopy</a></p>
 <h3 id="引号"><a href="#引号" class="headerlink" title="引号"></a>引号</h3><p>// 单引号需要拼接 容易出错 不推荐使用<br><code>sh &#39;mkdir -p &#39; + VARIABLE</code><br>// 三引号支持变量等内容，引号嵌套等 推荐使用<br><code>sh &quot;&quot;&quot;cp ${VARIABLE}/ &#39;abc&#39; &quot;123&quot; ${VARIABLE_1}/${VARIABLE_2}&quot;&quot;&quot;</code></p>
-]]></content>
-      <tags>
-        <tag>jenkins</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Jenkins Unicode icons</title>
-    <url>/2019/07/04/Jenkins-Unicode-icons/</url>
-    <content><![CDATA[<h5 id="Unicode-icons-list"><a href="#Unicode-icons-list" class="headerlink" title="Unicode icons list:"></a>Unicode icons list:</h5><p>“\u2776” = ❶<br>“\u27A1” = ➡<br>“\u2756” = ❖<br>“\u273F” = ✿<br>“\u2795” = ➕</p>
-<p>“\u2713” = ✓<br>“\u2705” = ✅<br>“\u274E” = ❎<br>“\u2717” = ✗<br>“\u274C” = ❌</p>
-<p>“\u2600” = ☀<br>“\u2601” = ☁<br>“\u2622” = ☢<br>“\u2623” = ☣<br>“\u2639” = ☹<br>“\u263A” = ☺</p>
-<p>Example :<br>make stage name to a icon, or command message<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//declarative pipeline</span><br><span class="line">...</span><br><span class="line">    stages &#123;</span><br><span class="line">        stage(<span class="string">'\u270A RAISED FIST'</span>)&#123;</span><br><span class="line">            steps&#123;</span><br><span class="line">                script&#123;</span><br><span class="line">                    <span class="built_in">echo</span> <span class="string">"This is Stage One"</span></span><br><span class="line">                    currentBuild.displayName = <span class="string">"<span class="variable">$&#123;env.BUILD_NUMBER&#125;</span> -&gt; <span class="variable">$&#123;env.GIT_BRANCH&#125;</span>"</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">'\u273F Verify'</span> //u2700</span><br><span class="line"><span class="built_in">echo</span> <span class="string">'\u2620 kulou'</span> //u2600</span><br></pre></td></tr></table></figure>
-<p><strong>More Ref:</strong></p>
-<ul>
-<li><a href="http://www.fileformat.info/info/unicode/block/dingbats/list.htm" target="_blank" rel="noopener">More icons in the \u2700 Unicode Digbats block.</a></li>
-<li><a href="https://www.w3schools.com/charsets/ref_utf_symbols.asp" target="_blank" rel="noopener">More icons in the \u2600 range</a></li>
-</ul>
 ]]></content>
       <tags>
         <tag>jenkins</tag>
@@ -1432,6 +1549,24 @@ pipeline {
 <li><a href="https://jenkinsci.github.io/job-dsl-plugin/#path/pipelineJob-triggers" target="_blank" rel="noopener">https://jenkinsci.github.io/job-dsl-plugin/#path/pipelineJob-triggers</a></li>
 </ol>
 </blockquote>
+]]></content>
+      <tags>
+        <tag>jenkins</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Jenkins Unicode icons</title>
+    <url>/2019/07/04/Jenkins-Unicode-icons/</url>
+    <content><![CDATA[<h5 id="Unicode-icons-list"><a href="#Unicode-icons-list" class="headerlink" title="Unicode icons list:"></a>Unicode icons list:</h5><p>“\u2776” = ❶<br>“\u27A1” = ➡<br>“\u2756” = ❖<br>“\u273F” = ✿<br>“\u2795” = ➕</p>
+<p>“\u2713” = ✓<br>“\u2705” = ✅<br>“\u274E” = ❎<br>“\u2717” = ✗<br>“\u274C” = ❌</p>
+<p>“\u2600” = ☀<br>“\u2601” = ☁<br>“\u2622” = ☢<br>“\u2623” = ☣<br>“\u2639” = ☹<br>“\u263A” = ☺</p>
+<p>Example :<br>make stage name to a icon, or command message<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//declarative pipeline</span><br><span class="line">...</span><br><span class="line">    stages &#123;</span><br><span class="line">        stage(<span class="string">'\u270A RAISED FIST'</span>)&#123;</span><br><span class="line">            steps&#123;</span><br><span class="line">                script&#123;</span><br><span class="line">                    <span class="built_in">echo</span> <span class="string">"This is Stage One"</span></span><br><span class="line">                    currentBuild.displayName = <span class="string">"<span class="variable">$&#123;env.BUILD_NUMBER&#125;</span> -&gt; <span class="variable">$&#123;env.GIT_BRANCH&#125;</span>"</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">'\u273F Verify'</span> //u2700</span><br><span class="line"><span class="built_in">echo</span> <span class="string">'\u2620 kulou'</span> //u2600</span><br></pre></td></tr></table></figure>
+<p><strong>More Ref:</strong></p>
+<ul>
+<li><a href="http://www.fileformat.info/info/unicode/block/dingbats/list.htm" target="_blank" rel="noopener">More icons in the \u2700 Unicode Digbats block.</a></li>
+<li><a href="https://www.w3schools.com/charsets/ref_utf_symbols.asp" target="_blank" rel="noopener">More icons in the \u2600 range</a></li>
+</ul>
 ]]></content>
       <tags>
         <tag>jenkins</tag>
@@ -1734,39 +1869,6 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>Ping Or fping</title>
-    <url>/2019/05/28/Ping-Or-fping/</url>
-    <content><![CDATA[<p>ping 命令我们比较常用，但是这里要介绍下 fping 命令。 fping 比 ping 拥有更多的特性。fping 默认没有包含在Linux发行版中。</p>
-<blockquote>
-<p>ping 命令使用Internet控制协议（Internet Control Message Protocol,ICMP）中的echo 分组检验网络上两台主机之间的连通性。</p>
-</blockquote>
-<p>e.g.<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> ip <span class="keyword">in</span> 192.168.0.&#123;1..255&#125; ;</span><br><span class="line"><span class="keyword">do</span> </span><br><span class="line">    ping <span class="variable">$ip</span> -c 2 &amp;&gt; /dev/null ;</span><br><span class="line"></span><br><span class="line">    uf [ $? -eq 0 ];</span><br><span class="line">    <span class="keyword">then</span> </span><br><span class="line">        <span class="built_in">echo</span> <span class="variable">$ip</span> is alive</span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure></p>
-<p>工作原理：</p>
-<ul>
-<li><code>&amp;&gt; /dev/null</code> 用于将 stderr stdout 重定向到 <code>/dev/nul</code> ,使终端不会出现任何输出</li>
-<li>脚本用 <code>$?</code> 获取退出状态。如果顺利退出，退出状态为0，否则为非0值。</li>
-</ul>
-<h5 id="fping"><a href="#fping" class="headerlink" title="fping"></a>fping</h5><p>fping 可以为多个IP地址生成 ICMP 分组，然后等待回应。其运行速度要比上面的脚本快得多。</p>
-<p>选项如下：</p>
-<ul>
-<li>选项 <code>-a</code> 指定显示出所有活动主机的IP地址；</li>
-<li>选项 <code>-u</code> 指定显示出所有不可达的主机地址；</li>
-<li>选项 <code>-g</code> 指定从 “IP地址/子网掩码；记法或者 “IP地址范围”记法中生成一组地址</li>
-</ul>
-<p>e.g.</p>
-<p><code>fping -a 192.168.0.1/24 -g</code></p>
-<p><code>fping -a 192.168.0.1 192.168.1.255 -g</code></p>
-<p><code>fping -a 192.168.0.1  192.168.0.5 192.168.0.6</code></p>
-<p><code>fping -a &lt; ip.list</code> 从列表文件 sdtin 中接收</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Shell</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>PPT Tools</title>
     <url>/2019/08/25/PPT-Tools/</url>
     <content><![CDATA[<p>TL;DR<br>  一个好的PPT，全靠自己一块一块地“搬砖”当然可以制作的很精良，但时间也就流逝了许多，介绍一些可能用到的工具，简化这些制作的步骤。</p>
@@ -1870,49 +1972,30 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>Scan Docker Images for Vulnerabilities</title>
-    <url>/2019/12/11/Scan-Docker-Images-for-Vulnerabilities/</url>
-    <content><![CDATA[<ul>
-<li><p>可以扫描哪些方面，哪些方面检查不出来</p>
-</li>
-<li><p>有哪些工具，各自特点</p>
-</li>
-<li><p>工具开源/收费</p>
-</li>
-<li><p>是否方便与pipeline集成</p>
-</li>
-<li><p>报告形式</p>
-</li>
-<li><p>是否需要单独的服务端、数据库</p>
-</li>
-</ul>
-<h3 id="Tool-1-trivy"><a href="#Tool-1-trivy" class="headerlink" title="Tool 1: trivy"></a>Tool 1: <a href="https://github.com/aquasecurity/trivy" target="_blank" rel="noopener">trivy</a></h3><p>output:<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   trivy python:alpine</span><br><span class="line">2019-12-12T09:40:48.656+0800	INFO	Detecting Alpine vulnerabilities...</span><br><span class="line"></span><br><span class="line">python:alpine (alpine 3.10.2)</span><br><span class="line">=============================</span><br><span class="line">Total: 9 (UNKNOWN: 0, LOW: 2, MEDIUM: 7, HIGH: 0, CRITICAL: 0)</span><br><span class="line"></span><br><span class="line">+-----------+------------------+----------+-------------------+--------------------------------+</span><br><span class="line">|  LIBRARY  | VULNERABILITY ID | SEVERITY | INSTALLED VERSION | FIXED VERSION |      TITLE    |</span><br><span class="line">+-----------+------------------+----------+-------------------+---------   +-------------------+</span><br><span class="line">| e2fsprogs | CVE-2019-5094    | MEDIUM   | 1.45.2-r0| 1.45.2-r1 | e2fsprogs: crafted             |</span><br><span class="line">|           |                  |          |                   |               | ext4 partition leads to        |</span><br><span class="line">|           |                  |          |                   |               | out-of-bounds write            |</span><br><span class="line">+-----------+------------------+          +-------------------+---------------+--------------------------------+</span><br><span class="line">| expat     | CVE-2019-15903   |          | 2.2.7-r0| 2.2.7-r1  | expat: heap-based buffer       |</span><br><span class="line">|           |                  |          |                   |               | over-read via crafted XML      |</span><br><span class="line">|           |                  |          |                   |               | input                          |</span><br><span class="line">+-----------+------------------+          +-------------------+---------------+--------------------------------+</span><br><span class="line">| libgcrypt | CVE-2019-13627   |          | 1.8.4-r2| 1.8.5-r0  | libgcrypt: ECDSA timing        |</span><br><span class="line">|           |                  |          |                   |               | attack <span class="keyword">in</span> the libgcrypt20      |</span><br><span class="line">|           |                  |          |                   |               | cryptographic library          |</span><br><span class="line">+-----------+------------------+          +-------------------+--------------</span><br><span class="line">省略100行</span><br></pre></td></tr></table></figure></p>
-<h3 id="Tool-2-Anchore"><a href="#Tool-2-Anchore" class="headerlink" title="Tool 2: Anchore"></a>Tool 2: <a href="https://github.com/anchore/anchore-engine" target="_blank" rel="noopener">Anchore</a></h3><p>Anchore consists of a commercial edition (Anchore Enterprise) and an open-source edition (Anchor Engine).</p>
-<h3 id="Tool-3-open-scap"><a href="#Tool-3-open-scap" class="headerlink" title="Tool 3: open-scap"></a>Tool 3: open-scap</h3><h3 id="Tool-4-Dagda"><a href="#Tool-4-Dagda" class="headerlink" title="Tool 4: Dagda"></a>Tool 4: <a href="https://github.com/eliasgranderubio/dagda" target="_blank" rel="noopener">Dagda</a></h3><h3 id="Tool-5-Clair"><a href="#Tool-5-Clair" class="headerlink" title="Tool 5: Clair"></a>Tool 5: <a href="https://github.com/quay/clair" target="_blank" rel="noopener">Clair</a></h3><p>ref:</p>
+    <title>Ping Or fping</title>
+    <url>/2019/05/28/Ping-Or-fping/</url>
+    <content><![CDATA[<p>ping 命令我们比较常用，但是这里要介绍下 fping 命令。 fping 比 ping 拥有更多的特性。fping 默认没有包含在Linux发行版中。</p>
+<blockquote>
+<p>ping 命令使用Internet控制协议（Internet Control Message Protocol,ICMP）中的echo 分组检验网络上两台主机之间的连通性。</p>
+</blockquote>
+<p>e.g.<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> ip <span class="keyword">in</span> 192.168.0.&#123;1..255&#125; ;</span><br><span class="line"><span class="keyword">do</span> </span><br><span class="line">    ping <span class="variable">$ip</span> -c 2 &amp;&gt; /dev/null ;</span><br><span class="line"></span><br><span class="line">    uf [ $? -eq 0 ];</span><br><span class="line">    <span class="keyword">then</span> </span><br><span class="line">        <span class="built_in">echo</span> <span class="variable">$ip</span> is alive</span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure></p>
+<p>工作原理：</p>
 <ul>
-<li><a href="https://www.scality.com/solved/5-free-tools-to-navigate-through-docker-containers-security/" target="_blank" rel="noopener">https://www.scality.com/solved/5-free-tools-to-navigate-through-docker-containers-security/</a></li>
-<li><a href="https://resources.whitesourcesoftware.com/blog-whitesource/docker-image-security-scanning" target="_blank" rel="noopener">https://resources.whitesourcesoftware.com/blog-whitesource/docker-image-security-scanning</a></li>
+<li><code>&amp;&gt; /dev/null</code> 用于将 stderr stdout 重定向到 <code>/dev/nul</code> ,使终端不会出现任何输出</li>
+<li>脚本用 <code>$?</code> 获取退出状态。如果顺利退出，退出状态为0，否则为非0值。</li>
 </ul>
-]]></content>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Server:我是谁,我在哪里...</title>
-    <url>/2020/05/25/Server-%E6%88%91%E6%98%AF%E8%B0%81-%E6%88%91%E5%9C%A8%E5%93%AA%E9%87%8C/</url>
-    <content><![CDATA[<p>给你一台现成的服务器，你该如何了解它？(可以是linux的，也可以是Windows,也可能是mac os),但这里更多的假设是linux吧，因为更加常见，假如你ssh到了一台新服务器，除此之外，别人什么都没告诉你，你该怎么办？</p>
-<h3 id="我是谁-第一问"><a href="#我是谁-第一问" class="headerlink" title="我是谁-第一问"></a>我是谁-第一问</h3><p><code>hostname</code></p>
-<p><code>whoami</code> 或 <code>id</code></p>
-<h3 id="我是谁-第二问"><a href="#我是谁-第二问" class="headerlink" title="我是谁-第二问"></a>我是谁-第二问</h3><p>linux有很多发行版本，每个都有点儿不一样，就比如下载软件的命令就是不一样的，不是每台服务器都是你所熟悉的centos，或者 ubuntu。不要去“我以为…”，而是我先确认一下，怎么确认是我们需要思考的。</p>
-<p><a href="https://www.cyberciti.biz/faq/how-to-check-os-version-in-linux-command-line/" target="_blank" rel="noopener">How to check os version in Linux command line</a></p>
-<p>比如说说 <code>hostnamectl</code> 命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root@saltmaster:~<span class="comment"># hostnamectl</span></span><br><span class="line">   Static hostname: saltmaster</span><br><span class="line">         Icon name: computer-vm</span><br><span class="line">           Chassis: vm</span><br><span class="line">        Machine ID: 5ff54f44069c4ce289690d8b20a3a8d4</span><br><span class="line">           Boot ID: ca1c7b0381c74fadb52f2065c2bf8648</span><br><span class="line">    Virtualization: oracle   <span class="comment"># 是否使用虚拟化，及哪家的虚拟化，我这里是 vagrant + virtaul box启动的一台服务器</span></span><br><span class="line">    <span class="comment"># 如果看到的是   Virtualization: microsoft 这种，就说明是微软的，大概率是azure吧.</span></span><br><span class="line">  Operating System: Ubuntu 18.04.4 LTS</span><br><span class="line">            Kernel: Linux 4.15.0-91-generic  <span class="comment"># 内核版本</span></span><br><span class="line">      Architecture: x86-64   <span class="comment">#服务器的架构</span></span><br></pre></td></tr></table></figure>
-<h3 id="我在哪里-几点了-第三问"><a href="#我在哪里-几点了-第三问" class="headerlink" title="我在哪里,几点了-第三问"></a>我在哪里,几点了-第三问</h3><p>date</p>
-<p>tree</p>
-<p>ps </p>
-<p>systemctl service</p>
-<h3 id="出错了，怎么办"><a href="#出错了，怎么办" class="headerlink" title="出错了，怎么办-"></a>出错了，怎么办-</h3><p>日志<br>Application Logs<br>Event Logs<br>Service Logs<br>System Logs</p>
+<h5 id="fping"><a href="#fping" class="headerlink" title="fping"></a>fping</h5><p>fping 可以为多个IP地址生成 ICMP 分组，然后等待回应。其运行速度要比上面的脚本快得多。</p>
+<p>选项如下：</p>
+<ul>
+<li>选项 <code>-a</code> 指定显示出所有活动主机的IP地址；</li>
+<li>选项 <code>-u</code> 指定显示出所有不可达的主机地址；</li>
+<li>选项 <code>-g</code> 指定从 “IP地址/子网掩码；记法或者 “IP地址范围”记法中生成一组地址</li>
+</ul>
+<p>e.g.</p>
+<p><code>fping -a 192.168.0.1/24 -g</code></p>
+<p><code>fping -a 192.168.0.1 192.168.1.255 -g</code></p>
+<p><code>fping -a 192.168.0.1  192.168.0.5 192.168.0.6</code></p>
+<p><code>fping -a &lt; ip.list</code> 从列表文件 sdtin 中接收</p>
 ]]></content>
       <categories>
         <category>Linux</category>
@@ -1997,6 +2080,58 @@ pipeline {
       </categories>
       <tags>
         <tag>Devops</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Scan Docker Images for Vulnerabilities</title>
+    <url>/2019/12/11/Scan-Docker-Images-for-Vulnerabilities/</url>
+    <content><![CDATA[<ul>
+<li><p>可以扫描哪些方面，哪些方面检查不出来</p>
+</li>
+<li><p>有哪些工具，各自特点</p>
+</li>
+<li><p>工具开源/收费</p>
+</li>
+<li><p>是否方便与pipeline集成</p>
+</li>
+<li><p>报告形式</p>
+</li>
+<li><p>是否需要单独的服务端、数据库</p>
+</li>
+</ul>
+<h3 id="Tool-1-trivy"><a href="#Tool-1-trivy" class="headerlink" title="Tool 1: trivy"></a>Tool 1: <a href="https://github.com/aquasecurity/trivy" target="_blank" rel="noopener">trivy</a></h3><p>output:<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   trivy python:alpine</span><br><span class="line">2019-12-12T09:40:48.656+0800	INFO	Detecting Alpine vulnerabilities...</span><br><span class="line"></span><br><span class="line">python:alpine (alpine 3.10.2)</span><br><span class="line">=============================</span><br><span class="line">Total: 9 (UNKNOWN: 0, LOW: 2, MEDIUM: 7, HIGH: 0, CRITICAL: 0)</span><br><span class="line"></span><br><span class="line">+-----------+------------------+----------+-------------------+--------------------------------+</span><br><span class="line">|  LIBRARY  | VULNERABILITY ID | SEVERITY | INSTALLED VERSION | FIXED VERSION |      TITLE    |</span><br><span class="line">+-----------+------------------+----------+-------------------+---------   +-------------------+</span><br><span class="line">| e2fsprogs | CVE-2019-5094    | MEDIUM   | 1.45.2-r0| 1.45.2-r1 | e2fsprogs: crafted             |</span><br><span class="line">|           |                  |          |                   |               | ext4 partition leads to        |</span><br><span class="line">|           |                  |          |                   |               | out-of-bounds write            |</span><br><span class="line">+-----------+------------------+          +-------------------+---------------+--------------------------------+</span><br><span class="line">| expat     | CVE-2019-15903   |          | 2.2.7-r0| 2.2.7-r1  | expat: heap-based buffer       |</span><br><span class="line">|           |                  |          |                   |               | over-read via crafted XML      |</span><br><span class="line">|           |                  |          |                   |               | input                          |</span><br><span class="line">+-----------+------------------+          +-------------------+---------------+--------------------------------+</span><br><span class="line">| libgcrypt | CVE-2019-13627   |          | 1.8.4-r2| 1.8.5-r0  | libgcrypt: ECDSA timing        |</span><br><span class="line">|           |                  |          |                   |               | attack <span class="keyword">in</span> the libgcrypt20      |</span><br><span class="line">|           |                  |          |                   |               | cryptographic library          |</span><br><span class="line">+-----------+------------------+          +-------------------+--------------</span><br><span class="line">省略100行</span><br></pre></td></tr></table></figure></p>
+<h3 id="Tool-2-Anchore"><a href="#Tool-2-Anchore" class="headerlink" title="Tool 2: Anchore"></a>Tool 2: <a href="https://github.com/anchore/anchore-engine" target="_blank" rel="noopener">Anchore</a></h3><p>Anchore consists of a commercial edition (Anchore Enterprise) and an open-source edition (Anchor Engine).</p>
+<h3 id="Tool-3-open-scap"><a href="#Tool-3-open-scap" class="headerlink" title="Tool 3: open-scap"></a>Tool 3: open-scap</h3><h3 id="Tool-4-Dagda"><a href="#Tool-4-Dagda" class="headerlink" title="Tool 4: Dagda"></a>Tool 4: <a href="https://github.com/eliasgranderubio/dagda" target="_blank" rel="noopener">Dagda</a></h3><h3 id="Tool-5-Clair"><a href="#Tool-5-Clair" class="headerlink" title="Tool 5: Clair"></a>Tool 5: <a href="https://github.com/quay/clair" target="_blank" rel="noopener">Clair</a></h3><p>ref:</p>
+<ul>
+<li><a href="https://www.scality.com/solved/5-free-tools-to-navigate-through-docker-containers-security/" target="_blank" rel="noopener">https://www.scality.com/solved/5-free-tools-to-navigate-through-docker-containers-security/</a></li>
+<li><a href="https://resources.whitesourcesoftware.com/blog-whitesource/docker-image-security-scanning" target="_blank" rel="noopener">https://resources.whitesourcesoftware.com/blog-whitesource/docker-image-security-scanning</a></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Server:我是谁,我在哪里...</title>
+    <url>/2020/05/25/Server-%E6%88%91%E6%98%AF%E8%B0%81-%E6%88%91%E5%9C%A8%E5%93%AA%E9%87%8C/</url>
+    <content><![CDATA[<p>给你一台现成的服务器，你该如何了解它？(可以是linux的，也可以是Windows,也可能是mac os),但这里更多的假设是linux吧，因为更加常见，假如你ssh到了一台新服务器，除此之外，别人什么都没告诉你，你该怎么办？</p>
+<h3 id="我是谁-第一问"><a href="#我是谁-第一问" class="headerlink" title="我是谁-第一问"></a>我是谁-第一问</h3><p><code>hostname</code></p>
+<p><code>whoami</code> 或 <code>id</code></p>
+<h3 id="我是谁-第二问"><a href="#我是谁-第二问" class="headerlink" title="我是谁-第二问"></a>我是谁-第二问</h3><p>linux有很多发行版本，每个都有点儿不一样，就比如下载软件的命令就是不一样的，不是每台服务器都是你所熟悉的centos，或者 ubuntu。不要去“我以为…”，而是我先确认一下，怎么确认是我们需要思考的。</p>
+<p><a href="https://www.cyberciti.biz/faq/how-to-check-os-version-in-linux-command-line/" target="_blank" rel="noopener">How to check os version in Linux command line</a></p>
+<p>比如说说 <code>hostnamectl</code> 命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root@saltmaster:~<span class="comment"># hostnamectl</span></span><br><span class="line">   Static hostname: saltmaster</span><br><span class="line">         Icon name: computer-vm</span><br><span class="line">           Chassis: vm</span><br><span class="line">        Machine ID: 5ff54f44069c4ce289690d8b20a3a8d4</span><br><span class="line">           Boot ID: ca1c7b0381c74fadb52f2065c2bf8648</span><br><span class="line">    Virtualization: oracle   <span class="comment"># 是否使用虚拟化，及哪家的虚拟化，我这里是 vagrant + virtaul box启动的一台服务器</span></span><br><span class="line">    <span class="comment"># 如果看到的是   Virtualization: microsoft 这种，就说明是微软的，大概率是azure吧.</span></span><br><span class="line">  Operating System: Ubuntu 18.04.4 LTS</span><br><span class="line">            Kernel: Linux 4.15.0-91-generic  <span class="comment"># 内核版本</span></span><br><span class="line">      Architecture: x86-64   <span class="comment">#服务器的架构</span></span><br></pre></td></tr></table></figure>
+<h3 id="我在哪里-几点了-第三问"><a href="#我在哪里-几点了-第三问" class="headerlink" title="我在哪里,几点了-第三问"></a>我在哪里,几点了-第三问</h3><p>date</p>
+<p>tree</p>
+<p>ps </p>
+<p>systemctl service</p>
+<h3 id="出错了，怎么办"><a href="#出错了，怎么办" class="headerlink" title="出错了，怎么办-"></a>出错了，怎么办-</h3><p>日志<br>Application Logs<br>Event Logs<br>Service Logs<br>System Logs</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Shell</tag>
       </tags>
   </entry>
   <entry>
@@ -2221,6 +2356,39 @@ pipeline {
       </categories>
       <tags>
         <tag>Tools</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Spike 回顾</title>
+    <url>/2021/11/19/Spike-%E5%9B%9E%E9%A1%BE/</url>
+    <content><![CDATA[<h3 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h3><p>在当前的项目已经快一年了，当初团队成员的一句要求，给大家换来了定期的Innovation Week。在这一周里可以不用专注于当前手上乱七八糟的各种问题和令人有喜有忧的新功能，而是专注于另一项自己感兴趣的小工具、特定使用场景，也可以是某个疑难杂症。而在一周结束之后，团队成员汇聚一堂做简单的成果分享，然后结束这个过程。所以我们的做法本质上还不是Spike，但相互之间却有很多值得借鉴的地方。</p>
+<p>这样做的好处显而易见，给成员留足了时间去学习新工具、新技术，也可以看作是一种变向的自我学习周期。当然，从管理者角度出发，无疑燃烧了经费成本，但却不一定对项目有明显的效果。偶然之后才意思到这个Spike的过程是个专业术语，前人早就有了较好的模式和实践流程，而自身尽然摸爬滚打野路子出家弄了半年。好在回过头来看，并没有走 太多的错路，弄出一些奇怪的实践。但却是时候回顾这个Spike原本的样子，然后理解它，免得日后张冠李戴。</p>
+<h4 id="什么是Spike"><a href="#什么是Spike" class="headerlink" title="什么是Spike?"></a>什么是Spike?</h4><p>spike这个词的英文翻译是“长钉或者刺穿”，名词或动词。 在攀岩过程中，攀岩的人在没有办法落脚的情况下，选择使用岩钉作为锚点来保护自己，从而避免跌倒或协助后续的辅助攀登。其次，这个词来源于 Extreme Programming (XP)</p>
+<blockquote>
+<p>“A spike solution is a very simple program to explore potential solutions.” </p>
+</blockquote>
+<p>然后来到敏捷开发过程中，由于敏捷中强调不确定性、拥抱变化，那么在日常开发过程中，也会遇到一些任务，比如技术方案或者未知的探索，于是敏捷中的spike是一项技术调研。通过简答的调查、设计、demo来快速验证，这样说起来和POC(prove of concept)是不是很像。</p>
+<p>虽然spike本身没有完成相应的功能，没有交付业务功能，但是为后续可能遇到的难题扫除了障碍，降低了不确定性，从而保障最终业务价值的交付，减少延期的风险。</p>
+<h4 id="为什么要做Spike"><a href="#为什么要做Spike" class="headerlink" title="为什么要做Spike?"></a>为什么要做Spike?</h4><p>上一段落已经提到了，简要概括如下：</p>
+<ul>
+<li>消除未知</li>
+<li>减少风险</li>
+<li>寻求方案</li>
+</ul>
+<h4 id="Spike与故事卡的区别？"><a href="#Spike与故事卡的区别？" class="headerlink" title="Spike与故事卡的区别？"></a>Spike与故事卡的区别？</h4><p>Spike 在某种程度上可以是一种特殊的user story，区别在于用户故事交付产品业务功能，需求目标相对明确；二spike本身不交付产品功能，问题明确，但在实际做的过程中可能有很多的不确定性。</p>
+<h4 id="如何来做Spike"><a href="#如何来做Spike" class="headerlink" title="如何来做Spike?"></a>如何来做Spike?</h4><p>认清现状，明确目标，细化任务，得到产出。</p>
+<p>控制范围时间，不要抛离主要目标。设置Timebox，即使时间结束时没有一个完整的方案，也没有关系，做了多少就在最后环节展示多少，团队在听完之后再来判断是否可以继续。</p>
+<h3 id="回顾一下"><a href="#回顾一下" class="headerlink" title="回顾一下"></a>回顾一下</h3><p>讲述了我所在项目的背景和它的Spike，对比真正的定义上的Spike，其实还是有本质的区别的。我们的做法更偏向于study或者 workshop，并没有去解决实际遇到的问题，而是做自己喜欢的事情。当然后期由于事情变多，不确定的事情也多了，确实做了一些真正的Spike去调研潜在的问题和未知的技术实现。</p>
+<hr>
+<p>Reference:</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Spike_(software_development)" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Spike_(software_development)</a></li>
+<li><a href="http://agiledictionary.com/209/spike/" target="_blank" rel="noopener">http://agiledictionary.com/209/spike/</a></li>
+<li><a href="https://www.leadingagile.com/2016/09/whats-an-agile-spike-who-should-enter-it-how-to-word-it/" target="_blank" rel="noopener">https://www.leadingagile.com/2016/09/whats-an-agile-spike-who-should-enter-it-how-to-word-it/</a></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>Agile</tag>
       </tags>
   </entry>
   <entry>
@@ -2459,6 +2627,19 @@ pipeline {
 ]]></content>
   </entry>
   <entry>
+    <title>adminMongo: a cross platform user interface (GUI) to connect MongoDB</title>
+    <url>/2019/07/15/adminMongo-a-cross-platform-user-interface-GUI-to-connect-MongoDB/</url>
+    <content><![CDATA[<p><strong>Github address</strong>:<br><a href="https://github.com/mrvautin/adminMongo" target="_blank" rel="noopener">https://github.com/mrvautin/adminMongo</a></p>
+<p><strong>dockerhub</strong>:<br><a href="https://hub.docker.com/r/mrvautin/adminmongo" target="_blank" rel="noopener">https://hub.docker.com/r/mrvautin/adminmongo</a></p>
+<p>example:</p>
+<p><img src="/images/adminMongo_image_01.png" alt="adminMongo_image_01"></p>
+<p>Give a name to the connection and use the following connection string: ‘mongodb://root:example@mongo’.</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+  </entry>
+  <entry>
     <title>bash : set command</title>
     <url>/2019/05/07/bash-set-command/</url>
     <content><![CDATA[<h2 id="set-命令教程"><a href="#set-命令教程" class="headerlink" title="set 命令教程"></a>set 命令教程</h2><p><strong>set</strong> 命令用来修改 Shell 环境的运行参数，也就是可以定制环境</p>
@@ -2487,19 +2668,6 @@ pipeline {
         <tag>Shell</tag>
         <tag>Bash</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>adminMongo: a cross platform user interface (GUI) to connect MongoDB</title>
-    <url>/2019/07/15/adminMongo-a-cross-platform-user-interface-GUI-to-connect-MongoDB/</url>
-    <content><![CDATA[<p><strong>Github address</strong>:<br><a href="https://github.com/mrvautin/adminMongo" target="_blank" rel="noopener">https://github.com/mrvautin/adminMongo</a></p>
-<p><strong>dockerhub</strong>:<br><a href="https://hub.docker.com/r/mrvautin/adminmongo" target="_blank" rel="noopener">https://hub.docker.com/r/mrvautin/adminmongo</a></p>
-<p>example:</p>
-<p><img src="/images/adminMongo_image_01.png" alt="adminMongo_image_01"></p>
-<p>Give a name to the connection and use the following connection string: ‘mongodb://root:example@mongo’.</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
   </entry>
   <entry>
     <title>devops 4大支柱</title>
@@ -2566,6 +2734,50 @@ pipeline {
 <li><p>after  (加.dockerignore 之后)</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  api-test-demo git:(master) ✗ docker  build -t api-demo:have-ignore .</span><br><span class="line">Sending build context to Docker daemon  17.33MB</span><br><span class="line">Step 1/3 : FROM openjdk:8-jdk-alpine</span><br><span class="line"> ---&gt; 97bc1352afde</span><br><span class="line">Step 2/3 : ADD build/libs/api-demo-0.0.1-SNAPSHOT.jar /app.jar</span><br><span class="line"> ---&gt; Using cache</span><br><span class="line"> ---&gt; 7f709f7b4381</span><br><span class="line">Step 3/3 : ENTRYPOINT [<span class="string">"java"</span>,<span class="string">"-jar"</span>,<span class="string">"/app.jar"</span>]</span><br><span class="line"> ---&gt; Using cache</span><br><span class="line"> ---&gt; 62d9f7b72b38</span><br><span class="line">Successfully built 62d9f7b72b38</span><br><span class="line">Successfully tagged api-demo:have-ignore</span><br></pre></td></tr></table></figure></li>
 </ul>
+]]></content>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>docker 镜像的扁平化</title>
+    <url>/2019/07/25/docker-%E9%95%9C%E5%83%8F%E7%9A%84%E6%89%81%E5%B9%B3%E5%8C%96/</url>
+    <content><![CDATA[<blockquote>
+<p>Dockerfile 的设计以及它们产出 Docker 镜像的结果便是，最终镜像里包含了 Dockerfile 里每一步的数据状态。在构建镜像的过程中，可能需要复制私密信息来确保构建工作可以顺利进行。这些所谓的私密信息可能是 ssH 密钥、证书或者密码文件等。在提交镜像前删除这些私密信息的话可能不会提供任何实质性的保护，因为它们将出现在最终镜像的更高分层里，而恶意用户则可以轻松地从镜像中提取它们。解决这一问题的其中一个办法便是将得到的镜像扁平化。</p>
+</blockquote>
+<p><strong>问题</strong><br>想要从镜像的分层历史中移除私密信息。</p>
+<p><strong>解决方案</strong><br>基于该镜像创建一个容器，将它导出再导人，然后给它打上最初镜像田的标签。</p>
+<p><strong>讨论</strong><br>为了演示这种做法的可用场景，让我们在一个新目录里创建一个简单的 Dockerfile ，该目录下藏着一个大秘密。运行 mkdir secrets “ cd Secrets ，然后在该目录里创建一个包含如下内容的 Dockerfile :</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">FROM busybox</span><br><span class="line">RUN <span class="built_in">echo</span> <span class="string">"My Big secret"</span> &gt;&gt; /tmp/secret_key</span><br><span class="line">RUN cat /tmp/secret_key</span><br><span class="line">RUn rm /tmp/secret_key</span><br></pre></td></tr></table></figure>
+<p>运行  <code>docker build -t mysecret .</code><br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   docker build -t mysecret .</span><br><span class="line">Sending build context to Docker daemon  2.048kB</span><br><span class="line">Step 1/4 : FROM busybox</span><br><span class="line"> ---&gt; 8c811b4aec35</span><br><span class="line">Step 2/4 : RUN <span class="built_in">echo</span> <span class="string">"My Big secret"</span> &gt;&gt; /tmp/secret_key</span><br><span class="line"> ---&gt; Running <span class="keyword">in</span> 2b6f94ac0148</span><br><span class="line">Removing intermediate container 2b6f94ac0148</span><br><span class="line"> ---&gt; a9ecbe44119c</span><br><span class="line">Step 3/4 : RUN cat /tmp/secret_key</span><br><span class="line"> ---&gt; Running <span class="keyword">in</span> b515370b1b88</span><br><span class="line">My Big secret</span><br><span class="line">Removing intermediate container b515370b1b88</span><br><span class="line"> ---&gt; 8a890a1ace7c</span><br><span class="line">Step 4/4 : RUn rm /tmp/secret_key</span><br><span class="line"> ---&gt; Running <span class="keyword">in</span> c9910e46efc2</span><br><span class="line">Removing intermediate container c9910e46efc2</span><br><span class="line"> ---&gt; 6010dbf70359</span><br><span class="line">Successfully built 6010dbf70359</span><br><span class="line">Successfully tagged mysecret:latest</span><br></pre></td></tr></table></figure></p>
+<p>可以使用docker history 命令检查得到的Docker镜像的分层.如果该镜像上传到公有仓库，被他人下载，在没有原始 Dockerfile 到情况下，可以轻松获取私密信息。<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   docker <span class="built_in">history</span> mysecret:latest</span><br><span class="line">IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT</span><br><span class="line">6010dbf70359        22 seconds ago      /bin/sh -c rm /tmp/secret_key                   0B</span><br><span class="line">8a890a1ace7c        23 seconds ago      /bin/sh -c cat /tmp/secret_key                  0B</span><br><span class="line">a9ecbe44119c        25 seconds ago      /bin/sh -c <span class="built_in">echo</span> <span class="string">"My Big secret"</span> &gt;&gt; /tmp/secr…   14B</span><br><span class="line">8c811b4aec35        14 months ago       /bin/sh -c <span class="comment">#(nop)  CMD ["sh"]                   0B</span></span><br><span class="line">&lt;missing&gt;           14 months ago       /bin/sh -c <span class="comment">#(nop) ADD file:5f0439d8328ab58c0…   1.15MB</span></span><br></pre></td></tr></table></figure></p>
+<h5 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h5><p>将该镜像导出为一个简单运行的容器，然后再重新导入并给得到的镜像打上标签</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   docker run -d mysecret /bin/<span class="literal">true</span></span><br><span class="line">02cbd0f59623472acc4571c1b654cdca40730d036d7a96a7dbaacaaf264177aa</span><br><span class="line">➜   docker <span class="built_in">export</span> 02cbd0f5962 | docker import - mysecret</span><br><span class="line">sha256:080b122e43cb5d46efec5aa0b6abd0570e1abc52b3293f77b091bf22722c1168</span><br><span class="line">➜   docker <span class="built_in">history</span> mysecret</span><br><span class="line">IMAGE               CREATED             CREATED BY          SIZE                COMMENT</span><br><span class="line">080b122e43cb        9 seconds ago                           1.15MB              Imported from -</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>docker 镜像逆向工程得到Dockerfile</title>
+    <url>/2019/07/25/docker-%E9%95%9C%E5%83%8F%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E5%BE%97%E5%88%B0Dockerfile/</url>
+    <content><![CDATA[<p>可能有时候你得到了一个从Dockerfile创建的镜像文件，但是原始的Dockerfile丢失了。你想从这个镜像文件的构建历史记录中，逆向分析出原始的Dockerfile而省去寻找此文件的漫长过程。</p>
+<p>虽然不可能在所有的情况下将一个Docker镜像完全得进行逆向工程，但如果此镜像是通过Dockerfile构建的，很有可能分析出此镜像是通过了什么命令得到的。我们以下面的Dockerfile为例，构建一个镜像，然后运行一个简单的shell脚本来演示如何分析镜像的构建历史记录，最后来看一个简洁的容器化的解决方案，来得出原始的Dockerfile。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">FROM busybox</span><br><span class="line">MAINTAINER ian.miell@gmail.com</span><br><span class="line">ENV myenvname myenvvalue</span><br><span class="line">LABEL mylabelname mylabelvalue</span><br><span class="line">WORKDIR /opt</span><br><span class="line">RUN mkdir -p copied</span><br><span class="line">COPY Dockerfile copied/Dockerfile</span><br><span class="line">RUN mkdir -p added</span><br><span class="line">ADD Dockerfile added/Dockerfile</span><br><span class="line">RUN touch /tmp/afile</span><br><span class="line">ADD Dockerfile /</span><br><span class="line">EXPOSE 80</span><br><span class="line">VOLUME /data</span><br><span class="line">ONBUILD touch /tmp/built</span><br><span class="line">ENTRYPOINT /bin/bash</span><br><span class="line">CMD -r</span><br></pre></td></tr></table></figure>
+<p>首先要构建这个示例镜像，镜像命名为reverseme：</p>
+<p><code>$ docker build -t reverseme .</code></p>
+<h5 id="SHELL解决方案"><a href="#SHELL解决方案" class="headerlink" title="SHELL解决方案"></a>SHELL解决方案</h5><p>这个基于shell的实现主要在这里用来演示逆向工程的思路与方法，它与下面的容器化解决方案相比还不是十分完整。此方案使用了docker inspect命令来提取出镜像的metadata。</p>
+<p>此shell脚本中使用了jq程序，一个可以查询和操作JSON数据的工具。为了运行此脚本，需要安装jq程序</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">history</span> reverseme | \</span><br><span class="line">awk <span class="string">'&#123;print $1&#125;'</span> | \</span><br><span class="line">grep -v IMAGE | grep -v missing | \</span><br><span class="line">tac | \</span><br><span class="line">sed <span class="string">"s/\(.*\)/docker inspect \1 | \</span></span><br><span class="line"><span class="string">jq -r \'.[0].ContainerConfig.Cmd[2] | tostring\'/"</span> | \</span><br><span class="line">sh | \</span><br><span class="line">sed <span class="string">'s/^#(nop) //'</span></span><br></pre></td></tr></table></figure>
+<p>上述代码第1行得到了组成指定镜像的层；第2行从docker history输出得到了各层的image ID；第3行排除标题行（带有“IMAGE”的那一行）及IMAGE的 ID为missing的那一行；第4行将镜像ID倒序输出，使其符合Dockerfile的顺序（“tac”是“cat”的倒序）；第5、6行使用前面命令输出的image ID构建一个docker inspect命令，它输出Docker layer metadata。而此metadata通过管道输入到jq命令中，jq命令过滤metadata，获取当时构建此镜像时Dockerfile中使用的命令。第7行运行前面通过sed构建的整个docker inspect管道链。第8行剥离不能更改文件系统的指令——那些以“#(nop)”作为前缀的指令。<br>最后得到的输出结果类似于如下这样：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">.....</span><br><span class="line">CMD [<span class="string">"sh"</span>]</span><br><span class="line">MAINTAINER ian.miell@gmail.com</span><br><span class="line">ENV myenvname=myenvvalue</span><br><span class="line">LABEL mylabelname=mylabelvalue</span><br><span class="line">WORKDIR /opt</span><br><span class="line">mkdir -p copied</span><br><span class="line">COPY file:4d91fcee48e4591e5fdc4b8963892b7d9582524f85f84b33eac5af164f928213 <span class="keyword">in</span> copied/Dockerfile</span><br><span class="line">mkdir -p added</span><br><span class="line">ADD file:4d91fcee48e4591e5fdc4b8963892b7d9582524f85f84b33eac5af164f928213 <span class="keyword">in</span> added/Dockerfile</span><br><span class="line">touch /tmp/afile</span><br><span class="line">ADD file:4d91fcee48e4591e5fdc4b8963892b7d9582524f85f84b33eac5af164f928213 <span class="keyword">in</span> /</span><br><span class="line">EXPOSE 80/tcp</span><br><span class="line">VOLUME [/data]</span><br><span class="line">ONBUILD touch /tmp/built</span><br><span class="line">ENTRYPOINT [<span class="string">"/bin/sh"</span> <span class="string">"-c"</span> <span class="string">"/bin/bash"</span>]</span><br><span class="line">CMD [<span class="string">"/bin/sh"</span> <span class="string">"-c"</span> <span class="string">"-r"</span>]</span><br></pre></td></tr></table></figure></p>
+<p>上面的输出与初始的Dockerfile有些类似了，但还有些区别。FROM指令被替换成了上述CMD指令，丢失了使用的基础镜像BusyBox的信息。ADD和COPY命令没有使用原本的文件名而是使用的校验和（checksum），文件被拷贝到的位置保存了下来。最后，CMD和ENTRYPOINT命令变成了方括号的数组形式。<br>由于缺少构建上下文，使得ADD和COPY命令不能使用，上面逆向工程恢复的Dockerfile并不能不加修改就运行。你需要找出什么文件被添加到构建上下文中。对于前面那个例子来说，你可以启动镜像，进入容器的/opt/copied目录和/opt/added目录，将文件提取出来加入到你的新的构建上下文中。</p>
+<h5 id="容器解决方案"><a href="#容器解决方案" class="headerlink" title="容器解决方案"></a>容器解决方案</h5><p>使用前面的方案得到你感兴趣镜像的信息，是一个有用并且具有指导意义的方法，然而有更加干净的方法来得到同样的结果——使用centurylink/dockerfile-from-image镜像，同时这种方法更容易维护。而且，此方案提供了与原始Dockerfile类似的FROM命令的信息（如果它可以提供的话）：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker run -v /var/run/docker.sock:/var/run/docker.sock \</span><br><span class="line">&gt;   dockerinpractice/dockerfile-from-image reverseme</span><br><span class="line">FROM busybox:latest</span><br><span class="line">MAINTAINER ian.miell@gmail.com</span><br><span class="line">ENV myenvname=myenvvalue</span><br><span class="line">LABEL mylabelname=mylabelvalue</span><br><span class="line">WORKDIR /opt</span><br><span class="line">RUN mkdir -p copied</span><br><span class="line">COPY file:4d91fcee48e4591e5fdc4b8963892b7d9582524f85f84b33eac5af164f928213 <span class="keyword">in</span> copied/Dockerfile</span><br><span class="line">RUN mkdir -p added</span><br><span class="line">ADD file:4d91fcee48e4591e5fdc4b8963892b7d9582524f85f84b33eac5af164f928213 <span class="keyword">in</span> added/Dockerfile</span><br><span class="line">RUN touch /tmp/afile</span><br><span class="line">ADD file:4d91fcee48e4591e5fdc4b8963892b7d9582524f85f84b33eac5af164f928213 <span class="keyword">in</span> /</span><br><span class="line">EXPOSE 80/tcp</span><br><span class="line">VOLUME [/data]</span><br><span class="line">ONBUILD touch /tmp/built</span><br><span class="line">ENTRYPOINT [<span class="string">"/bin/sh"</span> <span class="string">"-c"</span> <span class="string">"/bin/bash"</span>]</span><br><span class="line">CMD [<span class="string">"/bin/sh"</span> <span class="string">"-c"</span> <span class="string">"-r"</span>]</span><br></pre></td></tr></table></figure>
+<p>此技术只适用于基于Dockerfile创建的镜像——如果镜像是通过手工创建然后commit的，镜像间的区别不能体现在镜像的metadata里。</p>
+<p><strong>然而发现有bug</strong>,可参考 <a href="https://github.com/lukapeschke/dockerfile-from-image" target="_blank" rel="noopener">https://github.com/lukapeschke/dockerfile-from-image</a>, 只支持用 image_id ，不能用 image name<br>主要使用方法如下：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">## build the image</span></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/lukapeschke/dockerfile-from-image.git</span><br><span class="line"><span class="built_in">cd</span> dockerfile-from-image</span><br><span class="line">docker build -t lukapeschke/dfa .</span><br><span class="line"></span><br><span class="line"><span class="comment">## To get a Dockerfile from an existing image:</span></span><br><span class="line">docker run --rm -v <span class="string">'/var/run/docker.sock:/var/run/docker.sock'</span> lukapeschke/dfa &lt;IMAGE_ID&gt;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>出自 《Docker IN PRACTICE》一书</p>
+</blockquote>
+<p><strong>More Ref:</strong><br><a href="https://andyyoung01.github.io/2016/08/23/%E4%BB%8E%E9%95%9C%E5%83%8F%E5%8E%86%E5%8F%B2%E8%AE%B0%E5%BD%95%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E5%87%BADockerfile/" target="_blank" rel="noopener">https://andyyoung01.github.io/2016/08/23/%E4%BB%8E%E9%95%9C%E5%83%8F%E5%8E%86%E5%8F%B2%E8%AE%B0%E5%BD%95%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E5%87%BADockerfile/</a></p>
 ]]></content>
       <tags>
         <tag>Docker</tag>
@@ -2647,47 +2859,28 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>docker 镜像的扁平化</title>
-    <url>/2019/07/25/docker-%E9%95%9C%E5%83%8F%E7%9A%84%E6%89%81%E5%B9%B3%E5%8C%96/</url>
-    <content><![CDATA[<blockquote>
-<p>Dockerfile 的设计以及它们产出 Docker 镜像的结果便是，最终镜像里包含了 Dockerfile 里每一步的数据状态。在构建镜像的过程中，可能需要复制私密信息来确保构建工作可以顺利进行。这些所谓的私密信息可能是 ssH 密钥、证书或者密码文件等。在提交镜像前删除这些私密信息的话可能不会提供任何实质性的保护，因为它们将出现在最终镜像的更高分层里，而恶意用户则可以轻松地从镜像中提取它们。解决这一问题的其中一个办法便是将得到的镜像扁平化。</p>
-</blockquote>
-<p><strong>问题</strong><br>想要从镜像的分层历史中移除私密信息。</p>
-<p><strong>解决方案</strong><br>基于该镜像创建一个容器，将它导出再导人，然后给它打上最初镜像田的标签。</p>
-<p><strong>讨论</strong><br>为了演示这种做法的可用场景，让我们在一个新目录里创建一个简单的 Dockerfile ，该目录下藏着一个大秘密。运行 mkdir secrets “ cd Secrets ，然后在该目录里创建一个包含如下内容的 Dockerfile :</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">FROM busybox</span><br><span class="line">RUN <span class="built_in">echo</span> <span class="string">"My Big secret"</span> &gt;&gt; /tmp/secret_key</span><br><span class="line">RUN cat /tmp/secret_key</span><br><span class="line">RUn rm /tmp/secret_key</span><br></pre></td></tr></table></figure>
-<p>运行  <code>docker build -t mysecret .</code><br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   docker build -t mysecret .</span><br><span class="line">Sending build context to Docker daemon  2.048kB</span><br><span class="line">Step 1/4 : FROM busybox</span><br><span class="line"> ---&gt; 8c811b4aec35</span><br><span class="line">Step 2/4 : RUN <span class="built_in">echo</span> <span class="string">"My Big secret"</span> &gt;&gt; /tmp/secret_key</span><br><span class="line"> ---&gt; Running <span class="keyword">in</span> 2b6f94ac0148</span><br><span class="line">Removing intermediate container 2b6f94ac0148</span><br><span class="line"> ---&gt; a9ecbe44119c</span><br><span class="line">Step 3/4 : RUN cat /tmp/secret_key</span><br><span class="line"> ---&gt; Running <span class="keyword">in</span> b515370b1b88</span><br><span class="line">My Big secret</span><br><span class="line">Removing intermediate container b515370b1b88</span><br><span class="line"> ---&gt; 8a890a1ace7c</span><br><span class="line">Step 4/4 : RUn rm /tmp/secret_key</span><br><span class="line"> ---&gt; Running <span class="keyword">in</span> c9910e46efc2</span><br><span class="line">Removing intermediate container c9910e46efc2</span><br><span class="line"> ---&gt; 6010dbf70359</span><br><span class="line">Successfully built 6010dbf70359</span><br><span class="line">Successfully tagged mysecret:latest</span><br></pre></td></tr></table></figure></p>
-<p>可以使用docker history 命令检查得到的Docker镜像的分层.如果该镜像上传到公有仓库，被他人下载，在没有原始 Dockerfile 到情况下，可以轻松获取私密信息。<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   docker <span class="built_in">history</span> mysecret:latest</span><br><span class="line">IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT</span><br><span class="line">6010dbf70359        22 seconds ago      /bin/sh -c rm /tmp/secret_key                   0B</span><br><span class="line">8a890a1ace7c        23 seconds ago      /bin/sh -c cat /tmp/secret_key                  0B</span><br><span class="line">a9ecbe44119c        25 seconds ago      /bin/sh -c <span class="built_in">echo</span> <span class="string">"My Big secret"</span> &gt;&gt; /tmp/secr…   14B</span><br><span class="line">8c811b4aec35        14 months ago       /bin/sh -c <span class="comment">#(nop)  CMD ["sh"]                   0B</span></span><br><span class="line">&lt;missing&gt;           14 months ago       /bin/sh -c <span class="comment">#(nop) ADD file:5f0439d8328ab58c0…   1.15MB</span></span><br></pre></td></tr></table></figure></p>
-<h5 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h5><p>将该镜像导出为一个简单运行的容器，然后再重新导入并给得到的镜像打上标签</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   docker run -d mysecret /bin/<span class="literal">true</span></span><br><span class="line">02cbd0f59623472acc4571c1b654cdca40730d036d7a96a7dbaacaaf264177aa</span><br><span class="line">➜   docker <span class="built_in">export</span> 02cbd0f5962 | docker import - mysecret</span><br><span class="line">sha256:080b122e43cb5d46efec5aa0b6abd0570e1abc52b3293f77b091bf22722c1168</span><br><span class="line">➜   docker <span class="built_in">history</span> mysecret</span><br><span class="line">IMAGE               CREATED             CREATED BY          SIZE                COMMENT</span><br><span class="line">080b122e43cb        9 seconds ago                           1.15MB              Imported from -</span><br></pre></td></tr></table></figure>]]></content>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>docker 镜像逆向工程得到Dockerfile</title>
-    <url>/2019/07/25/docker-%E9%95%9C%E5%83%8F%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E5%BE%97%E5%88%B0Dockerfile/</url>
-    <content><![CDATA[<p>可能有时候你得到了一个从Dockerfile创建的镜像文件，但是原始的Dockerfile丢失了。你想从这个镜像文件的构建历史记录中，逆向分析出原始的Dockerfile而省去寻找此文件的漫长过程。</p>
-<p>虽然不可能在所有的情况下将一个Docker镜像完全得进行逆向工程，但如果此镜像是通过Dockerfile构建的，很有可能分析出此镜像是通过了什么命令得到的。我们以下面的Dockerfile为例，构建一个镜像，然后运行一个简单的shell脚本来演示如何分析镜像的构建历史记录，最后来看一个简洁的容器化的解决方案，来得出原始的Dockerfile。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">FROM busybox</span><br><span class="line">MAINTAINER ian.miell@gmail.com</span><br><span class="line">ENV myenvname myenvvalue</span><br><span class="line">LABEL mylabelname mylabelvalue</span><br><span class="line">WORKDIR /opt</span><br><span class="line">RUN mkdir -p copied</span><br><span class="line">COPY Dockerfile copied/Dockerfile</span><br><span class="line">RUN mkdir -p added</span><br><span class="line">ADD Dockerfile added/Dockerfile</span><br><span class="line">RUN touch /tmp/afile</span><br><span class="line">ADD Dockerfile /</span><br><span class="line">EXPOSE 80</span><br><span class="line">VOLUME /data</span><br><span class="line">ONBUILD touch /tmp/built</span><br><span class="line">ENTRYPOINT /bin/bash</span><br><span class="line">CMD -r</span><br></pre></td></tr></table></figure>
-<p>首先要构建这个示例镜像，镜像命名为reverseme：</p>
-<p><code>$ docker build -t reverseme .</code></p>
-<h5 id="SHELL解决方案"><a href="#SHELL解决方案" class="headerlink" title="SHELL解决方案"></a>SHELL解决方案</h5><p>这个基于shell的实现主要在这里用来演示逆向工程的思路与方法，它与下面的容器化解决方案相比还不是十分完整。此方案使用了docker inspect命令来提取出镜像的metadata。</p>
-<p>此shell脚本中使用了jq程序，一个可以查询和操作JSON数据的工具。为了运行此脚本，需要安装jq程序</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">history</span> reverseme | \</span><br><span class="line">awk <span class="string">'&#123;print $1&#125;'</span> | \</span><br><span class="line">grep -v IMAGE | grep -v missing | \</span><br><span class="line">tac | \</span><br><span class="line">sed <span class="string">"s/\(.*\)/docker inspect \1 | \</span></span><br><span class="line"><span class="string">jq -r \'.[0].ContainerConfig.Cmd[2] | tostring\'/"</span> | \</span><br><span class="line">sh | \</span><br><span class="line">sed <span class="string">'s/^#(nop) //'</span></span><br></pre></td></tr></table></figure>
-<p>上述代码第1行得到了组成指定镜像的层；第2行从docker history输出得到了各层的image ID；第3行排除标题行（带有“IMAGE”的那一行）及IMAGE的 ID为missing的那一行；第4行将镜像ID倒序输出，使其符合Dockerfile的顺序（“tac”是“cat”的倒序）；第5、6行使用前面命令输出的image ID构建一个docker inspect命令，它输出Docker layer metadata。而此metadata通过管道输入到jq命令中，jq命令过滤metadata，获取当时构建此镜像时Dockerfile中使用的命令。第7行运行前面通过sed构建的整个docker inspect管道链。第8行剥离不能更改文件系统的指令——那些以“#(nop)”作为前缀的指令。<br>最后得到的输出结果类似于如下这样：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">.....</span><br><span class="line">CMD [<span class="string">"sh"</span>]</span><br><span class="line">MAINTAINER ian.miell@gmail.com</span><br><span class="line">ENV myenvname=myenvvalue</span><br><span class="line">LABEL mylabelname=mylabelvalue</span><br><span class="line">WORKDIR /opt</span><br><span class="line">mkdir -p copied</span><br><span class="line">COPY file:4d91fcee48e4591e5fdc4b8963892b7d9582524f85f84b33eac5af164f928213 <span class="keyword">in</span> copied/Dockerfile</span><br><span class="line">mkdir -p added</span><br><span class="line">ADD file:4d91fcee48e4591e5fdc4b8963892b7d9582524f85f84b33eac5af164f928213 <span class="keyword">in</span> added/Dockerfile</span><br><span class="line">touch /tmp/afile</span><br><span class="line">ADD file:4d91fcee48e4591e5fdc4b8963892b7d9582524f85f84b33eac5af164f928213 <span class="keyword">in</span> /</span><br><span class="line">EXPOSE 80/tcp</span><br><span class="line">VOLUME [/data]</span><br><span class="line">ONBUILD touch /tmp/built</span><br><span class="line">ENTRYPOINT [<span class="string">"/bin/sh"</span> <span class="string">"-c"</span> <span class="string">"/bin/bash"</span>]</span><br><span class="line">CMD [<span class="string">"/bin/sh"</span> <span class="string">"-c"</span> <span class="string">"-r"</span>]</span><br></pre></td></tr></table></figure></p>
-<p>上面的输出与初始的Dockerfile有些类似了，但还有些区别。FROM指令被替换成了上述CMD指令，丢失了使用的基础镜像BusyBox的信息。ADD和COPY命令没有使用原本的文件名而是使用的校验和（checksum），文件被拷贝到的位置保存了下来。最后，CMD和ENTRYPOINT命令变成了方括号的数组形式。<br>由于缺少构建上下文，使得ADD和COPY命令不能使用，上面逆向工程恢复的Dockerfile并不能不加修改就运行。你需要找出什么文件被添加到构建上下文中。对于前面那个例子来说，你可以启动镜像，进入容器的/opt/copied目录和/opt/added目录，将文件提取出来加入到你的新的构建上下文中。</p>
-<h5 id="容器解决方案"><a href="#容器解决方案" class="headerlink" title="容器解决方案"></a>容器解决方案</h5><p>使用前面的方案得到你感兴趣镜像的信息，是一个有用并且具有指导意义的方法，然而有更加干净的方法来得到同样的结果——使用centurylink/dockerfile-from-image镜像，同时这种方法更容易维护。而且，此方案提供了与原始Dockerfile类似的FROM命令的信息（如果它可以提供的话）：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker run -v /var/run/docker.sock:/var/run/docker.sock \</span><br><span class="line">&gt;   dockerinpractice/dockerfile-from-image reverseme</span><br><span class="line">FROM busybox:latest</span><br><span class="line">MAINTAINER ian.miell@gmail.com</span><br><span class="line">ENV myenvname=myenvvalue</span><br><span class="line">LABEL mylabelname=mylabelvalue</span><br><span class="line">WORKDIR /opt</span><br><span class="line">RUN mkdir -p copied</span><br><span class="line">COPY file:4d91fcee48e4591e5fdc4b8963892b7d9582524f85f84b33eac5af164f928213 <span class="keyword">in</span> copied/Dockerfile</span><br><span class="line">RUN mkdir -p added</span><br><span class="line">ADD file:4d91fcee48e4591e5fdc4b8963892b7d9582524f85f84b33eac5af164f928213 <span class="keyword">in</span> added/Dockerfile</span><br><span class="line">RUN touch /tmp/afile</span><br><span class="line">ADD file:4d91fcee48e4591e5fdc4b8963892b7d9582524f85f84b33eac5af164f928213 <span class="keyword">in</span> /</span><br><span class="line">EXPOSE 80/tcp</span><br><span class="line">VOLUME [/data]</span><br><span class="line">ONBUILD touch /tmp/built</span><br><span class="line">ENTRYPOINT [<span class="string">"/bin/sh"</span> <span class="string">"-c"</span> <span class="string">"/bin/bash"</span>]</span><br><span class="line">CMD [<span class="string">"/bin/sh"</span> <span class="string">"-c"</span> <span class="string">"-r"</span>]</span><br></pre></td></tr></table></figure>
-<p>此技术只适用于基于Dockerfile创建的镜像——如果镜像是通过手工创建然后commit的，镜像间的区别不能体现在镜像的metadata里。</p>
-<p><strong>然而发现有bug</strong>,可参考 <a href="https://github.com/lukapeschke/dockerfile-from-image" target="_blank" rel="noopener">https://github.com/lukapeschke/dockerfile-from-image</a>, 只支持用 image_id ，不能用 image name<br>主要使用方法如下：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">## build the image</span></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/lukapeschke/dockerfile-from-image.git</span><br><span class="line"><span class="built_in">cd</span> dockerfile-from-image</span><br><span class="line">docker build -t lukapeschke/dfa .</span><br><span class="line"></span><br><span class="line"><span class="comment">## To get a Dockerfile from an existing image:</span></span><br><span class="line">docker run --rm -v <span class="string">'/var/run/docker.sock:/var/run/docker.sock'</span> lukapeschke/dfa &lt;IMAGE_ID&gt;</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>出自 《Docker IN PRACTICE》一书</p>
-</blockquote>
-<p><strong>More Ref:</strong><br><a href="https://andyyoung01.github.io/2016/08/23/%E4%BB%8E%E9%95%9C%E5%83%8F%E5%8E%86%E5%8F%B2%E8%AE%B0%E5%BD%95%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E5%87%BADockerfile/" target="_blank" rel="noopener">https://andyyoung01.github.io/2016/08/23/%E4%BB%8E%E9%95%9C%E5%83%8F%E5%8E%86%E5%8F%B2%E8%AE%B0%E5%BD%95%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E5%87%BADockerfile/</a></p>
+    <title>highlight code on slide/ppt</title>
+    <url>/2019/08/22/highlight-code-on-slide-ppt/</url>
+    <content><![CDATA[<p><strong>only for mac</strong></p>
+<p><strong>问题</strong><br>写ppt的时候代码如何呈现，能够看起来比较明显，更好是根据不同语言高亮</p>
+<p><strong>解决方案</strong><br>highlight</p>
+<ol>
+<li><p>Install<br><code>brew install highlight</code></p>
+</li>
+<li><p>Use<br><code>hightlight -l -O rtf your_code.sh | pbcopy</code></p>
+</li>
+</ol>
+<ul>
+<li>hightlight –help 可以查看文档，</li>
+<li>-l 显示行号，-O rtf为格式化输出 rtf 格式文本</li>
+<li>pbcopy 是内置剪贴板</li>
+</ul>
+<p>到PPT里粘贴就行了，Keynote 和 PowerPoint 都可以使用.<br>example:<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  ~ cat output.sh</span><br><span class="line">docker <span class="built_in">exec</span> -it -u root tw-jenkins bash</span><br><span class="line"></span><br><span class="line">chmod 777 /var/run/docker.sock</span><br><span class="line">apt-get update &amp;&amp; \</span><br><span class="line">apt-get -y install apt-transport-https \</span><br><span class="line">     ca-certificates \</span><br><span class="line">     curl \</span><br><span class="line">     gnupg2 \</span><br><span class="line">     software-properties-common &amp;&amp; \</span><br><span class="line">curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; <span class="built_in">echo</span> <span class="string">"<span class="variable">$ID</span>"</span>)/gpg &gt; /tmp/dkey; apt-key add /tmp/dkey &amp;&amp; \</span><br><span class="line">add-apt-repository \</span><br><span class="line">    <span class="string">"deb [arch=amd64] https://download.docker.com/linux/<span class="variable">$(. /etc/os-release; echo     "$ID")</span> \</span></span><br><span class="line"><span class="string">    <span class="variable">$(lsb_release -cs)</span> \</span></span><br><span class="line"><span class="string">stable"</span> &amp;&amp; \</span><br><span class="line">apt-get update &amp;&amp; \</span><br><span class="line">apt-get -y install docker-ce</span><br></pre></td></tr></table></figure></p>
+<p><code>➜  ~ highlight -l -O rtf output.sh | pbcopy</code></p>
+<p><img src="/images/highlight_demo01.png" alt="highlight_demo01.png"></p>
 ]]></content>
       <tags>
-        <tag>Docker</tag>
+        <tag>PPT</tag>
       </tags>
   </entry>
   <entry>
@@ -2726,31 +2919,6 @@ pipeline {
       </categories>
       <tags>
         <tag>Shell</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>highlight code on slide/ppt</title>
-    <url>/2019/08/22/highlight-code-on-slide-ppt/</url>
-    <content><![CDATA[<p><strong>only for mac</strong></p>
-<p><strong>问题</strong><br>写ppt的时候代码如何呈现，能够看起来比较明显，更好是根据不同语言高亮</p>
-<p><strong>解决方案</strong><br>highlight</p>
-<ol>
-<li><p>Install<br><code>brew install highlight</code></p>
-</li>
-<li><p>Use<br><code>hightlight -l -O rtf your_code.sh | pbcopy</code></p>
-</li>
-</ol>
-<ul>
-<li>hightlight –help 可以查看文档，</li>
-<li>-l 显示行号，-O rtf为格式化输出 rtf 格式文本</li>
-<li>pbcopy 是内置剪贴板</li>
-</ul>
-<p>到PPT里粘贴就行了，Keynote 和 PowerPoint 都可以使用.<br>example:<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  ~ cat output.sh</span><br><span class="line">docker <span class="built_in">exec</span> -it -u root tw-jenkins bash</span><br><span class="line"></span><br><span class="line">chmod 777 /var/run/docker.sock</span><br><span class="line">apt-get update &amp;&amp; \</span><br><span class="line">apt-get -y install apt-transport-https \</span><br><span class="line">     ca-certificates \</span><br><span class="line">     curl \</span><br><span class="line">     gnupg2 \</span><br><span class="line">     software-properties-common &amp;&amp; \</span><br><span class="line">curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; <span class="built_in">echo</span> <span class="string">"<span class="variable">$ID</span>"</span>)/gpg &gt; /tmp/dkey; apt-key add /tmp/dkey &amp;&amp; \</span><br><span class="line">add-apt-repository \</span><br><span class="line">    <span class="string">"deb [arch=amd64] https://download.docker.com/linux/<span class="variable">$(. /etc/os-release; echo     "$ID")</span> \</span></span><br><span class="line"><span class="string">    <span class="variable">$(lsb_release -cs)</span> \</span></span><br><span class="line"><span class="string">stable"</span> &amp;&amp; \</span><br><span class="line">apt-get update &amp;&amp; \</span><br><span class="line">apt-get -y install docker-ce</span><br></pre></td></tr></table></figure></p>
-<p><code>➜  ~ highlight -l -O rtf output.sh | pbcopy</code></p>
-<p><img src="/images/highlight_demo01.png" alt="highlight_demo01.png"></p>
-]]></content>
-      <tags>
-        <tag>PPT</tag>
       </tags>
   </entry>
   <entry>
@@ -2796,6 +2964,30 @@ pipeline {
 ]]></content>
       <tags>
         <tag>k8s</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>mktemp command</title>
+    <url>/2019/05/07/mktemp-command/</url>
+    <content><![CDATA[<p>最适合存储临时数据的位置是/tmp, <strong>mktemp</strong> 命令可以为临时文件或目录创建唯一的名字</p>
+<p>Create a temporary file or directory.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mktemp</span><br><span class="line"></span><br><span class="line">Create a temporary file or directory.</span><br><span class="line"></span><br><span class="line">- Create an empty temporary file and return the absolute path to it:</span><br><span class="line">    mktemp</span><br><span class="line"></span><br><span class="line">- Create a temporary directory and return the absolute path to it:</span><br><span class="line">    mktemp -d</span><br><span class="line"></span><br><span class="line">- Create a temporary file with a specified suffix:</span><br><span class="line">    mktemp --suffix &quot;.txt&quot;</span><br></pre></td></tr></table></figure>
+<h4 id="1-create-temporary-file-创建临时目录"><a href="#1-create-temporary-file-创建临时目录" class="headerlink" title="1.create temporary file (创建临时目录)"></a>1.create temporary file (创建临时目录)</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$filename</span>=`mktemp`</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$filename</span></span><br><span class="line">/tmp/tmp.8xefliegnD9</span><br></pre></td></tr></table></figure>
+<h4 id="2-create-temporary-directory-创建临时目录"><a href="#2-create-temporary-directory-创建临时目录" class="headerlink" title="2. create temporary directory (创建临时目录)"></a>2. create temporary directory (创建临时目录)</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dirname=`mktemp -d`</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$dirname</span></span><br><span class="line">tmp.NJ8dhf6wk</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>If you just want to generate a filename and don’t want to create the actual file or directory, you can(如果仅仅是想生成文件名，不希望创建实际的文件或目录，可以):<br><code>mktemp -u</code></p>
+</li>
+<li><p>Create a temporary filename based on the tempplate(基于模板创建临时文件名)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  qr_blog mktemp study.XXX</span><br><span class="line">study.UWT</span><br><span class="line">➜  qr_blog mktemp study.XXX</span><br><span class="line">study.Usm</span><br><span class="line">➜  qr_blog mktemp study.XXX</span><br><span class="line">study.M6a</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>Mac OS 与linux用法略有区别，请视情况使用</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Shell</tag>
       </tags>
   </entry>
   <entry>
@@ -2857,30 +3049,6 @@ pipeline {
       <tags>
         <tag>Tools</tag>
         <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>mktemp command</title>
-    <url>/2019/05/07/mktemp-command/</url>
-    <content><![CDATA[<p>最适合存储临时数据的位置是/tmp, <strong>mktemp</strong> 命令可以为临时文件或目录创建唯一的名字</p>
-<p>Create a temporary file or directory.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mktemp</span><br><span class="line"></span><br><span class="line">Create a temporary file or directory.</span><br><span class="line"></span><br><span class="line">- Create an empty temporary file and return the absolute path to it:</span><br><span class="line">    mktemp</span><br><span class="line"></span><br><span class="line">- Create a temporary directory and return the absolute path to it:</span><br><span class="line">    mktemp -d</span><br><span class="line"></span><br><span class="line">- Create a temporary file with a specified suffix:</span><br><span class="line">    mktemp --suffix &quot;.txt&quot;</span><br></pre></td></tr></table></figure>
-<h4 id="1-create-temporary-file-创建临时目录"><a href="#1-create-temporary-file-创建临时目录" class="headerlink" title="1.create temporary file (创建临时目录)"></a>1.create temporary file (创建临时目录)</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$filename</span>=`mktemp`</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$filename</span></span><br><span class="line">/tmp/tmp.8xefliegnD9</span><br></pre></td></tr></table></figure>
-<h4 id="2-create-temporary-directory-创建临时目录"><a href="#2-create-temporary-directory-创建临时目录" class="headerlink" title="2. create temporary directory (创建临时目录)"></a>2. create temporary directory (创建临时目录)</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dirname=`mktemp -d`</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$dirname</span></span><br><span class="line">tmp.NJ8dhf6wk</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>If you just want to generate a filename and don’t want to create the actual file or directory, you can(如果仅仅是想生成文件名，不希望创建实际的文件或目录，可以):<br><code>mktemp -u</code></p>
-</li>
-<li><p>Create a temporary filename based on the tempplate(基于模板创建临时文件名)</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  qr_blog mktemp study.XXX</span><br><span class="line">study.UWT</span><br><span class="line">➜  qr_blog mktemp study.XXX</span><br><span class="line">study.Usm</span><br><span class="line">➜  qr_blog mktemp study.XXX</span><br><span class="line">study.M6a</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>Mac OS 与linux用法略有区别，请视情况使用</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Shell</tag>
       </tags>
   </entry>
   <entry>
@@ -3416,6 +3584,24 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>值得收藏的技术类站点</title>
+    <url>/2019/10/04/%E5%80%BC%E5%BE%97%E6%94%B6%E8%97%8F%E7%9A%84%E6%8A%80%E6%9C%AF%E7%B1%BB%E7%AB%99%E7%82%B9/</url>
+    <content><![CDATA[<p>一些技术公司，及其站点网站的列表，有很多高质量的文章和最佳实践。</p>
+<p><a href="https://www.praqma.com/" target="_blank" rel="noopener">https://www.praqma.com/</a></p>
+<p><a href="https://www.cloudbees.com/" target="_blank" rel="noopener">https://www.cloudbees.com/</a></p>
+<p><a href="https://www.freecodecamp.org/" target="_blank" rel="noopener">https://www.freecodecamp.org/</a></p>
+<p><a href="https://devopscube.com/" target="_blank" rel="noopener">https://devopscube.com/</a></p>
+<p><a href="https://www.endpoint.com/blog" target="_blank" rel="noopener">https://www.endpoint.com/blog</a></p>
+<p>技术归类：<a href="http://www.devopsbookmarks.com" target="_blank" rel="noopener">http://www.devopsbookmarks.com</a></p>
+]]></content>
+      <categories>
+        <category>Tools</category>
+      </categories>
+      <tags>
+        <tag>Tools</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>入手Telegram</title>
     <url>/2020/04/17/%E5%85%A5%E6%89%8BTelegram/</url>
     <content><![CDATA[<p>听说有很多有趣的组织、个人都有电报，于是想看看。</p>
@@ -3454,54 +3640,6 @@ pipeline {
 ]]></content>
       <tags>
         <tag>Tools</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>值得收藏的技术类站点</title>
-    <url>/2019/10/04/%E5%80%BC%E5%BE%97%E6%94%B6%E8%97%8F%E7%9A%84%E6%8A%80%E6%9C%AF%E7%B1%BB%E7%AB%99%E7%82%B9/</url>
-    <content><![CDATA[<p>一些技术公司，及其站点网站的列表，有很多高质量的文章和最佳实践。</p>
-<p><a href="https://www.praqma.com/" target="_blank" rel="noopener">https://www.praqma.com/</a></p>
-<p><a href="https://www.cloudbees.com/" target="_blank" rel="noopener">https://www.cloudbees.com/</a></p>
-<p><a href="https://www.freecodecamp.org/" target="_blank" rel="noopener">https://www.freecodecamp.org/</a></p>
-<p><a href="https://devopscube.com/" target="_blank" rel="noopener">https://devopscube.com/</a></p>
-<p><a href="https://www.endpoint.com/blog" target="_blank" rel="noopener">https://www.endpoint.com/blog</a></p>
-<p>技术归类：<a href="http://www.devopsbookmarks.com" target="_blank" rel="noopener">http://www.devopsbookmarks.com</a></p>
-]]></content>
-      <categories>
-        <category>Tools</category>
-      </categories>
-      <tags>
-        <tag>Tools</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>入门gpg</title>
-    <url>/2020/04/23/%E5%85%A5%E9%97%A8gpg/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>GPG 的全称是 GNU Privacy Guard ，可以看作是一个软件，可以用来进行密钥的管理。其实和我们用的一些图形化的密码管理类似，不过GPG 好像更多是命令行交互的，所以一般人不太习惯。另外，中间包含的概念也较多。</p>
-<p>用过enpass, 1password的可以将一些概念类比起来，比如 master password ， 子密码</p>
-<blockquote>
-<p>我们应该使用且只使用子密钥，主密钥应该放在一个绝对安全的地方。</p>
-</blockquote>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>在 Mac 上可以使用 Homebrew 安装 gopass</p>
-<p><code>brew install gopass</code></p>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>生成主密钥<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gpg --full-generate-key</span><br></pre></td></tr></table></figure></p>
-<p><strong>交互</strong></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜ gpg --edit-key 771xx601@qq.com</span><br><span class="line">gpg (GnuPG) 2.2.20; Copyright (C) 2020 Free Software Foundation, Inc.</span><br><span class="line">This is free software: you are free to change and redistribute it.</span><br><span class="line">There is NO WARRANTY, to the extent permitted by law.</span><br><span class="line"></span><br><span class="line">Secret key is available.</span><br><span class="line"></span><br><span class="line">sec  rsa2048/00C21CE66A8AE9E0</span><br><span class="line">     created: 2020-04-23  expires: 2022-04-23  usage: SC</span><br><span class="line">     trust: ultimate      validity: ultimate</span><br><span class="line">ssb  rsa2048/9DCC33D2FECB246F</span><br><span class="line">     created: 2020-04-23  expires: never       usage: E</span><br><span class="line">[ultimate] (1). qinrui &lt;771963601@qq.com&gt;</span><br><span class="line"></span><br><span class="line">gpg&gt;</span><br></pre></td></tr></table></figure>
-<p>请注意上面的字符串”sec  rsa2048/xxxxx”，斜杆后面就是”用户ID”的Hash字符串，可以用来替代”用户ID”。</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>出行清单</title>
-    <url>/2020/08/28/%E5%87%BA%E8%A1%8C%E6%B8%85%E5%8D%95/</url>
-    <content><![CDATA[<p>良久的蛰伏后，迎来一次出差的机会，时隔近2年吧。小时候梦想着能走出去，多坐坐火车、飞机、轮船等等，长大后实现了，发现并不那么美好。</p>
-<h3 id="1-夏季-短期-出差"><a href="#1-夏季-短期-出差" class="headerlink" title="1.夏季-短期-出差"></a>1.夏季-短期-出差</h3><blockquote>
-<p>1个月以内的，衣物数量包括自己身上穿的那一套</p>
-</blockquote>
-<p>短袖3件以上<br>内裤3件<br>长裤2件<br>袜子3件<br>证件、卡照（身份证，驾照，银行卡）<br>毛巾<br>充电线（手机的，手表的）<br>洗漱包（牙刷，不用电动牙刷）<br>水杯<br>纸巾2包<br>人字拖<br>书2本<br>耳机<br>电脑 及 充电线</p>
-<p>特产</p>
-]]></content>
-      <tags>
-        <tag>Q List</tag>
       </tags>
   </entry>
   <entry>
@@ -3559,27 +3697,34 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>反摩尔定理 = 学如逆水行舟</title>
-    <url>/2019/04/10/%E5%8F%8D%E6%91%A9%E5%B0%94%E5%AE%9A%E7%90%86-%E5%AD%A6%E5%A6%82%E9%80%86%E6%B0%B4%E8%A1%8C%E8%88%9F/</url>
-    <content><![CDATA[<h3 id="1-什么是反摩尔定理？"><a href="#1-什么是反摩尔定理？" class="headerlink" title="1.什么是反摩尔定理？"></a>1.什么是反摩尔定理？</h3><p>Google(谷歌)的 CEO 埃里克•施密特在一次采访中指出，如果你反过来看摩尔定理， 一个 IT 公司如果今天和十八个月前卖掉同样多的、同样的产品，它的营业额就要降一半。IT 界把它称为 <strong>反摩尔定理</strong>。</p>
-<h3 id="2-如何解释反摩尔定理"><a href="#2-如何解释反摩尔定理" class="headerlink" title="2.如何解释反摩尔定理"></a>2.如何解释反摩尔定理</h3><p>反摩尔定理的前提是摩尔定理（即当价格不变时，集成电路上可容纳的晶体管数目，约每隔18个月便会增加一倍，性能也将提升一倍。换言之，每一美元所能买到的电脑性能，将每隔18个月翻两倍以上。）</p>
-<p>打个比方： 小蓝公司 2018年6月，生产了1000万台手机，每台销售1000元，等过了18个月，由于摩尔定理的存在，硬件价格大大下降只有原来的一半即500元，在同样多的、同样的产品的情况下，营业额自然减半了。</p>
-<h3 id="3-通俗解释"><a href="#3-通俗解释" class="headerlink" title="3.通俗解释"></a>3.通俗解释</h3><p>别人都在努力学习，而有个成绩优异的小忧同学现在成绩很好，等过了一年半载，其他人都进步很快，相对而言，那个成绩优异的小忧就退步了。</p>
-<h3 id="4-影响"><a href="#4-影响" class="headerlink" title="4.影响"></a>4.影响</h3><ul>
-<li>消极影响：<br>反摩尔定律对于所有的IT公司来讲，都是非常可怕的，因为一个IT公司花了同样的劳动，却只得到以前一半的收入。反摩尔定律逼着所有的硬件设备公司必须赶上摩尔定律所规定的更新速度</li>
-<li>积极影响：<br>反摩尔定律促成科技领域质的进步，并为新兴公司提供生存和发展的可能。和所有事物的发展一样，IT领域的技术进步也有量变和质变两种。为了赶上摩尔定律预测的发展速度，光靠量变是不够的。每一种技术，过不了多少年，量变的潜力就会被挖掘光，这时就必须要有革命性的创造发明诞生。</li>
-</ul>
-<h3 id="5-‘反摩尔定理’-‘学如逆水行舟，不进则退’"><a href="#5-‘反摩尔定理’-‘学如逆水行舟，不进则退’" class="headerlink" title="5.‘反摩尔定理’ == ‘学如逆水行舟，不进则退’"></a>5.‘反摩尔定理’ == ‘学如逆水行舟，不进则退’</h3><p>总结一下，IT界三大定律: <strong>摩尔定律</strong> 、<strong>反摩尔定律</strong>、<strong><a href="https://qinrui777.github.io/2019/03/27/%E5%AE%89%E8%BF%AA-%E6%AF%94%E5%B0%94%E5%AE%9A%E5%BE%8B-Andy-and-Bill%E2%80%99s-Law/" target="_blank" rel="noopener">安迪-比尔定律</a></strong> </p>
-<blockquote>
-<p>小编之前就知道一个，有点儿孤陋寡闻了 &gt;::&lt;</p>
+    <title>出行清单</title>
+    <url>/2020/08/28/%E5%87%BA%E8%A1%8C%E6%B8%85%E5%8D%95/</url>
+    <content><![CDATA[<p>良久的蛰伏后，迎来一次出差的机会，时隔近2年吧。小时候梦想着能走出去，多坐坐火车、飞机、轮船等等，长大后实现了，发现并不那么美好。</p>
+<h3 id="1-夏季-短期-出差"><a href="#1-夏季-短期-出差" class="headerlink" title="1.夏季-短期-出差"></a>1.夏季-短期-出差</h3><blockquote>
+<p>1个月以内的，衣物数量包括自己身上穿的那一套</p>
 </blockquote>
+<p>短袖3件以上<br>内裤3件<br>长裤2件<br>袜子3件<br>证件、卡照（身份证，驾照，银行卡）<br>毛巾<br>充电线（手机的，手表的）<br>洗漱包（牙刷，不用电动牙刷）<br>水杯<br>纸巾2包<br>人字拖<br>书2本<br>耳机<br>电脑 及 充电线</p>
+<p>特产</p>
 ]]></content>
-      <categories>
-        <category>读书笔记</category>
-      </categories>
       <tags>
-        <tag>浪潮之巅</tag>
+        <tag>Q List</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>入门gpg</title>
+    <url>/2020/04/23/%E5%85%A5%E9%97%A8gpg/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>GPG 的全称是 GNU Privacy Guard ，可以看作是一个软件，可以用来进行密钥的管理。其实和我们用的一些图形化的密码管理类似，不过GPG 好像更多是命令行交互的，所以一般人不太习惯。另外，中间包含的概念也较多。</p>
+<p>用过enpass, 1password的可以将一些概念类比起来，比如 master password ， 子密码</p>
+<blockquote>
+<p>我们应该使用且只使用子密钥，主密钥应该放在一个绝对安全的地方。</p>
+</blockquote>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>在 Mac 上可以使用 Homebrew 安装 gopass</p>
+<p><code>brew install gopass</code></p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>生成主密钥<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gpg --full-generate-key</span><br></pre></td></tr></table></figure></p>
+<p><strong>交互</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜ gpg --edit-key 771xx601@qq.com</span><br><span class="line">gpg (GnuPG) 2.2.20; Copyright (C) 2020 Free Software Foundation, Inc.</span><br><span class="line">This is free software: you are free to change and redistribute it.</span><br><span class="line">There is NO WARRANTY, to the extent permitted by law.</span><br><span class="line"></span><br><span class="line">Secret key is available.</span><br><span class="line"></span><br><span class="line">sec  rsa2048/00C21CE66A8AE9E0</span><br><span class="line">     created: 2020-04-23  expires: 2022-04-23  usage: SC</span><br><span class="line">     trust: ultimate      validity: ultimate</span><br><span class="line">ssb  rsa2048/9DCC33D2FECB246F</span><br><span class="line">     created: 2020-04-23  expires: never       usage: E</span><br><span class="line">[ultimate] (1). qinrui &lt;771963601@qq.com&gt;</span><br><span class="line"></span><br><span class="line">gpg&gt;</span><br></pre></td></tr></table></figure>
+<p>请注意上面的字符串”sec  rsa2048/xxxxx”，斜杆后面就是”用户ID”的Hash字符串，可以用来替代”用户ID”。</p>
+]]></content>
   </entry>
   <entry>
     <title>再看git</title>
@@ -3714,6 +3859,29 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>反摩尔定理 = 学如逆水行舟</title>
+    <url>/2019/04/10/%E5%8F%8D%E6%91%A9%E5%B0%94%E5%AE%9A%E7%90%86-%E5%AD%A6%E5%A6%82%E9%80%86%E6%B0%B4%E8%A1%8C%E8%88%9F/</url>
+    <content><![CDATA[<h3 id="1-什么是反摩尔定理？"><a href="#1-什么是反摩尔定理？" class="headerlink" title="1.什么是反摩尔定理？"></a>1.什么是反摩尔定理？</h3><p>Google(谷歌)的 CEO 埃里克•施密特在一次采访中指出，如果你反过来看摩尔定理， 一个 IT 公司如果今天和十八个月前卖掉同样多的、同样的产品，它的营业额就要降一半。IT 界把它称为 <strong>反摩尔定理</strong>。</p>
+<h3 id="2-如何解释反摩尔定理"><a href="#2-如何解释反摩尔定理" class="headerlink" title="2.如何解释反摩尔定理"></a>2.如何解释反摩尔定理</h3><p>反摩尔定理的前提是摩尔定理（即当价格不变时，集成电路上可容纳的晶体管数目，约每隔18个月便会增加一倍，性能也将提升一倍。换言之，每一美元所能买到的电脑性能，将每隔18个月翻两倍以上。）</p>
+<p>打个比方： 小蓝公司 2018年6月，生产了1000万台手机，每台销售1000元，等过了18个月，由于摩尔定理的存在，硬件价格大大下降只有原来的一半即500元，在同样多的、同样的产品的情况下，营业额自然减半了。</p>
+<h3 id="3-通俗解释"><a href="#3-通俗解释" class="headerlink" title="3.通俗解释"></a>3.通俗解释</h3><p>别人都在努力学习，而有个成绩优异的小忧同学现在成绩很好，等过了一年半载，其他人都进步很快，相对而言，那个成绩优异的小忧就退步了。</p>
+<h3 id="4-影响"><a href="#4-影响" class="headerlink" title="4.影响"></a>4.影响</h3><ul>
+<li>消极影响：<br>反摩尔定律对于所有的IT公司来讲，都是非常可怕的，因为一个IT公司花了同样的劳动，却只得到以前一半的收入。反摩尔定律逼着所有的硬件设备公司必须赶上摩尔定律所规定的更新速度</li>
+<li>积极影响：<br>反摩尔定律促成科技领域质的进步，并为新兴公司提供生存和发展的可能。和所有事物的发展一样，IT领域的技术进步也有量变和质变两种。为了赶上摩尔定律预测的发展速度，光靠量变是不够的。每一种技术，过不了多少年，量变的潜力就会被挖掘光，这时就必须要有革命性的创造发明诞生。</li>
+</ul>
+<h3 id="5-‘反摩尔定理’-‘学如逆水行舟，不进则退’"><a href="#5-‘反摩尔定理’-‘学如逆水行舟，不进则退’" class="headerlink" title="5.‘反摩尔定理’ == ‘学如逆水行舟，不进则退’"></a>5.‘反摩尔定理’ == ‘学如逆水行舟，不进则退’</h3><p>总结一下，IT界三大定律: <strong>摩尔定律</strong> 、<strong>反摩尔定律</strong>、<strong><a href="https://qinrui777.github.io/2019/03/27/%E5%AE%89%E8%BF%AA-%E6%AF%94%E5%B0%94%E5%AE%9A%E5%BE%8B-Andy-and-Bill%E2%80%99s-Law/" target="_blank" rel="noopener">安迪-比尔定律</a></strong> </p>
+<blockquote>
+<p>小编之前就知道一个，有点儿孤陋寡闻了 &gt;::&lt;</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>读书笔记</category>
+      </categories>
+      <tags>
+        <tag>浪潮之巅</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>安迪-比尔定律(Andy and Bill’s Law)</title>
     <url>/2019/03/27/%E5%AE%89%E8%BF%AA-%E6%AF%94%E5%B0%94%E5%AE%9A%E5%BE%8B-Andy-and-Bill%E2%80%99s-Law/</url>
     <content><![CDATA[<h3 id="这句话出处是哪里？"><a href="#这句话出处是哪里？" class="headerlink" title="这句话出处是哪里？"></a>这句话出处是哪里？</h3><pre><code>“Andy gives,Bill takes away.(安迪提供什么，比尔拿走什么)&quot;
@@ -3733,6 +3901,18 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>我的git常用命令</title>
+    <url>/2021/03/24/%E6%88%91%E7%9A%84git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<p>快速查看最近的commit id,commit message<br><code>git log --oneline</code></p>
+<p>回到某个commit版本<br><code>git reset --hard &lt;commit id&gt;</code></p>
+<p>查看所有分支，包含本地的和远程的<br><code>git branch -a</code></p>
+<p>查看所有tag<br><code>git tag</code></p>
+]]></content>
+      <tags>
+        <tag>Tools</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>我的租房经历</title>
     <url>/2020/04/30/%E6%88%91%E7%9A%84%E7%A7%9F%E6%88%BF%E7%BB%8F%E5%8E%86/</url>
     <content><![CDATA[<div id="hexo-blog-encrypt" data-wpm="用心想想，ta可能用什么密码" data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
@@ -3746,18 +3926,6 @@ pipeline {
 <script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
       <tags>
         <tag>Q List</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>我的git常用命令</title>
-    <url>/2021/03/24/%E6%88%91%E7%9A%84git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<p>快速查看最近的commit id,commit message<br><code>git log --oneline</code></p>
-<p>回到某个commit版本<br><code>git reset --hard &lt;commit id&gt;</code></p>
-<p>查看所有分支，包含本地的和远程的<br><code>git branch -a</code></p>
-<p>查看所有tag<br><code>git tag</code></p>
-]]></content>
-      <tags>
-        <tag>Tools</tag>
       </tags>
   </entry>
   <entry>
@@ -3971,10 +4139,16 @@ pipeline {
 <p><a href="https://teacherluke.co.uk/" target="_blank" rel="noopener">https://teacherluke.co.uk/</a>  博主口音非常地道，发音清晰</p>
 <p><a href="https://english.stackexchange.com/" target="_blank" rel="noopener">https://english.stackexchange.com/</a>   类似<a href="https://stackoverflow.com/的风格、模式" target="_blank" rel="noopener">https://stackoverflow.com/的风格、模式</a></p>
 <p><a href="https://www.englishclass101.com/" target="_blank" rel="noopener">https://www.englishclass101.com/</a>  邮箱注册，领取一些免费的课程</p>
-<p>youtube博主</p>
+<p><strong>youtube博主</strong></p>
 <p>Small talk，开会前经常需要等人，而在这短暂的几分钟里如何双方都没有话题就显得有点儿尴尬。聊一些日常的话题不仅可以帮助增加双方的了解，也可以提升好感，找到一些共同的兴趣爱好。</p>
 <p><a href="https://www.youtube.com/watch?v=WGoIoDuf83o" target="_blank" rel="noopener">https://www.youtube.com/watch?v=WGoIoDuf83o</a></p>
 <p>超多形容词，歌曲点评，<a href="https://www.youtube.com/watch?v=21lcqYBJQLQ&amp;ab_channel=%E4%B8%8D%E6%98%AF%E6%9F%AF%E6%A1%91%E5%BE%B7" target="_blank" rel="noopener">https://www.youtube.com/watch?v=21lcqYBJQLQ&amp;ab_channel=%E4%B8%8D%E6%98%AF%E6%9F%AF%E6%A1%91%E5%BE%B7</a></p>
+<p>一些实用的网站</p>
+<ol>
+<li><a href="https://www.bbc.co.uk/learningenglish/chinese/features/todays-phrase/" target="_blank" rel="noopener">BBC的今日短语</a>  (主要是一些地道的短语，俚语)</li>
+<li><a href="https://www.phrasemix.com/examples" target="_blank" rel="noopener">phrasemix的english lessons</a> (场景用语，用英语讲解固定场景下的对话，实用型)</li>
+<li></li>
+</ol>
 ]]></content>
   </entry>
   <entry>

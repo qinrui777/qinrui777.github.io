@@ -98,6 +98,14 @@
 <li>The image ID is a hash of the local image JSON configuration.</li>
 </ul>
 </blockquote>
+<p>在使用 Dockerfile 构建镜像时，base image的使用也涉及这点。提出了一个解决方案 <a href="https://github.com/safe-waters/docker-lock" target="_blank" rel="noopener">docker-lock</a> ，有兴趣的可以使用看看，欢迎交流心得体会～</p>
+<blockquote>
+<p>Link: <a href="https://developers.redhat.com/blog/2020/03/24/red-hat-universal-base-images-for-docker-users#" target="_blank" rel="noopener">https://developers.redhat.com/blog/2020/03/24/red-hat-universal-base-images-for-docker-users#</a></p>
+<p>As you discovered, with docker, tags are mutable. This means that an update to a base image could be pushed that breaks your application code, even if you did not change any of your application code.</p>
+<p>You could eliminate this class of bugs by referencing base images by digest rather than by tag. For instance, instead of ruby:2.6.3, use ruby:2.6.3@sha256:2afcffd1a8276d58ef7d2c6d440c83290831abc2d80772a7af720db9aca9cd2e. If you reference by digest, when a new update is pushed to ruby:2.6.3, your application will still use the base image referenced by the digest, and you won’t be affected by the update.</p>
+<p>Specifying digests manually is a pain for a variety of reasons. Instead, consider using docker-lock <a href="https://github.com/michaelp..." target="_blank" rel="noopener">https://github.com/michaelp...</a>. docker-lock is a cli-plugin for docker that manages digests in a lockfile (think package-lock.json), so you can still reference base images by tag but receive the benefits of referencing them by digest.</p>
+<p>docker-lock ships with 3 commands that take you from development to production:<br>docker lock generate finds base images in your docker and docker-compose files and generates a lockfile containing digests that correspond to their tags.<br>docker lock verify lets you know if there are more recent digests than those last recorded in the lockfile.<br>docker lock rewrite rewrites Dockerfiles and docker-compose files to include digests.</p>
+</blockquote>
 <p><strong>using-container-image-digests-in-kubernetes-manifests</strong></p>
 <blockquote>
 <p><a href="https://cloud.google.com/architecture/using-container-image-digests-in-kubernetes-manifests" target="_blank" rel="noopener">https://cloud.google.com/architecture/using-container-image-digests-in-kubernetes-manifests</a>)</p>
@@ -197,6 +205,15 @@
 
    
   <nav class="article-nav">
+    
+      <a href="/2021/11/15/Helm-使用小结/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            Helm 使用小结
+          
+        </div>
+      </a>
     
     
       <a href="/2021/11/03/Bash-对变量动手脚/" class="article-nav-link">
