@@ -93,6 +93,71 @@
     
     
     <article
+  id="post-Openshift-E04-Image-Stream是个啥"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/01/31/Openshift-E04-Image-Stream是个啥/"
+    >Openshift E04 Image Stream是个啥</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/01/31/Openshift-E04-Image-Stream是个啥/" class="article-date">
+  <time datetime="2021-01-31T05:23:35.000Z" itemprop="datePublished">2021-01-31</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/CICD/">CICD</a>
+  </div>
+ 
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>Image Stream(中文名  镜像流) 是一组镜像的集合, OpenShift默认情况下提供了几个Image Streams，包括许多流行的runtime和frameworks。</p>
+<p>Image Streams tag(中文名 镜像流标签对象)是指向Image Streams中的image的别名。通常缩写为istag。它包含一个image历史记录，表示为tag曾经指向的所有images的堆栈。</p>
+<p>(??? image stream就是类似repo的概念)</p>
+<p>一个镜像流标签对象（ImageStreamTag）指向一个镜像，可以是本地镜像或者远程镜像。如下的名为“python”的镜像流包含两个标签，标签34指向Python v3.4镜像，标签35指向Pythonv3.5镜像。</p>
+<p>导入Image Stream<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Method 1</span></span><br><span class="line">oc create -f xxx.yaml -n openshift</span><br><span class="line"></span><br><span class="line"><span class="comment"># Method 2</span></span><br><span class="line">oc import-image</span><br></pre></td></tr></table></figure></p>
+<p>查看Image Stream<br><code>oc get is -n openshift</code></p>
+<p>查看Image Stream Tag</p>
+<p><code>oc get istag</code></p>
+<p>例子</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker pull ericnie2017/s2i-tomcat:latest</span><br><span class="line"></span><br><span class="line">oc import-image ericnie2017/s2i-tomcat -n openshift --confirm --insecure</span><br><span class="line"></span><br><span class="line">oc get is -n openshift | grep tomcat</span><br></pre></td></tr></table></figure>
+<p>Service Catalog 中看到的不能与 <code>oc get is</code>  的结果一一对应，只能部分对应。</p>
+<p> <a href="https://www.zhihu.com/column/p/31637802" target="_blank" rel="noopener">知乎-Service Catalog及OpenShift的历史</a></p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenShift/">OpenShift</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-Openshift-E03-谈谈S2I"
   class="article article-type-post"
   itemscope
@@ -630,59 +695,6 @@
 <p>短袖3件以上<br>内裤3件<br>长裤2件<br>袜子3件<br>证件、卡照（身份证，驾照，银行卡）<br>毛巾<br>充电线（手机的，手表的）<br>洗漱包（牙刷，不用电动牙刷）<br>水杯<br>纸巾2包<br>人字拖<br>书2本<br>耳机<br>电脑 及 充电线</p>
 <p>特产</p>
  
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Q-List/">Q List</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-让人身心劳累的驾考"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/08/17/让人身心劳累的驾考/"
-    >让人身心劳累的驾考</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2020/08/17/让人身心劳累的驾考/" class="article-date">
-  <time datetime="2020-08-17T06:19:43.000Z" itemprop="datePublished">2020-08-17</time>
-</a>  
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  Here's something encrypted, password is required to continue reading. 
-      <a class="article-more-link" href="/2020/08/17/让人身心劳累的驾考/"
-        >阅读更多...</a
-      >
-       
       <!-- reward -->
       
     </div>

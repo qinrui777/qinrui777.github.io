@@ -93,6 +93,81 @@
     
     
     <article
+  id="post-Ping-Or-fping"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/05/28/Ping-Or-fping/"
+    >Ping Or fping</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/05/28/Ping-Or-fping/" class="article-date">
+  <time datetime="2019-05-28T07:20:01.000Z" itemprop="datePublished">2019-05-28</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+ 
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>ping 命令我们比较常用，但是这里要介绍下 fping 命令。 fping 比 ping 拥有更多的特性。fping 默认没有包含在Linux发行版中。</p>
+<blockquote>
+<p>ping 命令使用Internet控制协议（Internet Control Message Protocol,ICMP）中的echo 分组检验网络上两台主机之间的连通性。</p>
+</blockquote>
+<p>e.g.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> ip <span class="keyword">in</span> 192.168.0.&#123;1..255&#125; ;</span><br><span class="line"><span class="keyword">do</span> </span><br><span class="line">    ping <span class="variable">$ip</span> -c 2 &amp;&gt; /dev/null ;</span><br><span class="line"></span><br><span class="line">    uf [ $? -eq 0 ];</span><br><span class="line">    <span class="keyword">then</span> </span><br><span class="line">        <span class="built_in">echo</span> <span class="variable">$ip</span> is alive</span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure></p>
+<p>工作原理：</p>
+<ul>
+<li><code>&amp;&gt; /dev/null</code> 用于将 stderr stdout 重定向到 <code>/dev/nul</code> ,使终端不会出现任何输出</li>
+<li>脚本用 <code>$?</code> 获取退出状态。如果顺利退出，退出状态为0，否则为非0值。</li>
+</ul>
+<h5 id="fping"><a href="#fping" class="headerlink" title="fping"></a>fping</h5><p>fping 可以为多个IP地址生成 ICMP 分组，然后等待回应。其运行速度要比上面的脚本快得多。</p>
+<p>选项如下：</p>
+<ul>
+<li>选项 <code>-a</code> 指定显示出所有活动主机的IP地址；</li>
+<li>选项 <code>-u</code> 指定显示出所有不可达的主机地址；</li>
+<li>选项 <code>-g</code> 指定从 “IP地址/子网掩码；记法或者 “IP地址范围”记法中生成一组地址</li>
+</ul>
+<p>e.g.</p>
+<p><code>fping -a 192.168.0.1/24 -g</code></p>
+<p><code>fping -a 192.168.0.1 192.168.1.255 -g</code></p>
+<p><code>fping -a 192.168.0.1  192.168.0.5 192.168.0.6</code></p>
+<p><code>fping -a &lt; ip.list</code> 从列表文件 sdtin 中接收</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shell/">Shell</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-Small-Tools-2-ffmpeg-Video-conversion-tool"
   class="article article-type-post"
   itemscope
@@ -329,7 +404,7 @@
        
   <p>Q Movie List </p>
 <h3 id="1-《夜以继日》-2018"><a href="#1-《夜以继日》-2018" class="headerlink" title="1.《夜以继日》(2018)"></a>1.《夜以继日》(2018)</h3><p>原名：Asako I &amp; II<br>导演：滨口龙介<br>主演: 东出昌大 / 唐田英里佳</p>
-<p><img src="/images/movie_Asako_I_II_01.png" alt="Asako_I_II"></p>
+<p><img src="../images/movie_Asako_I_II_01.png" alt="Asako_I_II"></p>
 <center> 夜以继日 男女主 </center>
 
 <p>两个相貌相同的男人，一个拥有着迷人的魅力，随性的坏男孩；一个是朴实无华，处处为别人考虑的体贴男孩。恋爱中的理想和现实的选择被表现淋漓尽致，深入人心。没有对错，明白什么是生活，什么是可贵的。</p>
@@ -338,7 +413,7 @@
 </blockquote>
 <h3 id="2-《骡子》-2018"><a href="#2-《骡子》-2018" class="headerlink" title="2. 《骡子》(2018)"></a>2. 《骡子》(2018)</h3><p>原名：The Mule‎<br>导演：克林特·伊斯特伍德<br>主演： 克林特·伊斯特伍德</p>
 <p><img src="/images/movie_mule_01.png" alt="Mule"></p>
-<center> 男主在公路上 </center><br>男主与妻子去世前的对话：<br><br>&gt; Mary: You were the love of my life, and the pain of my life. I need you to know, it’s all the world to me that you’re here.<br>&gt; <strong>Earl</strong>: I love you, Mary.<br>&gt; Mary: More today than yesterday?<br>&gt; <strong>Earl</strong>: But not as much as tomorrow.<br><br>自己的生活还是家庭？男主一生大部分时间都用在自己的黄花菜上，或者自己的老兵俱乐部等，家人对他无不责备。但是最后男主在妻子的最后一次请求中放下手中的活儿（运送毒品），选择回到妻子身边，也得到了女儿的原谅。<br><br>###  3. 《来的都是客》(1990)<br>导演：马绍惠<br>主演： 赵本山、巩汉林<br><br><img src="/images/movie_guest.png" alt="Whoever Comes Is a Guest"><br><center> 90年代，年轻的两位男主</center>
+<center> 男主在公路上 </center><br>男主与妻子去世前的对话：<br><br>&gt; Mary: You were the love of my life, and the pain of my life. I need you to know, it’s all the world to me that you’re here.<br>&gt; <strong>Earl</strong>: I love you, Mary.<br>&gt; Mary: More today than yesterday?<br>&gt; <strong>Earl</strong>: But not as much as tomorrow.<br><br>自己的生活还是家庭？男主一生大部分时间都用在自己的黄花菜上，或者自己的老兵俱乐部等，家人对他无不责备。但是最后男主在妻子的最后一次请求中放下手中的活儿（运送毒品），选择回到妻子身边，也得到了女儿的原谅。<br><br>###  3.《来的都是客》(1990)<br><br>导演：马绍惠<br>主演： 赵本山、巩汉林<br><br><img src="/images/movie_guest.png" alt="Whoever Comes Is a Guest"><br><center> 90年代，年轻的两位男主</center>
 
 <p>上世纪90年代的一部<strong>喜剧</strong>、剧情片，反讽当时的吃喝风。故事情节流畅、很贴近生活。我最早知道<strong>赵本山</strong>是春晚的小品上，但没有想到过他出演了很多电影，而且是他年轻力壮的时候，当年的赵本山脸上还没有褶子，演技也在线。</p>
 <blockquote>
@@ -703,60 +778,6 @@
     <footer class="article-footer">
        
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Bash/">Bash</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shell/">Shell</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-jenkins-date-timezone-update"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/04/25/jenkins-date-timezone-update/"
-    >jenkins date timezone update</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/04/25/jenkins-date-timezone-update/" class="article-date">
-  <time datetime="2019-04-25T06:49:34.000Z" itemprop="datePublished">2019-04-25</time>
-</a>  
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h4 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h4><p>打开 【系统管理】-&gt;【脚本命令行】运行下面的命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.setProperty(<span class="string">'org.apache.commons.jelly.tags.fmt.timeZone'</span>, <span class="string">'Asia/Shanghai'</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="/images/jenkins_run_image_01.png" alt="jenkins_run_image_01"></p>
-<h4 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h4><pre><code class="java">JAVA_ARGS=<span class="string">"-Dorg.apache.commons.jelly.tags.fmt.timeZone=Asia/Shanghai -Dfile.encoding=UTF-8 -Djava.awt.headless=true"</span>
-</code></pre>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jenkins/">jenkins</a></li></ul>
 
     </footer>
   </div>

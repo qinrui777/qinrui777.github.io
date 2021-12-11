@@ -93,6 +93,70 @@
     
     
     <article
+  id="post-Docker-Contract"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/07/26/Docker-Contract/"
+    >Docker Contract</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/07/26/Docker-Contract/" class="article-date">
+  <time datetime="2019-07-26T03:41:52.000Z" itemprop="datePublished">2019-07-26</time>
+</a>  
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <blockquote>
+<p>Docker 契约</p>
+</blockquote>
+<p><img src="/images/docker_contract_01.png" alt="docker_contract_01"></p>
+<p><strong>问题</strong><br>想要合作团队的可交付成果是整洁的、明确的，从面减少交付流水线里的摩擦。</p>
+<p><strong>解决方案</strong><br>使用Docker契约来推动团队间整洁的可交付成果</p>
+<p><strong>讨论</strong><br>  随着公司规模扩大，经常可以看到其曾经拥有的扁平化的、精益化的组织架构——几个关键的个人“了解整个系统”，让位给了一个更加结构化的组织架构——不同的团队具有不同职责和能力。我们在效力过的组织中都对此有过切身体会。</p>
+<p>  如果没有进行技术投入，随着团队之间相互交付的增多，摩擦也会不断升级。图7-2展示了这个场景的一个简化了但具有代表性的倩形。图7-2 中的工作流有几个大家熟知的间题。这些间题最终都归结于状态管理的困难。测试团队可能在一台不是运维团队所设置的机器上进行侧试。理论上，对所有环境的修改都应仔细地记录下来，并在出现问题时进行回滚以保持一致性。但是，商业压力与人类行为的存在总是破坏这个目标，造成 <strong>环境性漂移</strong>。</p>
+<p><img src="/images/docker_contract_03.png" alt="docker_contract_02"></p>
+<p>Docker 所能做的是在团队之间划出清洗的分界线，Docker 镜像即是<strong>分界线</strong> ，又是<strong>交换的单位</strong>，我们称为 <strong>Docker Contract (契约)</strong>,如图 7-3 所示。</p>
+<p><img src="/images/docker_contract_03.png" alt="docker_contract_03"></p>
+<p><strong>More Ref:</strong></p>
+<ul>
+<li><a href="https://learning.oreilly.com/library/view/Docker+in+Practice/9781617292729/kindle_split_018.html#ch07lev1sec1a" target="_blank" rel="noopener">https://learning.oreilly.com/library/view/Docker+in+Practice/9781617292729/kindle_split_018.html#ch07lev1sec1a</a></li>
+</ul>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Docker/">Docker</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-docker-镜像逆向工程得到Dockerfile"
   class="article article-type-post"
   itemscope
@@ -620,90 +684,6 @@
 <ul>
 <li><a href="http://www.chiark.greenend.org.uk/doc/make-doc/make.html/Using-Variables.html" target="_blank" rel="noopener">http://www.chiark.greenend.org.uk/doc/make-doc/make.html/Using-Variables.html</a></li>
 <li><a href="https://www.gnu.org/software/make/manual/html_node/Implicit-Variables.html" target="_blank" rel="noopener">https://www.gnu.org/software/make/manual/html_node/Implicit-Variables.html</a></li>
-</ul>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/makefile/">makefile</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-Makefile-101-Intro"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/07/04/Makefile-101-Intro/"
-    >Makefile 101 :Intro</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/07/04/Makefile-101-Intro/" class="article-date">
-  <time datetime="2019-07-04T10:02:11.000Z" itemprop="datePublished">2019-07-04</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Linux/">Linux</a>
-  </div>
- 
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>新建文件 ，文件名 makefile 或 Makefile</p>
-<p>格式：<br>target: dependencies</p>
-<p><tab> command</tab></p>
-<p>目标：要生成的目标文件<br>依赖：目标文件由哪些文件生成<br>命令：通过执行该命令由依赖文件生成目标</p>
-<p>工作原理：</p>
-<p>1、若想生成目标，检查规则中的依赖条件是否存在，如不存在，则寻找是否有规则用来生成该依赖文件</p>
-<p>2、检查规则中的目标是否需要更新，必须先检查它的所有依赖，依赖中有任一个被更新，则目标必须更新</p>
-<p>分析各个目标和依赖之间的关系<br>根据依赖关系自底向上执行命令<br>根据修改时间比目标新，确定更新<br>如果目标不依赖任何条件，则执行对应命令，以示更新</p>
-<h5 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1:"></a>Example 1:</h5><p>gcc test.c -o test // 根据test.c文件，编译一个 test的可执行文件出来</p>
-<p>➡ 用makefile来完成这一过程如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">test</span>: test.c</span><br><span class="line">    gcc test.c -o <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
-<p>执行：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜   make</span><br><span class="line">gcc hello.c -o hellofrommakefile</span><br></pre></td></tr></table></figure></p>
-<h5 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2:"></a>Example 2:</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">main: main.c tool.o</span><br><span class="line">    gcc main.c tool.o -o main</span><br><span class="line"></span><br><span class="line">tool.o: tool.c</span><br><span class="line">    gcc -c tool.c</span><br><span class="line"></span><br><span class="line">clean:</span><br><span class="line">    rm *.o main</span><br></pre></td></tr></table></figure>
-<p>执行命令 make</p>
-<p>执行 make clean</p>
-<h5 id="Example-3"><a href="#Example-3" class="headerlink" title="Example 3:"></a>Example 3:</h5><p>执行所有的target</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">all: stage1 stage2</span><br><span class="line"></span><br><span class="line">stage1:</span><br><span class="line">        @<span class="built_in">echo</span> <span class="string">"I am stage1"</span></span><br><span class="line"></span><br><span class="line">stage2:</span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"I am stage2"</span></span><br></pre></td></tr></table></figure>
-<p>output:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">➜  example_stages make</span><br><span class="line">I am stage1</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"I am stage2"</span></span><br><span class="line">I am stage2</span><br></pre></td></tr></table></figure></p>
-<h5 id="Example-4"><a href="#Example-4" class="headerlink" title="Example 4:"></a>Example 4:</h5><h5 id="other-FAQs"><a href="#other-FAQs" class="headerlink" title="other FAQs:"></a>other FAQs:</h5><ul>
-<li>编译的时候一直报makefile:29: *** missing separator错误。最后定位到是语法错了。输入的tab键被编辑器自动替换成4个空格了，导致一直报错;vim下可以这样写入tab键：<code>ctr+v+i</code>,会写入一个tab键</li>
-</ul>
-<ul>
-<li>对每个 .c 文件进行编译，生成 .o 文件，然后对几个 .o 文件联合编译生成可执行的文件</li>
-</ul>
-<p><strong>More Ref:</strong></p>
-<ul>
-<li><a href="https://makefiletutorial.com/" target="_blank" rel="noopener">https://makefiletutorial.com/</a></li>
-<li><a href="https://www.mycode.net.cn/platform/linux-unix/1499.html" target="_blank" rel="noopener">https://www.mycode.net.cn/platform/linux-unix/1499.html</a></li>
-<li><a href="http://www.ruanyifeng.com/blog/2015/02/make.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2015/02/make.html</a></li>
-<li><a href="https://blog.csdn.net/chinawangfei/article/details/42125241" target="_blank" rel="noopener">https://blog.csdn.net/chinawangfei/article/details/42125241</a></li>
 </ul>
  
       <!-- reward -->

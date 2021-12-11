@@ -93,6 +93,100 @@
     
     
     <article
+  id="post-Github-Actions-E08插播一条消息"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/04/19/Github-Actions-E08插播一条消息/"
+    >Github Actions E08插播一条消息</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/04/19/Github-Actions-E08插播一条消息/" class="article-date">
+  <time datetime="2020-04-19T14:01:53.000Z" itemprop="datePublished">2020-04-19</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/CICD/">CICD</a>
+  </div>
+ 
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
+<p>消息是个好消息，简单不完全的结果就是：普通组织下的私有仓库可以使用github actions了。<em>题外话：有的消息会影响当天的工作任务，有的消息会影响人的一生。</em></p>
+</blockquote>
+<h3 id="1-起因"><a href="#1-起因" class="headerlink" title="1. 起因"></a>1. 起因</h3><p>github actions的免费是我们都知道的，但这句话并不完整、准确。github actions为支持开源，对于public repo是完全免费的，但是对于私有的项目是有时限的。可见下图,可在 <a href="https://github.com/features/actions" target="_blank" rel="noopener">https://github.com/features/actions</a> 中找到该信息。</p>
+<p><img src="https://s1.ax1x.com/2020/04/20/JM5Qvq.png" alt="JM5Qvq.png"></p>
+<center> 图1: github actions pricing</center>
+
+<p>正好，有一个项目上，我们想推荐客户使用github actions，最好是能免费使用；即使不能完全免费，如果可以限时免费也是可以的，这样作为开发人员可以尝试一下，并成功后向客户说明情况，以便进一步预估、申请部分费用。这里说到一个点：<strong>不谈钱，一切都好说；谈到钱，流程就会麻烦些，毕竟从公司支出的每一笔钱都要有个缘由</strong>。</p>
+<p>客户的项目情况整理如下，因为没有org的管理权限，一些team、org属性并看不到。客户自建了一个org，里边有个team关联着，然后org里的仓库都是private的。</p>
+<h3 id="2-问题过程"><a href="#2-问题过程" class="headerlink" title="2. 问题过程"></a>2. 问题过程</h3><p><strong>时间： 2020.04.08 左右</strong><br>为了实验一下，我和同事在我自己的 <code>org:cicd_draft</code> 下做实验。将组织下的 <code>repo: api-test-demo</code>下进行了一些尝试。为了模拟客户的情况，打算先将 <code>repo: api-test-demo</code> 从 public 变成 private。 如下图 gc_00<br><img src="https://s1.ax1x.com/2020/04/20/JM53rV.png" alt="JM53rV.png"></p>
+<center> 图2 </center>
+
+<p>首先提示需要 upgrade cicd_draft,点击后提示 <strong>upgrade options</strong>,如下图<br><img src="https://s1.ax1x.com/2020/04/20/JMqIpD.png" alt="JMqIpD.png"></p>
+<center> 图3 </center>
+
+<p>再仔细会想一下，似乎我的org与客户的org，或是我的team与客户的team不太一样，尽管我想把这些变量弄成一致的，以便后续的尝试。也显示一个问题：<em>我还对org team repo这几个东西的属性、类型还不太了解，以及他们之间的关系是否有依赖呢</em>。而后的分析，感觉客户使用的仓库类型不简单啊，可能是个历史遗留产物，见👇</p>
+<blockquote>
+<p>GitHub Actions is not available for private repos in legacy per-repository plans.</p>
+</blockquote>
+<blockquote>
+<p>legacy的一个意思是： denoting software or hardware that has been superseded but is difficult to replace because of its wide use.</p>
+</blockquote>
+<p>有几点事实如下：</p>
+<ol>
+<li>普通的team- <strong>Github Team For Open Source</strong>，无法拥有私有仓库。（在4.8号那个时间点，是的）</li>
+<li>客户拥有私有仓库，说明team的属性不是普通的，</li>
+</ol>
+<h3 id="3-转机"><a href="#3-转机" class="headerlink" title="3. 转机"></a>3. 转机</h3><p>源于一条消息： <strong>GitHub Free gives teams private repositories with unlimited collaborators at no cost.</strong></p>
+<p>因为我的github注册邮箱收到了这个大消息邮件。<br><img src="https://s1.ax1x.com/2020/04/20/JM5xs0.jpg" alt="JM5xs0.jpg"></p>
+<p><center> 图4：我的邮件截图 </center><br>现在这个消息可以在 <a href="https://github.com/pricing" target="_blank" rel="noopener">https://github.com/pricing</a> 网页较上部看到，但估计一段时间后会被其他“大动作”替换掉。</p>
+<blockquote>
+<p>———————分割线———————-</p>
+</blockquote>
+<p><strong>Github team 定义</strong>：Teams are groups of organization members that reflect your company or group’s structure with cascading access permissions and mentions.</p>
+<p>github repo 类型 、github org 、github team 类型，以及之间的强关系、弱关系。</p>
+<p>从个人可以免费创建几个私有仓库，到无限量的私有仓库，又到team的免费升级，越来越免费的策略，降低了成本门槛。</p>
+<hr>
+<p><strong>More Ref:</strong></p>
+<ul>
+<li><a href="https://help.github.com/en/enterprise/2.19/admin/user-management/organizations-and-teams" target="_blank" rel="noopener">user-management/organizations-and-teams</a></li>
+</ul>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GA/">GA</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-再看git"
   class="article article-type-post"
   itemscope
@@ -1168,135 +1262,6 @@
 <p><strong>More Ref:</strong></p>
 <ul>
 <li><a href="https://help.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context" target="_blank" rel="noopener">GA Context</a></li>
-</ul>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GA/">GA</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-Github-Actions-E04运行环境-runner"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/03/21/Github-Actions-E04运行环境-runner/"
-    >Github Actions E04运行环境-runner</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2020/03/21/Github-Actions-E04运行环境-runner/" class="article-date">
-  <time datetime="2020-03-21T08:46:09.000Z" itemprop="datePublished">2020-03-21</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/CICD/">CICD</a>
-  </div>
- 
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
-<p>一个可以直接运行的CICD环境，用起来无疑节省了搭建环境的过程。但对于一个我们陌生的运行环境，最好还是提前了解一些基础的东西，比如：机器的操作系统及版本、内存、CPU、有多少磁盘可用、当前的用户是什么、权限有没有限制，以及workspace在什么目录，不然一旦遇到问题，就无从下手，或者找错方向。</p>
-</blockquote>
-<p><em>##### </em>CICD环境的灵魂3问：</p>
-<ul>
-<li>我是谁 <em>-&gt; 操作系统，具体版本，当前用户及权限</em></li>
-<li>我在哪里 <em>-&gt; 工作目录在哪里</em></li>
-<li>我能做什么 <em>—&gt; 有什么工具已经安装了，还是要自己安装</em></li>
-</ul>
-<h3 id="1-GitHub-hosted-runner-介绍"><a href="#1-GitHub-hosted-runner-介绍" class="headerlink" title="1. GitHub-hosted runner 介绍"></a>1. GitHub-hosted runner 介绍</h3><p>一个 GitHub-hosted runner 是由GitHub托管并安装了GitHub Actions运行程序应用程序的虚拟机。 GitHub为运行Linux，Windows和macOS操作系统的用户提供帮助。</p>
-<p>个人总结：GitHub Actions runner 是一个 application</p>
-<p>官网也提及 <em>“The GitHub Actions runner application is open source. You can contribute and file issues in the runner repository.”</em></p>
-<h3 id="2-硬件资源"><a href="#2-硬件资源" class="headerlink" title="2. 硬件资源"></a>2. 硬件资源</h3><p>GitHub hosts Linux and Windows runners on Standard_DS2_v2 virtual machines in Microsoft Azure.</p>
-<p>GitHub uses MacStadium to host the macOS runners.</p>
-<p>每个虚拟机有相同的硬件资源可使用。拿一台同配置的个人电脑，或者云上的服务器相比，GA 的服务器运行起来会快一些。</p>
-<ul>
-<li>2-core CPU</li>
-<li>7 GB of RAM memory</li>
-<li>14 GB of SSD disk space</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Virtual environment</th>
-<th>YAML workflow label</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">Windows Server 2019</td>
-<td>windows-latest or windows-2019</td>
-</tr>
-<tr>
-<td style="text-align:left">Ubuntu 18.04</td>
-<td>ubuntu-latest or ubuntu-18.04</td>
-</tr>
-<tr>
-<td style="text-align:left">Ubuntu 16.04</td>
-<td>ubuntu-16.04</td>
-</tr>
-<tr>
-<td style="text-align:left">macOS Catalina 10.15</td>
-<td>macos-latest or macos-10.15</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>Inbound ICMP packets are blocked for all Azure virtual machines, so ping or traceroute commands might not work. For more information about the Standard_DS2_v2 machine resources, see “Dv2 and DSv2-series” in the Microsoft Azure documentation.</p>
-</blockquote>
-<h3 id="3-运行用户的权限"><a href="#3-运行用户的权限" class="headerlink" title="3. 运行用户的权限"></a>3. 运行用户的权限</h3><p>可以写一个demo查看一下当前用户，例子见下面 👇</p>
-<p>Linux和macOS虚拟机均使用无密码sudo运行。 当您需要执行命令或安装需要比当前用户更多特权的工具时，可以使用sudo而不需要提供密码。</p>
-<p>Windows虚拟机被配置为以禁用了用户帐户控制（UAC）的管理员身份运行。</p>
-<h3 id="4-文件系统-Filesystems-on-GitHub-hosted-runners"><a href="#4-文件系统-Filesystems-on-GitHub-hosted-runners" class="headerlink" title="4. 文件系统(Filesystems on GitHub-hosted runners)"></a>4. 文件系统(Filesystems on GitHub-hosted runners)</h3><p>GitHub在虚拟机上的特定目录中执行操作和shell命令, 虚拟机上的文件路径不是静态的。</p>
-<p>Docker container filesystem 后面讲到时再说</p>
-<p>关于查看当前用户和工作目录的demo</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">CI</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span> <span class="string">[push]</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  linux:</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line">    <span class="comment">#我是谁</span></span><br><span class="line"><span class="attr">      - run:</span> <span class="string">whoami</span></span><br><span class="line">    <span class="comment">#我在那儿</span></span><br><span class="line"><span class="attr">      - run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        pwd</span></span><br><span class="line"><span class="string">        echo $HOME $GITHUB_WORKSPACE $GITHUB_EVENT_PATH</span></span><br></pre></td></tr></table></figure>
-<p>在我的<a href="https://github.com/cicd-draft/api-test-demo" target="_blank" rel="noopener">repo</a>中运行的输出为：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">runner</span><br><span class="line">/home/runner/work/api-test-demo/api-test-demo</span><br><span class="line">/home/runner /home/runner/work/api-test-demo/api-test-demo /home/runner/work/_temp/_github_workflow/event.json</span><br></pre></td></tr></table></figure></p>
-<p>GitHub为每个工作流创建的环境变量有很多，后面会单独讲到，也可以提前看一下<a href="https://help.github.com/en/actions/configuring-and-managing-workflows/using-environment-variables" target="_blank" rel="noopener">有哪些环境变量</a>。这样类似的<strong>默认的环境变量</strong>就是类似于我们在jenkins上用的 <code>BUILD_NUMBER</code>,<code>JOB_NAME</code>，当然也可以自定义环境变量。</p>
-<h3 id="5-软件安装"><a href="#5-软件安装" class="headerlink" title="5. 软件安装"></a>5. 软件安装</h3><p>不同的操作系统上都预先安装好了常用软件，详情可见下方的链接 <a href="https://help.github.com/en/actions/reference/software-installed-on-github-hosted-runners" target="_blank" rel="noopener">https://help.github.com/en/actions/reference/software-installed-on-github-hosted-runners</a></p>
-<p><a href="https://github.com/actions/virtual-environments/blob/master/images/linux/Ubuntu1804-README.md" target="_blank" rel="noopener">Ubuntu 18.04 LTS</a><br><a href="https://github.com/actions/virtual-environments/blob/master/images/linux/Ubuntu1604-README.md" target="_blank" rel="noopener">Ubuntu 16.04 LTS</a><br><a href="https://github.com/actions/virtual-environments/blob/master/images/win/Windows2019-Readme.md" target="_blank" rel="noopener">Windows Server 2019</a><br><a href="https://github.com/actions/virtual-environments/blob/master/images/win/Windows2016-Readme.md" target="_blank" rel="noopener">Windows Server 2016</a><br><a href="https://github.com/actions/virtual-environments/blob/master/images/macos/macos-10.15-Readme.md" target="_blank" rel="noopener">MacOS 10.15</a></p>
-<p>如果不想看看长长的readme，可以在运行job中先检查以下软件是否安装及具体版本；如果最后发现没有安装，就添加安装的命令即可。比如</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">CI</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span> <span class="string">[push]</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  linux:</span></span><br><span class="line"><span class="attr">    runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - run:</span> <span class="string">sudo</span> <span class="string">apt-get</span> <span class="string">install</span> <span class="string">ninja-build</span></span><br><span class="line"><span class="attr">      - run:</span> <span class="string">ninja</span> <span class="bullet">--version</span></span><br></pre></td></tr></table></figure>
-<hr>
-<p><strong>思考个问题：</strong> 自定义 runner，以及用私有的服务器运行 workflow，怎么实现？</p>
-<blockquote>
-<p>方法肯定是有的，相信github官方可考虑了runner私有化的场景(毕竟gitlab CI runner在那里摆着)，后续有时间再研究</p>
-</blockquote>
-<hr>
-<p><strong>More Ref:</strong></p>
-<ul>
-<li><a href="https://github.com/actions/runner" target="_blank" rel="noopener">Github actions runner 源码仓库</a></li>
-<li><a href="https://help.github.com/en/actions/reference/virtual-environments-for-github-hosted-runners#administrative-privileges-of-github-hosted-runners" target="_blank" rel="noopener">Administrative privileges of GitHub-hosted runners</a></li>
-<li><a href="https://help.github.com/en/actions/reference/virtual-environments-for-github-hosted-runners#docker-container-filesystem" target="_blank" rel="noopener">Docker container filesystem</a></li>
-<li><a href="https://help.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners" target="_blank" rel="noopener">About self-hosted runners</a></li>
-<li><a href="https://help.github.com/en/github/setting-up-and-managing-billing-and-payments-on-github/viewing-your-github-actions-usage" target="_blank" rel="noopener">billing</a></li>
 </ul>
  
       <!-- reward -->
