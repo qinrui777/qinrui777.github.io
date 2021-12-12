@@ -93,6 +93,70 @@
     
     
     <article
+  id="post-Mongodb-的一些概念"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/03/04/Mongodb-的一些概念/"
+    >Mongodb 的一些概念</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/03/04/Mongodb-的一些概念/" class="article-date">
+  <time datetime="2021-03-04T08:17:38.000Z" itemprop="datePublished">2021-03-04</time>
+</a>  
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>基本概念，还是对照常用的关系型数据库，这样更容易理解一些</p>
+<p><a href="https://imgtu.com/i/6V7h3n" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/03/04/6V7h3n.png" alt="6V7h3n.png"></a></p>
+<h3 id="collection"><a href="#collection" class="headerlink" title="collection"></a>collection</h3><p>mongodb是通过一个个collection来做数据存储的，可以类比关系型数据库的表。</p>
+<h3 id="shard-key-分片键"><a href="#shard-key-分片键" class="headerlink" title="shard_key (分片键)"></a>shard_key (分片键)</h3><p>mongodb是通过分片键来对collection进行分区的，也就是通过分片键来决定一个document如何分布式存入collection中。分片键是每个存放在collection中的document都持续拥有的不可缺少的一个字段或多个字段的组合。 分片键有下面几个要求：</p>
+<ul>
+<li>每个document都必须拥有，不可缺少。</li>
+<li>已经分片的数据，分片键不可更改。</li>
+<li>分片键必须加上索引。</li>
+<li>分片键的选择对分片的性能、效率和可扩展性都有着重要影响。分片键和索引也会影响集群的分片策略。</li>
+</ul>
+<p><strong>分片键索引</strong></p>
+<p>分片键必须有索引，索引可以是分片键上的索引，当分片键是索引前缀时，也可以是复合索引。 注意：分片键索引必须是横向(正向)，比如用id做索引时定义为key{id:1} 参考：<a href="https://docs.mongodb.com/manual/core/sharding-shard-key/#sharding-shard-key-indexes" target="_blank" rel="noopener">https://docs.mongodb.com/manual/core/sharding-shard-key/#sharding-shard-key-indexes</a></p>
+<p>shard key在sharding搭建完毕后是不能修改的，一个collection上只能有一个shard key。<br>shard key上必须有索引（可以是以shard key开头的联合索引），如果没有mongodb会为shard key创建索引。如果是已经存在的collection那么必须手动为shard key创建索引。</p>
+<p>MongoDB creates a unique index on the _id field during the creation of a collection. The _id index prevents clients from inserting two documents with the same value for the _id field. You cannot drop this index on the _id field.</p>
+<p>mongodb offical doc <a href="https://docs.mongodb.com/manual/indexes/" target="_blank" rel="noopener">https://docs.mongodb.com/manual/indexes/</a></p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools/">Tools</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-Openshift-E04-Image-Stream是个啥"
   class="article article-type-post"
   itemscope
@@ -640,61 +704,6 @@
         >阅读更多...</a
       >
        
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Q-List/">Q List</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-出行清单"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/08/28/出行清单/"
-    >出行清单</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2020/08/28/出行清单/" class="article-date">
-  <time datetime="2020-08-28T08:37:50.000Z" itemprop="datePublished">2020-08-28</time>
-</a>  
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>良久的蛰伏后，迎来一次出差的机会，时隔近2年吧。小时候梦想着能走出去，多坐坐火车、飞机、轮船等等，长大后实现了，发现并不那么美好。</p>
-<h3 id="1-夏季-短期-出差"><a href="#1-夏季-短期-出差" class="headerlink" title="1.夏季-短期-出差"></a>1.夏季-短期-出差</h3><blockquote>
-<p>1个月以内的，衣物数量包括自己身上穿的那一套</p>
-</blockquote>
-<p>短袖3件以上<br>内裤3件<br>长裤2件<br>袜子3件<br>证件、卡照（身份证，驾照，银行卡）<br>毛巾<br>充电线（手机的，手表的）<br>洗漱包（牙刷，不用电动牙刷）<br>水杯<br>纸巾2包<br>人字拖<br>书2本<br>耳机<br>电脑 及 充电线</p>
-<p>特产</p>
- 
       <!-- reward -->
       
     </div>

@@ -93,6 +93,80 @@
     
     
     <article
+  id="post-Docker-Configuration"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/07/26/Docker-Configuration/"
+    >Docker Configuration</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/07/26/Docker-Configuration/" class="article-date">
+  <time datetime="2019-07-26T08:20:08.000Z" itemprop="datePublished">2019-07-26</time>
+</a>  
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <table>
+<thead>
+<tr>
+<th style="text-align:left">Distribution</th>
+<th>Configuration </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Ubuntu/Debian/Gentoo</td>
+<td>/etc/default/docker</td>
+</tr>
+<tr>
+<td style="text-align:left">OpenSuse/CentOS/Red Hat</td>
+<td>/etc/sysconfig/docker</td>
+</tr>
+</tbody>
+</table>
+<p>/lib/systemd/system/docker.service</p>
+<p>/user/lib/systemd/system/service/docker</p>
+<h5 id="场景一："><a href="#场景一：" class="headerlink" title="场景一："></a>场景一：</h5><p>Docker默认的配置文件/etc/default/docker或者/etc/sysconfig/docker都不起作用，查看了一下/lib/systemd/system/docker.service文件，发现里面没有加载默认配置文件，一些配置不知道要怎么弄了~~~</p>
+<p>解决办法是：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ vi /lib/systemd/system/docker.service</span><br><span class="line"><span class="comment">#添加一行</span></span><br><span class="line">$ EnvironmentFile=-/etc/default/docker</span><br><span class="line">或者</span><br><span class="line">$ EnvironmentFile=-/etc/sysconfig/docker</span><br><span class="line"><span class="comment">#-代表ignore error</span></span><br></pre></td></tr></table></figure></p>
+<p>并修改</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ExecStart=/usr/bin/docker daemon -H fd://</span><br><span class="line"><span class="comment">#改成</span></span><br><span class="line">$ ExecStart=/usr/bin/docker daemon -H fd:// <span class="variable">$DOCKER_OPTS</span></span><br></pre></td></tr></table></figure>
+<p>这样才能使用/etc/default/docker里定义的DOCKER_OPTS参数</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Docker/">Docker</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-Docker-Contract"
   class="article article-type-post"
   itemscope
@@ -618,73 +692,6 @@
   <h5 id="makefile-中的all"><a href="#makefile-中的all" class="headerlink" title="makefile 中的all"></a>makefile 中的all</h5><p>因为 makefile 的执行流程是找到第一个目标作为最终生成的目标，如果顺序错乱了，makefile 就可能报错，all 方法就是解决这个问题而存在的，并且，all 方法可以让一个 makefile 生成多个目标。示例如下：</p>
 <h5 id="makefile-中的-clean"><a href="#makefile-中的-clean" class="headerlink" title="makefile 中的 clean"></a>makefile 中的 clean</h5><p>make clean 命令是用来清除目录下临时文件的，执行 clean 这个目标时，不需要任何依赖项，也就意味着，如果目录下有一个文件名为 clean 的话，执行 make clean 命令时会判断这个目标所依赖的内容是否有变化，如有变化则重新生成，无变化则跳过，而恰恰我们这个 clean 没写依赖规则！这将导致 clean 无论如何都不会被执行。解决这个问题的办法就是将 clean 方法声明为一个伪目标，做就就是让 clean 无论如何都更新，同样我们生成的 all 目标也可能会出现这种情况，所以我们将它们两个都声明为 <strong>伪目标</strong>，方法如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">clean:</span><br><span class="line">    -rm -rf $(obj) main app </span><br><span class="line"></span><br><span class="line">.PHONY:clean all</span><br></pre></td></tr></table></figure>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/makefile/">makefile</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-Makefile-102-Variable"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/07/05/Makefile-102-Variable/"
-    >Makefile 102:Variable</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/07/05/Makefile-102-Variable/" class="article-date">
-  <time datetime="2019-07-05T06:02:53.000Z" itemprop="datePublished">2019-07-05</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Linux/">Linux</a>
-  </div>
- 
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h5 id="Variables-common-use"><a href="#Variables-common-use" class="headerlink" title="Variables (common use)"></a>Variables (common use)</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">origin_file = hello.c</span><br><span class="line"></span><br><span class="line">hellofrommakefile: $(origin_file)</span><br><span class="line">	gcc hello.c -o hellofrommakefile</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">env := <span class="string">"local"</span></span><br><span class="line"></span><br><span class="line">task1:</span><br><span class="line">	@<span class="built_in">echo</span> <span class="string">"hello ,task1"</span></span><br><span class="line">	@<span class="built_in">echo</span> <span class="string">"This is environment: <span class="variable">$(env)</span></span></span><br></pre></td></tr></table></figure>
-<p>设置变量 env，如果在执行make时不传值，则使用默认值 local, 输出如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 不给env值</span></span><br><span class="line">make</span><br><span class="line">hello ,task1</span><br><span class="line">This is env: <span class="built_in">local</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 给env=uat</span></span><br><span class="line">make  env=uat</span><br><span class="line">hello ,task1</span><br><span class="line">This is env: uat</span><br></pre></td></tr></table></figure>
-<h5 id="Automatic-Variables-自动变量"><a href="#Automatic-Variables-自动变量" class="headerlink" title="Automatic Variables(自动变量)"></a>Automatic Variables(自动变量)</h5><p>makefile 中有一些预定义的变量，你可以理解它像是 C 语言中的一些关键字，分别有不同的意义，我们列举几个常用的自动变量，<a href="https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html#Automatic-Variables" target="_blank" rel="noopener">其他还有很多</a></p>
-<p>$@：在命令中使用，表示规则中的目标<br>$&lt;：在命令中使用，表示规则中的第一个条件<br>$^：在命令中使用，表示规则中的所有条件，组成一个列表，以空格隔开，如果这个列表中有重复的项则消除重复项。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hellofrommakefile: hello.c</span><br><span class="line">	gcc hello.c -o hellofrommakefile</span><br></pre></td></tr></table></figure>
-<p>等价于<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hellofrommakefile: hello.c</span><br><span class="line">	gcc hello.c -o <span class="variable">$@</span></span><br></pre></td></tr></table></figure></p>
-<h5 id="mplicit-Variables-内置变量"><a href="#mplicit-Variables-内置变量" class="headerlink" title="mplicit Variables(内置变量)"></a>mplicit Variables(内置变量)</h5><p>Make命令提供一系列内置变量，比如，$(CC) 指向当前使用的编译器，$(MAKE) 指向当前使用的Make工具。这主要是为了跨平台的兼容性，详细的内置变量清单见<a href="https://www.gnu.org/software/make/manual/html_node/Implicit-Variables.html" target="_blank" rel="noopener">ta</a>。</p>
-<p><strong>More Ref:</strong></p>
-<ul>
-<li><a href="http://www.chiark.greenend.org.uk/doc/make-doc/make.html/Using-Variables.html" target="_blank" rel="noopener">http://www.chiark.greenend.org.uk/doc/make-doc/make.html/Using-Variables.html</a></li>
-<li><a href="https://www.gnu.org/software/make/manual/html_node/Implicit-Variables.html" target="_blank" rel="noopener">https://www.gnu.org/software/make/manual/html_node/Implicit-Variables.html</a></li>
-</ul>
  
       <!-- reward -->
       

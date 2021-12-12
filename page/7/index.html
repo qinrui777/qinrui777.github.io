@@ -93,6 +93,195 @@
     
     
     <article
+  id="post-Anka-tutorial-xx-Upgrade-Record"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/11/21/Anka-tutorial-xx-Upgrade-Record/"
+    >Anka tutorial xx: Upgrade Record</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/11/21/Anka-tutorial-xx-Upgrade-Record/" class="article-date">
+  <time datetime="2019-11-21T05:08:03.000Z" itemprop="datePublished">2019-11-21</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/CICD/">CICD</a>
+  </div>
+ 
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h3 id="1-升级前"><a href="#1-升级前" class="headerlink" title="1.升级前"></a>1.升级前</h3><p>从2018年11月到如今2019年11月，已经使用现有的版本1年多；anka也经历了多个版本，此次升级算是跨度较大，升级到目前最新的版本1.5.0</p>
+<h4 id="1-1-节点信息"><a href="#1-1-节点信息" class="headerlink" title="1.1 节点信息"></a>1.1 节点信息</h4><table>
+<thead>
+<tr>
+<th style="text-align:left">hostname (节点名称)</th>
+<th style="text-align:left">IP</th>
+<th style="text-align:left">OS</th>
+<th>组件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">node1</td>
+<td style="text-align:left">192.168.55.xx</td>
+<td style="text-align:left">linux</td>
+<td>anka-controller、anka-registry、etcd、beanstalk、 jenkins、sonarqube</td>
+</tr>
+<tr>
+<td style="text-align:left">node2</td>
+<td style="text-align:left">192.168.22.xx</td>
+<td style="text-align:left">mac OS</td>
+<td>anka build</td>
+</tr>
+</tbody>
+</table>
+<h4 id="1-2-节点组件版本信息"><a href="#1-2-节点组件版本信息" class="headerlink" title="1.2 节点组件版本信息"></a>1.2 节点组件版本信息</h4><table>
+<thead>
+<tr>
+<th style="text-align:left">Name</th>
+<th style="text-align:left">Current Ver</th>
+<th style="text-align:left">Upgrade to Ver</th>
+<th style="text-align:left">Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">anka-controller</td>
+<td style="text-align:left">1.0.14-e7cc50b</td>
+<td style="text-align:left">1.5.0-ca87f665</td>
+<td style="text-align:left">自制image</td>
+</tr>
+<tr>
+<td style="text-align:left">etcd</td>
+<td style="text-align:left">quay.io/coreos/etcd:v3.1.6</td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left"><a href="https://quay.io/repository/coreos/etcd?tab=tags" target="_blank" rel="noopener">https://quay.io/repository/coreos/etcd?tab=tags</a>, 新版本需要 自制image</td>
+</tr>
+<tr>
+<td style="text-align:left">beanstalk</td>
+<td style="text-align:left">schickling/beanstalkd</td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left">新版本可不使用</td>
+</tr>
+<tr>
+<td style="text-align:left">anka-registry</td>
+<td style="text-align:left">same as controller</td>
+<td style="text-align:left">1.5.0-ca87f665</td>
+<td style="text-align:left">自制image</td>
+</tr>
+<tr>
+<td style="text-align:left">Anka Build</td>
+<td style="text-align:left">1.4.3</td>
+<td style="text-align:left">2.1.2</td>
+<td style="text-align:left">N/A</td>
+</tr>
+</tbody>
+</table>
+<h4 id="1-2-组件端口变更信息"><a href="#1-2-组件端口变更信息" class="headerlink" title="1.2 组件端口变更信息"></a>1.2 组件端口变更信息</h4><table>
+<thead>
+<tr>
+<th style="text-align:left">组件</th>
+<th style="text-align:center">升级前端口</th>
+<th style="text-align:center">升级后端口</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">anka-controller</td>
+<td style="text-align:center">8090</td>
+<td style="text-align:center">80</td>
+</tr>
+<tr>
+<td style="text-align:left">anka-registry</td>
+<td style="text-align:center">80</td>
+<td style="text-align:center">8089</td>
+</tr>
+</tbody>
+</table>
+<p>根据节点的OS，提前下载安装包及相关文件 <a href="https://veertu.com/download-anka-build/" target="_blank" rel="noopener">Anka Build Download page</a></p>
+<p><img src="/images/anka_upgrade_install_01.png" width="75%" height="75%"></p>
+<h3 id="2-升级步骤"><a href="#2-升级步骤" class="headerlink" title="2. 升级步骤"></a>2. 升级步骤</h3><p>官网升级步骤链接： <a href="https://ankadoc.bitbucket.io/#upgrade-steps" target="_blank" rel="noopener">https://ankadoc.bitbucket.io/#upgrade-steps</a>, 但是不够详细</p>
+<h4 id="2-1-On-the-mac-nodes-run-sudo-ankacluster-disjoin"><a href="#2-1-On-the-mac-nodes-run-sudo-ankacluster-disjoin" class="headerlink" title="2.1) On the mac nodes - run sudo ankacluster disjoin."></a>2.1) On the mac nodes - run sudo ankacluster disjoin.</h4><p>在 <strong>node 2</strong> 上操作<br><code>node2 $ sudo ankacluster disjoin -g</code></p>
+<h4 id="2-2-Install-the-new-anka-pkg-on-all-the-mac-nodes"><a href="#2-2-Install-the-new-anka-pkg-on-all-the-mac-nodes" class="headerlink" title="2.2) Install the new anka pkg on all the mac nodes."></a>2.2) Install the new anka pkg on all the mac nodes.</h4><p>在 <strong>node 2</strong> 上操作, 找到安装包,双击安装即可</p>
+<h4 id="2-3-Upgrade-the-guest-addons-inside-the-VM-templates-with-anka-start-u-Check-the-upgrade-notes-to-see-if-this-step-is-necessary"><a href="#2-3-Upgrade-the-guest-addons-inside-the-VM-templates-with-anka-start-u-Check-the-upgrade-notes-to-see-if-this-step-is-necessary" class="headerlink" title="2.3) Upgrade the guest addons inside the VM templates with anka start -u. Check the upgrade notes to see if this step is necessary."></a>2.3) Upgrade the guest addons inside the VM templates with anka start -u. Check the upgrade notes to see if this step is necessary.</h4><p>在 <strong>node 2</strong> 上操作<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#先切换到root用户，方便操作</span></span><br><span class="line"><span class="comment">#这个命令执行后会等待3min左右</span></span><br><span class="line">node2:~ root<span class="comment"># anka stop -f &lt;VM_NAME&gt;</span></span><br><span class="line">node2:~ root<span class="comment"># anka start -u &lt;VM_NAME&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="2-4-Push-the-newly-upgraded-VM-templates-to-registry-with-anka-registry-push-vmname-–tag"><a href="#2-4-Push-the-newly-upgraded-VM-templates-to-registry-with-anka-registry-push-vmname-–tag" class="headerlink" title="2.4) Push the newly upgraded VM templates to registry with anka registry push vmname –tag."></a>2.4) Push the newly upgraded VM templates to registry with anka registry push vmname –tag.</h4><p>在 <strong>node 2</strong> 上操作<br><code>node2:~ root# anka registry push &lt;VM_NAME&gt; -d &#39;&lt;Message&gt;&#39; -t v100</code></p>
+<h4 id="2-5-Go-to-the-Controller-Registry-and-upgrade"><a href="#2-5-Go-to-the-Controller-Registry-and-upgrade" class="headerlink" title="2.5) Go to the Controller/Registry and upgrade."></a>2.5) Go to the Controller/Registry and upgrade.</h4><p>在 <strong>node 1</strong> 上操作 ，之前的启动方式是docker-compose,根据yaml文件启动</p>
+<p>anka 经过一年的开发升级，这块变动较大，比如：</p>
+<ul>
+<li><ol>
+<li>beanstalk 可以不使用了 <em>(starting from anka version 2.0 beanstalk is not required, please configure the controller with the configuration that doesn’t use beanstalk)</em></li>
+</ol>
+</li>
+<li><ol start="2">
+<li>端口的变化</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>etcd由之前的 quay.io/coreos/etcd 镜像改为自己制作</li>
+</ol>
+</li>
+</ul>
+<p>提前备份 docker-compose.yml;先将下载包解压，结合老版本的docker-compose.yml文件，替换 <code>services/</code> 目录下的相关文件<br><img src="/images/anka_1.5.x_package.png" width="60%" height="60%"></p>
+<p><strong>注意事项</strong>: </p>
+<pre><code>- etcd、registry 挂载的文件目录不可变动，不然影响旧的数据正常读取
+- 替换docker-compose.yml的一些值
+</code></pre><h4 id="2-6-On-the-mac-nodes-run-sudo-ankacluster-join"><a href="#2-6-On-the-mac-nodes-run-sudo-ankacluster-join" class="headerlink" title="2.6) On the mac nodes - run sudo ankacluster join."></a>2.6) On the mac nodes - run sudo ankacluster join.</h4><p>在 <strong>node 2</strong> 上操作<br><code>ankacluster join -g -n mac-mini-01 http://controller.anka.intranet.in2e.com:80</code></p>
+<blockquote>
+<p>以上是官网提及的，但是与jenkins 集成中还需要更多的操作，以下作为补充</p>
+</blockquote>
+<h4 id="2-7-Change-jenkins-configuration"><a href="#2-7-Change-jenkins-configuration" class="headerlink" title="2.7) Change jenkins configuration."></a>2.7) Change jenkins configuration.</h4><ul>
+<li><p>2.7.1 修改controller地址<br><img src="/images/anka_jenkins_config_1.png" width="100%" height="100%"></p>
+</li>
+<li><p>2.7.2 修改 anka  VM templates<br>升级后，测试发现 jenkins 日志中找不到vm templates;需要重新配置 VM templates<br><img src="/images/anka_jenkins_vm_template.png" width="100%" height="100%"></p>
+</li>
+</ul>
+<h5 id="2-8-Change-registry"><a href="#2-8-Change-registry" class="headerlink" title="2.8) Change registry"></a>2.8) Change registry</h5><blockquote>
+<p>升级后一天，再更新一个VM template时遇到问题  </p>
+</blockquote>
+<p><strong>发现问题：</strong><br>报错如下, 根据提示修改了多次命令的格式，但还是没有作用<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">anka registry push &lt;VM_NAME&gt; -d <span class="string">'update new cert'</span> -t v28</span><br><span class="line">-anka: Extra data: line 1 column 5 - line 2 column 1 (char 4 - 19)</span><br></pre></td></tr></table></figure></p>
+<p><strong>思考问题：</strong><br>在root用户下 使用 <code>anka registry list</code> 时发现也报错，于是怀疑是 registry 的问题；由于端口的变更，导致 anka push VM 会有问题；需要删除，重新添加</p>
+<p><strong>尝试解决问题：</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 先查看repo</span></span><br><span class="line">node2:~ root<span class="comment"># anka registry list-repos</span></span><br><span class="line">++</span><br><span class="line">++</span><br><span class="line">anka (default)</span><br><span class="line">+--------+-----------------------------------+</span><br><span class="line">| host   | controller.anka.intranet.xxx.com |</span><br><span class="line">+--------+-----------------------------------+</span><br><span class="line">| scheme | http                              |</span><br><span class="line">+--------+-----------------------------------+</span><br><span class="line"><span class="comment">#删除</span></span><br><span class="line">node2:~ root<span class="comment"># anka registry delete anka</span></span><br><span class="line"><span class="comment">#新增</span></span><br><span class="line">node2:~ root<span class="comment"># anka registry add anka-repo http://192.168.55.xx:8089</span></span><br><span class="line"><span class="comment">#再次list,查看以下</span></span><br><span class="line">node2:~ root<span class="comment"># anka registry list-repos</span></span><br><span class="line">++</span><br><span class="line">++</span><br><span class="line">anka-repo (default)</span><br><span class="line">+--------+---------------+</span><br><span class="line">| host   | 192.168.55.xx |</span><br><span class="line">+--------+---------------+</span><br><span class="line">| scheme | http          |</span><br><span class="line">+--------+---------------+</span><br><span class="line">| port   | 8089          |</span><br><span class="line">+--------+---------------+</span><br></pre></td></tr></table></figure></p>
+<p>一波操作后，终于可以正常 push VM, ～～～大坑</p>
+<hr>
+<p><strong>最后 —-&gt;记得修改Node上的 VM capacity</strong><br>每次disjoin -&gt; join 动作，这个值都会回到默认值 2;或者执行 <code>ankacluster join</code> 的时候可以用 <code>-m</code> 参数去指定<br>这个值的作用是，指定允许同时运行几个 mac OS 实例</p>
+<p><img src="/images/anka_vm_capacity.png" width="90%" height="90%"></p>
+<blockquote>
+<p>主要记录 2019-11-20 左右升级 anka 的操作</p>
+</blockquote>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-Anka-tutorial-02"
   class="article article-type-post"
   itemscope
@@ -859,66 +1048,6 @@
     
     <footer class="article-footer">
        
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-devops-还是-DevOps"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/10/08/devops-还是-DevOps/"
-    >&#39;devops&#39; 还是 &#39;DevOps&#39;?</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/10/08/devops-还是-DevOps/" class="article-date">
-  <time datetime="2019-10-08T08:14:12.000Z" itemprop="datePublished">2019-10-08</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/读书笔记/">读书笔记</a>
-  </div>
- 
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h3 id="1-什么是-devops-还是-DevOps"><a href="#1-什么是-devops-还是-DevOps" class="headerlink" title="1. 什么是 devops,还是 DevOps"></a>1. 什么是 devops,还是 DevOps</h3><p>  最近在阅读 《Effective DevOps》（中文版） 时看到一些有趣的内容，如标题所问到的 – <u>devops 还是 DevOps?</u> (P6)。<br>  接触这个概念已经2年左右，自身的职位名称也是这个单词，但从来也没有思考过这个问题，而该书的作者在前言中提出来了，不得不说思维之严谨。不妨读者自身也想一想，到底那个更合适，为什么？</p>
-<blockquote>
-<p>摘自《Effective DevOps》（中文版）P6</p>
-</blockquote>
-<p>  对于 “devops”这个词的字母是否大写我们还有很多讨论。一个简单的在线调查显示，大多数人都支持“DevOps”。我们还发现组织比较关注“Dev”和“Ops”,以至于出现了 “DevSecOps”和“DevQAOps”,因为“DevOps”隐含地只包括 “Dev” 和 “Ops”。<br>  所以最后我们选择了“devops”,这对应原来的推特上的标签，用来联系希望改善协作的人，他们希望谈话时不再区分“你们”和“我们”，而应该更多地讨论如何利用可持续的工作实践来支持企业发展。<br>  成功的项目需要有适当的输入、努力、见解以及整个组织中人们之间的协作，你的组织中存在的问题可能不只限于开发人员和运维团队。我们在这本书中有意选择使用小写的 “devops” 来反映我们的观点，这只是有一种包容，并没有其他的意思。</p>
-<h3 id="2-常见的devops误区-（P56）-devops不是什么"><a href="#2-常见的devops误区-（P56）-devops不是什么" class="headerlink" title="2.常见的devops误区 （P56）/devops不是什么"></a>2.常见的devops误区 （P56）/devops不是什么</h3><p>devops只与开发人员和系统管理员有关<br>devops是一个团队<br>devops是一个职位<br>devops表示由一半的人完成全部工作<br>devops只是关于工具<br>devops只是关于自动化<br>实现devops有一种“正确方法”（或“错误方法”）<br>…</p>
-<h3 id="3-总结"><a href="#3-总结" class="headerlink" title="3.总结"></a>3.总结</h3><p>devops 更多的是一种文化，哲学上的概念，说白了就是<strong>无法言传，只可意会</strong></p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Devops/">Devops</a></li></ul>
-
     </footer>
   </div>
 
