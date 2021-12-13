@@ -93,6 +93,62 @@
     
     
     <article
+  id="post-Import-P12-file-on-Mac-OS-X-with-CLI"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/11/22/Import-P12-file-on-Mac-OS-X-with-CLI/"
+    >Import P12 file on Mac OS X with CLI</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/11/22/Import-P12-file-on-Mac-OS-X-with-CLI/" class="article-date">
+  <time datetime="2019-11-22T03:38:40.000Z" itemprop="datePublished">2019-11-22</time>
+</a>  
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h3 id="目的：通过命令行倒入p12证书"><a href="#目的：通过命令行倒入p12证书" class="headerlink" title="目的：通过命令行倒入p12证书"></a>目的：通过命令行倒入p12证书</h3><p>Apple为了安全，在ssh登录时，是不允许读取Keychains（钥匙串）的，所以 <strong>security unlock-keychain</strong> 这行命令就很重要了。比如在Pipeline构建打包前，先解锁Keychains。</p>
+<h4 id="1-解锁"><a href="#1-解锁" class="headerlink" title="1.解锁"></a>1.解锁</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#方式一： 命令行中不含密码，交互方式</span></span><br><span class="line">➜   security unlock-keychain /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br><span class="line">password to unlock /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db:</span><br><span class="line"></span><br><span class="line"><span class="comment">#或者命令行中包含密码的方式</span></span><br><span class="line">➜   security unlock-keychain -p &lt;Mac_Login_PWD&gt; /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br><span class="line">➜   security list-keychains -s /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br></pre></td></tr></table></figure>
+<h4 id="2-导入"><a href="#2-导入" class="headerlink" title="2.导入"></a>2.导入</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#方式一： 命令行中不含密码，交互方式</span></span><br><span class="line"><span class="comment">#会有弹窗，提示输入 P12文件的密码</span></span><br><span class="line">➜   security import ~/Desktop/xxx.p12 -k /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br><span class="line">1 identity imported.</span><br><span class="line"><span class="comment">#或者命令行中包含密码的方式</span></span><br><span class="line">➜   security import ~/&lt;Your_Path&gt;/xxx.p12 -k /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db -P &lt;P12_Password&gt;</span><br><span class="line">1 identity imported.</span><br></pre></td></tr></table></figure>
+<h4 id="3-其他"><a href="#3-其他" class="headerlink" title="3.其他"></a>3.其他</h4><p>删除<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">##先展示证书，获取SHA1值; -p 可指定类型</span></span><br><span class="line">security find-identity -p codesigning /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br><span class="line"><span class="comment">##根据SHA1值删除对应的证书</span></span><br><span class="line">security delete-certificate -Z &lt;Your_SHA1&gt;</span><br></pre></td></tr></table></figure></p>
+<p>更过 security 用法，查看 <code>security --help</code> 、<code>security find-identity --help</code></p>
+<hr>
+<p>More ref:<br><a href="https://www.cnblogs.com/pixy/p/4817579.html" target="_blank" rel="noopener">https://www.cnblogs.com/pixy/p/4817579.html</a></p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools/">Tools</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-Anka-tutorial-xx-Upgrade-Record"
   class="article article-type-post"
   itemscope
@@ -973,81 +1029,6 @@
        
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/k8s/">k8s</a></li></ul>
 
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-devops-4大支柱"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/10/17/devops-4大支柱/"
-    >devops 4大支柱</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/10/17/devops-4大支柱/" class="article-date">
-  <time datetime="2019-10-17T02:32:04.000Z" itemprop="datePublished">2019-10-17</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/读书笔记/">读书笔记</a>
-  </div>
- 
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h3 id="一、个人感想"><a href="#一、个人感想" class="headerlink" title="一、个人感想"></a>一、个人感想</h3><p>  书中的标题看起来总是“高大上”的，但说出来的都是一些无形的东西，要理解这类理念需要时间的积累。这里先摘抄几句，一起“品味”一下。其中许多文化、方法论与现在的外企公司比较吻合，相对理解起来容易些; 书中涉及到了很多细节，比如 <em>招聘和面试（p250）</em>, <em>当责文化(p269)</em>、<em>显性文化(p270)</em> 、<em>报酬（p241）</em>等，都值得去了解和追寻。</p>
-<ul>
-<li><p>“Patrick Debois说过，devops是一个 <strong>人类问题</strong> ，这说明每个组织都有该组织中的人特有的一种devops文化。”（p67）</p>
-</li>
-<li><p>“要实现成功的devops变革，有效的工具使用当然是必要的，但这些还不够…..实际上，解决组织中出现的人际冲突和团队之间的冲突对于培养持久的关系并最终形成一个 <strong>devops环境</strong> 至关重要。”（p67）</p>
-</li>
-<li><p>“基于有效实现devops的4大支柱，可以解决影响软件开发的 <strong>文化</strong> 和 <strong>技术问题</strong>。”（p69）</p>
-</li>
-<li><p>“工具的价值和成本是不一样的。… 即使是几乎所有人都认为很重要的工具（如配置管理或源码控制工具）也有不同，有些可能对某个特定的环境更为使用。<br>根据经验、知识和流程的不同，工具也有变化。  工具必须适应环境的上下文。如果没有上下文，最好的工具就无从谈起，而上下文是不断变化的。” （p189）</p>
-</li>
-<li><p>“工具不能与有效实现devops的另外3各支柱完全分离。最终工具还是要由人来使用…工具不仅影响我们如何工作和交互，也会受其影响…”（p220）</p>
-</li>
-</ul>
-<h3 id="二、基本套路"><a href="#二、基本套路" class="headerlink" title="二、基本套路"></a>二、基本套路</h3><p>4个章节基本套路如下</p>
-<ol>
-<li><p>解释 XX,定义 XX，附带研究一个案例</p>
-</li>
-<li><p>说明<strong>误区</strong> 告诉我们什么样的情形我们理解错误</p>
-</li>
-<li><p>说明<strong>错误排查</strong> 告诉我们如何处理困境，并根据情况解决问题</p>
-</li>
-</ol>
-<h3 id="三、脑图"><a href="#三、脑图" class="headerlink" title="三、脑图"></a>三、脑图</h3><p>见下方<br><img src="/images/devops_4pillars.png" alt="devops 4 pillars"></p>
-<p>原始地址：<a href="https://mubu.com/docfgrtOS4mn0" target="_blank" rel="noopener">https://mubu.com/docfgrtOS4mn0</a></p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
     </footer>
   </div>
 

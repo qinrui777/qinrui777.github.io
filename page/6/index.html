@@ -93,6 +93,107 @@
     
     
     <article
+  id="post-移动端打包pipeline通识：从零开始"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/01/03/移动端打包pipeline通识：从零开始/"
+    >移动端打包pipeline通识：从零开始</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/01/03/移动端打包pipeline通识：从零开始/" class="article-date">
+  <time datetime="2020-01-03T04:50:40.000Z" itemprop="datePublished">2020-01-03</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/CICD/">CICD</a>
+  </div>
+ 
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>背景： 一台被格式化后的 MacBook Pro, 对某个移动端项目( xx类型 )做android pipeline、iOS pipeline</p>
+<p>网络：公司网络（可翻墙）</p>
+<blockquote>
+<p>makefile</p>
+</blockquote>
+<p>记得验证/确认</p>
+<h3 id="1-安装-Set-up"><a href="#1-安装-Set-up" class="headerlink" title="1-安装/Set up"></a>1-安装/Set up</h3><h5 id="1-1-install-brew"><a href="#1-1-install-brew" class="headerlink" title="1.1 install brew"></a>1.1 install brew</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/ruby -e <span class="string">"<span class="variable">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)</span>"</span></span><br><span class="line"></span><br><span class="line">brew -v</span><br></pre></td></tr></table></figure>
+<p>brew cask 是在brew 的基础上一个增强的工具，用来安装Mac上的Gui程序应用包（.dmg/.pkg）, 比如qq、chrome等。它先下载解压到统一的目录中（/opt/homebrew-cask/Caskroom），省掉了自己去下载、解压、拖拽（安装）等步骤，同样，卸载相当容易与干净。然后再软链到~/Applications/目录下, 非常方便，而且还包含很多在 AppStore 里没有的常用软件。</p>
+<h5 id="1-2-install-brew-cask"><a href="#1-2-install-brew-cask" class="headerlink" title="1.2 install brew cask"></a>1.2 install brew cask</h5><p><code>brew install brew-cask-completion</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">➜  Desktop brew cask</span><br><span class="line">Homebrew Cask provides a friendly CLI workflow <span class="keyword">for</span> the administration</span><br><span class="line">of macOS applications distributed as binaries.</span><br><span class="line"></span><br><span class="line">Commands:</span><br><span class="line"></span><br><span class="line">    --cache    display the file used to cache the Cask</span><br><span class="line">    audit      verifies installability of Casks</span><br><span class="line">    cat        dump raw <span class="built_in">source</span> of the given Cask to the standard output</span><br><span class="line">    create     creates the given Cask and opens it <span class="keyword">in</span> an editor</span><br><span class="line">    doctor     checks <span class="keyword">for</span> configuration issues</span><br><span class="line">    edit       edits the given Cask</span><br><span class="line">    fetch      downloads remote application files to <span class="built_in">local</span> cache</span><br><span class="line">    home       opens the homepage of the given Cask</span><br><span class="line">    info       displays information about the given Cask</span><br><span class="line">    install    installs the given Cask</span><br><span class="line">    list       with no args, lists installed Casks; given installed Casks, lists staged files</span><br><span class="line">    outdated   list the outdated installed Casks</span><br><span class="line">    reinstall  reinstalls the given Cask</span><br><span class="line">    style      checks Cask style using RuboCop</span><br><span class="line">    uninstall  uninstalls the given Cask</span><br><span class="line">    upgrade    upgrades all outdated casks</span><br><span class="line">    zap        zaps all files associated with the given Cask</span><br><span class="line"></span><br><span class="line">See also <span class="string">"man brew-cask"</span></span><br></pre></td></tr></table></figure>
+<h5 id="1-3-install-java"><a href="#1-3-install-java" class="headerlink" title="1.3 install java"></a>1.3 install java</h5><h3 id="方法一-官网下载"><a href="#方法一-官网下载" class="headerlink" title="方法一: 官网下载"></a>方法一: 官网下载</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget --no-cookies --no-check-certificate --header <span class="string">"Cookie: gpw_e24=http%3a%2F%2Fwww.oracle.com%2Ftechnetwork%2Fjava%2Fjavase%2Fdownloads%2Fjdk8-downloads-2133151.html; oraclelicense=accept-securebackup-cookie;"</span> <span class="string">"https://download.oracle.com/otn/java/jdk/8u231-b11/5b13a193868b4bf28bcb45c792fce896/jdk-8u231-macosx-x64.dmg"</span></span><br></pre></td></tr></table></figure>
+<p>方法二： brew cask下载</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew tap homebrew/cask-versions</span><br><span class="line">brew cask install adoptopenjdk8</span><br></pre></td></tr></table></figure>
+<p>检查版本：<code>java -version</code></p>
+<h5 id="1-4-install-jenkins"><a href="#1-4-install-jenkins" class="headerlink" title="1.4 install jenkins"></a>1.4 install jenkins</h5><p>在Mac OS上安装jenkins的N(4)种方法</p>
+<ul>
+<li>方法一： 下载war包，java命令启动<br><code>curl -L -O http://mirrors.jenkins-ci.org/war/2.211/jenkins.war</code></li>
+</ul>
+<p><code>java -jar /xx/xx/jenkins.war --httpPort=8080</code></p>
+<ul>
+<li><p>方法二： 将下载的war包文件部署到 tomcat servlet 容器，用脚本 startup.sh 启动</p>
+<blockquote>
+<p>暂不介绍</p>
+</blockquote>
+</li>
+<li><p>方法三： brew 安装&amp;启动</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#install jenkins, Requires Java 1.8, [issus](https://github.com/Homebrew/homebrew-core/issues/39037)</span></span><br><span class="line">brew install jenkins-lts</span><br><span class="line"><span class="comment"># start jenkins, default port: 8080</span></span><br><span class="line">brew services start jenkins-lts</span><br><span class="line"><span class="comment"># stop jenkins</span></span><br><span class="line">brew services stop jenkins-lts</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>修改默认端口 <a href="https://medium.com/@vishnuteja/install-jenkins-as-a-service-on-macos-and-change-port-number-9aa097e5cfbf" target="_blank" rel="noopener">link</a></li>
+<li>假设希望jenkins能够开机自启动以及异常自己主动重新启动 <a href="https://yq.aliyun.com/articles/349494?spm=a2c4e.11153940.0.0.2a706e73I8msiV" target="_blank" rel="noopener">link</a></li>
+</ul>
+</blockquote>
+<p><code>sudo touch /Library/LaunchDaemons/org.jenkins-ci.plist</code></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">plist</span> <span class="attr">version</span>=<span class="string">"1.0"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">dict</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>Label<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">string</span>&gt;</span>Jenkins<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>KeepAlive<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">true</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>ProgramArguments<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">array</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">string</span>&gt;</span>/usr/bin/java<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">string</span>&gt;</span>-Dmail.smtp.starttls.enable=true<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">string</span>&gt;</span>-jar<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">string</span>&gt;</span>/usr/local/opt/jenkins/libexec/jenkins.war<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">string</span>&gt;</span>--httpListenAddress=127.0.0.1<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">string</span>&gt;</span>--httpPort=8080<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">array</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>RunAtLoad<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">true</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>UserName<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">string</span>&gt;</span>jenkins<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">dict</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plist</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>方法四： docker container 启动，添加宿主机作为一个slave node，并使用</li>
+</ul>
+<p>TODO:<br>[] jenkins加入到开机自启动<br>[X] 定制化配置等</p>
+<p>我是谁 -&gt; <code>whoami</code><br>我在哪里 -&gt; <code>pwd &amp;&amp; ls -al</code><br>我要到哪里去 -&gt;  <em>New item</em></p>
+<h3 id="配置项目pipeline"><a href="#配置项目pipeline" class="headerlink" title="配置项目pipeline"></a>配置项目pipeline</h3><p>安装项目所需工具 cocoapods </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># install cocoapods</span></span><br><span class="line">sudo gem install cocoapods</span><br></pre></td></tr></table></figure>
+<p>检查所有工具的版本<br>xcodebuild -version<br>react-native</p>
+<p>添加jenkins 凭证</p>
+<p>ref:</p>
+<ul>
+<li><a href="https://juejin.im/post/5cd2a50e518825356d54b847" target="_blank" rel="noopener">brew &amp; brew cask</a></li>
+</ul>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-The-Gig-Economy-Note"
   class="article article-type-post"
   itemscope
@@ -754,62 +855,6 @@
     
     <footer class="article-footer">
        
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-Import-P12-file-on-Mac-OS-X-with-CLI"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/11/22/Import-P12-file-on-Mac-OS-X-with-CLI/"
-    >Import P12 file on Mac OS X with CLI</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/11/22/Import-P12-file-on-Mac-OS-X-with-CLI/" class="article-date">
-  <time datetime="2019-11-22T03:38:40.000Z" itemprop="datePublished">2019-11-22</time>
-</a>  
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h3 id="目的：通过命令行倒入p12证书"><a href="#目的：通过命令行倒入p12证书" class="headerlink" title="目的：通过命令行倒入p12证书"></a>目的：通过命令行倒入p12证书</h3><p>Apple为了安全，在ssh登录时，是不允许读取Keychains（钥匙串）的，所以 <strong>security unlock-keychain</strong> 这行命令就很重要了。比如在Pipeline构建打包前，先解锁Keychains。</p>
-<h4 id="1-解锁"><a href="#1-解锁" class="headerlink" title="1.解锁"></a>1.解锁</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#方式一： 命令行中不含密码，交互方式</span></span><br><span class="line">➜   security unlock-keychain /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br><span class="line">password to unlock /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db:</span><br><span class="line"></span><br><span class="line"><span class="comment">#或者命令行中包含密码的方式</span></span><br><span class="line">➜   security unlock-keychain -p &lt;Mac_Login_PWD&gt; /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br><span class="line">➜   security list-keychains -s /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br></pre></td></tr></table></figure>
-<h4 id="2-导入"><a href="#2-导入" class="headerlink" title="2.导入"></a>2.导入</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#方式一： 命令行中不含密码，交互方式</span></span><br><span class="line"><span class="comment">#会有弹窗，提示输入 P12文件的密码</span></span><br><span class="line">➜   security import ~/Desktop/xxx.p12 -k /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br><span class="line">1 identity imported.</span><br><span class="line"><span class="comment">#或者命令行中包含密码的方式</span></span><br><span class="line">➜   security import ~/&lt;Your_Path&gt;/xxx.p12 -k /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db -P &lt;P12_Password&gt;</span><br><span class="line">1 identity imported.</span><br></pre></td></tr></table></figure>
-<h4 id="3-其他"><a href="#3-其他" class="headerlink" title="3.其他"></a>3.其他</h4><p>删除<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">##先展示证书，获取SHA1值; -p 可指定类型</span></span><br><span class="line">security find-identity -p codesigning /Users/&lt;Your_Name&gt;/Library/Keychains/login.keychain-db</span><br><span class="line"><span class="comment">##根据SHA1值删除对应的证书</span></span><br><span class="line">security delete-certificate -Z &lt;Your_SHA1&gt;</span><br></pre></td></tr></table></figure></p>
-<p>更过 security 用法，查看 <code>security --help</code> 、<code>security find-identity --help</code></p>
-<hr>
-<p>More ref:<br><a href="https://www.cnblogs.com/pixy/p/4817579.html" target="_blank" rel="noopener">https://www.cnblogs.com/pixy/p/4817579.html</a></p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools/">Tools</a></li></ul>
-
     </footer>
   </div>
 

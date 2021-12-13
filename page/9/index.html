@@ -93,6 +93,70 @@
     
     
     <article
+  id="post-python-module-SimpleHTTPServer"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/08/18/python-module-SimpleHTTPServer/"
+    >python module SimpleHTTPServer</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/08/18/python-module-SimpleHTTPServer/" class="article-date">
+  <time datetime="2019-08-18T06:55:52.000Z" itemprop="datePublished">2019-08-18</time>
+</a>  
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h3 id="what-is"><a href="#what-is" class="headerlink" title="what is"></a>what is</h3><p>The <strong>SimpleHTTPServer</strong> module can be used in the following manner in order to set up a very basic web server serving files <strong>relative</strong> to the current directory.</p>
+<p>Warning SimpleHTTPServer is not recommended for production. It only implements basic security checks.</p>
+<h4 id="Example-1-fetch-files-from-a-server"><a href="#Example-1-fetch-files-from-a-server" class="headerlink" title="Example 1: fetch files from a server"></a>Example 1: fetch files from a server</h4><ul>
+<li><ol>
+<li>Start <code>SimpleHTTPServer</code> on server node<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span>   your_file_dir</span><br><span class="line">python -m SimpleHTTPServer &lt;PORT&gt;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>Excute command on client node<br><code>wget &lt;SERVER_NODE_IP&gt;:&lt;PROT&gt;/relative path/test.sh</code></li>
+</ol>
+</li>
+</ul>
+<p><em>or</em> go to the browser and type this URL: <code>http://&lt;SERVER_NODE_IP&gt;:&lt;PROT&gt;</code> and see the output.</p>
+<p><strong>✍TIP</strong><br>The SimpleHTTPServer module has been merged into http.server in Python 3.0. The 2to3 tool will automatically adapt imports when converting your sources to 3.0.<br><code>python3 -m http.server</code></p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools/">Tools</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-Docker-Configuration"
   class="article article-type-post"
   itemscope
@@ -636,62 +700,6 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">➜  example_stages cat Makefile</span><br><span class="line">.DEFAULT_GOAL := <span class="built_in">help</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">help</span>:	<span class="comment">## show this help</span></span><br><span class="line">	@fgrep -h <span class="string">"##"</span> $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e <span class="string">'s/\\$$//'</span> | sed -e <span class="string">'s/##//'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">stage1:  <span class="comment">## This message will show up when typing 'make help'</span></span><br><span class="line">	@<span class="built_in">echo</span> I am stage1</span><br><span class="line"></span><br><span class="line">stage2:</span><br><span class="line">	<span class="built_in">echo</span> <span class="string">"I am stage2"</span></span><br><span class="line">➜  example_stages make <span class="built_in">help</span></span><br><span class="line"><span class="built_in">help</span>:	 show this <span class="built_in">help</span></span><br><span class="line">stage1:   This message will show up when typing <span class="string">'make help'</span></span><br></pre></td></tr></table></figure>
 <p>output:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">➜   make <span class="built_in">help</span></span><br><span class="line"><span class="built_in">help</span>:	 show this <span class="built_in">help</span></span><br><span class="line">stage1:   This message will show up when typing <span class="string">'make help'</span></span><br></pre></td></tr></table></figure>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/makefile/">makefile</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-Makefile-103-all-clean"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/07/05/Makefile-103-all-clean/"
-    >Makefile 103: all &amp; clean</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/07/05/Makefile-103-all-clean/" class="article-date">
-  <time datetime="2019-07-05T06:18:07.000Z" itemprop="datePublished">2019-07-05</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Linux/">Linux</a>
-  </div>
- 
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h5 id="makefile-中的all"><a href="#makefile-中的all" class="headerlink" title="makefile 中的all"></a>makefile 中的all</h5><p>因为 makefile 的执行流程是找到第一个目标作为最终生成的目标，如果顺序错乱了，makefile 就可能报错，all 方法就是解决这个问题而存在的，并且，all 方法可以让一个 makefile 生成多个目标。示例如下：</p>
-<h5 id="makefile-中的-clean"><a href="#makefile-中的-clean" class="headerlink" title="makefile 中的 clean"></a>makefile 中的 clean</h5><p>make clean 命令是用来清除目录下临时文件的，执行 clean 这个目标时，不需要任何依赖项，也就意味着，如果目录下有一个文件名为 clean 的话，执行 make clean 命令时会判断这个目标所依赖的内容是否有变化，如有变化则重新生成，无变化则跳过，而恰恰我们这个 clean 没写依赖规则！这将导致 clean 无论如何都不会被执行。解决这个问题的办法就是将 clean 方法声明为一个伪目标，做就就是让 clean 无论如何都更新，同样我们生成的 all 目标也可能会出现这种情况，所以我们将它们两个都声明为 <strong>伪目标</strong>，方法如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">clean:</span><br><span class="line">    -rm -rf $(obj) main app </span><br><span class="line"></span><br><span class="line">.PHONY:clean all</span><br></pre></td></tr></table></figure>
  
       <!-- reward -->
       
