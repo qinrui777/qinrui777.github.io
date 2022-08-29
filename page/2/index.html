@@ -93,6 +93,69 @@
     
     
     <article
+  id="post-Bash-对变量动手脚"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/11/03/Bash-对变量动手脚/"
+    >Bash-对变量动手脚</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/11/03/Bash-对变量动手脚/" class="article-date">
+  <time datetime="2021-11-03T08:31:56.000Z" itemprop="datePublished">2021-11-03</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Bash/">Bash</a>
+  </div>
+ 
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>才疏学浅，最近才注意到变量操作中的一些用法，也由此找到了一个<a href="https://tldp.org/LDP/Bash-Beginners-Guide/html/sect_10_03.html" target="_blank" rel="noopener">好网站</a>。</p>
+<p>Operations on variables</p>
+<ul>
+<li>1.Length of a variable（获取变量长度）</li>
+<li>2.Transformations of variables （变换变量）</li>
+<li>3.Removing substrings (删除变量中的子串)</li>
+<li>4.Replacing parts of variable names (替换变量中的一部分)</li>
+</ul>
+<p>其中的第2点的写法尤其的惊艳到我，非常的简洁但有效，供上网站上的代码帮助理解一下。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">~ <span class="built_in">echo</span> <span class="variable">$&#123;TEST:-test&#125;</span></span><br><span class="line"><span class="built_in">test</span></span><br><span class="line"></span><br><span class="line">~ <span class="built_in">echo</span> <span class="variable">$TEST</span></span><br><span class="line"></span><br><span class="line">~ <span class="built_in">export</span> TEST=a_string</span><br><span class="line"></span><br><span class="line">~ <span class="built_in">echo</span> <span class="variable">$&#123;TEST:-test&#125;</span></span><br><span class="line">a_string</span><br><span class="line"></span><br><span class="line">~ <span class="built_in">echo</span> <span class="variable">$&#123;TEST2:-$TEST&#125;</span></span><br><span class="line">a_string</span><br></pre></td></tr></table></figure>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Bash/">Bash</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shell/">Shell</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-第二次学习英语"
   class="article article-type-post"
   itemscope
@@ -651,67 +714,6 @@
 <p>Note the following:</p>
 <p>If your Jenkins is authenticating users, you need to pass the username and password otherwise you can omit that part.<br>By default, this command expects your Jenkinsfile to be called Jenkinsfile. If not, change the name in the command.<br>Replace jenkins_url and possibly port 8080 based on the URL and port where you are running Jenkins. You can also use localhost as URL if you are running Jenkins on your machine.</p>
 <h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>VS Code 的插件也很不错 <a href="https://www.jenkins.io/blog/2018/11/07/Validate-Jenkinsfile/" target="_blank" rel="noopener">https://www.jenkins.io/blog/2018/11/07/Validate-Jenkinsfile/</a> ，但如果本地没有安装 VS Code 就还是用其他方法吧</p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jenkins/">jenkins</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-Jenkins-FAQ"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/11/12/Jenkins-FAQ/"
-    >Jenkins Error</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2020/11/12/Jenkins-FAQ/" class="article-date">
-  <time datetime="2020-11-12T09:30:18.000Z" itemprop="datePublished">2020-11-12</time>
-</a>  
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h3 id="中文乱码问题"><a href="#中文乱码问题" class="headerlink" title="中文乱码问题"></a>中文乱码问题</h3><p>参考<br><a href="https://www.cnblogs.com/unknows/p/8519636.html" target="_blank" rel="noopener">https://www.cnblogs.com/unknows/p/8519636.html</a></p>
-<p><a href="http://yeshaoting.github.io/article/jenkins/jenkins%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E4%B8%8E%E6%9C%8D%E5%8A%A1%E5%90%AF%E5%8A%A8/" target="_blank" rel="noopener">http://yeshaoting.github.io/article/jenkins/jenkins%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E4%B8%8E%E6%9C%8D%E5%8A%A1%E5%90%AF%E5%8A%A8/</a></p>
-<h3 id="Jenkins-console-output-display-color"><a href="#Jenkins-console-output-display-color" class="headerlink" title="Jenkins console output display color"></a>Jenkins console output display color</h3><p>打印测试报告时jenkins console output输出如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&gt; Task :cucumber</span><br><span class="line"></span><br><span class="line">Scenario: ????         [90m<span class="comment"># src/test/resources/features/bta_open_an_account.feature:3[0m</span></span><br><span class="line">Starting MSEdgeDriver 85.0.564.51 (626274a16bb350129a74ead7a3d8d53a5ad39364) on port 5325</span><br><span class="line">Only <span class="built_in">local</span> connections are allowed.</span><br><span class="line">Please see https://chromedriver.chromium.org/security-considerations <span class="keyword">for</span> suggestions on keeping MSEdgeDriver safe.</span><br><span class="line">MSEdgeDriver was started successfully.</span><br><span class="line">[1605165549.451][WARNING]: This version of MSEdgeDriver has not been tested with MSEdge version 86.</span><br><span class="line">Nov 12, 2020 3:19:11 PM org.openqa.selenium.remote.ProtocolHandshake createSession</span><br><span class="line">INFO: Detected dialect: W3C</span><br><span class="line">http://10.20.159.131:8080/ifmmanage/bizframe/loginnew.jsp</span><br><span class="line">  [32mGiven [0m[32m??BTA???????[0m   [90m<span class="comment"># steps.StepDefs.login()[0m</span></span><br><span class="line">  [32mAnd [0m[32m??BTA?????[0m       [90m<span class="comment"># steps.StepDefs.assertLoginSuccess()[0m</span></span><br><span class="line">  [32mWhen [0m[32m??[0m[32m[1m<span class="string">"????"</span>[0m[32m???[0m     [90m<span class="comment"># steps.StepDefs.open_tab(java.lang.String)[0m</span></span><br><span class="line">  [32mAnd [0m[32m???????[0m[32m[1m<span class="string">"????"</span>[0m[32m??[0m  [90m<span class="comment"># steps.StepDefs.clickClearingSystem(java.lang.String)[0m</span></span><br><span class="line">  [32mAnd [0m[32m????????[0m         [90m<span class="comment"># steps.StepDefs.clickDailyStartClearing()[0m</span></span><br><span class="line">  [32mAnd [0m[32m??????[0m           [90m<span class="comment"># steps.StepDefs.confirmWindow()[0m</span></span><br><span class="line">  [32mThen [0m[32m???????[0m[32m[1m<span class="string">"????"</span>[0m[32m??[0m [90m<span class="comment"># steps.StepDefs.clickClearingSystem(java.lang.String)[0m</span></span><br></pre></td></tr></table></figure></p>
-<p>ref: <a href="https://www.programmersought.com/article/66361313580/" target="_blank" rel="noopener">https://www.programmersought.com/article/66361313580/</a></p>
-<h3 id="How-to-stop-an-unstoppable-zombie-job-on-Jenkins-without-restarting-the-server"><a href="#How-to-stop-an-unstoppable-zombie-job-on-Jenkins-without-restarting-the-server" class="headerlink" title="How to stop an unstoppable zombie job on Jenkins without restarting the server?"></a>How to stop an unstoppable zombie job on Jenkins without restarting the server?</h3><p>Go to “Manage Jenkins” &gt; “Script Console” and run a script:</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Jenkins .instance.getItemByFullName(<span class="string">"JobName"</span>)</span><br><span class="line">        .getBuildByNumber(JobNumber)</span><br><span class="line">        .finish(hudson.model.Result.ABORTED, <span class="keyword">new</span> java.io.IOException(<span class="string">"Aborting build"</span>));</span><br></pre></td></tr></table></figure>
-<p>You’ll have just specify your JobName and JobNumber.</p>
-<p>ref: <a href="https://stackoverflow.com/questions/14456592/how-to-stop-an-unstoppable-zombie-job-on-jenkins-without-restarting-the-server" target="_blank" rel="noopener">https://stackoverflow.com/questions/14456592/how-to-stop-an-unstoppable-zombie-job-on-jenkins-without-restarting-the-server</a></p>
-<h3 id="jenkins-的在slave-node运行的-job-状态不更新"><a href="#jenkins-的在slave-node运行的-job-状态不更新" class="headerlink" title="jenkins 的在slave node运行的 job 状态不更新"></a>jenkins 的在slave node运行的 job 状态不更新</h3><p>jenkins master： Windows PC<br>jenkins slave: linux server</p>
-<p>某个调度到slave的运行job总是不更新状态，明明已经完成了任务，但一直在页面左下角显示的是在运行中</p>
-<p>可尝试 <a href="https://kb.iu.edu/d/aopy" target="_blank" rel="noopener">https://kb.iu.edu/d/aopy</a></p>
-<h3 id="引号"><a href="#引号" class="headerlink" title="引号"></a>引号</h3><p>// 单引号需要拼接 容易出错 不推荐使用<br><code>sh &#39;mkdir -p &#39; + VARIABLE</code><br>// 三引号支持变量等内容，引号嵌套等 推荐使用<br><code>sh &quot;&quot;&quot;cp ${VARIABLE}/ &#39;abc&#39; &quot;123&quot; ${VARIABLE_1}/${VARIABLE_2}&quot;&quot;&quot;</code></p>
  
       <!-- reward -->
       

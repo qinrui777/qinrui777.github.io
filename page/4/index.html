@@ -93,6 +93,171 @@
     
     
     <article
+  id="post-那些容易被忘记的小事儿-Tech"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/03/那些容易被忘记的小事儿-Tech/"
+    >那些容易被忘记的小事儿-Tech</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/05/03/那些容易被忘记的小事儿-Tech/" class="article-date">
+  <time datetime="2020-05-03T02:31:00.000Z" itemprop="datePublished">2020-05-03</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Tools/">Tools</a>
+  </div>
+ 
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>有些东西容易记住，有些往往可以往脑子里记却总是忘记，没办法了。</p>
+<h3 id="shell命令"><a href="#shell命令" class="headerlink" title="shell命令"></a>shell命令</h3><p>命令行窗口可以使用以下的编辑命令，就是当你登录到一个服务器时，或者打开一个shell时用的。</p>
+<p><code>Ctrl-R</code> 搜索输入命令的历史<br><code>!!</code> 重复上一个命令<br><code>!$</code> 上一个命令中最后一个参数<br><code>Ctrl-w</code> 删除上一个输入的词<br><code>Ctrl-U</code> 从光标位置删除到行首<br><code>Ctrl-K</code> 从光标位置删除到行尾</p>
+<h3 id="Sublime快捷键"><a href="#Sublime快捷键" class="headerlink" title="Sublime快捷键"></a>Sublime快捷键</h3><p>在每一行行首增加字符串</p>
+<p>第一步：选中全部内容 <code>ctrl+A</code><br>第二步：进入待操作状态，然后 <code>ctrl+shift+L</code></p>
+<p>但实际，在我的MBP上是 <code>command + shift + L</code></p>
+<h3 id="vim-列编辑"><a href="#vim-列编辑" class="headerlink" title="vim 列编辑"></a>vim 列编辑</h3><p>链接：<a href="https://tlanyan.me/vim-colume-edit-summary/" target="_blank" rel="noopener">https://tlanyan.me/vim-colume-edit-summary/</a></p>
+<p>步骤：</p>
+<ul>
+<li>1.在 普通模式 按 ctrl+v 进入 可视块 模式；</li>
+<li>2.使用 hjkl 移动光标选择要编辑的块；</li>
+<li>3.视情况而定（看下面）；</li>
+<li>4.按 esc 退出（非必须）。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">操作</th>
+<th style="text-align:center">第3步的按键</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">光标前插入</td>
+<td style="text-align:center">按 <code>shift+i</code></td>
+</tr>
+<tr>
+<td style="text-align:left">删除</td>
+<td style="text-align:center">按 <code>x</code> 或者<code>d</code></td>
+</tr>
+<tr>
+<td style="text-align:left">替换</td>
+<td style="text-align:center">按 <code>r</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="PROMPT-COMMAND"><a href="#PROMPT-COMMAND" class="headerlink" title="PROMPT_COMMAND"></a>PROMPT_COMMAND</h3><p>Bash shell executes the content of the PROMPT_COMMAND just before displaying the PS1 variable. (即添加显示在PS1前面的内容)</p>
+<p><code>export PROMPT_COMMAND=&quot;echo -n \(dev\)&quot;</code><br><code>export PROMPT_COMMAND=&quot;date +%k:%m:%S&quot;</code></p>
+<p>If you want to display the value of PROMPT_COMMAND in the same line as the PS1, use the echo -n as shown below.<br><code>export PROMPT_COMMAND=&quot;echo -n [$(date +%k:%m:%S)]&quot;</code></p>
+<p>效果如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vagrant@minion1:~$ <span class="built_in">export</span> PROMPT_COMMAND=<span class="string">"echo -n \(dev\)"</span></span><br><span class="line">(dev)vagrant@minion1:~$</span><br></pre></td></tr></table></figure></p>
+<h3 id="awk内建变量"><a href="#awk内建变量" class="headerlink" title="awk内建变量"></a>awk内建变量</h3><p>使用awk时，有时第一行是列名，需要过滤掉，从第二行开始显示。</p>
+<p><code>kubectl get node | awk &#39;NR!=1&#39;</code></p>
+<blockquote>
+<p>NR(Number of Record) 表示的是已经处理过的总记录数目，或者说行号, 上面的 <code>NR!=1</code> 表示不打印第一行，相应地，<code>NR!=2</code> 表示不打印第二行.</p>
+</blockquote>
+<p>只打印最后一列<br><code>kubectl get node | awk &#39;{print $NF}&#39;</code></p>
+<h3 id="TCP连接的状态详解以及故障排查"><a href="#TCP连接的状态详解以及故障排查" class="headerlink" title="TCP连接的状态详解以及故障排查"></a>TCP连接的状态详解以及故障排查</h3><blockquote>
+<p><a href="https://blog.csdn.net/hguisu/article/details/38700899" target="_blank" rel="noopener">https://blog.csdn.net/hguisu/article/details/38700899</a></p>
+</blockquote>
+<p><img src="https://s1.ax1x.com/2020/09/03/wPC8yQ.png" alt="wPC8yQ.png"></p>
+<p>TCP状态及其描述如下表。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">状态</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">LISTEN</td>
+<td style="text-align:left">等待来自远程TCP应用程序的请求</td>
+</tr>
+<tr>
+<td style="text-align:left">SYN_SENT</td>
+<td style="text-align:left">发送连接请求后等待来自远程端点的确认。TCP第一次握手后客户端所处的状态</td>
+</tr>
+<tr>
+<td style="text-align:left">SYN-RECEIVED</td>
+<td style="text-align:left">该端点已经接收到连接请求并发送确认。\n 该端点正在等待最终确认。TCP第二次握手后服务端所处的状态</td>
+</tr>
+<tr>
+<td style="text-align:left">ESTABLISHED</td>
+<td style="text-align:left">代表连接已经建立起来了。这是连接数据传输阶段的正常状态</td>
+</tr>
+<tr>
+<td style="text-align:left">FIN_WAIT_1</td>
+<td style="text-align:left">等待来自远程TCP的终止连接请求或终止请求的确认</td>
+</tr>
+<tr>
+<td style="text-align:left">FIN_WAIT_2</td>
+<td style="text-align:left">在此端点发送终止连接请求后，等待来自远程TCP的连接终止请求</td>
+</tr>
+<tr>
+<td style="text-align:left">CLOSE_WAIT</td>
+<td style="text-align:left">该端点已经收到来自远程端点的关闭请求，此TCP正在等待本地应用程序的连接终止请求</td>
+</tr>
+<tr>
+<td style="text-align:left">CLOSING</td>
+<td style="text-align:left">等待来自远程TCP的连接终止请求确认</td>
+</tr>
+<tr>
+<td style="text-align:left">LAST_ACK</td>
+<td style="text-align:left">等待先前发送到远程TCP的连接终止请求的确认</td>
+</tr>
+<tr>
+<td style="text-align:left">TIME_WAIT</td>
+<td style="text-align:left">等待足够的时间来确保远程TCP接收到其连接终止请求的确认</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sort-用法"><a href="#sort-用法" class="headerlink" title="sort 用法"></a>sort 用法</h3><blockquote>
+<p><a href="https://segmentfault.com/a/1190000005713784" target="_blank" rel="noopener">https://segmentfault.com/a/1190000005713784</a><br>| 选项 |                解释               |<br>|:—-:|:———————————-|<br>| <code>-u</code>    |去除重复行                          |<br>| <code>-r</code>    |sort默认的排序方式是升序，-r是反过来    |<br>| <code>-n</code>    |默认数字按字符来排序（10在排2前头），-n 指明要以数值来排序  |<br>| <code>-t</code>  |指定分隔符 例如： <code>-t  :</code>     |<br>| <code>-k</code>  |指定按哪一列排序 ，例如 <code>-k 3</code> |</p>
+</blockquote>
+<p>-k高级用法，例如 “按公司英文名称的第二个字母排序”</p>
+<p>参考；</p>
+<ul>
+<li><p><a href="https://www.runoob.com/w3cnote/8-awesome-awk-built-in-variables.html" target="_blank" rel="noopener">https://www.runoob.com/w3cnote/8-awesome-awk-built-in-variables.html</a></p>
+</li>
+<li><p><a href="https://wiki.jikexueyuan.com/project/awk/built-in-variables.html" target="_blank" rel="noopener">https://wiki.jikexueyuan.com/project/awk/built-in-variables.html</a></p>
+</li>
+</ul>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools/">Tools</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-流水账之生活费"
   class="article article-type-post"
   itemscope
@@ -833,59 +998,6 @@
     <footer class="article-footer">
        
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Q-List/">Q List</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-给博客上个锁"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/04/02/给博客上个锁/"
-    >给博客上个锁</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2020/04/02/给博客上个锁/" class="article-date">
-  <time datetime="2020-04-02T01:57:48.000Z" itemprop="datePublished">2020-04-02</time>
-</a>  
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  Here's something encrypted, password is required to continue reading. 
-      <a class="article-more-link" href="/2020/04/02/给博客上个锁/"
-        >阅读更多...</a
-      >
-       
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools/">Tools</a></li></ul>
 
     </footer>
   </div>

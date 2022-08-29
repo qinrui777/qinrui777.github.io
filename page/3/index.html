@@ -93,6 +93,67 @@
     
     
     <article
+  id="post-Jenkins-FAQ"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/11/12/Jenkins-FAQ/"
+    >Jenkins Error</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/11/12/Jenkins-FAQ/" class="article-date">
+  <time datetime="2020-11-12T09:30:18.000Z" itemprop="datePublished">2020-11-12</time>
+</a>  
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h3 id="中文乱码问题"><a href="#中文乱码问题" class="headerlink" title="中文乱码问题"></a>中文乱码问题</h3><p>参考<br><a href="https://www.cnblogs.com/unknows/p/8519636.html" target="_blank" rel="noopener">https://www.cnblogs.com/unknows/p/8519636.html</a></p>
+<p><a href="http://yeshaoting.github.io/article/jenkins/jenkins%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E4%B8%8E%E6%9C%8D%E5%8A%A1%E5%90%AF%E5%8A%A8/" target="_blank" rel="noopener">http://yeshaoting.github.io/article/jenkins/jenkins%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E4%B8%8E%E6%9C%8D%E5%8A%A1%E5%90%AF%E5%8A%A8/</a></p>
+<h3 id="Jenkins-console-output-display-color"><a href="#Jenkins-console-output-display-color" class="headerlink" title="Jenkins console output display color"></a>Jenkins console output display color</h3><p>打印测试报告时jenkins console output输出如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&gt; Task :cucumber</span><br><span class="line"></span><br><span class="line">Scenario: ????         [90m<span class="comment"># src/test/resources/features/bta_open_an_account.feature:3[0m</span></span><br><span class="line">Starting MSEdgeDriver 85.0.564.51 (626274a16bb350129a74ead7a3d8d53a5ad39364) on port 5325</span><br><span class="line">Only <span class="built_in">local</span> connections are allowed.</span><br><span class="line">Please see https://chromedriver.chromium.org/security-considerations <span class="keyword">for</span> suggestions on keeping MSEdgeDriver safe.</span><br><span class="line">MSEdgeDriver was started successfully.</span><br><span class="line">[1605165549.451][WARNING]: This version of MSEdgeDriver has not been tested with MSEdge version 86.</span><br><span class="line">Nov 12, 2020 3:19:11 PM org.openqa.selenium.remote.ProtocolHandshake createSession</span><br><span class="line">INFO: Detected dialect: W3C</span><br><span class="line">http://10.20.159.131:8080/ifmmanage/bizframe/loginnew.jsp</span><br><span class="line">  [32mGiven [0m[32m??BTA???????[0m   [90m<span class="comment"># steps.StepDefs.login()[0m</span></span><br><span class="line">  [32mAnd [0m[32m??BTA?????[0m       [90m<span class="comment"># steps.StepDefs.assertLoginSuccess()[0m</span></span><br><span class="line">  [32mWhen [0m[32m??[0m[32m[1m<span class="string">"????"</span>[0m[32m???[0m     [90m<span class="comment"># steps.StepDefs.open_tab(java.lang.String)[0m</span></span><br><span class="line">  [32mAnd [0m[32m???????[0m[32m[1m<span class="string">"????"</span>[0m[32m??[0m  [90m<span class="comment"># steps.StepDefs.clickClearingSystem(java.lang.String)[0m</span></span><br><span class="line">  [32mAnd [0m[32m????????[0m         [90m<span class="comment"># steps.StepDefs.clickDailyStartClearing()[0m</span></span><br><span class="line">  [32mAnd [0m[32m??????[0m           [90m<span class="comment"># steps.StepDefs.confirmWindow()[0m</span></span><br><span class="line">  [32mThen [0m[32m???????[0m[32m[1m<span class="string">"????"</span>[0m[32m??[0m [90m<span class="comment"># steps.StepDefs.clickClearingSystem(java.lang.String)[0m</span></span><br></pre></td></tr></table></figure></p>
+<p>ref: <a href="https://www.programmersought.com/article/66361313580/" target="_blank" rel="noopener">https://www.programmersought.com/article/66361313580/</a></p>
+<h3 id="How-to-stop-an-unstoppable-zombie-job-on-Jenkins-without-restarting-the-server"><a href="#How-to-stop-an-unstoppable-zombie-job-on-Jenkins-without-restarting-the-server" class="headerlink" title="How to stop an unstoppable zombie job on Jenkins without restarting the server?"></a>How to stop an unstoppable zombie job on Jenkins without restarting the server?</h3><p>Go to “Manage Jenkins” &gt; “Script Console” and run a script:</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Jenkins .instance.getItemByFullName(<span class="string">"JobName"</span>)</span><br><span class="line">        .getBuildByNumber(JobNumber)</span><br><span class="line">        .finish(hudson.model.Result.ABORTED, <span class="keyword">new</span> java.io.IOException(<span class="string">"Aborting build"</span>));</span><br></pre></td></tr></table></figure>
+<p>You’ll have just specify your JobName and JobNumber.</p>
+<p>ref: <a href="https://stackoverflow.com/questions/14456592/how-to-stop-an-unstoppable-zombie-job-on-jenkins-without-restarting-the-server" target="_blank" rel="noopener">https://stackoverflow.com/questions/14456592/how-to-stop-an-unstoppable-zombie-job-on-jenkins-without-restarting-the-server</a></p>
+<h3 id="jenkins-的在slave-node运行的-job-状态不更新"><a href="#jenkins-的在slave-node运行的-job-状态不更新" class="headerlink" title="jenkins 的在slave node运行的 job 状态不更新"></a>jenkins 的在slave node运行的 job 状态不更新</h3><p>jenkins master： Windows PC<br>jenkins slave: linux server</p>
+<p>某个调度到slave的运行job总是不更新状态，明明已经完成了任务，但一直在页面左下角显示的是在运行中</p>
+<p>可尝试 <a href="https://kb.iu.edu/d/aopy" target="_blank" rel="noopener">https://kb.iu.edu/d/aopy</a></p>
+<h3 id="引号"><a href="#引号" class="headerlink" title="引号"></a>引号</h3><p>// 单引号需要拼接 容易出错 不推荐使用<br><code>sh &#39;mkdir -p &#39; + VARIABLE</code><br>// 三引号支持变量等内容，引号嵌套等 推荐使用<br><code>sh &quot;&quot;&quot;cp ${VARIABLE}/ &#39;abc&#39; &quot;123&quot; ${VARIABLE_1}/${VARIABLE_2}&quot;&quot;&quot;</code></p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jenkins/">jenkins</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-IntelliJ-与-Gradle版本不兼容"
   class="article article-type-post"
   itemscope
@@ -743,171 +804,6 @@
     <footer class="article-footer">
        
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Q-List/">Q List</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-那些容易被忘记的小事儿-Tech"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/05/03/那些容易被忘记的小事儿-Tech/"
-    >那些容易被忘记的小事儿-Tech</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2020/05/03/那些容易被忘记的小事儿-Tech/" class="article-date">
-  <time datetime="2020-05-03T02:31:00.000Z" itemprop="datePublished">2020-05-03</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Tools/">Tools</a>
-  </div>
- 
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>有些东西容易记住，有些往往可以往脑子里记却总是忘记，没办法了。</p>
-<h3 id="shell命令"><a href="#shell命令" class="headerlink" title="shell命令"></a>shell命令</h3><p>命令行窗口可以使用以下的编辑命令，就是当你登录到一个服务器时，或者打开一个shell时用的。</p>
-<p><code>Ctrl-R</code> 搜索输入命令的历史<br><code>!!</code> 重复上一个命令<br><code>!$</code> 上一个命令中最后一个参数<br><code>Ctrl-w</code> 删除上一个输入的词<br><code>Ctrl-U</code> 从光标位置删除到行首<br><code>Ctrl-K</code> 从光标位置删除到行尾</p>
-<h3 id="Sublime快捷键"><a href="#Sublime快捷键" class="headerlink" title="Sublime快捷键"></a>Sublime快捷键</h3><p>在每一行行首增加字符串</p>
-<p>第一步：选中全部内容 <code>ctrl+A</code><br>第二步：进入待操作状态，然后 <code>ctrl+shift+L</code></p>
-<p>但实际，在我的MBP上是 <code>command + shift + L</code></p>
-<h3 id="vim-列编辑"><a href="#vim-列编辑" class="headerlink" title="vim 列编辑"></a>vim 列编辑</h3><p>链接：<a href="https://tlanyan.me/vim-colume-edit-summary/" target="_blank" rel="noopener">https://tlanyan.me/vim-colume-edit-summary/</a></p>
-<p>步骤：</p>
-<ul>
-<li>1.在 普通模式 按 ctrl+v 进入 可视块 模式；</li>
-<li>2.使用 hjkl 移动光标选择要编辑的块；</li>
-<li>3.视情况而定（看下面）；</li>
-<li>4.按 esc 退出（非必须）。</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">操作</th>
-<th style="text-align:center">第3步的按键</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">光标前插入</td>
-<td style="text-align:center">按 <code>shift+i</code></td>
-</tr>
-<tr>
-<td style="text-align:left">删除</td>
-<td style="text-align:center">按 <code>x</code> 或者<code>d</code></td>
-</tr>
-<tr>
-<td style="text-align:left">替换</td>
-<td style="text-align:center">按 <code>r</code></td>
-</tr>
-</tbody>
-</table>
-<h3 id="PROMPT-COMMAND"><a href="#PROMPT-COMMAND" class="headerlink" title="PROMPT_COMMAND"></a>PROMPT_COMMAND</h3><p>Bash shell executes the content of the PROMPT_COMMAND just before displaying the PS1 variable. (即添加显示在PS1前面的内容)</p>
-<p><code>export PROMPT_COMMAND=&quot;echo -n \(dev\)&quot;</code><br><code>export PROMPT_COMMAND=&quot;date +%k:%m:%S&quot;</code></p>
-<p>If you want to display the value of PROMPT_COMMAND in the same line as the PS1, use the echo -n as shown below.<br><code>export PROMPT_COMMAND=&quot;echo -n [$(date +%k:%m:%S)]&quot;</code></p>
-<p>效果如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vagrant@minion1:~$ <span class="built_in">export</span> PROMPT_COMMAND=<span class="string">"echo -n \(dev\)"</span></span><br><span class="line">(dev)vagrant@minion1:~$</span><br></pre></td></tr></table></figure></p>
-<h3 id="awk内建变量"><a href="#awk内建变量" class="headerlink" title="awk内建变量"></a>awk内建变量</h3><p>使用awk时，有时第一行是列名，需要过滤掉，从第二行开始显示。</p>
-<p><code>kubectl get node | awk &#39;NR!=1&#39;</code></p>
-<blockquote>
-<p>NR(Number of Record) 表示的是已经处理过的总记录数目，或者说行号, 上面的 <code>NR!=1</code> 表示不打印第一行，相应地，<code>NR!=2</code> 表示不打印第二行.</p>
-</blockquote>
-<p>只打印最后一列<br><code>kubectl get node | awk &#39;{print $NF}&#39;</code></p>
-<h3 id="TCP连接的状态详解以及故障排查"><a href="#TCP连接的状态详解以及故障排查" class="headerlink" title="TCP连接的状态详解以及故障排查"></a>TCP连接的状态详解以及故障排查</h3><blockquote>
-<p><a href="https://blog.csdn.net/hguisu/article/details/38700899" target="_blank" rel="noopener">https://blog.csdn.net/hguisu/article/details/38700899</a></p>
-</blockquote>
-<p><img src="https://s1.ax1x.com/2020/09/03/wPC8yQ.png" alt="wPC8yQ.png"></p>
-<p>TCP状态及其描述如下表。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">状态</th>
-<th style="text-align:left">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">LISTEN</td>
-<td style="text-align:left">等待来自远程TCP应用程序的请求</td>
-</tr>
-<tr>
-<td style="text-align:left">SYN_SENT</td>
-<td style="text-align:left">发送连接请求后等待来自远程端点的确认。TCP第一次握手后客户端所处的状态</td>
-</tr>
-<tr>
-<td style="text-align:left">SYN-RECEIVED</td>
-<td style="text-align:left">该端点已经接收到连接请求并发送确认。\n 该端点正在等待最终确认。TCP第二次握手后服务端所处的状态</td>
-</tr>
-<tr>
-<td style="text-align:left">ESTABLISHED</td>
-<td style="text-align:left">代表连接已经建立起来了。这是连接数据传输阶段的正常状态</td>
-</tr>
-<tr>
-<td style="text-align:left">FIN_WAIT_1</td>
-<td style="text-align:left">等待来自远程TCP的终止连接请求或终止请求的确认</td>
-</tr>
-<tr>
-<td style="text-align:left">FIN_WAIT_2</td>
-<td style="text-align:left">在此端点发送终止连接请求后，等待来自远程TCP的连接终止请求</td>
-</tr>
-<tr>
-<td style="text-align:left">CLOSE_WAIT</td>
-<td style="text-align:left">该端点已经收到来自远程端点的关闭请求，此TCP正在等待本地应用程序的连接终止请求</td>
-</tr>
-<tr>
-<td style="text-align:left">CLOSING</td>
-<td style="text-align:left">等待来自远程TCP的连接终止请求确认</td>
-</tr>
-<tr>
-<td style="text-align:left">LAST_ACK</td>
-<td style="text-align:left">等待先前发送到远程TCP的连接终止请求的确认</td>
-</tr>
-<tr>
-<td style="text-align:left">TIME_WAIT</td>
-<td style="text-align:left">等待足够的时间来确保远程TCP接收到其连接终止请求的确认</td>
-</tr>
-</tbody>
-</table>
-<h3 id="sort-用法"><a href="#sort-用法" class="headerlink" title="sort 用法"></a>sort 用法</h3><blockquote>
-<p><a href="https://segmentfault.com/a/1190000005713784" target="_blank" rel="noopener">https://segmentfault.com/a/1190000005713784</a><br>| 选项 |                解释               |<br>|:—-:|:———————————-|<br>| <code>-u</code>    |去除重复行                          |<br>| <code>-r</code>    |sort默认的排序方式是升序，-r是反过来    |<br>| <code>-n</code>    |默认数字按字符来排序（10在排2前头），-n 指明要以数值来排序  |<br>| <code>-t</code>  |指定分隔符 例如： <code>-t  :</code>     |<br>| <code>-k</code>  |指定按哪一列排序 ，例如 <code>-k 3</code> |</p>
-</blockquote>
-<p>-k高级用法，例如 “按公司英文名称的第二个字母排序”</p>
-<p>参考；</p>
-<ul>
-<li><p><a href="https://www.runoob.com/w3cnote/8-awesome-awk-built-in-variables.html" target="_blank" rel="noopener">https://www.runoob.com/w3cnote/8-awesome-awk-built-in-variables.html</a></p>
-</li>
-<li><p><a href="https://wiki.jikexueyuan.com/project/awk/built-in-variables.html" target="_blank" rel="noopener">https://wiki.jikexueyuan.com/project/awk/built-in-variables.html</a></p>
-</li>
-</ul>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools/">Tools</a></li></ul>
 
     </footer>
   </div>
