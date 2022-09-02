@@ -41,6 +41,24 @@
       </categories>
   </entry>
   <entry>
+    <title>Azure FAQs</title>
+    <url>/2019/12/11/Azure-FAQs/</url>
+    <content><![CDATA[<h3 id="1-asm-arm"><a href="#1-asm-arm" class="headerlink" title="1. asm, arm"></a>1. asm, arm</h3><ul>
+<li>asm: Azure Service Manager</li>
+<li>arm: Azure Resource Manager</li>
+</ul>
+<p>最开始一直都是classic模型，它的模型中有service的概念，所以它也叫 asm（Azure Service Manager）。2014年开始提出arm（Azure Resource Manager），其管理平台叫portal。2015年底arm发布。</p>
+<p>当前情况是微软正在将azure的所有功能往arm上迁移。以后都推荐使用arm。但 是当前状况是arm不完全向后兼容asm，有些功能只有asm上才有，所以还有很多 用户还是在使用classic。</p>
+<blockquote>
+<p>ref: <a href="https://pengpengxp.github.io/archive/before-2018-11-10/2017-06-28-Azure%E7%BB%8F%E5%85%B8%E6%A8%A1%E5%BC%8F%E5%92%8C%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB.html#orgbb66971" target="_blank" rel="noopener">https://pengpengxp.github.io/archive/before-2018-11-10/2017-06-28-Azure%E7%BB%8F%E5%85%B8%E6%A8%A1%E5%BC%8F%E5%92%8C%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB.html#orgbb66971</a></p>
+</blockquote>
+<h3 id="2-AWS-to-Azure-services-comparison"><a href="#2-AWS-to-Azure-services-comparison" class="headerlink" title="2. AWS to Azure services comparison"></a>2. AWS to Azure services comparison</h3><p>详见链接 <a href="https://docs.microsoft.com/en-us/azure/architecture/aws-professional/services" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/azure/architecture/aws-professional/services</a></p>
+]]></content>
+      <categories>
+        <category>Cloud</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Anka tutorial 02</title>
     <url>/2019/11/19/Anka-tutorial-02/</url>
     <content><![CDATA[<h5 id="1-Joining-Nodes"><a href="#1-Joining-Nodes" class="headerlink" title="1.Joining Nodes"></a>1.Joining Nodes</h5><p>在mac上（anka build 节点）执行  <code>sudo ankacluster join http://localhost:80/</code></p>
@@ -233,116 +251,6 @@
       </categories>
   </entry>
   <entry>
-    <title>Azure FAQs</title>
-    <url>/2019/12/11/Azure-FAQs/</url>
-    <content><![CDATA[<h3 id="1-asm-arm"><a href="#1-asm-arm" class="headerlink" title="1. asm, arm"></a>1. asm, arm</h3><ul>
-<li>asm: Azure Service Manager</li>
-<li>arm: Azure Resource Manager</li>
-</ul>
-<p>最开始一直都是classic模型，它的模型中有service的概念，所以它也叫 asm（Azure Service Manager）。2014年开始提出arm（Azure Resource Manager），其管理平台叫portal。2015年底arm发布。</p>
-<p>当前情况是微软正在将azure的所有功能往arm上迁移。以后都推荐使用arm。但 是当前状况是arm不完全向后兼容asm，有些功能只有asm上才有，所以还有很多 用户还是在使用classic。</p>
-<blockquote>
-<p>ref: <a href="https://pengpengxp.github.io/archive/before-2018-11-10/2017-06-28-Azure%E7%BB%8F%E5%85%B8%E6%A8%A1%E5%BC%8F%E5%92%8C%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB.html#orgbb66971" target="_blank" rel="noopener">https://pengpengxp.github.io/archive/before-2018-11-10/2017-06-28-Azure%E7%BB%8F%E5%85%B8%E6%A8%A1%E5%BC%8F%E5%92%8C%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB.html#orgbb66971</a></p>
-</blockquote>
-<h3 id="2-AWS-to-Azure-services-comparison"><a href="#2-AWS-to-Azure-services-comparison" class="headerlink" title="2. AWS to Azure services comparison"></a>2. AWS to Azure services comparison</h3><p>详见链接 <a href="https://docs.microsoft.com/en-us/azure/architecture/aws-professional/services" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/azure/architecture/aws-professional/services</a></p>
-]]></content>
-      <categories>
-        <category>Cloud</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Bash function skill</title>
-    <url>/2019/06/18/Bash-function-skill/</url>
-    <content><![CDATA[<p>bash 函数技巧</p>
-<h4 id="1-递归函数"><a href="#1-递归函数" class="headerlink" title="1. 递归函数"></a>1. 递归函数</h4><h4 id="2-导出函数"><a href="#2-导出函数" class="headerlink" title="2.导出函数"></a>2.导出函数</h4><p>函数也可以像环境变量一样用 export 导出<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   <span class="function"><span class="title">foo</span></span>() &#123;<span class="built_in">echo</span> <span class="string">"This is foo function"</span>&#125;</span><br><span class="line">➜   <span class="built_in">export</span> -f foo</span><br><span class="line"><span class="function"><span class="title">foo</span></span> () &#123;</span><br><span class="line">	<span class="built_in">echo</span> <span class="string">"This is foo function"</span></span><br><span class="line">&#125;</span><br><span class="line">➜   foo</span><br><span class="line">This is foo <span class="keyword">function</span></span><br><span class="line">➜</span><br></pre></td></tr></table></figure></p>
-<h4 id="3-读取命令返回值"><a href="#3-读取命令返回值" class="headerlink" title="3. 读取命令返回值"></a>3. 读取命令返回值</h4><p>命令的返回值被保存在变量 <code>$?</code> 中<br>返回值被称为 <strong>退出状态</strong> 。它可用于确定命令执行成功与否。如果命令成功退出，那么退出状态为0，否则为非0.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   cat success_test.sh </span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#file name: success_test.sh</span></span><br><span class="line"><span class="comment">#对命令行参数求值，比如 success_test.sh `ls | grep txt`</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"parameter is :"</span><span class="variable">$@</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">eval</span> <span class="variable">$@</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ $? -eq 0 ];</span><br><span class="line"><span class="keyword">then</span> </span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"<span class="variable">$CMD</span> executed successfully."</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"<span class="variable">$CMD</span> terminated unsuccessfully."</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
-<p>执行：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   success_test.sh <span class="string">'ls'</span></span><br><span class="line">parameter is :ls</span><br><span class="line">certbot-auto	t1		t3		test.sh</span><br><span class="line">success_test.sh	t2		test.jsonnet</span><br><span class="line"> executed successfully.</span><br></pre></td></tr></table></figure></p>
-<h4 id="4-向命令传递参数"><a href="#4-向命令传递参数" class="headerlink" title="4. 向命令传递参数"></a>4. 向命令传递参数</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   cat showArgs.sh</span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> `seq 1 <span class="variable">$#</span>`</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$i</span> is <span class="variable">$1</span></span><br><span class="line"><span class="built_in">shift</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-<p>执行：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   showArgs.sh a b cc</span><br><span class="line">1 is a</span><br><span class="line">2 is b</span><br><span class="line">3 is cc</span><br></pre></td></tr></table></figure></p>
-]]></content>
-      <categories>
-        <category>Bash</category>
-      </categories>
-      <tags>
-        <tag>Shell</tag>
-        <tag>Bash</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Bash-对变量动手脚</title>
-    <url>/2021/11/03/Bash-%E5%AF%B9%E5%8F%98%E9%87%8F%E5%8A%A8%E6%89%8B%E8%84%9A/</url>
-    <content><![CDATA[<p>才疏学浅，最近才注意到变量操作中的一些用法，也由此找到了一个<a href="https://tldp.org/LDP/Bash-Beginners-Guide/html/sect_10_03.html" target="_blank" rel="noopener">好网站</a>。</p>
-<p>Operations on variables</p>
-<ul>
-<li>1.Length of a variable（获取变量长度）</li>
-<li>2.Transformations of variables （变换变量）</li>
-<li>3.Removing substrings (删除变量中的子串)</li>
-<li>4.Replacing parts of variable names (替换变量中的一部分)</li>
-</ul>
-<p>其中的第2点的写法尤其的惊艳到我，非常的简洁但有效，供上网站上的代码帮助理解一下。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">~ <span class="built_in">echo</span> <span class="variable">$&#123;TEST:-test&#125;</span></span><br><span class="line"><span class="built_in">test</span></span><br><span class="line"></span><br><span class="line">~ <span class="built_in">echo</span> <span class="variable">$TEST</span></span><br><span class="line"></span><br><span class="line">~ <span class="built_in">export</span> TEST=a_string</span><br><span class="line"></span><br><span class="line">~ <span class="built_in">echo</span> <span class="variable">$&#123;TEST:-test&#125;</span></span><br><span class="line">a_string</span><br><span class="line"></span><br><span class="line">~ <span class="built_in">echo</span> <span class="variable">$&#123;TEST2:-$TEST&#125;</span></span><br><span class="line">a_string</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Bash</category>
-      </categories>
-      <tags>
-        <tag>Shell</tag>
-        <tag>Bash</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Docker Configuration</title>
-    <url>/2019/07/26/Docker-Configuration/</url>
-    <content><![CDATA[<table>
-<thead>
-<tr>
-<th style="text-align:left">Distribution</th>
-<th>Configuration </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">Ubuntu/Debian/Gentoo</td>
-<td>/etc/default/docker</td>
-</tr>
-<tr>
-<td style="text-align:left">OpenSuse/CentOS/Red Hat</td>
-<td>/etc/sysconfig/docker</td>
-</tr>
-</tbody>
-</table>
-<p>/lib/systemd/system/docker.service</p>
-<p>/user/lib/systemd/system/service/docker</p>
-<h5 id="场景一："><a href="#场景一：" class="headerlink" title="场景一："></a>场景一：</h5><p>Docker默认的配置文件/etc/default/docker或者/etc/sysconfig/docker都不起作用，查看了一下/lib/systemd/system/docker.service文件，发现里面没有加载默认配置文件，一些配置不知道要怎么弄了~~~</p>
-<p>解决办法是：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ vi /lib/systemd/system/docker.service</span><br><span class="line"><span class="comment">#添加一行</span></span><br><span class="line">$ EnvironmentFile=-/etc/default/docker</span><br><span class="line">或者</span><br><span class="line">$ EnvironmentFile=-/etc/sysconfig/docker</span><br><span class="line"><span class="comment">#-代表ignore error</span></span><br></pre></td></tr></table></figure></p>
-<p>并修改</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ExecStart=/usr/bin/docker daemon -H fd://</span><br><span class="line"><span class="comment">#改成</span></span><br><span class="line">$ ExecStart=/usr/bin/docker daemon -H fd:// <span class="variable">$DOCKER_OPTS</span></span><br></pre></td></tr></table></figure>
-<p>这样才能使用/etc/default/docker里定义的DOCKER_OPTS参数</p>
-]]></content>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Crontab on Liunx or Jenkins</title>
-    <url>/2019/04/28/Crontab-on-Liunx-or-Jenkins/</url>
-    <content><![CDATA[<p>源起：<br><code>@midnight</code>  This will run at some point between 0:00 and 2:59</p>
-<p><code>H(0-30) 02 * * *</code> between 2:00 a.m. – 02:30 a.m.<br>//will build the same time every day</p>
-<p><strong>More Ref:</strong></p>
-<ul>
-<li><a href="https://crontab-generator.org/" target="_blank" rel="noopener">https://crontab-generator.org/</a></li>
-<li><a href="https://blogs.microsoft.co.il/meravk/2015/06/10/how-to-schedule-a-build-in-jenkins/" target="_blank" rel="noopener">https://blogs.microsoft.co.il/meravk/2015/06/10/how-to-schedule-a-build-in-jenkins/</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>jenkins</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Azure tutorial 02: Storage</title>
     <url>/2019/12/11/Azure-tutorial-02-Storage/</url>
     <content><![CDATA[<p>storage account type<br><a href="https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview</a></p>
@@ -402,26 +310,44 @@
       </categories>
   </entry>
   <entry>
-    <title>Docker Contract</title>
-    <url>/2019/07/26/Docker-Contract/</url>
-    <content><![CDATA[<blockquote>
-<p>Docker 契约</p>
-</blockquote>
-<p><img src="/images/docker_contract_01.png" alt="docker_contract_01"></p>
-<p><strong>问题</strong><br>想要合作团队的可交付成果是整洁的、明确的，从面减少交付流水线里的摩擦。</p>
-<p><strong>解决方案</strong><br>使用Docker契约来推动团队间整洁的可交付成果</p>
-<p><strong>讨论</strong><br>  随着公司规模扩大，经常可以看到其曾经拥有的扁平化的、精益化的组织架构——几个关键的个人“了解整个系统”，让位给了一个更加结构化的组织架构——不同的团队具有不同职责和能力。我们在效力过的组织中都对此有过切身体会。</p>
-<p>  如果没有进行技术投入，随着团队之间相互交付的增多，摩擦也会不断升级。图7-2展示了这个场景的一个简化了但具有代表性的倩形。图7-2 中的工作流有几个大家熟知的间题。这些间题最终都归结于状态管理的困难。测试团队可能在一台不是运维团队所设置的机器上进行侧试。理论上，对所有环境的修改都应仔细地记录下来，并在出现问题时进行回滚以保持一致性。但是，商业压力与人类行为的存在总是破坏这个目标，造成 <strong>环境性漂移</strong>。</p>
-<p><img src="/images/docker_contract_03.png" alt="docker_contract_02"></p>
-<p>Docker 所能做的是在团队之间划出清洗的分界线，Docker 镜像即是<strong>分界线</strong> ，又是<strong>交换的单位</strong>，我们称为 <strong>Docker Contract (契约)</strong>,如图 7-3 所示。</p>
-<p><img src="/images/docker_contract_03.png" alt="docker_contract_03"></p>
-<p><strong>More Ref:</strong></p>
-<ul>
-<li><a href="https://learning.oreilly.com/library/view/Docker+in+Practice/9781617292729/kindle_split_018.html#ch07lev1sec1a" target="_blank" rel="noopener">https://learning.oreilly.com/library/view/Docker+in+Practice/9781617292729/kindle_split_018.html#ch07lev1sec1a</a></li>
-</ul>
+    <title>Bash function skill</title>
+    <url>/2019/06/18/Bash-function-skill/</url>
+    <content><![CDATA[<p>bash 函数技巧</p>
+<h4 id="1-递归函数"><a href="#1-递归函数" class="headerlink" title="1. 递归函数"></a>1. 递归函数</h4><h4 id="2-导出函数"><a href="#2-导出函数" class="headerlink" title="2.导出函数"></a>2.导出函数</h4><p>函数也可以像环境变量一样用 export 导出<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   <span class="function"><span class="title">foo</span></span>() &#123;<span class="built_in">echo</span> <span class="string">"This is foo function"</span>&#125;</span><br><span class="line">➜   <span class="built_in">export</span> -f foo</span><br><span class="line"><span class="function"><span class="title">foo</span></span> () &#123;</span><br><span class="line">	<span class="built_in">echo</span> <span class="string">"This is foo function"</span></span><br><span class="line">&#125;</span><br><span class="line">➜   foo</span><br><span class="line">This is foo <span class="keyword">function</span></span><br><span class="line">➜</span><br></pre></td></tr></table></figure></p>
+<h4 id="3-读取命令返回值"><a href="#3-读取命令返回值" class="headerlink" title="3. 读取命令返回值"></a>3. 读取命令返回值</h4><p>命令的返回值被保存在变量 <code>$?</code> 中<br>返回值被称为 <strong>退出状态</strong> 。它可用于确定命令执行成功与否。如果命令成功退出，那么退出状态为0，否则为非0.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   cat success_test.sh </span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#file name: success_test.sh</span></span><br><span class="line"><span class="comment">#对命令行参数求值，比如 success_test.sh `ls | grep txt`</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"parameter is :"</span><span class="variable">$@</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">eval</span> <span class="variable">$@</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ $? -eq 0 ];</span><br><span class="line"><span class="keyword">then</span> </span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"<span class="variable">$CMD</span> executed successfully."</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"<span class="variable">$CMD</span> terminated unsuccessfully."</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+<p>执行：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   success_test.sh <span class="string">'ls'</span></span><br><span class="line">parameter is :ls</span><br><span class="line">certbot-auto	t1		t3		test.sh</span><br><span class="line">success_test.sh	t2		test.jsonnet</span><br><span class="line"> executed successfully.</span><br></pre></td></tr></table></figure></p>
+<h4 id="4-向命令传递参数"><a href="#4-向命令传递参数" class="headerlink" title="4. 向命令传递参数"></a>4. 向命令传递参数</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   cat showArgs.sh</span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> `seq 1 <span class="variable">$#</span>`</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$i</span> is <span class="variable">$1</span></span><br><span class="line"><span class="built_in">shift</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<p>执行：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   showArgs.sh a b cc</span><br><span class="line">1 is a</span><br><span class="line">2 is b</span><br><span class="line">3 is cc</span><br></pre></td></tr></table></figure></p>
 ]]></content>
+      <categories>
+        <category>Bash</category>
+      </categories>
       <tags>
-        <tag>Docker</tag>
+        <tag>Shell</tag>
+        <tag>Bash</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Bash-对变量动手脚</title>
+    <url>/2021/11/03/Bash-%E5%AF%B9%E5%8F%98%E9%87%8F%E5%8A%A8%E6%89%8B%E8%84%9A/</url>
+    <content><![CDATA[<p>才疏学浅，最近才注意到变量操作中的一些用法，也由此找到了一个<a href="https://tldp.org/LDP/Bash-Beginners-Guide/html/sect_10_03.html" target="_blank" rel="noopener">好网站</a>。</p>
+<p>Operations on variables</p>
+<ul>
+<li>1.Length of a variable（获取变量长度）</li>
+<li>2.Transformations of variables （变换变量）</li>
+<li>3.Removing substrings (删除变量中的子串)</li>
+<li>4.Replacing parts of variable names (替换变量中的一部分)</li>
+</ul>
+<p>其中的第2点的写法尤其的惊艳到我，非常的简洁但有效，供上网站上的代码帮助理解一下。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">~ <span class="built_in">echo</span> <span class="variable">$&#123;TEST:-test&#125;</span></span><br><span class="line"><span class="built_in">test</span></span><br><span class="line"></span><br><span class="line">~ <span class="built_in">echo</span> <span class="variable">$TEST</span></span><br><span class="line"></span><br><span class="line">~ <span class="built_in">export</span> TEST=a_string</span><br><span class="line"></span><br><span class="line">~ <span class="built_in">echo</span> <span class="variable">$&#123;TEST:-test&#125;</span></span><br><span class="line">a_string</span><br><span class="line"></span><br><span class="line">~ <span class="built_in">echo</span> <span class="variable">$&#123;TEST2:-$TEST&#125;</span></span><br><span class="line">a_string</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Bash</category>
+      </categories>
+      <tags>
+        <tag>Shell</tag>
+        <tag>Bash</tag>
       </tags>
   </entry>
   <entry>
@@ -485,6 +411,47 @@
       </tags>
   </entry>
   <entry>
+    <title>Crontab on Liunx or Jenkins</title>
+    <url>/2019/04/28/Crontab-on-Liunx-or-Jenkins/</url>
+    <content><![CDATA[<p>源起：<br><code>@midnight</code>  This will run at some point between 0:00 and 2:59</p>
+<p><code>H(0-30) 02 * * *</code> between 2:00 a.m. – 02:30 a.m.<br>//will build the same time every day</p>
+<p><strong>More Ref:</strong></p>
+<ul>
+<li><a href="https://crontab-generator.org/" target="_blank" rel="noopener">https://crontab-generator.org/</a></li>
+<li><a href="https://blogs.microsoft.co.il/meravk/2015/06/10/how-to-schedule-a-build-in-jenkins/" target="_blank" rel="noopener">https://blogs.microsoft.co.il/meravk/2015/06/10/how-to-schedule-a-build-in-jenkins/</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>jenkins</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Docker Contract</title>
+    <url>/2019/07/26/Docker-Contract/</url>
+    <content><![CDATA[<blockquote>
+<p>Docker 契约</p>
+</blockquote>
+<p><img src="/images/docker_contract_01.png" alt="docker_contract_01"></p>
+<p><strong>问题</strong><br>想要合作团队的可交付成果是整洁的、明确的，从面减少交付流水线里的摩擦。</p>
+<p><strong>解决方案</strong><br>使用Docker契约来推动团队间整洁的可交付成果</p>
+<p><strong>讨论</strong><br>  随着公司规模扩大，经常可以看到其曾经拥有的扁平化的、精益化的组织架构——几个关键的个人“了解整个系统”，让位给了一个更加结构化的组织架构——不同的团队具有不同职责和能力。我们在效力过的组织中都对此有过切身体会。</p>
+<p>  如果没有进行技术投入，随着团队之间相互交付的增多，摩擦也会不断升级。图7-2展示了这个场景的一个简化了但具有代表性的倩形。图7-2 中的工作流有几个大家熟知的间题。这些间题最终都归结于状态管理的困难。测试团队可能在一台不是运维团队所设置的机器上进行侧试。理论上，对所有环境的修改都应仔细地记录下来，并在出现问题时进行回滚以保持一致性。但是，商业压力与人类行为的存在总是破坏这个目标，造成 <strong>环境性漂移</strong>。</p>
+<p><img src="/images/docker_contract_03.png" alt="docker_contract_02"></p>
+<p>Docker 所能做的是在团队之间划出清洗的分界线，Docker 镜像即是<strong>分界线</strong> ，又是<strong>交换的单位</strong>，我们称为 <strong>Docker Contract (契约)</strong>,如图 7-3 所示。</p>
+<p><img src="/images/docker_contract_03.png" alt="docker_contract_03"></p>
+<p><strong>More Ref:</strong></p>
+<ul>
+<li><a href="https://learning.oreilly.com/library/view/Docker+in+Practice/9781617292729/kindle_split_018.html#ch07lev1sec1a" target="_blank" rel="noopener">https://learning.oreilly.com/library/view/Docker+in+Practice/9781617292729/kindle_split_018.html#ch07lev1sec1a</a></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Docker image export and import</title>
     <url>/2019/04/07/Docker-image%E5%AF%BC%E5%87%BA%E5%AF%BC%E5%85%A5/</url>
     <content><![CDATA[<p>A: “为什么要导镜像，直接从网上下载不就行了？”<br>B: “too young too naive，你以为哪里都能上网的，谁家的机房没事都能上个youtube,google的吗”</p>
@@ -509,6 +476,39 @@
       </tags>
   </entry>
   <entry>
+    <title>Docker Configuration</title>
+    <url>/2019/07/26/Docker-Configuration/</url>
+    <content><![CDATA[<table>
+<thead>
+<tr>
+<th style="text-align:left">Distribution</th>
+<th>Configuration </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Ubuntu/Debian/Gentoo</td>
+<td>/etc/default/docker</td>
+</tr>
+<tr>
+<td style="text-align:left">OpenSuse/CentOS/Red Hat</td>
+<td>/etc/sysconfig/docker</td>
+</tr>
+</tbody>
+</table>
+<p>/lib/systemd/system/docker.service</p>
+<p>/user/lib/systemd/system/service/docker</p>
+<h5 id="场景一："><a href="#场景一：" class="headerlink" title="场景一："></a>场景一：</h5><p>Docker默认的配置文件/etc/default/docker或者/etc/sysconfig/docker都不起作用，查看了一下/lib/systemd/system/docker.service文件，发现里面没有加载默认配置文件，一些配置不知道要怎么弄了~~~</p>
+<p>解决办法是：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ vi /lib/systemd/system/docker.service</span><br><span class="line"><span class="comment">#添加一行</span></span><br><span class="line">$ EnvironmentFile=-/etc/default/docker</span><br><span class="line">或者</span><br><span class="line">$ EnvironmentFile=-/etc/sysconfig/docker</span><br><span class="line"><span class="comment">#-代表ignore error</span></span><br></pre></td></tr></table></figure></p>
+<p>并修改</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ExecStart=/usr/bin/docker daemon -H fd://</span><br><span class="line"><span class="comment">#改成</span></span><br><span class="line">$ ExecStart=/usr/bin/docker daemon -H fd:// <span class="variable">$DOCKER_OPTS</span></span><br></pre></td></tr></table></figure>
+<p>这样才能使用/etc/default/docker里定义的DOCKER_OPTS参数</p>
+]]></content>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Docker clean</title>
     <url>/2019/05/07/Docker-clean/</url>
     <content><![CDATA[<h4 id="1-Cleanup-exited-processes"><a href="#1-Cleanup-exited-processes" class="headerlink" title="1.Cleanup exited processes:"></a>1.Cleanup exited processes:</h4><p>docker rm $(docker ps -q -f status=exited)</p>
@@ -522,51 +522,6 @@
 ]]></content>
       <tags>
         <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>English Note 00-礼貌/不礼貌的用语</title>
-    <url>/2021/12/12/English-Note-00-%E7%A4%BC%E8%B2%8C-%E4%B8%8D%E7%A4%BC%E8%B2%8C%E7%9A%84%E7%94%A8%E8%AF%AD/</url>
-    <content><![CDATA[<p>不管你的外语说的如何，但礼貌是最基本的。或者说避免使用不礼貌的用语也很重要，不然会让对方误解，甚至生气等等</p>
-<h3 id="礼貌用语"><a href="#礼貌用语" class="headerlink" title="礼貌用语"></a>礼貌用语</h3><h3 id="不礼貌用语"><a href="#不礼貌用语" class="headerlink" title="不礼貌用语"></a>不礼貌用语</h3><blockquote>
-<p>来源：<a href="https://www.youtube.com/watch?v=Mi42nlrrl1o" target="_blank" rel="noopener">【如何更有禮貌的說英文】’’Excuse me’’的正確用法／別再說’’I want’’！</a></p>
-</blockquote>
-<h4 id="1-Wait"><a href="#1-Wait" class="headerlink" title="1. Wait"></a>1. <del>Wait</del></h4><ol>
-<li>Hang on a second</li>
-<li>Could you give me a moment?</li>
-<li>Please can you wait a second?</li>
-</ol>
-<h4 id="2-祈使句"><a href="#2-祈使句" class="headerlink" title="2. 祈使句"></a>2. <del>祈使句</del></h4><p>在英语中，祈使句总体来说不太礼貌，比如：<br>Tell me.. ❌<br>Check something… ❌<br>Do something ❌</p>
-<p>将其转变为一个疑问句会更合适一些<br>Could you let me know what time we’re meeting?✅<br>Please, could you have a look at this?</p>
-<h4 id="3-Already"><a href="#3-Already" class="headerlink" title="3. Already"></a>3. Already</h4><p>“I already have done it” ❌<br>听起来有点儿防御性，似乎在质疑别人，潜台词是“难道不相信我吗”</p>
-<h4 id="4-I-want"><a href="#4-I-want" class="headerlink" title="4. I want"></a>4. <del>I want</del></h4><p>应该说 I would like </p>
-<h4 id="5-Hedgin"><a href="#5-Hedgin" class="headerlink" title="5. Hedgin"></a>5. Hedgin</h4><p>This way is better…  </p>
-<p>I think this way might be better. ✅<br>加入不确定性让句子听起来更礼貌一些</p>
-<p>I don’t know why…<br>I’m not quite sure why… ✅</p>
-<p>This was wrong…<br>I think there was something that might not have been quite right here. ✅</p>
-<h3 id="其他用语"><a href="#其他用语" class="headerlink" title="其他用语"></a>其他用语</h3><p>The theory is now with you. Go get your hands dirty.<br><em>现在你已经掌握了这些理论了，放手干吧.</em></p>
-<p>Exactly, they’ll sort it out and see if it’s viable plan, then the CEO will approve.<br><em>(if在类似场景的用法)</em></p>
-<p>When is it due?<br><em>什么时候交？/什么时候到期？</em></p>
-<p>My boss gave me this report at the last minute. I’m short on time.<br><em>…..我时间很紧张.</em></p>
-<p>Not so great, James. I’m really nervous. Kyle told me that the boss is going to start firing people.</p>
-<p>Thanks a million. I really appreciate it.</p>
-<p>I am eager to use them. Is there something you want me to start on?</p>
-<p>Considering your results, we’d like you to give a talk about the best practices.<br><em>Considering句式</em></p>
-<blockquote>
-<ul>
-<li>Yo, Ken, what’s new?</li>
-<li>Same as usual</li>
-</ul>
-</blockquote>
-<hr>
-<p>Reference Links:</p>
-<ol>
-<li><a href="https://www.learning-english-onlines.com/15%E5%8F%A5%E8%8B%B1%E6%96%87%E7%A6%AE%E8%B2%8C%E7%94%A8%E8%AA%9E/" target="_blank" rel="noopener">15句英語口語常用的禮貌用語</a></li>
-<li><a href="https://englishlive.ef.com/zh-tw/blog/career-english/request/" target="_blank" rel="noopener">https://englishlive.ef.com/zh-tw/blog/career-english/request/</a></li>
-</ol>
-]]></content>
-      <tags>
-        <tag>English-Note</tag>
       </tags>
   </entry>
   <entry>
@@ -631,6 +586,51 @@
       </tags>
   </entry>
   <entry>
+    <title>English Note 00-礼貌/不礼貌的用语</title>
+    <url>/2021/12/12/English-Note-00-%E7%A4%BC%E8%B2%8C-%E4%B8%8D%E7%A4%BC%E8%B2%8C%E7%9A%84%E7%94%A8%E8%AF%AD/</url>
+    <content><![CDATA[<p>不管你的外语说的如何，但礼貌是最基本的。或者说避免使用不礼貌的用语也很重要，不然会让对方误解，甚至生气等等</p>
+<h3 id="礼貌用语"><a href="#礼貌用语" class="headerlink" title="礼貌用语"></a>礼貌用语</h3><h3 id="不礼貌用语"><a href="#不礼貌用语" class="headerlink" title="不礼貌用语"></a>不礼貌用语</h3><blockquote>
+<p>来源：<a href="https://www.youtube.com/watch?v=Mi42nlrrl1o" target="_blank" rel="noopener">【如何更有禮貌的說英文】’’Excuse me’’的正確用法／別再說’’I want’’！</a></p>
+</blockquote>
+<h4 id="1-Wait"><a href="#1-Wait" class="headerlink" title="1. Wait"></a>1. <del>Wait</del></h4><ol>
+<li>Hang on a second</li>
+<li>Could you give me a moment?</li>
+<li>Please can you wait a second?</li>
+</ol>
+<h4 id="2-祈使句"><a href="#2-祈使句" class="headerlink" title="2. 祈使句"></a>2. <del>祈使句</del></h4><p>在英语中，祈使句总体来说不太礼貌，比如：<br>Tell me.. ❌<br>Check something… ❌<br>Do something ❌</p>
+<p>将其转变为一个疑问句会更合适一些<br>Could you let me know what time we’re meeting?✅<br>Please, could you have a look at this?</p>
+<h4 id="3-Already"><a href="#3-Already" class="headerlink" title="3. Already"></a>3. Already</h4><p>“I already have done it” ❌<br>听起来有点儿防御性，似乎在质疑别人，潜台词是“难道不相信我吗”</p>
+<h4 id="4-I-want"><a href="#4-I-want" class="headerlink" title="4. I want"></a>4. <del>I want</del></h4><p>应该说 I would like </p>
+<h4 id="5-Hedgin"><a href="#5-Hedgin" class="headerlink" title="5. Hedgin"></a>5. Hedgin</h4><p>This way is better…  </p>
+<p>I think this way might be better. ✅<br>加入不确定性让句子听起来更礼貌一些</p>
+<p>I don’t know why…<br>I’m not quite sure why… ✅</p>
+<p>This was wrong…<br>I think there was something that might not have been quite right here. ✅</p>
+<h3 id="其他用语"><a href="#其他用语" class="headerlink" title="其他用语"></a>其他用语</h3><p>The theory is now with you. Go get your hands dirty.<br><em>现在你已经掌握了这些理论了，放手干吧.</em></p>
+<p>Exactly, they’ll sort it out and see if it’s viable plan, then the CEO will approve.<br><em>(if在类似场景的用法)</em></p>
+<p>When is it due?<br><em>什么时候交？/什么时候到期？</em></p>
+<p>My boss gave me this report at the last minute. I’m short on time.<br><em>…..我时间很紧张.</em></p>
+<p>Not so great, James. I’m really nervous. Kyle told me that the boss is going to start firing people.</p>
+<p>Thanks a million. I really appreciate it.</p>
+<p>I am eager to use them. Is there something you want me to start on?</p>
+<p>Considering your results, we’d like you to give a talk about the best practices.<br><em>Considering句式</em></p>
+<blockquote>
+<ul>
+<li>Yo, Ken, what’s new?</li>
+<li>Same as usual</li>
+</ul>
+</blockquote>
+<hr>
+<p>Reference Links:</p>
+<ol>
+<li><a href="https://www.learning-english-onlines.com/15%E5%8F%A5%E8%8B%B1%E6%96%87%E7%A6%AE%E8%B2%8C%E7%94%A8%E8%AA%9E/" target="_blank" rel="noopener">15句英語口語常用的禮貌用語</a></li>
+<li><a href="https://englishlive.ef.com/zh-tw/blog/career-english/request/" target="_blank" rel="noopener">https://englishlive.ef.com/zh-tw/blog/career-english/request/</a></li>
+</ol>
+]]></content>
+      <tags>
+        <tag>English-Note</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>English Note 01-会议用语</title>
     <url>/2021/12/02/English-Note-01-%E4%BC%9A%E8%AE%AE%E7%94%A8%E8%AF%AD/</url>
     <content><![CDATA[<h2 id="关于会议"><a href="#关于会议" class="headerlink" title="关于会议"></a>关于会议</h2><p>按照时间线划分：</p>
@@ -668,6 +668,29 @@
 <p><strong>- All right, ladies and gentlemen, that was the last item on the agenda.</strong><br><em>- Wow. We covered a lot this morning. (我们谈了好多内容)</em><br><strong>- Before I close this presentation, are there any questions or concerns?</strong><br><em>- Do you have extra copies of the handout?</em><br><strong>- Yes, how many do you need?</strong><br><em>- Three.</em><br><strong>- Here you go. Anything else? If not, then I thank you for coming. Send me an e-mail if you have follow-up questions. (如果你后续有问题…)</strong></p>
 </blockquote>
 <p>Alright, thanks everyone for your time, let’s get back to doing actual work.</p>
+]]></content>
+      <tags>
+        <tag>English-Note</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>English Note 05-面试</title>
+    <url>/2022/08/29/English-Note-05-%E9%9D%A2%E8%AF%95/</url>
+    <content><![CDATA[<h3 id="讨论面试这个话题"><a href="#讨论面试这个话题" class="headerlink" title="讨论面试这个话题"></a>讨论面试这个话题</h3><p>Well, we could have a mock interview. I could role-play as the interviewer and you cpuld pretend to be the interviewee.</p>
+<p>Yup.Then the interviewer will want to know what actions you took to achieve your goal.</p>
+<p>Exactly. And then the interviewer might ask you about a task, something you wanted to achieve.</p>
+<p>I heard back from a few companies that offered me interviews.<br>我得到了一些公司给我的面试机会.</p>
+]]></content>
+      <tags>
+        <tag>English-Note</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>English Note 04-blog</title>
+    <url>/2022/03/20/English-Note-04-blog/</url>
+    <content><![CDATA[<p>这里分享一些个人认为值得仔细阅读和学习的一个英文博客站点，可能无关于技术，也可能只是生活工作的一个小的感受，某个小的想法。他们来自于全世界不同的地方，借助于他们的启迪，或者能让我们有一些新的认识，缓解一下生活的压力，城市的快节奏，抑或是内心片刻的平和，足矣。</p>
+<p><a href="https://nav.al/rich#" target="_blank" rel="noopener">How to Get Rich</a></p>
+<p><a href="https://aliabdaal.com/i-got-laser-eye-surgery/" target="_blank" rel="noopener">I Got Laser Eye Surgery</a></p>
 ]]></content>
       <tags>
         <tag>English-Note</tag>
@@ -732,9 +755,8 @@
 </tr>
 <tr>
 <td style="text-align:left">　　\</td>
-<td style="text-align:center"></td>
 <td style="text-align:center">vertical bar, vertical virgule</td>
-<td>　竖线 ｜ </td>
+<td style="text-align:center">　竖线</td>
 </tr>
 <tr>
 <td style="text-align:left">　　&amp;</td>
@@ -764,8 +786,7 @@
 <tr>
 <td style="text-align:left">　　\</td>
 <td style="text-align:center">backslash, sometimes escape　</td>
-<td style="text-align:center">反斜线转义符，</td>
-<td>有时表示转义符或续行符</td>
+<td style="text-align:center">反斜线转义符，有时表示转义符或续行符</td>
 </tr>
 <tr>
 <td style="text-align:left">　　~</td>
@@ -784,7 +805,8 @@
 </tr>
 <tr>
 <td style="text-align:left">　　:</td>
-<td style="text-align:center">colon　冒号</td>
+<td style="text-align:center">colon　</td>
+<td style="text-align:center">冒号</td>
 </tr>
 <tr>
 <td style="text-align:left">　　;</td>
@@ -833,7 +855,8 @@
 </tr>
 <tr>
 <td style="text-align:left">　　&amp;</td>
-<td style="text-align:center">ampersand = and</td>
+<td style="text-align:center">ampersand</td>
+<td style="text-align:center">= and</td>
 </tr>
 <tr>
 <td style="text-align:left">　　～　</td>
@@ -856,29 +879,6 @@
 <ul>
 <li><a href="https://zhuanlan.zhihu.com/p/27008015" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/27008015</a></li>
 </ul>
-]]></content>
-      <tags>
-        <tag>English-Note</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>English Note 04-blog</title>
-    <url>/2022/03/20/English-Note-04-blog/</url>
-    <content><![CDATA[<p>这里分享一些个人认为值得仔细阅读和学习的一个英文博客站点，可能无关于技术，也可能只是生活工作的一个小的感受，某个小的想法。他们来自于全世界不同的地方，借助于他们的启迪，或者能让我们有一些新的认识，缓解一下生活的压力，城市的快节奏，抑或是内心片刻的平和，足矣。</p>
-<p><a href="https://nav.al/rich#" target="_blank" rel="noopener">How to Get Rich</a></p>
-<p><a href="https://aliabdaal.com/i-got-laser-eye-surgery/" target="_blank" rel="noopener">I Got Laser Eye Surgery</a></p>
-]]></content>
-      <tags>
-        <tag>English-Note</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>English Note 05-面试</title>
-    <url>/2022/08/29/English-Note-05-%E9%9D%A2%E8%AF%95/</url>
-    <content><![CDATA[<h3 id="讨论面试这个话题"><a href="#讨论面试这个话题" class="headerlink" title="讨论面试这个话题"></a>讨论面试这个话题</h3><p>Well, we could have a mock interview. I could role-play as the interviewer and you cpuld pretend to be the interviewee.</p>
-<p>Yup.Then the interviewer will want to know what actions you took to achieve your goal.</p>
-<p>Exactly. And then the interviewer might ask you about a task, something you wanted to achieve.</p>
-<p>I heard back from a few companies that offered me interviews.<br>我得到了一些公司给我的面试机会.</p>
 ]]></content>
       <tags>
         <tag>English-Note</tag>
@@ -1625,6 +1625,24 @@
       </tags>
   </entry>
   <entry>
+    <title>How to Create Custom iTerm2 Window</title>
+    <url>/2019/04/18/How-to-Create-Custom-iTerm2-Window/</url>
+    <content><![CDATA[<h4 id="1-Open-iTerm-preferences-setting-打开偏好设置"><a href="#1-Open-iTerm-preferences-setting-打开偏好设置" class="headerlink" title="1.Open iTerm preferences setting (打开偏好设置)"></a>1.Open iTerm preferences setting (打开偏好设置)</h4><p><img src="/images/iterm_image_01.png" alt="iterm_image_01"></p>
+<h4 id="2-New-add-a-profile-新加一个配置"><a href="#2-New-add-a-profile-新加一个配置" class="headerlink" title="2.New add a profile (新加一个配置)"></a>2.New add a profile (新加一个配置)</h4><p><img src="/images/iterm_image_02.png" alt="iterm_image_02"></p>
+<h4 id="3-Setting-windows-name-etc-（定义名称，窗口高度，宽度等）"><a href="#3-Setting-windows-name-etc-（定义名称，窗口高度，宽度等）" class="headerlink" title="3.Setting windows name etc （定义名称，窗口高度，宽度等）"></a>3.Setting windows name etc （定义名称，窗口高度，宽度等）</h4><p><img src="/images/iterm_image_03.png" alt="iterm_image_03"></p>
+<p><img src="/images/iterm_image_04.png" alt="iterm_image_04"></p>
+<h4 id="4-define-hotkey-定义快捷键"><a href="#4-define-hotkey-定义快捷键" class="headerlink" title="4.define hotkey (定义快捷键)"></a>4.define hotkey (定义快捷键)</h4><p><img src="/images/iterm_image_05.png" alt="iterm_image_05"></p>
+<p><img src="/images/iterm_image_06.png" alt="iterm_image_06"></p>
+<h4 id="Finally-使用快捷键"><a href="#Finally-使用快捷键" class="headerlink" title="Finally 使用快捷键"></a>Finally 使用快捷键</h4><p>按 <strong>一次</strong> 出现窗口，<strong>再按一次</strong> 窗口消失。如果是多屏，可以在不同屏幕下调用出来，会话内容仍保持着。</p>
+]]></content>
+      <categories>
+        <category>Tools</category>
+      </categories>
+      <tags>
+        <tag>Tools</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Helm 使用小结</title>
     <url>/2021/11/15/Helm-%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93/</url>
     <content><![CDATA[<h3 id="1-What-is-Helm"><a href="#1-What-is-Helm" class="headerlink" title="1.What is Helm"></a>1.What is Helm</h3><p>Helm is a tool for managing Kubernetes packages called charts.</p>
@@ -1727,24 +1745,6 @@
       </tags>
   </entry>
   <entry>
-    <title>How to Create Custom iTerm2 Window</title>
-    <url>/2019/04/18/How-to-Create-Custom-iTerm2-Window/</url>
-    <content><![CDATA[<h4 id="1-Open-iTerm-preferences-setting-打开偏好设置"><a href="#1-Open-iTerm-preferences-setting-打开偏好设置" class="headerlink" title="1.Open iTerm preferences setting (打开偏好设置)"></a>1.Open iTerm preferences setting (打开偏好设置)</h4><p><img src="/images/iterm_image_01.png" alt="iterm_image_01"></p>
-<h4 id="2-New-add-a-profile-新加一个配置"><a href="#2-New-add-a-profile-新加一个配置" class="headerlink" title="2.New add a profile (新加一个配置)"></a>2.New add a profile (新加一个配置)</h4><p><img src="/images/iterm_image_02.png" alt="iterm_image_02"></p>
-<h4 id="3-Setting-windows-name-etc-（定义名称，窗口高度，宽度等）"><a href="#3-Setting-windows-name-etc-（定义名称，窗口高度，宽度等）" class="headerlink" title="3.Setting windows name etc （定义名称，窗口高度，宽度等）"></a>3.Setting windows name etc （定义名称，窗口高度，宽度等）</h4><p><img src="/images/iterm_image_03.png" alt="iterm_image_03"></p>
-<p><img src="/images/iterm_image_04.png" alt="iterm_image_04"></p>
-<h4 id="4-define-hotkey-定义快捷键"><a href="#4-define-hotkey-定义快捷键" class="headerlink" title="4.define hotkey (定义快捷键)"></a>4.define hotkey (定义快捷键)</h4><p><img src="/images/iterm_image_05.png" alt="iterm_image_05"></p>
-<p><img src="/images/iterm_image_06.png" alt="iterm_image_06"></p>
-<h4 id="Finally-使用快捷键"><a href="#Finally-使用快捷键" class="headerlink" title="Finally 使用快捷键"></a>Finally 使用快捷键</h4><p>按 <strong>一次</strong> 出现窗口，<strong>再按一次</strong> 窗口消失。如果是多屏，可以在不同屏幕下调用出来，会话内容仍保持着。</p>
-]]></content>
-      <categories>
-        <category>Tools</category>
-      </categories>
-      <tags>
-        <tag>Tools</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Import P12 file on Mac OS X with CLI</title>
     <url>/2019/11/22/Import-P12-file-on-Mac-OS-X-with-CLI/</url>
     <content><![CDATA[<h3 id="目的：通过命令行倒入p12证书"><a href="#目的：通过命令行倒入p12证书" class="headerlink" title="目的：通过命令行倒入p12证书"></a>目的：通过命令行倒入p12证书</h3><p>Apple为了安全，在ssh登录时，是不允许读取Keychains（钥匙串）的，所以 <strong>security unlock-keychain</strong> 这行命令就很重要了。比如在Pipeline构建打包前，先解锁Keychains。</p>
@@ -1779,23 +1779,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Jenkins Dashboard with Grafana and Prometheus </title>
-    <url>/2019/04/22/Jenkins-Dashboard-with-Grafana-and-Prometheus/</url>
-    <content><![CDATA[<h3 id="1-Go-to-“manage-Jenkins”-then-“manage-plugins”-and-install-“-Prometheus-metrics-plugin”"><a href="#1-Go-to-“manage-Jenkins”-then-“manage-plugins”-and-install-“-Prometheus-metrics-plugin”" class="headerlink" title="1.Go to “manage Jenkins” then “manage plugins” and install “ Prometheus metrics plugin”"></a>1.Go to “manage Jenkins” then “manage plugins” and install “ Prometheus metrics plugin”</h3><p>This plugin will expose an endpoint (default /prometheus) with metrics where a Prometheus Server can scrape data.</p>
-<p><img src="/images/jenkins_dashboard_02.png" alt="jenkins_dashboard_02"></p>
-<h3 id="2-Configure-Prometheus-to-scrape-metrics-from-Jenkins"><a href="#2-Configure-Prometheus-to-scrape-metrics-from-Jenkins" class="headerlink" title="2.Configure Prometheus to scrape metrics from Jenkins"></a>2.Configure Prometheus to scrape metrics from Jenkins</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">- job_name: ‘jenkins’</span><br><span class="line">  metrics_path: /prometheus</span><br><span class="line">  static_configs:</span><br><span class="line">    - targets: [‘Jenkins_Host:PORT’]</span><br></pre></td></tr></table></figure>
-<p>you can go to your prometheus ,find some metrics to dispaly.</p>
-<p><img src="/images/jenkins_dashboard_01.png" alt="jenkins_dashboard_01"></p>
-<h3 id="3-Create-a-grafana-Dashboard"><a href="#3-Create-a-grafana-Dashboard" class="headerlink" title="3.Create a  grafana Dashboard"></a>3.Create a  grafana Dashboard</h3><p>dashboard link : <a href="https://grafana.com/dashboards/9964" target="_blank" rel="noopener">https://grafana.com/dashboards/9964</a></p>
-<p>then go to the grafana website import json file :<br><img src="/images/jenkins_dashboard_03.png" alt="jenkins_dashboard_03"></p>
-<p>you can search in the grafana dashboard (<a href="https://grafana.com/dashboards" target="_blank" rel="noopener">https://grafana.com/dashboards</a>)</p>
-<h3 id="4-Customize-your-dashboard"><a href="#4-Customize-your-dashboard" class="headerlink" title="4.Customize your dashboard"></a>4.Customize your dashboard</h3><p>example:<br><img src="/images/jenkins_dashboard_04.png" alt="jenkins_dashboard_04"></p>
-]]></content>
-      <tags>
-        <tag>jenkins</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Jenkins Error</title>
     <url>/2020/11/12/Jenkins-FAQ/</url>
     <content><![CDATA[<h3 id="中文乱码问题"><a href="#中文乱码问题" class="headerlink" title="中文乱码问题"></a>中文乱码问题</h3><p>参考<br><a href="https://www.cnblogs.com/unknows/p/8519636.html" target="_blank" rel="noopener">https://www.cnblogs.com/unknows/p/8519636.html</a></p>
@@ -1810,6 +1793,23 @@
 <p>某个调度到slave的运行job总是不更新状态，明明已经完成了任务，但一直在页面左下角显示的是在运行中</p>
 <p>可尝试 <a href="https://kb.iu.edu/d/aopy" target="_blank" rel="noopener">https://kb.iu.edu/d/aopy</a></p>
 <h3 id="引号"><a href="#引号" class="headerlink" title="引号"></a>引号</h3><p>// 单引号需要拼接 容易出错 不推荐使用<br><code>sh &#39;mkdir -p &#39; + VARIABLE</code><br>// 三引号支持变量等内容，引号嵌套等 推荐使用<br><code>sh &quot;&quot;&quot;cp ${VARIABLE}/ &#39;abc&#39; &quot;123&quot; ${VARIABLE_1}/${VARIABLE_2}&quot;&quot;&quot;</code></p>
+]]></content>
+      <tags>
+        <tag>jenkins</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Jenkins Dashboard with Grafana and Prometheus </title>
+    <url>/2019/04/22/Jenkins-Dashboard-with-Grafana-and-Prometheus/</url>
+    <content><![CDATA[<h3 id="1-Go-to-“manage-Jenkins”-then-“manage-plugins”-and-install-“-Prometheus-metrics-plugin”"><a href="#1-Go-to-“manage-Jenkins”-then-“manage-plugins”-and-install-“-Prometheus-metrics-plugin”" class="headerlink" title="1.Go to “manage Jenkins” then “manage plugins” and install “ Prometheus metrics plugin”"></a>1.Go to “manage Jenkins” then “manage plugins” and install “ Prometheus metrics plugin”</h3><p>This plugin will expose an endpoint (default /prometheus) with metrics where a Prometheus Server can scrape data.</p>
+<p><img src="/images/jenkins_dashboard_02.png" alt="jenkins_dashboard_02"></p>
+<h3 id="2-Configure-Prometheus-to-scrape-metrics-from-Jenkins"><a href="#2-Configure-Prometheus-to-scrape-metrics-from-Jenkins" class="headerlink" title="2.Configure Prometheus to scrape metrics from Jenkins"></a>2.Configure Prometheus to scrape metrics from Jenkins</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">- job_name: ‘jenkins’</span><br><span class="line">  metrics_path: /prometheus</span><br><span class="line">  static_configs:</span><br><span class="line">    - targets: [‘Jenkins_Host:PORT’]</span><br></pre></td></tr></table></figure>
+<p>you can go to your prometheus ,find some metrics to dispaly.</p>
+<p><img src="/images/jenkins_dashboard_01.png" alt="jenkins_dashboard_01"></p>
+<h3 id="3-Create-a-grafana-Dashboard"><a href="#3-Create-a-grafana-Dashboard" class="headerlink" title="3.Create a  grafana Dashboard"></a>3.Create a  grafana Dashboard</h3><p>dashboard link : <a href="https://grafana.com/dashboards/9964" target="_blank" rel="noopener">https://grafana.com/dashboards/9964</a></p>
+<p>then go to the grafana website import json file :<br><img src="/images/jenkins_dashboard_03.png" alt="jenkins_dashboard_03"></p>
+<p>you can search in the grafana dashboard (<a href="https://grafana.com/dashboards" target="_blank" rel="noopener">https://grafana.com/dashboards</a>)</p>
+<h3 id="4-Customize-your-dashboard"><a href="#4-Customize-your-dashboard" class="headerlink" title="4.Customize your dashboard"></a>4.Customize your dashboard</h3><p>example:<br><img src="/images/jenkins_dashboard_04.png" alt="jenkins_dashboard_04"></p>
 ]]></content>
       <tags>
         <tag>jenkins</tag>
@@ -1921,6 +1921,21 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>backup specially with shell script or python</title>
+    <url>/2019/05/21/Linux-backup-specially/</url>
+    <content><![CDATA[<h3 id="需求：-备份目录，只备份新加的文件，不备份减少的文件"><a href="#需求：-备份目录，只备份新加的文件，不备份减少的文件" class="headerlink" title="需求： 备份目录，只备份新加的文件，不备份减少的文件"></a>需求： 备份目录，只备份新加的文件，不备份减少的文件</h3><p>分析： 通常备份目录用 <code>rsync</code> 就可以达到目的，但开发同学怕误操作，删除文件，于是提出这个 <em>只增不减</em> 的需求</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="function"><span class="title">backUp</span></span>()&#123;</span><br><span class="line"><span class="built_in">local</span> sourceDir=<span class="variable">$1</span> <span class="comment">#需要备份的文件/目录</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">local</span> destDir=<span class="variable">$2</span> <span class="comment">#备份目的地</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -d <span class="string">"<span class="variable">$sourceDir</span>"</span> ] <span class="comment">#备份目录</span></span><br><span class="line"><span class="keyword">then</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">#如果目录尚未备份，则创建此目录</span></span><br><span class="line">  <span class="keyword">if</span> [ ! -d <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span> ]</span><br><span class="line">  <span class="keyword">then</span></span><br><span class="line">  <span class="built_in">echo</span> -e <span class="string">"创建目录\t<span class="variable">$sourceDir</span>"</span></span><br><span class="line">  mkdir -p <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span></span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#对目录中对每一个文件,递归调用此函数进行备份</span></span><br><span class="line"><span class="keyword">for</span> var <span class="keyword">in</span> $(ls <span class="string">"<span class="variable">$sourceDir</span>"</span>)</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">backUp <span class="string">"<span class="variable">$sourceDir</span>/<span class="variable">$var</span>"</span> <span class="string">"<span class="variable">$destDir</span>"</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"><span class="keyword">else</span> <span class="comment">#备份文件</span></span><br><span class="line">  <span class="comment">#如果文件在尚未备份，则直接复制</span></span><br><span class="line">  <span class="keyword">if</span> [ ! -f <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span> ]</span><br><span class="line">  <span class="keyword">then</span></span><br><span class="line">  <span class="built_in">echo</span> -e <span class="string">"备份文件\t<span class="variable">$sourceDir</span>"</span></span><br><span class="line">  cp <span class="string">"<span class="variable">$sourceDir</span>"</span> <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span></span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">#如果文件已存在，则比较两个文件对最后修改时间，如果文件已修改，则更新文件</span></span><br><span class="line">  lastModifi_backup=$(date -r <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span> +%s)</span><br><span class="line">  lastModifi_current=$(date -r <span class="string">"<span class="variable">$sourceDir</span>"</span> +%s)</span><br><span class="line">    <span class="keyword">if</span> [ <span class="string">"<span class="variable">$lastModifi_current</span>"</span> -gt <span class="string">"<span class="variable">$lastModifi_backup</span>"</span> ]</span><br><span class="line">    <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> -e <span class="string">"更新文件\t<span class="variable">$sourceDir</span>"</span> </span><br><span class="line">    cp <span class="string">"<span class="variable">$sourceDir</span>"</span> <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line">backUp <span class="string">"<span class="variable">$1</span>"</span> <span class="string">"<span class="variable">$2</span>"</span></span><br></pre></td></tr></table></figure>
+<p>运行脚本： <code>./backupSpecially.sh &quot;/date/originData&quot; &quot;/date/backup_dir&quot;</code></p>
+<p>发现运行shell脚本有问题，于是大神帮我写了个python</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python2.7</span></span><br><span class="line"><span class="comment"># -*- encoding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> os,time,filecmp</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">differentFileCopy</span><span class="params">(sourcePath, targetPath)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(sourcePath):</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(targetPath):</span><br><span class="line">        os.makedirs(targetPath)</span><br><span class="line">    <span class="keyword">for</span> fileName <span class="keyword">in</span> os.listdir(sourcePath):</span><br><span class="line">        absourcePath = os.path.join(sourcePath, fileName)</span><br><span class="line">        abstargetPath = os.path.join(targetPath, fileName)</span><br><span class="line">        <span class="keyword">if</span> os.path.isdir(absourcePath):</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(abstargetPath):</span><br><span class="line">                os.makedirs(abstargetPath)</span><br><span class="line">                differentFileCopy(absourcePath, abstargetPath)</span><br><span class="line">        <span class="keyword">if</span> os.path.isfile(absourcePath):</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(abstargetPath):</span><br><span class="line">                <span class="keyword">print</span> <span class="string">'copy %s to %s'</span> %(fileName,abstargetPath)</span><br><span class="line">                os.system(<span class="string">'cp'</span>+<span class="string">' '</span>+absourcePath+<span class="string">' '</span>+targetPath)</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> filecmp.cmp(absourcePath,abstargetPath):</span><br><span class="line">                <span class="keyword">print</span> <span class="string">'copy %s to %s'</span> %(fileName,abstargetPath)</span><br><span class="line">                os.system(<span class="string">'cp'</span>+<span class="string">' '</span>+absourcePath+<span class="string">' '</span>+targetPath)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    startTime = time.clock()</span><br><span class="line">    sourcePath = <span class="string">r"/date/originData"</span></span><br><span class="line">    targetPath = <span class="string">r"/date/Data_backupDir"</span></span><br><span class="line">    differentFileCopy(sourcePath, targetPath)</span><br><span class="line">    endTime = time.clock()</span><br><span class="line">    time_mi = endTime // <span class="number">60</span></span><br><span class="line">    time_s = endTime // <span class="number">1</span> % <span class="number">60</span></span><br><span class="line">    time_ms = ((endTime * <span class="number">100</span>) // <span class="number">1</span>) % <span class="number">100</span></span><br><span class="line">    print(<span class="string">"总用时:%02.0f:%02.0f:%2.0f"</span> % (time_mi, time_s, time_ms))</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Shell</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Makefile 101 :Intro</title>
     <url>/2019/07/04/Makefile-101-Intro/</url>
     <content><![CDATA[<p>新建文件 ，文件名 makefile 或 Makefile</p>
@@ -1963,18 +1978,17 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>backup specially with shell script or python</title>
-    <url>/2019/05/21/Linux-backup-specially/</url>
-    <content><![CDATA[<h3 id="需求：-备份目录，只备份新加的文件，不备份减少的文件"><a href="#需求：-备份目录，只备份新加的文件，不备份减少的文件" class="headerlink" title="需求： 备份目录，只备份新加的文件，不备份减少的文件"></a>需求： 备份目录，只备份新加的文件，不备份减少的文件</h3><p>分析： 通常备份目录用 <code>rsync</code> 就可以达到目的，但开发同学怕误操作，删除文件，于是提出这个 <em>只增不减</em> 的需求</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="function"><span class="title">backUp</span></span>()&#123;</span><br><span class="line"><span class="built_in">local</span> sourceDir=<span class="variable">$1</span> <span class="comment">#需要备份的文件/目录</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">local</span> destDir=<span class="variable">$2</span> <span class="comment">#备份目的地</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -d <span class="string">"<span class="variable">$sourceDir</span>"</span> ] <span class="comment">#备份目录</span></span><br><span class="line"><span class="keyword">then</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">#如果目录尚未备份，则创建此目录</span></span><br><span class="line">  <span class="keyword">if</span> [ ! -d <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span> ]</span><br><span class="line">  <span class="keyword">then</span></span><br><span class="line">  <span class="built_in">echo</span> -e <span class="string">"创建目录\t<span class="variable">$sourceDir</span>"</span></span><br><span class="line">  mkdir -p <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span></span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#对目录中对每一个文件,递归调用此函数进行备份</span></span><br><span class="line"><span class="keyword">for</span> var <span class="keyword">in</span> $(ls <span class="string">"<span class="variable">$sourceDir</span>"</span>)</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">backUp <span class="string">"<span class="variable">$sourceDir</span>/<span class="variable">$var</span>"</span> <span class="string">"<span class="variable">$destDir</span>"</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"><span class="keyword">else</span> <span class="comment">#备份文件</span></span><br><span class="line">  <span class="comment">#如果文件在尚未备份，则直接复制</span></span><br><span class="line">  <span class="keyword">if</span> [ ! -f <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span> ]</span><br><span class="line">  <span class="keyword">then</span></span><br><span class="line">  <span class="built_in">echo</span> -e <span class="string">"备份文件\t<span class="variable">$sourceDir</span>"</span></span><br><span class="line">  cp <span class="string">"<span class="variable">$sourceDir</span>"</span> <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span></span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">#如果文件已存在，则比较两个文件对最后修改时间，如果文件已修改，则更新文件</span></span><br><span class="line">  lastModifi_backup=$(date -r <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span> +%s)</span><br><span class="line">  lastModifi_current=$(date -r <span class="string">"<span class="variable">$sourceDir</span>"</span> +%s)</span><br><span class="line">    <span class="keyword">if</span> [ <span class="string">"<span class="variable">$lastModifi_current</span>"</span> -gt <span class="string">"<span class="variable">$lastModifi_backup</span>"</span> ]</span><br><span class="line">    <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> -e <span class="string">"更新文件\t<span class="variable">$sourceDir</span>"</span> </span><br><span class="line">    cp <span class="string">"<span class="variable">$sourceDir</span>"</span> <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line">backUp <span class="string">"<span class="variable">$1</span>"</span> <span class="string">"<span class="variable">$2</span>"</span></span><br></pre></td></tr></table></figure>
-<p>运行脚本： <code>./backupSpecially.sh &quot;/date/originData&quot; &quot;/date/backup_dir&quot;</code></p>
-<p>发现运行shell脚本有问题，于是大神帮我写了个python</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python2.7</span></span><br><span class="line"><span class="comment"># -*- encoding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> os,time,filecmp</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">differentFileCopy</span><span class="params">(sourcePath, targetPath)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(sourcePath):</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(targetPath):</span><br><span class="line">        os.makedirs(targetPath)</span><br><span class="line">    <span class="keyword">for</span> fileName <span class="keyword">in</span> os.listdir(sourcePath):</span><br><span class="line">        absourcePath = os.path.join(sourcePath, fileName)</span><br><span class="line">        abstargetPath = os.path.join(targetPath, fileName)</span><br><span class="line">        <span class="keyword">if</span> os.path.isdir(absourcePath):</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(abstargetPath):</span><br><span class="line">                os.makedirs(abstargetPath)</span><br><span class="line">                differentFileCopy(absourcePath, abstargetPath)</span><br><span class="line">        <span class="keyword">if</span> os.path.isfile(absourcePath):</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(abstargetPath):</span><br><span class="line">                <span class="keyword">print</span> <span class="string">'copy %s to %s'</span> %(fileName,abstargetPath)</span><br><span class="line">                os.system(<span class="string">'cp'</span>+<span class="string">' '</span>+absourcePath+<span class="string">' '</span>+targetPath)</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> filecmp.cmp(absourcePath,abstargetPath):</span><br><span class="line">                <span class="keyword">print</span> <span class="string">'copy %s to %s'</span> %(fileName,abstargetPath)</span><br><span class="line">                os.system(<span class="string">'cp'</span>+<span class="string">' '</span>+absourcePath+<span class="string">' '</span>+targetPath)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    startTime = time.clock()</span><br><span class="line">    sourcePath = <span class="string">r"/date/originData"</span></span><br><span class="line">    targetPath = <span class="string">r"/date/Data_backupDir"</span></span><br><span class="line">    differentFileCopy(sourcePath, targetPath)</span><br><span class="line">    endTime = time.clock()</span><br><span class="line">    time_mi = endTime // <span class="number">60</span></span><br><span class="line">    time_s = endTime // <span class="number">1</span> % <span class="number">60</span></span><br><span class="line">    time_ms = ((endTime * <span class="number">100</span>) // <span class="number">1</span>) % <span class="number">100</span></span><br><span class="line">    print(<span class="string">"总用时:%02.0f:%02.0f:%2.0f"</span> % (time_mi, time_s, time_ms))</span><br></pre></td></tr></table></figure>]]></content>
+    <title>Makefile 103: all &amp; clean</title>
+    <url>/2019/07/05/Makefile-103-all-clean/</url>
+    <content><![CDATA[<h5 id="makefile-中的all"><a href="#makefile-中的all" class="headerlink" title="makefile 中的all"></a>makefile 中的all</h5><p>因为 makefile 的执行流程是找到第一个目标作为最终生成的目标，如果顺序错乱了，makefile 就可能报错，all 方法就是解决这个问题而存在的，并且，all 方法可以让一个 makefile 生成多个目标。示例如下：</p>
+<h5 id="makefile-中的-clean"><a href="#makefile-中的-clean" class="headerlink" title="makefile 中的 clean"></a>makefile 中的 clean</h5><p>make clean 命令是用来清除目录下临时文件的，执行 clean 这个目标时，不需要任何依赖项，也就意味着，如果目录下有一个文件名为 clean 的话，执行 make clean 命令时会判断这个目标所依赖的内容是否有变化，如有变化则重新生成，无变化则跳过，而恰恰我们这个 clean 没写依赖规则！这将导致 clean 无论如何都不会被执行。解决这个问题的办法就是将 clean 方法声明为一个伪目标，做就就是让 clean 无论如何都更新，同样我们生成的 all 目标也可能会出现这种情况，所以我们将它们两个都声明为 <strong>伪目标</strong>，方法如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">clean:</span><br><span class="line">    -rm -rf $(obj) main app </span><br><span class="line"></span><br><span class="line">.PHONY:clean all</span><br></pre></td></tr></table></figure>
+]]></content>
       <categories>
         <category>Linux</category>
       </categories>
       <tags>
-        <tag>Shell</tag>
+        <tag>makefile</tag>
       </tags>
   </entry>
   <entry>
@@ -1994,20 +2008,6 @@ pipeline {
 <li><a href="http://www.chiark.greenend.org.uk/doc/make-doc/make.html/Using-Variables.html" target="_blank" rel="noopener">http://www.chiark.greenend.org.uk/doc/make-doc/make.html/Using-Variables.html</a></li>
 <li><a href="https://www.gnu.org/software/make/manual/html_node/Implicit-Variables.html" target="_blank" rel="noopener">https://www.gnu.org/software/make/manual/html_node/Implicit-Variables.html</a></li>
 </ul>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>makefile</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Makefile 103: all &amp; clean</title>
-    <url>/2019/07/05/Makefile-103-all-clean/</url>
-    <content><![CDATA[<h5 id="makefile-中的all"><a href="#makefile-中的all" class="headerlink" title="makefile 中的all"></a>makefile 中的all</h5><p>因为 makefile 的执行流程是找到第一个目标作为最终生成的目标，如果顺序错乱了，makefile 就可能报错，all 方法就是解决这个问题而存在的，并且，all 方法可以让一个 makefile 生成多个目标。示例如下：</p>
-<h5 id="makefile-中的-clean"><a href="#makefile-中的-clean" class="headerlink" title="makefile 中的 clean"></a>makefile 中的 clean</h5><p>make clean 命令是用来清除目录下临时文件的，执行 clean 这个目标时，不需要任何依赖项，也就意味着，如果目录下有一个文件名为 clean 的话，执行 make clean 命令时会判断这个目标所依赖的内容是否有变化，如有变化则重新生成，无变化则跳过，而恰恰我们这个 clean 没写依赖规则！这将导致 clean 无论如何都不会被执行。解决这个问题的办法就是将 clean 方法声明为一个伪目标，做就就是让 clean 无论如何都更新，同样我们生成的 all 目标也可能会出现这种情况，所以我们将它们两个都声明为 <strong>伪目标</strong>，方法如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">clean:</span><br><span class="line">    -rm -rf $(obj) main app </span><br><span class="line"></span><br><span class="line">.PHONY:clean all</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>Linux</category>
@@ -2053,6 +2053,22 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>Makefile 106: Functions</title>
+    <url>/2019/07/05/Makefile-106-Functions/</url>
+    <content><![CDATA[<p>（1）shell 函数</p>
+<p>（2）wildcard 函数</p>
+<p>（3）subst 函数</p>
+<p>（4）patsubst函数</p>
+<p>（5）替换后缀名</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>makefile</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Mongodb 的一些概念</title>
     <url>/2021/03/04/Mongodb-%E7%9A%84%E4%B8%80%E4%BA%9B%E6%A6%82%E5%BF%B5/</url>
     <content><![CDATA[<p>基本概念，还是对照常用的关系型数据库，这样更容易理解一些</p>
@@ -2073,33 +2089,6 @@ pipeline {
 ]]></content>
       <tags>
         <tag>Tools</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Openshift E01 最常见的使用场景</title>
-    <url>/2021/01/10/Openshift-E01-%E6%9C%80%E5%B8%B8%E8%A7%81%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/</url>
-    <content><![CDATA[<p>暂时不介绍 openshift 的概念，也不介绍如何安装、部署，先使用一个例子来看看 openshift 能做什么。</p>
-<h3 id="新建一个项目"><a href="#新建一个项目" class="headerlink" title="新建一个项目"></a>新建一个项目</h3><p>在我的本地，使用developer/developer登陆 OpenShift控制台,右上角点击 <code>+Create Project</code></p>
-<ul>
-<li>Name -&gt; <code>mybank</code></li>
-<li>Display Name -&gt; <code>MyBank</code></li>
-<li>Description- &gt; <code>MyBank Application</code></li>
-</ul>
-<p>新建之后，去到 <code>MyBank</code> project, <code>Overview</code>, <code>Browse Catalog</code>  <code>Wildfly</code>；补充如下截图的信息</p>
-<p><a href="https://imgchr.com/i/slR7a4" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/10/slR7a4.png" alt="slR7a4.png"></a></p>
-<p>Application github repo url: <a href="https://github.com/nichochen/mybank-demo-maven" target="_blank" rel="noopener">https://github.com/nichochen/mybank-demo-maven</a></p>
-<p>点击 <code>Create</code> 按钮后，OpenShift就会创建一系列的后台对象，进而出发S2I流程。构建的过程需要连接互联网下载应用的源代码、Maven构建所需要的Jar包以及镜像。在我的电脑上clone后大概等待了20min，然后才继续后面的步骤。</p>
-<p><a href="https://imgchr.com/i/slIrq0" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/10/slIrq0.png" alt="slIrq0.png"></a></p>
-<p>我本地使用minishift搭建的OpenShift实验环境</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># login vm</span></span><br><span class="line">minishift ssh</span><br><span class="line"></span><br><span class="line"><span class="comment"># grep the image</span></span><br><span class="line">[docker@minishift ~]<span class="variable">$docker</span> images | grep bank</span><br><span class="line">172.30.1.1:5000/mybank/mybank                            latest              9f9a257dce21        8 minutes ago       961 MB</span><br></pre></td></tr></table></figure>
-<p>一切便都结束了，不要太省心～<br><a href="https://imgchr.com/i/slTjbt" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/10/slTjbt.png" alt="slTjbt.png"></a></p>
-<p>可以直接从浏览器访问应用程序了<br><a href="https://imgchr.com/i/sl7ZV0" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/10/sl7ZV0.png" alt="sl7ZV0.png"></a></p>
-]]></content>
-      <categories>
-        <category>CICD</category>
-      </categories>
-      <tags>
-        <tag>OpenShift</tag>
       </tags>
   </entry>
   <entry>
@@ -2132,19 +2121,30 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>Makefile 106: Functions</title>
-    <url>/2019/07/05/Makefile-106-Functions/</url>
-    <content><![CDATA[<p>（1）shell 函数</p>
-<p>（2）wildcard 函数</p>
-<p>（3）subst 函数</p>
-<p>（4）patsubst函数</p>
-<p>（5）替换后缀名</p>
+    <title>Openshift E01 最常见的使用场景</title>
+    <url>/2021/01/10/Openshift-E01-%E6%9C%80%E5%B8%B8%E8%A7%81%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/</url>
+    <content><![CDATA[<p>暂时不介绍 openshift 的概念，也不介绍如何安装、部署，先使用一个例子来看看 openshift 能做什么。</p>
+<h3 id="新建一个项目"><a href="#新建一个项目" class="headerlink" title="新建一个项目"></a>新建一个项目</h3><p>在我的本地，使用developer/developer登陆 OpenShift控制台,右上角点击 <code>+Create Project</code></p>
+<ul>
+<li>Name -&gt; <code>mybank</code></li>
+<li>Display Name -&gt; <code>MyBank</code></li>
+<li>Description- &gt; <code>MyBank Application</code></li>
+</ul>
+<p>新建之后，去到 <code>MyBank</code> project, <code>Overview</code>, <code>Browse Catalog</code>  <code>Wildfly</code>；补充如下截图的信息</p>
+<p><a href="https://imgchr.com/i/slR7a4" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/10/slR7a4.png" alt="slR7a4.png"></a></p>
+<p>Application github repo url: <a href="https://github.com/nichochen/mybank-demo-maven" target="_blank" rel="noopener">https://github.com/nichochen/mybank-demo-maven</a></p>
+<p>点击 <code>Create</code> 按钮后，OpenShift就会创建一系列的后台对象，进而出发S2I流程。构建的过程需要连接互联网下载应用的源代码、Maven构建所需要的Jar包以及镜像。在我的电脑上clone后大概等待了20min，然后才继续后面的步骤。</p>
+<p><a href="https://imgchr.com/i/slIrq0" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/10/slIrq0.png" alt="slIrq0.png"></a></p>
+<p>我本地使用minishift搭建的OpenShift实验环境</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># login vm</span></span><br><span class="line">minishift ssh</span><br><span class="line"></span><br><span class="line"><span class="comment"># grep the image</span></span><br><span class="line">[docker@minishift ~]<span class="variable">$docker</span> images | grep bank</span><br><span class="line">172.30.1.1:5000/mybank/mybank                            latest              9f9a257dce21        8 minutes ago       961 MB</span><br></pre></td></tr></table></figure>
+<p>一切便都结束了，不要太省心～<br><a href="https://imgchr.com/i/slTjbt" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/10/slTjbt.png" alt="slTjbt.png"></a></p>
+<p>可以直接从浏览器访问应用程序了<br><a href="https://imgchr.com/i/sl7ZV0" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/10/sl7ZV0.png" alt="sl7ZV0.png"></a></p>
 ]]></content>
       <categories>
-        <category>Linux</category>
+        <category>CICD</category>
       </categories>
       <tags>
-        <tag>makefile</tag>
+        <tag>OpenShift</tag>
       </tags>
   </entry>
   <entry>
@@ -2369,6 +2369,35 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>Scan Docker Images for Vulnerabilities</title>
+    <url>/2019/12/11/Scan-Docker-Images-for-Vulnerabilities/</url>
+    <content><![CDATA[<ul>
+<li><p>可以扫描哪些方面，哪些方面检查不出来</p>
+</li>
+<li><p>有哪些工具，各自特点</p>
+</li>
+<li><p>工具开源/收费</p>
+</li>
+<li><p>是否方便与pipeline集成</p>
+</li>
+<li><p>报告形式</p>
+</li>
+<li><p>是否需要单独的服务端、数据库</p>
+</li>
+</ul>
+<h3 id="Tool-1-trivy"><a href="#Tool-1-trivy" class="headerlink" title="Tool 1: trivy"></a>Tool 1: <a href="https://github.com/aquasecurity/trivy" target="_blank" rel="noopener">trivy</a></h3><p>output:<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   trivy python:alpine</span><br><span class="line">2019-12-12T09:40:48.656+0800	INFO	Detecting Alpine vulnerabilities...</span><br><span class="line"></span><br><span class="line">python:alpine (alpine 3.10.2)</span><br><span class="line">=============================</span><br><span class="line">Total: 9 (UNKNOWN: 0, LOW: 2, MEDIUM: 7, HIGH: 0, CRITICAL: 0)</span><br><span class="line"></span><br><span class="line">+-----------+------------------+----------+-------------------+--------------------------------+</span><br><span class="line">|  LIBRARY  | VULNERABILITY ID | SEVERITY | INSTALLED VERSION | FIXED VERSION |      TITLE    |</span><br><span class="line">+-----------+------------------+----------+-------------------+---------   +-------------------+</span><br><span class="line">| e2fsprogs | CVE-2019-5094    | MEDIUM   | 1.45.2-r0| 1.45.2-r1 | e2fsprogs: crafted             |</span><br><span class="line">|           |                  |          |                   |               | ext4 partition leads to        |</span><br><span class="line">|           |                  |          |                   |               | out-of-bounds write            |</span><br><span class="line">+-----------+------------------+          +-------------------+---------------+--------------------------------+</span><br><span class="line">| expat     | CVE-2019-15903   |          | 2.2.7-r0| 2.2.7-r1  | expat: heap-based buffer       |</span><br><span class="line">|           |                  |          |                   |               | over-read via crafted XML      |</span><br><span class="line">|           |                  |          |                   |               | input                          |</span><br><span class="line">+-----------+------------------+          +-------------------+---------------+--------------------------------+</span><br><span class="line">| libgcrypt | CVE-2019-13627   |          | 1.8.4-r2| 1.8.5-r0  | libgcrypt: ECDSA timing        |</span><br><span class="line">|           |                  |          |                   |               | attack <span class="keyword">in</span> the libgcrypt20      |</span><br><span class="line">|           |                  |          |                   |               | cryptographic library          |</span><br><span class="line">+-----------+------------------+          +-------------------+--------------</span><br><span class="line">省略100行</span><br></pre></td></tr></table></figure></p>
+<h3 id="Tool-2-Anchore"><a href="#Tool-2-Anchore" class="headerlink" title="Tool 2: Anchore"></a>Tool 2: <a href="https://github.com/anchore/anchore-engine" target="_blank" rel="noopener">Anchore</a></h3><p>Anchore consists of a commercial edition (Anchore Enterprise) and an open-source edition (Anchor Engine).</p>
+<h3 id="Tool-3-open-scap"><a href="#Tool-3-open-scap" class="headerlink" title="Tool 3: open-scap"></a>Tool 3: open-scap</h3><h3 id="Tool-4-Dagda"><a href="#Tool-4-Dagda" class="headerlink" title="Tool 4: Dagda"></a>Tool 4: <a href="https://github.com/eliasgranderubio/dagda" target="_blank" rel="noopener">Dagda</a></h3><h3 id="Tool-5-Clair"><a href="#Tool-5-Clair" class="headerlink" title="Tool 5: Clair"></a>Tool 5: <a href="https://github.com/quay/clair" target="_blank" rel="noopener">Clair</a></h3><p>ref:</p>
+<ul>
+<li><a href="https://www.scality.com/solved/5-free-tools-to-navigate-through-docker-containers-security/" target="_blank" rel="noopener">https://www.scality.com/solved/5-free-tools-to-navigate-through-docker-containers-security/</a></li>
+<li><a href="https://resources.whitesourcesoftware.com/blog-whitesource/docker-image-security-scanning" target="_blank" rel="noopener">https://resources.whitesourcesoftware.com/blog-whitesource/docker-image-security-scanning</a></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>RCA(根本原因分析)</title>
     <url>/2019/10/08/RCA-%E6%A0%B9%E6%9C%AC%E5%8E%9F%E5%9B%A0%E5%88%86%E6%9E%90/</url>
     <content><![CDATA[<p>  根本原因分析（Root cause analysis,RCA）方法是明确事件或几近错失的决定性“根本”原因，并采取适当的措施避免问题再次发生。这是一个迭代的过程，会一直持续，直到找出所有组织要素，或者知道已经处理完所有数据。</p>
@@ -2447,35 +2476,6 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>Scan Docker Images for Vulnerabilities</title>
-    <url>/2019/12/11/Scan-Docker-Images-for-Vulnerabilities/</url>
-    <content><![CDATA[<ul>
-<li><p>可以扫描哪些方面，哪些方面检查不出来</p>
-</li>
-<li><p>有哪些工具，各自特点</p>
-</li>
-<li><p>工具开源/收费</p>
-</li>
-<li><p>是否方便与pipeline集成</p>
-</li>
-<li><p>报告形式</p>
-</li>
-<li><p>是否需要单独的服务端、数据库</p>
-</li>
-</ul>
-<h3 id="Tool-1-trivy"><a href="#Tool-1-trivy" class="headerlink" title="Tool 1: trivy"></a>Tool 1: <a href="https://github.com/aquasecurity/trivy" target="_blank" rel="noopener">trivy</a></h3><p>output:<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   trivy python:alpine</span><br><span class="line">2019-12-12T09:40:48.656+0800	INFO	Detecting Alpine vulnerabilities...</span><br><span class="line"></span><br><span class="line">python:alpine (alpine 3.10.2)</span><br><span class="line">=============================</span><br><span class="line">Total: 9 (UNKNOWN: 0, LOW: 2, MEDIUM: 7, HIGH: 0, CRITICAL: 0)</span><br><span class="line"></span><br><span class="line">+-----------+------------------+----------+-------------------+--------------------------------+</span><br><span class="line">|  LIBRARY  | VULNERABILITY ID | SEVERITY | INSTALLED VERSION | FIXED VERSION |      TITLE    |</span><br><span class="line">+-----------+------------------+----------+-------------------+---------   +-------------------+</span><br><span class="line">| e2fsprogs | CVE-2019-5094    | MEDIUM   | 1.45.2-r0| 1.45.2-r1 | e2fsprogs: crafted             |</span><br><span class="line">|           |                  |          |                   |               | ext4 partition leads to        |</span><br><span class="line">|           |                  |          |                   |               | out-of-bounds write            |</span><br><span class="line">+-----------+------------------+          +-------------------+---------------+--------------------------------+</span><br><span class="line">| expat     | CVE-2019-15903   |          | 2.2.7-r0| 2.2.7-r1  | expat: heap-based buffer       |</span><br><span class="line">|           |                  |          |                   |               | over-read via crafted XML      |</span><br><span class="line">|           |                  |          |                   |               | input                          |</span><br><span class="line">+-----------+------------------+          +-------------------+---------------+--------------------------------+</span><br><span class="line">| libgcrypt | CVE-2019-13627   |          | 1.8.4-r2| 1.8.5-r0  | libgcrypt: ECDSA timing        |</span><br><span class="line">|           |                  |          |                   |               | attack <span class="keyword">in</span> the libgcrypt20      |</span><br><span class="line">|           |                  |          |                   |               | cryptographic library          |</span><br><span class="line">+-----------+------------------+          +-------------------+--------------</span><br><span class="line">省略100行</span><br></pre></td></tr></table></figure></p>
-<h3 id="Tool-2-Anchore"><a href="#Tool-2-Anchore" class="headerlink" title="Tool 2: Anchore"></a>Tool 2: <a href="https://github.com/anchore/anchore-engine" target="_blank" rel="noopener">Anchore</a></h3><p>Anchore consists of a commercial edition (Anchore Enterprise) and an open-source edition (Anchor Engine).</p>
-<h3 id="Tool-3-open-scap"><a href="#Tool-3-open-scap" class="headerlink" title="Tool 3: open-scap"></a>Tool 3: open-scap</h3><h3 id="Tool-4-Dagda"><a href="#Tool-4-Dagda" class="headerlink" title="Tool 4: Dagda"></a>Tool 4: <a href="https://github.com/eliasgranderubio/dagda" target="_blank" rel="noopener">Dagda</a></h3><h3 id="Tool-5-Clair"><a href="#Tool-5-Clair" class="headerlink" title="Tool 5: Clair"></a>Tool 5: <a href="https://github.com/quay/clair" target="_blank" rel="noopener">Clair</a></h3><p>ref:</p>
-<ul>
-<li><a href="https://www.scality.com/solved/5-free-tools-to-navigate-through-docker-containers-security/" target="_blank" rel="noopener">https://www.scality.com/solved/5-free-tools-to-navigate-through-docker-containers-security/</a></li>
-<li><a href="https://resources.whitesourcesoftware.com/blog-whitesource/docker-image-security-scanning" target="_blank" rel="noopener">https://resources.whitesourcesoftware.com/blog-whitesource/docker-image-security-scanning</a></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Server:我是谁,我在哪里...</title>
     <url>/2020/05/25/Server-%E6%88%91%E6%98%AF%E8%B0%81-%E6%88%91%E5%9C%A8%E5%93%AA%E9%87%8C/</url>
     <content><![CDATA[<p>给你一台现成的服务器，你该如何了解它？(可以是linux的，也可以是Windows,也可能是mac os),但这里更多的假设是linux吧，因为更加常见，假如你ssh到了一台新服务器，除此之外，别人什么都没告诉你，你该怎么办？</p>
@@ -2496,23 +2496,6 @@ pipeline {
       </categories>
       <tags>
         <tag>Shell</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Shell Print text between specified lines or patterns</title>
-    <url>/2019/06/14/Shell-Print-text-between-specified-lines-or-patterns/</url>
-    <content><![CDATA[<p>awk,grep,sed,head,tail 都可以根据条件打印部分行。最简单的方法是使用 grep 打印匹配模式的行。不过，最全能的工具还是 awk.</p>
-<h4 id="Example-1-打印从-M-行到-N-行之间的文本"><a href="#Example-1-打印从-M-行到-N-行之间的文本" class="headerlink" title="Example 1: 打印从 M 行到 N 行之间的文本"></a>Example 1: 打印从 M 行到 N 行之间的文本</h4><p><code>$ awk &#39;NR==M,NR==N&#39; filename</code></p>
-<p>也可以从stdin读取输入：<br><code>cat filename | awk &#39;NR==M, NR==N&#39;</code></p>
-<h4 id="Example-2-打印位于模式-start-pattern-与-end-pattern-之间的文本"><a href="#Example-2-打印位于模式-start-pattern-与-end-pattern-之间的文本" class="headerlink" title="Example 2: 打印位于模式 start_pattern 与 end_pattern 之间的文本"></a>Example 2: 打印位于模式 start_pattern 与 end_pattern 之间的文本</h4><p><code>awk &#39;/start_pattern/,/end_pattern/&#39; filename</code></p>
-<p>awk中使用的模式为正则表达式</p>
-]]></content>
-      <categories>
-        <category>Bash</category>
-      </categories>
-      <tags>
-        <tag>Shell</tag>
-        <tag>Bash</tag>
       </tags>
   </entry>
   <entry>
@@ -2555,21 +2538,6 @@ pipeline {
 <li><a href="https://blog.csdn.net/wirelessqa/article/details/18863403" target="_blank" rel="noopener">https://blog.csdn.net/wirelessqa/article/details/18863403</a></li>
 </ul>
 </blockquote>
-]]></content>
-      <categories>
-        <category>Bash</category>
-      </categories>
-      <tags>
-        <tag>Shell</tag>
-        <tag>Bash</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Shell count time</title>
-    <url>/2019/06/17/Shell-count-time/</url>
-    <content><![CDATA[<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">start=$(date +%s)</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> ---------</span><br><span class="line"><span class="comment">#type your command, like: sleep 50</span></span><br><span class="line">sleep 50</span><br><span class="line"></span><br><span class="line">end=$(date +%s)</span><br><span class="line"></span><br><span class="line">diff=$((end - start))</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">"\e[1;32m take time is: <span class="variable">$diff</span> \e[m"</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> Count:</span><br><span class="line">tput sc</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> count <span class="keyword">in</span> `seq 0 40`</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  tput rc</span><br><span class="line">  tput ed</span><br><span class="line">  <span class="built_in">echo</span> -n <span class="variable">$count</span></span><br><span class="line">  sleep 1</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-<p>用 tput sc 存储光标位置。在每次循环中，通过 tput rc 恢复之前的存储的光标位置，在终端中打印出新的 count 值，然后使用 tputs ed 清除从当前位置到行尾之间的所有内容。行被清空之后，脚本就可以显示出新的值。sleep  可以使脚本在每次循环迭代之间延迟1秒钟。</p>
 ]]></content>
       <categories>
         <category>Bash</category>
@@ -2657,6 +2625,21 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>Shell count time</title>
+    <url>/2019/06/17/Shell-count-time/</url>
+    <content><![CDATA[<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">start=$(date +%s)</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> ---------</span><br><span class="line"><span class="comment">#type your command, like: sleep 50</span></span><br><span class="line">sleep 50</span><br><span class="line"></span><br><span class="line">end=$(date +%s)</span><br><span class="line"></span><br><span class="line">diff=$((end - start))</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">"\e[1;32m take time is: <span class="variable">$diff</span> \e[m"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> Count:</span><br><span class="line">tput sc</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> count <span class="keyword">in</span> `seq 0 40`</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  tput rc</span><br><span class="line">  tput ed</span><br><span class="line">  <span class="built_in">echo</span> -n <span class="variable">$count</span></span><br><span class="line">  sleep 1</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<p>用 tput sc 存储光标位置。在每次循环中，通过 tput rc 恢复之前的存储的光标位置，在终端中打印出新的 count 值，然后使用 tputs ed 清除从当前位置到行尾之间的所有内容。行被清空之后，脚本就可以显示出新的值。sleep  可以使脚本在每次循环迭代之间延迟1秒钟。</p>
+]]></content>
+      <categories>
+        <category>Bash</category>
+      </categories>
+      <tags>
+        <tag>Shell</tag>
+        <tag>Bash</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Small Tools [1]: youtube-dl</title>
     <url>/2019/05/22/Small-Tools-1-youtube-dl/</url>
     <content><![CDATA[<h2 id="youtube-dl"><a href="#youtube-dl" class="headerlink" title="youtube-dl"></a>youtube-dl</h2><p><strong>youtube-dl</strong> 是一个命令行视频下载利器，不仅仅可以下载YouTube的内容，也可以下载其他的视频网站内容</p>
@@ -2723,39 +2706,6 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>Spike 回顾</title>
-    <url>/2021/11/19/Spike-%E5%9B%9E%E9%A1%BE/</url>
-    <content><![CDATA[<h3 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h3><p>在当前的项目已经快一年了，当初团队成员的一句要求，给大家换来了定期的Innovation Week。在这一周里可以不用专注于当前手上乱七八糟的各种问题和令人有喜有忧的新功能，而是专注于另一项自己感兴趣的小工具、特定使用场景，也可以是某个疑难杂症。而在一周结束之后，团队成员汇聚一堂做简单的成果分享，然后结束这个过程。所以我们的做法本质上还不是Spike，但相互之间却有很多值得借鉴的地方。</p>
-<p>这样做的好处显而易见，给成员留足了时间去学习新工具、新技术，也可以看作是一种变向的自我学习周期。当然，从管理者角度出发，无疑燃烧了经费成本，但却不一定对项目有明显的效果。偶然之后才意思到这个Spike的过程是个专业术语，前人早就有了较好的模式和实践流程，而自身尽然摸爬滚打野路子出家弄了半年。好在回过头来看，并没有走 太多的错路，弄出一些奇怪的实践。但却是时候回顾这个Spike原本的样子，然后理解它，免得日后张冠李戴。</p>
-<h4 id="什么是Spike"><a href="#什么是Spike" class="headerlink" title="什么是Spike?"></a>什么是Spike?</h4><p>spike这个词的英文翻译是“长钉或者刺穿”，名词或动词。 在攀岩过程中，攀岩的人在没有办法落脚的情况下，选择使用岩钉作为锚点来保护自己，从而避免跌倒或协助后续的辅助攀登。其次，这个词来源于 Extreme Programming (XP)</p>
-<blockquote>
-<p>“A spike solution is a very simple program to explore potential solutions.” </p>
-</blockquote>
-<p>然后来到敏捷开发过程中，由于敏捷中强调不确定性、拥抱变化，那么在日常开发过程中，也会遇到一些任务，比如技术方案或者未知的探索，于是敏捷中的spike是一项技术调研。通过简答的调查、设计、demo来快速验证，这样说起来和POC(prove of concept)是不是很像。</p>
-<p>虽然spike本身没有完成相应的功能，没有交付业务功能，但是为后续可能遇到的难题扫除了障碍，降低了不确定性，从而保障最终业务价值的交付，减少延期的风险。</p>
-<h4 id="为什么要做Spike"><a href="#为什么要做Spike" class="headerlink" title="为什么要做Spike?"></a>为什么要做Spike?</h4><p>上一段落已经提到了，简要概括如下：</p>
-<ul>
-<li>消除未知</li>
-<li>减少风险</li>
-<li>寻求方案</li>
-</ul>
-<h4 id="Spike与故事卡的区别？"><a href="#Spike与故事卡的区别？" class="headerlink" title="Spike与故事卡的区别？"></a>Spike与故事卡的区别？</h4><p>Spike 在某种程度上可以是一种特殊的user story，区别在于用户故事交付产品业务功能，需求目标相对明确；二spike本身不交付产品功能，问题明确，但在实际做的过程中可能有很多的不确定性。</p>
-<h4 id="如何来做Spike"><a href="#如何来做Spike" class="headerlink" title="如何来做Spike?"></a>如何来做Spike?</h4><p>认清现状，明确目标，细化任务，得到产出。</p>
-<p>控制范围时间，不要抛离主要目标。设置Timebox，即使时间结束时没有一个完整的方案，也没有关系，做了多少就在最后环节展示多少，团队在听完之后再来判断是否可以继续。</p>
-<h3 id="回顾一下"><a href="#回顾一下" class="headerlink" title="回顾一下"></a>回顾一下</h3><p>讲述了我所在项目的背景和它的Spike，对比真正的定义上的Spike，其实还是有本质的区别的。我们的做法更偏向于study或者 workshop，并没有去解决实际遇到的问题，而是做自己喜欢的事情。当然后期由于事情变多，不确定的事情也多了，确实做了一些真正的Spike去调研潜在的问题和未知的技术实现。</p>
-<hr>
-<p>Reference:</p>
-<ul>
-<li><a href="https://en.wikipedia.org/wiki/Spike_(software_development)" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Spike_(software_development)</a></li>
-<li><a href="http://agiledictionary.com/209/spike/" target="_blank" rel="noopener">http://agiledictionary.com/209/spike/</a></li>
-<li><a href="https://www.leadingagile.com/2016/09/whats-an-agile-spike-who-should-enter-it-how-to-word-it/" target="_blank" rel="noopener">https://www.leadingagile.com/2016/09/whats-an-agile-spike-who-should-enter-it-how-to-word-it/</a></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>Agile</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Terraform 100: Introduction &amp; Install</title>
     <url>/2019/08/27/Terraform-100-Introduction-Install/</url>
     <content><![CDATA[<h3 id="What-is-Terraform"><a href="#What-is-Terraform" class="headerlink" title="What is Terraform?"></a>What is Terraform?</h3><p>Terraform is a tool for building, changing, and versioning infrastructure safely and efficiently. Terraform can manage existing and popular service providers as well as custom in-house solutions.</p>
@@ -2791,6 +2741,39 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>Spike 回顾</title>
+    <url>/2021/11/19/Spike-%E5%9B%9E%E9%A1%BE/</url>
+    <content><![CDATA[<h3 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h3><p>在当前的项目已经快一年了，当初团队成员的一句要求，给大家换来了定期的Innovation Week。在这一周里可以不用专注于当前手上乱七八糟的各种问题和令人有喜有忧的新功能，而是专注于另一项自己感兴趣的小工具、特定使用场景，也可以是某个疑难杂症。而在一周结束之后，团队成员汇聚一堂做简单的成果分享，然后结束这个过程。所以我们的做法本质上还不是Spike，但相互之间却有很多值得借鉴的地方。</p>
+<p>这样做的好处显而易见，给成员留足了时间去学习新工具、新技术，也可以看作是一种变向的自我学习周期。当然，从管理者角度出发，无疑燃烧了经费成本，但却不一定对项目有明显的效果。偶然之后才意思到这个Spike的过程是个专业术语，前人早就有了较好的模式和实践流程，而自身尽然摸爬滚打野路子出家弄了半年。好在回过头来看，并没有走 太多的错路，弄出一些奇怪的实践。但却是时候回顾这个Spike原本的样子，然后理解它，免得日后张冠李戴。</p>
+<h4 id="什么是Spike"><a href="#什么是Spike" class="headerlink" title="什么是Spike?"></a>什么是Spike?</h4><p>spike这个词的英文翻译是“长钉或者刺穿”，名词或动词。 在攀岩过程中，攀岩的人在没有办法落脚的情况下，选择使用岩钉作为锚点来保护自己，从而避免跌倒或协助后续的辅助攀登。其次，这个词来源于 Extreme Programming (XP)</p>
+<blockquote>
+<p>“A spike solution is a very simple program to explore potential solutions.” </p>
+</blockquote>
+<p>然后来到敏捷开发过程中，由于敏捷中强调不确定性、拥抱变化，那么在日常开发过程中，也会遇到一些任务，比如技术方案或者未知的探索，于是敏捷中的spike是一项技术调研。通过简答的调查、设计、demo来快速验证，这样说起来和POC(prove of concept)是不是很像。</p>
+<p>虽然spike本身没有完成相应的功能，没有交付业务功能，但是为后续可能遇到的难题扫除了障碍，降低了不确定性，从而保障最终业务价值的交付，减少延期的风险。</p>
+<h4 id="为什么要做Spike"><a href="#为什么要做Spike" class="headerlink" title="为什么要做Spike?"></a>为什么要做Spike?</h4><p>上一段落已经提到了，简要概括如下：</p>
+<ul>
+<li>消除未知</li>
+<li>减少风险</li>
+<li>寻求方案</li>
+</ul>
+<h4 id="Spike与故事卡的区别？"><a href="#Spike与故事卡的区别？" class="headerlink" title="Spike与故事卡的区别？"></a>Spike与故事卡的区别？</h4><p>Spike 在某种程度上可以是一种特殊的user story，区别在于用户故事交付产品业务功能，需求目标相对明确；二spike本身不交付产品功能，问题明确，但在实际做的过程中可能有很多的不确定性。</p>
+<h4 id="如何来做Spike"><a href="#如何来做Spike" class="headerlink" title="如何来做Spike?"></a>如何来做Spike?</h4><p>认清现状，明确目标，细化任务，得到产出。</p>
+<p>控制范围时间，不要抛离主要目标。设置Timebox，即使时间结束时没有一个完整的方案，也没有关系，做了多少就在最后环节展示多少，团队在听完之后再来判断是否可以继续。</p>
+<h3 id="回顾一下"><a href="#回顾一下" class="headerlink" title="回顾一下"></a>回顾一下</h3><p>讲述了我所在项目的背景和它的Spike，对比真正的定义上的Spike，其实还是有本质的区别的。我们的做法更偏向于study或者 workshop，并没有去解决实际遇到的问题，而是做自己喜欢的事情。当然后期由于事情变多，不确定的事情也多了，确实做了一些真正的Spike去调研潜在的问题和未知的技术实现。</p>
+<hr>
+<p>Reference:</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Spike_(software_development)" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Spike_(software_development)</a></li>
+<li><a href="http://agiledictionary.com/209/spike/" target="_blank" rel="noopener">http://agiledictionary.com/209/spike/</a></li>
+<li><a href="https://www.leadingagile.com/2016/09/whats-an-agile-spike-who-should-enter-it-how-to-word-it/" target="_blank" rel="noopener">https://www.leadingagile.com/2016/09/whats-an-agile-spike-who-should-enter-it-how-to-word-it/</a></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>Agile</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Terraform : terraform console</title>
     <url>/2019/12/05/Terraform-terraform-console/</url>
     <content><![CDATA[<h5 id="1-evaluating-expressions"><a href="#1-evaluating-expressions" class="headerlink" title="1.evaluating expressions"></a>1.evaluating expressions</h5><p>The terraform console command provides an interactive console for evaluating expressions.</p>
@@ -2806,6 +2789,23 @@ pipeline {
       </categories>
       <tags>
         <tag>Terraform</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Shell Print text between specified lines or patterns</title>
+    <url>/2019/06/14/Shell-Print-text-between-specified-lines-or-patterns/</url>
+    <content><![CDATA[<p>awk,grep,sed,head,tail 都可以根据条件打印部分行。最简单的方法是使用 grep 打印匹配模式的行。不过，最全能的工具还是 awk.</p>
+<h4 id="Example-1-打印从-M-行到-N-行之间的文本"><a href="#Example-1-打印从-M-行到-N-行之间的文本" class="headerlink" title="Example 1: 打印从 M 行到 N 行之间的文本"></a>Example 1: 打印从 M 行到 N 行之间的文本</h4><p><code>$ awk &#39;NR==M,NR==N&#39; filename</code></p>
+<p>也可以从stdin读取输入：<br><code>cat filename | awk &#39;NR==M, NR==N&#39;</code></p>
+<h4 id="Example-2-打印位于模式-start-pattern-与-end-pattern-之间的文本"><a href="#Example-2-打印位于模式-start-pattern-与-end-pattern-之间的文本" class="headerlink" title="Example 2: 打印位于模式 start_pattern 与 end_pattern 之间的文本"></a>Example 2: 打印位于模式 start_pattern 与 end_pattern 之间的文本</h4><p><code>awk &#39;/start_pattern/,/end_pattern/&#39; filename</code></p>
+<p>awk中使用的模式为正则表达式</p>
+]]></content>
+      <categories>
+        <category>Bash</category>
+      </categories>
+      <tags>
+        <tag>Shell</tag>
+        <tag>Bash</tag>
       </tags>
   </entry>
   <entry>
@@ -3084,6 +3084,24 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>docker 镜像的扁平化</title>
+    <url>/2019/07/25/docker-%E9%95%9C%E5%83%8F%E7%9A%84%E6%89%81%E5%B9%B3%E5%8C%96/</url>
+    <content><![CDATA[<blockquote>
+<p>Dockerfile 的设计以及它们产出 Docker 镜像的结果便是，最终镜像里包含了 Dockerfile 里每一步的数据状态。在构建镜像的过程中，可能需要复制私密信息来确保构建工作可以顺利进行。这些所谓的私密信息可能是 ssH 密钥、证书或者密码文件等。在提交镜像前删除这些私密信息的话可能不会提供任何实质性的保护，因为它们将出现在最终镜像的更高分层里，而恶意用户则可以轻松地从镜像中提取它们。解决这一问题的其中一个办法便是将得到的镜像扁平化。</p>
+</blockquote>
+<p><strong>问题</strong><br>想要从镜像的分层历史中移除私密信息。</p>
+<p><strong>解决方案</strong><br>基于该镜像创建一个容器，将它导出再导人，然后给它打上最初镜像田的标签。</p>
+<p><strong>讨论</strong><br>为了演示这种做法的可用场景，让我们在一个新目录里创建一个简单的 Dockerfile ，该目录下藏着一个大秘密。运行 mkdir secrets “ cd Secrets ，然后在该目录里创建一个包含如下内容的 Dockerfile :</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">FROM busybox</span><br><span class="line">RUN <span class="built_in">echo</span> <span class="string">"My Big secret"</span> &gt;&gt; /tmp/secret_key</span><br><span class="line">RUN cat /tmp/secret_key</span><br><span class="line">RUn rm /tmp/secret_key</span><br></pre></td></tr></table></figure>
+<p>运行  <code>docker build -t mysecret .</code><br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   docker build -t mysecret .</span><br><span class="line">Sending build context to Docker daemon  2.048kB</span><br><span class="line">Step 1/4 : FROM busybox</span><br><span class="line"> ---&gt; 8c811b4aec35</span><br><span class="line">Step 2/4 : RUN <span class="built_in">echo</span> <span class="string">"My Big secret"</span> &gt;&gt; /tmp/secret_key</span><br><span class="line"> ---&gt; Running <span class="keyword">in</span> 2b6f94ac0148</span><br><span class="line">Removing intermediate container 2b6f94ac0148</span><br><span class="line"> ---&gt; a9ecbe44119c</span><br><span class="line">Step 3/4 : RUN cat /tmp/secret_key</span><br><span class="line"> ---&gt; Running <span class="keyword">in</span> b515370b1b88</span><br><span class="line">My Big secret</span><br><span class="line">Removing intermediate container b515370b1b88</span><br><span class="line"> ---&gt; 8a890a1ace7c</span><br><span class="line">Step 4/4 : RUn rm /tmp/secret_key</span><br><span class="line"> ---&gt; Running <span class="keyword">in</span> c9910e46efc2</span><br><span class="line">Removing intermediate container c9910e46efc2</span><br><span class="line"> ---&gt; 6010dbf70359</span><br><span class="line">Successfully built 6010dbf70359</span><br><span class="line">Successfully tagged mysecret:latest</span><br></pre></td></tr></table></figure></p>
+<p>可以使用docker history 命令检查得到的Docker镜像的分层.如果该镜像上传到公有仓库，被他人下载，在没有原始 Dockerfile 到情况下，可以轻松获取私密信息。<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   docker <span class="built_in">history</span> mysecret:latest</span><br><span class="line">IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT</span><br><span class="line">6010dbf70359        22 seconds ago      /bin/sh -c rm /tmp/secret_key                   0B</span><br><span class="line">8a890a1ace7c        23 seconds ago      /bin/sh -c cat /tmp/secret_key                  0B</span><br><span class="line">a9ecbe44119c        25 seconds ago      /bin/sh -c <span class="built_in">echo</span> <span class="string">"My Big secret"</span> &gt;&gt; /tmp/secr…   14B</span><br><span class="line">8c811b4aec35        14 months ago       /bin/sh -c <span class="comment">#(nop)  CMD ["sh"]                   0B</span></span><br><span class="line">&lt;missing&gt;           14 months ago       /bin/sh -c <span class="comment">#(nop) ADD file:5f0439d8328ab58c0…   1.15MB</span></span><br></pre></td></tr></table></figure></p>
+<h5 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h5><p>将该镜像导出为一个简单运行的容器，然后再重新导入并给得到的镜像打上标签</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   docker run -d mysecret /bin/<span class="literal">true</span></span><br><span class="line">02cbd0f59623472acc4571c1b654cdca40730d036d7a96a7dbaacaaf264177aa</span><br><span class="line">➜   docker <span class="built_in">export</span> 02cbd0f5962 | docker import - mysecret</span><br><span class="line">sha256:080b122e43cb5d46efec5aa0b6abd0570e1abc52b3293f77b091bf22722c1168</span><br><span class="line">➜   docker <span class="built_in">history</span> mysecret</span><br><span class="line">IMAGE               CREATED             CREATED BY          SIZE                COMMENT</span><br><span class="line">080b122e43cb        9 seconds ago                           1.15MB              Imported from -</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>docker build ignore .dockerignore</title>
     <url>/2019/08/22/docker-build-ignore-dockerignore/</url>
     <content><![CDATA[<p>Demo project:<br><a href="https://github.com/qinrui777/api-test-demo" target="_blank" rel="noopener">https://github.com/qinrui777/api-test-demo</a></p>
@@ -3099,24 +3117,6 @@ pipeline {
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  api-test-demo git:(master) ✗ docker  build -t api-demo:have-ignore .</span><br><span class="line">Sending build context to Docker daemon  17.33MB</span><br><span class="line">Step 1/3 : FROM openjdk:8-jdk-alpine</span><br><span class="line"> ---&gt; 97bc1352afde</span><br><span class="line">Step 2/3 : ADD build/libs/api-demo-0.0.1-SNAPSHOT.jar /app.jar</span><br><span class="line"> ---&gt; Using cache</span><br><span class="line"> ---&gt; 7f709f7b4381</span><br><span class="line">Step 3/3 : ENTRYPOINT [<span class="string">"java"</span>,<span class="string">"-jar"</span>,<span class="string">"/app.jar"</span>]</span><br><span class="line"> ---&gt; Using cache</span><br><span class="line"> ---&gt; 62d9f7b72b38</span><br><span class="line">Successfully built 62d9f7b72b38</span><br><span class="line">Successfully tagged api-demo:have-ignore</span><br></pre></td></tr></table></figure></li>
 </ul>
 ]]></content>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>docker 镜像的扁平化</title>
-    <url>/2019/07/25/docker-%E9%95%9C%E5%83%8F%E7%9A%84%E6%89%81%E5%B9%B3%E5%8C%96/</url>
-    <content><![CDATA[<blockquote>
-<p>Dockerfile 的设计以及它们产出 Docker 镜像的结果便是，最终镜像里包含了 Dockerfile 里每一步的数据状态。在构建镜像的过程中，可能需要复制私密信息来确保构建工作可以顺利进行。这些所谓的私密信息可能是 ssH 密钥、证书或者密码文件等。在提交镜像前删除这些私密信息的话可能不会提供任何实质性的保护，因为它们将出现在最终镜像的更高分层里，而恶意用户则可以轻松地从镜像中提取它们。解决这一问题的其中一个办法便是将得到的镜像扁平化。</p>
-</blockquote>
-<p><strong>问题</strong><br>想要从镜像的分层历史中移除私密信息。</p>
-<p><strong>解决方案</strong><br>基于该镜像创建一个容器，将它导出再导人，然后给它打上最初镜像田的标签。</p>
-<p><strong>讨论</strong><br>为了演示这种做法的可用场景，让我们在一个新目录里创建一个简单的 Dockerfile ，该目录下藏着一个大秘密。运行 mkdir secrets “ cd Secrets ，然后在该目录里创建一个包含如下内容的 Dockerfile :</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">FROM busybox</span><br><span class="line">RUN <span class="built_in">echo</span> <span class="string">"My Big secret"</span> &gt;&gt; /tmp/secret_key</span><br><span class="line">RUN cat /tmp/secret_key</span><br><span class="line">RUn rm /tmp/secret_key</span><br></pre></td></tr></table></figure>
-<p>运行  <code>docker build -t mysecret .</code><br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   docker build -t mysecret .</span><br><span class="line">Sending build context to Docker daemon  2.048kB</span><br><span class="line">Step 1/4 : FROM busybox</span><br><span class="line"> ---&gt; 8c811b4aec35</span><br><span class="line">Step 2/4 : RUN <span class="built_in">echo</span> <span class="string">"My Big secret"</span> &gt;&gt; /tmp/secret_key</span><br><span class="line"> ---&gt; Running <span class="keyword">in</span> 2b6f94ac0148</span><br><span class="line">Removing intermediate container 2b6f94ac0148</span><br><span class="line"> ---&gt; a9ecbe44119c</span><br><span class="line">Step 3/4 : RUN cat /tmp/secret_key</span><br><span class="line"> ---&gt; Running <span class="keyword">in</span> b515370b1b88</span><br><span class="line">My Big secret</span><br><span class="line">Removing intermediate container b515370b1b88</span><br><span class="line"> ---&gt; 8a890a1ace7c</span><br><span class="line">Step 4/4 : RUn rm /tmp/secret_key</span><br><span class="line"> ---&gt; Running <span class="keyword">in</span> c9910e46efc2</span><br><span class="line">Removing intermediate container c9910e46efc2</span><br><span class="line"> ---&gt; 6010dbf70359</span><br><span class="line">Successfully built 6010dbf70359</span><br><span class="line">Successfully tagged mysecret:latest</span><br></pre></td></tr></table></figure></p>
-<p>可以使用docker history 命令检查得到的Docker镜像的分层.如果该镜像上传到公有仓库，被他人下载，在没有原始 Dockerfile 到情况下，可以轻松获取私密信息。<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   docker <span class="built_in">history</span> mysecret:latest</span><br><span class="line">IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT</span><br><span class="line">6010dbf70359        22 seconds ago      /bin/sh -c rm /tmp/secret_key                   0B</span><br><span class="line">8a890a1ace7c        23 seconds ago      /bin/sh -c cat /tmp/secret_key                  0B</span><br><span class="line">a9ecbe44119c        25 seconds ago      /bin/sh -c <span class="built_in">echo</span> <span class="string">"My Big secret"</span> &gt;&gt; /tmp/secr…   14B</span><br><span class="line">8c811b4aec35        14 months ago       /bin/sh -c <span class="comment">#(nop)  CMD ["sh"]                   0B</span></span><br><span class="line">&lt;missing&gt;           14 months ago       /bin/sh -c <span class="comment">#(nop) ADD file:5f0439d8328ab58c0…   1.15MB</span></span><br></pre></td></tr></table></figure></p>
-<h5 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h5><p>将该镜像导出为一个简单运行的容器，然后再重新导入并给得到的镜像打上标签</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   docker run -d mysecret /bin/<span class="literal">true</span></span><br><span class="line">02cbd0f59623472acc4571c1b654cdca40730d036d7a96a7dbaacaaf264177aa</span><br><span class="line">➜   docker <span class="built_in">export</span> 02cbd0f5962 | docker import - mysecret</span><br><span class="line">sha256:080b122e43cb5d46efec5aa0b6abd0570e1abc52b3293f77b091bf22722c1168</span><br><span class="line">➜   docker <span class="built_in">history</span> mysecret</span><br><span class="line">IMAGE               CREATED             CREATED BY          SIZE                COMMENT</span><br><span class="line">080b122e43cb        9 seconds ago                           1.15MB              Imported from -</span><br></pre></td></tr></table></figure>]]></content>
       <tags>
         <tag>Docker</tag>
       </tags>
@@ -3323,67 +3323,6 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>ngrok demo</title>
-    <url>/2019/07/22/ngrok-demo/</url>
-    <content><![CDATA[<h3 id="怎么用"><a href="#怎么用" class="headerlink" title="怎么用"></a>怎么用</h3><p><a href="https://dashboard.ngrok.com/get-started" target="_blank" rel="noopener">https://dashboard.ngrok.com/get-started</a><br><img src="/images/ngrok_demo_01.png" alt="ngrok_demo_01"></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  Downloads ./ngrok authtoken &lt;YOUR_AUTHTOKEN&gt;</span><br><span class="line">Authtoken saved to configuration file: /Users/xxx/.ngrok2/ngrok.yml</span><br></pre></td></tr></table></figure>
-<h3 id="Demo-on-jenkins"><a href="#Demo-on-jenkins" class="headerlink" title="Demo on jenkins"></a>Demo on jenkins</h3><ol>
-<li>启动本地的Jenkins服务，暴露端口 <strong>8081</strong></li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  jenkins_demo docker run -d --name jenkins4ngrok -p 8081:8080 jenkins/jenkins:latest</span><br><span class="line">c384aca32c27d2c2df58e76619bc63a758d5e7b358e59c5bf083cb739952c4c7</span><br><span class="line">➜  jenkins_demo docker ps</span><br><span class="line">CONTAINER ID        IMAGE                    COMMAND                  CREATED             STATUS              PORTS                               NAMES</span><br><span class="line">c384aca32c27        jenkins/jenkins:latest   <span class="string">"/sbin/tini -- /usr/…"</span>   2 seconds ago       Up 1 second         50000/tcp, 0.0.0.0:8081-&gt;8080/tcp   jenkins4ngrok</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>Use ngrok, To start a HTTP tunnel on port 8081<br><code>➜  ./ngrok http 8081</code></li>
-</ol>
-<p><img src="/images/ngrok_demo_03.png" alt="ngrok_demo_03"></p>
-<ol start="3">
-<li>根据ngrok返回的，访问公网地址</li>
-</ol>
-<p>界面如下<br><img src="/images/ngrok_demo_02.png" alt="ngrok_demo_02"></p>
-<p>More Ref:</p>
-<ul>
-<li><a href="https://ngrok.com/docs" target="_blank" rel="noopener">https://ngrok.com/docs</a></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>Tools</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>packer intro</title>
-    <url>/2019/08/30/packer-intro/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>packer</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>python module SimpleHTTPServer</title>
-    <url>/2019/08/18/python-module-SimpleHTTPServer/</url>
-    <content><![CDATA[<h3 id="what-is"><a href="#what-is" class="headerlink" title="what is"></a>what is</h3><p>The <strong>SimpleHTTPServer</strong> module can be used in the following manner in order to set up a very basic web server serving files <strong>relative</strong> to the current directory.</p>
-<p>Warning SimpleHTTPServer is not recommended for production. It only implements basic security checks.</p>
-<h4 id="Example-1-fetch-files-from-a-server"><a href="#Example-1-fetch-files-from-a-server" class="headerlink" title="Example 1: fetch files from a server"></a>Example 1: fetch files from a server</h4><ul>
-<li><ol>
-<li>Start <code>SimpleHTTPServer</code> on server node<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span>   your_file_dir</span><br><span class="line">python -m SimpleHTTPServer &lt;PORT&gt;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-<li><ol start="2">
-<li>Excute command on client node<br><code>wget &lt;SERVER_NODE_IP&gt;:&lt;PROT&gt;/relative path/test.sh</code></li>
-</ol>
-</li>
-</ul>
-<p><em>or</em> go to the browser and type this URL: <code>http://&lt;SERVER_NODE_IP&gt;:&lt;PROT&gt;</code> and see the output.</p>
-<p><strong>✍TIP</strong><br>The SimpleHTTPServer module has been merged into http.server in Python 3.0. The 2to3 tool will automatically adapt imports when converting your sources to 3.0.<br><code>python3 -m http.server</code></p>
-]]></content>
-      <tags>
-        <tag>Tools</tag>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>kubectl 常用命令</title>
     <url>/2019/10/21/kubectl-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<h3 id="label操作"><a href="#label操作" class="headerlink" title="label操作"></a>label操作</h3><p>删除 label version=xx</p>
@@ -3413,6 +3352,43 @@ pipeline {
 ]]></content>
       <tags>
         <tag>k8s</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>packer intro</title>
+    <url>/2019/08/30/packer-intro/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>packer</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ngrok demo</title>
+    <url>/2019/07/22/ngrok-demo/</url>
+    <content><![CDATA[<h3 id="怎么用"><a href="#怎么用" class="headerlink" title="怎么用"></a>怎么用</h3><p><a href="https://dashboard.ngrok.com/get-started" target="_blank" rel="noopener">https://dashboard.ngrok.com/get-started</a><br><img src="/images/ngrok_demo_01.png" alt="ngrok_demo_01"></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  Downloads ./ngrok authtoken &lt;YOUR_AUTHTOKEN&gt;</span><br><span class="line">Authtoken saved to configuration file: /Users/xxx/.ngrok2/ngrok.yml</span><br></pre></td></tr></table></figure>
+<h3 id="Demo-on-jenkins"><a href="#Demo-on-jenkins" class="headerlink" title="Demo on jenkins"></a>Demo on jenkins</h3><ol>
+<li>启动本地的Jenkins服务，暴露端口 <strong>8081</strong></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  jenkins_demo docker run -d --name jenkins4ngrok -p 8081:8080 jenkins/jenkins:latest</span><br><span class="line">c384aca32c27d2c2df58e76619bc63a758d5e7b358e59c5bf083cb739952c4c7</span><br><span class="line">➜  jenkins_demo docker ps</span><br><span class="line">CONTAINER ID        IMAGE                    COMMAND                  CREATED             STATUS              PORTS                               NAMES</span><br><span class="line">c384aca32c27        jenkins/jenkins:latest   <span class="string">"/sbin/tini -- /usr/…"</span>   2 seconds ago       Up 1 second         50000/tcp, 0.0.0.0:8081-&gt;8080/tcp   jenkins4ngrok</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>Use ngrok, To start a HTTP tunnel on port 8081<br><code>➜  ./ngrok http 8081</code></li>
+</ol>
+<p><img src="/images/ngrok_demo_03.png" alt="ngrok_demo_03"></p>
+<ol start="3">
+<li>根据ngrok返回的，访问公网地址</li>
+</ol>
+<p>界面如下<br><img src="/images/ngrok_demo_02.png" alt="ngrok_demo_02"></p>
+<p>More Ref:</p>
+<ul>
+<li><a href="https://ngrok.com/docs" target="_blank" rel="noopener">https://ngrok.com/docs</a></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>Tools</tag>
       </tags>
   </entry>
   <entry>
@@ -3461,6 +3437,30 @@ pipeline {
       <tags>
         <tag>Shell</tag>
         <tag>Bash</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python module SimpleHTTPServer</title>
+    <url>/2019/08/18/python-module-SimpleHTTPServer/</url>
+    <content><![CDATA[<h3 id="what-is"><a href="#what-is" class="headerlink" title="what is"></a>what is</h3><p>The <strong>SimpleHTTPServer</strong> module can be used in the following manner in order to set up a very basic web server serving files <strong>relative</strong> to the current directory.</p>
+<p>Warning SimpleHTTPServer is not recommended for production. It only implements basic security checks.</p>
+<h4 id="Example-1-fetch-files-from-a-server"><a href="#Example-1-fetch-files-from-a-server" class="headerlink" title="Example 1: fetch files from a server"></a>Example 1: fetch files from a server</h4><ul>
+<li><ol>
+<li>Start <code>SimpleHTTPServer</code> on server node<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span>   your_file_dir</span><br><span class="line">python -m SimpleHTTPServer &lt;PORT&gt;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>Excute command on client node<br><code>wget &lt;SERVER_NODE_IP&gt;:&lt;PROT&gt;/relative path/test.sh</code></li>
+</ol>
+</li>
+</ul>
+<p><em>or</em> go to the browser and type this URL: <code>http://&lt;SERVER_NODE_IP&gt;:&lt;PROT&gt;</code> and see the output.</p>
+<p><strong>✍TIP</strong><br>The SimpleHTTPServer module has been merged into http.server in Python 3.0. The 2to3 tool will automatically adapt imports when converting your sources to 3.0.<br><code>python3 -m http.server</code></p>
+]]></content>
+      <tags>
+        <tag>Tools</tag>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -3561,6 +3561,30 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>xargs command</title>
+    <url>/2019/06/21/xargs-command/</url>
+    <content><![CDATA[<p>xargs 命令应该紧跟在管道操作符之后。它使用标准输入作为主要的数据源，将从 stdin 中读取的数据作为指定命令的参数并执行该命令。</p>
+<p>例如：<br>在一组 C 语言源码文件中搜索自负串main:<br><code>ls *.c | sargs grep main</code></p>
+<h4 id="Example-1-将多行输入-–-gt-单行输出"><a href="#Example-1-将多行输入-–-gt-单行输出" class="headerlink" title="Example 1: 将多行输入  –&gt; 单行输出"></a>Example 1: 将多行输入  –&gt; 单行输出</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   cat example.txt</span><br><span class="line">1 2 3 4</span><br><span class="line">5 6</span><br><span class="line">7 8 9</span><br><span class="line">10 11</span><br><span class="line">➜   cat example.txt | xargs</span><br><span class="line">1 2 3 4 5 6 7 8 9 10 11</span><br></pre></td></tr></table></figure>
+<h4 id="Example-2-将单行输入-–-gt-多行输出"><a href="#Example-2-将单行输入-–-gt-多行输出" class="headerlink" title="Example 2: 将单行输入  –&gt; 多行输出"></a>Example 2: 将单行输入  –&gt; 多行输出</h4><p>xargs 的 -n 选项可以限制每次调用命令时用到的参数个数。<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   cat example.txt | xargs -n  3</span><br><span class="line">1 2 3</span><br><span class="line">4 5 6</span><br><span class="line">7 8 9</span><br><span class="line">10 11</span><br></pre></td></tr></table></figure></p>
+<p>工作原理：<br>xargs 命令接收来自stdin的输入，将数据解析成单个元素，然后调用指定命令讲这些元素作为该命令的参数。xargs 默认使用 <strong>空白字符</strong> 分割输入并执行 <code>/bin/echo</code></p>
+<h4 id="Example-3-自定义分隔符-d-选项"><a href="#Example-3-自定义分隔符-d-选项" class="headerlink" title="Example 3: 自定义分隔符 -d 选项"></a>Example 3: 自定义分隔符 -d 选项</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"splitXsplit1Xsplit2Xsplit3"</span> | xargs -d X</span><br><span class="line">split split1 split2 split3</span><br></pre></td></tr></table></figure>
+<h4 id="Example-4-结合find使用xargs"><a href="#Example-4-结合find使用xargs" class="headerlink" title="Example 4: 结合find使用xargs"></a>Example 4: 结合find使用xargs</h4><p><code>find . -type f -name &quot;*.txt&quot; -print0 | xargs -o grep -L image</code></p>
+<p> 如果文件系统的有些文件名中包含忠哥，find 命令的 -print0 选项可以使用0（NUL）来分割查找到的元素，然后再用xargs对应的-0选项进行解析</p>
+<p> 反例：<br> <code>$find . -type f -name &quot;*.txt&quot; -print | xargs rm -f</code><br>这样做很危险，由可能会误删除文件。我们无法预测 find命令输出的分隔符究竟是什么（究竟是‘\n’还是 ‘’）。如果由文件名中包含空格符（‘ ’ ），xargs会将其误认为是分隔符。例如， <code>bashrc text.txt</code> 会被是为 bashrc 和 text.txt 。因此上面的命令不会删除 <code>bashrc text.txt</code> ,而是会把 bashrc删除</p>
+<p>正确的姿势：<br> <code>$find . -type f -name &quot;*.txt&quot; -print0 | xargs -0 rm -f</code></p>
+<h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><p> <code>docker ps -a -q | xargs --no-run-if-empty docker rm -f</code></p>
+<p> 参数 <code>--no-run-if-empty</code> 可以避免在前面的命令完全没有输出的情况下执行该命令</p>
+]]></content>
+      <categories>
+        <category>Bash</category>
+      </categories>
+      <tags>
+        <tag>Shell</tag>
+        <tag>Bash</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>tmux tutorial</title>
     <url>/2019/09/07/tmux-tutorial/</url>
     <content><![CDATA[<h3 id="1-tmux是什么"><a href="#1-tmux是什么" class="headerlink" title="1.tmux是什么"></a>1.tmux是什么</h3><p>tmux (terminal multiplexer),是一个 BSD 协议发布的终端复用软件，用来在服务器端托管同时运行的 Shell.</p>
@@ -3640,30 +3664,6 @@ pipeline {
       </categories>
       <tags>
         <tag>tmux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>xargs command</title>
-    <url>/2019/06/21/xargs-command/</url>
-    <content><![CDATA[<p>xargs 命令应该紧跟在管道操作符之后。它使用标准输入作为主要的数据源，将从 stdin 中读取的数据作为指定命令的参数并执行该命令。</p>
-<p>例如：<br>在一组 C 语言源码文件中搜索自负串main:<br><code>ls *.c | sargs grep main</code></p>
-<h4 id="Example-1-将多行输入-–-gt-单行输出"><a href="#Example-1-将多行输入-–-gt-单行输出" class="headerlink" title="Example 1: 将多行输入  –&gt; 单行输出"></a>Example 1: 将多行输入  –&gt; 单行输出</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   cat example.txt</span><br><span class="line">1 2 3 4</span><br><span class="line">5 6</span><br><span class="line">7 8 9</span><br><span class="line">10 11</span><br><span class="line">➜   cat example.txt | xargs</span><br><span class="line">1 2 3 4 5 6 7 8 9 10 11</span><br></pre></td></tr></table></figure>
-<h4 id="Example-2-将单行输入-–-gt-多行输出"><a href="#Example-2-将单行输入-–-gt-多行输出" class="headerlink" title="Example 2: 将单行输入  –&gt; 多行输出"></a>Example 2: 将单行输入  –&gt; 多行输出</h4><p>xargs 的 -n 选项可以限制每次调用命令时用到的参数个数。<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   cat example.txt | xargs -n  3</span><br><span class="line">1 2 3</span><br><span class="line">4 5 6</span><br><span class="line">7 8 9</span><br><span class="line">10 11</span><br></pre></td></tr></table></figure></p>
-<p>工作原理：<br>xargs 命令接收来自stdin的输入，将数据解析成单个元素，然后调用指定命令讲这些元素作为该命令的参数。xargs 默认使用 <strong>空白字符</strong> 分割输入并执行 <code>/bin/echo</code></p>
-<h4 id="Example-3-自定义分隔符-d-选项"><a href="#Example-3-自定义分隔符-d-选项" class="headerlink" title="Example 3: 自定义分隔符 -d 选项"></a>Example 3: 自定义分隔符 -d 选项</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"splitXsplit1Xsplit2Xsplit3"</span> | xargs -d X</span><br><span class="line">split split1 split2 split3</span><br></pre></td></tr></table></figure>
-<h4 id="Example-4-结合find使用xargs"><a href="#Example-4-结合find使用xargs" class="headerlink" title="Example 4: 结合find使用xargs"></a>Example 4: 结合find使用xargs</h4><p><code>find . -type f -name &quot;*.txt&quot; -print0 | xargs -o grep -L image</code></p>
-<p> 如果文件系统的有些文件名中包含忠哥，find 命令的 -print0 选项可以使用0（NUL）来分割查找到的元素，然后再用xargs对应的-0选项进行解析</p>
-<p> 反例：<br> <code>$find . -type f -name &quot;*.txt&quot; -print | xargs rm -f</code><br>这样做很危险，由可能会误删除文件。我们无法预测 find命令输出的分隔符究竟是什么（究竟是‘\n’还是 ‘’）。如果由文件名中包含空格符（‘ ’ ），xargs会将其误认为是分隔符。例如， <code>bashrc text.txt</code> 会被是为 bashrc 和 text.txt 。因此上面的命令不会删除 <code>bashrc text.txt</code> ,而是会把 bashrc删除</p>
-<p>正确的姿势：<br> <code>$find . -type f -name &quot;*.txt&quot; -print0 | xargs -0 rm -f</code></p>
-<h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><p> <code>docker ps -a -q | xargs --no-run-if-empty docker rm -f</code></p>
-<p> 参数 <code>--no-run-if-empty</code> 可以避免在前面的命令完全没有输出的情况下执行该命令</p>
-]]></content>
-      <categories>
-        <category>Bash</category>
-      </categories>
-      <tags>
-        <tag>Shell</tag>
-        <tag>Bash</tag>
       </tags>
   </entry>
   <entry>
@@ -3789,6 +3789,54 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>修个数据</title>
+    <url>/2020/07/17/%E4%BF%AE%E4%B8%AA%E6%95%B0%E6%8D%AE/</url>
+    <content><![CDATA[<blockquote>
+<p>一件事，即使看似平凡，但只要你做深、做久，很快就能变成你的专业，平凡的事情做久了，也能不平凡。</p>
+</blockquote>
+<p>最近项目中的每天都有很多sql需要执行，以便修复客户的数据，大概持续了近2个月的时间。鉴于开发人员对生产环境的隔离，一般这种修改生产环境数据的活儿就由专职的DBA，或Ops完成。但说到底，开发人员对于sql更熟悉，但这只是通常情况，所以“打铁还需自身硬”。</p>
+<p>在没有任何数据管理系统的前提下，如何规范、准确的修复数据，便有很多细节需要我们思考，并找到合适的实践路径，不至于让某些角色花费大量的时间在这个事情上面。</p>
+<h3 id="1-审批流程，反馈流程"><a href="#1-审批流程，反馈流程" class="headerlink" title="1. 审批流程，反馈流程"></a>1. 审批流程，反馈流程</h3><p>修改数据通常涉及多方，为了保证流程规范（其实是后期甩锅），有关人员需要掌管好自己手中的小权利，通常涉及 PO, Dev, Ops/DBA, Manager等角色。其他问题：三级审批、四级审批、人多、传话丢失、语义产生歧义等；如果sql有问题，该如何找人，如何反馈，</p>
+<h3 id="2-先备份"><a href="#2-先备份" class="headerlink" title="2. 先备份"></a>2. 先备份</h3><p>对于ops人员而言，数据无小事，但在dev眼里，有些表中的数据无足轻重，有些确实很重要，但ops/DBA是不那么了解业务的，也是或许是一些Dev没有经历过丢数据后的无奈和严重后果。</p>
+<p>备份规则（即什么情况下需要备份，什么情况可以不备份）：</p>
+<ul>
+<li>数据量变更大于500条时，必须备份数据</li>
+<li>无需备份的需要备注原因，以便其余人了解不备份的上下文</li>
+</ul>
+<p>备份方式：</p>
+<ul>
+<li>在数据库里备份,例如  <code>create table &lt;table_a_copy_date&gt; select * from users;</code></li>
+<li>少量数据，本地备份，上传到jira中，数据安全问题，</li>
+<li>备份到某个云☁️上，有需要的时候开放权限获取备份文件</li>
+</ul>
+<h3 id="3-执行，用技术去规范"><a href="#3-执行，用技术去规范" class="headerlink" title="3.执行，用技术去规范"></a>3.执行，用技术去规范</h3><p>对于不同的数据库引擎，sql语法有部分差异，使用不同的sql客户端工具，也有不同的差异。</p>
+<p>吐槽遇到的问题：</p>
+<ul>
+<li>sql中的中英文符号不区分，导致的语法问题</li>
+<li>单引号’和间隔号`</li>
+<li>看着正常，<a href="https://tool.lu/sql/" target="_blank" rel="noopener">https://tool.lu/sql/</a> 也检查不出来的，但其实很有问题的语法 （<a href="https://blog.csdn.net/whatday/article/details/103308922）" target="_blank" rel="noopener">https://blog.csdn.net/whatday/article/details/103308922）</a></li>
+<li>多条语句的，不用<code>;</code>分割</li>
+<li>自增id，不要随便插入新的id</li>
+<li>一个sql需要执行1个小时，而且不能重复执行的，确保不能断网，最好不用本地的sql客户端，而使用tmux 后台执行</li>
+</ul>
+<p>pipeline化、脚本化, 需包含语法检查、备份、执行、执行后核对等功能，解放ops的双手</p>
+<p>dbname.tablename</p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ul>
+<li><a href="https://tool.lu/sql/" target="_blank" rel="noopener">检查sql语法的在线工具</a></li>
+<li>SOAR(SQL Optimizer And Rewriter)   是一个对 SQL 进行优化和改写的自动化工具。 由小米人工智能与云平台的数据库团队开发与维护。<a href="https://github.com/XiaoMi/soar" target="_blank" rel="noopener">github地址</a></li>
+<li><a href="https://help.aliyun.com/product/26437.html?spm=5176.cndms.0.0.4a755063X2vQ5l" target="_blank" rel="noopener">数据管理 DMS</a></li>
+<li><a href="http://yearning.io/" target="_blank" rel="noopener">Yearning Mysql SQL审核平台</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Tools</category>
+      </categories>
+      <tags>
+        <tag>Tools</tag>
+        <tag>SQL</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>一份几年前的linux命令小手册</title>
     <url>/2020/06/10/%E4%B8%80%E4%BB%BD%E5%87%A0%E5%B9%B4%E5%89%8D%E7%9A%84linux%E5%91%BD%E4%BB%A4%E5%B0%8F%E6%89%8B%E5%86%8C/</url>
     <content><![CDATA[<h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p>大学里可没有运维这门专业，但一部分人阴差阳错的走上了这条道路。如期初的我，像无头苍蝇一般。没有人指点迷津，对职场也懵懵懂懂的。这几天在简单收拾时，找到了一份几年前打印的10多页纸，记录了一些命令。然后这些命令中的一部分我现在也不知道用法，可能是用的太少，但以前那会儿它也是一份传递，带我领略神奇的命令。仅此记录一下，然后丢弃这几页纸张，化为乌有，轻便前行。</p>
@@ -3900,116 +3948,6 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>修个数据</title>
-    <url>/2020/07/17/%E4%BF%AE%E4%B8%AA%E6%95%B0%E6%8D%AE/</url>
-    <content><![CDATA[<blockquote>
-<p>一件事，即使看似平凡，但只要你做深、做久，很快就能变成你的专业，平凡的事情做久了，也能不平凡。</p>
-</blockquote>
-<p>最近项目中的每天都有很多sql需要执行，以便修复客户的数据，大概持续了近2个月的时间。鉴于开发人员对生产环境的隔离，一般这种修改生产环境数据的活儿就由专职的DBA，或Ops完成。但说到底，开发人员对于sql更熟悉，但这只是通常情况，所以“打铁还需自身硬”。</p>
-<p>在没有任何数据管理系统的前提下，如何规范、准确的修复数据，便有很多细节需要我们思考，并找到合适的实践路径，不至于让某些角色花费大量的时间在这个事情上面。</p>
-<h3 id="1-审批流程，反馈流程"><a href="#1-审批流程，反馈流程" class="headerlink" title="1. 审批流程，反馈流程"></a>1. 审批流程，反馈流程</h3><p>修改数据通常涉及多方，为了保证流程规范（其实是后期甩锅），有关人员需要掌管好自己手中的小权利，通常涉及 PO, Dev, Ops/DBA, Manager等角色。其他问题：三级审批、四级审批、人多、传话丢失、语义产生歧义等；如果sql有问题，该如何找人，如何反馈，</p>
-<h3 id="2-先备份"><a href="#2-先备份" class="headerlink" title="2. 先备份"></a>2. 先备份</h3><p>对于ops人员而言，数据无小事，但在dev眼里，有些表中的数据无足轻重，有些确实很重要，但ops/DBA是不那么了解业务的，也是或许是一些Dev没有经历过丢数据后的无奈和严重后果。</p>
-<p>备份规则（即什么情况下需要备份，什么情况可以不备份）：</p>
-<ul>
-<li>数据量变更大于500条时，必须备份数据</li>
-<li>无需备份的需要备注原因，以便其余人了解不备份的上下文</li>
-</ul>
-<p>备份方式：</p>
-<ul>
-<li>在数据库里备份,例如  <code>create table &lt;table_a_copy_date&gt; select * from users;</code></li>
-<li>少量数据，本地备份，上传到jira中，数据安全问题，</li>
-<li>备份到某个云☁️上，有需要的时候开放权限获取备份文件</li>
-</ul>
-<h3 id="3-执行，用技术去规范"><a href="#3-执行，用技术去规范" class="headerlink" title="3.执行，用技术去规范"></a>3.执行，用技术去规范</h3><p>对于不同的数据库引擎，sql语法有部分差异，使用不同的sql客户端工具，也有不同的差异。</p>
-<p>吐槽遇到的问题：</p>
-<ul>
-<li>sql中的中英文符号不区分，导致的语法问题</li>
-<li>单引号’和间隔号`</li>
-<li>看着正常，<a href="https://tool.lu/sql/" target="_blank" rel="noopener">https://tool.lu/sql/</a> 也检查不出来的，但其实很有问题的语法 （<a href="https://blog.csdn.net/whatday/article/details/103308922）" target="_blank" rel="noopener">https://blog.csdn.net/whatday/article/details/103308922）</a></li>
-<li>多条语句的，不用<code>;</code>分割</li>
-<li>自增id，不要随便插入新的id</li>
-<li>一个sql需要执行1个小时，而且不能重复执行的，确保不能断网，最好不用本地的sql客户端，而使用tmux 后台执行</li>
-</ul>
-<p>pipeline化、脚本化, 需包含语法检查、备份、执行、执行后核对等功能，解放ops的双手</p>
-<p>dbname.tablename</p>
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ul>
-<li><a href="https://tool.lu/sql/" target="_blank" rel="noopener">检查sql语法的在线工具</a></li>
-<li>SOAR(SQL Optimizer And Rewriter)   是一个对 SQL 进行优化和改写的自动化工具。 由小米人工智能与云平台的数据库团队开发与维护。<a href="https://github.com/XiaoMi/soar" target="_blank" rel="noopener">github地址</a></li>
-<li><a href="https://help.aliyun.com/product/26437.html?spm=5176.cndms.0.0.4a755063X2vQ5l" target="_blank" rel="noopener">数据管理 DMS</a></li>
-<li><a href="http://yearning.io/" target="_blank" rel="noopener">Yearning Mysql SQL审核平台</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Tools</category>
-      </categories>
-      <tags>
-        <tag>Tools</tag>
-        <tag>SQL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>值得收藏的技术类站点</title>
-    <url>/2019/10/04/%E5%80%BC%E5%BE%97%E6%94%B6%E8%97%8F%E7%9A%84%E6%8A%80%E6%9C%AF%E7%B1%BB%E7%AB%99%E7%82%B9/</url>
-    <content><![CDATA[<p>一些技术公司，及其站点网站的列表，有很多高质量的文章和最佳实践。</p>
-<p><a href="https://www.praqma.com/" target="_blank" rel="noopener">https://www.praqma.com/</a></p>
-<p><a href="https://www.cloudbees.com/" target="_blank" rel="noopener">https://www.cloudbees.com/</a></p>
-<p><a href="https://www.freecodecamp.org/" target="_blank" rel="noopener">https://www.freecodecamp.org/</a></p>
-<p><a href="https://devopscube.com/" target="_blank" rel="noopener">https://devopscube.com/</a></p>
-<p><a href="https://www.endpoint.com/blog" target="_blank" rel="noopener">https://www.endpoint.com/blog</a></p>
-<p><a href="https://www.infracloud.io/blogs" target="_blank" rel="noopener">https://www.infracloud.io/blogs</a></p>
-<p><a href="http://www.devopsbookmarks.com" target="_blank" rel="noopener">http://www.devopsbookmarks.com</a> (技术工具列表)</p>
-<h3 id="大佬的站点"><a href="#大佬的站点" class="headerlink" title="大佬的站点"></a>大佬的站点</h3><p><a href="https://www.thorsten-hans.com/" target="_blank" rel="noopener">Thorsten Hans</a>: Tales and experiences about Azure, Kubernetes, and cloud-native computing</p>
-]]></content>
-      <categories>
-        <category>Tools</category>
-      </categories>
-      <tags>
-        <tag>Tools</tag>
-        <tag>Q List</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>入手Telegram</title>
-    <url>/2020/04/17/%E5%85%A5%E6%89%8BTelegram/</url>
-    <content><![CDATA[<p>听说有很多有趣的组织、个人都有电报，于是想看看。</p>
-<h3 id="1-是什么？"><a href="#1-是什么？" class="headerlink" title="1. 是什么？"></a>1. 是什么？</h3><p><a href="https://telegram.org/" target="_blank" rel="noopener">Telegram</a> —— 中文名又称”电报”，或简称”TG”。Telegram 是跨平台的即时通信软件。</p>
-<p>作用和特色有点太多，还是直接上图吧👇</p>
-<p><img src="https://s1.ax1x.com/2020/04/19/Juq1FU.png" alt="Juq1FU.png"></p>
-<p>更多关于 Telegram 的介绍可以查看 <a href="https://en.wikipedia.org/wiki/Telegram_%28software%29" target="_blank" rel="noopener">Wikipedia</a></p>
-<h3 id="2-怎么用"><a href="#2-怎么用" class="headerlink" title="2. 怎么用"></a>2. 怎么用</h3><p>在中国大陆境内无法直接连接，注册和使用都需要科学上网。</p>
-<p>自己注册过程如下：</p>
-<ul>
-<li><ol>
-<li>为了不下载东西，在网页直接注册 <a href="https://web.telegram.org/" target="_blank" rel="noopener">https://web.telegram.org/</a><br>多次尝试无法注册，提示如下：<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">Too fast</span><br><span class="line">You are performing too many actions. Please try again later.</span><br><span class="line">Click for technical details</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-</ul>
-<blockquote>
-<p>其实尝试的次数并不多，1-2次后就有以上提示了。+ 86的中国大陆号码似乎收不到验证码</p>
-</blockquote>
-<ul>
-<li><ol start="2">
-<li>找一个临时的美国号码<blockquote>
-<p>不太好使</p>
-</blockquote>
-</li>
-</ol>
-</li>
-<li><p>[ ] 尚未注册成功</p>
-</li>
-</ul>
-<h3 id="3-推荐内容"><a href="#3-推荐内容" class="headerlink" title="3. 推荐内容"></a>3. 推荐内容</h3><ul>
-<li style="list-style: none"><input type="checkbox"> todo </li>
-</ul>
-<hr>
-<p><strong>More Ref:</strong><br><a href="https://www.notion.so/Telegram-95a6c23f0bb1466892b55f9ec8c755fd" target="_blank" rel="noopener">Telegram 教程全指南</a><br><a href="https://telegram.org/faq" target="_blank" rel="noopener">官网faq</a></p>
-]]></content>
-      <tags>
-        <tag>Tools</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Vivaldi入手</title>
     <url>/2020/04/09/%E5%85%A5%E6%89%8BVivaldi/</url>
     <content><![CDATA[<h3 id="0-前言"><a href="#0-前言" class="headerlink" title="0.前言"></a>0.前言</h3><p>最近才在一些论坛上听说 <strong>Vivaldi</strong> 浏览器的大名（我孤陋寡闻了😅）。毕竟入手一个浏览器工具又不花钱，那Chrome挺好用的，为什么要换？</p>
@@ -4064,6 +4002,61 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>入手Telegram</title>
+    <url>/2020/04/17/%E5%85%A5%E6%89%8BTelegram/</url>
+    <content><![CDATA[<p>听说有很多有趣的组织、个人都有电报，于是想看看。</p>
+<h3 id="1-是什么？"><a href="#1-是什么？" class="headerlink" title="1. 是什么？"></a>1. 是什么？</h3><p><a href="https://telegram.org/" target="_blank" rel="noopener">Telegram</a> —— 中文名又称”电报”，或简称”TG”。Telegram 是跨平台的即时通信软件。</p>
+<p>作用和特色有点太多，还是直接上图吧👇</p>
+<p><img src="https://s1.ax1x.com/2020/04/19/Juq1FU.png" alt="Juq1FU.png"></p>
+<p>更多关于 Telegram 的介绍可以查看 <a href="https://en.wikipedia.org/wiki/Telegram_%28software%29" target="_blank" rel="noopener">Wikipedia</a></p>
+<h3 id="2-怎么用"><a href="#2-怎么用" class="headerlink" title="2. 怎么用"></a>2. 怎么用</h3><p>在中国大陆境内无法直接连接，注册和使用都需要科学上网。</p>
+<p>自己注册过程如下：</p>
+<ul>
+<li><ol>
+<li>为了不下载东西，在网页直接注册 <a href="https://web.telegram.org/" target="_blank" rel="noopener">https://web.telegram.org/</a><br>多次尝试无法注册，提示如下：<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">Too fast</span><br><span class="line">You are performing too many actions. Please try again later.</span><br><span class="line">Click for technical details</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
+<blockquote>
+<p>其实尝试的次数并不多，1-2次后就有以上提示了。+ 86的中国大陆号码似乎收不到验证码</p>
+</blockquote>
+<ul>
+<li><ol start="2">
+<li>找一个临时的美国号码<blockquote>
+<p>不太好使</p>
+</blockquote>
+</li>
+</ol>
+</li>
+<li><p>[ ] 尚未注册成功</p>
+</li>
+</ul>
+<h3 id="3-推荐内容"><a href="#3-推荐内容" class="headerlink" title="3. 推荐内容"></a>3. 推荐内容</h3><ul>
+<li style="list-style: none"><input type="checkbox"> todo </li>
+</ul>
+<hr>
+<p><strong>More Ref:</strong><br><a href="https://www.notion.so/Telegram-95a6c23f0bb1466892b55f9ec8c755fd" target="_blank" rel="noopener">Telegram 教程全指南</a><br><a href="https://telegram.org/faq" target="_blank" rel="noopener">官网faq</a></p>
+]]></content>
+      <tags>
+        <tag>Tools</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>出行清单</title>
+    <url>/2020/08/28/%E5%87%BA%E8%A1%8C%E6%B8%85%E5%8D%95/</url>
+    <content><![CDATA[<p>良久的蛰伏后，迎来一次出差的机会，时隔近2年吧。小时候梦想着能走出去，多坐坐火车、飞机、轮船等等，长大后实现了，发现并不那么美好。</p>
+<h3 id="1-夏季-短期-出差"><a href="#1-夏季-短期-出差" class="headerlink" title="1.夏季-短期-出差"></a>1.夏季-短期-出差</h3><blockquote>
+<p>1个月以内的，衣物数量包括自己身上穿的那一套</p>
+</blockquote>
+<p>短袖3件以上<br>内裤3件<br>长裤2件<br>袜子3件<br>证件、卡照（身份证，驾照，银行卡）<br>毛巾<br>充电线（手机的，手表的）<br>洗漱包（牙刷，不用电动牙刷）<br>水杯<br>纸巾2包<br>人字拖<br>书2本<br>耳机<br>电脑 及 充电线</p>
+<p>特产</p>
+]]></content>
+      <tags>
+        <tag>Q List</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>入门gpg</title>
     <url>/2020/04/23/%E5%85%A5%E9%97%A8gpg/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>GPG 的全称是 GNU Privacy Guard ，可以看作是一个软件，可以用来进行密钥的管理。其实和我们用的一些图形化的密码管理类似，不过GPG 好像更多是命令行交互的，所以一般人不太习惯。另外，中间包含的概念也较多。</p>
@@ -4078,6 +4071,27 @@ pipeline {
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜ gpg --edit-key 771xx601@qq.com</span><br><span class="line">gpg (GnuPG) 2.2.20; Copyright (C) 2020 Free Software Foundation, Inc.</span><br><span class="line">This is free software: you are free to change and redistribute it.</span><br><span class="line">There is NO WARRANTY, to the extent permitted by law.</span><br><span class="line"></span><br><span class="line">Secret key is available.</span><br><span class="line"></span><br><span class="line">sec  rsa2048/00C21CE66A8AE9E0</span><br><span class="line">     created: 2020-04-23  expires: 2022-04-23  usage: SC</span><br><span class="line">     trust: ultimate      validity: ultimate</span><br><span class="line">ssb  rsa2048/9DCC33D2FECB246F</span><br><span class="line">     created: 2020-04-23  expires: never       usage: E</span><br><span class="line">[ultimate] (1). qinrui &lt;771963601@qq.com&gt;</span><br><span class="line"></span><br><span class="line">gpg&gt;</span><br></pre></td></tr></table></figure>
 <p>请注意上面的字符串”sec  rsa2048/xxxxx”，斜杆后面就是”用户ID”的Hash字符串，可以用来替代”用户ID”。</p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>值得收藏的技术类站点</title>
+    <url>/2019/10/04/%E5%80%BC%E5%BE%97%E6%94%B6%E8%97%8F%E7%9A%84%E6%8A%80%E6%9C%AF%E7%B1%BB%E7%AB%99%E7%82%B9/</url>
+    <content><![CDATA[<p>一些技术公司，及其站点网站的列表，有很多高质量的文章和最佳实践。</p>
+<p><a href="https://www.praqma.com/" target="_blank" rel="noopener">https://www.praqma.com/</a></p>
+<p><a href="https://www.cloudbees.com/" target="_blank" rel="noopener">https://www.cloudbees.com/</a></p>
+<p><a href="https://www.freecodecamp.org/" target="_blank" rel="noopener">https://www.freecodecamp.org/</a></p>
+<p><a href="https://devopscube.com/" target="_blank" rel="noopener">https://devopscube.com/</a></p>
+<p><a href="https://www.endpoint.com/blog" target="_blank" rel="noopener">https://www.endpoint.com/blog</a></p>
+<p><a href="https://www.infracloud.io/blogs" target="_blank" rel="noopener">https://www.infracloud.io/blogs</a></p>
+<p><a href="http://www.devopsbookmarks.com" target="_blank" rel="noopener">http://www.devopsbookmarks.com</a> (技术工具列表)</p>
+<h3 id="大佬的站点"><a href="#大佬的站点" class="headerlink" title="大佬的站点"></a>大佬的站点</h3><p><a href="https://www.thorsten-hans.com/" target="_blank" rel="noopener">Thorsten Hans</a>: Tales and experiences about Azure, Kubernetes, and cloud-native computing</p>
+]]></content>
+      <categories>
+        <category>Tools</category>
+      </categories>
+      <tags>
+        <tag>Tools</tag>
+        <tag>Q List</tag>
+      </tags>
   </entry>
   <entry>
     <title>再看git</title>
@@ -4209,20 +4223,6 @@ pipeline {
 ]]></content>
       <tags>
         <tag>Tools</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>出行清单</title>
-    <url>/2020/08/28/%E5%87%BA%E8%A1%8C%E6%B8%85%E5%8D%95/</url>
-    <content><![CDATA[<p>良久的蛰伏后，迎来一次出差的机会，时隔近2年吧。小时候梦想着能走出去，多坐坐火车、飞机、轮船等等，长大后实现了，发现并不那么美好。</p>
-<h3 id="1-夏季-短期-出差"><a href="#1-夏季-短期-出差" class="headerlink" title="1.夏季-短期-出差"></a>1.夏季-短期-出差</h3><blockquote>
-<p>1个月以内的，衣物数量包括自己身上穿的那一套</p>
-</blockquote>
-<p>短袖3件以上<br>内裤3件<br>长裤2件<br>袜子3件<br>证件、卡照（身份证，驾照，银行卡）<br>毛巾<br>充电线（手机的，手表的）<br>洗漱包（牙刷，不用电动牙刷）<br>水杯<br>纸巾2包<br>人字拖<br>书2本<br>耳机<br>电脑 及 充电线</p>
-<p>特产</p>
-]]></content>
-      <tags>
-        <tag>Q List</tag>
       </tags>
   </entry>
   <entry>
@@ -4437,34 +4437,6 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>第二次学习英语</title>
-    <url>/2021/10/25/%E7%AC%AC%E4%BA%8C%E6%AC%A1%E5%AD%A6%E4%B9%A0%E8%8B%B1%E8%AF%AD/</url>
-    <content><![CDATA[<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>最近工作中的项目需要与国外的沟通，英语无可厚非的成为彼此能听懂的通用语言。这也是自学生生涯之后难道认识到英语的重要性的时刻之一。听说读写这四门功课一起上阵，起初让人多少有些“畏惧”。但好在有了一个讲英语的环境后，逼迫自己去学习和练习，也有明显的但效果不是很大的提升。</p>
-<p>也侧面验证了学生时代英语学习的局限性，就自身而言，起初的确可以开口，但讲的内容可能自己都不知所云。而读写方面，因为可以借助外部工具来辅助，其实效性也没有那么强，留给大脑思考的时间尚且充足，一般没有太大的问题，但懂行的人也可以一眼看出这段英文背后的人的能力如何。(因为一些用法并不简介，或者乱用介词……)</p>
-<p>有哪些方面需要思考：</p>
-<p>词汇量、发音&amp;口音、不用总要一种表达方式或固定词组、找到自己的兴趣切入点去学习英语（比如通过喜好的歌英歌曲、电影台词等）、固定场景用语（比如我的工作中：站会、Code Review、Retro…）</p>
-<h3 id="我的学习资源"><a href="#我的学习资源" class="headerlink" title="我的学习资源"></a>我的学习资源</h3><p><strong>书籍类</strong></p>
-<p><strong>podcast类</strong></p>
-<p><a href="https://teacherluke.co.uk/" target="_blank" rel="noopener">https://teacherluke.co.uk/</a>  博主口音非常地道，发音清晰</p>
-<p><a href="https://english.stackexchange.com/" target="_blank" rel="noopener">https://english.stackexchange.com/</a>   类似<a href="https://stackoverflow.com/的风格、模式" target="_blank" rel="noopener">https://stackoverflow.com/的风格、模式</a></p>
-<p><a href="https://www.englishclass101.com/" target="_blank" rel="noopener">https://www.englishclass101.com/</a>  邮箱注册，领取一些免费的课程</p>
-<p><a href="https://www.learning-english-onlines.com/5%e5%80%8b%e5%88%9d%e7%b4%9a%e8%8b%b1%e6%96%87%e6%9c%83%e8%a9%b1%e8%aa%b2%e7%a8%8b/" target="_blank" rel="noopener">這5個初級英文會話課程可幫您更有自信地說英語</a></p>
-<p><strong>youtube博主</strong></p>
-<p>Small talk，开会前经常需要等人，而在这短暂的几分钟里如何双方都没有话题就显得有点儿尴尬。聊一些日常的话题不仅可以帮助增加双方的了解，也可以提升好感，找到一些共同的兴趣爱好。</p>
-<p><a href="https://www.youtube.com/watch?v=WGoIoDuf83o" target="_blank" rel="noopener">https://www.youtube.com/watch?v=WGoIoDuf83o</a></p>
-<p>超多形容词，歌曲点评，<a href="https://www.youtube.com/watch?v=21lcqYBJQLQ&amp;ab_channel=%E4%B8%8D%E6%98%AF%E6%9F%AF%E6%A1%91%E5%BE%B7" target="_blank" rel="noopener">https://www.youtube.com/watch?v=21lcqYBJQLQ&amp;ab_channel=%E4%B8%8D%E6%98%AF%E6%9F%AF%E6%A1%91%E5%BE%B7</a></p>
-<p>一些实用的网站</p>
-<ol>
-<li><a href="https://www.bbc.co.uk/learningenglish/chinese/features/todays-phrase/" target="_blank" rel="noopener">BBC的今日短语</a>  (主要是一些地道的短语，俚语)</li>
-<li><a href="https://www.phrasemix.com/examples" target="_blank" rel="noopener">phrasemix的english lessons</a> (场景用语，用英语讲解固定场景下的对话，实用型)</li>
-<li></li>
-</ol>
-]]></content>
-      <tags>
-        <tag>English-Note</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>移动端打包pipeline通识：从零开始</title>
     <url>/2020/01/03/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E6%89%93%E5%8C%85pipeline%E9%80%9A%E8%AF%86%EF%BC%9A%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B/</url>
     <content><![CDATA[<p>背景： 一台被格式化后的 MacBook Pro, 对某个移动端项目( xx类型 )做android pipeline、iOS pipeline</p>
@@ -4521,6 +4493,34 @@ pipeline {
       <categories>
         <category>CICD</category>
       </categories>
+  </entry>
+  <entry>
+    <title>第二次学习英语</title>
+    <url>/2021/10/25/%E7%AC%AC%E4%BA%8C%E6%AC%A1%E5%AD%A6%E4%B9%A0%E8%8B%B1%E8%AF%AD/</url>
+    <content><![CDATA[<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>最近工作中的项目需要与国外的沟通，英语无可厚非的成为彼此能听懂的通用语言。这也是自学生生涯之后难道认识到英语的重要性的时刻之一。听说读写这四门功课一起上阵，起初让人多少有些“畏惧”。但好在有了一个讲英语的环境后，逼迫自己去学习和练习，也有明显的但效果不是很大的提升。</p>
+<p>也侧面验证了学生时代英语学习的局限性，就自身而言，起初的确可以开口，但讲的内容可能自己都不知所云。而读写方面，因为可以借助外部工具来辅助，其实效性也没有那么强，留给大脑思考的时间尚且充足，一般没有太大的问题，但懂行的人也可以一眼看出这段英文背后的人的能力如何。(因为一些用法并不简介，或者乱用介词……)</p>
+<p>有哪些方面需要思考：</p>
+<p>词汇量、发音&amp;口音、不用总要一种表达方式或固定词组、找到自己的兴趣切入点去学习英语（比如通过喜好的歌英歌曲、电影台词等）、固定场景用语（比如我的工作中：站会、Code Review、Retro…）</p>
+<h3 id="我的学习资源"><a href="#我的学习资源" class="headerlink" title="我的学习资源"></a>我的学习资源</h3><p><strong>书籍类</strong></p>
+<p><strong>podcast类</strong></p>
+<p><a href="https://teacherluke.co.uk/" target="_blank" rel="noopener">https://teacherluke.co.uk/</a>  博主口音非常地道，发音清晰</p>
+<p><a href="https://english.stackexchange.com/" target="_blank" rel="noopener">https://english.stackexchange.com/</a>   类似<a href="https://stackoverflow.com/的风格、模式" target="_blank" rel="noopener">https://stackoverflow.com/的风格、模式</a></p>
+<p><a href="https://www.englishclass101.com/" target="_blank" rel="noopener">https://www.englishclass101.com/</a>  邮箱注册，领取一些免费的课程</p>
+<p><a href="https://www.learning-english-onlines.com/5%e5%80%8b%e5%88%9d%e7%b4%9a%e8%8b%b1%e6%96%87%e6%9c%83%e8%a9%b1%e8%aa%b2%e7%a8%8b/" target="_blank" rel="noopener">這5個初級英文會話課程可幫您更有自信地說英語</a></p>
+<p><strong>youtube博主</strong></p>
+<p>Small talk，开会前经常需要等人，而在这短暂的几分钟里如何双方都没有话题就显得有点儿尴尬。聊一些日常的话题不仅可以帮助增加双方的了解，也可以提升好感，找到一些共同的兴趣爱好。</p>
+<p><a href="https://www.youtube.com/watch?v=WGoIoDuf83o" target="_blank" rel="noopener">https://www.youtube.com/watch?v=WGoIoDuf83o</a></p>
+<p>超多形容词，歌曲点评，<a href="https://www.youtube.com/watch?v=21lcqYBJQLQ&amp;ab_channel=%E4%B8%8D%E6%98%AF%E6%9F%AF%E6%A1%91%E5%BE%B7" target="_blank" rel="noopener">https://www.youtube.com/watch?v=21lcqYBJQLQ&amp;ab_channel=%E4%B8%8D%E6%98%AF%E6%9F%AF%E6%A1%91%E5%BE%B7</a></p>
+<p>一些实用的网站</p>
+<ol>
+<li><a href="https://www.bbc.co.uk/learningenglish/chinese/features/todays-phrase/" target="_blank" rel="noopener">BBC的今日短语</a>  (主要是一些地道的短语，俚语)</li>
+<li><a href="https://www.phrasemix.com/examples" target="_blank" rel="noopener">phrasemix的english lessons</a> (场景用语，用英语讲解固定场景下的对话，实用型)</li>
+<li></li>
+</ol>
+]]></content>
+      <tags>
+        <tag>English-Note</tag>
+      </tags>
   </entry>
   <entry>
     <title>给博客上个锁</title>
