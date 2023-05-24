@@ -41,6 +41,28 @@
       </categories>
   </entry>
   <entry>
+    <title>Anka tutorial 02</title>
+    <url>/2019/11/19/Anka-tutorial-02/</url>
+    <content><![CDATA[<h5 id="1-Joining-Nodes"><a href="#1-Joining-Nodes" class="headerlink" title="1.Joining Nodes"></a>1.Joining Nodes</h5><p>在mac上（anka build 节点）执行  <code>sudo ankacluster join http://localhost:80/</code></p>
+<p>output:<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  ~ sudo ankacluster join http://localhost:80/ -n demo-mac</span><br><span class="line">Setting tls config</span><br><span class="line">Testing connection to controller...: Ok</span><br><span class="line">Testing connection to the registry...: Ok</span><br><span class="line">Ok</span><br><span class="line">Cluster join success</span><br></pre></td></tr></table></figure></p>
+<p>去页面 <em><a href="http://localhost/#/nodes" target="_blank" rel="noopener">http://localhost/#/nodes</a></em> 查看<br><img src="/images/anka_controller_node.png"></p>
+<h5 id="2-Create-VM-link"><a href="#2-Create-VM-link" class="headerlink" title="2. Create VM (link)"></a>2. Create VM <a href="https://ankadoc.bitbucket.io/anka-build/#create-vm" target="_blank" rel="noopener">(link)</a></h5><p>先下载mac OS安装包 (安装包7G多，需要提前下载)<br><a href="https://www.macworld.co.uk/how-to/mac-software/download-old-os-x-3629363/#el%20cap" target="_blank" rel="noopener">https://www.macworld.co.uk/how-to/mac-software/download-old-os-x-3629363/#el%20cap</a></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  ~ anka create --ram-size 4G --cpu-count 2 --disk-size 40G --app /Applications/Install\ macOS\ Catalina.app CatalinaVm</span><br><span class="line">Installing macOS 10.15.1...</span><br><span class="line">Preparing target disk...</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Note For Catalina Anka VMs, –ram-size value should be 4G and –disk-size should be 80G.<br>由于电脑空间不够了，于是报错了</p>
+</blockquote>
+<p>清理电脑空间后，再来一次，大约 30min<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  ~ anka create --ram-size 4G --cpu-count 2 --disk-size 80G --app /Applications/Install\ macOS\ Catalina.app  CatalinaVm</span><br><span class="line">Installing macOS 10.15.1...</span><br><span class="line">Preparing target disk...</span><br><span class="line">Installing addons...</span><br><span class="line">Converting to ANKA format...</span><br><span class="line">Waiting <span class="keyword">for</span> installation to complete <span class="keyword">in</span> the guest (about thirty minutes approx.)...</span><br><span class="line">vm created successfully with uuid: a23d5a05-xx89-4xx4-a8b7-6f7b9xxxxxx</span><br></pre></td></tr></table></figure></p>
+<h5 id="3-Run-VM"><a href="#3-Run-VM" class="headerlink" title="3. Run VM"></a>3. Run VM</h5><p><img src="/images/anka_demo_720.gif" width="90%" height="90%"></p>
+<p>VM 状态之间的转换如下：<br><img src="/images/anka_vm_status.png" width="75%" height="75%"></p>
+<blockquote>
+<p>需要区别 VM 和后面提到的 instance 关系，VM 更准确点讲是 VM Template，是创建instance的模版，但模版需要通过上面的方法才可以修改；新建VM后，相当于有一个基础的模版，但是要满足其他要求，可以自行在running的 vm 中操作，然后随时保存，类似于docker container的commit操作，但anka build是suspend一个running的 vm 来保存。</p>
+</blockquote>
+<h5 id="4-Manage-VM-Templates-in-Registry-link"><a href="#4-Manage-VM-Templates-in-Registry-link" class="headerlink" title="4. Manage VM Templates in Registry(link)"></a>4. Manage VM Templates in Registry<a href="https://ankadoc.bitbucket.io/anka-build/#manage-vm-templates-in-registry" target="_blank" rel="noopener">(link)</a></h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#罗列仓库</span></span><br><span class="line">➜   anka registry list-repos</span><br><span class="line">++</span><br><span class="line">++</span><br><span class="line"><span class="comment">#添加一个新仓库</span></span><br><span class="line">➜   anka registry add demo-repo http://localhost:8089</span><br><span class="line">➜   anka registry list-repos</span><br><span class="line">++</span><br><span class="line">++</span><br><span class="line">demo-repo (default)</span><br><span class="line">+--------+-----------+</span><br><span class="line">| host   | localhost |</span><br><span class="line">+--------+-----------+</span><br><span class="line">| scheme | http      |</span><br><span class="line">+--------+-----------+</span><br><span class="line">| port   | 8089      |</span><br><span class="line">+--------+-----------+</span><br><span class="line"><span class="comment">#推送VM Templates 到新仓库，</span></span><br><span class="line">➜   anka registry push CatalinaVm -d <span class="string">"first push"</span> -t v1</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>CICD</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Anka tutorial 03: jenkins</title>
     <url>/2019/11/28/Anka-tutorial-03-jenkins/</url>
     <content><![CDATA[<h3 id="anka-集成-Jenkins-link"><a href="#anka-集成-Jenkins-link" class="headerlink" title="anka 集成 Jenkins (link)"></a>anka 集成 Jenkins <a href="https://ankadoc.bitbucket.io/anka-build/#integrate-jenkins-with-controller" target="_blank" rel="noopener">(link)</a></h3><p>未完待续…</p>
@@ -221,90 +243,9 @@
       </categories>
   </entry>
   <entry>
-    <title>Anka tutorial 02</title>
-    <url>/2019/11/19/Anka-tutorial-02/</url>
-    <content><![CDATA[<h5 id="1-Joining-Nodes"><a href="#1-Joining-Nodes" class="headerlink" title="1.Joining Nodes"></a>1.Joining Nodes</h5><p>在mac上（anka build 节点）执行  <code>sudo ankacluster join http://localhost:80/</code></p>
-<p>output:<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  ~ sudo ankacluster join http://localhost:80/ -n demo-mac</span><br><span class="line">Setting tls config</span><br><span class="line">Testing connection to controller...: Ok</span><br><span class="line">Testing connection to the registry...: Ok</span><br><span class="line">Ok</span><br><span class="line">Cluster join success</span><br></pre></td></tr></table></figure></p>
-<p>去页面 <em><a href="http://localhost/#/nodes" target="_blank" rel="noopener">http://localhost/#/nodes</a></em> 查看<br><img src="/images/anka_controller_node.png"></p>
-<h5 id="2-Create-VM-link"><a href="#2-Create-VM-link" class="headerlink" title="2. Create VM (link)"></a>2. Create VM <a href="https://ankadoc.bitbucket.io/anka-build/#create-vm" target="_blank" rel="noopener">(link)</a></h5><p>先下载mac OS安装包 (安装包7G多，需要提前下载)<br><a href="https://www.macworld.co.uk/how-to/mac-software/download-old-os-x-3629363/#el%20cap" target="_blank" rel="noopener">https://www.macworld.co.uk/how-to/mac-software/download-old-os-x-3629363/#el%20cap</a></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  ~ anka create --ram-size 4G --cpu-count 2 --disk-size 40G --app /Applications/Install\ macOS\ Catalina.app CatalinaVm</span><br><span class="line">Installing macOS 10.15.1...</span><br><span class="line">Preparing target disk...</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>Note For Catalina Anka VMs, –ram-size value should be 4G and –disk-size should be 80G.<br>由于电脑空间不够了，于是报错了</p>
-</blockquote>
-<p>清理电脑空间后，再来一次，大约 30min<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  ~ anka create --ram-size 4G --cpu-count 2 --disk-size 80G --app /Applications/Install\ macOS\ Catalina.app  CatalinaVm</span><br><span class="line">Installing macOS 10.15.1...</span><br><span class="line">Preparing target disk...</span><br><span class="line">Installing addons...</span><br><span class="line">Converting to ANKA format...</span><br><span class="line">Waiting <span class="keyword">for</span> installation to complete <span class="keyword">in</span> the guest (about thirty minutes approx.)...</span><br><span class="line">vm created successfully with uuid: a23d5a05-xx89-4xx4-a8b7-6f7b9xxxxxx</span><br></pre></td></tr></table></figure></p>
-<h5 id="3-Run-VM"><a href="#3-Run-VM" class="headerlink" title="3. Run VM"></a>3. Run VM</h5><p><img src="/images/anka_demo_720.gif" width="90%" height="90%"></p>
-<p>VM 状态之间的转换如下：<br><img src="/images/anka_vm_status.png" width="75%" height="75%"></p>
-<blockquote>
-<p>需要区别 VM 和后面提到的 instance 关系，VM 更准确点讲是 VM Template，是创建instance的模版，但模版需要通过上面的方法才可以修改；新建VM后，相当于有一个基础的模版，但是要满足其他要求，可以自行在running的 vm 中操作，然后随时保存，类似于docker container的commit操作，但anka build是suspend一个running的 vm 来保存。</p>
-</blockquote>
-<h5 id="4-Manage-VM-Templates-in-Registry-link"><a href="#4-Manage-VM-Templates-in-Registry-link" class="headerlink" title="4. Manage VM Templates in Registry(link)"></a>4. Manage VM Templates in Registry<a href="https://ankadoc.bitbucket.io/anka-build/#manage-vm-templates-in-registry" target="_blank" rel="noopener">(link)</a></h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#罗列仓库</span></span><br><span class="line">➜   anka registry list-repos</span><br><span class="line">++</span><br><span class="line">++</span><br><span class="line"><span class="comment">#添加一个新仓库</span></span><br><span class="line">➜   anka registry add demo-repo http://localhost:8089</span><br><span class="line">➜   anka registry list-repos</span><br><span class="line">++</span><br><span class="line">++</span><br><span class="line">demo-repo (default)</span><br><span class="line">+--------+-----------+</span><br><span class="line">| host   | localhost |</span><br><span class="line">+--------+-----------+</span><br><span class="line">| scheme | http      |</span><br><span class="line">+--------+-----------+</span><br><span class="line">| port   | 8089      |</span><br><span class="line">+--------+-----------+</span><br><span class="line"><span class="comment">#推送VM Templates 到新仓库，</span></span><br><span class="line">➜   anka registry push CatalinaVm -d <span class="string">"first push"</span> -t v1</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>CICD</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Azure tutorial 01: overview</title>
     <url>/2019/12/11/Azure-tutorial-01-overview/</url>
     <content><![CDATA[]]></content>
-      <categories>
-        <category>Cloud</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Azure tutorial 02: Storage</title>
-    <url>/2019/12/11/Azure-tutorial-02-Storage/</url>
-    <content><![CDATA[<p>storage account type<br><a href="https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview</a></p>
-<p><strong>Blob</strong> - Binary Large Object<br><strong>Binary Object</strong> - Images,Documents,Media Files, Log Files, Backup data Virtual Disks</p>
-<p><strong>Blod types:</strong> </p>
-<ul>
-<li>Block Blob - Text and binary data Files</li>
-<li>Append Blobs - Optimized for append operations</li>
-<li>Page Blob - A collection of 512 byte pages optimized for random read and writes(virtual disk)</li>
-</ul>
-<p><strong>Locations and Redundancy:</strong> </p>
-<ul>
-<li>Locally-redundant storage (LRS): A simple, low-cost replication strategy. Data is replicated synchronously three times within the primary region.</li>
-<li>Zone-redundant storage (ZRS): Replication for scenarios requiring high availability. Data is replicated synchronously across three Azure availability zones in the primary region.</li>
-<li>Geo-redundant storage (GRS): Cross-regional replication to protect against regional outages. Data is replicated synchronously three times in the primary region, then replicated asynchronously to the secondary region. For read access to data in the secondary region, enable read-access geo-redundant storage (RA-GRS).</li>
-<li>Geo-zone-redundant storage (GZRS) (preview): Replication for scenarios requiring both high availability and maximum durability. Data is replicated synchronously across three Azure availability zones in the primary region, then replicated asynchronously to the secondary region. For read access to data in the secondary region, enable read-access geo-zone-redundant storage (RA-GZRS).</li>
-</ul>
-<p><strong>Access Tiers:</strong></p>
-<ul>
-<li>Hot </li>
-<li>Cool </li>
-<li>Archive</li>
-</ul>
-<p><strong>Azure Storage services:</strong></p>
-<ul>
-<li>Blob service</li>
-<li>File service</li>
-<li>Queue service</li>
-<li>Table Storage</li>
-</ul>
-<p><strong>Securing Storage Accounts:</strong></p>
-<ul>
-<li>Access Keys -Two per storage account,full access</li>
-<li>Share Access Signatures - Time based access keys that give granular control</li>
-</ul>
-<p><strong>作业：新建storage account ,并上传文件或文件夹到</strong></p>
-<p>create顺序:<br>a subscriptions -&gt;  a storage account -&gt; a SAS token   </p>
-<p>除了从azure portal页面操作之外，还提供以下两种方式</p>
-<ul>
-<li>Azure Storage Explorer - <a href="https://azure.microsoft.com/en-us/features/storage-explorer/" target="_blank" rel="noopener">install tutorial</a><blockquote>
-<p>或者浏览器中直接打开链接<a href="https://go.microsoft.com/fwlink/?LinkId=708342&amp;clcid=0x409，会自动下载" target="_blank" rel="noopener">https://go.microsoft.com/fwlink/?LinkId=708342&amp;clcid=0x409，会自动下载</a></p>
-</blockquote>
-</li>
-</ul>
-<p>打开 Azure Storage Explorer， 通过xx链接storage<br><img src="/images/azure_storage_01.png" width="80%" height="80%"></p>
-<p><img src="/images/azure_storage_02.png" width="80%" height="80%"></p>
-<ul>
-<li>azcopy - <a href="https://docs.microsoft.com/zh-cn/azure/storage/common/storage-use-azcopy-v10?WT.mc_id=thomasmaurer-blog-thmaure" target="_blank" rel="noopener">install tutorial</a></li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#mac os terminal</span></span><br><span class="line">azcopy cp <span class="string">"/Users/xxx/Desktop/testdir/hello_azure.txt"</span> <span class="string">"https://storage873375.blob.core.windows.net/container1/?[?sv=2019-02-02&amp;ss=bfqt&amp;srt=sco&amp;sp=rwdlacup&amp;se=2019-12-11T11:40:09Z&amp;st=2019-12-11T03:40:09Z&amp;spr=https&amp;sig=5%2FFHo4%2BBwxDB6wLftyB7%2FSF7gqnhaEmpFa4nheBOXQg%3D]"</span></span><br></pre></td></tr></table></figure>
-<p>报错,原始是 <code>？</code> 后边格式的问题</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#mac os terminal</span></span><br><span class="line">azcopy cp <span class="string">"/Users/xxx/Desktop/testdir/hello_azure.txt"</span>  <span class="string">"https://storage873375.blob.core.windows.net/container1/newdir/?sv=2019-02-02&amp;ss=bfqt&amp;srt=sco&amp;sp=rwdlacup&amp;se=2019-12-11T11:40:09Z&amp;st=2019-12-11T03:40:09Z&amp;spr=https&amp;sig=5%2FFHo4%2BBwxDB6wLftyB7%2FSF7gqnhaEmpFa4nheBOXQg%3D"</span></span><br></pre></td></tr></table></figure>
-<p><a href="https://docs.microsoft.com/en-us/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs</a></p>
-]]></content>
       <categories>
         <category>Cloud</category>
       </categories>
@@ -319,28 +260,6 @@
 <p>执行：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   success_test.sh <span class="string">'ls'</span></span><br><span class="line">parameter is :ls</span><br><span class="line">certbot-auto	t1		t3		test.sh</span><br><span class="line">success_test.sh	t2		test.jsonnet</span><br><span class="line"> executed successfully.</span><br></pre></td></tr></table></figure></p>
 <h4 id="4-向命令传递参数"><a href="#4-向命令传递参数" class="headerlink" title="4. 向命令传递参数"></a>4. 向命令传递参数</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   cat showArgs.sh</span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> `seq 1 <span class="variable">$#</span>`</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$i</span> is <span class="variable">$1</span></span><br><span class="line"><span class="built_in">shift</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
 <p>执行：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   showArgs.sh a b cc</span><br><span class="line">1 is a</span><br><span class="line">2 is b</span><br><span class="line">3 is cc</span><br></pre></td></tr></table></figure></p>
-]]></content>
-      <categories>
-        <category>Bash</category>
-      </categories>
-      <tags>
-        <tag>Shell</tag>
-        <tag>Bash</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Bash-对变量动手脚</title>
-    <url>/2021/11/03/Bash-%E5%AF%B9%E5%8F%98%E9%87%8F%E5%8A%A8%E6%89%8B%E8%84%9A/</url>
-    <content><![CDATA[<p>才疏学浅，最近才注意到变量操作中的一些用法，也由此找到了一个<a href="https://tldp.org/LDP/Bash-Beginners-Guide/html/sect_10_03.html" target="_blank" rel="noopener">好网站</a>。</p>
-<p>Operations on variables</p>
-<ul>
-<li>1.Length of a variable（获取变量长度）</li>
-<li>2.Transformations of variables （变换变量）</li>
-<li>3.Removing substrings (删除变量中的子串)</li>
-<li>4.Replacing parts of variable names (替换变量中的一部分)</li>
-</ul>
-<p>其中的第2点的写法尤其的惊艳到我，非常的简洁但有效，供上网站上的代码帮助理解一下。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">~ <span class="built_in">echo</span> <span class="variable">$&#123;TEST:-test&#125;</span></span><br><span class="line"><span class="built_in">test</span></span><br><span class="line"></span><br><span class="line">~ <span class="built_in">echo</span> <span class="variable">$TEST</span></span><br><span class="line"></span><br><span class="line">~ <span class="built_in">export</span> TEST=a_string</span><br><span class="line"></span><br><span class="line">~ <span class="built_in">echo</span> <span class="variable">$&#123;TEST:-test&#125;</span></span><br><span class="line">a_string</span><br><span class="line"></span><br><span class="line">~ <span class="built_in">echo</span> <span class="variable">$&#123;TEST2:-$TEST&#125;</span></span><br><span class="line">a_string</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>Bash</category>
@@ -411,6 +330,65 @@
       </tags>
   </entry>
   <entry>
+    <title>Azure tutorial 02: Storage</title>
+    <url>/2019/12/11/Azure-tutorial-02-Storage/</url>
+    <content><![CDATA[<p>storage account type<br><a href="https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview</a></p>
+<p><strong>Blob</strong> - Binary Large Object<br><strong>Binary Object</strong> - Images,Documents,Media Files, Log Files, Backup data Virtual Disks</p>
+<p><strong>Blod types:</strong> </p>
+<ul>
+<li>Block Blob - Text and binary data Files</li>
+<li>Append Blobs - Optimized for append operations</li>
+<li>Page Blob - A collection of 512 byte pages optimized for random read and writes(virtual disk)</li>
+</ul>
+<p><strong>Locations and Redundancy:</strong> </p>
+<ul>
+<li>Locally-redundant storage (LRS): A simple, low-cost replication strategy. Data is replicated synchronously three times within the primary region.</li>
+<li>Zone-redundant storage (ZRS): Replication for scenarios requiring high availability. Data is replicated synchronously across three Azure availability zones in the primary region.</li>
+<li>Geo-redundant storage (GRS): Cross-regional replication to protect against regional outages. Data is replicated synchronously three times in the primary region, then replicated asynchronously to the secondary region. For read access to data in the secondary region, enable read-access geo-redundant storage (RA-GRS).</li>
+<li>Geo-zone-redundant storage (GZRS) (preview): Replication for scenarios requiring both high availability and maximum durability. Data is replicated synchronously across three Azure availability zones in the primary region, then replicated asynchronously to the secondary region. For read access to data in the secondary region, enable read-access geo-zone-redundant storage (RA-GZRS).</li>
+</ul>
+<p><strong>Access Tiers:</strong></p>
+<ul>
+<li>Hot </li>
+<li>Cool </li>
+<li>Archive</li>
+</ul>
+<p><strong>Azure Storage services:</strong></p>
+<ul>
+<li>Blob service</li>
+<li>File service</li>
+<li>Queue service</li>
+<li>Table Storage</li>
+</ul>
+<p><strong>Securing Storage Accounts:</strong></p>
+<ul>
+<li>Access Keys -Two per storage account,full access</li>
+<li>Share Access Signatures - Time based access keys that give granular control</li>
+</ul>
+<p><strong>作业：新建storage account ,并上传文件或文件夹到</strong></p>
+<p>create顺序:<br>a subscriptions -&gt;  a storage account -&gt; a SAS token   </p>
+<p>除了从azure portal页面操作之外，还提供以下两种方式</p>
+<ul>
+<li>Azure Storage Explorer - <a href="https://azure.microsoft.com/en-us/features/storage-explorer/" target="_blank" rel="noopener">install tutorial</a><blockquote>
+<p>或者浏览器中直接打开链接<a href="https://go.microsoft.com/fwlink/?LinkId=708342&amp;clcid=0x409，会自动下载" target="_blank" rel="noopener">https://go.microsoft.com/fwlink/?LinkId=708342&amp;clcid=0x409，会自动下载</a></p>
+</blockquote>
+</li>
+</ul>
+<p>打开 Azure Storage Explorer， 通过xx链接storage<br><img src="/images/azure_storage_01.png" width="80%" height="80%"></p>
+<p><img src="/images/azure_storage_02.png" width="80%" height="80%"></p>
+<ul>
+<li>azcopy - <a href="https://docs.microsoft.com/zh-cn/azure/storage/common/storage-use-azcopy-v10?WT.mc_id=thomasmaurer-blog-thmaure" target="_blank" rel="noopener">install tutorial</a></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#mac os terminal</span></span><br><span class="line">azcopy cp <span class="string">"/Users/xxx/Desktop/testdir/hello_azure.txt"</span> <span class="string">"https://storage873375.blob.core.windows.net/container1/?[?sv=2019-02-02&amp;ss=bfqt&amp;srt=sco&amp;sp=rwdlacup&amp;se=2019-12-11T11:40:09Z&amp;st=2019-12-11T03:40:09Z&amp;spr=https&amp;sig=5%2FFHo4%2BBwxDB6wLftyB7%2FSF7gqnhaEmpFa4nheBOXQg%3D]"</span></span><br></pre></td></tr></table></figure>
+<p>报错,原始是 <code>？</code> 后边格式的问题</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#mac os terminal</span></span><br><span class="line">azcopy cp <span class="string">"/Users/xxx/Desktop/testdir/hello_azure.txt"</span>  <span class="string">"https://storage873375.blob.core.windows.net/container1/newdir/?sv=2019-02-02&amp;ss=bfqt&amp;srt=sco&amp;sp=rwdlacup&amp;se=2019-12-11T11:40:09Z&amp;st=2019-12-11T03:40:09Z&amp;spr=https&amp;sig=5%2FFHo4%2BBwxDB6wLftyB7%2FSF7gqnhaEmpFa4nheBOXQg%3D"</span></span><br></pre></td></tr></table></figure>
+<p><a href="https://docs.microsoft.com/en-us/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs</a></p>
+]]></content>
+      <categories>
+        <category>Cloud</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Crontab on Liunx or Jenkins</title>
     <url>/2019/04/28/Crontab-on-Liunx-or-Jenkins/</url>
     <content><![CDATA[<p>源起：<br><code>@midnight</code>  This will run at some point between 0:00 and 2:59</p>
@@ -426,6 +404,28 @@
       </categories>
       <tags>
         <tag>jenkins</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Bash-对变量动手脚</title>
+    <url>/2021/11/03/Bash-%E5%AF%B9%E5%8F%98%E9%87%8F%E5%8A%A8%E6%89%8B%E8%84%9A/</url>
+    <content><![CDATA[<p>才疏学浅，最近才注意到变量操作中的一些用法，也由此找到了一个<a href="https://tldp.org/LDP/Bash-Beginners-Guide/html/sect_10_03.html" target="_blank" rel="noopener">好网站</a>。</p>
+<p>Operations on variables</p>
+<ul>
+<li>1.Length of a variable（获取变量长度）</li>
+<li>2.Transformations of variables （变换变量）</li>
+<li>3.Removing substrings (删除变量中的子串)</li>
+<li>4.Replacing parts of variable names (替换变量中的一部分)</li>
+</ul>
+<p>其中的第2点的写法尤其的惊艳到我，非常的简洁但有效，供上网站上的代码帮助理解一下。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">~ <span class="built_in">echo</span> <span class="variable">$&#123;TEST:-test&#125;</span></span><br><span class="line"><span class="built_in">test</span></span><br><span class="line"></span><br><span class="line">~ <span class="built_in">echo</span> <span class="variable">$TEST</span></span><br><span class="line"></span><br><span class="line">~ <span class="built_in">export</span> TEST=a_string</span><br><span class="line"></span><br><span class="line">~ <span class="built_in">echo</span> <span class="variable">$&#123;TEST:-test&#125;</span></span><br><span class="line">a_string</span><br><span class="line"></span><br><span class="line">~ <span class="built_in">echo</span> <span class="variable">$&#123;TEST2:-$TEST&#125;</span></span><br><span class="line">a_string</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Bash</category>
+      </categories>
+      <tags>
+        <tag>Shell</tag>
+        <tag>Bash</tag>
       </tags>
   </entry>
   <entry>
@@ -674,17 +674,6 @@
       </tags>
   </entry>
   <entry>
-    <title>English Note 04-blog</title>
-    <url>/2022/03/20/English-Note-04-blog/</url>
-    <content><![CDATA[<p>这里分享一些个人认为值得仔细阅读和学习的一个英文博客站点，可能无关于技术，也可能只是生活工作的一个小的感受，某个小的想法。他们来自于全世界不同的地方，借助于他们的启迪，或者能让我们有一些新的认识，缓解一下生活的压力，城市的快节奏，抑或是内心片刻的平和，足矣。</p>
-<p><a href="https://nav.al/rich#" target="_blank" rel="noopener">How to Get Rich</a></p>
-<p><a href="https://aliabdaal.com/i-got-laser-eye-surgery/" target="_blank" rel="noopener">I Got Laser Eye Surgery</a></p>
-]]></content>
-      <tags>
-        <tag>English-Note</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>English Note 03-写代码必备</title>
     <url>/2021/12/12/English-Note-03-%E5%86%99%E4%BB%A3%E7%A0%81%E5%BF%85%E5%A4%87/</url>
     <content><![CDATA[<h2 id="英文标点符号（中英对照）"><a href="#英文标点符号（中英对照）" class="headerlink" title="英文标点符号（中英对照）"></a>英文标点符号（中英对照）</h2><table>
@@ -867,6 +856,17 @@
 <ul>
 <li><a href="https://zhuanlan.zhihu.com/p/27008015" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/27008015</a></li>
 </ul>
+]]></content>
+      <tags>
+        <tag>English-Note</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>English Note 04-blog</title>
+    <url>/2022/03/20/English-Note-04-blog/</url>
+    <content><![CDATA[<p>这里分享一些个人认为值得仔细阅读和学习的一个英文博客站点，可能无关于技术，也可能只是生活工作的一个小的感受，某个小的想法。他们来自于全世界不同的地方，借助于他们的启迪，或者能让我们有一些新的认识，缓解一下生活的压力，城市的快节奏，抑或是内心片刻的平和，足矣。</p>
+<p><a href="https://nav.al/rich#" target="_blank" rel="noopener">How to Get Rich</a></p>
+<p><a href="https://aliabdaal.com/i-got-laser-eye-surgery/" target="_blank" rel="noopener">I Got Laser Eye Surgery</a></p>
 ]]></content>
       <tags>
         <tag>English-Note</tag>
@@ -1868,6 +1868,19 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>Jenkins trigger downstream job</title>
+    <url>/2019/05/30/Jenkins-trigger-downstream-job/</url>
+    <content><![CDATA[<p>origin_job 触发 second_job</p>
+<p>origin_job 如下：</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line"><span class="comment">//declarative pipeline</span></span><br><span class="line">pipeline &#123;</span><br><span class="line">    agent any </span><br><span class="line">    </span><br><span class="line">    stages &#123;</span><br><span class="line">        stage(<span class="string">'Stage One'</span>)&#123;</span><br><span class="line">            steps&#123;</span><br><span class="line">                sh <span class="string">"echo *** This is Stage One ***"</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        stage(<span class="string">'Stage Two'</span>)&#123;</span><br><span class="line">            steps&#123;</span><br><span class="line">                sh <span class="string">"echo $&#123;env.BUILD_NUMBER&#125;"</span></span><br><span class="line">                sh <span class="string">"echo $&#123;env.NODE_NAME&#125; , $&#123;env.JOB_NAME&#125;"</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        stage(<span class="string">"Invoke second job without parameters"</span>)&#123;</span><br><span class="line">            steps&#123;</span><br><span class="line">                build <span class="string">job:</span> <span class="string">'second_job'</span></span><br><span class="line">                sleep <span class="number">30</span></span><br><span class="line">           &#125;</span><br><span class="line">        &#125;   </span><br><span class="line"></span><br><span class="line">        stage(<span class="string">"Invoke second job with parameters"</span>)&#123;</span><br><span class="line">            steps&#123;</span><br><span class="line">                build <span class="string">job:</span> <span class="string">'second_job'</span>,</span><br><span class="line"><span class="symbol">                parameters:</span>[</span><br><span class="line">                    string(<span class="string">name:</span><span class="string">'Para1'</span>,<span class="string">value:</span>String.valueOf(JOB_NAME)),</span><br><span class="line">                    string(<span class="string">name:</span><span class="string">'Para2'</span>,<span class="string">value:</span>String.valueOf(BUILD_NUMBER))</span><br><span class="line">                ]</span><br><span class="line">           &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">    &#125;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>second_job </p>
+<p>点击““参数化构建””手动添加 两个参数</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pipeline &#123;</span><br><span class="line">    agent any </span><br><span class="line">    </span><br><span class="line">    stages &#123;</span><br><span class="line">        stage(<span class="string">'Stage One'</span>)&#123;</span><br><span class="line">            steps&#123;</span><br><span class="line">                sh <span class="string">"echo *** This is <span class="variable">$&#123;env.JOB_NAME&#125;</span> ,and We are stage one ***"</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    stage(<span class="string">'Echo origin_job para'</span>)&#123;</span><br><span class="line">        steps&#123;</span><br><span class="line">                sh <span class="string">"echo <span class="variable">$&#123;env.Para1&#125;</span>"</span></span><br><span class="line">                sh <span class="string">"echo <span class="variable">$&#123;env.Para2&#125;</span>"</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>jenkins</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Jenkins build trigger、logRotator、buildDiscarder etc</title>
     <url>/2019/04/11/Jenkins-build-trigger%E3%80%81logRotator%E3%80%81options/</url>
     <content><![CDATA[<p>Declarative Pipeline 与Job DSL的同一个功能的语法命令有些差异，不能直接套用，需要查对应的官方文档。 </p>
@@ -1903,19 +1916,6 @@ pipeline {
 </ol>
 </blockquote>
 ]]></content>
-      <tags>
-        <tag>jenkins</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Jenkins trigger downstream job</title>
-    <url>/2019/05/30/Jenkins-trigger-downstream-job/</url>
-    <content><![CDATA[<p>origin_job 触发 second_job</p>
-<p>origin_job 如下：</p>
-<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line"><span class="comment">//declarative pipeline</span></span><br><span class="line">pipeline &#123;</span><br><span class="line">    agent any </span><br><span class="line">    </span><br><span class="line">    stages &#123;</span><br><span class="line">        stage(<span class="string">'Stage One'</span>)&#123;</span><br><span class="line">            steps&#123;</span><br><span class="line">                sh <span class="string">"echo *** This is Stage One ***"</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        stage(<span class="string">'Stage Two'</span>)&#123;</span><br><span class="line">            steps&#123;</span><br><span class="line">                sh <span class="string">"echo $&#123;env.BUILD_NUMBER&#125;"</span></span><br><span class="line">                sh <span class="string">"echo $&#123;env.NODE_NAME&#125; , $&#123;env.JOB_NAME&#125;"</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        stage(<span class="string">"Invoke second job without parameters"</span>)&#123;</span><br><span class="line">            steps&#123;</span><br><span class="line">                build <span class="string">job:</span> <span class="string">'second_job'</span></span><br><span class="line">                sleep <span class="number">30</span></span><br><span class="line">           &#125;</span><br><span class="line">        &#125;   </span><br><span class="line"></span><br><span class="line">        stage(<span class="string">"Invoke second job with parameters"</span>)&#123;</span><br><span class="line">            steps&#123;</span><br><span class="line">                build <span class="string">job:</span> <span class="string">'second_job'</span>,</span><br><span class="line"><span class="symbol">                parameters:</span>[</span><br><span class="line">                    string(<span class="string">name:</span><span class="string">'Para1'</span>,<span class="string">value:</span>String.valueOf(JOB_NAME)),</span><br><span class="line">                    string(<span class="string">name:</span><span class="string">'Para2'</span>,<span class="string">value:</span>String.valueOf(BUILD_NUMBER))</span><br><span class="line">                ]</span><br><span class="line">           &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">    &#125;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>second_job </p>
-<p>点击““参数化构建””手动添加 两个参数</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pipeline &#123;</span><br><span class="line">    agent any </span><br><span class="line">    </span><br><span class="line">    stages &#123;</span><br><span class="line">        stage(<span class="string">'Stage One'</span>)&#123;</span><br><span class="line">            steps&#123;</span><br><span class="line">                sh <span class="string">"echo *** This is <span class="variable">$&#123;env.JOB_NAME&#125;</span> ,and We are stage one ***"</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    stage(<span class="string">'Echo origin_job para'</span>)&#123;</span><br><span class="line">        steps&#123;</span><br><span class="line">                sh <span class="string">"echo <span class="variable">$&#123;env.Para1&#125;</span>"</span></span><br><span class="line">                sh <span class="string">"echo <span class="variable">$&#123;env.Para2&#125;</span>"</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <tags>
         <tag>jenkins</tag>
       </tags>
@@ -2053,45 +2053,6 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>Makefile 106: Functions</title>
-    <url>/2019/07/05/Makefile-106-Functions/</url>
-    <content><![CDATA[<p>（1）shell 函数</p>
-<p>（2）wildcard 函数</p>
-<p>（3）subst 函数</p>
-<p>（4）patsubst函数</p>
-<p>（5）替换后缀名</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>makefile</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Mongodb 的一些概念</title>
-    <url>/2021/03/04/Mongodb-%E7%9A%84%E4%B8%80%E4%BA%9B%E6%A6%82%E5%BF%B5/</url>
-    <content><![CDATA[<p>基本概念，还是对照常用的关系型数据库，这样更容易理解一些</p>
-<p><a href="https://imgtu.com/i/6V7h3n" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/03/04/6V7h3n.png" alt="6V7h3n.png"></a></p>
-<h3 id="collection"><a href="#collection" class="headerlink" title="collection"></a>collection</h3><p>mongodb是通过一个个collection来做数据存储的，可以类比关系型数据库的表。</p>
-<h3 id="shard-key-分片键"><a href="#shard-key-分片键" class="headerlink" title="shard_key (分片键)"></a>shard_key (分片键)</h3><p>mongodb是通过分片键来对collection进行分区的，也就是通过分片键来决定一个document如何分布式存入collection中。分片键是每个存放在collection中的document都持续拥有的不可缺少的一个字段或多个字段的组合。 分片键有下面几个要求：</p>
-<ul>
-<li>每个document都必须拥有，不可缺少。</li>
-<li>已经分片的数据，分片键不可更改。</li>
-<li>分片键必须加上索引。</li>
-<li>分片键的选择对分片的性能、效率和可扩展性都有着重要影响。分片键和索引也会影响集群的分片策略。</li>
-</ul>
-<p><strong>分片键索引</strong></p>
-<p>分片键必须有索引，索引可以是分片键上的索引，当分片键是索引前缀时，也可以是复合索引。 注意：分片键索引必须是横向(正向)，比如用id做索引时定义为key{id:1} 参考：<a href="https://docs.mongodb.com/manual/core/sharding-shard-key/#sharding-shard-key-indexes" target="_blank" rel="noopener">https://docs.mongodb.com/manual/core/sharding-shard-key/#sharding-shard-key-indexes</a></p>
-<p>shard key在sharding搭建完毕后是不能修改的，一个collection上只能有一个shard key。<br>shard key上必须有索引（可以是以shard key开头的联合索引），如果没有mongodb会为shard key创建索引。如果是已经存在的collection那么必须手动为shard key创建索引。</p>
-<p>MongoDB creates a unique index on the _id field during the creation of a collection. The _id index prevents clients from inserting two documents with the same value for the _id field. You cannot drop this index on the _id field.</p>
-<p>mongodb offical doc <a href="https://docs.mongodb.com/manual/indexes/" target="_blank" rel="noopener">https://docs.mongodb.com/manual/indexes/</a></p>
-]]></content>
-      <tags>
-        <tag>Tools</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Openshift E01 最常见的使用场景</title>
     <url>/2021/01/10/Openshift-E01-%E6%9C%80%E5%B8%B8%E8%A7%81%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/</url>
     <content><![CDATA[<p>暂时不介绍 openshift 的概念，也不介绍如何安装、部署，先使用一个例子来看看 openshift 能做什么。</p>
@@ -2116,6 +2077,22 @@ pipeline {
       </categories>
       <tags>
         <tag>OpenShift</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Makefile 106: Functions</title>
+    <url>/2019/07/05/Makefile-106-Functions/</url>
+    <content><![CDATA[<p>（1）shell 函数</p>
+<p>（2）wildcard 函数</p>
+<p>（3）subst 函数</p>
+<p>（4）patsubst函数</p>
+<p>（5）替换后缀名</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>makefile</tag>
       </tags>
   </entry>
   <entry>
@@ -2145,6 +2122,29 @@ pipeline {
       </categories>
       <tags>
         <tag>OpenShift</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Mongodb 的一些概念</title>
+    <url>/2021/03/04/Mongodb-%E7%9A%84%E4%B8%80%E4%BA%9B%E6%A6%82%E5%BF%B5/</url>
+    <content><![CDATA[<p>基本概念，还是对照常用的关系型数据库，这样更容易理解一些</p>
+<p><a href="https://imgtu.com/i/6V7h3n" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/03/04/6V7h3n.png" alt="6V7h3n.png"></a></p>
+<h3 id="collection"><a href="#collection" class="headerlink" title="collection"></a>collection</h3><p>mongodb是通过一个个collection来做数据存储的，可以类比关系型数据库的表。</p>
+<h3 id="shard-key-分片键"><a href="#shard-key-分片键" class="headerlink" title="shard_key (分片键)"></a>shard_key (分片键)</h3><p>mongodb是通过分片键来对collection进行分区的，也就是通过分片键来决定一个document如何分布式存入collection中。分片键是每个存放在collection中的document都持续拥有的不可缺少的一个字段或多个字段的组合。 分片键有下面几个要求：</p>
+<ul>
+<li>每个document都必须拥有，不可缺少。</li>
+<li>已经分片的数据，分片键不可更改。</li>
+<li>分片键必须加上索引。</li>
+<li>分片键的选择对分片的性能、效率和可扩展性都有着重要影响。分片键和索引也会影响集群的分片策略。</li>
+</ul>
+<p><strong>分片键索引</strong></p>
+<p>分片键必须有索引，索引可以是分片键上的索引，当分片键是索引前缀时，也可以是复合索引。 注意：分片键索引必须是横向(正向)，比如用id做索引时定义为key{id:1} 参考：<a href="https://docs.mongodb.com/manual/core/sharding-shard-key/#sharding-shard-key-indexes" target="_blank" rel="noopener">https://docs.mongodb.com/manual/core/sharding-shard-key/#sharding-shard-key-indexes</a></p>
+<p>shard key在sharding搭建完毕后是不能修改的，一个collection上只能有一个shard key。<br>shard key上必须有索引（可以是以shard key开头的联合索引），如果没有mongodb会为shard key创建索引。如果是已经存在的collection那么必须手动为shard key创建索引。</p>
+<p>MongoDB creates a unique index on the _id field during the creation of a collection. The _id index prevents clients from inserting two documents with the same value for the _id field. You cannot drop this index on the _id field.</p>
+<p>mongodb offical doc <a href="https://docs.mongodb.com/manual/indexes/" target="_blank" rel="noopener">https://docs.mongodb.com/manual/indexes/</a></p>
+]]></content>
+      <tags>
+        <tag>Tools</tag>
       </tags>
   </entry>
   <entry>
@@ -2565,21 +2565,6 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>Shell count time</title>
-    <url>/2019/06/17/Shell-count-time/</url>
-    <content><![CDATA[<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">start=$(date +%s)</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> ---------</span><br><span class="line"><span class="comment">#type your command, like: sleep 50</span></span><br><span class="line">sleep 50</span><br><span class="line"></span><br><span class="line">end=$(date +%s)</span><br><span class="line"></span><br><span class="line">diff=$((end - start))</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">"\e[1;32m take time is: <span class="variable">$diff</span> \e[m"</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> Count:</span><br><span class="line">tput sc</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> count <span class="keyword">in</span> `seq 0 40`</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  tput rc</span><br><span class="line">  tput ed</span><br><span class="line">  <span class="built_in">echo</span> -n <span class="variable">$count</span></span><br><span class="line">  sleep 1</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-<p>用 tput sc 存储光标位置。在每次循环中，通过 tput rc 恢复之前的存储的光标位置，在终端中打印出新的 count 值，然后使用 tputs ed 清除从当前位置到行尾之间的所有内容。行被清空之后，脚本就可以显示出新的值。sleep  可以使脚本在每次循环迭代之间延迟1秒钟。</p>
-]]></content>
-      <categories>
-        <category>Bash</category>
-      </categories>
-      <tags>
-        <tag>Shell</tag>
-        <tag>Bash</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Shell output/Terminal  color</title>
     <url>/2019/04/28/Shell-output-Terminal-color/</url>
     <content><![CDATA[<h2 id="change-dispaly-color-on-the-terminal"><a href="#change-dispaly-color-on-the-terminal" class="headerlink" title="change dispaly color on the terminal"></a>change dispaly color on the terminal</h2><p>The  tput  utility uses the terminfo database to make the values of terminal-depen-dent capabilities and information available to the shell (see sh(1)), to initialize or reset the terminal, or return the long name of the requested terminal type.</p>
@@ -2720,6 +2705,21 @@ pipeline {
       </categories>
       <tags>
         <tag>Tools</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Shell count time</title>
+    <url>/2019/06/17/Shell-count-time/</url>
+    <content><![CDATA[<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">start=$(date +%s)</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> ---------</span><br><span class="line"><span class="comment">#type your command, like: sleep 50</span></span><br><span class="line">sleep 50</span><br><span class="line"></span><br><span class="line">end=$(date +%s)</span><br><span class="line"></span><br><span class="line">diff=$((end - start))</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">"\e[1;32m take time is: <span class="variable">$diff</span> \e[m"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> Count:</span><br><span class="line">tput sc</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> count <span class="keyword">in</span> `seq 0 40`</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  tput rc</span><br><span class="line">  tput ed</span><br><span class="line">  <span class="built_in">echo</span> -n <span class="variable">$count</span></span><br><span class="line">  sleep 1</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<p>用 tput sc 存储光标位置。在每次循环中，通过 tput rc 恢复之前的存储的光标位置，在终端中打印出新的 count 值，然后使用 tputs ed 清除从当前位置到行尾之间的所有内容。行被清空之后，脚本就可以显示出新的值。sleep  可以使脚本在每次循环迭代之间延迟1秒钟。</p>
+]]></content>
+      <categories>
+        <category>Bash</category>
+      </categories>
+      <tags>
+        <tag>Shell</tag>
+        <tag>Bash</tag>
       </tags>
   </entry>
   <entry>
@@ -3319,56 +3319,6 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>mktemp command</title>
-    <url>/2019/05/07/mktemp-command/</url>
-    <content><![CDATA[<p>最适合存储临时数据的位置是/tmp, <strong>mktemp</strong> 命令可以为临时文件或目录创建唯一的名字</p>
-<p>Create a temporary file or directory.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mktemp</span><br><span class="line"></span><br><span class="line">Create a temporary file or directory.</span><br><span class="line"></span><br><span class="line">- Create an empty temporary file and return the absolute path to it:</span><br><span class="line">    mktemp</span><br><span class="line"></span><br><span class="line">- Create a temporary directory and return the absolute path to it:</span><br><span class="line">    mktemp -d</span><br><span class="line"></span><br><span class="line">- Create a temporary file with a specified suffix:</span><br><span class="line">    mktemp --suffix &quot;.txt&quot;</span><br></pre></td></tr></table></figure>
-<h4 id="1-create-temporary-file-创建临时目录"><a href="#1-create-temporary-file-创建临时目录" class="headerlink" title="1.create temporary file (创建临时目录)"></a>1.create temporary file (创建临时目录)</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$filename</span>=`mktemp`</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$filename</span></span><br><span class="line">/tmp/tmp.8xefliegnD9</span><br></pre></td></tr></table></figure>
-<h4 id="2-create-temporary-directory-创建临时目录"><a href="#2-create-temporary-directory-创建临时目录" class="headerlink" title="2. create temporary directory (创建临时目录)"></a>2. create temporary directory (创建临时目录)</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dirname=`mktemp -d`</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$dirname</span></span><br><span class="line">tmp.NJ8dhf6wk</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>If you just want to generate a filename and don’t want to create the actual file or directory, you can(如果仅仅是想生成文件名，不希望创建实际的文件或目录，可以):<br><code>mktemp -u</code></p>
-</li>
-<li><p>Create a temporary filename based on the tempplate(基于模板创建临时文件名)</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  qr_blog mktemp study.XXX</span><br><span class="line">study.UWT</span><br><span class="line">➜  qr_blog mktemp study.XXX</span><br><span class="line">study.Usm</span><br><span class="line">➜  qr_blog mktemp study.XXX</span><br><span class="line">study.M6a</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>Mac OS 与linux用法略有区别，请视情况使用</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Shell</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ngrok demo</title>
-    <url>/2019/07/22/ngrok-demo/</url>
-    <content><![CDATA[<h3 id="怎么用"><a href="#怎么用" class="headerlink" title="怎么用"></a>怎么用</h3><p><a href="https://dashboard.ngrok.com/get-started" target="_blank" rel="noopener">https://dashboard.ngrok.com/get-started</a><br><img src="/images/ngrok_demo_01.png" alt="ngrok_demo_01"></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  Downloads ./ngrok authtoken &lt;YOUR_AUTHTOKEN&gt;</span><br><span class="line">Authtoken saved to configuration file: /Users/xxx/.ngrok2/ngrok.yml</span><br></pre></td></tr></table></figure>
-<h3 id="Demo-on-jenkins"><a href="#Demo-on-jenkins" class="headerlink" title="Demo on jenkins"></a>Demo on jenkins</h3><ol>
-<li>启动本地的Jenkins服务，暴露端口 <strong>8081</strong></li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  jenkins_demo docker run -d --name jenkins4ngrok -p 8081:8080 jenkins/jenkins:latest</span><br><span class="line">c384aca32c27d2c2df58e76619bc63a758d5e7b358e59c5bf083cb739952c4c7</span><br><span class="line">➜  jenkins_demo docker ps</span><br><span class="line">CONTAINER ID        IMAGE                    COMMAND                  CREATED             STATUS              PORTS                               NAMES</span><br><span class="line">c384aca32c27        jenkins/jenkins:latest   <span class="string">"/sbin/tini -- /usr/…"</span>   2 seconds ago       Up 1 second         50000/tcp, 0.0.0.0:8081-&gt;8080/tcp   jenkins4ngrok</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>Use ngrok, To start a HTTP tunnel on port 8081<br><code>➜  ./ngrok http 8081</code></li>
-</ol>
-<p><img src="/images/ngrok_demo_03.png" alt="ngrok_demo_03"></p>
-<ol start="3">
-<li>根据ngrok返回的，访问公网地址</li>
-</ol>
-<p>界面如下<br><img src="/images/ngrok_demo_02.png" alt="ngrok_demo_02"></p>
-<p>More Ref:</p>
-<ul>
-<li><a href="https://ngrok.com/docs" target="_blank" rel="noopener">https://ngrok.com/docs</a></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>Tools</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>kubectl 常用命令</title>
     <url>/2019/10/21/kubectl-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<h3 id="label操作"><a href="#label操作" class="headerlink" title="label操作"></a>label操作</h3><p>删除 label version=xx</p>
@@ -3401,6 +3351,32 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>ngrok demo</title>
+    <url>/2019/07/22/ngrok-demo/</url>
+    <content><![CDATA[<h3 id="怎么用"><a href="#怎么用" class="headerlink" title="怎么用"></a>怎么用</h3><p><a href="https://dashboard.ngrok.com/get-started" target="_blank" rel="noopener">https://dashboard.ngrok.com/get-started</a><br><img src="/images/ngrok_demo_01.png" alt="ngrok_demo_01"></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  Downloads ./ngrok authtoken &lt;YOUR_AUTHTOKEN&gt;</span><br><span class="line">Authtoken saved to configuration file: /Users/xxx/.ngrok2/ngrok.yml</span><br></pre></td></tr></table></figure>
+<h3 id="Demo-on-jenkins"><a href="#Demo-on-jenkins" class="headerlink" title="Demo on jenkins"></a>Demo on jenkins</h3><ol>
+<li>启动本地的Jenkins服务，暴露端口 <strong>8081</strong></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  jenkins_demo docker run -d --name jenkins4ngrok -p 8081:8080 jenkins/jenkins:latest</span><br><span class="line">c384aca32c27d2c2df58e76619bc63a758d5e7b358e59c5bf083cb739952c4c7</span><br><span class="line">➜  jenkins_demo docker ps</span><br><span class="line">CONTAINER ID        IMAGE                    COMMAND                  CREATED             STATUS              PORTS                               NAMES</span><br><span class="line">c384aca32c27        jenkins/jenkins:latest   <span class="string">"/sbin/tini -- /usr/…"</span>   2 seconds ago       Up 1 second         50000/tcp, 0.0.0.0:8081-&gt;8080/tcp   jenkins4ngrok</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>Use ngrok, To start a HTTP tunnel on port 8081<br><code>➜  ./ngrok http 8081</code></li>
+</ol>
+<p><img src="/images/ngrok_demo_03.png" alt="ngrok_demo_03"></p>
+<ol start="3">
+<li>根据ngrok返回的，访问公网地址</li>
+</ol>
+<p>界面如下<br><img src="/images/ngrok_demo_02.png" alt="ngrok_demo_02"></p>
+<p>More Ref:</p>
+<ul>
+<li><a href="https://ngrok.com/docs" target="_blank" rel="noopener">https://ngrok.com/docs</a></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>Tools</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>packer intro</title>
     <url>/2019/08/30/packer-intro/</url>
     <content><![CDATA[]]></content>
@@ -3409,6 +3385,30 @@ pipeline {
       </categories>
       <tags>
         <tag>packer</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>mktemp command</title>
+    <url>/2019/05/07/mktemp-command/</url>
+    <content><![CDATA[<p>最适合存储临时数据的位置是/tmp, <strong>mktemp</strong> 命令可以为临时文件或目录创建唯一的名字</p>
+<p>Create a temporary file or directory.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mktemp</span><br><span class="line"></span><br><span class="line">Create a temporary file or directory.</span><br><span class="line"></span><br><span class="line">- Create an empty temporary file and return the absolute path to it:</span><br><span class="line">    mktemp</span><br><span class="line"></span><br><span class="line">- Create a temporary directory and return the absolute path to it:</span><br><span class="line">    mktemp -d</span><br><span class="line"></span><br><span class="line">- Create a temporary file with a specified suffix:</span><br><span class="line">    mktemp --suffix &quot;.txt&quot;</span><br></pre></td></tr></table></figure>
+<h4 id="1-create-temporary-file-创建临时目录"><a href="#1-create-temporary-file-创建临时目录" class="headerlink" title="1.create temporary file (创建临时目录)"></a>1.create temporary file (创建临时目录)</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$filename</span>=`mktemp`</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$filename</span></span><br><span class="line">/tmp/tmp.8xefliegnD9</span><br></pre></td></tr></table></figure>
+<h4 id="2-create-temporary-directory-创建临时目录"><a href="#2-create-temporary-directory-创建临时目录" class="headerlink" title="2. create temporary directory (创建临时目录)"></a>2. create temporary directory (创建临时目录)</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dirname=`mktemp -d`</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$dirname</span></span><br><span class="line">tmp.NJ8dhf6wk</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>If you just want to generate a filename and don’t want to create the actual file or directory, you can(如果仅仅是想生成文件名，不希望创建实际的文件或目录，可以):<br><code>mktemp -u</code></p>
+</li>
+<li><p>Create a temporary filename based on the tempplate(基于模板创建临时文件名)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜  qr_blog mktemp study.XXX</span><br><span class="line">study.UWT</span><br><span class="line">➜  qr_blog mktemp study.XXX</span><br><span class="line">study.Usm</span><br><span class="line">➜  qr_blog mktemp study.XXX</span><br><span class="line">study.M6a</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>Mac OS 与linux用法略有区别，请视情况使用</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Shell</tag>
       </tags>
   </entry>
   <entry>
@@ -3663,6 +3663,30 @@ pipeline {
       </tags>
   </entry>
   <entry>
+    <title>xargs command</title>
+    <url>/2019/06/21/xargs-command/</url>
+    <content><![CDATA[<p>xargs 命令应该紧跟在管道操作符之后。它使用标准输入作为主要的数据源，将从 stdin 中读取的数据作为指定命令的参数并执行该命令。</p>
+<p>例如：<br>在一组 C 语言源码文件中搜索自负串main:<br><code>ls *.c | sargs grep main</code></p>
+<h4 id="Example-1-将多行输入-–-gt-单行输出"><a href="#Example-1-将多行输入-–-gt-单行输出" class="headerlink" title="Example 1: 将多行输入  –&gt; 单行输出"></a>Example 1: 将多行输入  –&gt; 单行输出</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   cat example.txt</span><br><span class="line">1 2 3 4</span><br><span class="line">5 6</span><br><span class="line">7 8 9</span><br><span class="line">10 11</span><br><span class="line">➜   cat example.txt | xargs</span><br><span class="line">1 2 3 4 5 6 7 8 9 10 11</span><br></pre></td></tr></table></figure>
+<h4 id="Example-2-将单行输入-–-gt-多行输出"><a href="#Example-2-将单行输入-–-gt-多行输出" class="headerlink" title="Example 2: 将单行输入  –&gt; 多行输出"></a>Example 2: 将单行输入  –&gt; 多行输出</h4><p>xargs 的 -n 选项可以限制每次调用命令时用到的参数个数。<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   cat example.txt | xargs -n  3</span><br><span class="line">1 2 3</span><br><span class="line">4 5 6</span><br><span class="line">7 8 9</span><br><span class="line">10 11</span><br></pre></td></tr></table></figure></p>
+<p>工作原理：<br>xargs 命令接收来自stdin的输入，将数据解析成单个元素，然后调用指定命令讲这些元素作为该命令的参数。xargs 默认使用 <strong>空白字符</strong> 分割输入并执行 <code>/bin/echo</code></p>
+<h4 id="Example-3-自定义分隔符-d-选项"><a href="#Example-3-自定义分隔符-d-选项" class="headerlink" title="Example 3: 自定义分隔符 -d 选项"></a>Example 3: 自定义分隔符 -d 选项</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"splitXsplit1Xsplit2Xsplit3"</span> | xargs -d X</span><br><span class="line">split split1 split2 split3</span><br></pre></td></tr></table></figure>
+<h4 id="Example-4-结合find使用xargs"><a href="#Example-4-结合find使用xargs" class="headerlink" title="Example 4: 结合find使用xargs"></a>Example 4: 结合find使用xargs</h4><p><code>find . -type f -name &quot;*.txt&quot; -print0 | xargs -o grep -L image</code></p>
+<p> 如果文件系统的有些文件名中包含忠哥，find 命令的 -print0 选项可以使用0（NUL）来分割查找到的元素，然后再用xargs对应的-0选项进行解析</p>
+<p> 反例：<br> <code>$find . -type f -name &quot;*.txt&quot; -print | xargs rm -f</code><br>这样做很危险，由可能会误删除文件。我们无法预测 find命令输出的分隔符究竟是什么（究竟是‘\n’还是 ‘’）。如果由文件名中包含空格符（‘ ’ ），xargs会将其误认为是分隔符。例如， <code>bashrc text.txt</code> 会被是为 bashrc 和 text.txt 。因此上面的命令不会删除 <code>bashrc text.txt</code> ,而是会把 bashrc删除</p>
+<p>正确的姿势：<br> <code>$find . -type f -name &quot;*.txt&quot; -print0 | xargs -0 rm -f</code></p>
+<h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><p> <code>docker ps -a -q | xargs --no-run-if-empty docker rm -f</code></p>
+<p> 参数 <code>--no-run-if-empty</code> 可以避免在前面的命令完全没有输出的情况下执行该命令</p>
+]]></content>
+      <categories>
+        <category>Bash</category>
+      </categories>
+      <tags>
+        <tag>Shell</tag>
+        <tag>Bash</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>youtube 推荐频道(Non-tech)</title>
     <url>/2019/12/10/youtube-%E6%8E%A8%E8%8D%90%E9%A2%91%E9%81%93-Non-tech/</url>
     <content><![CDATA[<p>自从到新公司有梯子后，外出运动的时间变少了，都奉献给了youtube.有些节目被查水表了，<strong>“此帐户已被终止，因为我们收到多份第三方提交的关于该用户发布的内容侵犯版权的声明。”</strong> 所以也不能保证下面罗列的节目在未来可以持续观看</p>
@@ -3743,30 +3767,6 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>xargs command</title>
-    <url>/2019/06/21/xargs-command/</url>
-    <content><![CDATA[<p>xargs 命令应该紧跟在管道操作符之后。它使用标准输入作为主要的数据源，将从 stdin 中读取的数据作为指定命令的参数并执行该命令。</p>
-<p>例如：<br>在一组 C 语言源码文件中搜索自负串main:<br><code>ls *.c | sargs grep main</code></p>
-<h4 id="Example-1-将多行输入-–-gt-单行输出"><a href="#Example-1-将多行输入-–-gt-单行输出" class="headerlink" title="Example 1: 将多行输入  –&gt; 单行输出"></a>Example 1: 将多行输入  –&gt; 单行输出</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   cat example.txt</span><br><span class="line">1 2 3 4</span><br><span class="line">5 6</span><br><span class="line">7 8 9</span><br><span class="line">10 11</span><br><span class="line">➜   cat example.txt | xargs</span><br><span class="line">1 2 3 4 5 6 7 8 9 10 11</span><br></pre></td></tr></table></figure>
-<h4 id="Example-2-将单行输入-–-gt-多行输出"><a href="#Example-2-将单行输入-–-gt-多行输出" class="headerlink" title="Example 2: 将单行输入  –&gt; 多行输出"></a>Example 2: 将单行输入  –&gt; 多行输出</h4><p>xargs 的 -n 选项可以限制每次调用命令时用到的参数个数。<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">➜   cat example.txt | xargs -n  3</span><br><span class="line">1 2 3</span><br><span class="line">4 5 6</span><br><span class="line">7 8 9</span><br><span class="line">10 11</span><br></pre></td></tr></table></figure></p>
-<p>工作原理：<br>xargs 命令接收来自stdin的输入，将数据解析成单个元素，然后调用指定命令讲这些元素作为该命令的参数。xargs 默认使用 <strong>空白字符</strong> 分割输入并执行 <code>/bin/echo</code></p>
-<h4 id="Example-3-自定义分隔符-d-选项"><a href="#Example-3-自定义分隔符-d-选项" class="headerlink" title="Example 3: 自定义分隔符 -d 选项"></a>Example 3: 自定义分隔符 -d 选项</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"splitXsplit1Xsplit2Xsplit3"</span> | xargs -d X</span><br><span class="line">split split1 split2 split3</span><br></pre></td></tr></table></figure>
-<h4 id="Example-4-结合find使用xargs"><a href="#Example-4-结合find使用xargs" class="headerlink" title="Example 4: 结合find使用xargs"></a>Example 4: 结合find使用xargs</h4><p><code>find . -type f -name &quot;*.txt&quot; -print0 | xargs -o grep -L image</code></p>
-<p> 如果文件系统的有些文件名中包含忠哥，find 命令的 -print0 选项可以使用0（NUL）来分割查找到的元素，然后再用xargs对应的-0选项进行解析</p>
-<p> 反例：<br> <code>$find . -type f -name &quot;*.txt&quot; -print | xargs rm -f</code><br>这样做很危险，由可能会误删除文件。我们无法预测 find命令输出的分隔符究竟是什么（究竟是‘\n’还是 ‘’）。如果由文件名中包含空格符（‘ ’ ），xargs会将其误认为是分隔符。例如， <code>bashrc text.txt</code> 会被是为 bashrc 和 text.txt 。因此上面的命令不会删除 <code>bashrc text.txt</code> ,而是会把 bashrc删除</p>
-<p>正确的姿势：<br> <code>$find . -type f -name &quot;*.txt&quot; -print0 | xargs -0 rm -f</code></p>
-<h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><p> <code>docker ps -a -q | xargs --no-run-if-empty docker rm -f</code></p>
-<p> 参数 <code>--no-run-if-empty</code> 可以避免在前面的命令完全没有输出的情况下执行该命令</p>
-]]></content>
-      <categories>
-        <category>Bash</category>
-      </categories>
-      <tags>
-        <tag>Shell</tag>
-        <tag>Bash</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>youtube 推荐频道(Tech)</title>
     <url>/2019/12/10/youtube-%E6%8E%A8%E8%8D%90%E9%A2%91%E9%81%93-Tech/</url>
     <content><![CDATA[<ul>
@@ -3806,75 +3806,6 @@ pipeline {
 ]]></content>
       <tags>
         <tag>Q List</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>值得收藏的技术类站点</title>
-    <url>/2019/10/04/%E5%80%BC%E5%BE%97%E6%94%B6%E8%97%8F%E7%9A%84%E6%8A%80%E6%9C%AF%E7%B1%BB%E7%AB%99%E7%82%B9/</url>
-    <content><![CDATA[<p>一些技术公司，及其站点网站的列表，有很多高质量的文章和最佳实践。</p>
-<p><a href="https://www.praqma.com/" target="_blank" rel="noopener">https://www.praqma.com/</a></p>
-<p><a href="https://www.cloudbees.com/" target="_blank" rel="noopener">https://www.cloudbees.com/</a></p>
-<p><a href="https://www.freecodecamp.org/" target="_blank" rel="noopener">https://www.freecodecamp.org/</a></p>
-<p><a href="https://devopscube.com/" target="_blank" rel="noopener">https://devopscube.com/</a></p>
-<p><a href="https://www.endpoint.com/blog" target="_blank" rel="noopener">https://www.endpoint.com/blog</a></p>
-<p><a href="https://www.infracloud.io/blogs" target="_blank" rel="noopener">https://www.infracloud.io/blogs</a></p>
-<p><a href="http://www.devopsbookmarks.com" target="_blank" rel="noopener">http://www.devopsbookmarks.com</a> (技术工具列表)</p>
-<h3 id="大佬的站点"><a href="#大佬的站点" class="headerlink" title="大佬的站点"></a>大佬的站点</h3><p><a href="https://www.thorsten-hans.com/" target="_blank" rel="noopener">Thorsten Hans</a>: Tales and experiences about Azure, Kubernetes, and cloud-native computing</p>
-]]></content>
-      <categories>
-        <category>Tools</category>
-      </categories>
-      <tags>
-        <tag>Tools</tag>
-        <tag>Q List</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>修个数据</title>
-    <url>/2020/07/17/%E4%BF%AE%E4%B8%AA%E6%95%B0%E6%8D%AE/</url>
-    <content><![CDATA[<blockquote>
-<p>一件事，即使看似平凡，但只要你做深、做久，很快就能变成你的专业，平凡的事情做久了，也能不平凡。</p>
-</blockquote>
-<p>最近项目中的每天都有很多sql需要执行，以便修复客户的数据，大概持续了近2个月的时间。鉴于开发人员对生产环境的隔离，一般这种修改生产环境数据的活儿就由专职的DBA，或Ops完成。但说到底，开发人员对于sql更熟悉，但这只是通常情况，所以“打铁还需自身硬”。</p>
-<p>在没有任何数据管理系统的前提下，如何规范、准确的修复数据，便有很多细节需要我们思考，并找到合适的实践路径，不至于让某些角色花费大量的时间在这个事情上面。</p>
-<h3 id="1-审批流程，反馈流程"><a href="#1-审批流程，反馈流程" class="headerlink" title="1. 审批流程，反馈流程"></a>1. 审批流程，反馈流程</h3><p>修改数据通常涉及多方，为了保证流程规范（其实是后期甩锅），有关人员需要掌管好自己手中的小权利，通常涉及 PO, Dev, Ops/DBA, Manager等角色。其他问题：三级审批、四级审批、人多、传话丢失、语义产生歧义等；如果sql有问题，该如何找人，如何反馈，</p>
-<h3 id="2-先备份"><a href="#2-先备份" class="headerlink" title="2. 先备份"></a>2. 先备份</h3><p>对于ops人员而言，数据无小事，但在dev眼里，有些表中的数据无足轻重，有些确实很重要，但ops/DBA是不那么了解业务的，也是或许是一些Dev没有经历过丢数据后的无奈和严重后果。</p>
-<p>备份规则（即什么情况下需要备份，什么情况可以不备份）：</p>
-<ul>
-<li>数据量变更大于500条时，必须备份数据</li>
-<li>无需备份的需要备注原因，以便其余人了解不备份的上下文</li>
-</ul>
-<p>备份方式：</p>
-<ul>
-<li>在数据库里备份,例如  <code>create table &lt;table_a_copy_date&gt; select * from users;</code></li>
-<li>少量数据，本地备份，上传到jira中，数据安全问题，</li>
-<li>备份到某个云☁️上，有需要的时候开放权限获取备份文件</li>
-</ul>
-<h3 id="3-执行，用技术去规范"><a href="#3-执行，用技术去规范" class="headerlink" title="3.执行，用技术去规范"></a>3.执行，用技术去规范</h3><p>对于不同的数据库引擎，sql语法有部分差异，使用不同的sql客户端工具，也有不同的差异。</p>
-<p>吐槽遇到的问题：</p>
-<ul>
-<li>sql中的中英文符号不区分，导致的语法问题</li>
-<li>单引号’和间隔号`</li>
-<li>看着正常，<a href="https://tool.lu/sql/" target="_blank" rel="noopener">https://tool.lu/sql/</a> 也检查不出来的，但其实很有问题的语法 （<a href="https://blog.csdn.net/whatday/article/details/103308922）" target="_blank" rel="noopener">https://blog.csdn.net/whatday/article/details/103308922）</a></li>
-<li>多条语句的，不用<code>;</code>分割</li>
-<li>自增id，不要随便插入新的id</li>
-<li>一个sql需要执行1个小时，而且不能重复执行的，确保不能断网，最好不用本地的sql客户端，而使用tmux 后台执行</li>
-</ul>
-<p>pipeline化、脚本化, 需包含语法检查、备份、执行、执行后核对等功能，解放ops的双手</p>
-<p>dbname.tablename</p>
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ul>
-<li><a href="https://tool.lu/sql/" target="_blank" rel="noopener">检查sql语法的在线工具</a></li>
-<li>SOAR(SQL Optimizer And Rewriter)   是一个对 SQL 进行优化和改写的自动化工具。 由小米人工智能与云平台的数据库团队开发与维护。<a href="https://github.com/XiaoMi/soar" target="_blank" rel="noopener">github地址</a></li>
-<li><a href="https://help.aliyun.com/product/26437.html?spm=5176.cndms.0.0.4a755063X2vQ5l" target="_blank" rel="noopener">数据管理 DMS</a></li>
-<li><a href="http://yearning.io/" target="_blank" rel="noopener">Yearning Mysql SQL审核平台</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Tools</category>
-      </categories>
-      <tags>
-        <tag>Tools</tag>
-        <tag>SQL</tag>
       </tags>
   </entry>
   <entry>
@@ -3986,6 +3917,75 @@ pipeline {
       </categories>
       <tags>
         <tag>Shell</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>修个数据</title>
+    <url>/2020/07/17/%E4%BF%AE%E4%B8%AA%E6%95%B0%E6%8D%AE/</url>
+    <content><![CDATA[<blockquote>
+<p>一件事，即使看似平凡，但只要你做深、做久，很快就能变成你的专业，平凡的事情做久了，也能不平凡。</p>
+</blockquote>
+<p>最近项目中的每天都有很多sql需要执行，以便修复客户的数据，大概持续了近2个月的时间。鉴于开发人员对生产环境的隔离，一般这种修改生产环境数据的活儿就由专职的DBA，或Ops完成。但说到底，开发人员对于sql更熟悉，但这只是通常情况，所以“打铁还需自身硬”。</p>
+<p>在没有任何数据管理系统的前提下，如何规范、准确的修复数据，便有很多细节需要我们思考，并找到合适的实践路径，不至于让某些角色花费大量的时间在这个事情上面。</p>
+<h3 id="1-审批流程，反馈流程"><a href="#1-审批流程，反馈流程" class="headerlink" title="1. 审批流程，反馈流程"></a>1. 审批流程，反馈流程</h3><p>修改数据通常涉及多方，为了保证流程规范（其实是后期甩锅），有关人员需要掌管好自己手中的小权利，通常涉及 PO, Dev, Ops/DBA, Manager等角色。其他问题：三级审批、四级审批、人多、传话丢失、语义产生歧义等；如果sql有问题，该如何找人，如何反馈，</p>
+<h3 id="2-先备份"><a href="#2-先备份" class="headerlink" title="2. 先备份"></a>2. 先备份</h3><p>对于ops人员而言，数据无小事，但在dev眼里，有些表中的数据无足轻重，有些确实很重要，但ops/DBA是不那么了解业务的，也是或许是一些Dev没有经历过丢数据后的无奈和严重后果。</p>
+<p>备份规则（即什么情况下需要备份，什么情况可以不备份）：</p>
+<ul>
+<li>数据量变更大于500条时，必须备份数据</li>
+<li>无需备份的需要备注原因，以便其余人了解不备份的上下文</li>
+</ul>
+<p>备份方式：</p>
+<ul>
+<li>在数据库里备份,例如  <code>create table &lt;table_a_copy_date&gt; select * from users;</code></li>
+<li>少量数据，本地备份，上传到jira中，数据安全问题，</li>
+<li>备份到某个云☁️上，有需要的时候开放权限获取备份文件</li>
+</ul>
+<h3 id="3-执行，用技术去规范"><a href="#3-执行，用技术去规范" class="headerlink" title="3.执行，用技术去规范"></a>3.执行，用技术去规范</h3><p>对于不同的数据库引擎，sql语法有部分差异，使用不同的sql客户端工具，也有不同的差异。</p>
+<p>吐槽遇到的问题：</p>
+<ul>
+<li>sql中的中英文符号不区分，导致的语法问题</li>
+<li>单引号’和间隔号`</li>
+<li>看着正常，<a href="https://tool.lu/sql/" target="_blank" rel="noopener">https://tool.lu/sql/</a> 也检查不出来的，但其实很有问题的语法 （<a href="https://blog.csdn.net/whatday/article/details/103308922）" target="_blank" rel="noopener">https://blog.csdn.net/whatday/article/details/103308922）</a></li>
+<li>多条语句的，不用<code>;</code>分割</li>
+<li>自增id，不要随便插入新的id</li>
+<li>一个sql需要执行1个小时，而且不能重复执行的，确保不能断网，最好不用本地的sql客户端，而使用tmux 后台执行</li>
+</ul>
+<p>pipeline化、脚本化, 需包含语法检查、备份、执行、执行后核对等功能，解放ops的双手</p>
+<p>dbname.tablename</p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ul>
+<li><a href="https://tool.lu/sql/" target="_blank" rel="noopener">检查sql语法的在线工具</a></li>
+<li>SOAR(SQL Optimizer And Rewriter)   是一个对 SQL 进行优化和改写的自动化工具。 由小米人工智能与云平台的数据库团队开发与维护。<a href="https://github.com/XiaoMi/soar" target="_blank" rel="noopener">github地址</a></li>
+<li><a href="https://help.aliyun.com/product/26437.html?spm=5176.cndms.0.0.4a755063X2vQ5l" target="_blank" rel="noopener">数据管理 DMS</a></li>
+<li><a href="http://yearning.io/" target="_blank" rel="noopener">Yearning Mysql SQL审核平台</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Tools</category>
+      </categories>
+      <tags>
+        <tag>Tools</tag>
+        <tag>SQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>值得收藏的技术类站点</title>
+    <url>/2019/10/04/%E5%80%BC%E5%BE%97%E6%94%B6%E8%97%8F%E7%9A%84%E6%8A%80%E6%9C%AF%E7%B1%BB%E7%AB%99%E7%82%B9/</url>
+    <content><![CDATA[<p>一些技术公司，及其站点网站的列表，有很多高质量的文章和最佳实践。</p>
+<p><a href="https://www.praqma.com/" target="_blank" rel="noopener">https://www.praqma.com/</a></p>
+<p><a href="https://www.cloudbees.com/" target="_blank" rel="noopener">https://www.cloudbees.com/</a></p>
+<p><a href="https://www.freecodecamp.org/" target="_blank" rel="noopener">https://www.freecodecamp.org/</a></p>
+<p><a href="https://devopscube.com/" target="_blank" rel="noopener">https://devopscube.com/</a></p>
+<p><a href="https://www.endpoint.com/blog" target="_blank" rel="noopener">https://www.endpoint.com/blog</a></p>
+<p><a href="https://www.infracloud.io/blogs" target="_blank" rel="noopener">https://www.infracloud.io/blogs</a></p>
+<p><a href="http://www.devopsbookmarks.com" target="_blank" rel="noopener">http://www.devopsbookmarks.com</a> (技术工具列表)</p>
+<h3 id="大佬的站点"><a href="#大佬的站点" class="headerlink" title="大佬的站点"></a>大佬的站点</h3><p><a href="https://www.thorsten-hans.com/" target="_blank" rel="noopener">Thorsten Hans</a>: Tales and experiences about Azure, Kubernetes, and cloud-native computing</p>
+]]></content>
+      <categories>
+        <category>Tools</category>
+      </categories>
+      <tags>
+        <tag>Tools</tag>
+        <tag>Q List</tag>
       </tags>
   </entry>
   <entry>
@@ -4288,18 +4288,6 @@ pipeline {
       </tags>
   </entry>
   <entry>
-    <title>我的git常用命令</title>
-    <url>/2021/03/24/%E6%88%91%E7%9A%84git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<p>快速查看最近的commit id,commit message<br><code>git log --oneline</code></p>
-<p>回到某个commit版本<br><code>git reset --hard &lt;commit id&gt;</code></p>
-<p>查看所有分支，包含本地的和远程的<br><code>git branch -a</code></p>
-<p>查看所有tag<br><code>git tag</code></p>
-]]></content>
-      <tags>
-        <tag>Tools</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>我的租房经历</title>
     <url>/2020/04/30/%E6%88%91%E7%9A%84%E7%A7%9F%E6%88%BF%E7%BB%8F%E5%8E%86/</url>
     <content><![CDATA[<div id="hexo-blog-encrypt" data-wpm="用心想想，ta可能用什么密码" data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
@@ -4313,6 +4301,18 @@ pipeline {
 <script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
       <tags>
         <tag>Q List</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>我的git常用命令</title>
+    <url>/2021/03/24/%E6%88%91%E7%9A%84git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<p>快速查看最近的commit id,commit message<br><code>git log --oneline</code></p>
+<p>回到某个commit版本<br><code>git reset --hard &lt;commit id&gt;</code></p>
+<p>查看所有分支，包含本地的和远程的<br><code>git branch -a</code></p>
+<p>查看所有tag<br><code>git tag</code></p>
+]]></content>
+      <tags>
+        <tag>Tools</tag>
       </tags>
   </entry>
   <entry>
