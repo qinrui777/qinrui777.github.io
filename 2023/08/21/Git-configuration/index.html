@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>English Note 05-面试 |  Hexo</title>
+      <title>Git configuration |  Hexo</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/palm-tree.ico" />
@@ -39,7 +39,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-English-Note-05-面试"
+  id="post-Git-configuration"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -50,7 +50,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  English Note 05-面试
+  Git configuration
 </h1>
  
 
@@ -58,23 +58,44 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2022/08/29/English-Note-05-面试/" class="article-date">
-  <time datetime="2022-08-29T08:37:52.000Z" itemprop="datePublished">2022-08-29</time>
+      <a href="/2023/08/21/Git-configuration/" class="article-date">
+  <time datetime="2023-08-21T11:42:12.000Z" itemprop="datePublished">2023-08-21</time>
 </a>  
     </div>
       
-    <div class="tocbot"></div>
-
 
 
 
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h3 id="讨论面试这个话题"><a href="#讨论面试这个话题" class="headerlink" title="讨论面试这个话题"></a>讨论面试这个话题</h3><p>Well, we could have a mock interview. I could role-play as the interviewer and you cpuld pretend to be the interviewee.</p>
-<p>Yup.Then the interviewer will want to know what actions you took to achieve your goal.</p>
-<p>Exactly. And then the interviewer might ask you about a task, something you wanted to achieve.</p>
-<p>I heard back from a few companies that offered me interviews.<br>我得到了一些公司给我的面试机会.</p>
+  <blockquote>
+<p>There are 3 levels of git config; project, global and system.</p>
+<ul>
+<li>project: Project configs are only available for the current project and stored in .git/config in the project’s &gt; directory.</li>
+<li>global: Global configs are available for all projects for the current user and stored in ~/.gitconfig.</li>
+<li>system: System configs are available for all the users/projects and stored in /etc/gitconfig.</li>
+</ul>
+</blockquote>
+<p>  面对不同类型的代码仓库，有时候我们需要使用不同的用户名，以及一些特殊一些的git参数。如何有效快速的设置，而不是按照一个一个repo去逐一的设置；但全局设置又兼顾不到一些剩余的代码仓库</p>
+<p>  编辑home目录下的 <code>.gitconfig</code>，按照如下配置的前提是：通常我们把一类代码仓库的放在一个目录下，例如按照公司名称来区分目录，或者是 <code>gitlab_repo</code>, <code>github_repo</code>这样来分。下面的代码片段只是展示最为简单的配置方法，可自行根据需求设置。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.gitconfig</span><br><span class="line"></span><br><span class="line">[includeIf <span class="string">"gitdir:~/company_a/"</span>]</span><br><span class="line">  path = .gitconfig-company_a</span><br><span class="line">[includeIf <span class="string">"gitdir:~/company_b/"</span>]</span><br><span class="line">  path = .gitconfig-company_b</span><br></pre></td></tr></table></figure>
+<p>注意⚠️： </p>
+<ul>
+<li>gitdir 后面的目录路径在最后需要包含 一个斜杠 “/”；后面的 Conditional 规则也是支持灵活匹配的</li>
+<li>path 路径建议使用绝对路径</li>
+</ul>
+<p>在对应的 <code>.gitconfig-company_a</code> 或 <code>.gitconfig-company_b</code> 文件中，参数的设置就如何普通的 <code>.gitconfig</code> 一样，例如下面的代码片段。</p>
+<p>如果是一些字段(如user.name)的值是一致的，也可以无需在多个gitconfig文件中声明，是在 home目录下的<code>.gitconfig</code>定义一次，等同于运行命令 <code>git config --global user.name &quot;John Doe&quot;</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">[user]</span><br><span class="line">name = John Smith</span><br><span class="line">email = john.smith@companya.net</span><br><span class="line"></span><br><span class="line">[core]</span><br><span class="line">sshCommand = ssh -i ~/.ssh/id_rsa_companya</span><br><span class="line"></span><br><span class="line"><span class="comment">#### or</span></span><br><span class="line">[credential]</span><br><span class="line">        helper = osxkeychain</span><br><span class="line">[pull]</span><br><span class="line">        rebase = <span class="literal">true</span></span><br><span class="line">[rebase]</span><br><span class="line">        autostash = <span class="literal">true</span></span><br><span class="line">[gpg]</span><br><span class="line">        program = gpg</span><br><span class="line">[commit]</span><br><span class="line">        gpgsign = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">[http <span class="string">"http://git.cn.companyB.net"</span>]</span><br><span class="line">        sslVerify = <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<p>如何查看我们设置的参数是否生效了<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git config --show-origin --get user.email</span><br><span class="line">file:.git/config	tomcat@companyA.net</span><br><span class="line"></span><br><span class="line">$ git config user.email <span class="comment">#并不能显示是哪个文件</span></span><br><span class="line">tomcat@companyA.net</span><br></pre></td></tr></table></figure></p>
+<p>更多详细的gitconfig中的参数可以参考 <a href="https://git-scm.com/docs/git-config，或者在本地用man命令查看" target="_blank" rel="noopener">https://git-scm.com/docs/git-config，或者在本地用man命令查看</a>, 如 <code>$ man git-config</code></p>
+<hr>
+<p>reference links:</p>
+<ul>
+<li><a href="https://stackoverflow.com/questions/8801729/is-it-possible-to-have-different-git-configuration-for-different-projects" target="_blank" rel="noopener">git config - Is it possible to have different Git configuration for different projects? - Stack Overflow</a></li>
+<li><a href="https://git-scm.com/docs/git-config#_configuration_file" target="_blank" rel="noopener">Git - git-config Documentation</a></li>
+</ul>
  
       <!-- reward -->
       
@@ -145,32 +166,21 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2022/08/29/English-Note-05-面试/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2023/08/21/Git-configuration/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/English-Note/">English-Note</a></li></ul>
-
     </footer>
   </div>
 
    
   <nav class="article-nav">
     
-      <a href="/2023/08/21/Git-configuration/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            Git configuration
-          
-        </div>
-      </a>
     
-    
-      <a href="/2022/03/20/English-Note-04-blog/" class="article-nav-link">
+      <a href="/2022/08/29/English-Note-05-面试/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">English Note 04-blog</div>
+        <div class="article-nav-title">English Note 05-面试</div>
       </a>
     
   </nav>

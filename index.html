@@ -93,6 +93,80 @@
     
     
     <article
+  id="post-Git-configuration"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2023/08/21/Git-configuration/"
+    >Git configuration</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/08/21/Git-configuration/" class="article-date">
+  <time datetime="2023-08-21T11:42:12.000Z" itemprop="datePublished">2023-08-21</time>
+</a>  
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <blockquote>
+<p>There are 3 levels of git config; project, global and system.</p>
+<ul>
+<li>project: Project configs are only available for the current project and stored in .git/config in the project’s &gt; directory.</li>
+<li>global: Global configs are available for all projects for the current user and stored in ~/.gitconfig.</li>
+<li>system: System configs are available for all the users/projects and stored in /etc/gitconfig.</li>
+</ul>
+</blockquote>
+<p>  面对不同类型的代码仓库，有时候我们需要使用不同的用户名，以及一些特殊一些的git参数。如何有效快速的设置，而不是按照一个一个repo去逐一的设置；但全局设置又兼顾不到一些剩余的代码仓库</p>
+<p>  编辑home目录下的 <code>.gitconfig</code>，按照如下配置的前提是：通常我们把一类代码仓库的放在一个目录下，例如按照公司名称来区分目录，或者是 <code>gitlab_repo</code>, <code>github_repo</code>这样来分。下面的代码片段只是展示最为简单的配置方法，可自行根据需求设置。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.gitconfig</span><br><span class="line"></span><br><span class="line">[includeIf <span class="string">"gitdir:~/company_a/"</span>]</span><br><span class="line">  path = .gitconfig-company_a</span><br><span class="line">[includeIf <span class="string">"gitdir:~/company_b/"</span>]</span><br><span class="line">  path = .gitconfig-company_b</span><br></pre></td></tr></table></figure>
+<p>注意⚠️： </p>
+<ul>
+<li>gitdir 后面的目录路径在最后需要包含 一个斜杠 “/”；后面的 Conditional 规则也是支持灵活匹配的</li>
+<li>path 路径建议使用绝对路径</li>
+</ul>
+<p>在对应的 <code>.gitconfig-company_a</code> 或 <code>.gitconfig-company_b</code> 文件中，参数的设置就如何普通的 <code>.gitconfig</code> 一样，例如下面的代码片段。</p>
+<p>如果是一些字段(如user.name)的值是一致的，也可以无需在多个gitconfig文件中声明，是在 home目录下的<code>.gitconfig</code>定义一次，等同于运行命令 <code>git config --global user.name &quot;John Doe&quot;</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">[user]</span><br><span class="line">name = John Smith</span><br><span class="line">email = john.smith@companya.net</span><br><span class="line"></span><br><span class="line">[core]</span><br><span class="line">sshCommand = ssh -i ~/.ssh/id_rsa_companya</span><br><span class="line"></span><br><span class="line"><span class="comment">#### or</span></span><br><span class="line">[credential]</span><br><span class="line">        helper = osxkeychain</span><br><span class="line">[pull]</span><br><span class="line">        rebase = <span class="literal">true</span></span><br><span class="line">[rebase]</span><br><span class="line">        autostash = <span class="literal">true</span></span><br><span class="line">[gpg]</span><br><span class="line">        program = gpg</span><br><span class="line">[commit]</span><br><span class="line">        gpgsign = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">[http <span class="string">"http://git.cn.companyB.net"</span>]</span><br><span class="line">        sslVerify = <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<p>如何查看我们设置的参数是否生效了<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git config --show-origin --get user.email</span><br><span class="line">file:.git/config	tomcat@companyA.net</span><br><span class="line"></span><br><span class="line">$ git config user.email <span class="comment">#并不能显示是哪个文件</span></span><br><span class="line">tomcat@companyA.net</span><br></pre></td></tr></table></figure></p>
+<p>更多详细的gitconfig中的参数可以参考 <a href="https://git-scm.com/docs/git-config，或者在本地用man命令查看" target="_blank" rel="noopener">https://git-scm.com/docs/git-config，或者在本地用man命令查看</a>, 如 <code>$ man git-config</code></p>
+<hr>
+<p>reference links:</p>
+<ul>
+<li><a href="https://stackoverflow.com/questions/8801729/is-it-possible-to-have-different-git-configuration-for-different-projects" target="_blank" rel="noopener">git config - Is it possible to have different Git configuration for different projects? - Stack Overflow</a></li>
+<li><a href="https://git-scm.com/docs/git-config#_configuration_file" target="_blank" rel="noopener">Git - git-config Documentation</a></li>
+</ul>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-English-Note-05-面试"
   class="article article-type-post"
   itemscope
@@ -994,107 +1068,6 @@
     <footer class="article-footer">
        
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Helm/">Helm</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-Clean-up-Azure-Container-Registry"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/11/05/Clean-up-Azure-Container-Registry/"
-    >Clean up Azure Container Registry</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2021/11/05/Clean-up-Azure-Container-Registry/" class="article-date">
-  <time datetime="2021-11-05T03:04:19.000Z" itemprop="datePublished">2021-11-05</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Docker/">Docker</a>
-  </div>
- 
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h3 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h3><p>打开项目上用了2-3年的Azure Container Registry，就像打开了一个尘封多年的仓库一般。使用者不停的往仓库里堆放物品，但从来不整理、打扫。仓库的容积足够大，不考虑成本的话，都不是问题。但本着“清道夫”的理念，本着清楚潜在问题的出发点（其实是不想后面打开仓库的人也口出“狂言”，而来责怪前面维护的人。）</p>
-<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p>在个人电脑上，下载镜像过多且长期不删除也会面临磁盘不足的风险。或多或少都适用过类似 <code>docker image rm</code>的命令，但一个一个的清理难免麻烦耗时。这时候就需要一个一键搞定的命令，例如<code>docker system prune</code>。</p>
-<p>对于Azure Container Registry 这样一个成熟的产品服务，已经不建议个人去造轮子、写脚本了。搜索一番之后找到了一篇不错的<a href="https://zimmergren.net/purging-container-images-from-azure-container-registry/" target="_blank" rel="noopener">文章</a>，里面提到了两个具体的方法。</p>
-<ul>
-<li>1.Set a retention policy for untagged manifests (<a href="https://docs.microsoft.com/en-us/azure/container-registry/container-registry-retention-policy?WT.mc_id=AZ-MVP-4021705" target="_blank" rel="noopener">Microsoft Docs</a>)</li>
-<li>2.Automatically purge images from an Azure Container Registry (<a href="https://docs.microsoft.com/en-us/azure/container-registry/container-registry-auto-purge" target="_blank" rel="noopener">Microsoft Docs</a>)</li>
-</ul>
-<p>具体的使用当然还是参照azure官方的文档为宜，毕竟具体实践因情况而异。</p>
-<p>对于，需要注意一点，该policy并不能立刻对现有的镜像生效，原文描述如下：</p>
-<blockquote>
-<p>! Important</p>
-<p>The retention policy applies only to untagged manifests with timestamps after the policy is enabled. Untagged manifests in the registry with earlier timestamps aren’t subject to the policy. For other options to delete image data, see examples in Delete container images in Azure Container Registry.</p>
-</blockquote>
-<p>运行了一些命令：</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 删除2021-04-01 之前的镜像, 有dry-run参数也可以提前测试一下</span></span><br><span class="line">az acr repository show-manifests --name &lt;YourACRName&gt; --repository demo-web-app \</span><br><span class="line">    --orderby time_asc --query <span class="string">"[?timestamp &lt; '2021-04-01'].digest"</span> -o tsv \</span><br><span class="line">    | xargs -I% az acr repository delete --name &lt;YourACRName&gt; --image demo-web-app@% --yes</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设置定时任务，以后就会自动按照时间来删除</span></span><br><span class="line">PURGE_CMD=<span class="string">"acr purge --filter 'service-one:.*' --ago 180d"</span></span><br><span class="line"></span><br><span class="line">az acr task create --name purgeAppOneImage  \</span><br><span class="line">--cmd <span class="string">"<span class="variable">$PURGE_CMD</span>"</span> \</span><br><span class="line">--schedule <span class="string">"0 0 * * 2"</span> \</span><br><span class="line">--registry &lt;YourACRName&gt; \</span><br><span class="line">--context /dev/null</span><br></pre></td></tr></table></figure>
-<h3 id="意外收获"><a href="#意外收获" class="headerlink" title="意外收获"></a>意外收获</h3><p><strong>tag or digest</strong></p>
-<blockquote>
-<ul>
-<li>The “digest” is a hash of the manifest, introduced in Docker registry v2.</li>
-<li>The image ID is a hash of the local image JSON configuration.</li>
-</ul>
-</blockquote>
-<p>在使用 Dockerfile 构建镜像时，base image的使用也涉及这点。提出了一个解决方案 <a href="https://github.com/safe-waters/docker-lock" target="_blank" rel="noopener">docker-lock</a> ，有兴趣的可以使用看看，欢迎交流心得体会～</p>
-<blockquote>
-<p>Link: <a href="https://developers.redhat.com/blog/2020/03/24/red-hat-universal-base-images-for-docker-users#" target="_blank" rel="noopener">https://developers.redhat.com/blog/2020/03/24/red-hat-universal-base-images-for-docker-users#</a></p>
-<p>As you discovered, with docker, tags are mutable. This means that an update to a base image could be pushed that breaks your application code, even if you did not change any of your application code.</p>
-<p>You could eliminate this class of bugs by referencing base images by digest rather than by tag. For instance, instead of ruby:2.6.3, use ruby:2.6.3@sha256:2afcffd1a8276d58ef7d2c6d440c83290831abc2d80772a7af720db9aca9cd2e. If you reference by digest, when a new update is pushed to ruby:2.6.3, your application will still use the base image referenced by the digest, and you won’t be affected by the update.</p>
-<p>Specifying digests manually is a pain for a variety of reasons. Instead, consider using docker-lock <a href="https://github.com/michaelp..." target="_blank" rel="noopener">https://github.com/michaelp...</a>. docker-lock is a cli-plugin for docker that manages digests in a lockfile (think package-lock.json), so you can still reference base images by tag but receive the benefits of referencing them by digest.</p>
-<p>docker-lock ships with 3 commands that take you from development to production:<br>docker lock generate finds base images in your docker and docker-compose files and generates a lockfile containing digests that correspond to their tags.<br>docker lock verify lets you know if there are more recent digests than those last recorded in the lockfile.<br>docker lock rewrite rewrites Dockerfiles and docker-compose files to include digests.</p>
-</blockquote>
-<p><strong>using-container-image-digests-in-kubernetes-manifests</strong></p>
-<blockquote>
-<p><a href="https://cloud.google.com/architecture/using-container-image-digests-in-kubernetes-manifests" target="_blank" rel="noopener">https://cloud.google.com/architecture/using-container-image-digests-in-kubernetes-manifests</a>)</p>
-</blockquote>
-<p> <strong>Tag Count =? Mainfest Count</strong></p>
-<blockquote>
-<p>详解可见<a href="https://medium.com/@anantvardhan.04/azure-container-registry-acr-cleanup-dfeb8a8bb6a9" target="_blank" rel="noopener">文章</a></p>
-</blockquote>
-<hr>
-<p>Reference:</p>
-<ul>
-<li><a href="https://zimmergren.net/purging-container-images-from-azure-container-registry/" target="_blank" rel="noopener">https://zimmergren.net/purging-container-images-from-azure-container-registry/</a></li>
-<li><a href="https://docs.microsoft.com/en-us/azure/container-registry/container-registry-retention-policy" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/azure/container-registry/container-registry-retention-policy</a></li>
-<li><a href="https://docs.microsoft.com/en-us/azure/container-registry/container-registry-auto-purge" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/azure/container-registry/container-registry-auto-purge</a></li>
-<li><a href="https://www.ibm.com/docs/en/filenet-p8-platform/5.5.x?topic=deployment-choosing-image-tags-digest" target="_blank" rel="noopener">https://www.ibm.com/docs/en/filenet-p8-platform/5.5.x?topic=deployment-choosing-image-tags-digest</a></li>
-<li><a href="https://medium.com/@anantvardhan.04/azure-container-registry-acr-cleanup-dfeb8a8bb6a9" target="_blank" rel="noopener">https://medium.com/@anantvardhan.04/azure-container-registry-acr-cleanup-dfeb8a8bb6a9</a></li>
-</ul>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Azure/">Azure</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Docker/">Docker</a></li></ul>
 
     </footer>
   </div>
