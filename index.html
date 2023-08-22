@@ -128,6 +128,15 @@
 <li>system: System configs are available for all the users/projects and stored in /etc/gitconfig.</li>
 </ul>
 </blockquote>
+<blockquote>
+<p>git支持多级配置，如：系统级、用户级、项目级、工作区级；它们的优先级如下：工作区级配置 &gt; 项目级配置 &gt; 用户级配置 &gt; 系统级配置；每级配置记录在对&gt; 应的配置文件中，通过 git config 命令设置的配置项 也都会写在对应的配置文件中，配置文件的具体信息如下：</p>
+<ul>
+<li>/etc/gitconfig ：系统级配置文件；对系统中所有用户都普遍适用的配置。若使用 git config 时用 –system 选项，读写的就是这个文件。</li>
+<li>~/.gitconfig ：用户级配置文件；用户目录下的配置文件只适用于该用户。若使用 git config 时用 –global 选项，读写的就是这个文件。</li>
+<li>当前项目的 git仓库目录中的配置文件（也就是工作目录中的 .git/config 文件）：这里的配置仅仅针对当前项目有效。若使用 git config 时用 &gt; –local 选项 或 省略，读写的就是这个文件。</li>
+<li>工作区级配置文件 ：这里的配置仅仅针对当前工作区有效。若使用 git config 时用 –worktree 选项，读写的就是这个文件。</li>
+</ul>
+</blockquote>
 <p>  面对不同类型的代码仓库，有时候我们需要使用不同的用户名，以及一些特殊一些的git参数。如何有效快速的设置，而不是按照一个一个repo去逐一的设置；但全局设置又兼顾不到一些剩余的代码仓库</p>
 <p>  编辑home目录下的 <code>.gitconfig</code>，按照如下配置的前提是：通常我们把一类代码仓库的放在一个目录下，例如按照公司名称来区分目录，或者是 <code>gitlab_repo</code>, <code>github_repo</code>这样来分。下面的代码片段只是展示最为简单的配置方法，可自行根据需求设置。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.gitconfig</span><br><span class="line"></span><br><span class="line">[includeIf <span class="string">"gitdir:~/company_a/"</span>]</span><br><span class="line">  path = .gitconfig-company_a</span><br><span class="line">[includeIf <span class="string">"gitdir:~/company_b/"</span>]</span><br><span class="line">  path = .gitconfig-company_b</span><br></pre></td></tr></table></figure>
@@ -137,9 +146,10 @@
 <li>path 路径建议使用绝对路径</li>
 </ul>
 <p>在对应的 <code>.gitconfig-company_a</code> 或 <code>.gitconfig-company_b</code> 文件中，参数的设置就如何普通的 <code>.gitconfig</code> 一样，例如下面的代码片段。</p>
-<p>如果是一些字段(如user.name)的值是一致的，也可以无需在多个gitconfig文件中声明，是在 home目录下的<code>.gitconfig</code>定义一次，等同于运行命令 <code>git config --global user.name &quot;John Doe&quot;</code></p>
+<p>如果是一些字段(如user.name)的值是一致的，也可以无需在多个gitconfig文件中声明，只在 home目录下的<code>.gitconfig</code> 文件中定义一次，等同于运行命令 <code>git config --global user.name &quot;John Doe&quot;</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">[user]</span><br><span class="line">name = John Smith</span><br><span class="line">email = john.smith@companya.net</span><br><span class="line"></span><br><span class="line">[core]</span><br><span class="line">sshCommand = ssh -i ~/.ssh/id_rsa_companya</span><br><span class="line"></span><br><span class="line"><span class="comment">#### or</span></span><br><span class="line">[credential]</span><br><span class="line">        helper = osxkeychain</span><br><span class="line">[pull]</span><br><span class="line">        rebase = <span class="literal">true</span></span><br><span class="line">[rebase]</span><br><span class="line">        autostash = <span class="literal">true</span></span><br><span class="line">[gpg]</span><br><span class="line">        program = gpg</span><br><span class="line">[commit]</span><br><span class="line">        gpgsign = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">[http <span class="string">"http://git.cn.companyB.net"</span>]</span><br><span class="line">        sslVerify = <span class="literal">false</span></span><br></pre></td></tr></table></figure>
 <p>如何查看我们设置的参数是否生效了<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git config --show-origin --get user.email</span><br><span class="line">file:.git/config	tomcat@companyA.net</span><br><span class="line"></span><br><span class="line">$ git config user.email <span class="comment">#并不能显示是哪个文件</span></span><br><span class="line">tomcat@companyA.net</span><br></pre></td></tr></table></figure></p>
+<p>另外也可以通过命令的形式将参数写入具体的文件中，例如 <code>git config -f 对应的配置文件/的路径/gitconfig_company_c   user.email  abcdef@qq.com`</code></p>
 <p>更多详细的gitconfig中的参数可以参考 <a href="https://git-scm.com/docs/git-config，或者在本地用man命令查看" target="_blank" rel="noopener">https://git-scm.com/docs/git-config，或者在本地用man命令查看</a>, 如 <code>$ man git-config</code></p>
 <hr>
 <p>reference links:</p>
