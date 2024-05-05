@@ -93,6 +93,151 @@
     
     
     <article
+  id="post-xargs-command"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/06/21/xargs-command/"
+    >xargs command</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/06/21/xargs-command/" class="article-date">
+  <time datetime="2019-06-21T07:32:09.000Z" itemprop="datePublished">2019-06-21</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Bash/">Bash</a>
+  </div>
+ 
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>xargs 命令应该紧跟在管道操作符之后。它使用标准输入作为主要的数据源，将从 stdin 中读取的数据作为指定命令的参数并执行该命令。</p>
+<p>例如：<br>在一组 C 语言源码文件中搜索自负串main:<br><code>ls *.c | sargs grep main</code></p>
+<h4 id="Example-1-将多行输入-–-gt-单行输出"><a href="#Example-1-将多行输入-–-gt-单行输出" class="headerlink" title="Example 1: 将多行输入  –&gt; 单行输出"></a>Example 1: 将多行输入  –&gt; 单行输出</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">➜   cat example.txt</span><br><span class="line">1 2 3 4</span><br><span class="line">5 6</span><br><span class="line">7 8 9</span><br><span class="line">10 11</span><br><span class="line">➜   cat example.txt | xargs</span><br><span class="line">1 2 3 4 5 6 7 8 9 10 11</span><br></pre></td></tr></table></figure>
+<h4 id="Example-2-将单行输入-–-gt-多行输出"><a href="#Example-2-将单行输入-–-gt-多行输出" class="headerlink" title="Example 2: 将单行输入  –&gt; 多行输出"></a>Example 2: 将单行输入  –&gt; 多行输出</h4><p>xargs 的 -n 选项可以限制每次调用命令时用到的参数个数。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">➜   cat example.txt | xargs -n  3</span><br><span class="line">1 2 3</span><br><span class="line">4 5 6</span><br><span class="line">7 8 9</span><br><span class="line">10 11</span><br></pre></td></tr></table></figure></p>
+<p>工作原理：<br>xargs 命令接收来自stdin的输入，将数据解析成单个元素，然后调用指定命令讲这些元素作为该命令的参数。xargs 默认使用 <strong>空白字符</strong> 分割输入并执行 <code>/bin/echo</code></p>
+<h4 id="Example-3-自定义分隔符-d-选项"><a href="#Example-3-自定义分隔符-d-选项" class="headerlink" title="Example 3: 自定义分隔符 -d 选项"></a>Example 3: 自定义分隔符 -d 选项</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"splitXsplit1Xsplit2Xsplit3"</span> | xargs -d X</span><br><span class="line">split split1 split2 split3</span><br></pre></td></tr></table></figure>
+<h4 id="Example-4-结合find使用xargs"><a href="#Example-4-结合find使用xargs" class="headerlink" title="Example 4: 结合find使用xargs"></a>Example 4: 结合find使用xargs</h4><p><code>find . -type f -name &quot;*.txt&quot; -print0 | xargs -o grep -L image</code></p>
+<p> 如果文件系统的有些文件名中包含忠哥，find 命令的 -print0 选项可以使用0（NUL）来分割查找到的元素，然后再用xargs对应的-0选项进行解析</p>
+<p> 反例：<br> <code>$find . -type f -name &quot;*.txt&quot; -print | xargs rm -f</code><br>这样做很危险，由可能会误删除文件。我们无法预测 find命令输出的分隔符究竟是什么（究竟是‘\n’还是 ‘’）。如果由文件名中包含空格符（‘ ’ ），xargs会将其误认为是分隔符。例如， <code>bashrc text.txt</code> 会被是为 bashrc 和 text.txt 。因此上面的命令不会删除 <code>bashrc text.txt</code> ,而是会把 bashrc删除</p>
+<p>正确的姿势：<br> <code>$find . -type f -name &quot;*.txt&quot; -print0 | xargs -0 rm -f</code></p>
+<h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><p> <code>docker ps -a -q | xargs --no-run-if-empty docker rm -f</code></p>
+<p> 参数 <code>--no-run-if-empty</code> 可以避免在前面的命令完全没有输出的情况下执行该命令</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Bash/">Bash</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shell/">Shell</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
+  id="post-http-vs-curl"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/06/19/http-vs-curl/"
+    >http vs curl</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/06/19/http-vs-curl/" class="article-date">
+  <time datetime="2019-06-19T08:13:53.000Z" itemprop="datePublished">2019-06-19</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+ 
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <blockquote>
+<p>http不仅是个协议，还是一个命令。</p>
+</blockquote>
+<p>Httpie 是个 HTTP 的命令行客户端，http就是它的命令。</p>
+<h4 id="1-Httpie-是什么"><a href="#1-Httpie-是什么" class="headerlink" title="1. Httpie 是什么"></a>1. Httpie 是什么</h4><p>Httpie （aych-tee-tee-pie）是一个 HTTP 的命令行客户端。其目标是让 CLI 和 web 服务之间的交互尽可能的人性化。你可以用它很方便的用 http 的命令调试接口，最常用的应该就是 GET 和 POST 了。</p>
+<h4 id="2-安装"><a href="#2-安装" class="headerlink" title="2. 安装"></a>2. 安装</h4><p>Linux上安装</p>
+<ul>
+<li><p>Debian, Ubuntu或Linux Mint<br><code>sudo apt-get install httpie</code></p>
+</li>
+<li><p>Fedora，CentOS/RHEL<br><code>sudo yum install httpie</code></p>
+</li>
+</ul>
+<p>或者使用python的方式来安装<br><code>sudo  pip install --upgrade httpie</code></p>
+<ul>
+<li>Mac OSX<br><code>brew install httpie</code></li>
+</ul>
+<h4 id="3-http-command-能做什么"><a href="#3-http-command-能做什么" class="headerlink" title="3. http command 能做什么"></a>3. http command 能做什么</h4><blockquote>
+<p>curl能做的，大部分都能做。</p>
+</blockquote>
+<p>HTTPie 基于 python 编写，内部使用了 Requests 和 Pygments 库。</p>
+<p>HTTPie 的用法要比 cURL 直观很多，没有那么多选项，基本上心里怎么想就怎么写，默认输入和输出都是 json 格式 (而 cURL 必须要指定 -H “Content-Type: application/json”)。我们同样实现上面获取 token 的功能，效果如下:</p>
+<ul>
+<li>example 1:<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">➜  tmp http https://www.devops-tech.cn/</span><br><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Accept-Ranges: bytes</span><br><span class="line">Access-Control-Allow-Origin: *</span><br><span class="line">Age: 7</span><br><span class="line">Cache-Control: max-age=600</span><br><span class="line">Connection: keep-alive</span><br><span class="line">Content-Encoding: gzip</span><br><span class="line">Content-Length: 2510</span><br><span class="line">Content-Type: text/html; charset=utf-8</span><br><span class="line">Date: Wed, 19 Jun 2019 08:28:44 GMT</span><br><span class="line">ETag: W/<span class="string">"5d0848b1-2d66"</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>others<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">http</span><br><span class="line"></span><br><span class="line">HTTPie: HTTP client, a user-friendly cURL replacement.</span><br><span class="line"></span><br><span class="line">- Download a URL to a file:</span><br><span class="line">    http -d example.org</span><br><span class="line"></span><br><span class="line">- Send form-encoded data:</span><br><span class="line">    http -f example.org name=<span class="string">'bob'</span> profile_picture@<span class="string">'bob.png'</span></span><br><span class="line"></span><br><span class="line">- Send JSON object:</span><br><span class="line">    http example.org name=<span class="string">'bob'</span></span><br><span class="line"></span><br><span class="line">- Specify an HTTP method:</span><br><span class="line">    http HEAD example.org</span><br><span class="line"></span><br><span class="line">- Include an extra header:</span><br><span class="line">    http example.org X-MyHeader:123</span><br><span class="line"></span><br><span class="line">- Pass a user name and password <span class="keyword">for</span> server authentication:</span><br><span class="line">    http -a username:password example.org</span><br><span class="line"></span><br><span class="line">- Specify raw request body via stdin:</span><br><span class="line">    cat data.txt | http PUT example.org</span><br></pre></td></tr></table></figure></p>
+<h4 id="4-特点："><a href="#4-特点：" class="headerlink" title="4. 特点："></a>4. 特点：</h4><p>1、直观的语法<br>2、格式化和色彩化的终端输出<br>3、内置 JSON 支持<br>4、支持上传表单和文件<br>5、HTTPS、代理和认证支持<br>6、支持任意请求数据<br>7、自定义标题<br>8、持久性会话<br>9、类 Wget 下载<br>10、支持 Python 2.6, 2.7 和 3.x<br>11、支持 Linux, Mac OS X 和 Windows<br>12、插件<br>13、文档<br>14、测试覆盖率</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shell/">Shell</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-Bash-function-skill"
   class="article article-type-post"
   itemscope
@@ -635,152 +780,6 @@
 </article>
 
     
-    <article
-  id="post-Linux-backup-specially"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/05/21/Linux-backup-specially/"
-    >backup specially with shell script or python</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/05/21/Linux-backup-specially/" class="article-date">
-  <time datetime="2019-05-21T09:37:07.000Z" itemprop="datePublished">2019-05-21</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Linux/">Linux</a>
-  </div>
- 
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h3 id="需求：-备份目录，只备份新加的文件，不备份减少的文件"><a href="#需求：-备份目录，只备份新加的文件，不备份减少的文件" class="headerlink" title="需求： 备份目录，只备份新加的文件，不备份减少的文件"></a>需求： 备份目录，只备份新加的文件，不备份减少的文件</h3><p>分析： 通常备份目录用 <code>rsync</code> 就可以达到目的，但开发同学怕误操作，删除文件，于是提出这个 <em>只增不减</em> 的需求</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="function"><span class="title">backUp</span></span>()&#123;</span><br><span class="line"><span class="built_in">local</span> sourceDir=<span class="variable">$1</span> <span class="comment">#需要备份的文件/目录</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">local</span> destDir=<span class="variable">$2</span> <span class="comment">#备份目的地</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -d <span class="string">"<span class="variable">$sourceDir</span>"</span> ] <span class="comment">#备份目录</span></span><br><span class="line"><span class="keyword">then</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">#如果目录尚未备份，则创建此目录</span></span><br><span class="line">  <span class="keyword">if</span> [ ! -d <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span> ]</span><br><span class="line">  <span class="keyword">then</span></span><br><span class="line">  <span class="built_in">echo</span> -e <span class="string">"创建目录\t<span class="variable">$sourceDir</span>"</span></span><br><span class="line">  mkdir -p <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span></span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#对目录中对每一个文件,递归调用此函数进行备份</span></span><br><span class="line"><span class="keyword">for</span> var <span class="keyword">in</span> $(ls <span class="string">"<span class="variable">$sourceDir</span>"</span>)</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">backUp <span class="string">"<span class="variable">$sourceDir</span>/<span class="variable">$var</span>"</span> <span class="string">"<span class="variable">$destDir</span>"</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"><span class="keyword">else</span> <span class="comment">#备份文件</span></span><br><span class="line">  <span class="comment">#如果文件在尚未备份，则直接复制</span></span><br><span class="line">  <span class="keyword">if</span> [ ! -f <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span> ]</span><br><span class="line">  <span class="keyword">then</span></span><br><span class="line">  <span class="built_in">echo</span> -e <span class="string">"备份文件\t<span class="variable">$sourceDir</span>"</span></span><br><span class="line">  cp <span class="string">"<span class="variable">$sourceDir</span>"</span> <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span></span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">#如果文件已存在，则比较两个文件对最后修改时间，如果文件已修改，则更新文件</span></span><br><span class="line">  lastModifi_backup=$(date -r <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span> +%s)</span><br><span class="line">  lastModifi_current=$(date -r <span class="string">"<span class="variable">$sourceDir</span>"</span> +%s)</span><br><span class="line">    <span class="keyword">if</span> [ <span class="string">"<span class="variable">$lastModifi_current</span>"</span> -gt <span class="string">"<span class="variable">$lastModifi_backup</span>"</span> ]</span><br><span class="line">    <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> -e <span class="string">"更新文件\t<span class="variable">$sourceDir</span>"</span> </span><br><span class="line">    cp <span class="string">"<span class="variable">$sourceDir</span>"</span> <span class="string">"<span class="variable">$destDir</span>/<span class="variable">$sourceDir</span>"</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line">backUp <span class="string">"<span class="variable">$1</span>"</span> <span class="string">"<span class="variable">$2</span>"</span></span><br></pre></td></tr></table></figure>
-<p>运行脚本： <code>./backupSpecially.sh &quot;/date/originData&quot; &quot;/date/backup_dir&quot;</code></p>
-<p>发现运行shell脚本有问题，于是大神帮我写了个python</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python2.7</span></span><br><span class="line"><span class="comment"># -*- encoding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> os,time,filecmp</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">differentFileCopy</span><span class="params">(sourcePath, targetPath)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(sourcePath):</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(targetPath):</span><br><span class="line">        os.makedirs(targetPath)</span><br><span class="line">    <span class="keyword">for</span> fileName <span class="keyword">in</span> os.listdir(sourcePath):</span><br><span class="line">        absourcePath = os.path.join(sourcePath, fileName)</span><br><span class="line">        abstargetPath = os.path.join(targetPath, fileName)</span><br><span class="line">        <span class="keyword">if</span> os.path.isdir(absourcePath):</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(abstargetPath):</span><br><span class="line">                os.makedirs(abstargetPath)</span><br><span class="line">                differentFileCopy(absourcePath, abstargetPath)</span><br><span class="line">        <span class="keyword">if</span> os.path.isfile(absourcePath):</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(abstargetPath):</span><br><span class="line">                <span class="keyword">print</span> <span class="string">'copy %s to %s'</span> %(fileName,abstargetPath)</span><br><span class="line">                os.system(<span class="string">'cp'</span>+<span class="string">' '</span>+absourcePath+<span class="string">' '</span>+targetPath)</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> filecmp.cmp(absourcePath,abstargetPath):</span><br><span class="line">                <span class="keyword">print</span> <span class="string">'copy %s to %s'</span> %(fileName,abstargetPath)</span><br><span class="line">                os.system(<span class="string">'cp'</span>+<span class="string">' '</span>+absourcePath+<span class="string">' '</span>+targetPath)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    startTime = time.clock()</span><br><span class="line">    sourcePath = <span class="string">r"/date/originData"</span></span><br><span class="line">    targetPath = <span class="string">r"/date/Data_backupDir"</span></span><br><span class="line">    differentFileCopy(sourcePath, targetPath)</span><br><span class="line">    endTime = time.clock()</span><br><span class="line">    time_mi = endTime // <span class="number">60</span></span><br><span class="line">    time_s = endTime // <span class="number">1</span> % <span class="number">60</span></span><br><span class="line">    time_ms = ((endTime * <span class="number">100</span>) // <span class="number">1</span>) % <span class="number">100</span></span><br><span class="line">    print(<span class="string">"总用时:%02.0f:%02.0f:%2.0f"</span> % (time_mi, time_s, time_ms))</span><br></pre></td></tr></table></figure> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shell/">Shell</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-Q-Movie-List"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/05/12/Q-Movie-List/"
-    >Q Movie List</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/05/12/Q-Movie-List/" class="article-date">
-  <time datetime="2019-05-12T15:02:26.000Z" itemprop="datePublished">2019-05-12</time>
-</a>  
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>Q Movie List </p>
-<h3 id="1-《夜以继日》-2018"><a href="#1-《夜以继日》-2018" class="headerlink" title="1.《夜以继日》(2018)"></a>1.《夜以继日》(2018)</h3><p>原名：Asako I &amp; II<br>导演：滨口龙介<br>主演: 东出昌大 / 唐田英里佳</p>
-<p><img src="/images/movie_Asako_I_II_01.png" alt="Asako_I_II"></p>
-<center> 夜以继日 男女主 </center>
-
-<p>两个相貌相同的男人，一个拥有着迷人的魅力，随性的坏男孩；一个是朴实无华，处处为别人考虑的体贴男孩。恋爱中的理想和现实的选择被表现淋漓尽致，深入人心。没有对错，明白什么是生活，什么是可贵的。</p>
-<blockquote>
-<p>日本电影总把三观不太正的想法表现得很有道理的样子 😓</p>
-</blockquote>
-<h3 id="2-《骡子》-2018"><a href="#2-《骡子》-2018" class="headerlink" title="2. 《骡子》(2018)"></a>2. 《骡子》(2018)</h3><p>原名：The Mule‎<br>导演：克林特·伊斯特伍德<br>主演： 克林特·伊斯特伍德</p>
-<p><img src="/images/movie_mule_01.png" alt="Mule"></p>
-<center> 男主在公路上 </center><br>男主与妻子去世前的对话：<br><br>&gt; Mary: You were the love of my life, and the pain of my life. I need you to know, it’s all the world to me that you’re here.<br>&gt; <strong>Earl</strong>: I love you, Mary.<br>&gt; Mary: More today than yesterday?<br>&gt; <strong>Earl</strong>: But not as much as tomorrow.<br><br>自己的生活还是家庭？男主一生大部分时间都用在自己的黄花菜上，或者自己的老兵俱乐部等，家人对他无不责备。但是最后男主在妻子的最后一次请求中放下手中的活儿（运送毒品），选择回到妻子身边，也得到了女儿的原谅。<br><br>###  3.《来的都是客》(1990)<br>导演：马绍惠<br>主演： 赵本山、巩汉林<br><br><img src="/images/movie_guest.png" alt="Whoever Comes Is a Guest"><br><center> 90年代，年轻的两位男主</center>
-
-<p>上世纪90年代的一部<strong>喜剧</strong>、剧情片，反讽当时的吃喝风。故事情节流畅、很贴近生活。我最早知道<strong>赵本山</strong>是春晚的小品上，但没有想到过他出演了很多电影，而且是他年轻力壮的时候，当年的赵本山脸上还没有褶子，演技也在线。</p>
-<blockquote>
-<p>适合长辈观看，放人开怀大笑、精神放松，把我妈逗乐了。</p>
-</blockquote>
-<h3 id="4-《回到被爱的每一天》-2015"><a href="#4-《回到被爱的每一天》-2015" class="headerlink" title="4. 《回到被爱的每一天》 (2015)"></a>4. 《回到被爱的每一天》 (2015)</h3><p>导演、编剧: 何平<br>主演: 王佳佳、张译 </p>
-<p><img src="/images/movie_The_Promised_Land.png?30" alt="The Promised Land"></p>
-<center> 海报 </center>
-
-<p>一部较文艺、朴素的电影，没有大起大落，只是慢慢的讲述一个故事，看的时候要有耐心。电影的色调，搭配拍摄地的风景，使画面看起来有一种平静的美。大城市、小家乡，都是年轻人的选择，但什么样的选择更好只有自己的内心才能感觉得到。在商业电影盛行的前几年，这样纯粹的电影算是难得一见的吧。</p>
-<h3 id="5-《只有芸知道》（2019）"><a href="#5-《只有芸知道》（2019）" class="headerlink" title="5. 《只有芸知道》（2019）"></a>5. 《只有芸知道》（2019）</h3><p>导演: 冯小刚<br>主演: 黄轩,杨采钰,徐帆</p>
-<p><img src="/images/movie_only_cloud_knows.png?30" alt="only cloud knows "></p>
-<center> 简单的新婚 </center>
-
-<p>爱情片，人物不多，风景很美，一件件往事慢慢回忆给我们，两个人在异国他乡找到彼此，又相伴十几年，都愿意为对方付出。记录一句台词，“有了房子，有了生意，就是给她最大的安全感。”<br>“其实房子和生意都不能给我安全感，只有你可以。” “我想和Simon换个活法”</p>
-<p>林太的武汉话地道有味，也是在少见的异国他乡爱情片中(印象中北京话、四川话更多)。而此次的疫情恐怕让全中国都熟悉了一下武汉话，也让全世界都了解了武汉这个地名。</p>
-<p>才发现这是2019年的电影，但似乎市场上影响不大，可能是影院排片较少，也幸好影片中商业化较少。另外，黄轩的演技值得肯定，以前一直觉得他眼神有问题，但是这部电影挺好的。</p>
-<h3 id="6-《丈夫得了抑郁症》（2011）"><a href="#6-《丈夫得了抑郁症》（2011）" class="headerlink" title="6. 《丈夫得了抑郁症》（2011）"></a>6. 《丈夫得了抑郁症》（2011）</h3><p>导演: 佐佐部清<br>主演: 宫崎葵,堺雅人</p>
-<p><img src="https://s1.ax1x.com/2020/04/04/G0uDJA.png" alt="G0uDJA.png"></p>
-<center> 因为抑郁症，男主感到很自责 </center>
-
-<p>一场抑郁症，伴随是中长期的，身陷其中的男主处于一中特殊的痛苦、无力的生活中。随着时间的推移，作为妻子的女主也终于认识到生活的巨大改变。同时，自身也承担了更多事情：做饭、打扫、买菜、努力工作等等。男主从最开始为了妻子而治病，改变为为了自己而治病。</p>
-<p>女主厚着脸皮请求编辑给予工作机会，也同时说出了丈夫得了抑郁症的事情。而变得释怀，不介意他人的想法。</p>
-<p>最后两人在“同窗会”上的一段发言算是一年的总结，也让两人对婚姻有了更深的认识和理解。</p>
-<p><strong>生活甜蜜幸福的时候、职场得意的时候，不妨也踩一下刹车，或者停车，看一下反面类型的电影，给予自己冷静下来的机会，审时度势，未雨绸缪。</strong></p>
-<p>当然，电影中有很多地方并不值得严谨地推敲，现实中这样美好的结局恐怕凤毛菱角。但个人觉得不影响电影想表达的内容，以及给人以正能量的暗示。</p>
-<p>有很多台词还是值得回味的，有点儿生活哲学、人生哲学的样子，比如<br>“能一直完好无所便是价值所在”<br>“如果努力很痛苦，那就别努力了”<br>“人不努力也是可以的”<br>“不去想忧郁症的原因，而是想它的意义。”</p>
-<p>其他话题：<strong>婚礼同学会</strong>，这个同学会挺有意思的，就是在同一个教堂结婚的夫妇组成的同学；<strong>失业保险</strong></p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Q-List/">Q List</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
   </article>
   
 
@@ -798,7 +797,7 @@
     <ul>
       <li>
         Copyrights &copy;
-        2019-2023
+        2019-2024
         <i class="ri-heart-fill heart_icon"></i> John Doe
       </li>
     </ul>
